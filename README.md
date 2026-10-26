@@ -48,9 +48,9 @@ The API is the authority for tool validation, execution, persisted events, and r
 
 ## Current implementation status
 
-The repository’s verification records (2026-10-26) document a passing local quality gate, source-data integrity checks, Ghana normalization, and HTTP 200 smoke responses for all 12 workspace routes. The mobile navigation drawer has been implemented, but full browser-based keyboard, focus, and interaction acceptance remains outstanding.
+The local project verification records (2026-10-26) document a passing quality gate, source-data integrity checks, Ghana normalization, and HTTP 200 smoke responses for all 12 workspace routes. The mobile navigation drawer has been implemented, but full browser-based keyboard, focus, and interaction acceptance remains outstanding.
 
-The live Meta `muse-spark-1.3` adapter was smoke-tested, and a bounded run executed real tools on the Ghana source. That run was **partial and failed its requested research objective**: it profiled the data, inspected missingness, then recovered from an invalid action by repeating the profile. It did not produce genotype stability analysis or a justified next experiment. See [`verification/AGENT_EXECUTION_TRACE.md`](verification/AGENT_EXECUTION_TRACE.md), [`verification/UI_ACCEPTANCE.md`](verification/UI_ACCEPTANCE.md), and [`verification/DEFECT_REGISTER.md`](verification/DEFECT_REGISTER.md) for evidence and remaining blockers.
+The live Meta `muse-spark-1.3` adapter was smoke-tested, and a bounded run executed real tools on the Ghana source. That run was **partial and failed its requested research objective**: it profiled the data, inspected missingness, then recovered from an invalid action by repeating the profile. It did not produce genotype stability analysis or a justified next experiment. Full-source checkout references: `verification/AGENT_EXECUTION_TRACE.md`, `verification/UI_ACCEPTANCE.md`, and `verification/DEFECT_REGISTER.md`.
 
 **This is not production-launch-ready.** There is no end-user authentication or per-user data isolation, distributed durable job queue, shared/global rate limiting, verified deployment, or backup/restore process. Browser interaction and accessibility acceptance is incomplete. Do not expose the service as a public multi-user application.
 
@@ -152,17 +152,19 @@ This fixture evaluates tool-selection coverage on a fixed task catalog. It does 
 - **Ghana maize trial data:** Abu et al. (2026), *Phenotypic data: drought-tolerance evaluation of early and extra-early African maize (Zea mays L.) landraces*, [Zenodo DOI 10.5281/zenodo.22666201](https://doi.org/10.5281/zenodo.22666201), CC BY 4.0. The 864-row combined CSV is the active analysis source; regime component files are retained for cross-checking and must not be counted again.
 - **IITA trial data:** Menkir et al., *Regional trials of Striga resistant and drought tolerant maize hybrids conducted for eight years*, [DOI 10.25502/4xv7-bc93/d](https://doi.org/10.25502/4xv7-bc93/d), listed as CC BY 4.0 on its dataset landing page. These files are audited/staged, not enabled in the current analysis API. The full-irrigation CSV contains substantial fully empty rows, which are recorded in the audit documentation.
 
-Raw-file inventory, checksums, data handling, and detailed license notes are documented in [`docs/01_Data_Inventory_and_Provenance.md`](docs/01_Data_Inventory_and_Provenance.md) and `data/manifest.json`. NASA POWER, FAO AquaCrop, and CIRAD AgMIP are not bundled. Confirm source terms and permissions independently before reuse, especially for commercial use or adding sources beyond those listed here.
+Raw-file inventory, checksums, data handling, and detailed license notes are documented in `docs/01_Data_Inventory_and_Provenance.md` and `data/manifest.json` in the full source checkout. NASA POWER, FAO AquaCrop, and CIRAD AgMIP are not bundled. Confirm source terms and permissions independently before reuse, especially for commercial use or adding sources beyond those listed here.
 
 ## Documentation
 
-- [`Architecture.md`](Architecture.md) — service boundaries and data flow
-- [`Agent_plan.md`](Agent_plan.md) — implementation and release gates
-- [`BUILD_LOG.md`](BUILD_LOG.md) — dated changes and validation evidence
-- [`verification/IMPLEMENTATION_AUDIT.md`](verification/IMPLEMENTATION_AUDIT.md) — implementation scope and audit findings
-- [`verification/SCIENTIFIC_VALIDATION.md`](verification/SCIENTIFIC_VALIDATION.md) — independent arithmetic and source checks
-- [`verification/AGENT_EXECUTION_TRACE.md`](verification/AGENT_EXECUTION_TRACE.md) — actual bounded provider execution and its limitations
-- [`verification/DEFECT_REGISTER.md`](verification/DEFECT_REGISTER.md) — known defects and launch blockers
+The full local project source tree includes these additional documents:
+
+- `Architecture.md` — service boundaries and data flow
+- `Agent_plan.md` — implementation and release gates
+- `BUILD_LOG.md` — dated changes and validation evidence
+- `verification/IMPLEMENTATION_AUDIT.md` — implementation scope and audit findings
+- `verification/SCIENTIFIC_VALIDATION.md` — independent arithmetic and source checks
+- `verification/AGENT_EXECUTION_TRACE.md` — actual bounded provider execution and its limitations
+- `verification/DEFECT_REGISTER.md` — known defects and launch blockers
 
 ## Contributing and responsible use
 
