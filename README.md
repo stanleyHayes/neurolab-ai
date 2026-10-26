@@ -35,13 +35,13 @@ NeuroLab studies existing computational trial records. It does not run a real-wo
 
 ```text
 Browser
-  └── Next.js App Router · React · TypeScript
-        └── same-origin /api proxy
-              └── FastAPI · Pydantic · JSON-schema validation
-                    ├── Immutable source CSVs → normalized Ghana records
-                    ├── Deterministic profile / contrast / ranking / missingness tools
-                    ├── Optional bounded Meta-compatible structured-output adapter
-                    └── PostgreSQL run, event, and artifact persistence
+└── Next.js App Router · React · TypeScript
+    └── same-origin /api proxy
+        └── FastAPI · Pydantic · JSON-schema validation
+            ├── Immutable source CSVs → normalized Ghana records
+            ├── Deterministic profile / contrast / ranking / missingness tools
+            ├── Optional bounded Meta-compatible structured-output adapter
+            └── PostgreSQL run, event, and artifact persistence
 ```
 
 The API is the authority for tool validation, execution, persisted events, and research artifacts. SQLite is supported for isolated tests; the documented default service database is PostgreSQL. The model path is optional, uses server-side credentials, and is subject to provider access, quotas, and costs.
