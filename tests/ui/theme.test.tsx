@@ -1,6 +1,12 @@
 import React from "react";
 import { readFileSync } from "node:fs";
-import { act, fireEvent, render, screen } from "@testing-library/react";
+import {
+  act,
+  fireEvent,
+  render,
+  screen,
+  waitFor,
+} from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { ThemeControl, ThemePreference } from "../../app/theme-control";
 
@@ -29,6 +35,47 @@ describe("research appearance preference", () => {
     fireEvent.click(button);
     expect(button.getAttribute("aria-pressed")).toBe("false");
     expect(localStorage.getItem("neurolab-theme")).toBe("dark");
+  });
+
+  it("reveals the new theme from the control when motion is allowed", async () => {
+    vi.spyOn(window, "matchMedia").mockReturnValue({
+      matches: false,
+    } as MediaQueryList);
+    const animate = vi.fn(() => ({ finished: Promise.resolve() }));
+    const transition = vi.fn((update: () => void) => {
+      update();
+      return { ready: Promise.resolve(), finished: Promise.resolve() };
+    });
+    Object.defineProperty(document, "startViewTransition", {
+      configurable: true,
+      value: transition,
+    });
+    Object.defineProperty(document.documentElement, "animate", {
+      configurable: true,
+      value: animate,
+    });
+    try {
+      render(<ThemeControl />);
+      fireEvent.click(screen.getByRole("button", { name: "Light mode" }));
+      await waitFor(() =>
+        expect(animate).toHaveBeenCalledWith(
+          expect.objectContaining({
+            clipPath: expect.arrayContaining(["circle(0px at 0px 0px)"]),
+          }),
+          expect.objectContaining({
+            pseudoElement: "::view-transition-new(root)",
+            duration: 420,
+          }),
+        ),
+      );
+      expect(document.documentElement.dataset.theme).toBe("light");
+      await waitFor(() =>
+        expect(document.documentElement.dataset.themeReveal).toBeUndefined(),
+      );
+    } finally {
+      Reflect.deleteProperty(document, "startViewTransition");
+      Reflect.deleteProperty(document.documentElement, "animate");
+    }
   });
 
   it("synchronizes other-tab changes and ignores unrelated storage", () => {

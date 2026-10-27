@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useSyncExternalStore } from "react";
+import { useEffect, useRef, useSyncExternalStore } from "react";
 
 type Theme = "dark" | "light";
 const preferenceKey = "neurolab-theme";
@@ -43,13 +43,57 @@ export function ThemePreference() {
 
 export function ThemeControl() {
   const theme = useSyncExternalStore(subscribe, currentTheme, () => "dark");
-  const toggleTheme = () => {
+  const changing = useRef(false);
+  const toggleTheme = async (event: React.MouseEvent<HTMLButtonElement>) => {
+    if (changing.current) return;
     const next = theme === "dark" ? "light" : "dark";
-    applyTheme(next);
+    const commit = () => {
+      applyTheme(next);
+      try {
+        localStorage.setItem(preferenceKey, next);
+      } catch {
+        // The current page remains usable when storage is blocked.
+      }
+    };
+    if (
+      !document.startViewTransition ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+      !document.documentElement.animate
+    ) {
+      commit();
+      return;
+    }
+    changing.current = true;
+    const bounds = event.currentTarget.getBoundingClientRect();
+    const x = bounds.left + bounds.width / 2;
+    const y = bounds.top + bounds.height / 2;
+    const radius = Math.hypot(
+      Math.max(x, window.innerWidth - x),
+      Math.max(y, window.innerHeight - y),
+    );
+    document.documentElement.dataset.themeReveal = "true";
     try {
-      localStorage.setItem(preferenceKey, next);
+      const transition = document.startViewTransition(commit);
+      await transition.ready;
+      await document.documentElement.animate(
+        {
+          clipPath: [
+            `circle(0px at ${x}px ${y}px)`,
+            `circle(${radius}px at ${x}px ${y}px)`,
+          ],
+        },
+        {
+          duration: 420,
+          easing: "cubic-bezier(0.22, 1, 0.36, 1)",
+          pseudoElement: "::view-transition-new(root)",
+        },
+      ).finished;
+      await transition.finished;
     } catch {
-      // The choice still works for this page when storage is unavailable.
+      commit();
+    } finally {
+      delete document.documentElement.dataset.themeReveal;
+      changing.current = false;
     }
   };
   return (
@@ -61,11 +105,16 @@ export function ThemeControl() {
       title={theme === "light" ? "Switch to dark mode" : "Switch to light mode"}
       onClick={toggleTheme}
     >
-      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
-        <circle cx="12" cy="12" r="4" />
-        <path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.4 1.4m11.2 11.2L19 19M5 19l1.4-1.4M17.6 6.4 19 5" />
-      </svg>
-      <span>{theme === "light" ? "Light" : "Dark"}</span>
+      <span className="theme-switch-track" aria-hidden="true">
+        <span className="theme-switch-thumb" />
+        <svg viewBox="0 0 24 24" fill="none" focusable="false">
+          <path d="M20 15.4A8.5 8.5 0 0 1 8.6 4 8.5 8.5 0 1 0 20 15.4Z" />
+        </svg>
+        <svg viewBox="0 0 24 24" fill="none" focusable="false">
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.4 1.4m11.2 11.2L19 19M5 19l1.4-1.4M17.6 6.4 19 5" />
+        </svg>
+      </span>
     </button>
   );
 }

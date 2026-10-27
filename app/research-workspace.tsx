@@ -357,7 +357,7 @@ export function ResearchWorkspace({
       if (isStringArray(navigation.collapsedGroups))
         setCollapsedNavGroups(navigation.collapsedGroups);
       const state = readSessionState(`neurolab-research-state:${accountId}`);
-      if (typeof state.runId === "string") setRunId(state.runId);
+      setRunId(typeof state.runId === "string" ? state.runId : "");
       if (typeof state.runStatus === "string") setRunStatus(state.runStatus);
       if (state.mode === "replay" || state.mode === "meta") setMode(state.mode);
       restoredFor.current = accountId;
@@ -523,6 +523,32 @@ export function ResearchWorkspace({
     const timer = window.setTimeout(() => void loadHistory(), 0);
     return () => window.clearTimeout(timer);
   }, [loadHistory]);
+
+  useEffect(() => {
+    if (
+      !accountId ||
+      !stateRestored ||
+      restoredFor.current !== accountId ||
+      !historyLoaded ||
+      errors.history ||
+      runId ||
+      section === "experiment-studio" ||
+      section === "settings"
+    )
+      return;
+    const latest =
+      savedRuns.find((run) => ["COMPLETE", "PARTIAL"].includes(run.status)) ??
+      savedRuns[0];
+    if (latest) setRunId(latest.run_id);
+  }, [
+    accountId,
+    stateRestored,
+    historyLoaded,
+    errors.history,
+    runId,
+    savedRuns,
+    section,
+  ]);
 
   const contrast = artifacts.find(
     (item) => item.tool_name === "compare_regimes",
@@ -769,6 +795,14 @@ export function ResearchWorkspace({
           title={sectionCopy.title}
           providerLabel={providerLabel}
           runId={runId}
+          savedRuns={savedRuns}
+          onSelectRun={(id) => {
+            setEvents([]);
+            setArtifacts([]);
+            setReport(null);
+            setReplayIndex(0);
+            setRunId(id);
+          }}
           account={account}
           isOverview={showOverview}
           sidebarCollapsed={sidebarCollapsed}

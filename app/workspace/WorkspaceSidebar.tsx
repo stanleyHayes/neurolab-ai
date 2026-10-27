@@ -2,6 +2,22 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { ResultIcon } from "./ResultIcon";
+
+const navigationIcons = {
+  overview: "plots",
+  "experiment-studio": "method",
+  "live-experiment": "retention",
+  "research-results": "evidence",
+  "genotype-explorer": "genotype",
+  "trait-analytics": "comparison",
+  environments: "plots",
+  "data-library": "source",
+  "ai-insights": "spark",
+  "next-experiments": "arrow",
+  reports: "record",
+  settings: "settings",
+} as const;
 import type { Dispatch, RefObject, SetStateAction } from "react";
 import { WORKSPACE_NAV_GROUPS } from "./workspace-config";
 import type { WorkspaceSection } from "./workspace-types";
@@ -112,7 +128,9 @@ export function WorkspaceSidebar({
                     onClick={() => toggleNavGroup(group.id)}
                   >
                     <i className="nav-group-icon" aria-hidden="true">
-                      {group.icon}
+                      <ResultIcon
+                        name={navigationIcons[group.items[0].section]}
+                      />
                     </i>
                     <span className="nav-group-label">{group.label}</span>
                     {isActive && (
@@ -143,7 +161,9 @@ export function WorkspaceSidebar({
                         onClick={closeNavigation}
                         key={item.section}
                       >
-                        <i aria-hidden="true">{item.icon}</i>
+                        <i aria-hidden="true">
+                          <ResultIcon name={navigationIcons[item.section]} />
+                        </i>
                         <span>{item.label}</span>
                       </Link>
                     ))}

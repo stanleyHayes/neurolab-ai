@@ -140,6 +140,28 @@ describe("authenticated real-data replay workspace", () => {
     ).toBeNull();
   });
 
+  it("restores an owned completed experiment on a fresh results page", async () => {
+    navigation.pathname = "/research-results";
+    render(<ResearchWorkspace section="research-results" />);
+    await waitFor(() =>
+      expect(
+        JSON.parse(
+          sessionStorage.getItem("neurolab-research-state:fixture-user") ??
+            "{}",
+        ).runId,
+      ).toBe(runId),
+    );
+    await waitFor(() =>
+      expect(
+        vi
+          .mocked(fetch)
+          .mock.calls.some(([url]) =>
+            String(url).includes(`/research-runs/${runId}/artifacts`),
+          ),
+      ).toBe(true),
+    );
+  });
+
   it("replays saved terminal events without inventing extra measurements", async () => {
     seedSavedRun("live-experiment");
     render(<ResearchWorkspace section="live-experiment" />);
