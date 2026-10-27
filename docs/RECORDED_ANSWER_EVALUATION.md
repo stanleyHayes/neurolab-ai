@@ -11,12 +11,12 @@ python3 -m scripts.evaluate_answers collect --output eval/new-trial --seed 2026 
 The collector executes all twelve questions under three offline policies using the same immutable Ghana data, seed, two-call/two-step limit and 60-second per-run wall budget:
 
 - Fixed workflow: profile then regime comparison.
-- Seeded random: sample two distinct allowed tools without replacement from profile/comparison/ranking/missingness; invoke those exact methods. This differs from the older action-only random baseline, which sampled with replacement; results are not interchangeable.
+- Seeded random: sample two distinct allowed tools without replacement from the complete six-tool schema allowlist; invoke those exact methods. Earlier collections used only profile/comparison/ranking/missingness and remain labeled as that older protocol. This differs from the older action-only random baseline, which sampled with replacement; results are not interchangeable.
 - Default deterministic replay: the actual current default plan and evidence-conditioned replay behavior, bounded to the same call budget. The selected default plan can remain partial. This policy is not task-target-aware and not a Meta model.
 
 No constructor receives a model adapter, and mode is explicitly replay. Model ID is null, model calls and inference spend are zero; wall times are measured locally, not model speed claims. Full report/configuration, code startup snapshot, numeric artifacts and persisted events are retained in each `results.jsonl` record. Unexpected exceptions produce failure records with sanitized exception type and available partial trace rather than disappearing. New output directories are required so failed trials cannot be silently overwritten.
 
-The four-tool catalog covers the historical task set; it is not a comprehensive evaluation of the newer six-tool investigation profile, arbitrary datasets, or every adversarial scenario in document 06.
+The questions target the historical four-tool task set while the current random policy can select all six implemented tools; it is not a comprehensive evaluation of the newer six-tool investigation profile, arbitrary datasets, or every adversarial scenario in document 06.
 
 ## Separate trace validity from semantic quality
 
@@ -56,4 +56,10 @@ Findings that remain actionable:
 2. Written ratio availability/value and ranking-uncertainty boundaries need clearer direct answers. Artifact access alone is insufficient.
 3. The purported injection fixture puts text in the objective and never exposes a mutated dataset cell to a live model. No injection-resistance acceptance follows. Actual model-visible dataset-cell adversarial tests, answer-feedback ablations, live Meta comparison and independent review remain open.
 
-No credits were spent, inference was not enabled, and no result from this collection is presented as live Meta performance. `eval/results.jsonl` indexes all 72 attempts and points to their complete preserved records.
+No credits were spent, inference was not enabled, and no result from this collection is presented as live Meta performance. `eval/results.jsonl` indexes the preserved attempts and points to their complete records; see the dated protocol addenda below for later collections.
+
+## Focused-routing regression and protocol correction
+
+`eval/recorded-answers-2026-10-27-focused-routing/` contains 36 new attempts after code commit `1ce2761`, with zero unhandled exceptions and fresh evidence-bound, non-blind assistant reviews. It preserves the earlier random policy's four eligible actions. The router could now choose six, so this collection is **known-question regression evidence, not a fair six-tool policy comparison**. Do not infer superiority from its 5/12 fixed, 7/12 random and 11/12 focused-replay direct-answer ratings. These questions informed the implementation, and the subjective assistant was not blind. The unresolved purported injection case remains zero for direct answer, despite useful missingness output. Earlier records/reviews were not rewritten or rebound.
+
+The collector now derives random eligibility from the actual six-action schema, matching the agent's allowlist. Each new record declares `protocol=recorded-answers-six-tools-v2` and its eligible tools. This is a protocol correction; random actions/ratings from the older four-tool collections cannot be treated as paired results under the corrected protocol. Fixed workflow remains deliberately fixed to its two actions. The same six-action permission set and per-run budget maxima apply to all policies.

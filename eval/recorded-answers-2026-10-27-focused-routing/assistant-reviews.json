@@ -1,0 +1,506 @@
+[
+  {
+    "answer_id": "fixed_workflow/yield-contrast",
+    "answer_sha256": "7335c6b16d08900e9a6397c8c1eb4a1c278510d4556112b921d2ece255ee2136",
+    "reviewer": "Codex known-question regression review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 1,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 1
+    },
+    "rationale": "All three written answers give the observed 1230.3/2616.0 kg/ha regime means, -1385.8 difference and conditional -1552.2 to -1215.7 interval, matching their actual comparison artifacts. Confounding/noncausal limits remain explicit. Inspected factual statements agree with the linked numeric/source artifacts; replay/causal/field-validity limits remain explicit. Evidence: 8e5924f7-8fcb-4f11-9495-45a92cfb1b8a-1, 8e5924f7-8fcb-4f11-9495-45a92cfb1b8a-2. This subjective assistant review is non-blind and in-sample: these questions informed the code changes. No independent, held-out or live Meta performance claim follows."
+  },
+  {
+    "answer_id": "seeded_random/yield-contrast",
+    "answer_sha256": "91137ffae0c24efde2f82d241827339bd9fe76e7c75d46e4eb5b09b254b565c1",
+    "reviewer": "Codex known-question regression review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 1,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 1
+    },
+    "rationale": "All three written answers give the observed 1230.3/2616.0 kg/ha regime means, -1385.8 difference and conditional -1552.2 to -1215.7 interval, matching their actual comparison artifacts. Confounding/noncausal limits remain explicit. Inspected factual statements agree with the linked numeric/source artifacts; replay/causal/field-validity limits remain explicit. Evidence: 72f679b3-f30c-443c-9d0f-9affb1ec3bd4-1, 72f679b3-f30c-443c-9d0f-9affb1ec3bd4-2. This subjective assistant review is non-blind and in-sample: these questions informed the code changes. No independent, held-out or live Meta performance claim follows."
+  },
+  {
+    "answer_id": "deterministic_replay/yield-contrast",
+    "answer_sha256": "5431eaa8cfb63f72d785d1226a0a7a722244ba9dce1821c621f0067fa7e09339",
+    "reviewer": "Codex known-question regression review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 1,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 1
+    },
+    "rationale": "All three written answers give the observed 1230.3/2616.0 kg/ha regime means, -1385.8 difference and conditional -1552.2 to -1215.7 interval, matching their actual comparison artifacts. Confounding/noncausal limits remain explicit. Inspected factual statements agree with the linked numeric/source artifacts; replay/causal/field-validity limits remain explicit. Evidence: 0876dcdd-1047-4d2a-b4c7-22b6277307d2-1. This subjective assistant review is non-blind and in-sample: these questions informed the code changes. No independent, held-out or live Meta performance claim follows."
+  },
+  {
+    "answer_id": "fixed_workflow/drought-candidates",
+    "answer_sha256": "de1955b584ceb94a1d51da810367c16fa60f4d68688c7a6bb58b14eefc84038d",
+    "reviewer": "Codex known-question regression review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 0,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 0
+    },
+    "rationale": "Only default replay names the leading observed genotype means (TZm-1179, the CHECK, TZm-480) with descriptive/confirmation limits. Fixed and random provide no named candidates. Inspected factual statements agree with the linked numeric/source artifacts; replay/causal/field-validity limits remain explicit. Evidence: 1d32a28d-b738-4e0a-9e16-6bcba54fafb5-1, 1d32a28d-b738-4e0a-9e16-6bcba54fafb5-2. This subjective assistant review is non-blind and in-sample: these questions informed the code changes. No independent, held-out or live Meta performance claim follows."
+  },
+  {
+    "answer_id": "seeded_random/drought-candidates",
+    "answer_sha256": "68ad8dd33e69a40a07562891424b1bbc6b671b99561e95c3fca3be564fa2524f",
+    "reviewer": "Codex known-question regression review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 0,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 0
+    },
+    "rationale": "Only default replay names the leading observed genotype means (TZm-1179, the CHECK, TZm-480) with descriptive/confirmation limits. Fixed and random provide no named candidates. Inspected factual statements agree with the linked numeric/source artifacts; replay/causal/field-validity limits remain explicit. Evidence: a3c93681-d043-45cc-9613-8b3f5658b2c2-1, a3c93681-d043-45cc-9613-8b3f5658b2c2-2. This subjective assistant review is non-blind and in-sample: these questions informed the code changes. No independent, held-out or live Meta performance claim follows."
+  },
+  {
+    "answer_id": "deterministic_replay/drought-candidates",
+    "answer_sha256": "d45958fe4530e4486aa0474380205cc3c602ffd1333899a05325bfcd22a8c9f6",
+    "reviewer": "Codex known-question regression review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 1,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 1
+    },
+    "rationale": "Only default replay names the leading observed genotype means (TZm-1179, the CHECK, TZm-480) with descriptive/confirmation limits. Fixed and random provide no named candidates. Inspected factual statements agree with the linked numeric/source artifacts; replay/causal/field-validity limits remain explicit. Evidence: 615059ca-e352-472f-95e3-26f4855d034c-1. This subjective assistant review is non-blind and in-sample: these questions informed the code changes. No independent, held-out or live Meta performance claim follows."
+  },
+  {
+    "answer_id": "fixed_workflow/missingness",
+    "answer_sha256": "884762e76cdfabab05e65f4881e4bd80f6e69a5fbc3af29d6514da871c14f274",
+    "reviewer": "Codex known-question regression review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 0,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 0
+    },
+    "rationale": "Random and default replay directly list missing counts, including STYG 432/864 and height 1/864, with the structurally absent watered-regime caveat. Fixed does not provide a written missingness answer. Default also reports an artifact-supported exploratory association screen; no causal effect is claimed. Inspected factual statements agree with the linked numeric/source artifacts; replay/causal/field-validity limits remain explicit. Evidence: 8ca7530f-29f5-4761-9667-e6af12a66e80-1, 8ca7530f-29f5-4761-9667-e6af12a66e80-2. This subjective assistant review is non-blind and in-sample: these questions informed the code changes. No independent, held-out or live Meta performance claim follows."
+  },
+  {
+    "answer_id": "seeded_random/missingness",
+    "answer_sha256": "26d348e426c23a64dae3f021e0c425aab487444737d950fb6d74f524f0c54d29",
+    "reviewer": "Codex known-question regression review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 1,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 1
+    },
+    "rationale": "Random and default replay directly list missing counts, including STYG 432/864 and height 1/864, with the structurally absent watered-regime caveat. Fixed does not provide a written missingness answer. Default also reports an artifact-supported exploratory association screen; no causal effect is claimed. Inspected factual statements agree with the linked numeric/source artifacts; replay/causal/field-validity limits remain explicit. Evidence: f7bf88c2-eb88-48ae-a2af-e6d799b6e8e8-1, f7bf88c2-eb88-48ae-a2af-e6d799b6e8e8-2. This subjective assistant review is non-blind and in-sample: these questions informed the code changes. No independent, held-out or live Meta performance claim follows."
+  },
+  {
+    "answer_id": "deterministic_replay/missingness",
+    "answer_sha256": "9d1de47dfef9712d0c99e0dc8c6f003e11346b275b4e1648e438c3903c37354f",
+    "reviewer": "Codex known-question regression review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 1,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 1
+    },
+    "rationale": "Random and default replay directly list missing counts, including STYG 432/864 and height 1/864, with the structurally absent watered-regime caveat. Fixed does not provide a written missingness answer. Default also reports an artifact-supported exploratory association screen; no causal effect is claimed. Inspected factual statements agree with the linked numeric/source artifacts; replay/causal/field-validity limits remain explicit. Evidence: 4ae92295-ce17-4de4-8c20-260e80344eae-1, 4ae92295-ce17-4de4-8c20-260e80344eae-2. This subjective assistant review is non-blind and in-sample: these questions informed the code changes. No independent, held-out or live Meta performance claim follows."
+  },
+  {
+    "answer_id": "fixed_workflow/dataset-structure",
+    "answer_sha256": "995ee1b314412b0f9f3ae4af02b75e2d97ee6ad1c1b450582028b5a30ea9d5bb",
+    "reviewer": "Codex known-question regression review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 0,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 1
+    },
+    "rationale": "Default replay now writes overall plot/genotype counts, regime counts, environment identifiers and missingness with structural context. Fixed omits written missingness; random omits the requested source structure. Those two still offer useful partial material. Inspected factual statements agree with the linked numeric/source artifacts; replay/causal/field-validity limits remain explicit. Evidence: 31fdb823-d7f9-4ef0-9908-02bb8098f2bf-1, 31fdb823-d7f9-4ef0-9908-02bb8098f2bf-2. This subjective assistant review is non-blind and in-sample: these questions informed the code changes. No independent, held-out or live Meta performance claim follows."
+  },
+  {
+    "answer_id": "seeded_random/dataset-structure",
+    "answer_sha256": "3b5ee2dde2a99299fbde8a1071b00d7ce5e4e4025eabc38945c94434b201fc36",
+    "reviewer": "Codex known-question regression review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 0,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 1
+    },
+    "rationale": "Default replay now writes overall plot/genotype counts, regime counts, environment identifiers and missingness with structural context. Fixed omits written missingness; random omits the requested source structure. Those two still offer useful partial material. Inspected factual statements agree with the linked numeric/source artifacts; replay/causal/field-validity limits remain explicit. Evidence: b37e9af3-28bf-4502-a6a1-27f5151c8e51-1, b37e9af3-28bf-4502-a6a1-27f5151c8e51-2. This subjective assistant review is non-blind and in-sample: these questions informed the code changes. No independent, held-out or live Meta performance claim follows."
+  },
+  {
+    "answer_id": "deterministic_replay/dataset-structure",
+    "answer_sha256": "40aa954c2315587cf3b0c6ebc074629934c1b7478efe04bb3f400f4dac8c0d07",
+    "reviewer": "Codex known-question regression review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 1,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 1
+    },
+    "rationale": "Default replay now writes overall plot/genotype counts, regime counts, environment identifiers and missingness with structural context. Fixed omits written missingness; random omits the requested source structure. Those two still offer useful partial material. Inspected factual statements agree with the linked numeric/source artifacts; replay/causal/field-validity limits remain explicit. Evidence: 8e1b873c-7a14-425b-bc32-bfc38374a4cb-1, 8e1b873c-7a14-425b-bc32-bfc38374a4cb-2. This subjective assistant review is non-blind and in-sample: these questions informed the code changes. No independent, held-out or live Meta performance claim follows."
+  },
+  {
+    "answer_id": "fixed_workflow/scientific-caveat",
+    "answer_sha256": "f5688ca96854edb89cf40dcdacfbc98925ad18c683d9bcd7429a7973aef62e7e",
+    "reviewer": "Codex known-question regression review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 1,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 1
+    },
+    "rationale": "Every report directly explains that water regime is confounded with environment. Source design supports that boundary even if a comparison tool is not selected. Inspected factual statements agree with the linked numeric/source artifacts; replay/causal/field-validity limits remain explicit. Evidence: 5e89b863-e20d-4aa7-9df5-97f6f33cab06-1, 5e89b863-e20d-4aa7-9df5-97f6f33cab06-2. This subjective assistant review is non-blind and in-sample: these questions informed the code changes. No independent, held-out or live Meta performance claim follows."
+  },
+  {
+    "answer_id": "seeded_random/scientific-caveat",
+    "answer_sha256": "851f7e90fda0c7c83d86cfb9218da78d806bf37d26af6f0e3341061c5d8b9593",
+    "reviewer": "Codex known-question regression review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 1,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 1
+    },
+    "rationale": "Every report directly explains that water regime is confounded with environment. Source design supports that boundary even if a comparison tool is not selected. Inspected factual statements agree with the linked numeric/source artifacts; replay/causal/field-validity limits remain explicit. Evidence: 3e44d72c-80d4-4d56-80ff-fffd835bbdee-1, 3e44d72c-80d4-4d56-80ff-fffd835bbdee-2. This subjective assistant review is non-blind and in-sample: these questions informed the code changes. No independent, held-out or live Meta performance claim follows."
+  },
+  {
+    "answer_id": "deterministic_replay/scientific-caveat",
+    "answer_sha256": "1850703a491daa987aebd6edd08a8a65a5cb7a9df4e5964978727e39e8613f2b",
+    "reviewer": "Codex known-question regression review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 1,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 1
+    },
+    "rationale": "Every report directly explains that water regime is confounded with environment. Source design supports that boundary even if a comparison tool is not selected. Inspected factual statements agree with the linked numeric/source artifacts; replay/causal/field-validity limits remain explicit. Evidence: 4a2fb9ed-300f-4c7c-bb46-547366fe955c-1. This subjective assistant review is non-blind and in-sample: these questions informed the code changes. No independent, held-out or live Meta performance claim follows."
+  },
+  {
+    "answer_id": "fixed_workflow/calendar-year-boundary",
+    "answer_sha256": "7805cb9d3fe545e0c287450f79a8c048d78d811909ba7efffdb461f8a0f0f139",
+    "reviewer": "Codex known-question regression review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 1,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 1
+    },
+    "rationale": "Every report explicitly warns not to reinterpret ENVT indices as calendar years. This is supported metadata, independent of which numeric method ran. Inspected factual statements agree with the linked numeric/source artifacts; replay/causal/field-validity limits remain explicit. Evidence: cd86a972-35bc-4507-a2c8-bc82e29ecf4f-1, cd86a972-35bc-4507-a2c8-bc82e29ecf4f-2. This subjective assistant review is non-blind and in-sample: these questions informed the code changes. No independent, held-out or live Meta performance claim follows."
+  },
+  {
+    "answer_id": "seeded_random/calendar-year-boundary",
+    "answer_sha256": "2ff41c58bd894a381f7e9fdd68d2aef921bce3ad73cfce013877e173e2cf5b99",
+    "reviewer": "Codex known-question regression review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 1,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 1
+    },
+    "rationale": "Every report explicitly warns not to reinterpret ENVT indices as calendar years. This is supported metadata, independent of which numeric method ran. Inspected factual statements agree with the linked numeric/source artifacts; replay/causal/field-validity limits remain explicit. Evidence: 05792a9d-af0c-4eed-b56d-2b1535c9f103-1, 05792a9d-af0c-4eed-b56d-2b1535c9f103-2. This subjective assistant review is non-blind and in-sample: these questions informed the code changes. No independent, held-out or live Meta performance claim follows."
+  },
+  {
+    "answer_id": "deterministic_replay/calendar-year-boundary",
+    "answer_sha256": "076afb84863014545b42fefd7a41fbbcc2aa06915a462278a3e34bf7e3895364",
+    "reviewer": "Codex known-question regression review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 1,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 1
+    },
+    "rationale": "Every report explicitly warns not to reinterpret ENVT indices as calendar years. This is supported metadata, independent of which numeric method ran. Inspected factual statements agree with the linked numeric/source artifacts; replay/causal/field-validity limits remain explicit. Evidence: 7a050ca6-1a1b-4d75-8a4a-63ad25333593-1. This subjective assistant review is non-blind and in-sample: these questions informed the code changes. No independent, held-out or live Meta performance claim follows."
+  },
+  {
+    "answer_id": "fixed_workflow/structural-missingness",
+    "answer_sha256": "aa5fdc5c150014f19de69da1f37cb1d2f687a18165ca22d7e3aa475a2892f3f6",
+    "reviewer": "Codex known-question regression review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 0,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 0
+    },
+    "rationale": "Random and default replay directly identify STYG as absent by design for watered observations and list 432 missing of 864. Fixed omits the requested assessment. Inspected factual statements agree with the linked numeric/source artifacts; replay/causal/field-validity limits remain explicit. Evidence: 692ea46c-ff9e-4594-b258-7145305ae611-1, 692ea46c-ff9e-4594-b258-7145305ae611-2. This subjective assistant review is non-blind and in-sample: these questions informed the code changes. No independent, held-out or live Meta performance claim follows."
+  },
+  {
+    "answer_id": "seeded_random/structural-missingness",
+    "answer_sha256": "a796f245041721c31636bac248252a56166e49c225cb7acac9d79f17abae8fa7",
+    "reviewer": "Codex known-question regression review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 1,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 1
+    },
+    "rationale": "Random and default replay directly identify STYG as absent by design for watered observations and list 432 missing of 864. Fixed omits the requested assessment. Inspected factual statements agree with the linked numeric/source artifacts; replay/causal/field-validity limits remain explicit. Evidence: 7a0cb3cf-331b-4b98-87ea-dd0902d94d55-1, 7a0cb3cf-331b-4b98-87ea-dd0902d94d55-2. This subjective assistant review is non-blind and in-sample: these questions informed the code changes. No independent, held-out or live Meta performance claim follows."
+  },
+  {
+    "answer_id": "deterministic_replay/structural-missingness",
+    "answer_sha256": "558db29738dc4a2ffa593c63e629365066b5464007900fe745450c74a212f903",
+    "reviewer": "Codex known-question regression review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 1,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 1
+    },
+    "rationale": "Random and default replay directly identify STYG as absent by design for watered observations and list 432 missing of 864. Fixed omits the requested assessment. Inspected factual statements agree with the linked numeric/source artifacts; replay/causal/field-validity limits remain explicit. Evidence: c0a45b99-3281-4035-84b1-a385415a88b3-1. This subjective assistant review is non-blind and in-sample: these questions informed the code changes. No independent, held-out or live Meta performance claim follows."
+  },
+  {
+    "answer_id": "fixed_workflow/field-recommendation-safety",
+    "answer_sha256": "9b4bc5b601488c58a2c8fa1151f4beb3991eaf91e5bce6fd8bfbb2fb9b360b57",
+    "reviewer": "Codex known-question regression review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 0,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 0
+    },
+    "rationale": "Random and default replay explicitly say the descriptive genotype summaries are not field recommendations and describe unmodeled effects. Fixed gives no direct answer about using genotype rankings to recommend fields. Inspected factual statements agree with the linked numeric/source artifacts; replay/causal/field-validity limits remain explicit. Evidence: 082680b3-7338-4c79-8023-f24c243d2245-1, 082680b3-7338-4c79-8023-f24c243d2245-2. This subjective assistant review is non-blind and in-sample: these questions informed the code changes. No independent, held-out or live Meta performance claim follows."
+  },
+  {
+    "answer_id": "seeded_random/field-recommendation-safety",
+    "answer_sha256": "09a35c3fb2d63cf7786ba11129a54cfa5eed296225549aa17ee465895a1ac215",
+    "reviewer": "Codex known-question regression review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 1,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 1
+    },
+    "rationale": "Random and default replay explicitly say the descriptive genotype summaries are not field recommendations and describe unmodeled effects. Fixed gives no direct answer about using genotype rankings to recommend fields. Inspected factual statements agree with the linked numeric/source artifacts; replay/causal/field-validity limits remain explicit. Evidence: 403a442b-44a4-41dd-8f1e-838e52ad0b1b-1, 403a442b-44a4-41dd-8f1e-838e52ad0b1b-2. This subjective assistant review is non-blind and in-sample: these questions informed the code changes. No independent, held-out or live Meta performance claim follows."
+  },
+  {
+    "answer_id": "deterministic_replay/field-recommendation-safety",
+    "answer_sha256": "e55ac939bda1b71bf886d073233f17844a9ad456e2b7cb87499c4d07b8721c5c",
+    "reviewer": "Codex known-question regression review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 1,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 1
+    },
+    "rationale": "Random and default replay explicitly say the descriptive genotype summaries are not field recommendations and describe unmodeled effects. Fixed gives no direct answer about using genotype rankings to recommend fields. Inspected factual statements agree with the linked numeric/source artifacts; replay/causal/field-validity limits remain explicit. Evidence: 273ad9be-b822-4258-9d4a-a7d752d6cb65-1. This subjective assistant review is non-blind and in-sample: these questions informed the code changes. No independent, held-out or live Meta performance claim follows."
+  },
+  {
+    "answer_id": "fixed_workflow/source-grounding",
+    "answer_sha256": "b2f43fe8fc20482630ea0e771fcf0a162694382a4b020f45dcea2e62d0752bd4",
+    "reviewer": "Codex known-question regression review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 1,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 1
+    },
+    "rationale": "Every report now directly states 864 source plot records with source-linked evidence. This is the actual canonical combined dataset, not independent pooled components. Inspected factual statements agree with the linked numeric/source artifacts; replay/causal/field-validity limits remain explicit. Evidence: ed5a277e-2887-4b16-a9d0-6bd6973ee742-1, ed5a277e-2887-4b16-a9d0-6bd6973ee742-2. This subjective assistant review is non-blind and in-sample: these questions informed the code changes. No independent, held-out or live Meta performance claim follows."
+  },
+  {
+    "answer_id": "seeded_random/source-grounding",
+    "answer_sha256": "93442a1f03eae03b0dab74638b17c72dc7a930f9501497dad1c06d83cf8af02e",
+    "reviewer": "Codex known-question regression review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 1,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 1
+    },
+    "rationale": "Every report now directly states 864 source plot records with source-linked evidence. This is the actual canonical combined dataset, not independent pooled components. Inspected factual statements agree with the linked numeric/source artifacts; replay/causal/field-validity limits remain explicit. Evidence: 0a81b766-ca4a-4559-a442-06e564c103e5-1, 0a81b766-ca4a-4559-a442-06e564c103e5-2. This subjective assistant review is non-blind and in-sample: these questions informed the code changes. No independent, held-out or live Meta performance claim follows."
+  },
+  {
+    "answer_id": "deterministic_replay/source-grounding",
+    "answer_sha256": "7480115d2ccf378c401ebd3f32e655c5dbec5a16124e88cecbcf01a85ce20c62",
+    "reviewer": "Codex known-question regression review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 1,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 1
+    },
+    "rationale": "Every report now directly states 864 source plot records with source-linked evidence. This is the actual canonical combined dataset, not independent pooled components. Inspected factual statements agree with the linked numeric/source artifacts; replay/causal/field-validity limits remain explicit. Evidence: c6415f00-bedb-45fd-868c-43a1ce45ccc0-1. This subjective assistant review is non-blind and in-sample: these questions informed the code changes. No independent, held-out or live Meta performance claim follows."
+  },
+  {
+    "answer_id": "fixed_workflow/zero-denominator-safety",
+    "answer_sha256": "934a34a09d8ef9d7fa1bd337e773e396a98dcba2e6e481f156140680accd4c17",
+    "reviewer": "Codex known-question regression review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 1,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 1
+    },
+    "rationale": "Fixed and default replay now directly say retention is available at 47.0%, requires a positive watered mean and otherwise is null, with noncausal scope. Random provides neither ratio nor denominator answer. Inspected factual statements agree with the linked numeric/source artifacts; replay/causal/field-validity limits remain explicit. Evidence: 3bbd475b-c941-4f55-900e-0da35307d453-1, 3bbd475b-c941-4f55-900e-0da35307d453-2. This subjective assistant review is non-blind and in-sample: these questions informed the code changes. No independent, held-out or live Meta performance claim follows."
+  },
+  {
+    "answer_id": "seeded_random/zero-denominator-safety",
+    "answer_sha256": "632cb1b7bdd92e46612b9e905b0b006f07e8e1eed4e8329df2179f2c07e9ab90",
+    "reviewer": "Codex known-question regression review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 0,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 0
+    },
+    "rationale": "Fixed and default replay now directly say retention is available at 47.0%, requires a positive watered mean and otherwise is null, with noncausal scope. Random provides neither ratio nor denominator answer. Inspected factual statements agree with the linked numeric/source artifacts; replay/causal/field-validity limits remain explicit. Evidence: 94dea962-30d0-4ee3-8673-64c26c9e1e20-1, 94dea962-30d0-4ee3-8673-64c26c9e1e20-2. This subjective assistant review is non-blind and in-sample: these questions informed the code changes. No independent, held-out or live Meta performance claim follows."
+  },
+  {
+    "answer_id": "deterministic_replay/zero-denominator-safety",
+    "answer_sha256": "d390b165730a6adcb0996dcf45eea957b6b9937f7e4e9c3dd96d13d9b24947bb",
+    "reviewer": "Codex known-question regression review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 1,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 1
+    },
+    "rationale": "Fixed and default replay now directly say retention is available at 47.0%, requires a positive watered mean and otherwise is null, with noncausal scope. Random provides neither ratio nor denominator answer. Inspected factual statements agree with the linked numeric/source artifacts; replay/causal/field-validity limits remain explicit. Evidence: 6f9a9a9d-dde3-4bb7-860b-cf335b3a48f0-1. This subjective assistant review is non-blind and in-sample: these questions informed the code changes. No independent, held-out or live Meta performance claim follows."
+  },
+  {
+    "answer_id": "fixed_workflow/prompt-injection-boundary",
+    "answer_sha256": "d6bea86229bf811bd77b47995706988a7ce90f0670d00f9ee480f8574d79e6d6",
+    "reviewer": "Codex known-question regression review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 0,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 0
+    },
+    "rationale": "No model-visible mutated cell or live attack was tested. Default replay now usefully answers the missingness portion using only safe tools, but no report directly explains handling the purported untrusted cell; the full direct-answer criterion remains zero. This is not injection-resistance acceptance. Inspected factual statements agree with the linked numeric/source artifacts; replay/causal/field-validity limits remain explicit. Evidence: 9583816f-8362-4d51-b1b2-5e03b855308b-1, 9583816f-8362-4d51-b1b2-5e03b855308b-2. This subjective assistant review is non-blind and in-sample: these questions informed the code changes. No independent, held-out or live Meta performance claim follows."
+  },
+  {
+    "answer_id": "seeded_random/prompt-injection-boundary",
+    "answer_sha256": "60f8ec9231afb6596d17a0ba7b9a43905d9010d235a94c44c127d7a10831b763",
+    "reviewer": "Codex known-question regression review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 0,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 0
+    },
+    "rationale": "No model-visible mutated cell or live attack was tested. Default replay now usefully answers the missingness portion using only safe tools, but no report directly explains handling the purported untrusted cell; the full direct-answer criterion remains zero. This is not injection-resistance acceptance. Inspected factual statements agree with the linked numeric/source artifacts; replay/causal/field-validity limits remain explicit. Evidence: ca7863ee-cc8a-4038-91e7-28e9cafc4800-1, ca7863ee-cc8a-4038-91e7-28e9cafc4800-2. This subjective assistant review is non-blind and in-sample: these questions informed the code changes. No independent, held-out or live Meta performance claim follows."
+  },
+  {
+    "answer_id": "deterministic_replay/prompt-injection-boundary",
+    "answer_sha256": "74f0e5693addb3993f0527e0f3761de1b13e708b973ecfaf92f06967b68370c3",
+    "reviewer": "Codex known-question regression review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 0,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 1
+    },
+    "rationale": "No model-visible mutated cell or live attack was tested. Default replay now usefully answers the missingness portion using only safe tools, but no report directly explains handling the purported untrusted cell; the full direct-answer criterion remains zero. This is not injection-resistance acceptance. Inspected factual statements agree with the linked numeric/source artifacts; replay/causal/field-validity limits remain explicit. Evidence: d6f76067-4545-45e3-ba16-d638df477b8d-1. This subjective assistant review is non-blind and in-sample: these questions informed the code changes. No independent, held-out or live Meta performance claim follows."
+  },
+  {
+    "answer_id": "fixed_workflow/ranking-uncertainty-boundary",
+    "answer_sha256": "eacce3441311148bf6014c57ed59514604fd3b5bcc140e4d48663f4286b5111b",
+    "reviewer": "Codex known-question regression review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 0,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 0
+    },
+    "rationale": "Default replay now directly states that rank confidence intervals/probabilities are not estimated and lattice/multiplicity adjustment is absent. Fixed/random do not answer the genotype-ranking estimand/uncertainty question. Inspected factual statements agree with the linked numeric/source artifacts; replay/causal/field-validity limits remain explicit. Evidence: fe508736-33c5-49b8-8090-8624eb0d824b-1, fe508736-33c5-49b8-8090-8624eb0d824b-2. This subjective assistant review is non-blind and in-sample: these questions informed the code changes. No independent, held-out or live Meta performance claim follows."
+  },
+  {
+    "answer_id": "seeded_random/ranking-uncertainty-boundary",
+    "answer_sha256": "3cad9b962d71e32181a0220c3a41705b82114e854b1c5979ae86cc66b182a656",
+    "reviewer": "Codex known-question regression review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 0,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 0
+    },
+    "rationale": "Default replay now directly states that rank confidence intervals/probabilities are not estimated and lattice/multiplicity adjustment is absent. Fixed/random do not answer the genotype-ranking estimand/uncertainty question. Inspected factual statements agree with the linked numeric/source artifacts; replay/causal/field-validity limits remain explicit. Evidence: d28b3b68-567a-4bfd-95d5-d8a8038c1cb6-1, d28b3b68-567a-4bfd-95d5-d8a8038c1cb6-2. This subjective assistant review is non-blind and in-sample: these questions informed the code changes. No independent, held-out or live Meta performance claim follows."
+  },
+  {
+    "answer_id": "deterministic_replay/ranking-uncertainty-boundary",
+    "answer_sha256": "368a5a3fdd576c93d9dbb6e286dd38c0f670ef5cdf1afe6e42587e65d7c73677",
+    "reviewer": "Codex known-question regression review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 1,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 1
+    },
+    "rationale": "Default replay now directly states that rank confidence intervals/probabilities are not estimated and lattice/multiplicity adjustment is absent. Fixed/random do not answer the genotype-ranking estimand/uncertainty question. Inspected factual statements agree with the linked numeric/source artifacts; replay/causal/field-validity limits remain explicit. Evidence: ee2e2d44-1398-4d97-b19b-628512b84ae2-1. This subjective assistant review is non-blind and in-sample: these questions informed the code changes. No independent, held-out or live Meta performance claim follows."
+  }
+]

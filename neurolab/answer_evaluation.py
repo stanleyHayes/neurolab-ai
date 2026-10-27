@@ -29,7 +29,7 @@ from .tools import SCHEMA
 
 POLICIES = ("fixed_workflow", "seeded_random", "deterministic_replay")
 DIMENSIONS = ("answers_question", "claims_supported", "scope_honest", "useful_to_researcher")
-ALLOWED = ("dataset_profile", "compare_regimes", "rank_genotypes", "inspect_missingness")
+ALLOWED = tuple(SCHEMA["properties"]["action"]["enum"])
 LIMIT = "Fixed twelve-question fixture set, not a random sample of research questions. Intervals describe binary ratings only; they do not establish model superiority or population performance."
 
 
@@ -83,7 +83,7 @@ def _configuration(policy, rng, budget):
 
 def collect_answers(dataset, *, seed=2026, budget=2, tasks=None):
     if budget not in (1, 2):
-        raise ValueError("This four-tool fixture comparison supports budgets of one or two calls")
+        raise ValueError("This fixture comparison supports budgets of one or two calls")
     # Intentionally reproducible random policy; no security decisions depend on it.
     rng = random.Random(seed)  # noqa: S311
     records = []
@@ -102,6 +102,8 @@ def collect_answers(dataset, *, seed=2026, budget=2, tasks=None):
                 "model_calls": 0,
                 "inference_cost_usd": 0,
                 "execution": "offline deterministic numeric tools; no Meta model",
+                "eligible_tools": list(ALLOWED),
+                "protocol": "recorded-answers-six-tools-v2",
                 "report": None,
                 "artifacts": [],
                 "events": [],

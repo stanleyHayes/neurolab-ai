@@ -1,0 +1,92 @@
+{
+  "verified_at_utc": "2026-10-27T19:05:07.822788+00:00",
+  "inference_enabled": false,
+  "cases": [
+    {
+      "run_id": "4a65d179-fc93-48f8-a9dd-03d8563b7d09",
+      "objective": "Check structural missingness.",
+      "status": "COMPLETE",
+      "tool": "inspect_missingness",
+      "tool_calls": 1,
+      "code_commit": "1ce2761cdd70964e65b494ec6a752f3e39b0918f",
+      "source_sha256": "2e37c07f30e00efb33b59954dd6d02a04f3d67349790d782b70dbedfdaff05bc",
+      "conclusion": "Observed missing values by field: ear_height_value: 1 of 864; location_code: 864 of 864; plant_height_value: 1 of 864; plot: 864 of 864; stay_green_score: 432 of 864.",
+      "routing_constraints": [
+        "Focused replay uses deterministic keyword routing v1, not Meta inference or complete semantic interpretation. Workflow completion means selected tasks finished; it does not establish every requested scientific claim.",
+        "Matched supported question topics: missing data."
+      ],
+      "evidence_ids": [
+        "4a65d179-fc93-48f8-a9dd-03d8563b7d09-1"
+      ]
+    },
+    {
+      "run_id": "1ff7e4c4-d318-44c2-86d8-df1d759a6d5b",
+      "objective": "Report observed yield retention.",
+      "status": "COMPLETE",
+      "tool": "compare_regimes",
+      "tool_calls": 1,
+      "code_commit": "1ce2761cdd70964e65b494ec6a752f3e39b0918f",
+      "source_sha256": "2e37c07f30e00efb33b59954dd6d02a04f3d67349790d782b70dbedfdaff05bc",
+      "conclusion": "Equal-weighted observed yield means were 1230.3 kg/ha (managed drought) and 2616.0 kg/ha (well-watered); the descriptive drought-minus-control contrast was -1385.8 kg/ha (95% block-bootstrap interval -1552.2 to -1215.7). Observed drought-to-well-watered yield retention is available: 47.0%. This descriptive ratio requires a positive well-watered mean; otherwise it is null, and it is not a causal tolerance estimate.",
+      "routing_constraints": [
+        "Focused replay uses deterministic keyword routing v1, not Meta inference or complete semantic interpretation. Workflow completion means selected tasks finished; it does not establish every requested scientific claim.",
+        "Matched supported question topics: regime comparison."
+      ],
+      "evidence_ids": [
+        "1ff7e4c4-d318-44c2-86d8-df1d759a6d5b-1"
+      ]
+    },
+    {
+      "run_id": "e5820a5c-b09c-48ee-9522-2fe3c85c5a9e",
+      "objective": "How many source records are available?",
+      "status": "COMPLETE",
+      "tool": "dataset_profile",
+      "tool_calls": 1,
+      "code_commit": "1ce2761cdd70964e65b494ec6a752f3e39b0918f",
+      "source_sha256": "2e37c07f30e00efb33b59954dd6d02a04f3d67349790d782b70dbedfdaff05bc",
+      "conclusion": "The Ghana combined source contains 864 plot records, 72 genotypes, and environment indices DROUGHT_Y1, DROUGHT_Y2, DROUGHT_Y3, WELL_WATERED_Y1, WELL_WATERED_Y2, WELL_WATERED_Y3. Observed plots by regime: DROUGHT: 432; WELL_WATERED: 432.",
+      "routing_constraints": [
+        "Focused replay uses deterministic keyword routing v1, not Meta inference or complete semantic interpretation. Workflow completion means selected tasks finished; it does not establish every requested scientific claim.",
+        "Matched supported question topics: source structure."
+      ],
+      "evidence_ids": [
+        "e5820a5c-b09c-48ee-9522-2fe3c85c5a9e-1"
+      ]
+    },
+    {
+      "run_id": "9c504035-c694-4ac3-a9ba-26e40eb8a9ac",
+      "objective": "Describe genotype rankings and their uncertainty.",
+      "status": "COMPLETE",
+      "tool": "rank_genotypes",
+      "tool_calls": 1,
+      "code_commit": "1ce2761cdd70964e65b494ec6a752f3e39b0918f",
+      "source_sha256": "2e37c07f30e00efb33b59954dd6d02a04f3d67349790d782b70dbedfdaff05bc",
+      "conclusion": "Top descriptive drought genotype yield summaries (equal-environment mean, kg/ha): TZm-1179 2370.3; TZEE-W HDT C3 STR C5 (CHECK) 2356.7; TZm-480 2334.9. These summaries do not estimate rank confidence intervals or rank probabilities; alpha-lattice effects and multiplicity are not adjusted. These are not field recommendations.",
+      "routing_constraints": [
+        "Focused replay uses deterministic keyword routing v1, not Meta inference or complete semantic interpretation. Workflow completion means selected tasks finished; it does not establish every requested scientific claim.",
+        "Matched supported question topics: genotype candidates."
+      ],
+      "evidence_ids": [
+        "9c504035-c694-4ac3-a9ba-26e40eb8a9ac-1"
+      ]
+    },
+    {
+      "run_id": "767c5a9e-ebd7-49a9-8d37-927bb31a0175",
+      "objective": "Do not calculate correlations; only profile the source.",
+      "status": "COMPLETE",
+      "tool": "dataset_profile",
+      "tool_calls": 1,
+      "code_commit": "1ce2761cdd70964e65b494ec6a752f3e39b0918f",
+      "source_sha256": "2e37c07f30e00efb33b59954dd6d02a04f3d67349790d782b70dbedfdaff05bc",
+      "conclusion": "The Ghana combined source contains 864 plot records, 72 genotypes, and environment indices DROUGHT_Y1, DROUGHT_Y2, DROUGHT_Y3, WELL_WATERED_Y1, WELL_WATERED_Y2, WELL_WATERED_Y3. Observed plots by regime: DROUGHT: 432; WELL_WATERED: 432.",
+      "routing_constraints": [
+        "Focused replay uses deterministic keyword routing v1, not Meta inference or complete semantic interpretation. Workflow completion means selected tasks finished; it does not establish every requested scientific claim.",
+        "Matched supported question topics: source structure."
+      ],
+      "evidence_ids": [
+        "767c5a9e-ebd7-49a9-8d37-927bb31a0175-1"
+      ]
+    }
+  ],
+  "limitations": "API runtime acceptance only; no fresh browser/Meta/field validation. Primary service orphaned record predates prior API process and was preserved, not relabeled complete."
+}

@@ -8,6 +8,7 @@ from pathlib import Path
 from unittest.mock import patch
 
 from neurolab.answer_evaluation import (
+    ALLOWED,
     DIMENSIONS,
     POLICIES,
     _wilson,
@@ -30,6 +31,9 @@ class AnswerEvaluationTests(unittest.TestCase):
 
     def test_real_answers_share_budget_data_and_disclose_actual_replay(self):
         self.assertEqual(len(TASKS), 12)
+        self.assertEqual(len(ALLOWED), 6)
+        self.assertIn("analyze_trait_associations", ALLOWED)
+        self.assertIn("summarize_environment_stability", ALLOWED)
         self.assertEqual({r["policy"] for r in self.records}, set(POLICIES))
         for record in self.records:
             self.assertIsNotNone(record["report"], record.get("failure_type"))
@@ -37,6 +41,7 @@ class AnswerEvaluationTests(unittest.TestCase):
             self.assertEqual(record["report"]["source_sha256"], self.dataset.source_sha256)
             self.assertEqual(record["report"]["mode"], "deterministic_replay")
             self.assertEqual(record["model_calls"], 0)
+            self.assertEqual(record["eligible_tools"], list(ALLOWED))
             self.assertEqual(record["answer_sha256"], answer_digest(record))
             audit = record["trace_audit"]
             self.assertEqual(audit["schema_valid_calls"], audit["requested_calls"])
