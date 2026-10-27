@@ -56,3 +56,5 @@ A logical export of the actual Render database was restored in a separate local 
 The owner subsequently deferred scheduled encrypted offsite backups on 27 October 2026. See [Future additions](FUTURE_ADDITIONS.md); no new storage destination or recurring backup job is configured.
 
 R2 configuration preparation was subsequently resumed at the owner's request: `.env` contains private fields and `.env.example` documents them. The owner will fill them before Render setup. No R2 variables have yet been uploaded to Render or Vercel, and backups remain disabled. See the recovery runbook for the staged field names.
+
+The R2 values have now been validated and saved in the protected Production environment group `neurolab-backups` with zero service links and `BACKUP_ENABLED=false`. No API/worker deployment or Vercel secret change was triggered. Storage access tests passed; an automated backup consumer/job is not deployed. The scoped R2 token expires 26 November 2026. See `verification/r2-browser-setup-2026-10-27.json`.

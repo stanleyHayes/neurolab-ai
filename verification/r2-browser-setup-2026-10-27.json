@@ -1,0 +1,68 @@
+{
+  "date": "2026-10-27",
+  "browser_control": "CUA native Google Chrome, explicitly requested by owner",
+  "direct_browser_host": "unavailable",
+  "native_chrome_control_verified": true,
+  "bucket_security_observed": {
+    "bucket": "neurolab-ai",
+    "public_access": "Disabled",
+    "public_development_url": "Disabled",
+    "custom_domains": "None",
+    "storage_class": "Standard",
+    "location": "Western Europe",
+    "existing_objects_at_initial_inspection": 0
+  },
+  "token": {
+    "bucket": "neurolab-ai",
+    "permissions": "Object Read & Write",
+    "scope": "Specific bucket only; no bucket administration",
+    "expires_on": "2026-11-26",
+    "creation_confirmed_by_user": true,
+    "credentials_in_private_env": true,
+    "global_cloudflare_token_stored": false
+  },
+  "s3_validation": {
+    "bucket": "neurolab-ai",
+    "endpoint_matches_observed_account": true,
+    "head_bucket_http_status": 200,
+    "list_prefix_http_status": 200,
+    "prefix_empty_at_check": true,
+    "backup_data_uploaded": false,
+    "non_sensitive_probe_roundtrip": true,
+    "probe_deleted": true,
+    "bucket_policy_changed": false,
+    "token_scope": "Object Read & Write; neurolab-ai bucket only",
+    "token_expires_on": "2026-11-26",
+    "native_browser_public_access_observation": "Disabled; no custom domain; public development URL disabled"
+  },
+  "render_staging": {
+    "environment_group_id": "evg-dbgj7llg1s2s73dfmjj0",
+    "name": "neurolab-backups",
+    "owned_production_environment_matches": true,
+    "service_link_count": 0,
+    "expected_values_match": true,
+    "stored_key_names": [
+      "BACKUP_ENABLED",
+      "R2_ACCOUNT_ID",
+      "R2_ENDPOINT_URL",
+      "R2_BUCKET_NAME",
+      "R2_ACCESS_KEY_ID",
+      "R2_SECRET_ACCESS_KEY",
+      "R2_BACKUP_PREFIX",
+      "BACKUP_ENCRYPTION_KEY",
+      "BACKUP_RETENTION_DAYS",
+      "BACKUP_SCHEDULE_UTC"
+    ],
+    "backup_enabled": false,
+    "api_or_worker_deploy_triggered": false,
+    "vercel_changed": false,
+    "token_expires_on": "2026-11-26"
+  },
+  "private_env_mode": "0600",
+  "public_credentials_committed": false,
+  "credential_capture": "One-time localhost hidden-input form with same-origin validation; no S3 secret printed; direct Terminal control remained denied and was not used",
+  "live_backup_data_uploaded": false,
+  "scheduled_backup_job_deployed": false,
+  "scheduled_backup_enabled": false,
+  "current_boundary": "Credentials and private storage access validated; Render environment group unlinked. Backup execution/scheduling and encrypted R2 backup restore acceptance are still pending."
+}

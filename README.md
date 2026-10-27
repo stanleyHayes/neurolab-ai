@@ -69,7 +69,7 @@ The live Meta `muse-spark-1.3` adapter was smoke-tested, and a bounded run execu
 
 Current source quality was reverified on 2026-10-27 at `8da4f54`: [Sonar gate passed with zero unresolved issues/hotspots](verification/sonar-current-2026-10-27.json), and an [anonymous fresh public clone](verification/fresh-public-install-2026-10-27.json) passed isolated dependency installs, 174 Python + 11 proxy + 89 UI tests, source audit, normalization and build with inference paused. These checks do not close browser, live-Meta, offsite-recovery or submission gates. Browser discovery now reaches native apps but reports that the app-managed browser access host is unavailable; the prior missing-surfaces error is historical.
 
-Scheduled encrypted offsite backups were initially deferred; the owner has now [resumed R2 configuration preparation](docs/FUTURE_ADDITIONS.md). Private `.env` fields and a public `.env.example` are staged for the owner to fill. Backups remain disabled; no R2 connection, upload or schedule is configured. Native recovery availability and the manual hosted snapshot restore remain separate evidence.
+Scheduled encrypted offsite backups were initially deferred; the owner has now [resumed R2 configuration preparation](docs/FUTURE_ADDITIONS.md). Private `.env` credentials and an unlinked Render backup environment group are now staged; bucket access and a non-sensitive S3 round trip are verified. Backups remain disabled; no database-backup upload or recurring job is configured. Native recovery availability and the manual hosted snapshot restore remain separate evidence.
 
 ## Hosting: Render backend and Vercel frontend
 
