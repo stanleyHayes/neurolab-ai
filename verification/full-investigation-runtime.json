@@ -1,0 +1,32 @@
+{
+  "verified_at_utc": "2026-10-27T18:42:31.927721+00:00",
+  "run_id": "971d3426-4768-4784-bb0d-a665bdb0b007",
+  "code_commit": "62ff7462621ccec648f592cc9aba445bce7af49b",
+  "scope": "Exact supplied maize objective, deterministic retrospective investigation; not live Meta or field validation",
+  "status": "COMPLETE",
+  "mode": "deterministic_replay",
+  "inference_enabled": false,
+  "objective_preserved": true,
+  "objective_sha256": "8e9c3b5334a4d54ea5616b6bef2cdf5b36b1b1f9ed87e3d2ef275e17a5ff314c",
+  "source_sha256": "2e37c07f30e00efb33b59954dd6d02a04f3d67349790d782b70dbedfdaff05bc",
+  "tool_calls": 6,
+  "tool_names": [
+    "dataset_profile",
+    "inspect_missingness",
+    "compare_regimes",
+    "rank_genotypes",
+    "summarize_environment_stability",
+    "analyze_trait_associations"
+  ],
+  "event_count": 57,
+  "evidence_coverage": "complete",
+  "evidence_ids": [
+    "971d3426-4768-4784-bb0d-a665bdb0b007-1",
+    "971d3426-4768-4784-bb0d-a665bdb0b007-2",
+    "971d3426-4768-4784-bb0d-a665bdb0b007-3",
+    "971d3426-4768-4784-bb0d-a665bdb0b007-4",
+    "971d3426-4768-4784-bb0d-a665bdb0b007-5",
+    "971d3426-4768-4784-bb0d-a665bdb0b007-6"
+  ],
+  "limitations": "No fresh browser acceptance. No model calls. Retrospective criteria and conditional uncertainty; no prospective field validation."
+}
