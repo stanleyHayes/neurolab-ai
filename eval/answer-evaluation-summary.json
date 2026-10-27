@@ -1,0 +1,199 @@
+{
+  "version": "recorded-answers-v1",
+  "record_count": 36,
+  "semantic_reviews_completed": 36,
+  "semantic_reviews_pending": 0,
+  "model_comparison": "NOT RUN: Meta credits exhausted; inference intentionally paused",
+  "reviewers": [
+    "Codex source-and-artifact review"
+  ],
+  "interval_scope": "Fixed twelve-question fixture set, not a random sample of research questions. Intervals describe binary ratings only; they do not establish model superiority or population performance.",
+  "policies": {
+    "fixed_workflow": {
+      "tasks_recorded": 12,
+      "trace_metrics": {
+        "audited_reports": 12,
+        "requested_calls_in_audited_reports": 24,
+        "schema_valid_calls": 24,
+        "schema_valid_fraction": 1.0,
+        "claims_in_audited_reports": 24,
+        "claims_with_existing_citations": 24,
+        "citation_exists_fraction": 1.0,
+        "source_consistent_reports": 12,
+        "scope": "Only reports with completed trace audits; reportless failures remain separately counted. No semantic entailment score."
+      },
+      "execution_failures": 0,
+      "target_tool_present": 6,
+      "target_tool_scope": "Action coverage, not answer accuracy",
+      "wall_seconds_total": 3.140303,
+      "model_calls": 0,
+      "inference_cost_usd": 0,
+      "semantic_ratings": {
+        "answers_question": {
+          "positive_ratings": 4,
+          "reviewed": 12,
+          "fraction": 0.3333333333333333,
+          "wilson_95_interval": [
+            0.13812009109121315,
+            0.6093779111272004
+          ]
+        },
+        "claims_supported": {
+          "positive_ratings": 12,
+          "reviewed": 12,
+          "fraction": 1.0,
+          "wilson_95_interval": [
+            0.7575059933447592,
+            1
+          ]
+        },
+        "scope_honest": {
+          "positive_ratings": 12,
+          "reviewed": 12,
+          "fraction": 1.0,
+          "wilson_95_interval": [
+            0.7575059933447592,
+            1
+          ]
+        },
+        "useful_to_researcher": {
+          "positive_ratings": 6,
+          "reviewed": 12,
+          "fraction": 0.5,
+          "wilson_95_interval": [
+            0.2537815976337061,
+            0.7462184023662939
+          ]
+        }
+      },
+      "reviewer_types": [
+        "assistant"
+      ],
+      "all_reviews_blind": false
+    },
+    "seeded_random": {
+      "tasks_recorded": 12,
+      "trace_metrics": {
+        "audited_reports": 12,
+        "requested_calls_in_audited_reports": 24,
+        "schema_valid_calls": 24,
+        "schema_valid_fraction": 1.0,
+        "claims_in_audited_reports": 24,
+        "claims_with_existing_citations": 24,
+        "citation_exists_fraction": 1.0,
+        "source_consistent_reports": 12,
+        "scope": "Only reports with completed trace audits; reportless failures remain separately counted. No semantic entailment score."
+      },
+      "execution_failures": 0,
+      "target_tool_present": 6,
+      "target_tool_scope": "Action coverage, not answer accuracy",
+      "wall_seconds_total": 0.589555,
+      "model_calls": 0,
+      "inference_cost_usd": 0,
+      "semantic_ratings": {
+        "answers_question": {
+          "positive_ratings": 7,
+          "reviewed": 12,
+          "fraction": 0.5833333333333334,
+          "wilson_95_interval": [
+            0.31951131254954973,
+            0.8067396863412435
+          ]
+        },
+        "claims_supported": {
+          "positive_ratings": 12,
+          "reviewed": 12,
+          "fraction": 1.0,
+          "wilson_95_interval": [
+            0.7575059933447592,
+            1
+          ]
+        },
+        "scope_honest": {
+          "positive_ratings": 12,
+          "reviewed": 12,
+          "fraction": 1.0,
+          "wilson_95_interval": [
+            0.7575059933447592,
+            1
+          ]
+        },
+        "useful_to_researcher": {
+          "positive_ratings": 8,
+          "reviewed": 12,
+          "fraction": 0.6666666666666666,
+          "wilson_95_interval": [
+            0.39062208887279953,
+            0.8618799089087867
+          ]
+        }
+      },
+      "reviewer_types": [
+        "assistant"
+      ],
+      "all_reviews_blind": false
+    },
+    "deterministic_replay": {
+      "tasks_recorded": 12,
+      "trace_metrics": {
+        "audited_reports": 12,
+        "requested_calls_in_audited_reports": 24,
+        "schema_valid_calls": 24,
+        "schema_valid_fraction": 1.0,
+        "claims_in_audited_reports": 24,
+        "claims_with_existing_citations": 24,
+        "citation_exists_fraction": 1.0,
+        "source_consistent_reports": 12,
+        "scope": "Only reports with completed trace audits; reportless failures remain separately counted. No semantic entailment score."
+      },
+      "execution_failures": 0,
+      "target_tool_present": 6,
+      "target_tool_scope": "Action coverage, not answer accuracy",
+      "wall_seconds_total": 3.061784,
+      "model_calls": 0,
+      "inference_cost_usd": 0,
+      "semantic_ratings": {
+        "answers_question": {
+          "positive_ratings": 5,
+          "reviewed": 12,
+          "fraction": 0.4166666666666667,
+          "wilson_95_interval": [
+            0.19326031365875665,
+            0.6804886874504503
+          ]
+        },
+        "claims_supported": {
+          "positive_ratings": 12,
+          "reviewed": 12,
+          "fraction": 1.0,
+          "wilson_95_interval": [
+            0.7575059933447592,
+            1
+          ]
+        },
+        "scope_honest": {
+          "positive_ratings": 12,
+          "reviewed": 12,
+          "fraction": 1.0,
+          "wilson_95_interval": [
+            0.7575059933447592,
+            1
+          ]
+        },
+        "useful_to_researcher": {
+          "positive_ratings": 7,
+          "reviewed": 12,
+          "fraction": 0.5833333333333334,
+          "wilson_95_interval": [
+            0.31951131254954973,
+            0.8067396863412435
+          ]
+        }
+      },
+      "reviewer_types": [
+        "assistant"
+      ],
+      "all_reviews_blind": false
+    }
+  }
+}

@@ -14,3 +14,7 @@ Malformed JSON, prompt injection in a dataset cell, impossible hypotheses, zero 
 
 ## Evidence
 Save `eval/tasks.json`, `eval/results.jsonl`, report with mean and confidence interval, model ID, commit SHA, timestamp and spend. **Do not claim winning metrics before running.**
+
+## 2026-10-27 recorded-answer increment
+
+[Recorded-answer evaluation](RECORDED_ANSWER_EVALUATION.md) adds actual offline question/policy runs, preserved failures, trace audits and evidence-bound review scoring. Non-blind assistant ratings are available; no live Meta, blind-human review or feedback ablation has been completed. Action coverage remains distinct from answer quality.

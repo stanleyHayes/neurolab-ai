@@ -29,6 +29,8 @@ Methods, scope and acceptance boundaries: [deterministic investigation profile](
 
 Portable offline HTML reports and actual-data PNG/SVG figure exports are available from saved evidence bundles. See [scientific report export](docs/SCIENTIFIC_REPORT_EXPORT.md).
 
+Offline answer-quality evidence now includes preserved question/policy trials and explicitly non-blind assistant reviews. See [recorded-answer evaluation](docs/RECORDED_ANSWER_EVALUATION.md); these are not live Meta results.
+
 ## Scientific and safety boundaries
 
 - Treat outputs as **descriptive or exploratory evidence**, not causal effects, validated predictions, or agronomic recommendations.

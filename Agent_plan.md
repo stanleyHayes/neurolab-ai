@@ -74,3 +74,9 @@ D1 data and repo; D2 normalization; D3 statistical tools; D4 API; D5 Meta agent;
 - [x] Verify the full committed profile through the owner-authenticated running service: `verification/full-investigation-runtime.json`. Browser acceptance remains separate and pending.
 - [x] Add owner-scoped terminal evidence bundles and offline HTML reports with four actual-data PNG/SVG figure pairs, unrounded figure data and preserved source/code/event provenance.
 - [ ] Finish generated-answer evaluation, live-provider acceptance when credits return, browser QA and external deployment/publication/submission gates.
+
+## 2026-10-27 recorded-answer evaluation increment
+
+- [x] Execute all twelve questions under equal-budget fixed/random/default replay policies; retain all 72 initial/corrected attempts, full artifacts and trace.
+- [x] Add strict stale/duplicate/invalid review rejection, explicit null unreviewed scores, identified subjective non-blind assistant ratings and descriptive intervals. Never infer semantic quality from valid calls/citations.
+- [ ] Fix focused replay/report relevance gaps revealed by review; complete model-visible adversarial fixtures, feedback ablations, blind review and live Meta comparison when permitted.

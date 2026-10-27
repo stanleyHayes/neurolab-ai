@@ -1,0 +1,122 @@
+{
+  "version": "recorded-answers-v1",
+  "record_count": 36,
+  "semantic_reviews_completed": 0,
+  "semantic_reviews_pending": 36,
+  "model_comparison": "NOT RUN: Meta credits exhausted; inference intentionally paused",
+  "reviewers": [],
+  "interval_scope": "Fixed twelve-question fixture set, not a random sample of research questions. Intervals describe binary ratings only; they do not establish model superiority or population performance.",
+  "policies": {
+    "fixed_workflow": {
+      "tasks_recorded": 12,
+      "execution_failures": 0,
+      "target_tool_present": 6,
+      "target_tool_scope": "Action coverage, not answer accuracy",
+      "wall_seconds_total": 3.140303,
+      "model_calls": 0,
+      "inference_cost_usd": 0,
+      "semantic_ratings": {
+        "answers_question": {
+          "positive_ratings": 0,
+          "reviewed": 0,
+          "fraction": null,
+          "wilson_95_interval": null
+        },
+        "claims_supported": {
+          "positive_ratings": 0,
+          "reviewed": 0,
+          "fraction": null,
+          "wilson_95_interval": null
+        },
+        "scope_honest": {
+          "positive_ratings": 0,
+          "reviewed": 0,
+          "fraction": null,
+          "wilson_95_interval": null
+        },
+        "useful_to_researcher": {
+          "positive_ratings": 0,
+          "reviewed": 0,
+          "fraction": null,
+          "wilson_95_interval": null
+        }
+      },
+      "reviewer_types": [],
+      "all_reviews_blind": false
+    },
+    "seeded_random": {
+      "tasks_recorded": 12,
+      "execution_failures": 0,
+      "target_tool_present": 6,
+      "target_tool_scope": "Action coverage, not answer accuracy",
+      "wall_seconds_total": 0.589555,
+      "model_calls": 0,
+      "inference_cost_usd": 0,
+      "semantic_ratings": {
+        "answers_question": {
+          "positive_ratings": 0,
+          "reviewed": 0,
+          "fraction": null,
+          "wilson_95_interval": null
+        },
+        "claims_supported": {
+          "positive_ratings": 0,
+          "reviewed": 0,
+          "fraction": null,
+          "wilson_95_interval": null
+        },
+        "scope_honest": {
+          "positive_ratings": 0,
+          "reviewed": 0,
+          "fraction": null,
+          "wilson_95_interval": null
+        },
+        "useful_to_researcher": {
+          "positive_ratings": 0,
+          "reviewed": 0,
+          "fraction": null,
+          "wilson_95_interval": null
+        }
+      },
+      "reviewer_types": [],
+      "all_reviews_blind": false
+    },
+    "deterministic_replay": {
+      "tasks_recorded": 12,
+      "execution_failures": 0,
+      "target_tool_present": 6,
+      "target_tool_scope": "Action coverage, not answer accuracy",
+      "wall_seconds_total": 3.061784,
+      "model_calls": 0,
+      "inference_cost_usd": 0,
+      "semantic_ratings": {
+        "answers_question": {
+          "positive_ratings": 0,
+          "reviewed": 0,
+          "fraction": null,
+          "wilson_95_interval": null
+        },
+        "claims_supported": {
+          "positive_ratings": 0,
+          "reviewed": 0,
+          "fraction": null,
+          "wilson_95_interval": null
+        },
+        "scope_honest": {
+          "positive_ratings": 0,
+          "reviewed": 0,
+          "fraction": null,
+          "wilson_95_interval": null
+        },
+        "useful_to_researcher": {
+          "positive_ratings": 0,
+          "reviewed": 0,
+          "fraction": null,
+          "wilson_95_interval": null
+        }
+      },
+      "reviewer_types": [],
+      "all_reviews_blind": false
+    }
+  }
+}
