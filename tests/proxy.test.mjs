@@ -175,3 +175,48 @@ for (const [method, handler] of [
     assert.equal(response.status, 200);
   });
 }
+
+test("proxy discards browser-supplied client identity unless an ingress header is explicitly trusted", async () => {
+  process.env.RESEARCH_API_URL = "http://private-api:8000";
+  process.env.API_BEARER_TOKEN = "fixture-service-token-32-characters";
+  delete process.env.NEUROLAB_TRUSTED_CLIENT_IP_HEADER;
+  globalThis.fetch = async (_target, init) => {
+    assert.equal(init.headers.get("x-neurolab-client-ip"), null);
+    assert.equal(init.headers.get("x-forwarded-for"), null);
+    return new Response("{}", { status: 200 });
+  };
+  await GET(
+    request("GET", {
+      "x-neurolab-client-ip": "198.51.100.7",
+      "x-forwarded-for": "198.51.100.8",
+    }),
+    context,
+  );
+});
+
+test("proxy forwards only a single valid IP from the configured trusted ingress field", async () => {
+  process.env.RESEARCH_API_URL = "http://private-api:8000";
+  process.env.API_BEARER_TOKEN = "fixture-service-token-32-characters";
+  process.env.NEUROLAB_TRUSTED_CLIENT_IP_HEADER = "x-edge-client-ip";
+  const received = [];
+  globalThis.fetch = async (_target, init) => {
+    received.push(init.headers.get("x-neurolab-client-ip"));
+    return new Response("{}", { status: 200 });
+  };
+  await GET(
+    request("GET", {
+      "x-edge-client-ip": "2001:db8::1",
+      "x-neurolab-client-ip": "198.51.100.99",
+    }),
+    context,
+  );
+  await GET(
+    request("GET", { "x-edge-client-ip": "198.51.100.1, 198.51.100.2" }),
+    context,
+  );
+  await GET(
+    request("GET", { "x-edge-client-ip": "fe80::1%arbitrary" }),
+    context,
+  );
+  assert.deepEqual(received, ["2001:db8::1", null, null]);
+});

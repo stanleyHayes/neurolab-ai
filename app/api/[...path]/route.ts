@@ -1,3 +1,4 @@
+import { isIP } from "node:net";
 import type { NextRequest } from "next/server";
 
 export const dynamic = "force-dynamic";
@@ -96,6 +97,13 @@ function upstreamHeaders(
           value.startsWith("neurolab_csrf="),
       );
     if (authCookies.length) headers.set("cookie", authCookies.join("; "));
+  }
+  const trustedIpHeader =
+    process.env.NEUROLAB_TRUSTED_CLIENT_IP_HEADER?.trim().toLowerCase();
+  if (trustedIpHeader && /^[a-z][a-z0-9-]{0,63}$/.test(trustedIpHeader)) {
+    const suppliedIp = request.headers.get(trustedIpHeader)?.trim();
+    if (suppliedIp && isIP(suppliedIp) && !suppliedIp.includes("%"))
+      headers.set("x-neurolab-client-ip", suppliedIp);
   }
   if (serviceToken) headers.set("x-neurolab-service-token", serviceToken);
   return headers;

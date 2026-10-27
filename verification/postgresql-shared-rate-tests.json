@@ -1,0 +1,9 @@
+{
+  "verified_at_utc": "2026-10-27T20:06:39.483935+00:00",
+  "database": "Disposable local PostgreSQL database; isolated schema per test",
+  "server_version_number": 180001,
+  "tests_passed": 26,
+  "command": "NEUROLAB_TEST_POSTGRES_URL=<disposable local DB> python3 -m unittest tests.test_shared_rate_limits.SharedRateLimitTests tests.test_durable_jobs -v",
+  "inference_enabled": false,
+  "scope": "Actual concurrent SQL request budgets, restart/expiry, saturation and atomic login-failure increments, plus all durable-job fixture regression cases. Synthetic operational identities/clocks; actual PostgreSQL transactions. No target ingress, paid-provider or public-deployment acceptance."
+}

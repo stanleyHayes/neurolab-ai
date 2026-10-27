@@ -15,3 +15,7 @@ Keys: ignored local env; secret manager for deployment; redact model prompts con
 Science: hypotheses and results must be separated; confidence intervals, sample size, assumptions and uncertainty visible; no claims of proven causal effects or guaranteed yield. Dataset cards include time, locations, trial design, units, missingness and provenance.
 
 Hackathon: public repo; original contributions implemented within event; disclose reused assets; no unlicensed graphics/music; video shows only new features; source evidence and commit history preserved. Track eligibility and award requirements from official guide; avoid unsupported 'all bonuses guaranteed' messaging.
+
+## 2026-10-27 shared admission addendum
+
+The historical per-process limiter and in-process-job limitations above are superseded by [SQL request admission](SHARED_REQUEST_LIMITS.md) and [durable jobs](DURABLE_RESEARCH_JOBS.md). Peer, verified-account and prospective-login-subject quotas now coordinate across SQL connections, with bounded pseudonymous buckets, database-time expiry and fail-closed responses. Trusted forwarded IP requires a service credential and trusted socket CIDR; the BFF copies only an explicitly configured ingress single-IP header. Production ingress/private-network proof, provider-wide spend reservations, refresh replay HTTP audit, key rotation, HTTPS/browser acceptance and target operations remain open. Do not enable public signup or claim production readiness from local tests.

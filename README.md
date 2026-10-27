@@ -65,7 +65,7 @@ The local project verification records (2026-10-26) document a passing quality g
 
 The live Meta `muse-spark-1.3` adapter was smoke-tested, and a bounded run executed real tools on the Ghana source. That run was **partial and failed its requested research objective**: it profiled the data, inspected missingness, then recovered from an invalid action by repeating the profile. It did not produce genotype stability analysis or a justified next experiment. Full-source checkout references: `verification/AGENT_EXECUTION_TRACE.md`, `verification/UI_ACCEPTANCE.md`, and `verification/DEFECT_REGISTER.md`.
 
-**This is not production-launch-ready.** Invite-gated first-party authentication and owner-scoped research resources are present and covered by local tests. Distributed durable jobs, shared/global rate limiting, verified deployment, and backup/restore acceptance remain open. Browser interaction and accessibility acceptance is incomplete. Do not expose the service as a public multi-user application.
+**This is not production-launch-ready.** Invite-gated first-party authentication and owner-scoped research resources are present and covered by local tests. SQL-backed durable jobs and shared request/account limits have local test evidence; verified target ingress, provider-wide spend reservation, deployment, and production backup/restore acceptance remain open. Browser interaction and accessibility acceptance is incomplete. Do not expose the service as a public multi-user application.
 
 ## Getting started (full source checkout)
 
@@ -113,7 +113,7 @@ Start the API in one terminal:
 ```bash
 source .venv/bin/activate
 set -a; source .env; set +a
-RESEARCH_INLINE_WORKER=false uvicorn neurolab.api:app --reload --port 8000
+MODEL_INFERENCE_ENABLED=false RESEARCH_INLINE_WORKER=false uvicorn neurolab.api:app --reload --port 8000 --no-proxy-headers
 ```
 
 Start a durable queue worker in a second terminal, with the same exported database/model environment (replay requires no provider key):
@@ -121,7 +121,7 @@ Start a durable queue worker in a second terminal, with the same exported databa
 ```bash
 source .venv/bin/activate
 set -a; source .env; set +a
-python -m neurolab.worker
+MODEL_INFERENCE_ENABLED=false python -m neurolab.worker
 ```
 
 Start the Next.js app in a third terminal:
@@ -131,6 +131,8 @@ npm run dev
 ```
 
 Open <http://localhost:3000> for the workspace. In development, FastAPI OpenAPI docs are at <http://127.0.0.1:8000/docs>. Set `RESEARCH_API_URL` if FastAPI is not listening at `http://127.0.0.1:8000`.
+
+Shared SQL request limits and verified-account budgets persist across replicas. Client IP forwarding is opt-in and requires a verified ingress trust chain; see [shared request admission](docs/SHARED_REQUEST_LIMITS.md). Signup remains invite-gated and provider-wide spend enforcement is still open.
 
 Requests and queue claims persist in SQL; started work is not automatically retried after lease loss. See [durable research jobs](docs/DURABLE_RESEARCH_JOBS.md) for cancellation, deadlines, owner quotas and remaining operational gates.
 

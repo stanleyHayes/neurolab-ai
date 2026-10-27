@@ -775,6 +775,75 @@ class ApiTests(unittest.TestCase):
         self.assertEqual(self.client.get(f"/research-runs/{rid}").json()["status"], "CANCELLED")
         self.assertEqual(self.client.get(f"/research-runs/{rid}/job").json()["state"], "CANCELLED")
 
+    def test_account_analysis_limits_hold_across_peers_without_consuming_other_accounts(self):
+        from fastapi.testclient import TestClient
+
+        from neurolab.api import STORE, app, execute_tool
+
+        self.register(f"rate-owner-{uuid.uuid4()}@example.test")
+        clients = [TestClient(app, client=(ip, 5000)) for ip in ("198.51.100.11", "198.51.100.12")]
+        for client in clients:
+            client.headers.update(dict(self.client.headers))
+        payload = valid_call()
+        with (
+            patch.object(STORE, "database_epoch", return_value=120),
+            patch("neurolab.api.execute_tool", wraps=execute_tool) as tool,
+        ):
+            for index in range(10):
+                response = clients[index % 2].post("/research-tools/execute", json=payload)
+                self.assertEqual(response.status_code, 200, response.text)
+                self.assertEqual(response.json()["results"]["row_count"], 864)
+            denied = clients[1].post("/research-tools/execute", json=payload)
+            self.assertEqual(denied.status_code, 429)
+            self.assertEqual(denied.headers["retry-after"], "60")
+            self.assertEqual(tool.call_count, 10)
+            self.assertEqual(clients[0].get("/datasets").status_code, 200)
+        for client in clients:
+            client.close()
+
+    def test_refresh_rotation_has_a_shared_verified_owner_budget(self):
+        from neurolab.api import STORE
+        from neurolab.rate_limits import SharedRateLimiter
+
+        account = self.register(f"refresh-rate-{uuid.uuid4()}@example.test").json()["user"]
+        with patch.object(STORE, "database_epoch", return_value=120):
+            limiter = SharedRateLimiter(STORE)
+            for _ in range(29):
+                limiter.consume(account["user_id"], "account:refresh", 30)
+
+            # Browser cookies target /api/auth at the BFF; a direct FastAPI
+            # test must explicitly relay that same cookie/CSRF pair.
+            def cookie():
+                return (
+                    f"neurolab_refresh={self.client.cookies.get('neurolab_refresh')}; "
+                    f"neurolab_csrf={self.csrf}"
+                )
+
+            first = self.client.post(
+                "/auth/refresh", headers={"cookie": cookie(), "x-csrf-token": self.csrf}
+            )
+            self.assertEqual(first.status_code, 200, first.text)
+            denied = self.client.post(
+                "/auth/refresh", headers={"cookie": cookie(), "x-csrf-token": self.csrf}
+            )
+            self.assertEqual(denied.status_code, 429)
+            self.assertEqual(denied.headers["retry-after"], "60")
+            self.authenticate(first.json()["access_token"])
+            self.assertEqual(self.client.get("/auth/me").status_code, 200)
+
+    def test_invalid_access_token_cannot_allocate_a_claimed_account_bucket(self):
+        from neurolab.api import STORE
+
+        owner = self.register(f"invalid-rate-{uuid.uuid4()}@example.test").json()["user"]
+        self.client.headers["authorization"] = "Bearer invalid-signature"
+        self.assertEqual(self.client.get("/datasets").status_code, 401)
+        key = keyed_hash("rate:v1:account:all:" + owner["user_id"])
+        with STORE._lock:
+            count = STORE._execute(
+                "SELECT COUNT(*) AS n FROM request_rate_buckets WHERE bucket_key=?", (key,)
+            ).fetchone()["n"]
+        self.assertEqual(count, 0)
+
     def test_cross_user_run_resources_are_isolated(self):
         first = self.register(f"first-{uuid.uuid4()}@example.test")
         created = self.client.post("/research-runs", json={"objective": "private owner run"})
@@ -1039,7 +1108,8 @@ class RequestSecurityMiddlewareTests(unittest.IsolatedAsyncioTestCase):
             expensive_limited, path="/research-runs", method="POST"
         )
         self.assertEqual(limited_status, 429)
-        self.assertEqual(limited_headers[b"retry-after"], b"60")
+        self.assertGreaterEqual(int(limited_headers[b"retry-after"]), 1)
+        self.assertLessEqual(int(limited_headers[b"retry-after"]), 60)
 
     async def test_chunked_body_limit_rejects_without_calling_app(self):
         from neurolab.api import RequestSecurityMiddleware

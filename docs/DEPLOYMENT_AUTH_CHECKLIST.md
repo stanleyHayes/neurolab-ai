@@ -29,3 +29,7 @@ Authentication is a useful prototype hardening contribution, not a production la
 ## 2026-10-27 local durability evidence
 
 [Durable research jobs](DURABLE_RESEARCH_JOBS.md) now documents SQL queue admission, atomic owner quotas, leased/fenced standalone execution and explicit interrupted states. SQLite and actual disposable PostgreSQL tests are recorded. The worker needs no API signing key and does not serve HTTP. `verification/local-pre-queue-backup-restore.json` proves a private local data restore, not target backup operations. Before release, configure consistent limits and supervised workers, test the migration on the actual target, verify shared HTTP/account abuse and provider spend controls, and retain the HTTPS/identity/key-rotation/monitoring gates above. Signup remains invite-gated.
+
+## Shared request admission increment 27 October 2026
+
+[Shared request admission](SHARED_REQUEST_LIMITS.md) now has local SQLite/PostgreSQL and API/proxy evidence. Require one database/pepper across replicas, explicit trusted socket CIDRs, Uvicorn `--no-proxy-headers`, and a verified ingress that replaces the configured client-IP header. Without that configuration use aggregate BFF-peer quotas plus verified-account quotas. Rehearse the actual target chain and fail-closed behavior. This closes local process-counter isolation, not provider spend reservations or public deployment acceptance. Signup stays invite-gated.

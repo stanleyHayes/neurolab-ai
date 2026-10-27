@@ -7,11 +7,9 @@ import sys
 import tempfile
 import threading
 import unittest
-import uuid
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 from unittest.mock import Mock, patch
-from urllib.parse import parse_qsl, quote, urlencode, urlsplit
 
 from neurolab.agent import ResearchAgent
 from neurolab.execution import execute_run
@@ -24,6 +22,7 @@ from neurolab.research_context import (
 )
 from neurolab.store import ExecutionCancelled, ExecutionLeaseLost, RunStore
 from neurolab.worker import QueueWorker
+from tests.isolated_database import isolated_database
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -35,24 +34,8 @@ class DurableJobTests(unittest.TestCase):
 
     def setUp(self):
         self.temporary = tempfile.TemporaryDirectory()
-        self.path = str(Path(self.temporary.name) / "jobs.db")
-        self.pg_base = os.getenv("NEUROLAB_TEST_POSTGRES_URL")
-        if self.pg_base:
-            import psycopg
-            from psycopg import sql
-            from psycopg.conninfo import conninfo_to_dict
-
-            if not conninfo_to_dict(self.pg_base)["dbname"].startswith("neurolab_job_test_"):
-                raise ValueError(
-                    "PostgreSQL job tests require an explicitly disposable test database"
-                )
-            self.schema = "job_test_" + uuid.uuid4().hex
-            with psycopg.connect(self.pg_base, autocommit=True) as connection:
-                connection.execute(sql.SQL("CREATE SCHEMA {}").format(sql.Identifier(self.schema)))
-            url = urlsplit(self.pg_base)
-            query = dict(parse_qsl(url.query))
-            query["options"] = "-c search_path=" + self.schema
-            self.path = f"{url.scheme}://{url.netloc}{url.path}?{urlencode(query, quote_via=quote)}"
+        self.database = isolated_database(self.temporary.name)
+        self.path = self.database.__enter__()
         self.store = RunStore(self.path)
         self.jobs = ResearchJobs(self.store)
         self.owner = self.store.create_user(
@@ -70,14 +53,7 @@ class DurableJobTests(unittest.TestCase):
 
     def tearDown(self):
         self.store.close()
-        if self.pg_base:
-            import psycopg
-            from psycopg import sql
-
-            with psycopg.connect(self.pg_base, autocommit=True) as connection:
-                connection.execute(
-                    sql.SQL("DROP SCHEMA {} CASCADE").format(sql.Identifier(self.schema))
-                )
+        self.database.__exit__(None, None, None)
         self.temporary.cleanup()
 
     def enqueue(self, owner=None, **kwargs):

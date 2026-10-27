@@ -119,6 +119,17 @@ class RunStore:
                 );
                 CREATE INDEX IF NOT EXISTS auth_sessions_user_idx ON auth_sessions(user_id);
                 CREATE INDEX IF NOT EXISTS auth_sessions_family_idx ON auth_sessions(family_id);
+                CREATE TABLE IF NOT EXISTS request_rate_buckets (
+                    bucket_key TEXT PRIMARY KEY,
+                    count INTEGER NOT NULL,
+                    window_end DOUBLE PRECISION NOT NULL
+                );
+                CREATE INDEX IF NOT EXISTS request_rate_expiry ON request_rate_buckets(window_end);
+                CREATE TABLE IF NOT EXISTS request_rate_control (
+                    control_id INTEGER PRIMARY KEY,
+                    revision INTEGER NOT NULL DEFAULT 0
+                );
+                INSERT INTO request_rate_control (control_id,revision) VALUES (1,0) ON CONFLICT (control_id) DO NOTHING;
                 CREATE TABLE IF NOT EXISTS auth_rate_limits (
                     identifier_hash TEXT PRIMARY KEY,
                     failures INTEGER NOT NULL,
@@ -765,6 +776,16 @@ CREATE TABLE IF NOT EXISTS research_drafts (
             ).fetchone()
             return row is not None
 
+    def get_refresh_owner(self, refresh_token_hash: str, now: str) -> str | None:
+        with self._lock:
+            row = self._execute(
+                "SELECT s.user_id FROM auth_sessions s JOIN users u ON u.user_id=s.user_id "
+                "WHERE s.refresh_token_hash=? AND s.revoked_at IS NULL AND s.rotated_at IS NULL "
+                "AND s.expires_at>? AND u.is_active=1",
+                (refresh_token_hash, now),
+            ).fetchone()
+            return row["user_id"] if row else None
+
     def get_csrf_hash(self, refresh_token_hash: str) -> str | None:
         with self._lock:
             row = self._execute(
@@ -820,10 +841,12 @@ CREATE TABLE IF NOT EXISTS research_drafts (
     def record_auth_failure(self, identifier_hash: str, now: str) -> None:
         with self._lock, self._transaction():
             row = self._execute(
-                "SELECT failures FROM auth_rate_limits WHERE identifier_hash = ?",
-                (identifier_hash,),
+                "INSERT INTO auth_rate_limits (identifier_hash,failures,blocked_until,updated_at) "
+                "VALUES (?,1,NULL,?) ON CONFLICT (identifier_hash) DO UPDATE SET "
+                "failures = auth_rate_limits.failures + 1, updated_at = excluded.updated_at RETURNING failures",
+                (identifier_hash, now),
             ).fetchone()
-            failures = int(row["failures"]) + 1 if row else 1
+            failures = int(row["failures"])
             cooldown_seconds = min(900, 30 * (2 ** min(failures - 5, 5))) if failures >= 5 else 0
             blocked_until = None
             if cooldown_seconds:
@@ -857,10 +880,12 @@ CREATE TABLE IF NOT EXISTS research_drafts (
     def record_login_failure(self, identifier_hash: str, now: str) -> None:
         with self._lock, self._transaction():
             row = self._execute(
-                "SELECT failures FROM auth_login_limits WHERE identifier_hash = ?",
-                (identifier_hash,),
+                "INSERT INTO auth_login_limits (identifier_hash,failures,blocked_until,updated_at) "
+                "VALUES (?,1,NULL,?) ON CONFLICT (identifier_hash) DO UPDATE SET "
+                "failures = auth_login_limits.failures + 1, updated_at = excluded.updated_at RETURNING failures",
+                (identifier_hash, now),
             ).fetchone()
-            failures = int(row["failures"]) + 1 if row else 1
+            failures = int(row["failures"])
             cooldown = min(900, 30 * (2 ** min(failures - 5, 5))) if failures >= 5 else 0
             blocked_until = None
             if cooldown:

@@ -104,3 +104,8 @@ D1 data and repo; D2 normalization; D3 statistical tools; D4 API; D5 Meta agent;
 
 - [x] Committed runtime rehearsal: exact original objective survives API restart and completes through a separate worker; controlled post-claim interruption becomes explicit FAILED/INTERRUPTED without retry/results; continuous worker accepts a fresh owned profile.
 - [x] Start replay-only primary/review workers with API inline wakeups disabled; preserve legacy ownerless history and verify local health. Target deployment supervision remains unverified.
+
+## 2026-10-27 shared request admission
+
+- [x] Replace per-process peer buckets with bounded SQL fixed-window admission; add verified-account and prospective-login-subject limits, atomic failure counters, fail-closed behavior and explicit proxy trust. Local PostgreSQL/SQLite tests recorded separately from target ingress.
+- [ ] Rehearse actual deployed ingress header replacement/private networking and multi-replica behavior; enforce shared provider/user spend reservations. Keep invite-only signup and Meta paused. Refresh reuse HTTP-path audit, rotation/monitoring and full browser acceptance remain open.

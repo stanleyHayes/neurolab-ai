@@ -6,7 +6,6 @@ import asyncio
 import hmac
 import json
 import os
-import time
 import uuid
 from pathlib import Path
 from typing import Annotated, Any
@@ -14,6 +13,7 @@ from typing import Annotated, Any
 from fastapi import BackgroundTasks, Depends, FastAPI, HTTPException, Request, Response
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel, ConfigDict, Field, StringConstraints, model_validator
+from starlette.concurrency import run_in_threadpool
 from starlette.middleware.trustedhost import TrustedHostMiddleware
 
 from .auth import (
@@ -43,6 +43,7 @@ from .providers import (
     OpenAICompatibleAdapter,
     adapter_status,
 )
+from .rate_limits import SharedRateLimiter, request_peer_identity, trusted_networks
 from .research_context import (
     MAX_RESEARCH_REQUEST_BYTES,
     DraftSaveRequest,
@@ -60,6 +61,7 @@ from .worker import QueueWorker
 
 HEALTH_PATH = "/health"
 AUTH_REQUIRED = "Authentication is required"
+AUTH_THROTTLED = "Authentication temporarily unavailable; try again later"
 CSRF_FAILED = "CSRF verification failed"
 
 
@@ -107,8 +109,9 @@ if APP_ENV == "production" and (
 class RequestSecurityMiddleware:
     """Bound request memory/volume and add baseline security response headers.
 
-    Rate limits are per-process and keyed only on the ASGI peer address. Deployments
-    behind a gateway still need edge/shared-store limits and a private API network.
+    SQL budgets are shared across replicas. Forwarded client identities require
+    the service credential and an explicitly trusted socket peer; ingress must
+    replace the configured IP header and keep the API private.
     """
 
     EXPENSIVE_POST_PATHS = {
@@ -130,6 +133,8 @@ class RequestSecurityMiddleware:
         window_seconds: int = 60,
         bearer_token: str = API_BEARER_TOKEN,
         require_auth: bool = APP_ENV == "production",
+        rate_store: RunStore = STORE,
+        proxy_cidrs: str | None = None,
     ):
         self.app = app
         self.max_body_bytes = max_body_bytes
@@ -138,8 +143,10 @@ class RequestSecurityMiddleware:
         self.window_seconds = window_seconds
         self.bearer_token = bearer_token
         self.require_auth = require_auth
-        self._buckets: dict[tuple[str, str], tuple[int, int, float]] = {}
-        self._last_cleanup = time.monotonic()
+        self.limiter = SharedRateLimiter(rate_store)
+        self.proxy_networks = trusted_networks(
+            proxy_cidrs or os.getenv("NEUROLAB_TRUSTED_PROXY_CIDRS", "127.0.0.1/32,::1/128")
+        )
 
     @staticmethod
     async def _respond(send, status: int, payload: dict[str, str], extra_headers=()):
@@ -155,33 +162,6 @@ class RequestSecurityMiddleware:
         headers.extend(extra_headers)
         await send({"type": "http.response.start", "status": status, "headers": headers})
         await send({"type": "http.response.body", "body": body})
-
-    def _allow_request(self, peer: str, bucket_name: str, limit: int, now: float) -> bool:
-        window = int(now // self.window_seconds)
-        key = (peer, bucket_name)
-        current_window, count, _last_seen = self._buckets.get(key, (window, 0, now))
-        if current_window != window:
-            count = 0
-        if count >= limit:
-            return False
-        if key not in self._buckets and len(self._buckets) >= 10_000:
-            self._buckets = {
-                item_key: item
-                for item_key, item in self._buckets.items()
-                if item[2] >= now - self.window_seconds
-            }
-            if len(self._buckets) >= 10_000:
-                for stale_key in list(self._buckets)[: len(self._buckets) // 2]:
-                    self._buckets.pop(stale_key, None)
-        self._buckets[key] = (window, count + 1, now)
-        if now - self._last_cleanup >= self.window_seconds:
-            self._buckets = {
-                item_key: item
-                for item_key, item in self._buckets.items()
-                if item[2] >= now - self.window_seconds
-            }
-            self._last_cleanup = now
-        return True
 
     async def _reject_service_auth(self, path, request_headers, send):
         if self.require_auth and path != HEALTH_PATH:
@@ -200,49 +180,55 @@ class RequestSecurityMiddleware:
 
         return False
 
-    async def _reject_rate_or_docs(self, method, path, peer, now, send):
-        if path != HEALTH_PATH and not self._allow_request(
-            peer, "all", self.requests_per_minute, now
-        ):
+    async def _rate_rejection(self, peer, namespace, limit, detail, send):
+        try:
+            decision = await run_in_threadpool(
+                self.limiter.consume, peer, namespace, limit, window_seconds=self.window_seconds
+            )
+        except Exception:
+            await self._respond(
+                send,
+                503,
+                {"detail": "Request admission is temporarily unavailable"},
+                ((b"retry-after", b"1"),),
+            )
+            return True
+        if not decision.allowed:
             await self._respond(
                 send,
                 429,
-                {"detail": "Request rate limit exceeded"},
-                ((b"retry-after", str(self.window_seconds).encode("ascii")),),
+                {"detail": detail},
+                ((b"retry-after", str(decision.retry_after).encode("ascii")),),
             )
             return True
+        return False
 
-        if (
-            method == "POST"
-            and path in self.AUTH_POST_PATHS
-            and not self._allow_request(peer, "auth", 30, now)
-        ):
-            await self._respond(
-                send,
-                429,
-                {"detail": "Authentication request rate limit exceeded"},
-                ((b"retry-after", str(self.window_seconds).encode("ascii")),),
-            )
-            return True
-
+    async def _reject_rate_or_docs(self, method, path, peer, send):
         if APP_ENV == "production" and path in {"/docs", "/redoc", "/openapi.json"}:
             await self._respond(send, 404, {"detail": "Not Found"})
             return True
-
-        if (
-            path != HEALTH_PATH
-            and method == "POST"
-            and path in self.EXPENSIVE_POST_PATHS
-            and not self._allow_request(peer, "expensive", self.expensive_requests_per_minute, now)
+        if path == HEALTH_PATH:
+            return False
+        if await self._rate_rejection(
+            peer, "peer:all", self.requests_per_minute, "Request rate limit exceeded", send
         ):
-            await self._respond(
-                send,
-                429,
-                {"detail": "Analysis request rate limit exceeded"},
-                ((b"retry-after", str(self.window_seconds).encode("ascii")),),
-            )
             return True
-
+        if (
+            method == "POST"
+            and path in self.AUTH_POST_PATHS
+            and await self._rate_rejection(
+                peer, "peer:auth", 30, "Authentication request rate limit exceeded", send
+            )
+        ):
+            return True
+        if method == "POST" and path in self.EXPENSIVE_POST_PATHS:
+            return await self._rate_rejection(
+                peer,
+                "peer:expensive",
+                self.expensive_requests_per_minute,
+                "Analysis request rate limit exceeded",
+                send,
+            )
         return False
 
     async def _reject_content_length(self, request_headers, send):
@@ -294,12 +280,11 @@ class RequestSecurityMiddleware:
         method = scope.get("method", "GET").upper()
         path = scope.get("path", "/")
         peer = (scope.get("client") or ("unknown", 0))[0]
-        now = time.monotonic()
         request_headers = {key.lower(): value for key, value in scope.get("headers", [])}
-
-        if await self._reject_rate_or_docs(method, path, peer, now, send):
-            return
         if await self._reject_service_auth(path, request_headers, send):
+            return
+        peer = request_peer_identity(peer, request_headers, self.bearer_token, self.proxy_networks)
+        if await self._reject_rate_or_docs(method, path, peer, send):
             return
         replay_messages = await self._read_request_body(method, request_headers, receive, send)
         if replay_messages is None:
@@ -411,6 +396,29 @@ class ChangePasswordRequest(BaseModel):
     new_password: PasswordValue
 
 
+def _shared_account_budget(identity, namespace, limit):
+    try:
+        decision = SharedRateLimiter(STORE).consume(identity, namespace, limit)
+    except Exception:
+        raise HTTPException(
+            status_code=503,
+            detail="Account admission is temporarily unavailable",
+            headers={"Retry-After": "1"},
+        ) from None
+    if not decision.allowed:
+        raise HTTPException(
+            status_code=429,
+            detail="Account request rate limit exceeded",
+            headers={"Retry-After": str(decision.retry_after)},
+        )
+
+
+def _account_request_admission(identity, method, path):
+    _shared_account_budget(identity, "account:all", 120)
+    if method == "POST" and path in RequestSecurityMiddleware.EXPENSIVE_POST_PATHS:
+        _shared_account_budget(identity, "account:expensive", 10)
+
+
 def _current_user(request: Request) -> dict[str, Any]:
     authorization = request.headers.get("authorization", "")
     if not authorization.startswith("Bearer "):
@@ -426,6 +434,7 @@ def _current_user(request: Request) -> dict[str, Any]:
         or not STORE.get_active_auth_session(claims["sid"], user["user_id"], session_now())
     ):
         raise HTTPException(status_code=401, detail=AUTH_REQUIRED)
+    _account_request_admission(user["user_id"], request.method, request.url.path)
     return {**user, "session_id": claims["sid"]}
 
 
@@ -536,6 +545,25 @@ def _create_login_session(user: dict[str, Any], response: Response) -> dict[str,
     return _issue_auth_response(user, session_id)
 
 
+def _auth_subject_admission(identifier, namespace):
+    try:
+        decision = SharedRateLimiter(STORE).consume(
+            normalize_email(identifier), "subject:" + namespace, 30
+        )
+    except Exception:
+        raise HTTPException(
+            status_code=503,
+            detail="Authentication admission is temporarily unavailable",
+            headers={"Retry-After": "1"},
+        ) from None
+    if not decision.allowed:
+        raise HTTPException(
+            status_code=429,
+            detail=AUTH_THROTTLED,
+            headers={"Retry-After": str(decision.retry_after)},
+        )
+
+
 def _check_auth_attempt(identifier: str) -> str:
     now = session_now()
     key = keyed_hash(normalize_email(identifier))
@@ -543,7 +571,7 @@ def _check_auth_attempt(identifier: str) -> str:
     if blocked:
         raise HTTPException(
             status_code=429,
-            detail="Authentication temporarily unavailable; try again later",
+            detail=AUTH_THROTTLED,
             headers={"Retry-After": str(blocked)},
         )
     return key
@@ -560,6 +588,7 @@ def register(payload: RegisterRequest, request: Request, response: Response) -> 
     if not _registration_enabled(payload.invite_code):
         raise HTTPException(status_code=403, detail="Registration is currently invite-only")
     email = normalize_email(payload.email)
+    _auth_subject_admission(email, "register")
     if not _valid_email(email):
         raise HTTPException(status_code=422, detail="Enter a valid email address")
     try:
@@ -582,12 +611,13 @@ def login(payload: LoginRequest, request: Request, response: Response) -> dict[s
     _auth_response_headers(response)
     _require_double_submit_csrf(request)
     email = normalize_email(payload.email)
+    _auth_subject_admission(email, "login")
     attempt_key = _check_auth_attempt(email)
     blocked_seconds = STORE.login_rate_limit_seconds(attempt_key, session_now())
     if blocked_seconds:
         raise HTTPException(
             status_code=429,
-            detail="Authentication temporarily unavailable; try again later",
+            detail=AUTH_THROTTLED,
             headers={"Retry-After": str(blocked_seconds)},
         )
     user = STORE.get_user_by_email(email)
@@ -609,6 +639,11 @@ def refresh_session(request: Request, response: Response) -> dict[str, Any]:
     if not old_token:
         raise HTTPException(status_code=401, detail="Authentication session is required")
     _require_csrf(request, old_token)
+    owner = STORE.get_refresh_owner(keyed_hash(old_token), session_now())
+    if owner is None:
+        _clear_auth_cookies(response)
+        raise HTTPException(status_code=401, detail="Authentication session is invalid")
+    _shared_account_budget(owner, "account:refresh", 30)
     new_token = new_refresh_token()
     csrf_token = new_csrf_token()
     now = session_now()
