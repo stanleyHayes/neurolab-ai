@@ -1,6 +1,7 @@
 """Replay-only deployment admission for hosted API and worker processes."""
 
 import os
+import re
 
 
 def configure_replay(*, worker=False):
@@ -11,6 +12,16 @@ def configure_replay(*, worker=False):
     os.environ["APP_ENV"] = "production"
     os.environ["MODEL_INFERENCE_ENABLED"] = "false"
     os.environ["RESEARCH_INLINE_WORKER"] = "false"
+    # Render supplies the service's own canonical hostname, never a request header.
+    host = os.getenv("RENDER_EXTERNAL_HOSTNAME", "").strip()
+    if (
+        not os.getenv("ALLOWED_HOSTS", "").strip()
+        and len(host) <= 253
+        and re.fullmatch(
+            r"(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?", host
+        )
+    ):
+        os.environ["ALLOWED_HOSTS"] = host
     # No paid inference is allowed in this deployment profile.
     for name in ("META_MODEL_API_KEY", "MODEL_API_KEY"):
         os.environ.pop(name, None)

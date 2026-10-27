@@ -54,6 +54,36 @@ class DeploymentRuntimeTests(unittest.TestCase):
             self.assertTrue(all(name not in os.environ for name in secret_names))
             self.assertIn("DATABASE_URL", os.environ)
 
+    def test_render_hostname_is_exact_and_explicit_allowlist_wins(self):
+        base = {"DATABASE_URL": "postgresql://example.invalid/research"}
+        for host in (
+            "neurolab-api.onrender.com",
+            "*",
+            "bad.example/path",
+            "https://example.com",
+            "",
+        ):
+            with (
+                self.subTest(host=host),
+                patch.dict(os.environ, {**base, "RENDER_EXTERNAL_HOSTNAME": host}, clear=True),
+            ):
+                configure_replay()
+                self.assertEqual(
+                    os.environ.get("ALLOWED_HOSTS"),
+                    host if host == "neurolab-api.onrender.com" else None,
+                )
+        with patch.dict(
+            os.environ,
+            {
+                **base,
+                "RENDER_EXTERNAL_HOSTNAME": "new.onrender.com",
+                "ALLOWED_HOSTS": "chosen.example",
+            },
+            clear=True,
+        ):
+            configure_replay()
+            self.assertEqual(os.environ["ALLOWED_HOSTS"], "chosen.example")
+
     def test_shutdown_finishes_current_claim_and_never_claims_another(self):
         stop = threading.Event()
         finished = []
