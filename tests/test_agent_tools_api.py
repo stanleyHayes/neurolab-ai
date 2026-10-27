@@ -477,6 +477,38 @@ class ApiTests(unittest.TestCase):
         self.client.get("/auth/csrf")
         self.client.headers["x-csrf-token"] = self.csrf
 
+    def test_credit_pause_blocks_meta_run_and_refinement_before_network_or_run_creation(self):
+        self.register("paused@example.test")
+        with (
+            patch.dict(
+                os.environ,
+                {
+                    "MODEL_PROVIDER": "meta",
+                    "META_MODEL_API_BASE_URL": "https://provider.invalid/chat",
+                    "META_MODEL_API_KEY": "fixture",
+                    "META_MODEL_ID": "fixture",
+                    "META_MODEL_VERIFIED": "true",
+                    "MODEL_INFERENCE_ENABLED": "false",
+                },
+            ),
+            patch("neurolab.api.OpenAICompatibleAdapter.from_environment") as adapter,
+        ):
+            run = self.client.post(
+                "/research-runs", json={"objective": "Credit pause acceptance", "mode": "meta"}
+            )
+            refined = self.client.post(
+                "/research-objectives/refine",
+                json={"objective": "Credit pause acceptance", "configuration": {}},
+            )
+            capabilities = self.client.get("/research-capabilities")
+            self.assertFalse(capabilities.json()["model_inference_enabled"])
+            self.assertTrue(capabilities.json()["drafts_available"])
+            self.assertNotIn("fixture", capabilities.text)
+            self.assertEqual(run.status_code, 503)
+            self.assertEqual(refined.status_code, 503)
+            adapter.assert_not_called()
+            self.assertEqual(self.client.get("/research-runs").json(), [])
+
     @property
     def csrf(self):
         return self.client.cookies.get("neurolab_csrf", "")

@@ -72,6 +72,36 @@ class ProviderContractTests(unittest.TestCase):
                 self.assertGreater(model.tokens_reserved, 0)
                 connection.close.assert_called_once()
 
+    def test_credit_pause_overrides_configured_verified_provider(self):
+        with patch.dict(
+            os.environ,
+            {
+                "MODEL_PROVIDER": "meta",
+                "META_MODEL_API_BASE_URL": "https://provider.invalid/chat",
+                "META_MODEL_API_KEY": "fixture",
+                "META_MODEL_ID": "fixture",
+                "META_MODEL_VERIFIED": "true",
+                "MODEL_INFERENCE_ENABLED": "false",
+            },
+            clear=True,
+        ):
+            status = adapter_status()
+        self.assertTrue(status["configured"])
+        self.assertTrue(status["smoke_test_verified"])
+        self.assertTrue(status["inference_paused"])
+        self.assertFalse(status["enabled_for_runs"])
+
+    def test_credit_pause_blocks_even_a_previously_created_adapter_without_transport(self):
+        model = adapter()
+        with (
+            patch.dict(os.environ, {"MODEL_INFERENCE_ENABLED": "false"}),
+            patch("neurolab.providers.http.client.HTTPSConnection") as connection,
+        ):
+            with self.assertRaisesRegex(ModelProviderError, "paused"):
+                model.generate_structured(MESSAGES, SCHEMA, timeout=1)
+            connection.assert_not_called()
+            self.assertEqual(model.tokens_reserved, 0)
+
     def test_environment_validation_and_independent_refinement_output_budget(self):
         valid = {
             "MODEL_PROVIDER": "meta",

@@ -7,6 +7,7 @@ const eslintConfig = [
     ignores: [
       "coverage/**",
       ".test-build/**",
+      ".scannerwork/**",
       "data/**",
       "eval/**",
       "node_modules/**",

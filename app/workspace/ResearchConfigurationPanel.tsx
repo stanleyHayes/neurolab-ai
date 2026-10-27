@@ -1,3 +1,4 @@
+import { ResultIcon } from "./ResultIcon";
 import { ResearchLinesInput } from "./ResearchLinesInput";
 import { METHODS, OUTPUTS } from "./research-editor-types";
 import type { ResearchConfiguration } from "./research-editor-types";
@@ -23,8 +24,16 @@ export function ResearchConfigurationPanel({
   return (
     <details className="research-configuration">
       <summary>
-        Optional research configuration{" "}
-        <span>Questions, methods and execution limits</span>
+        <span className="configuration-symbol">
+          <ResultIcon name="settings" />
+        </span>
+        <span className="configuration-summary">
+          <strong>Optional research configuration</strong>
+          <span>Questions, methods and execution limits</span>
+        </span>
+        <span className="configuration-toggle" aria-hidden="true">
+          +
+        </span>
       </summary>
       <div className="editor-configuration-fields">
         <label htmlFor="research-title">Research title</label>

@@ -484,6 +484,11 @@ export function EvidenceResults(props: Readonly<EvidenceResultsProps>) {
             {artifacts.length} saved artifacts
           </span>
           {report && <span className="results-mode">{mode}</span>}
+          {report && (
+            <Link className="primary-link" href="/live-experiment">
+              <ResultIcon name="retention" /> Cinematic replay
+            </Link>
+          )}
         </div>
       </header>
       {report && report.completion_status !== "complete" && (

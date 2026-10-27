@@ -42,6 +42,17 @@ class StructuredModelAdapter(Protocol):
     ) -> dict[str, Any]: ...
 
 
+def inference_is_enabled() -> bool:
+    return os.getenv("MODEL_INFERENCE_ENABLED", "true").lower() == "true"
+
+
+def require_inference_enabled() -> None:
+    if not inference_is_enabled():
+        raise ModelProviderError(
+            "Model inference is paused; use saved results or deterministic tools."
+        )
+
+
 @dataclass
 class OpenAICompatibleAdapter:
     """Minimal stdlib adapter; API keys remain server-side and are never logged."""
@@ -64,6 +75,7 @@ class OpenAICompatibleAdapter:
         timeout: int,
         max_tokens: int,
     ) -> dict[str, Any]:
+        require_inference_enabled()
         serialized_messages = json.dumps(
             {
                 "messages": messages,
@@ -236,7 +248,8 @@ def adapter_status() -> dict[str, Any]:
         "provider": "meta" if configured else None,
         "configured": configured,
         "smoke_test_verified": verified,
-        "enabled_for_runs": configured and verified,
+        "enabled_for_runs": configured and verified and inference_is_enabled(),
+        "inference_paused": not inference_is_enabled(),
         "model_id": os.getenv("META_MODEL_ID") if configured else None,
         "endpoint_configured": bool(os.getenv("META_MODEL_API_BASE_URL", "").strip()),
         "api_key_present": bool(os.getenv("META_MODEL_API_KEY", "").strip()),

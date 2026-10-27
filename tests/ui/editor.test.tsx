@@ -78,6 +78,11 @@ beforeEach(() => {
   vi.stubGlobal(
     "fetch",
     vi.fn(async (input: RequestInfo | URL, init?: RequestInit) => {
+      if (String(input).endsWith("/research-capabilities"))
+        return Response.json({
+          model_inference_enabled: true,
+          inference_message: "Fixture model available",
+        });
       if (String(input).endsWith("/refine")) {
         const request = JSON.parse(String(init?.body));
         return Response.json({
@@ -198,6 +203,15 @@ it("reviews and edits Meta proposals without overwriting the original objective"
   fireEvent.change(screen.getByLabelText("Research question"), {
     target: { value: original },
   });
+  await waitFor(() =>
+    expect(
+      (
+        screen.getByRole("button", {
+          name: "Refine Research Objective",
+        }) as HTMLButtonElement
+      ).disabled,
+    ).toBe(false),
+  );
   fireEvent.click(
     screen.getByRole("button", { name: "Refine Research Objective" }),
   );
@@ -244,8 +258,7 @@ it("rejects stale writes and leaves the local objective untouched", async () => 
     target: { value: "My unsaved writing" },
   });
   fireEvent.click(screen.getByRole("button", { name: "Save draft" }));
-  expect(await screen.findByRole("alert")).toHaveProperty(
-    "textContent",
+  expect((await screen.findByRole("alert")).textContent).toContain(
     "Draft changed in another session. Reload before saving.",
   );
   expect(
@@ -360,6 +373,15 @@ it("keeps optional configuration editable without losing newlines and sends boun
 
 it("lets the researcher reject a proposal or invalidate it by changing the original", async () => {
   render(<EditorHarness />);
+  await waitFor(() =>
+    expect(
+      (
+        screen.getByRole("button", {
+          name: "Refine Research Objective",
+        }) as HTMLButtonElement
+      ).disabled,
+    ).toBe(false),
+  );
   fireEvent.click(
     screen.getByRole("button", { name: "Refine Research Objective" }),
   );
@@ -371,6 +393,15 @@ it("lets the researcher reject a proposal or invalidate it by changing the origi
   expect(
     screen.queryByRole("heading", { name: "Review the research plan" }),
   ).toBeNull();
+  await waitFor(() =>
+    expect(
+      (
+        screen.getByRole("button", {
+          name: "Refine Research Objective",
+        }) as HTMLButtonElement
+      ).disabled,
+    ).toBe(false),
+  );
   fireEvent.click(
     screen.getByRole("button", { name: "Refine Research Objective" }),
   );
@@ -385,4 +416,62 @@ it("lets the researcher reject a proposal or invalidate it by changing the origi
       }) as HTMLButtonElement
     ).disabled,
   ).toBe(true);
+});
+
+it("shows paused inference clearly, prevents Meta selection/refinement, and still permits deterministic analysis", async () => {
+  const originalFetch = fetch;
+  vi.stubGlobal(
+    "fetch",
+    vi.fn((input: RequestInfo | URL, init?: RequestInit) => {
+      if (String(input).endsWith("/research-capabilities"))
+        return Promise.resolve(
+          Response.json({
+            model_inference_enabled: false,
+            inference_message: "Meta is paused. Saved replay uses no credits.",
+          }),
+        );
+      return originalFetch(input, init);
+    }),
+  );
+  render(<EditorHarness />);
+  await screen.findByText("Meta is paused. Saved replay uses no credits.");
+  expect(
+    (
+      screen.getByRole("button", {
+        name: /Meta-assisted research/,
+      }) as HTMLButtonElement
+    ).disabled,
+  ).toBe(true);
+  expect(
+    (
+      screen.getByRole("button", {
+        name: "Refine Research Objective",
+      }) as HTMLButtonElement
+    ).disabled,
+  ).toBe(true);
+  fireEvent.click(
+    screen.getByRole("button", { name: "Generate experiment plan" }),
+  );
+  expect(run).toHaveBeenCalledOnce();
+});
+
+it("explains unavailable draft storage without replacing the original writing or claiming it is empty", async () => {
+  const originalFetch = fetch;
+  vi.stubGlobal(
+    "fetch",
+    vi.fn((input: RequestInfo | URL, init?: RequestInit) => {
+      if (String(input).endsWith("/research-draft"))
+        return Promise.resolve(
+          Response.json({ detail: "Not Found" }, { status: 404 }),
+        );
+      return originalFetch(input, init);
+    }),
+  );
+  render(<EditorHarness />);
+  expect((await screen.findByRole("alert")).textContent).toContain(
+    "Account draft storage is temporarily unavailable",
+  );
+  expect(
+    (screen.getByLabelText("Research question") as HTMLTextAreaElement).value,
+  ).toBe("Initial objective");
 });

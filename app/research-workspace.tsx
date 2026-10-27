@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { usePathname, useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
@@ -33,6 +34,14 @@ import type {
   WorkspaceErrors,
   WorkspaceSection,
 } from "./workspace/workspace-types";
+
+const CinematicPlayer = dynamic(
+  () =>
+    import("./workspace/CinematicPlayer").then(
+      (module) => module.CinematicPlayer,
+    ),
+  { ssr: false },
+);
 
 export { WORKSPACE_SECTIONS } from "./workspace/workspace-config";
 export type { WorkspaceSection };
@@ -509,18 +518,6 @@ export function ResearchWorkspace({
     return () => window.clearTimeout(timer);
   }, [loadHistory]);
 
-  useEffect(() => {
-    if (!presenting || events.length < 2) return;
-    if (reducedMotion) {
-      setPresenting(false);
-      return;
-    }
-    const timer = window.setInterval(() => {
-      setReplayIndex((index) => (index + 1) % events.length);
-    }, 1400);
-    return () => window.clearInterval(timer);
-  }, [presenting, reducedMotion, events.length]);
-
   const contrast = artifacts.find(
     (item) => item.tool_name === "compare_regimes",
   );
@@ -877,6 +874,23 @@ export function ResearchWorkspace({
                 REAL DATA · PERSISTED RUNS · TRACEABLE RESULTS
               </span>
             </div>
+          )}
+
+          {showTimeline && (
+            <CinematicPlayer
+              runId={runId}
+              runStatus={runStatus}
+              report={report}
+              events={events}
+              artifacts={artifacts}
+              reducedMotion={reducedMotion}
+              retrieving={runRetrieving}
+              playing={presenting}
+              setPlaying={setPresenting}
+              index={replayIndex}
+              setIndex={setReplayIndex}
+              downloadFile={downloadFile}
+            />
           )}
 
           <section

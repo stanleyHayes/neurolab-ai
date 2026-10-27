@@ -3,6 +3,7 @@ import { defineConfig } from "vitest/config";
 export default defineConfig({
   test: {
     environment: "jsdom",
+    maxWorkers: 2,
     include: ["tests/ui/**/*.test.tsx", "tests/ui/**/*.test.ts"],
     setupFiles: ["tests/ui/setup.tsx"],
     coverage: {

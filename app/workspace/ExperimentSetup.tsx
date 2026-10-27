@@ -1,4 +1,7 @@
-import type { Dispatch, SetStateAction } from "react";
+import { useEffect, type Dispatch, type SetStateAction } from "react";
+import Link from "next/link";
+import { ResultIcon } from "./ResultIcon";
+import { useInferenceAvailability } from "./use-inference-availability";
 import { LoadingDots } from "./LoadingDots";
 import { useResearchEditor } from "./use-research-editor";
 import { ResearchObjectiveEditor } from "./ResearchObjectiveEditor";
@@ -38,6 +41,11 @@ export function ExperimentSetup({
   cancelRun,
 }: Readonly<ExperimentSetupProps>) {
   const editor = useResearchEditor(objective, setObjective);
+  const inference = useInferenceAvailability();
+  useEffect(() => {
+    if (!inference.checking && !inference.enabled && mode === "meta")
+      setMode("replay");
+  }, [inference.checking, inference.enabled, mode, setMode]);
   const toolCountLabel =
     toolCalls === undefined ? "" : " · " + toolCalls + " tool calls";
   const renderedChoice1 = (() => {
@@ -50,21 +58,28 @@ export function ExperimentSetup({
     return "Ready · all run state comes from durable backend events";
   })();
   return (
-    <article className="card setup-card" id="setup">
+    <article className="card setup-card setup-workbench" id="setup">
       <div className="card-head">
         <span className="eyebrow">NEW EXPERIMENT</span>
         <span className="source-status">SOURCE DATA</span>
       </div>
-      <h2>Research brief</h2>
+      <header className="setup-intro">
+        <h2>Shape the next investigation.</h2>
+        <p>Start with a question. Keep the evidence traceable.</p>
+      </header>
       <ResearchObjectiveEditor
         objective={objective}
         editor={editor}
         busy={busy}
+        inferenceAvailable={inference.enabled}
       />
       <div className="setup-meta">
-        <span>Ghana · combined field trial</span>
         <span>
-          Seed 2026 · {editor.configuration.constraints.max_steps} steps ·{" "}
+          <ResultIcon name="plots" /> Ghana · combined field trial
+        </span>
+        <span>
+          <ResultIcon name="method" /> Seed 2026 ·{" "}
+          {editor.configuration.constraints.max_steps} steps ·{" "}
           {editor.configuration.constraints.max_tool_calls} calls ·{" "}
           {editor.configuration.constraints.max_seconds} s
         </span>
@@ -83,11 +98,14 @@ export function ExperimentSetup({
             type="button"
             aria-pressed={mode === "replay"}
             onClick={() => setMode("replay")}
+            disabled={busy}
           >
-            <span className="choice-indicator" aria-hidden="true" />
+            <span className="setup-mode-icon">
+              <ResultIcon name="retention" />
+            </span>
             <span className="choice-copy">
-              <strong>Deterministic replay</strong>
-              <small>Offline baseline · repeatable, no model call</small>
+              <strong>Deterministic analysis</strong>
+              <small>Real data · repeatable tools · no Meta credits</small>
             </span>
             <span className="choice-state">
               {mode === "replay" ? "SELECTED" : "AVAILABLE"}
@@ -98,46 +116,71 @@ export function ExperimentSetup({
             type="button"
             aria-pressed={mode === "meta"}
             onClick={() => setMode("meta")}
+            disabled={!inference.enabled || busy}
           >
-            <span className="choice-indicator" aria-hidden="true" />
+            <span className="setup-mode-icon">
+              <ResultIcon name="spark" />
+            </span>
             <span className="choice-copy">
-              <strong>Meta model</strong>
-              <small>Requires verified server configuration</small>
+              <strong>Meta-assisted research</strong>
+              <small>Structured planning with a verified live model</small>
             </span>
             <span className="choice-state">
-              {mode === "meta" ? "SELECTED" : "GATED"}
+              {inference.enabled ? "AVAILABLE" : "PAUSED"}
             </span>
           </button>
         </fieldset>
       </div>
-      <div className="button-row">
-        <button
-          className="primary-button"
-          type="button"
-          onClick={() =>
-            void runAnalysis(editor.configuration, editor.acceptedPlan)
-          }
-          disabled={busy || Boolean(editor.validation)}
-          aria-busy={busy}
-        >
-          Generate experiment plan ↗{busy && <LoadingDots />}
-        </button>
-        {busy && (
+      <div className="setup-inference-note">
+        <ResultIcon name={inference.enabled ? "complete" : "caution"} />
+        <span>{inference.reason}</span>
+      </div>
+      <div className="setup-launch-row">
+        <div>
+          <span className="eyebrow">READY WHEN YOU ARE</span>
+          <p>Run the supported tools on the original field records.</p>
+        </div>
+        <div className="button-row">
           <button
-            className="secondary-button"
+            className="primary-button"
             type="button"
-            onClick={() => void cancelRun()}
-            disabled={canceling}
-            aria-busy={canceling}
+            onClick={() =>
+              void runAnalysis(editor.configuration, editor.acceptedPlan)
+            }
+            disabled={
+              busy ||
+              Boolean(editor.validation) ||
+              (mode === "meta" && !inference.enabled)
+            }
+            aria-busy={busy}
+            aria-label="Generate experiment plan"
           >
-            Request cancellation{canceling && <LoadingDots />}
+            Start investigation <ResultIcon name="arrow" />
+            {busy && <LoadingDots />}
           </button>
-        )}
+          {busy && (
+            <button
+              className="secondary-button"
+              type="button"
+              onClick={() => void cancelRun()}
+              disabled={canceling}
+              aria-busy={canceling}
+            >
+              Request cancellation{canceling && <LoadingDots />}
+            </button>
+          )}
+        </div>
       </div>
       <div className="status">{renderedChoice1}</div>
-      <div className="notice integrity-notice">
-        ◇ Scientific calculations are performed by deterministic tools—not
-        invented by the language model.
+      <div className="setup-integrity">
+        <ResultIcon name="source" />
+        <p>
+          Numeric tools calculate the results. Every finding stays linked to its
+          source and recorded analysis.
+        </p>
+        <Link href="/live-experiment">
+          Replay saved results <ResultIcon name="arrow" />
+        </Link>
       </div>
     </article>
   );

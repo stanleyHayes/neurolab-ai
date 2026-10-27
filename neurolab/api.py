@@ -666,6 +666,19 @@ def current_profile(response: Response, user: UserDependency) -> dict[str, Any]:
     return {key: value for key, value in user.items() if key != "session_id"}
 
 
+@app.get("/research-capabilities", responses=HTTP_ERROR_RESPONSES)
+def research_capabilities(_user: UserDependency) -> dict[str, Any]:
+    status = adapter_status()
+    message = "Verified live model configuration is available; requests may use provider credits."
+    if not status["enabled_for_runs"]:
+        message = "Meta inference is paused or unavailable. Deterministic analyses and saved-result replay use no Meta credits."
+    return {
+        "model_inference_enabled": status["enabled_for_runs"],
+        "inference_message": message,
+        "drafts_available": True,
+    }
+
+
 @app.get(
     "/research-draft",
     responses=HTTP_ERROR_RESPONSES,
@@ -899,7 +912,7 @@ def create_research_run(
     if request.mode == "meta" and not adapter_status()["enabled_for_runs"]:
         raise HTTPException(
             status_code=503,
-            detail="Meta runs require a configured provider and META_MODEL_VERIFIED=true after a successful smoke test.",
+            detail="Meta inference is unavailable or paused. Use deterministic tools or replay saved results; enable MODEL_INFERENCE_ENABLED only when credits are available and the adapter is verified.",
         )
     if not request.objective.strip():
         raise HTTPException(status_code=422, detail="objective must contain non-whitespace text")
@@ -982,7 +995,8 @@ def refine_research_objective(
         raise HTTPException(status_code=422, detail=str(exc)) from exc
     if not adapter_status()["enabled_for_runs"]:
         raise HTTPException(
-            status_code=503, detail="Meta refinement requires a verified live Meta adapter."
+            status_code=503,
+            detail="Meta refinement is unavailable or paused. Your saved objective and results remain available without inference.",
         )
     adapter = OpenAICompatibleAdapter.from_environment()
     try:

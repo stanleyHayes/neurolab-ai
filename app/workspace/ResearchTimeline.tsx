@@ -236,7 +236,11 @@ export function ResearchTimeline(props: Readonly<ResearchTimelineProps>) {
           <button
             className="secondary-button"
             type="button"
-            onClick={() => setPresenting((value) => !value)}
+            onClick={() => {
+              if (!presenting && replayIndex >= events.length - 1)
+                setReplayIndex(0);
+              setPresenting((value) => !value);
+            }}
             disabled={Boolean(replayLoadingId)}
             aria-busy={Boolean(replayLoadingId)}
           >

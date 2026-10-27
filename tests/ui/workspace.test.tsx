@@ -95,11 +95,14 @@ describe("authenticated real-data replay workspace", () => {
         expect.objectContaining({ headers: expect.any(Headers) }),
       ),
     );
-    if (section === "data-library")
+    if (section === "data-library") {
       expect(
-        await screen.findAllByText(fixture.report.source_sha256),
-      ).toHaveLength(2);
-    else if (section === "overview")
+        await screen.findByText(fixture.report.source_sha256),
+      ).toBeTruthy();
+      expect(
+        await screen.findByText("Selected run matches this source"),
+      ).toBeTruthy();
+    } else if (section === "overview")
       expect(await screen.findByText("864")).toBeTruthy();
     else
       expect(

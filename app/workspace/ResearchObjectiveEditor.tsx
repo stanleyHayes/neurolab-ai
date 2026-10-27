@@ -1,16 +1,23 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { OBJECTIVE_LIMIT } from "./research-editor-types";
+import { ResultIcon } from "./ResultIcon";
 import { LoadingDots } from "./LoadingDots";
 import { ResearchConfigurationPanel } from "./ResearchConfigurationPanel";
 import { AcceptedResearchPlan, ResearchPlanReview } from "./ResearchPlanReview";
 import type { ResearchEditorState } from "./use-research-editor";
 
-type Props = { objective: string; editor: ResearchEditorState; busy: boolean };
+type Props = {
+  objective: string;
+  editor: ResearchEditorState;
+  busy: boolean;
+  inferenceAvailable?: boolean;
+};
 export function ResearchObjectiveEditor({
   objective,
   editor,
   busy,
+  inferenceAvailable = true,
 }: Readonly<Props>) {
   const [expanded, setExpanded] = useState(false);
   const dialog = useRef<HTMLDialogElement>(null);
@@ -42,8 +49,8 @@ export function ResearchObjectiveEditor({
         </button>
       </div>
       <p id="objective-help" className="caption">
-        Write a short question or a detailed, multi-stage brief. Paragraphs and
-        Markdown are preserved exactly. Markdown is displayed as escaped text.
+        Outline your question, hypotheses and constraints. Your complete brief
+        and paragraph breaks stay intact.
       </p>
       <textarea
         id="objective"
@@ -87,7 +94,8 @@ export function ResearchObjectiveEditor({
           onClick={() => void editor.saveDraft()}
           aria-busy={editor.saving}
         >
-          Save draft{editor.saving && <LoadingDots />}
+          <ResultIcon name="save" /> Save draft
+          {editor.saving && <LoadingDots />}
         </button>
         <button
           className="text-button"
@@ -96,25 +104,37 @@ export function ResearchObjectiveEditor({
           onClick={() => void editor.loadDraft()}
           aria-busy={editor.loading}
         >
-          Load saved draft{editor.loading && <LoadingDots />}
+          <ResultIcon name="source" /> Load saved draft
+          {editor.loading && <LoadingDots />}
         </button>
         <button
           className="secondary-button"
           type="button"
-          disabled={busy || editor.refining || Boolean(editor.validation)}
+          disabled={
+            busy ||
+            editor.refining ||
+            Boolean(editor.validation) ||
+            !inferenceAvailable
+          }
           onClick={() => void editor.refine()}
           aria-busy={editor.refining}
         >
-          Refine Research Objective{editor.refining && <LoadingDots />}
+          <ResultIcon name="spark" /> Refine Research Objective
+          {editor.refining && <LoadingDots />}
         </button>
       </div>
       {editor.notice && (
         <output className="editor-notice">{editor.notice}</output>
       )}
       {editor.error && (
-        <p className="auth-error" role="alert">
-          {editor.error}
-        </p>
+        <div className="setup-error" role="alert">
+          <ResultIcon name="caution" />
+          <div>
+            <strong>Your brief is safe</strong>
+            <p>{editor.error}</p>
+            <span>Your current writing stays in the editor.</span>
+          </div>
+        </div>
       )}
       <ResearchConfigurationPanel
         value={editor.configuration}

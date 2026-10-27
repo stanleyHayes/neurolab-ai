@@ -21,6 +21,10 @@ export async function editorRequest<T>(
   const response = await authenticatedFetch(url, init);
   const payload = await response.json().catch(() => ({}));
   if (!response.ok) {
+    if (response.status === 404 && url === "/api/research-draft")
+      throw new Error(
+        "Account draft storage is temporarily unavailable. Your writing stays here; try loading it again shortly.",
+      );
     let detail = `Request failed (HTTP ${response.status}). Your objective and configuration were kept.`;
     if (typeof payload.detail === "string") detail = payload.detail;
     else if (

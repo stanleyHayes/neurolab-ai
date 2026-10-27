@@ -1,4 +1,10 @@
 const PATHS = {
+  copy: "M8 8h13v13H8zM4 16H2V2h14v2",
+  save: "M4 3h13l4 4v14H3V3h1Zm3 0v6h9V3M7 21v-7h10v7",
+  spark: "m12 3 2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5L12 3Z",
+  arrow: "M4 12h16m-6-6 6 6-6 6",
+  settings: "M4 7h16M4 17h16M8 4v6m8 4v6",
+
   comparison: "M4 7h12m-3-3 3 3-3 3M20 17H8m3-3-3 3 3 3M4 14v6M20 4v6",
   interval: "M4 12h16M4 8v8m16-8v8M12 8v8",
   plots: "M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z",

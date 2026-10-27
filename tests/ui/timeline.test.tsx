@@ -53,6 +53,12 @@ it("keeps keyboard replay selection within the persisted event range", () => {
   expect(
     screen.getByRole("button", { name: "Pause presentation" }),
   ).toBeTruthy();
+  fireEvent.click(screen.getByRole("button", { name: "Pause presentation" }));
+  fireEvent.keyDown(slider, { key: "End" });
+  fireEvent.click(
+    screen.getByRole("button", { name: "Replay saved timeline" }),
+  );
+  expect(slider.getAttribute("aria-valuenow")).toBe("1");
 });
 
 it("routes accessible recovery to the failed resource context", () => {

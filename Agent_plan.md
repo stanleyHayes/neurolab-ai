@@ -4,7 +4,7 @@
 - [x] Audit and hash data; execute `scripts/audit_datasets.py`; inspect anomaly report.
 - [x] Add a repeatable local quality gate: Ruff lint/format, ESLint plus JavaScript syntax, tests, Python compilation and dataset integrity audit. Configure SonarQube analysis; server-side analysis remains conditional on a provisioned server and token.
 - [x] Confirm Meta API credentials and model availability via `python scripts/smoke_meta_provider.py`; set `META_MODEL_VERIFIED=true` only after a successful real response. **2026-10-26: Meta Model API `muse-spark-1.3` returned schema-constrained JSON; one-step live agent run selected an allowlisted action and completed with persisted, tool-derived evidence.**
-- [ ] Set up public Git repository and `BUILD_LOG.md`; record implementation start date. **Blocked/not available: no Git repository is present in workspace.**
+- [ ] Publish the application source in the public Git repository. Local Git history and `BUILD_LOG.md` now exist; public source publication and licensing remain open.
 
 ## Phase 1: Real data MVP (P0)
 - [x] Run preprocessing, assert Ghana combined rows = 864 and two regime-specific files = 432 each.
@@ -45,3 +45,11 @@
 
 ## Day-by-day gates
 D1 data and repo; D2 normalization; D3 statistical tools; D4 API; D5 Meta agent; D6 closed loop; D7 benchmark; D8 cinematic UI; D9 rehearsal and recording; D10 buffer/submission. If behind, drop optional model/visual features, not validation.
+
+## 2026-10-27 cinematic/setup increment
+
+- [x] Add event-bound cinematic replay cockpit on `/live-experiment`: real artifact reveals, immersive dialog, pause/step/seek/pacing, provenance/export, reduced-motion/manual and 2D fallback, reused optional 3D illustration.
+- [x] Redesign research setup actions/configuration/mode cards; expose authenticated model availability and disable paid controls while paused. Add transport-level credit pause and document the local replay-only setting.
+- [x] Diagnose the stale port-8000 API behind the draft HTTP 404 and restart the confirmed checkout process with its existing environment/database retained.
+- [ ] Visually accept cinematic/setup views in the browser at desktop/tablet/mobile and test the real immersive-dialog/GPU behavior. Current browser access is unavailable; DOM tests are not a substitute.
+- [ ] Complete remaining science/answer-quality and production gates above. No new crop simulation, Meta call or scientific analysis is claimed by this presentation increment.
