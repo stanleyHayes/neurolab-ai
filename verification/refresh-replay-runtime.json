@@ -1,0 +1,21 @@
+{
+  "verified_at_utc": "2026-10-27T20:12:16.111181+00:00",
+  "code_commit": "54b6eb28a232c3f9e9b439c4e847b9148ea28a1d",
+  "environment": "Two production-profile Uvicorn APIs sharing a disposable local PostgreSQL database and generated temporary secrets",
+  "rotation_status": 200,
+  "forged_csrf_status": 403,
+  "forged_csrf_kept_descendant_active": true,
+  "ancestor_replay_status": 401,
+  "replay_cleared_both_cookies": true,
+  "descendant_access_after_replay": 401,
+  "model_inference_enabled": false,
+  "scope": "Actual HTTP/SQL refresh replay and cookie headers across API processes. No target HTTPS/browser cookie-jar, ingress or public-production acceptance.",
+  "local_rollout": {
+    "verified_at_utc": "2026-10-27T20:12:45.975047+00:00",
+    "bff_login_profile_refresh_me_statuses": 200,
+    "profile_rows": 864,
+    "review_reports_status": 200,
+    "model_inference_enabled": false,
+    "scope": "Local production Next build and reloaded review API; current committed refresh code. HTTP only, no browser signoff."
+  }
+}
