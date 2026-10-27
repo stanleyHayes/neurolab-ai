@@ -117,6 +117,7 @@ class OpenAICompatibleAdapter:
             "model": self.model_id,
             "messages": messages,
             "temperature": 0,
+            "reasoning_effort": "low",
             "max_tokens": max_tokens,
             "response_format": {
                 "type": "json_schema",
@@ -182,6 +183,11 @@ class OpenAICompatibleAdapter:
             if connection is not None:
                 connection.close()
         try:
+            if payload["choices"][0].get("finish_reason") == "length":
+                raise ModelProviderError(
+                    "Model output-token limit reached before a complete structured response; "
+                    "reasoning tokens share this limit."
+                )
             content = payload["choices"][0]["message"]["content"]
             result = json.loads(content) if isinstance(content, str) else content
         except (KeyError, IndexError, TypeError, json.JSONDecodeError) as exc:

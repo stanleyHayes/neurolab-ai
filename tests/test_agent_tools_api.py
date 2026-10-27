@@ -748,7 +748,7 @@ class ApiTests(unittest.TestCase):
         )
         self.assertEqual(run["report"]["research_plan"]["tasks"][0]["status"], "completed")
         context = json.loads(adapter.generate_structured.call_args.args[0][1]["content"])
-        self.assertIsNone(context["objective"])
+        self.assertEqual(context["objective"], original)
         self.assertEqual(
             context["context"]["important_constraints"], proposed["important_constraints"]
         )

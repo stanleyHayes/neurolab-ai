@@ -212,6 +212,21 @@ class SharedModelSpendTests(unittest.TestCase):
         self.assertNotIn("prompt", json.dumps(row))
         self.assertNotIn("api_key", json.dumps(row))
 
+    def test_output_exhaustion_is_not_reported_as_a_valid_structured_answer(self):
+        from urllib.parse import urlsplit
+
+        model = OpenAICompatibleAdapter("https://provider.invalid", "fixture", "fixture")
+        endpoint = urlsplit(model.endpoint)
+        with patch("neurolab.providers.http.client.HTTPSConnection") as transport:
+            response = transport.return_value.getresponse.return_value
+            response.status = 200
+            response.read.return_value = json.dumps(
+                {"choices": [{"finish_reason": "length", "message": {"content": None}}]}
+            ).encode()
+            with self.assertRaisesRegex(ModelProviderError, "reasoning tokens share"):
+                model._send_structured(endpoint, {}, 1)
+            transport.return_value.close.assert_called_once()
+
     def test_database_failure_is_sanitized_before_transport(self):
         model = OpenAICompatibleAdapter(
             SPEND_ENV["META_MODEL_API_BASE_URL"],

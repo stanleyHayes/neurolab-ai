@@ -177,7 +177,6 @@ class ResearchAgent:
         *,
         timeout: int,
         active_tasks: list[ResearchTask] | None = None,
-        include_objective: bool = True,
     ) -> dict[str, Any]:
         if self.model_adapter is None:
             raise AgentConfigurationError("Meta model adapter is not configured")
@@ -217,7 +216,7 @@ class ResearchAgent:
                     "role": "user",
                     "content": json.dumps(
                         {
-                            "objective": objective if include_objective else None,
+                            "objective": objective,
                             "context": build_execution_context(
                                 objective,
                                 self.configuration,
@@ -429,7 +428,6 @@ class ResearchAgent:
                 evidence,
                 timeout=max(1, int(self.max_wall_time - (time.monotonic() - start))),
                 active_tasks=pending,
-                include_objective=not decisions and self.research_plan.planning_mode != "meta",
             )
             task = next((task for task in pending if task.tool_name == choice["action"]), None)
             if task is None:
