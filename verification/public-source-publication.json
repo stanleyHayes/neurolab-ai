@@ -1,0 +1,12 @@
+{
+  "commit": "7f9ac256df88351b9f4fb83a07987e7da3f98ad4",
+  "unauthenticated_https_clone": true,
+  "source_license_and_deployment_files_present": true,
+  "source_audit": "passed",
+  "deployment_profile_tests": 6,
+  "dependency_scope": "Existing system Python dependencies; separate fresh local install proof remains at its recorded commit.",
+  "hosted_app_deployed": false,
+  "repository": "https://github.com/stanleyHayes/neurolab-ai",
+  "branch": "main",
+  "remote_history_preserved": true
+}
