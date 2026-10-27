@@ -286,7 +286,9 @@ CREATE TABLE IF NOT EXISTS research_drafts (
                 or row["lease_until"] <= self.database_epoch()
                 or not row["is_active"]
             ):
-                raise ExecutionLeaseLost("Worker execution lease expired or was replaced")
+                raise ExecutionLeaseLost(
+                    "Worker execution lease is no longer valid or its owner is inactive"
+                )
 
     @contextmanager
     def execution_lease(self, run_id, token):

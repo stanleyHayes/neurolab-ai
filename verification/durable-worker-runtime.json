@@ -1,0 +1,74 @@
+{
+  "verified_at_utc": "2026-10-27T19:38:42.372669+00:00",
+  "scope": "Authenticated isolated review API/SQL restart plus separate replay worker; no paid inference",
+  "full_original_objective": {
+    "run_id": "faafbd43-8a37-4440-accb-54dfdbd627e6",
+    "objective_sha256": "8e9c3b5334a4d54ea5616b6bef2cdf5b36b1b1f9ed87e3d2ef275e17a5ff314c",
+    "exact_original_preserved": true,
+    "queued_before_restart": {
+      "state": "QUEUED",
+      "attempts": 0,
+      "created_at": "2026-10-27T19:37:54.836653Z",
+      "started_at": null,
+      "finished_at": null
+    },
+    "terminal_job": {
+      "state": "DONE",
+      "attempts": 1,
+      "created_at": "2026-10-27T19:37:54.836653Z",
+      "started_at": "2026-10-27T19:37:59.722716Z",
+      "finished_at": "2026-10-27T19:38:00.295726Z"
+    },
+    "run_status": "COMPLETE",
+    "tool_calls": 6,
+    "artifact_count": 6,
+    "event_count": 59,
+    "claim_count": 1,
+    "code_commit": "ef8b7bd61c8c6c6c04139dbff74f2467a0a0650c",
+    "source_sha256": "2e37c07f30e00efb33b59954dd6d02a04f3d67349790d782b70dbedfdaff05bc",
+    "evidence_ids": [
+      "faafbd43-8a37-4440-accb-54dfdbd627e6-1",
+      "faafbd43-8a37-4440-accb-54dfdbd627e6-2",
+      "faafbd43-8a37-4440-accb-54dfdbd627e6-3",
+      "faafbd43-8a37-4440-accb-54dfdbd627e6-4",
+      "faafbd43-8a37-4440-accb-54dfdbd627e6-5",
+      "faafbd43-8a37-4440-accb-54dfdbd627e6-6"
+    ],
+    "model_id": null
+  },
+  "inference_enabled": false,
+  "limitations": "Local runtime and SQL durability only; no browser/live Meta/deployed supervision acceptance.",
+  "controlled_worker_interruption": {
+    "run_id": "040c2d79-a517-4708-b929-dbbce7e05707",
+    "explicit_probe_exit_code": 23,
+    "stopped_after_claim_before_tools": true,
+    "run_status": "FAILED",
+    "terminal_job": {
+      "state": "INTERRUPTED",
+      "attempts": 1,
+      "created_at": "2026-10-27T19:38:42.378422Z",
+      "started_at": "2026-10-27T19:38:42.554531Z",
+      "finished_at": "2026-10-27T19:38:44.135827Z"
+    },
+    "error_type": "WorkerLeaseExpired",
+    "tool_requests": 0,
+    "artifacts": 0,
+    "automatic_retries": 0,
+    "scientific_report_created": false
+  },
+  "continuous_standalone_worker": {
+    "run_id": "c2baef3a-3674-42c5-83fa-0911a1ec8c07",
+    "run_status": "COMPLETE",
+    "job": {
+      "state": "DONE",
+      "attempts": 1,
+      "created_at": "2026-10-27T19:42:07.686290Z",
+      "started_at": "2026-10-27T19:42:07.738489Z",
+      "finished_at": "2026-10-27T19:42:07.771116Z"
+    },
+    "tool": "dataset_profile",
+    "observed_plot_count": 864,
+    "model_id": null,
+    "inline_api_worker": false
+  }
+}

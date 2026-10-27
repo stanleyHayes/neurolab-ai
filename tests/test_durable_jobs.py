@@ -440,6 +440,10 @@ class DurableJobTests(unittest.TestCase):
         self.jobs.reconcile()
         self.assertEqual(self.store.get_run(rid)["status"], "CANCELLED")
         self.assertEqual(self.store.list_artifacts(rid), [])
+        cancelled = next(
+            e for e in self.store.list_events(rid) if e["event_type"] == "run.cancelled"
+        )
+        self.assertEqual(cancelled["payload"]["reason"], "owner_inactive")
 
     def test_standalone_worker_process_needs_no_jwt_key_or_provider(self):
         rid = self.enqueue()

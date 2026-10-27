@@ -103,7 +103,13 @@ class ResearchJobs:
             self._finish_job(run_id, "DONE")
         elif not row["is_active"] or (row["state"] == "QUEUED" and row["cancel_requested"]):
             self.store.add_event(
-                run_id, "run.cancelled", {"reason": "cancelled_or_owner_inactive_before_execution"}
+                run_id,
+                "run.cancelled",
+                {
+                    "reason": "owner_inactive"
+                    if not row["is_active"]
+                    else "cancelled_before_execution"
+                },
             )
             self._finish_job(run_id, "CANCELLED")
         elif row["state"] == "RUNNING" and row["lease_until"] <= now:

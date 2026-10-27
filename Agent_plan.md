@@ -101,3 +101,6 @@ D1 data and repo; D2 normalization; D3 statistical tools; D4 API; D5 Meta agent;
 - [x] Verify isolated SQLite and disposable PostgreSQL operational/concurrency tests, separate worker execution without JWT signing key, and private local pre-migration backup/restore.
 - [ ] Rehearse the committed API/worker restart and interruption paths on the isolated authenticated review service, then configure supervised local workers.
 - [ ] Complete shared HTTP/account abuse controls, provider spend/tenant quotas, target deployment/supervision/backup policy, and remaining browser/live-model/submission gates.
+
+- [x] Committed runtime rehearsal: exact original objective survives API restart and completes through a separate worker; controlled post-claim interruption becomes explicit FAILED/INTERRUPTED without retry/results; continuous worker accepts a fresh owned profile.
+- [x] Start replay-only primary/review workers with API inline wakeups disabled; preserve legacy ownerless history and verify local health. Target deployment supervision remains unverified.
