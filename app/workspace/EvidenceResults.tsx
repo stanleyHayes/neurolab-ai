@@ -1,5 +1,10 @@
+"use client";
 import Link from "next/link";
+import { useState } from "react";
 import { EmptyState } from "./EmptyState";
+import { ResultIcon } from "./ResultIcon";
+import { finiteMeasure, ResultInterval } from "./ResultInterval";
+import { ResultsProvenance, ResultsSummary } from "./ResultsSummary";
 import type {
   ResearchArtifact,
   ResearchReport,
@@ -23,13 +28,12 @@ type EvidenceResultsProps = {
   formatNumber: (value: unknown) => string;
   downloadFile: (filename: string, value: unknown, mime: string) => void;
 };
-
 function resultsTitle(section: WorkspaceSection): string {
   if (section === "genotype-explorer")
-    return "Observed drought genotype summaries";
-  if (section === "trait-analytics") return "Observed grain-yield analysis";
-  if (section === "environments") return "Observed environment comparison";
-  return "Research results";
+    return "Genotype evidence, in perspective.";
+  if (section === "trait-analytics") return "The measured yield response.";
+  if (section === "environments") return "Evidence across trial conditions.";
+  return "What the field records show.";
 }
 
 function EvidenceExports({
@@ -48,201 +52,389 @@ function EvidenceExports({
         `${item.artifact_id},${item.tool_name},${item.claim_scope},${item.sample_size},${item.source_sha256}`,
     ),
   ];
-
   return (
-    <div className="export-row">
-      <button
-        className="secondary-button"
-        type="button"
-        onClick={() =>
-          downloadFile(
-            `neurolab-${report.run_id}.json`,
-            { report, artifacts, events },
-            "application/json",
-          )
-        }
-      >
-        Export evidence JSON
-      </button>
-      <button
-        className="secondary-button"
-        type="button"
-        onClick={() =>
-          downloadFile(
-            `neurolab-${report.run_id}.csv`,
-            csvRows.join("\n"),
-            "text/csv",
-          )
-        }
-      >
-        Export artifact index CSV
-      </button>
+    <footer className="results-export">
+      <div>
+        <span className="result-icon-tile">
+          <ResultIcon name="record" />
+        </span>
+        <div>
+          <h3>Take the evidence with you.</h3>
+          <p>Source, seed, methods and recorded results stay together.</p>
+        </div>
+      </div>
+      <div className="export-row">
+        <button
+          className="secondary-button"
+          type="button"
+          onClick={() =>
+            downloadFile(
+              `neurolab-${report.run_id}.json`,
+              { report, artifacts, events },
+              "application/json",
+            )
+          }
+        >
+          <ResultIcon name="download" />
+          <span>Export evidence JSON</span>
+        </button>
+        <button
+          className="text-button"
+          type="button"
+          onClick={() =>
+            downloadFile(
+              `neurolab-${report.run_id}.csv`,
+              csvRows.join("\n"),
+              "text/csv",
+            )
+          }
+        >
+          <ResultIcon name="record" />
+          <span>Export artifact index CSV</span>
+        </button>
+      </div>
+    </footer>
+  );
+}
+function RegimeBars({
+  means,
+  formatNumber,
+}: Readonly<{
+  means: Record<string, unknown>;
+  formatNumber: (value: unknown) => string;
+}>) {
+  const drought = finiteMeasure(means.DROUGHT);
+  const watered = finiteMeasure(means.WELL_WATERED);
+  const maximum = Math.max(drought ?? 0, watered ?? 0, 1);
+  const rows = [
+    { label: "Managed drought", value: drought, className: "drought" },
+    { label: "Well-watered", value: watered, className: "watered" },
+  ];
+  return (
+    <div
+      className="results-regime-bars"
+      aria-label="Mean grain yield by observed water regime"
+    >
+      {rows.map((row) => (
+        <div className={`results-regime-row ${row.className}`} key={row.label}>
+          <div>
+            <span>
+              <i aria-hidden="true" />
+              {row.label}
+            </span>
+            <strong>
+              {formatNumber(row.value)} <small>kg/ha</small>
+            </strong>
+          </div>
+          <div className="results-regime-track" aria-hidden="true">
+            {row.value !== null && row.value >= 0 && (
+              <span style={{ width: `${(row.value / maximum) * 100}%` }} />
+            )}
+          </div>
+        </div>
+      ))}
     </div>
   );
 }
-
-type ContrastResultProps = {
-  artifact: ResearchArtifact;
-  results: Record<string, unknown>;
-  means: Record<string, unknown>;
-  interval: unknown;
-  formatNumber: (value: unknown) => string;
-};
-
 function ContrastResult({
   artifact,
   results,
   means,
   interval,
   formatNumber,
-}: Readonly<ContrastResultProps>) {
-  if (!artifact) return null;
-  const max = Math.max(
-    Number(means.DROUGHT) || 0,
-    Number(means.WELL_WATERED) || 0,
-    1,
-  );
-  const rows: Array<[string, unknown]> = [
-    ["Managed drought", means.DROUGHT],
-    ["Well-watered", means.WELL_WATERED],
-  ];
-
+}: Readonly<{
+  artifact: ResearchArtifact;
+  results: Record<string, unknown>;
+  means: Record<string, unknown>;
+  interval: unknown;
+  formatNumber: (value: unknown) => string;
+}>) {
+  const validInterval =
+    Array.isArray(interval) &&
+    finiteMeasure(interval[0]) !== null &&
+    finiteMeasure(interval[1]) !== null;
   return (
-    <div className="contrast-panel">
-      <div className="result-title">
-        DROUGHT − WELL-WATERED · EQUAL-WEIGHTED ENVT MEANS
+    <section
+      className="results-panel results-contrast"
+      aria-labelledby="contrast-heading"
+    >
+      <header className="results-panel-header">
+        <span className="result-icon-tile">
+          <ResultIcon name="comparison" />
+        </span>
+        <div>
+          <span className="results-overline">Observed trial contrast</span>
+          <h3 id="contrast-heading">Drought vs well-watered</h3>
+        </div>
+        <span className="result-sample">
+          n = {formatNumber(artifact.sample_size)}
+        </span>
+      </header>
+      <div className="results-primary-estimate">
+        <p>Difference in observed mean yield</p>
+        <div>
+          {formatNumber(results.yield_difference_kg_ha)}
+          <span>kg/ha</span>
+        </div>
+        <span className="estimate-direction">
+          Managed drought minus well-watered · equal-weighted ENVT means
+        </span>
       </div>
-      <div className="contrast-number">
-        {formatNumber(results.yield_difference_kg_ha)} <span>kg/ha</span>
+      <ResultInterval
+        estimate={results.yield_difference_kg_ha}
+        interval={interval}
+        formatNumber={formatNumber}
+      />
+      <div className="results-interval-caption">
+        <ResultIcon name="interval" />
+        <div>
+          <strong>95% block-bootstrap interval</strong>
+          <p>
+            {validInterval
+              ? `${formatNumber(interval[0])} to ${formatNumber(interval[1])} kg/ha`
+              : "Not recorded for this artifact"}
+          </p>
+        </div>
       </div>
-      <div className="interval">
-        95% block-bootstrap interval · [
-        {Array.isArray(interval)
-          ? `${formatNumber(interval[0])}, ${formatNumber(interval[1])}`
-          : "not available"}
-        ]
-      </div>
-      <div
-        className="mean-bars"
-        aria-label="Mean grain yield by observed water regime"
-      >
-        {rows.map(([label, value]) => {
-          const amount = typeof value === "number" ? value : 0;
-          return (
-            <div className="mean-row" key={label}>
-              <div className="mean-label">
-                <span>{label}</span>
-                <b>{formatNumber(value)} kg/ha</b>
-              </div>
-              <div className="mean-track" aria-hidden="true">
-                <span
-                  style={{ width: `${Math.max(2, (amount / max) * 100)}%` }}
-                />
-              </div>
-            </div>
-          );
-        })}
-      </div>
-      <p className="caption">
-        Observed descriptive means, not a causal treatment effect.
-        Equal-weighted environment summary.
+      <RegimeBars means={means} formatNumber={formatNumber} />
+      <p className="results-chart-note">
+        These are observed descriptive means. The contrast does not isolate a
+        causal effect of irrigation.
       </p>
-      <div className="notice result-notice">{artifact.warnings.join(" ")}</div>
-    </div>
+      <div className="results-evidence-reference">
+        <ResultIcon name="source" />
+        <span>Evidence</span>
+        <code>{artifact.artifact_id}</code>
+      </div>
+    </section>
   );
 }
-
+function ResultMethods({
+  artifact,
+  formatNumber,
+}: Readonly<{
+  artifact: ResearchArtifact;
+  formatNumber: (value: unknown) => string;
+}>) {
+  const uncertainty = artifact.uncertainty;
+  const method =
+    typeof uncertainty?.method === "string"
+      ? uncertainty.method
+      : "Descriptive summary; no uncertainty model was recorded.";
+  return (
+    <aside className="results-context" aria-label="Methods and interpretation">
+      <section className="results-panel results-methods">
+        <header className="results-panel-header">
+          <span className="result-icon-tile">
+            <ResultIcon name="method" />
+          </span>
+          <div>
+            <span className="results-overline">Reproducible by design</span>
+            <h3>Behind the estimate</h3>
+          </div>
+        </header>
+        <dl>
+          <div>
+            <dt>Observed records</dt>
+            <dd>{formatNumber(artifact.sample_size)}</dd>
+          </div>
+          {uncertainty && (
+            <>
+              <div>
+                <dt>Bootstrap samples</dt>
+                <dd>{formatNumber(uncertainty.replicates)}</dd>
+              </div>
+              <div>
+                <dt>Random seed</dt>
+                <dd>{formatNumber(uncertainty.seed)}</dd>
+              </div>
+            </>
+          )}
+          <div>
+            <dt>Claim scope</dt>
+            <dd>{artifact.claim_scope}</dd>
+          </div>
+        </dl>
+        <details>
+          <summary>Method &amp; analysis version</summary>
+          <p>{method}</p>
+          <code>{artifact.analysis_version}</code>
+        </details>
+      </section>
+      <section className="results-reading-note">
+        <span className="result-icon-tile caution">
+          <ResultIcon name="caution" />
+        </span>
+        <h3>Keep the design in view.</h3>
+        <p>
+          Exploratory evidence is a starting point for a follow-up trial, not a
+          field recommendation.
+        </p>
+        <ul>
+          {artifact.warnings.map((warning) => (
+            <li key={warning}>{warning}</li>
+          ))}
+        </ul>
+      </section>
+    </aside>
+  );
+}
 function GenotypeResults({
   ranking,
   genotypes,
-  showContrast,
-  hasContrast,
+  formatNumber,
 }: Readonly<{
-  ranking: ResearchArtifact | undefined;
+  ranking: ResearchArtifact;
   genotypes: Array<Record<string, unknown>>;
-  showContrast: boolean;
-  hasContrast: boolean;
+  formatNumber: (value: unknown) => string;
 }>) {
-  if (!ranking) return null;
-  if (!genotypes.length)
+  const [expanded, setExpanded] = useState(false);
+  const all = Array.isArray(ranking.results.genotypes)
+    ? (ranking.results.genotypes as Array<Record<string, unknown>>)
+    : genotypes;
+  const entries = expanded ? all : genotypes.slice(0, 8);
+  const maximum = Math.max(
+    ...all.map(
+      (item) => finiteMeasure(item.equal_environment_mean_yield_kg_ha) ?? 0,
+    ),
+    1,
+  );
+  if (!entries.length)
     return (
       <EmptyState
         compact
         icon="evidence"
         title="No genotype rows in this result"
-        description="The saved analysis includes a ranking artifact without displayable genotype rows. Try a new analysis or reopen another saved run."
-        action={
-          <Link className="text-link" href="/experiment-studio">
-            Start a new experiment ↗
-          </Link>
-        }
+        description="The saved artifact has no displayable genotype summaries. Its source and export remain available."
       />
     );
-  const maximum = Math.max(
-    ...genotypes.map(
-      (item) => Number(item.equal_environment_mean_yield_kg_ha) || 0,
-    ),
-    1,
-  );
-
   return (
-    <div className="genotype-panel">
-      <div className="panel-title-row">
-        <h3>Drought genotype summaries</h3>
-        <span>DESCRIPTIVE · NOT A RECOMMENDATION</span>
-      </div>
-      <p className="caption">
-        Top observed equal-environment means · yield kg/ha
+    <section
+      className="results-panel results-genotypes"
+      aria-labelledby="genotype-heading"
+    >
+      <header className="results-panel-header">
+        <span className="result-icon-tile">
+          <ResultIcon name="genotype" />
+        </span>
+        <div>
+          <span className="results-overline">
+            Candidates for further research
+          </span>
+          <h3 id="genotype-heading">Highest observed drought means</h3>
+        </div>
+        <span className="result-sample">
+          {entries.length} of {all.length} genotypes
+        </span>
+      </header>
+      <p className="results-panel-description">
+        Equal-environment mean grain yield. A high observed mean does not
+        establish drought tolerance or ranking stability.
       </p>
-      <ol
-        className="rank-list"
-
-        aria-label="Top drought genotype yield summaries"
+      <section
+        className="results-table-scroll"
+        aria-label="Scrollable genotype result table"
       >
-        {genotypes.map((entry, index) => {
-          const value = Number(entry.equal_environment_mean_yield_kg_ha) || 0;
-          return (
-            <li
-              className="rank-row"
-
-              key={String(entry.genotype_id)}
-            >
-              <span className="rank-number">
-                {String(index + 1).padStart(2, "0")}
-              </span>
-              <strong>{String(entry.genotype_id)}</strong>
-              <span className="rank-track" aria-hidden="true">
-                <span style={{ width: `${(value / maximum) * 100}%` }} />
-              </span>
-              <b>
-                {value.toLocaleString(undefined, { maximumFractionDigits: 1 })}
-              </b>
-            </li>
-          );
-        })}
-      </ol>
-      {ranking.warnings.map((warning) => (
-        <p className="caption warning" key={warning}>
-          {warning}
-        </p>
-      ))}
-      {showContrast && !hasContrast && (
-        <EmptyState
-          compact
-          icon="evidence"
-          title="No regime comparison yet"
-          description="This saved run includes genotype summaries but no regime comparison artifact."
-          action={
-            <Link className="text-link" href="/experiment-studio">
-              Start a new experiment ↗
-            </Link>
-          }
-        />
-      )}
+        <table className="results-genotype-table">
+          <caption className="sr-only">
+            Descriptive drought genotype yields in kg/ha, plot counts and
+            observed ENVT coverage
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col">Rank</th>
+              <th scope="col">Genotype</th>
+              <th scope="col">
+                Mean yield <span>kg/ha</span>
+              </th>
+              <th scope="col">Plots</th>
+              <th scope="col">ENVT indices</th>
+            </tr>
+          </thead>
+          <tbody>
+            {entries.map((entry, index) => {
+              const value = finiteMeasure(
+                entry.equal_environment_mean_yield_kg_ha,
+              );
+              const genotype =
+                typeof entry.genotype_id === "string"
+                  ? entry.genotype_id
+                  : "Identifier not recorded";
+              return (
+                <tr
+                  key={genotype}
+                  className={index === 0 ? "leading-genotype" : ""}
+                >
+                  <td>
+                    <span className="results-rank">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                  </td>
+                  <th scope="row">{genotype}</th>
+                  <td>
+                    <span className="genotype-yield-value">
+                      {formatNumber(value)}
+                    </span>
+                    <span className="genotype-yield-track" aria-hidden="true">
+                      {value !== null && value >= 0 && (
+                        <span
+                          style={{ width: `${(value / maximum) * 100}%` }}
+                        />
+                      )}
+                    </span>
+                  </td>
+                  <td>{formatNumber(entry.plot_count)}</td>
+                  <td>{formatNumber(entry.environment_count)}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </section>
+      <div className="results-table-footer">
+        <span>
+          <ResultIcon name="interval" />
+          Ranking uncertainty was not estimated.
+        </span>
+        {all.length > 8 && (
+          <button
+            className="text-button"
+            type="button"
+            onClick={() => setExpanded((value) => !value)}
+          >
+            {expanded
+              ? "Show leading genotypes"
+              : `Show all ${all.length} genotypes`}
+          </button>
+        )}
+      </div>
+      <details className="results-ranking-caveats">
+        <summary>Ranking method &amp; limitations</summary>
+        <ul>
+          {ranking.warnings.map((warning) => (
+            <li key={warning}>{warning}</li>
+          ))}
+        </ul>
+        <code>{ranking.artifact_id}</code>
+      </details>
+    </section>
+  );
+}
+function AnalysisScopeNote({
+  section,
+}: Readonly<{ section: WorkspaceSection }>) {
+  if (section !== "trait-analytics" && section !== "environments") return null;
+  const message =
+    section === "trait-analytics"
+      ? "No trait-correlation artifact is included in this view. The measured yield comparison below does not establish which plant traits are associated with resilience."
+      : "The contrast is stratified by observed trial design. It does not estimate a genotype stability statistic or turn ENVT indices into calendar years.";
+  return (
+    <div className="results-scope-note">
+      <ResultIcon name="record" />
+      <p>{message}</p>
     </div>
   );
 }
-
 export function EvidenceResults(props: Readonly<EvidenceResultsProps>) {
   const {
     section,
@@ -261,105 +453,127 @@ export function EvidenceResults(props: Readonly<EvidenceResultsProps>) {
     formatNumber,
     downloadFile,
   } = props;
-  const hasAnyRequestedArtifact =
-    (!showContrast || Boolean(contrast)) && (!showRanking || Boolean(ranking));
-
-  const renderedChoice1 = (() => {
-    if (showContrast && showRanking) {
-      return "Evidence appears after a persisted run";
-    }
-    if (showContrast) {
-      return "No regime comparison yet";
-    }
-    return "No genotype summaries yet";
-  })();
-  const renderedChoice2 = (() => {
-    if (showContrast && showRanking) {
-      return "Start a run to calculate a regime comparison and genotype summaries from the observed Ghana trial dataset.";
-    }
-    if (showContrast) {
-      return "Run an analysis to calculate an observed-trial comparison with uncertainty and limitations.";
-    }
-    return "Run an analysis to calculate descriptive genotype summaries from the observed trial data.";
-  })();
+  const hasResult = Boolean(
+    (showContrast && contrast) || (showRanking && ranking),
+  );
+  const sourceConsistent =
+    !report ||
+    artifacts.every(
+      (artifact) => artifact.source_sha256 === report.source_sha256,
+    );
+  const mode =
+    report?.mode === "meta"
+      ? `${report.model_provider ?? "Configured provider"} · ${report.model_id ?? "model not recorded"}`
+      : "Deterministic replay · no model call";
   return (
-    <article
-      className={`card evidence-card${section === "genotype-explorer" ? " genotype-explorer-card" : ""}${section === "trait-analytics" ? " trait-analytics-card" : ""}${section === "environments" ? " environments-card" : ""}`}
-      id="evidence"
-    >
-      <div className="card-head">
-        <span className="eyebrow">EVIDENCE VIEW</span>
-        <span className="evidence-count">{artifacts.length} ARTIFACTS</span>
-      </div>
-      <h2>{resultsTitle(section)}</h2>
+    <article className="card evidence-card results-workbench" id="evidence">
+      <header className="results-heading">
+        <div>
+          <span className="results-overline">
+            <ResultIcon name="evidence" />
+            Evidence workspace
+          </span>
+          <h2>{resultsTitle(section)}</h2>
+          <p>
+            Real field records. Transparent methods. A measured starting point.
+          </p>
+        </div>
+        <div className="results-run-badges">
+          <span className="results-status">
+            <ResultIcon name="complete" />
+            {artifacts.length} saved artifacts
+          </span>
+          {report && <span className="results-mode">{mode}</span>}
+        </div>
+      </header>
       {report && report.completion_status !== "complete" && (
-        <output className="notice result-notice">
-          Partial report: requested analyses remain incomplete. Review the saved
-          evidence and limitations before interpreting these results.
+        <output className="results-partial">
+          <ResultIcon name="caution" />
+          <span>
+            Partial report: requested analyses remain incomplete. Review the
+            recorded evidence and limitations before interpreting these results.
+          </span>
         </output>
       )}
-      <div className="evidence-topics" aria-label="Evidence topics">
-        <span>GENOTYPE SUMMARIES</span>
-        <span>TRAIT ANALYSIS</span>
-        <span>ENVIRONMENT COMPARISON</span>
-      </div>
+      {!sourceConsistent && (
+        <p className="auth-error" role="alert">
+          Saved artifact source hashes do not match this report. Comparisons are
+          withheld until the source inconsistency is resolved.
+        </p>
+      )}
+      <AnalysisScopeNote section={section} />
       {retrieving && (
         <output
-          className="evidence-retrieval-skeleton"
-
+          className="results-loading"
           aria-label="Retrieving persisted experiment results"
         >
           <span className="sr-only">
             Retrieving persisted experiment results
           </span>
-          <span className="skeleton skeleton-line" />
-          <span className="skeleton skeleton-result" />
-          <span className="skeleton skeleton-line skeleton-line-short" />
+          <span className="skeleton results-summary-skeleton" />
+          <span className="skeleton results-chart-skeleton" />
         </output>
       )}
-      {!retrieving && !hasAnyRequestedArtifact && (
+      {!retrieving && sourceConsistent && hasResult && (
+        <>
+          <ResultsSummary
+            contrast={contrast}
+            ranking={ranking}
+            formatNumber={formatNumber}
+          />
+          <div className="results-analysis-grid">
+            {showContrast && contrast && (
+              <ContrastResult
+                artifact={contrast}
+                results={resultValues}
+                means={means}
+                interval={contrastCI}
+                formatNumber={formatNumber}
+              />
+            )}
+            {showContrast && contrast && (
+              <ResultMethods artifact={contrast} formatNumber={formatNumber} />
+            )}
+          </div>
+          {showRanking && ranking && (
+            <GenotypeResults
+              key={ranking.artifact_id}
+              ranking={ranking}
+              genotypes={topGenotypes}
+              formatNumber={formatNumber}
+            />
+          )}
+          {showContrast && !contrast && (
+            <EmptyState
+              compact
+              icon="evidence"
+              title="No regime comparison in this run"
+              description="The saved genotype summaries remain available. A regime contrast requires a separate completed tool artifact."
+            />
+          )}
+          {showRanking && !ranking && (
+            <EmptyState
+              compact
+              icon="evidence"
+              title="No genotype summaries in this run"
+              description="The saved regime contrast remains available. No ranking result was computed in this run."
+            />
+          )}
+        </>
+      )}
+      {!retrieving && !hasResult && (
         <EmptyState
-          compact
           icon="evidence"
-          title={renderedChoice1}
-          description={renderedChoice2}
+          title="A clearer view starts with recorded evidence."
+          description="This run has no comparison or genotype result for this page. Start an investigation to compute real results from the Ghana trial records."
           action={
             <Link className="primary-link" href="/experiment-studio">
-              Start an experiment <span aria-hidden="true">↗</span>
+              Start an investigation <span aria-hidden="true">↗</span>
             </Link>
           }
         />
       )}
-      {showContrast && contrast && (
-        <ContrastResult
-          artifact={contrast}
-          results={resultValues}
-          means={means}
-          interval={contrastCI}
-          formatNumber={formatNumber}
-        />
-      )}
-      {showContrast && contrast && showRanking && !ranking && (
-        <EmptyState
-          compact
-          icon="evidence"
-          title="No genotype summaries yet"
-          description="This saved run includes a regime comparison but no genotype summary artifact."
-          action={
-            <Link className="text-link" href="/experiment-studio">
-              Start a new experiment ↗
-            </Link>
-          }
-        />
-      )}
-      {showRanking && (
-        <GenotypeResults
-          ranking={ranking}
-          genotypes={topGenotypes}
-          showContrast={showContrast}
-          hasContrast={Boolean(contrast)}
-        />
-      )}
+      <ResultsProvenance report={report} artifacts={artifacts} />
       <EvidenceExports
         report={report}
         artifacts={artifacts}
