@@ -1,0 +1,37 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "services": {
+    "web": {
+      "root": ".",
+      "framework": "nextjs",
+      "bindings": [
+        {
+          "type": "service",
+          "service": "research",
+          "format": "url",
+          "env": "RESEARCH_API_URL"
+        }
+      ]
+    },
+    "research": {
+      "root": ".",
+      "framework": "fastapi",
+      "entrypoint": "neurolab.vercel_api:app",
+      "functions": {
+        "neurolab/vercel_api.py": {
+          "maxDuration": 300,
+          "excludeFiles": "{node_modules/**,.venv/**,tests/**,eval/**,verification/**,output/**,.git/**}"
+        }
+      }
+    }
+  },
+  "rewrites": [{ "source": "/(.*)", "destination": { "service": "web" } }],
+  "daemons": {
+    "research-worker": {
+      "root": ".",
+      "entrypoint": "Dockerfile.worker",
+      "instances": { "iad1": 1 },
+      "terminationGracePeriodSeconds": 210
+    }
+  }
+}

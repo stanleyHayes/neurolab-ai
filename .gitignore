@@ -33,3 +33,6 @@ nohup.out
 
 # Unreviewed demo recordings, generated narration and render intermediates.
 /output/demo-video/
+
+# Vercel link state and downloaded environment files.
+.vercel/

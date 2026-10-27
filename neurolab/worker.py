@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import logging
 import os
+import signal
 import threading
 import uuid
 from pathlib import Path
@@ -84,6 +85,15 @@ class QueueWorker:
         return completed
 
 
+def poll_queue(worker, stop, *, once=False, poll_seconds=1):
+    while not stop.is_set():
+        worked = worker.run_once()
+        if once:
+            break
+        if not worked:
+            stop.wait(poll_seconds)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--once", action="store_true")
@@ -104,15 +114,16 @@ def main():
         max_running=int(os.getenv("RESEARCH_MAX_RUNNING_JOBS", "2")),
     )
     stop = threading.Event()
+    previous = {
+        name: signal.signal(name, lambda _signum, _frame: stop.set())
+        for name in (signal.SIGTERM, signal.SIGINT)
+    }
     try:
-        while True:
-            worked = worker.run_once()
-            if args.once:
-                break
-            if not worked:
-                stop.wait(args.poll_seconds)
-    except KeyboardInterrupt:
-        pass
+        poll_queue(worker, stop, once=args.once, poll_seconds=args.poll_seconds)
+    finally:
+        for name, handler in previous.items():
+            signal.signal(name, handler)
+        store.close()
 
 
 if __name__ == "__main__":

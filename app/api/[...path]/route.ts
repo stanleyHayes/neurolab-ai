@@ -3,6 +3,7 @@ import type { NextRequest } from "next/server";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
+export const maxDuration = 300;
 
 // Research objectives are capped at 20k Unicode characters; JSON, config and
 // UTF-8 expansion require headroom while remaining bounded well below 1 MiB.

@@ -1,0 +1,52 @@
+{
+  "scope": "Prepared Vercel Services/Daemon profile; no hosted deployment",
+  "official_schema_sha256": "0778ab79d0ace54549f00f84103188f3fbdcb426e8fad9d13ca3076ee0ca9187",
+  "schema_instance_validation": "Passed Draft4Validator.iter_errors; generic check_schema rejected modern constructs in provider-declared Draft4 schema, so no claim of provider schema meta-validity.",
+  "quality": {
+    "make_quality_exit_code": 0,
+    "python": 172,
+    "proxy": 10,
+    "ui": 72,
+    "additional_profile_tests": 6,
+    "note": "Full suite loaded five new profile tests; six profile tests reran after adding real SIGTERM test. Counts overlap, not independent trials."
+  },
+  "container": {
+    "image_id": "sha256:9c086c3c37849e04778f4a632721683bfd377db484bce183bee058c8c2ee6bc1",
+    "user": "research",
+    "read_only_no_network_source_load": true,
+    "rows": 864,
+    "source_sha256": "2e37c07f30e00efb33b59954dd6d02a04f3d67349790d782b70dbedfdaff05bc"
+  },
+  "local_postgresql_profile": {
+    "profile": "Vercel replay-only native API and separate daemon entrypoint on disposable local PostgreSQL",
+    "run_id": "af624c80-2f4b-46ed-82f9-645074d7988d",
+    "mode": "deterministic_replay",
+    "model_id": null,
+    "artifact_response_type": "list",
+    "status": "complete",
+    "inference_enabled": "false",
+    "inline_worker": "false",
+    "provider_key_present": false,
+    "hosted_vercel_acceptance": false
+  },
+  "publication_check": {
+    "scope": "All currently reachable Git blobs; private .env values compared without disclosure; PEM private key patterns",
+    "blobs_checked": 548,
+    "findings": [],
+    "limitations": "Not a universal secret detector; synthetic fixtures and data/asset license review remain separate."
+  },
+  "vercel_cli_version": "62.0.0",
+  "cli_authenticated": true,
+  "matching_project_found": false,
+  "deployed": false,
+  "limitations": [
+    "No project/database/secrets provisioned or production deployment invoked.",
+    "Actual Services binding, trusted hosts, cookies/SSE and Daemon beta availability require hosted acceptance.",
+    "Sonar current gate remains unverified after recorded infrastructure failures."
+  ],
+  "log_sha256": {
+    "neurolab-vercel-quality.log": "85e264e3167ed8b895dbc7d26d0583dfff5e44d41380ed86bc9719ff0b273705",
+    "neurolab-vercel-signal-tests.log": "251e0cf64e4d281959929ccf5095976ae461527ad0f3de8daf5f6c5c639685fd",
+    "neurolab-vercel-worker-build.log": "68217afb4c8991ff69e4c4a55b0c1f1d39d730e8668121d694884b0fdd812d60"
+  }
+}

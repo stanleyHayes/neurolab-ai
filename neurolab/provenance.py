@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import hashlib
+import os
 import platform
 import re
 from pathlib import Path
@@ -49,7 +50,8 @@ def git_revision(root: Path):
         git = _git_directory(root)
         return _resolve_revision(git, (git / "HEAD").read_text().strip())
     except (OSError, ValueError):
-        return None
+        revision = os.getenv("VERCEL_GIT_COMMIT_SHA", "")
+        return revision if re.fullmatch(r"[a-f0-9]{40}|[a-f0-9]{64}", revision) else None
 
 
 def capture_runtime_provenance():

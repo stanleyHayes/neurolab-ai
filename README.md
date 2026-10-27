@@ -67,6 +67,10 @@ The live Meta `muse-spark-1.3` adapter was smoke-tested, and a bounded run execu
 
 **This is not production-launch-ready.** Invite-gated first-party authentication and owner-scoped research resources are present and covered by local tests. SQL-backed durable jobs and shared request/account limits have local test evidence; verified target ingress, provider billing reconciliation and external spend verification, deployment, and production backup/restore acceptance remain open. Browser interaction and accessibility acceptance is incomplete. Do not expose the service as a public multi-user application.
 
+## Vercel hosting
+
+The prepared [Vercel configuration and setup guide](docs/VERCEL_DEPLOYMENT.md) keeps Next.js, a private FastAPI service and the SQL queue worker on Vercel Services/Daemons. The deployment profile enforces replay while credits are exhausted. A Vercel project, persistent PostgreSQL and server secrets still need configuration; no hosted deployment is claimed.
+
 ## Getting started (full source checkout)
 
 > These instructions require the full source tree, including `data/`, `neurolab/`, `scripts/` and `app/`. Confirm those directories exist after obtaining the source. Public publication remains a separate acceptance gate.
