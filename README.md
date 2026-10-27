@@ -13,7 +13,7 @@
 NeuroLab is designed for agricultural researchers, plant breeders, and students exploring questions about maize performance under contrasting trial conditions. Its current workspace provides:
 
 - **Real-data exploration** of the Ghana maize trial records, including dataset profile and missingness.
-- **Reproducible analyses** for exploratory regime contrasts and descriptive genotype rankings, computed by deterministic server-side tools.
+- **Reproducible analyses** for exploratory regime contrasts, descriptive genotype rankings, observed-environment sensitivity and genotype-mean trait associations, computed by deterministic server-side tools.
 - **Evidence-linked research runs** with persisted events, analysis artifacts, source lineage, and report/export views.
 - **Bounded AI assistance** through an optional, schema-constrained provider adapter. The model can request only allowlisted actions; validated tools compute the numeric results.
 - **A responsive Next.js research workspace** for experiments, results, data provenance, reports, and saved-run replay.
@@ -26,6 +26,7 @@ NeuroLab studies existing computational trial records. It does not run a real-wo
 - Treat outputs as **descriptive or exploratory evidence**, not causal effects, validated predictions, or agronomic recommendations.
 - The Ghana source includes 864 combined plot records across drought and well-watered regimes, 72 genotypes, and three trial-environment codes. Water regime and environment are confounded; comparisons do not isolate a causal irrigation effect.
 - Genotype rankings are descriptive. Current ranking does not model alpha-lattice effects, adjust for multiple comparisons, or estimate ranking uncertainty; it is not a stability analysis.
+- Separate environment-sensitivity and trait-association tools provide descriptive variation, omitted-environment ranks and conditional genotype-profile resampling intervals. These do not establish validated stability, causal trait effects or future field performance. Methods and limitations: `docs/OBSERVATIONAL_SENSITIVITY_METHODS.md`.
 - Environment codes are not automatically calendar years. Preserve the source metadata when interpreting them.
 - The combined Ghana source duplicates its two regime-specific files. Do not concatenate the combined file with its components as if they were independent observations.
 - IITA data are included in the raw-data audit/staging pack, but are **not enabled as analysis-ready datasets** in the service. Do not join IITA trials by row order or genotype identifier alone.
@@ -39,7 +40,7 @@ Browser
     └── same-origin /api proxy
         └── FastAPI · Pydantic · JSON-schema validation
             ├── Immutable source CSVs → normalized Ghana records
-            ├── Deterministic profile / contrast / ranking / missingness tools
+            ├── Deterministic profile / contrast / ranking / missingness / sensitivity / association tools
             ├── Optional bounded Meta-compatible structured-output adapter
             └── PostgreSQL run, event, and artifact persistence
 ```

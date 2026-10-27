@@ -18,12 +18,16 @@ SupportedMethod = Literal[
     "genotype_ranking",
     "missingness_audit",
     "dataset_profile",
+    "trait_associations",
+    "environment_stability",
 ]
 SupportedTool = Literal[
     "compare_regimes",
     "rank_genotypes",
     "inspect_missingness",
     "dataset_profile",
+    "analyze_trait_associations",
+    "summarize_environment_stability",
 ]
 DatasetId = Literal[
     "ghana_combined",
@@ -38,6 +42,8 @@ DesiredOutput = Literal[
     "genotype_summaries",
     "missingness_summary",
     "provenance_export",
+    "trait_associations",
+    "environment_summaries",
 ]
 ResearchText = str
 
@@ -66,8 +72,8 @@ class ResearchConfiguration(BaseModel):
     hypotheses: list[str] = Field(default_factory=list, max_length=20)
     dataset_id: DatasetId = "ghana_combined"
     constraints: ResearchConstraints = Field(default_factory=ResearchConstraints)
-    preferred_methods: list[SupportedMethod] = Field(default_factory=list, max_length=4)
-    desired_outputs: list[DesiredOutput] = Field(default_factory=list, max_length=5)
+    preferred_methods: list[SupportedMethod] = Field(default_factory=list, max_length=6)
+    desired_outputs: list[DesiredOutput] = Field(default_factory=list, max_length=7)
     autonomy_preferences: AutonomyPreferences = Field(default_factory=AutonomyPreferences)
 
 
@@ -110,7 +116,7 @@ class ResearchPlan(BaseModel):
     hypotheses: list[str] = Field(default_factory=list, max_length=20)
     dataset_suggestions: list[DatasetSuggestion] = Field(default_factory=list, max_length=5)
     analysis_approaches: list[AnalysisApproach] = Field(default_factory=list, max_length=4)
-    desired_outputs: list[DesiredOutput] = Field(default_factory=list, max_length=5)
+    desired_outputs: list[DesiredOutput] = Field(default_factory=list, max_length=7)
     tasks: list[ResearchTask] = Field(default_factory=list, max_length=10)
     unsupported_requirements: list[str] = Field(default_factory=list, max_length=20)
 
@@ -124,8 +130,8 @@ class ResearchDraft(BaseModel):
     hypotheses: list[str] = Field(default_factory=list, max_length=20)
     dataset_id: DatasetId = "ghana_combined"
     constraints: ResearchConstraints = Field(default_factory=ResearchConstraints)
-    preferred_methods: list[SupportedMethod] = Field(default_factory=list, max_length=4)
-    desired_outputs: list[DesiredOutput] = Field(default_factory=list, max_length=5)
+    preferred_methods: list[SupportedMethod] = Field(default_factory=list, max_length=6)
+    desired_outputs: list[DesiredOutput] = Field(default_factory=list, max_length=7)
     autonomy_preferences: AutonomyPreferences = Field(default_factory=AutonomyPreferences)
     accepted_plan: ResearchPlan | None = None
 
@@ -234,6 +240,14 @@ def validate_plan_objective(plan: ResearchPlan, objective: str) -> None:
 
 
 METHOD_TO_TOOL: dict[str, tuple[str, str]] = {
+    "trait_associations": (
+        "analyze_trait_associations",
+        "Estimate exploratory drought genotype-mean trait associations with conditional genotype-profile bootstrap intervals.",
+    ),
+    "environment_stability": (
+        "summarize_environment_stability",
+        "Summarize observed environment yield variability and leave-one-environment-out rank sensitivity; not validated stability.",
+    ),
     "block_bootstrap_contrast": (
         "compare_regimes",
         "Estimate an exploratory drought-versus-well-watered contrast with block-bootstrap uncertainty.",
@@ -267,7 +281,7 @@ def build_deterministic_plan(objective: str, config: ResearchConfiguration) -> R
             description=METHOD_TO_TOOL[method][1],
             tool_name=METHOD_TO_TOOL[method][0],
         )
-        for index, method in enumerate(methods[: config.constraints.max_tool_calls])
+        for index, method in enumerate(methods)
     ]
     return ResearchPlan(
         objective_sha256=objective_digest(objective),
@@ -316,6 +330,8 @@ def build_refinement_schema() -> dict[str, Any]:
         "genotype_summaries",
         "missingness_summary",
         "provenance_export",
+        "trait_associations",
+        "environment_summaries",
     ]
     return {
         "type": "object",
@@ -359,7 +375,7 @@ def build_refinement_schema() -> dict[str, Any]:
             },
             "analysis_approaches": {
                 "type": "array",
-                "maxItems": 4,
+                "maxItems": 6,
                 "items": {
                     "type": "object",
                     "additionalProperties": False,
@@ -372,7 +388,7 @@ def build_refinement_schema() -> dict[str, Any]:
             },
             "desired_outputs": {
                 "type": "array",
-                "maxItems": 5,
+                "maxItems": 7,
                 "items": {"type": "string", "enum": outputs},
             },
             "tasks": {
@@ -393,6 +409,8 @@ def build_refinement_schema() -> dict[str, Any]:
                                 "rank_genotypes",
                                 "inspect_missingness",
                                 "dataset_profile",
+                                "analyze_trait_associations",
+                                "summarize_environment_stability",
                                 None,
                             ],
                         },

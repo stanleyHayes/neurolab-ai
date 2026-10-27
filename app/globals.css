@@ -6112,3 +6112,90 @@ output {
 .detail-page .source-workbench {
   max-width: 1240px;
 }
+.extended-evidence {
+  padding: 26px;
+  margin-top: 24px;
+  min-width: 0;
+}
+.extended-evidence > h3 {
+  font-family: "Zilla Slab", Georgia, serif;
+  font-size: 26px;
+  margin: 16px 0;
+}
+.extended-evidence > p {
+  font-size: 12px;
+  line-height: 1.75;
+  color: #c2d1ce;
+}
+.extended-evidence-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11px;
+  text-align: left;
+  min-width: 760px;
+  font-variant-numeric: tabular-nums;
+}
+.extended-evidence-table caption {
+  text-align: left;
+  color: #c4d3cf;
+  font-size: 11px;
+  padding: 16px 0;
+}
+.extended-evidence-table th,
+.extended-evidence-table td {
+  padding: 13px 12px;
+  border-bottom: 1px solid #344c4e;
+}
+.extended-evidence-table thead th {
+  font-size: 10px;
+  font-weight: 500;
+  color: #bed0cc;
+  line-height: 1.6;
+}
+.extended-evidence-table tbody th {
+  font-weight: 500;
+}
+.extended-evidence-table small {
+  display: block;
+  font-size: 9px;
+  color: #c0d0ca;
+  margin-top: 5px;
+}
+.extended-evidence-table .association-cell {
+  font-family: ui-monospace, monospace;
+  text-align: center;
+  font-size: 12px;
+}
+.environment-sensitivity-block {
+  margin: 24px 0;
+}
+.environment-sensitivity-block h4 {
+  font-size: 13px;
+  font-weight: 500;
+}
+.extended-method-limits {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid #344c4e;
+  font-size: 11px;
+  line-height: 1.7;
+  color: #c5d4ce;
+}
+.extended-method-limits summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+.extended-method-limits code {
+  overflow-wrap: anywhere;
+}
+.extended-method-limits li {
+  margin: 10px 0;
+}
+@media (max-width: 650px) {
+  .extended-evidence {
+    padding: 20px 16px;
+  }
+  .extended-evidence > h3 {
+    font-size: 23px;
+  }
+}

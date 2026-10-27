@@ -1,4 +1,8 @@
 import type { ResearchArtifact } from "./workspace-types";
+import {
+  ExtendedEvidence,
+  extendedArtifactsForSection,
+} from "./ExtendedEvidence";
 import { ResultIcon } from "./ResultIcon";
 import { ResultInterval, finiteMeasure } from "./ResultInterval";
 
@@ -10,6 +14,7 @@ export const cinematicNumber = (value: unknown) =>
 export function CinematicEvidence({
   artifacts,
 }: Readonly<{ artifacts: ResearchArtifact[] }>) {
+  const extended = extendedArtifactsForSection(artifacts, "research-results");
   const contrast = artifacts.find(
     (artifact) => artifact.tool_name === "compare_regimes",
   );
@@ -63,15 +68,18 @@ export function CinematicEvidence({
           </p>
         </div>
       ) : (
-        <div className="cinema-awaiting">
-          <ResultIcon name="record" />
-          <h3>Evidence arrives with the record.</h3>
-          <p>
-            Measurements appear only after their saved tool-completion event.
-            Playback does not run an analysis.
-          </p>
-        </div>
+        extended.length === 0 && (
+          <div className="cinema-awaiting">
+            <ResultIcon name="record" />
+            <h3>Evidence arrives with the record.</h3>
+            <p>
+              Measurements appear only after their saved tool-completion event.
+              Playback does not run an analysis.
+            </p>
+          </div>
+        )
       )}
+      <ExtendedEvidence artifacts={extended} />
       {top.length > 0 && (
         <div
           className="cinema-candidates cinema-result-reveal"

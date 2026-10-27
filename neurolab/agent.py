@@ -7,6 +7,7 @@ import time
 import uuid
 from typing import Any
 
+from .descriptive import descriptive_claim
 from .ghana import GhanaDataset
 from .providers import StructuredModelAdapter
 from .research_context import (
@@ -20,7 +21,7 @@ from .research_context import (
     validate_plan_objective,
 )
 from .store import RunStore
-from .tools import execute_tool, validate_tool_call
+from .tools import REGISTRY, execute_tool, validate_tool_call
 
 DECISION_RECORDED = "decision.recorded"
 
@@ -30,12 +31,7 @@ class AgentConfigurationError(RuntimeError):
 
 
 class ResearchAgent:
-    ALLOWED_ACTIONS = {
-        "dataset_profile",
-        "compare_regimes",
-        "rank_genotypes",
-        "inspect_missingness",
-    }
+    ALLOWED_ACTIONS = set(REGISTRY)
 
     @staticmethod
     def _grounded_claims(evidence: list[dict[str, Any]]) -> list[dict[str, Any]]:
@@ -83,6 +79,8 @@ class ResearchAgent:
                     if observed
                     else "The returned missingness summary reports no missing values."
                 )
+            elif tool in {"analyze_trait_associations", "summarize_environment_stability"}:
+                statement = descriptive_claim(artifact)
             else:
                 continue
             claims.append(
@@ -161,7 +159,7 @@ class ResearchAgent:
                 "tool_name": item["tool_name"],
                 "sample_size": item["sample_size"],
                 "claim_scope": item["claim_scope"],
-                "results": item["results"],
+                "results": item["results"].get("model_summary", item["results"]),
                 "warnings": item["warnings"],
             }
             for item in evidence
@@ -209,8 +207,8 @@ class ResearchAgent:
         parameters: dict[str, Any] = {}
         samples = result["bootstrap_samples"]
         if samples is not None:
-            if result["action"] != "compare_regimes":
-                raise ValueError("bootstrap_samples is only valid for compare_regimes")
+            if result["action"] not in {"compare_regimes", "analyze_trait_associations"}:
+                raise ValueError("bootstrap_samples is only valid for resampling analyses")
             if (
                 isinstance(samples, bool)
                 or not isinstance(samples, int)
@@ -486,7 +484,13 @@ class ResearchAgent:
             "grounded_claims": claims,
             "conclusion": " ".join(item["claim"] for item in claims)
             or "No result artifact was produced; no scientific conclusion is available.",
-            "limitations": limitations + unsupported,
+            "limitations": list(
+                dict.fromkeys(
+                    limitations
+                    + unsupported
+                    + [warning for item in evidence for warning in item["warnings"]]
+                )
+            ),
             "elapsed_seconds": round(time.monotonic() - start, 4),
         }
 

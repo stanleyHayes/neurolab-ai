@@ -35,7 +35,9 @@
         "dataset_profile",
         "compare_regimes",
         "rank_genotypes",
-        "inspect_missingness"
+        "inspect_missingness",
+        "analyze_trait_associations",
+        "summarize_environment_stability"
       ]
     },
     "parameters": {
@@ -55,7 +57,10 @@
       "if": {
         "properties": {
           "action": {
-            "const": "compare_regimes"
+            "enum": [
+              "compare_regimes",
+              "analyze_trait_associations"
+            ]
           }
         }
       },

@@ -9,6 +9,7 @@ from typing import Any
 
 from jsonschema import Draft202012Validator
 
+from .descriptive import analyze_trait_associations, summarize_environment_stability
 from .ghana import GhanaDataset
 from .science import compare_regimes, dataset_profile, inspect_missingness, rank_genotypes
 
@@ -71,11 +72,23 @@ def _missingness(dataset: GhanaDataset, _parameters: dict[str, Any], _seed: int)
     return inspect_missingness(dataset)
 
 
+def _traits(dataset: GhanaDataset, parameters: dict[str, Any], seed: int) -> dict[str, Any]:
+    return analyze_trait_associations(
+        dataset, seed=seed, bootstrap_samples=parameters.get("bootstrap_samples", 1000)
+    )
+
+
+def _stability(dataset: GhanaDataset, _parameters: dict[str, Any], _seed: int) -> dict[str, Any]:
+    return summarize_environment_stability(dataset)
+
+
 REGISTRY: dict[str, Tool] = {
     "dataset_profile": _profile,
     "compare_regimes": _compare,
     "rank_genotypes": _rank,
     "inspect_missingness": _missingness,
+    "analyze_trait_associations": _traits,
+    "summarize_environment_stability": _stability,
 }
 
 
@@ -92,7 +105,7 @@ def validate_tool_call(call: Any) -> dict[str, Any]:
         )
     if call["action"] not in REGISTRY:
         raise ToolValidationError(f"Action {call['action']!r} has no implemented safe handler")
-    if call["action"] == "compare_regimes":
+    if call["action"] in {"compare_regimes", "analyze_trait_associations"}:
         samples = call["parameters"].get("bootstrap_samples", 2000)
         if (
             isinstance(samples, bool)

@@ -53,3 +53,10 @@ D1 data and repo; D2 normalization; D3 statistical tools; D4 API; D5 Meta agent;
 - [x] Diagnose the stale port-8000 API behind the draft HTTP 404 and restart the confirmed checkout process with its existing environment/database retained.
 - [ ] Visually accept cinematic/setup views in the browser at desktop/tablet/mobile and test the real immersive-dialog/GPU behavior. Current browser access is unavailable; DOM tests are not a substitute.
 - [ ] Complete remaining science/answer-quality and production gates above. No new crop simulation, Meta call or scientific analysis is claimed by this presentation increment.
+
+## 2026-10-27 scientific-method increment
+
+- [x] Add deterministic Ghana environment variability/centering and leave-one-environment-out rank sensitivity, keeping regimes separate and incomplete coverage explicit.
+- [x] Add genotype-unit drought trait associations with conditional percentile resampling intervals, per-environment correlations, excluded counts and source-row lineage. These are exploratory, not confirmatory stability/causal estimates.
+- [x] Wire both methods through strict schemas/registry/plans, bounded execution, artifact-linked report claims/limitations, result tables/association heatmap and event-bound cinematic reveals. Preserve over-budget selected tasks as pending/partial.
+- [ ] Complete the full owner's investigation with explicitly evaluated hypotheses, candidate trade-offs and justified follow-up reporting; perform actual browser acceptance. Live Meta acceptance is paused by the owner's exhausted credits.

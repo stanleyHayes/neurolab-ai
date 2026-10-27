@@ -141,3 +141,27 @@ class ResearchContractTests(unittest.TestCase):
         with self.assertRaises(ModelContextLimitError):
             adapter.generate_structured(messages, {"type": "object"}, timeout=1)
         self.assertEqual(adapter.tokens_reserved, 0)
+
+
+class PlanBudgetCompletenessTests(unittest.TestCase):
+    def test_explicit_methods_are_not_silently_dropped_by_call_budget(self):
+        config = ResearchConfiguration(
+            preferred_methods=["dataset_profile", "trait_associations", "environment_stability"],
+            constraints=ResearchConstraints(max_steps=1, max_tool_calls=1),
+        )
+        plan = build_deterministic_plan("Investigate all selected methods", config)
+        self.assertEqual(len(plan.tasks), 3)
+        store = RunStore(":memory:")
+        try:
+            run = ResearchAgent(
+                load_ghana(ROOT), store, configuration=config, max_steps=1, max_tool_calls=1
+            ).run("Investigate all selected methods")
+            self.assertEqual(run["report"]["completion_status"], "partial")
+            self.assertEqual(
+                sum(
+                    task["status"] == "pending" for task in run["report"]["research_plan"]["tasks"]
+                ),
+                2,
+            )
+        finally:
+            store.close()

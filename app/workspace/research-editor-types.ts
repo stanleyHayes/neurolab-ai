@@ -1,6 +1,18 @@
 export const OBJECTIVE_LIMIT = 20_000;
 export const METHODS = [
   {
+    id: "trait_associations",
+    label: "Trait associations",
+    detail:
+      "Genotype-mean drought associations with conditional bootstrap intervals",
+  },
+  {
+    id: "environment_stability",
+    label: "Environment sensitivity",
+    detail:
+      "Observed yield variation and leave-one-environment-out ranks; not validated stability",
+  },
+  {
     id: "block_bootstrap_contrast",
     label: "Regime contrast",
     detail: "Environment-stratified yields and block-bootstrap uncertainty",
@@ -27,6 +39,8 @@ export const OUTPUTS = [
   "genotype_summaries",
   "missingness_summary",
   "provenance_export",
+  "trait_associations",
+  "environment_summaries",
 ] as const;
 export type ResearchMethod = (typeof METHODS)[number]["id"];
 export type ResearchOutput = (typeof OUTPUTS)[number];

@@ -4,6 +4,10 @@ import { useState } from "react";
 import { EmptyState } from "./EmptyState";
 import { ResultIcon } from "./ResultIcon";
 import { finiteMeasure, ResultInterval } from "./ResultInterval";
+import {
+  ExtendedEvidence,
+  extendedArtifactsForSection,
+} from "./ExtendedEvidence";
 import { ResultsProvenance, ResultsSummary } from "./ResultsSummary";
 import type {
   ResearchArtifact,
@@ -422,7 +426,9 @@ function GenotypeResults({
 }
 function AnalysisScopeNote({
   section,
-}: Readonly<{ section: WorkspaceSection }>) {
+  available,
+}: Readonly<{ section: WorkspaceSection; available: boolean }>) {
+  if (available) return null;
   if (section !== "trait-analytics" && section !== "environments") return null;
   const message =
     section === "trait-analytics"
@@ -453,8 +459,9 @@ export function EvidenceResults(props: Readonly<EvidenceResultsProps>) {
     formatNumber,
     downloadFile,
   } = props;
+  const extended = extendedArtifactsForSection(artifacts, section);
   const hasResult = Boolean(
-    (showContrast && contrast) || (showRanking && ranking),
+    (showContrast && contrast) || (showRanking && ranking) || extended.length,
   );
   const sourceConsistent =
     !report ||
@@ -506,7 +513,7 @@ export function EvidenceResults(props: Readonly<EvidenceResultsProps>) {
           withheld until the source inconsistency is resolved.
         </p>
       )}
-      <AnalysisScopeNote section={section} />
+      <AnalysisScopeNote section={section} available={extended.length > 0} />
       {retrieving && (
         <output
           className="results-loading"
@@ -521,11 +528,13 @@ export function EvidenceResults(props: Readonly<EvidenceResultsProps>) {
       )}
       {!retrieving && sourceConsistent && hasResult && (
         <>
-          <ResultsSummary
-            contrast={contrast}
-            ranking={ranking}
-            formatNumber={formatNumber}
-          />
+          {(contrast || ranking) && (
+            <ResultsSummary
+              contrast={contrast}
+              ranking={ranking}
+              formatNumber={formatNumber}
+            />
+          )}
           <div className="results-analysis-grid">
             {showContrast && contrast && (
               <ContrastResult
@@ -548,12 +557,13 @@ export function EvidenceResults(props: Readonly<EvidenceResultsProps>) {
               formatNumber={formatNumber}
             />
           )}
+          <ExtendedEvidence artifacts={extended} />
           {showContrast && !contrast && (
             <EmptyState
               compact
               icon="evidence"
               title="No regime comparison in this run"
-              description="The saved genotype summaries remain available. A regime contrast requires a separate completed tool artifact."
+              description="A regime contrast requires a separate completed tool artifact."
             />
           )}
           {showRanking && !ranking && (
@@ -561,7 +571,7 @@ export function EvidenceResults(props: Readonly<EvidenceResultsProps>) {
               compact
               icon="evidence"
               title="No genotype summaries in this run"
-              description="The saved regime contrast remains available. No ranking result was computed in this run."
+              description="No ranking result was computed in this run."
             />
           )}
         </>
