@@ -234,6 +234,7 @@ class RunOrchestrationTests(unittest.TestCase):
             with self.assertRaises(ModelProviderError):
                 OpenAICompatibleAdapter.from_environment()
 
+    @patch.dict(os.environ, {"MODEL_INFERENCE_ENABLED": "true"})
     def test_provider_reserves_and_enforces_per_run_token_budget(self):
         adapter = OpenAICompatibleAdapter(
             endpoint="https://provider.invalid/chat/completions",

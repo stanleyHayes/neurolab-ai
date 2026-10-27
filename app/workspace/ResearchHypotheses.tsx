@@ -42,7 +42,7 @@ export function ResearchHypotheses({
               {proposals.length} proposals
             </span>
           </div>
-          <ol className="hypothesis-card-grid" role="list">
+          <ol className="hypothesis-card-grid">
             {proposals.map((item, index) => (
               <li className="hypothesis-card" key={`${index}:${item.text}`}>
                 <div className="hypothesis-card-label">
@@ -96,7 +96,7 @@ export function ResearchHypotheses({
             </div>
           </div>
           {notes.length > 0 && (
-            <ul className="plan-boundary-notes" role="list">
+            <ul className="plan-boundary-notes">
               {notes.map((note, index) => (
                 <li key={`${index}:${note}`}>
                   <ResultIcon name="record" />

@@ -303,6 +303,7 @@ class SpendingConfigurationTests(unittest.TestCase):
         database.assert_not_called()
         transport.assert_not_called()
 
+    @patch.dict(os.environ, {"MODEL_INFERENCE_ENABLED": "true"})
     def test_adapter_without_owned_guard_cannot_use_transport(self):
         model = OpenAICompatibleAdapter("https://provider.invalid", "fixture", "fixture")
         with patch("neurolab.providers.http.client.HTTPSConnection") as transport:

@@ -305,23 +305,7 @@ a {
 .app-shell .nav-group-collapsed > .nav-group-children {
   display: none;
 }
-.nav-child-link {
-  position: relative;
-  display: flex;
-  min-height: 34px;
-  gap: 9px;
-  align-items: center;
-  padding: 5px 8px;
-  border: 1px solid transparent;
-  border-radius: 7px;
-  color: var(--day-muted, #9ab1b0);
-  font-size: 12px;
-  text-decoration: none;
-  transition:
-    background-color 0.16s ease,
-    border-color 0.16s ease,
-    color 0.16s ease;
-}
+
 .nav-child-link::before {
   position: absolute;
   top: 50%;
@@ -344,16 +328,7 @@ a {
   );
   color: var(--day-ink, #d9f7de);
 }
-.nav-child-link i {
-  display: grid;
-  width: 16px;
-  flex: 0 0 16px;
-  place-items: center;
-  color: var(--day-green, #88b4ab);
-  font:
-    normal 14px Arial,
-    sans-serif;
-}
+
 .nav-child-link.active i {
   color: var(--green);
 }
@@ -6627,21 +6602,6 @@ output {
   --day-red: #9c312d;
 }
 
-.theme-control {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  min-height: 44px;
-  padding: 8px 10px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  color: var(--text);
-  background: var(--panel);
-  font: inherit;
-  font-size: 12px;
-  cursor: pointer;
-}
 .theme-control svg {
   width: 18px;
   height: 18px;
@@ -6917,14 +6877,7 @@ output {
   min-height: 44px;
   font-size: 13px;
 }
-.workspace-navigation .avatar {
-  width: 36px;
-  height: 36px;
-  display: grid;
-  place-items: center;
-  flex-shrink: 0;
-  font-size: 12px;
-}
+
 .workspace-navigation .sidebar-collapse-button,
 .workspace-navigation .mobile-nav-trigger {
   width: 44px;
@@ -7018,17 +6971,42 @@ output {
   font: 10px var(--font-mono, monospace);
 }
 .nav-child-link {
+  position: relative;
+  display: flex;
+  gap: 9px;
+  padding: 5px 8px;
+  border: 1px solid transparent;
+  color: var(--day-muted, #9ab1b0);
+  font-size: 12px;
+  text-decoration: none;
+  transition:
+    background-color 0.16s ease,
+    border-color 0.16s ease,
+    color 0.16s ease;
   min-height: 44px;
   align-items: center;
   border-radius: 8px;
 }
 .nav-child-link i {
+  flex: 0 0 22px;
+  color: var(--day-green, #88b4ab);
+  font:
+    normal 14px Arial,
+    sans-serif;
   display: grid;
   place-items: center;
   width: 22px;
   flex-shrink: 0;
 }
 .theme-control {
+  gap: 6px;
+  min-height: 44px;
+  border: 1px solid var(--line);
+  color: var(--text);
+  background: var(--panel);
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -7063,13 +7041,7 @@ output {
 .theme-control[aria-pressed="true"] .theme-switch-thumb {
   transform: translateX(32px);
 }
-.theme-control .theme-switch-track svg {
-  position: relative;
-  width: 17px;
-  height: 17px;
-  stroke: currentColor;
-  stroke-width: 1.5;
-}
+
 :root[data-theme-reveal="true"]::view-transition-old(root),
 :root[data-theme-reveal="true"]::view-transition-new(root) {
   animation: none;
@@ -7130,6 +7102,12 @@ output {
 
 /* Circle dimensions must agree with flex sizing at every breakpoint. */
 .workspace-navigation .avatar {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  font-size: 12px;
   inline-size: 36px;
   min-inline-size: 36px;
   max-inline-size: 36px;
@@ -7162,6 +7140,11 @@ output {
   padding: 0;
 }
 .theme-control .theme-switch-track svg {
+  position: relative;
+  width: 17px;
+  height: 17px;
+  stroke: currentColor;
+  stroke-width: 1.5;
   flex: 0 0 17px;
   aspect-ratio: 1;
 }

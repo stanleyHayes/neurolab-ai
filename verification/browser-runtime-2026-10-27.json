@@ -1,0 +1,12 @@
+{
+  "date": "2026-10-27",
+  "missing_surfaces_error_cleared": true,
+  "initial_inventory_attempt": "timed out after 30 seconds; runtime reset",
+  "second_inventory_attempt": "completed; native apps enumerated; browsers empty",
+  "browser_error": "The browser access host is unavailable",
+  "in_app_tab_attempt": "same browser access host unavailable error",
+  "host_app_settings_attempt": "Computer Use is not allowed to use the host app for safety reasons",
+  "browser_visual_acceptance": false,
+  "settings_or_safeguards_bypassed": false,
+  "next_required_action": "Restore the app-managed browser access host; repeat rendered browser walkthrough before closing browser/video gates"
+}

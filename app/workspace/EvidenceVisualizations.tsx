@@ -28,12 +28,19 @@ export function MetricVisual({
   )
     return null;
   const domain = Math.max(maximum, amount, reference ?? 0);
+  let referenceDescription = "";
+  let scaleLabel = `${number(domain)} kg/ha`;
+  if (reference !== undefined) {
+    referenceDescription = `; reference ${number(reference)}`;
+    scaleLabel = `${number(reference)}% reference`;
+    if (domain > reference) scaleLabel += ` · scale to ${number(domain)}%`;
+  }
   return (
     <figure className="metric-visual">
       <svg
         viewBox="0 0 240 28"
         role="img"
-        aria-label={`${description}: ${number(amount)}; scale 0 to ${number(domain)}${reference === undefined ? "" : `; reference ${number(reference)}`}`}
+        aria-label={`${description}: ${number(amount)}; scale 0 to ${number(domain)}${referenceDescription}`}
       >
         <rect
           className="metric-visual-track"
@@ -60,11 +67,7 @@ export function MetricVisual({
       </svg>
       <figcaption>
         <span>0</span>
-        <span>
-          {reference === undefined
-            ? `${number(domain)} kg/ha`
-            : `${number(reference)}% reference${domain > reference ? ` · scale to ${number(domain)}%` : ""}`}
-        </span>
+        <span>{scaleLabel}</span>
       </figcaption>
     </figure>
   );
@@ -169,6 +172,9 @@ export function TraitAssociationPlot({
           entry.spearman_rho_95_percentile_interval,
         );
         const trait = label(entry.trait);
+        const intervalDescription = interval
+          ? `95% conditional resampling interval ${number(interval[0], 3)} to ${number(interval[1], 3)}`
+          : "interval not estimated";
         return (
           <div className="association-plot-row" key={`${trait}-${index}`}>
             <span>{trait}</span>
@@ -178,7 +184,7 @@ export function TraitAssociationPlot({
               <svg
                 viewBox="0 0 320 36"
                 role="img"
-                aria-label={`${trait}: Spearman rho ${number(value, 3)}; ${interval ? `95% conditional resampling interval ${number(interval[0], 3)} to ${number(interval[1], 3)}` : "interval not estimated"}`}
+                aria-label={`${trait}: Spearman rho ${number(value, 3)}; ${intervalDescription}`}
               >
                 <path className="comparison-axis" d="M12 18H308" />
                 <path className="comparison-zero" d={`M${x(0)} 2v32`} />
@@ -282,7 +288,15 @@ export function EnvironmentYieldPlot({
             <svg
               viewBox="0 0 320 36"
               role="img"
-              aria-label={`${entry.id}: ${entry.points.map((point) => `${point.environment} ${number(point.value)} kg/ha`).join("; ")}`}
+              aria-label={[
+                entry.id + ":",
+                entry.points
+                  .map(
+                    (point) =>
+                      `${point.environment} ${number(point.value)} kg/ha`,
+                  )
+                  .join("; "),
+              ].join(" ")}
             >
               <path className="comparison-axis" d="M12 18H308" />
               <path

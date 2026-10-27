@@ -4,6 +4,7 @@ import json
 import os
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 from pydantic import ValidationError
 
@@ -129,6 +130,7 @@ class ResearchContractTests(unittest.TestCase):
                 }
             )
 
+    @patch.dict(os.environ, {"MODEL_INFERENCE_ENABLED": "true"})
     def test_context_limit_rejects_before_transport_without_truncation(self):
         messages = [{"role": "user", "content": "α" * 10000}]
         self.assertGreater(estimated_context_tokens_upper_bound(messages), 20000)

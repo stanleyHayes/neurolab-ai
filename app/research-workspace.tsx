@@ -206,6 +206,14 @@ function usePrefersReducedMotion(): boolean {
   return reduced;
 }
 
+function headerAccountIdentity(
+  account: { display_name: string } | null,
+  displayName?: string,
+) {
+  if (!account || !displayName) return account;
+  return { ...account, display_name: displayName };
+}
+
 export function ResearchWorkspace({
   section = "overview",
   children,
@@ -810,11 +818,7 @@ export function ResearchWorkspace({
             setReplayIndex(0);
             setRunId(id);
           }}
-          account={
-            account && accountDisplayName
-              ? { ...account, display_name: accountDisplayName }
-              : account
-          }
+          account={headerAccountIdentity(account, accountDisplayName)}
           isOverview={showOverview}
           sidebarCollapsed={sidebarCollapsed}
           setSidebarCollapsed={setSidebarCollapsed}

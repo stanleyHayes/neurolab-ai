@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { ThemeControl } from "../theme-control";
+import { useEffect, useRef } from "react";
 import type { RefObject } from "react";
 import type { SavedRun } from "./workspace-types";
 
@@ -34,6 +35,28 @@ export function WorkspaceHeader({
   setMobileNavOpen,
   mobileNavTriggerRef,
 }: Readonly<WorkspaceHeaderProps>) {
+  const pickerRef = useRef<HTMLDetailsElement>(null);
+  useEffect(() => {
+    const dismissOnEscape = (event: KeyboardEvent) => {
+      const picker = pickerRef.current;
+      if (event.key !== "Escape" || !picker?.open) return;
+      picker.open = false;
+      picker.querySelector("summary")?.focus();
+    };
+    const dismissOutside = (event: Event) => {
+      const picker = pickerRef.current;
+      if (picker?.open && !picker.contains(event.target as Node))
+        picker.open = false;
+    };
+    document.addEventListener("keydown", dismissOnEscape);
+    document.addEventListener("focusin", dismissOutside);
+    document.addEventListener("pointerdown", dismissOutside);
+    return () => {
+      document.removeEventListener("keydown", dismissOnEscape);
+      document.removeEventListener("focusin", dismissOutside);
+      document.removeEventListener("pointerdown", dismissOutside);
+    };
+  }, []);
   return (
     <div className="workspace-navigation">
       <header className="topbar">
@@ -106,20 +129,7 @@ export function WorkspaceHeader({
       {savedRuns.length > 0 && (
         <div className="experiment-context">
           <span className="experiment-context-label">EXPERIMENT</span>
-          <details
-            className="experiment-picker"
-            key={runId}
-            onKeyDown={(event) => {
-              if (event.key === "Escape") {
-                event.currentTarget.removeAttribute("open");
-                event.currentTarget.querySelector("summary")?.focus();
-              }
-            }}
-            onBlur={(event) => {
-              if (!event.currentTarget.contains(event.relatedTarget))
-                event.currentTarget.removeAttribute("open");
-            }}
-          >
+          <details className="experiment-picker" key={runId} ref={pickerRef}>
             <summary>
               <span>
                 {savedRuns.find((run) => run.run_id === runId)?.objective ??

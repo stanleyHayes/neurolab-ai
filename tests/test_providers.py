@@ -38,6 +38,9 @@ def adapter(guard=None):
 
 class ProviderContractTests(unittest.TestCase):
     def setUp(self):
+        inference = patch.dict(os.environ, {"MODEL_INFERENCE_ENABLED": "true"})
+        inference.start()
+        self.addCleanup(inference.stop)
         self.store = RunStore(":memory:")
         self.owner = self.store.create_user("provider@example.test", "store-fixture", "Test")
         self.addCleanup(self.store.close)
