@@ -4,7 +4,7 @@
 
 > **Status:** Working research prototype; not a production agronomy service. The current analysis MVP uses the Ghana maize dataset. A real Meta Model API adapter has been smoke-tested, but an audited end-to-end agent run did **not** meet its target research objective. Results are exploratory and must not be used as field recommendations.
 
-**Repository:** [github.com/stanleyHayes/neurolab-ai](https://github.com/stanleyHayes/neurolab-ai) · **Current publication status:** project description and README are published; the application source tree is not yet present in the public repository.
+**Repository reference:** [github.com/stanleyHayes/neurolab-ai](https://github.com/stanleyHayes/neurolab-ai). This checkout has no configured remote; current public source availability is unverified. Local commits and a local clone do not establish public publication.
 
 ---
 
@@ -36,7 +36,7 @@ Focused replay now selects methods through [documented keyword routing](docs/FOC
 ## Scientific and safety boundaries
 
 - Treat outputs as **descriptive or exploratory evidence**, not causal effects, validated predictions, or agronomic recommendations.
-- The Ghana source includes 864 combined plot records across drought and well-watered regimes, 72 genotypes, and three trial-environment codes. Water regime and environment are confounded; comparisons do not isolate a causal irrigation effect.
+- The Ghana source includes 864 combined plot records across drought and well-watered regimes, 72 genotypes, and three ENVT indices represented by six regime-specific ENV codes. Water regime and environment are confounded; comparisons do not isolate a causal irrigation effect.
 - Genotype rankings are descriptive. Current ranking does not model alpha-lattice effects, adjust for multiple comparisons, or estimate ranking uncertainty; it is not a stability analysis.
 - Separate environment-sensitivity and trait-association tools provide descriptive variation, omitted-environment ranks and conditional genotype-profile resampling intervals. These do not establish validated stability, causal trait effects or future field performance. Methods and limitations: `docs/OBSERVATIONAL_SENSITIVITY_METHODS.md`.
 - Environment codes are not automatically calendar years. Preserve the source metadata when interpreting them.
@@ -69,7 +69,7 @@ The live Meta `muse-spark-1.3` adapter was smoke-tested, and a bounded run execu
 
 ## Getting started (full source checkout)
 
-> The public GitHub repository currently contains this README and repository metadata only, not the application source files. The following commands work after the complete project source tree and its `data/`, `neurolab/`, `scripts/`, and `app/` directories are available locally.
+> These instructions require the full source tree, including `data/`, `neurolab/`, `scripts/` and `app/`. Confirm those directories exist after obtaining the source. Public publication remains a separate acceptance gate.
 
 ### Prerequisites
 
@@ -95,7 +95,7 @@ For a local PostgreSQL setup, create the development database before starting th
 createdb neurolab
 ```
 
-Copy `.env.example` to `.env` and configure values as needed. The Python API does not automatically load `.env`; export its values in the API shell before startup. Keep `.env`, model credentials, and production secrets out of source control.
+Copy `.env.example` to `.env`. Keep `MODEL_INFERENCE_ENABLED=false` for the replay walkthrough. Set a private, high-entropy `AUTH_INVITE_CODE` before starting the API, then enter that code on the registration page to create your own account. A blank invite code closes registration; it does not enable open signup. Keep the invite out of recorded footage. Configure other values as needed. The Python API does not automatically load `.env`; export its values in the API shell before startup. Keep `.env`, model credentials, and production secrets out of source control.
 
 ### Audit and prepare data
 
@@ -132,7 +132,7 @@ npm run dev
 
 Open <http://localhost:3000> for the workspace. In development, FastAPI OpenAPI docs are at <http://127.0.0.1:8000/docs>. Set `RESEARCH_API_URL` if FastAPI is not listening at `http://127.0.0.1:8000`.
 
-Shared SQL request limits and verified-account budgets persist across replicas. Client IP forwarding is opt-in and requires a verified ingress trust chain; see [shared request admission](docs/SHARED_REQUEST_LIMITS.md). Signup remains invite-gated and provider-wide spend enforcement is still open.
+Shared SQL request limits and verified-account budgets persist across replicas. Client IP forwarding is opt-in and requires a verified ingress trust chain; see [shared request admission](docs/SHARED_REQUEST_LIMITS.md). Signup remains invite-gated. SQL provider spending reservations are implemented; external provider-account caps and actual billing acceptance remain open.
 
 Requests and queue claims persist in SQL; started work is not automatically retried after lease loss. See [durable research jobs](docs/DURABLE_RESEARCH_JOBS.md) for cancellation, deadlines, owner quotas and remaining operational gates.
 
@@ -215,7 +215,7 @@ The full local project source tree includes these additional documents:
 
 ## Contributing and responsible use
 
-Contributions should preserve source files, provenance, deterministic reproducibility, schema validation, and honest uncertainty. Add tests for behavior changes, report only checks actually run, and append material project work and evidence to `BUILD_LOG.md`. Do not commit secrets, private data, generated database files, or restricted assets. First-party invite-gated accounts now isolate research runs and nested outputs; see `docs/AUTH_CUSTOM_JWT.md` and `docs/USER_ISOLATION.md`. Public production remains blocked on shared abuse/cost controls, durable jobs, deployment and recovery procedures, key-rotation rehearsal, and complete browser/accessibility acceptance. No email password reset is offered because outbound delivery is not configured.
+Contributions should preserve source files, provenance, deterministic reproducibility, schema validation, and honest uncertainty. Add tests for behavior changes, report only checks actually run, and append material project work and evidence to `BUILD_LOG.md`. Do not commit secrets, private data, generated database files, or restricted assets. First-party invite-gated accounts now isolate research runs and nested outputs; see `docs/AUTH_CUSTOM_JWT.md` and `docs/USER_ISOLATION.md`. Public production remains blocked on target ingress/provider-account controls, supervised deployment, offsite recovery policy, target key-rotation acceptance and complete browser/accessibility checks; local SQL controls, durable jobs and generated-key rollover rehearsals are recorded separately. No email password reset is offered because outbound delivery is not configured.
 
 The current workspace has no `LICENSE` file. Dataset licenses do not automatically license application code; no open-source license for the project code is implied by this README.
 ### Present saved results without Meta credits

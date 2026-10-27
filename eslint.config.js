@@ -5,6 +5,8 @@ import nextTypeScript from "eslint-config-next/typescript";
 const eslintConfig = [
   {
     ignores: [
+      ".venv/**",
+      "venv/**",
       "coverage/**",
       ".test-build/**",
       ".scannerwork/**",

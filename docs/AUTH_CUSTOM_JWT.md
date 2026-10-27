@@ -4,7 +4,7 @@
 
 Implemented first-party FastAPI authentication (no identity provider): registration with an operator invite, sign-in, sign-out, sign-out-all, current profile, profile display-name update, password change, and rotating refresh. Password reset by email is intentionally absent because no verified delivery provider is configured. An operator-assisted reset procedure is in `DEPLOYMENT_AUTH_CHECKLIST.md`.
 
-Production still is **not approved for public launch**. Registration requires `AUTH_INVITE_CODE`; the current auth/login cooldown is stored in the application database and the edge request throttle is per-process. Neither is a substitute for a shared distributed abuse-control service. Provider spend limits, durable jobs, backups, deployment TLS, monitoring, and operations remain blockers.
+Production still is **not approved for public launch**. Registration requires `AUTH_INVITE_CODE`; auth/login cooldowns and request/account admission are shared in SQL, and durable jobs plus owner/global spending reservations are implemented. These local controls do not establish target ingress, actual provider-account caps/billing, supervised jobs, offsite backups, deployment TLS, monitoring or production operations. See `verification/CURRENT_COMPLETION_GATES.md` for the current evidence boundary.
 
 ## Token and password handling
 
