@@ -7106,7 +7106,6 @@ output {
   height: 36px;
   display: grid;
   place-items: center;
-  flex-shrink: 0;
   font-size: 12px;
   inline-size: 36px;
   min-inline-size: 36px;
