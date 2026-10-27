@@ -31,6 +31,8 @@ Portable offline HTML reports and actual-data PNG/SVG figure exports are availab
 
 Offline answer-quality evidence now includes preserved question/policy trials and explicitly non-blind assistant reviews. See [recorded-answer evaluation](docs/RECORDED_ANSWER_EVALUATION.md); these are not live Meta results.
 
+Focused replay now selects methods through [documented keyword routing](docs/FOCUSED_REPLAY_ROUTING.md), with explicit method/profile precedence and visible fallback limits.
+
 ## Scientific and safety boundaries
 
 - Treat outputs as **descriptive or exploratory evidence**, not causal effects, validated predictions, or agronomic recommendations.

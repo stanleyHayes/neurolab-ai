@@ -39,6 +39,19 @@ class AgentConfigurationError(RuntimeError):
     pass
 
 
+def _retention_statement(result):
+    ratio = result.get("drought_to_well_watered_yield_ratio_percent")
+    availability = (
+        f"Observed drought-to-well-watered yield retention is available: {ratio:.1f}%. "
+        if ratio is not None
+        else "Observed drought-to-well-watered yield retention is unavailable (null). "
+    )
+    return (
+        availability
+        + "This descriptive ratio requires a positive well-watered mean; otherwise it is null, and it is not a causal tolerance estimate."
+    )
+
+
 class ResearchAgent:
     ALLOWED_ACTIONS = set(REGISTRY)
 
@@ -58,7 +71,8 @@ class ResearchAgent:
                     f"{means['DROUGHT']:.1f} kg/ha (managed drought) and "
                     f"{means['WELL_WATERED']:.1f} kg/ha (well-watered); the descriptive "
                     f"drought-minus-control contrast was {result['yield_difference_kg_ha']:.1f} kg/ha "
-                    f"(95% block-bootstrap interval {interval[0]:.1f} to {interval[1]:.1f})."
+                    f"(95% block-bootstrap interval {interval[0]:.1f} to {interval[1]:.1f}). "
+                    + _retention_statement(result)
                 )
             elif tool == "rank_genotypes":
                 entries = result["genotypes"][:3]
@@ -68,13 +82,18 @@ class ResearchAgent:
                         f"{entry['genotype_id']} {entry['equal_environment_mean_yield_kg_ha']:.1f}"
                         for entry in entries
                     )
-                    + ". These are not field recommendations."
+                    + ". These summaries do not estimate rank confidence intervals or rank probabilities; alpha-lattice effects and multiplicity are not adjusted. These are not field recommendations."
                 )
             elif tool == "dataset_profile":
                 statement = (
                     f"The Ghana combined source contains {result['row_count']} plot records, "
                     f"{result['genotype_count']} genotypes, and environment indices "
-                    f"{', '.join(result['environment_codes'])}."
+                    f"{', '.join(result['environment_codes'])}. "
+                    + "Observed plots by regime: "
+                    + "; ".join(
+                        f"{key}: {count}" for key, count in sorted(result["water_regimes"].items())
+                    )
+                    + "."
                 )
             elif tool == "inspect_missingness":
                 missing = result.get("missingness", {})
@@ -483,6 +502,7 @@ class ResearchAgent:
             else "Replay planner is deterministic and is not Meta inference.",
             "Ghana water regime is confounded with trial environment.",
             "Only three ENVT indices are present; do not reinterpret them as calendar years.",
+            "Completion status describes the accepted method tasks, not semantic coverage of every sentence in the objective.",
         ]
         if failures:
             limitations.append(

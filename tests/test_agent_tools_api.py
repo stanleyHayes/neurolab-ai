@@ -108,8 +108,24 @@ class RunOrchestrationTests(unittest.TestCase):
         self.store.close()
 
     def test_closed_loop_decisions_follow_computed_evidence(self):
+        from neurolab.research_context import ResearchConfiguration
+
+        # Pin the legacy three-method contract: this tests trace/evidence behavior,
+        # independently of the automatic objective-routing policy.
+        config = ResearchConfiguration(
+            preferred_methods=[
+                "block_bootstrap_contrast",
+                "genotype_ranking",
+                "missingness_audit",
+            ]
+        )
         result = ResearchAgent(
-            self.dataset, self.store, max_steps=3, max_tool_calls=4, max_wall_time=30
+            self.dataset,
+            self.store,
+            configuration=config,
+            max_steps=3,
+            max_tool_calls=4,
+            max_wall_time=30,
         ).run("Which genotypes warrant drought follow-up?", seed=81)
         report = result["report"]
         self.assertEqual(report["mode"], "deterministic_replay")

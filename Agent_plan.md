@@ -80,3 +80,10 @@ D1 data and repo; D2 normalization; D3 statistical tools; D4 API; D5 Meta agent;
 - [x] Execute all twelve questions under equal-budget fixed/random/default replay policies; retain all 72 initial/corrected attempts, full artifacts and trace.
 - [x] Add strict stale/duplicate/invalid review rejection, explicit null unreviewed scores, identified subjective non-blind assistant ratings and descriptive intervals. Never infer semantic quality from valid calls/citations.
 - [ ] Fix focused replay/report relevance gaps revealed by review; complete model-visible adversarial fixtures, feedback ablations, blind review and live Meta comparison when permitted.
+
+## 2026-10-27 focused replay/report relevance increment
+
+- [x] Route automatic focused objectives to supported source/missingness/trait/environment/ranking/contrast methods; persist transparent heuristic constraints and fallback ambiguity. Preserve accepted plans, explicit preferences and full-profile criteria.
+- [x] State observed ratio availability/value, denominator/null/noncausal scope and absent rank confidence intervals/probabilities directly. Include per-regime source counts.
+- [x] Keep unmatched requested method tasks pending under small budgets; display planning ambiguity in the persisted-plan UI.
+- [ ] Verify committed service runtime and record fresh known-question regression evidence without overwriting earlier attempts or inheriting stale ratings.

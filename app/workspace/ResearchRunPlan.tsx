@@ -34,6 +34,16 @@ export function ResearchRunPlan({
               </ol>
             </>
           )}
+          {report.research_plan.ambiguities?.length > 0 && (
+            <div className="notice">
+              <h3>Planning limits and unresolved questions</h3>
+              <ul>
+                {report.research_plan.ambiguities.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          )}
           <h3>Task completion and recorded evidence</h3>
           <ol className="run-plan-task-list">
             {report.research_plan.tasks.map((task) => (

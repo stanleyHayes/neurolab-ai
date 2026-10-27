@@ -8,6 +8,7 @@ from typing import Any, Literal
 
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
+from .focused_planning import focused_methods
 from .investigation_profile import (
     PROFILE_HYPOTHESES,
     PROFILE_METHODS,
@@ -293,11 +294,13 @@ METHOD_TO_TOOL: dict[str, tuple[str, str]] = {
 def build_deterministic_plan(objective: str, config: ResearchConfiguration) -> ResearchPlan:
     validate_objective(objective)
     profile = PROFILE_OUTPUT in config.desired_outputs
-    methods = config.preferred_methods or (
-        list(PROFILE_METHODS)
-        if profile
-        else ["block_bootstrap_contrast", "genotype_ranking", "missingness_audit"]
-    )
+    constraints, ambiguities = [], []
+    if config.preferred_methods:
+        methods = config.preferred_methods
+    elif profile:
+        methods = list(PROFILE_METHODS)
+    else:
+        methods, constraints, ambiguities = focused_methods(objective)
     if profile and (set(methods) != set(PROFILE_METHODS) or config.dataset_id != "ghana_combined"):
         raise ValueError(
             "The Ghana investigation requires all six supported Ghana methods; remove the investigation output for a focused run."
@@ -321,7 +324,8 @@ def build_deterministic_plan(objective: str, config: ResearchConfiguration) -> R
         or (
             [f"{item['id']}: {item['proposal']}" for item in PROFILE_HYPOTHESES] if profile else []
         ),
-        important_constraints=profile_constraints() if profile else [],
+        important_constraints=profile_constraints() if profile else constraints,
+        ambiguities=ambiguities,
         dataset_suggestions=[
             DatasetSuggestion(
                 dataset_id=config.dataset_id,
