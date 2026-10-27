@@ -1,0 +1,15 @@
+{
+  "observed_at_utc": "2026-10-27T19:08:33.814532+00:00",
+  "api_started_utc": "2026-10-27T19:04:48.119219+00:00",
+  "nonterminal_records": [
+    {
+      "status": "RUNNING",
+      "created_at": "2026-10-26T11:55:55.770630Z",
+      "updated_at": "2026-10-26T11:55:55.776540Z",
+      "has_owner": false,
+      "has_report": true
+    }
+  ],
+  "observation": "Persisted status alone does not establish a live executor. These rows predate the process; current BackgroundTasks architecture has no startup resume. No record was modified or relabeled complete. Cause of the historical nonterminal state is not established by this observation.",
+  "remaining_gate": "Explicit stale-run reconciliation and durable shared job lifecycle."
+}

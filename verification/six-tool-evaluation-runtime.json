@@ -1,0 +1,56 @@
+{
+  "verified_at_utc": "2026-10-27T19:09:03.421351+00:00",
+  "collector_commit": "16455f4a7eea40e133185029f1b3a9b9b5224707",
+  "record_count": 36,
+  "eligible_tools": [
+    "dataset_profile",
+    "compare_regimes",
+    "rank_genotypes",
+    "inspect_missingness",
+    "analyze_trait_associations",
+    "summarize_environment_stability"
+  ],
+  "maximum_calls_per_run": 2,
+  "unexpected_failures": 0,
+  "semantic_reviews_pending": 36,
+  "source_sha256": "2e37c07f30e00efb33b59954dd6d02a04f3d67349790d782b70dbedfdaff05bc",
+  "calls_by_policy": {
+    "fixed_workflow": 24,
+    "seeded_random": 24,
+    "deterministic_replay": 14
+  },
+  "sonarqube_open_issues": 0,
+  "sonarqube_gate": {
+    "status": "OK",
+    "conditions": [
+      {
+        "status": "OK",
+        "metricKey": "new_coverage",
+        "comparator": "LT",
+        "errorThreshold": "80",
+        "actualValue": "85.3"
+      },
+      {
+        "status": "OK",
+        "metricKey": "new_duplicated_lines_density",
+        "comparator": "GT",
+        "errorThreshold": "3",
+        "actualValue": "0.15288"
+      },
+      {
+        "status": "OK",
+        "metricKey": "new_violations",
+        "comparator": "GT",
+        "errorThreshold": "0",
+        "actualValue": "0"
+      }
+    ],
+    "ignoredConditions": false,
+    "period": {
+      "mode": "PREVIOUS_VERSION",
+      "date": "2026-10-27T15:53:12+0000"
+    },
+    "caycStatus": "compliant"
+  },
+  "limitations": "Known-question offline collection, no Meta or inherited semantic ratings. Independent review/live-provider/generalization gates remain open."
+}

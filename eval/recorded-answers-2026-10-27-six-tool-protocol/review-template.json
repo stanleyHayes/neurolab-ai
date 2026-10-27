@@ -1,0 +1,506 @@
+[
+  {
+    "answer_id": "fixed_workflow/yield-contrast",
+    "answer_sha256": "cd890f93937723f9ecb8a81cd21c88fe57861dcd164db6bdf3995b58ed0fa673",
+    "reviewer": null,
+    "reviewer_type": null,
+    "blind": false,
+    "ratings": {
+      "answers_question": null,
+      "claims_supported": null,
+      "scope_honest": null,
+      "useful_to_researcher": null
+    },
+    "rationale": null
+  },
+  {
+    "answer_id": "seeded_random/yield-contrast",
+    "answer_sha256": "b0ba08e493ea66bf9618c4bbe76c06bf721a04e2fab6b12948282716a119d451",
+    "reviewer": null,
+    "reviewer_type": null,
+    "blind": false,
+    "ratings": {
+      "answers_question": null,
+      "claims_supported": null,
+      "scope_honest": null,
+      "useful_to_researcher": null
+    },
+    "rationale": null
+  },
+  {
+    "answer_id": "deterministic_replay/yield-contrast",
+    "answer_sha256": "66653c404999f71b902d650bcc71ea51a3c10b746f576344862263892ba8c803",
+    "reviewer": null,
+    "reviewer_type": null,
+    "blind": false,
+    "ratings": {
+      "answers_question": null,
+      "claims_supported": null,
+      "scope_honest": null,
+      "useful_to_researcher": null
+    },
+    "rationale": null
+  },
+  {
+    "answer_id": "fixed_workflow/drought-candidates",
+    "answer_sha256": "9084eaf5fba90d16de68356332ba329d54eff276db1be051c83a411b9e1bb0aa",
+    "reviewer": null,
+    "reviewer_type": null,
+    "blind": false,
+    "ratings": {
+      "answers_question": null,
+      "claims_supported": null,
+      "scope_honest": null,
+      "useful_to_researcher": null
+    },
+    "rationale": null
+  },
+  {
+    "answer_id": "seeded_random/drought-candidates",
+    "answer_sha256": "acf54cab7f4d15eea35f3e262c5e33fe5a59c448cbe5f7c76b81b4790c29eb40",
+    "reviewer": null,
+    "reviewer_type": null,
+    "blind": false,
+    "ratings": {
+      "answers_question": null,
+      "claims_supported": null,
+      "scope_honest": null,
+      "useful_to_researcher": null
+    },
+    "rationale": null
+  },
+  {
+    "answer_id": "deterministic_replay/drought-candidates",
+    "answer_sha256": "e32575806d3d5038bcac803ad94020a050af70fc00b8e9338ee3f6b9a5f36705",
+    "reviewer": null,
+    "reviewer_type": null,
+    "blind": false,
+    "ratings": {
+      "answers_question": null,
+      "claims_supported": null,
+      "scope_honest": null,
+      "useful_to_researcher": null
+    },
+    "rationale": null
+  },
+  {
+    "answer_id": "fixed_workflow/missingness",
+    "answer_sha256": "11265ed38777b9ef04f93b76fc8697a9e147ad86878e41131af0ebe63f2282e2",
+    "reviewer": null,
+    "reviewer_type": null,
+    "blind": false,
+    "ratings": {
+      "answers_question": null,
+      "claims_supported": null,
+      "scope_honest": null,
+      "useful_to_researcher": null
+    },
+    "rationale": null
+  },
+  {
+    "answer_id": "seeded_random/missingness",
+    "answer_sha256": "c3c614c38d257fba3d38ef9ec1d482b3748013aa4f542559389b2abc27c79d06",
+    "reviewer": null,
+    "reviewer_type": null,
+    "blind": false,
+    "ratings": {
+      "answers_question": null,
+      "claims_supported": null,
+      "scope_honest": null,
+      "useful_to_researcher": null
+    },
+    "rationale": null
+  },
+  {
+    "answer_id": "deterministic_replay/missingness",
+    "answer_sha256": "17a47f0db595243559384abfcb30d7241e83a6772be71005978f770b450e0786",
+    "reviewer": null,
+    "reviewer_type": null,
+    "blind": false,
+    "ratings": {
+      "answers_question": null,
+      "claims_supported": null,
+      "scope_honest": null,
+      "useful_to_researcher": null
+    },
+    "rationale": null
+  },
+  {
+    "answer_id": "fixed_workflow/dataset-structure",
+    "answer_sha256": "f322960d4c03f986519b5119c51321bff9606b9d6efb2b24ab098567168e26b7",
+    "reviewer": null,
+    "reviewer_type": null,
+    "blind": false,
+    "ratings": {
+      "answers_question": null,
+      "claims_supported": null,
+      "scope_honest": null,
+      "useful_to_researcher": null
+    },
+    "rationale": null
+  },
+  {
+    "answer_id": "seeded_random/dataset-structure",
+    "answer_sha256": "3046837311ea7e49f1b52bc2db9a4cca900e40fbaf562f19824e91d81e1f67a6",
+    "reviewer": null,
+    "reviewer_type": null,
+    "blind": false,
+    "ratings": {
+      "answers_question": null,
+      "claims_supported": null,
+      "scope_honest": null,
+      "useful_to_researcher": null
+    },
+    "rationale": null
+  },
+  {
+    "answer_id": "deterministic_replay/dataset-structure",
+    "answer_sha256": "a2d613d311e5be48debb420020c8ee82147db99dfd05ab8ef203ab2173c056a0",
+    "reviewer": null,
+    "reviewer_type": null,
+    "blind": false,
+    "ratings": {
+      "answers_question": null,
+      "claims_supported": null,
+      "scope_honest": null,
+      "useful_to_researcher": null
+    },
+    "rationale": null
+  },
+  {
+    "answer_id": "fixed_workflow/scientific-caveat",
+    "answer_sha256": "0339022fdba2ce45e35d3514ef0bd75400156fed234598661edce69252145eb2",
+    "reviewer": null,
+    "reviewer_type": null,
+    "blind": false,
+    "ratings": {
+      "answers_question": null,
+      "claims_supported": null,
+      "scope_honest": null,
+      "useful_to_researcher": null
+    },
+    "rationale": null
+  },
+  {
+    "answer_id": "seeded_random/scientific-caveat",
+    "answer_sha256": "b8919f31a736d093589d2941f36700917ecc356ce5eb2c45c77703e43ed2eb53",
+    "reviewer": null,
+    "reviewer_type": null,
+    "blind": false,
+    "ratings": {
+      "answers_question": null,
+      "claims_supported": null,
+      "scope_honest": null,
+      "useful_to_researcher": null
+    },
+    "rationale": null
+  },
+  {
+    "answer_id": "deterministic_replay/scientific-caveat",
+    "answer_sha256": "56adcabe8c1cf6d2d7de132cec71677a91ba93f91fb1ff6781cb3c64fe946b73",
+    "reviewer": null,
+    "reviewer_type": null,
+    "blind": false,
+    "ratings": {
+      "answers_question": null,
+      "claims_supported": null,
+      "scope_honest": null,
+      "useful_to_researcher": null
+    },
+    "rationale": null
+  },
+  {
+    "answer_id": "fixed_workflow/calendar-year-boundary",
+    "answer_sha256": "2390b539adcdea5cefa49d29c88fe2f81e01e61e7be2ba6d1363e061bb9def78",
+    "reviewer": null,
+    "reviewer_type": null,
+    "blind": false,
+    "ratings": {
+      "answers_question": null,
+      "claims_supported": null,
+      "scope_honest": null,
+      "useful_to_researcher": null
+    },
+    "rationale": null
+  },
+  {
+    "answer_id": "seeded_random/calendar-year-boundary",
+    "answer_sha256": "d85250c310ed0aabe9b97868c7c0c7a3d288f83c1e0eb11ae87bbbb9b85b5902",
+    "reviewer": null,
+    "reviewer_type": null,
+    "blind": false,
+    "ratings": {
+      "answers_question": null,
+      "claims_supported": null,
+      "scope_honest": null,
+      "useful_to_researcher": null
+    },
+    "rationale": null
+  },
+  {
+    "answer_id": "deterministic_replay/calendar-year-boundary",
+    "answer_sha256": "85ec1e92d64c4ac55bb54ea9b9192f4141e506583bf7352a83d11f6469988b08",
+    "reviewer": null,
+    "reviewer_type": null,
+    "blind": false,
+    "ratings": {
+      "answers_question": null,
+      "claims_supported": null,
+      "scope_honest": null,
+      "useful_to_researcher": null
+    },
+    "rationale": null
+  },
+  {
+    "answer_id": "fixed_workflow/structural-missingness",
+    "answer_sha256": "2d824cad4f90eb8e10f6a0734150e6da75ef5c8bb79e18fc329dddb47ec0267d",
+    "reviewer": null,
+    "reviewer_type": null,
+    "blind": false,
+    "ratings": {
+      "answers_question": null,
+      "claims_supported": null,
+      "scope_honest": null,
+      "useful_to_researcher": null
+    },
+    "rationale": null
+  },
+  {
+    "answer_id": "seeded_random/structural-missingness",
+    "answer_sha256": "478f3f821eba4bc5cb97fc91e795262f8d2c997dde2151d5279821aac2f7529e",
+    "reviewer": null,
+    "reviewer_type": null,
+    "blind": false,
+    "ratings": {
+      "answers_question": null,
+      "claims_supported": null,
+      "scope_honest": null,
+      "useful_to_researcher": null
+    },
+    "rationale": null
+  },
+  {
+    "answer_id": "deterministic_replay/structural-missingness",
+    "answer_sha256": "25393fdace0c94982dce6d7fc8e1c7f60e509bb3e09a5c1924fb827121dd3d2c",
+    "reviewer": null,
+    "reviewer_type": null,
+    "blind": false,
+    "ratings": {
+      "answers_question": null,
+      "claims_supported": null,
+      "scope_honest": null,
+      "useful_to_researcher": null
+    },
+    "rationale": null
+  },
+  {
+    "answer_id": "fixed_workflow/field-recommendation-safety",
+    "answer_sha256": "cacaa7d1f505b0cbc5de289784abf3dbda82b360981a9ee161e7209653b45712",
+    "reviewer": null,
+    "reviewer_type": null,
+    "blind": false,
+    "ratings": {
+      "answers_question": null,
+      "claims_supported": null,
+      "scope_honest": null,
+      "useful_to_researcher": null
+    },
+    "rationale": null
+  },
+  {
+    "answer_id": "seeded_random/field-recommendation-safety",
+    "answer_sha256": "0c21ea156d556a9ff7b61cec58dbb92ab8f8c36d4e92411923ae4f939376cc98",
+    "reviewer": null,
+    "reviewer_type": null,
+    "blind": false,
+    "ratings": {
+      "answers_question": null,
+      "claims_supported": null,
+      "scope_honest": null,
+      "useful_to_researcher": null
+    },
+    "rationale": null
+  },
+  {
+    "answer_id": "deterministic_replay/field-recommendation-safety",
+    "answer_sha256": "38d2783def8e4deac8b0df6d219fa8609a96d89c026dc81ade628ad08cc41ce2",
+    "reviewer": null,
+    "reviewer_type": null,
+    "blind": false,
+    "ratings": {
+      "answers_question": null,
+      "claims_supported": null,
+      "scope_honest": null,
+      "useful_to_researcher": null
+    },
+    "rationale": null
+  },
+  {
+    "answer_id": "fixed_workflow/source-grounding",
+    "answer_sha256": "5ec687d6f492dc00645aadcc08a45b9f4f2d331a19cf3c5a86012b871ca708ac",
+    "reviewer": null,
+    "reviewer_type": null,
+    "blind": false,
+    "ratings": {
+      "answers_question": null,
+      "claims_supported": null,
+      "scope_honest": null,
+      "useful_to_researcher": null
+    },
+    "rationale": null
+  },
+  {
+    "answer_id": "seeded_random/source-grounding",
+    "answer_sha256": "c978f0888eb825fbd2245881f11b2b5530c69ff217f3e951d63537bc915ff6a9",
+    "reviewer": null,
+    "reviewer_type": null,
+    "blind": false,
+    "ratings": {
+      "answers_question": null,
+      "claims_supported": null,
+      "scope_honest": null,
+      "useful_to_researcher": null
+    },
+    "rationale": null
+  },
+  {
+    "answer_id": "deterministic_replay/source-grounding",
+    "answer_sha256": "ecbe2a8ea5819b608b5b3b23ac690b06fd0fe065ab33dc6d41556f6b8b5e9ec3",
+    "reviewer": null,
+    "reviewer_type": null,
+    "blind": false,
+    "ratings": {
+      "answers_question": null,
+      "claims_supported": null,
+      "scope_honest": null,
+      "useful_to_researcher": null
+    },
+    "rationale": null
+  },
+  {
+    "answer_id": "fixed_workflow/zero-denominator-safety",
+    "answer_sha256": "4737d2db6e79ba1dcaa2ba8aefbe290ebe8a0bbd2adbf2eecf894fa7d783ff8e",
+    "reviewer": null,
+    "reviewer_type": null,
+    "blind": false,
+    "ratings": {
+      "answers_question": null,
+      "claims_supported": null,
+      "scope_honest": null,
+      "useful_to_researcher": null
+    },
+    "rationale": null
+  },
+  {
+    "answer_id": "seeded_random/zero-denominator-safety",
+    "answer_sha256": "88ed9afcfae30a786aaec79bb7f251d5377c87ce610fbb155436e3ed495684c4",
+    "reviewer": null,
+    "reviewer_type": null,
+    "blind": false,
+    "ratings": {
+      "answers_question": null,
+      "claims_supported": null,
+      "scope_honest": null,
+      "useful_to_researcher": null
+    },
+    "rationale": null
+  },
+  {
+    "answer_id": "deterministic_replay/zero-denominator-safety",
+    "answer_sha256": "e1bdca37503cc790e49c35c5fad09d0eb628aa9f144eff48e2b0fa14a3ab94db",
+    "reviewer": null,
+    "reviewer_type": null,
+    "blind": false,
+    "ratings": {
+      "answers_question": null,
+      "claims_supported": null,
+      "scope_honest": null,
+      "useful_to_researcher": null
+    },
+    "rationale": null
+  },
+  {
+    "answer_id": "fixed_workflow/prompt-injection-boundary",
+    "answer_sha256": "9dc1c45765becc7320e2180a3d29bdc0fcffd1e7e9e077992cff0fe26d0667e3",
+    "reviewer": null,
+    "reviewer_type": null,
+    "blind": false,
+    "ratings": {
+      "answers_question": null,
+      "claims_supported": null,
+      "scope_honest": null,
+      "useful_to_researcher": null
+    },
+    "rationale": null
+  },
+  {
+    "answer_id": "seeded_random/prompt-injection-boundary",
+    "answer_sha256": "230a263ce2674202cb75150ce65ab29ed8783042b5085a40ca54cb9724064417",
+    "reviewer": null,
+    "reviewer_type": null,
+    "blind": false,
+    "ratings": {
+      "answers_question": null,
+      "claims_supported": null,
+      "scope_honest": null,
+      "useful_to_researcher": null
+    },
+    "rationale": null
+  },
+  {
+    "answer_id": "deterministic_replay/prompt-injection-boundary",
+    "answer_sha256": "d24c01b3e104d1113971fa354c8d26a61807fb768b9275a5bbc18b4c0f6fd065",
+    "reviewer": null,
+    "reviewer_type": null,
+    "blind": false,
+    "ratings": {
+      "answers_question": null,
+      "claims_supported": null,
+      "scope_honest": null,
+      "useful_to_researcher": null
+    },
+    "rationale": null
+  },
+  {
+    "answer_id": "fixed_workflow/ranking-uncertainty-boundary",
+    "answer_sha256": "38b186b251a6af75c47591a3160e59922439f5146644d47991124f3e0f4ee084",
+    "reviewer": null,
+    "reviewer_type": null,
+    "blind": false,
+    "ratings": {
+      "answers_question": null,
+      "claims_supported": null,
+      "scope_honest": null,
+      "useful_to_researcher": null
+    },
+    "rationale": null
+  },
+  {
+    "answer_id": "seeded_random/ranking-uncertainty-boundary",
+    "answer_sha256": "b4f3972a5627d3d02584efc04ec03758384eebdae79e9c985dc019f547678c79",
+    "reviewer": null,
+    "reviewer_type": null,
+    "blind": false,
+    "ratings": {
+      "answers_question": null,
+      "claims_supported": null,
+      "scope_honest": null,
+      "useful_to_researcher": null
+    },
+    "rationale": null
+  },
+  {
+    "answer_id": "deterministic_replay/ranking-uncertainty-boundary",
+    "answer_sha256": "cf89da8c3552d5656bb619241667f16ea9afc8fd6e94ffd7d6a421e837050930",
+    "reviewer": null,
+    "reviewer_type": null,
+    "blind": false,
+    "ratings": {
+      "answers_question": null,
+      "claims_supported": null,
+      "scope_honest": null,
+      "useful_to_researcher": null
+    },
+    "rationale": null
+  }
+]

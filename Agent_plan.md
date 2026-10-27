@@ -87,3 +87,8 @@ D1 data and repo; D2 normalization; D3 statistical tools; D4 API; D5 Meta agent;
 - [x] State observed ratio availability/value, denominator/null/noncausal scope and absent rank confidence intervals/probabilities directly. Include per-regime source counts.
 - [x] Keep unmatched requested method tasks pending under small budgets; display planning ambiguity in the persisted-plan UI.
 - [ ] Verify committed service runtime and record fresh known-question regression evidence without overwriting earlier attempts or inheriting stale ratings.
+
+- [x] Post-commit focused API acceptance: five one-call cases, exact input, persisted numeric evidence and terminal SSE; no Meta.
+- [x] Preserve known-question regression and identify the old four-tool/random versus six-tool/router eligibility mismatch. Correct the protocol and collect a separate six-tool 36-answer set with ratings pending; preserve all prior attempts.
+- [ ] Complete fresh semantic adjudication of the corrected protocol, independent/held-out/live-provider evaluation and model-visible adversarial tests; retain the known-set and non-blind limitations.
+- [ ] Address explicitly observed historical nonterminal state and durable/shared job lifecycle; do not infer an active executor or mark old evidence complete from a stale status alone.
