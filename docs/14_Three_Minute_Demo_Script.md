@@ -1,5 +1,7 @@
 # 14 — Three-minute judged demo storyboard
 
+> **Recording update 27 October 2026:** Meta credits are exhausted. Use [the current demo recording guide](demo/NeuroLab_Demo_Recording_Guide.md) for the deterministic workflow, spoken script, follow-up objectives and stopping rules. The live-Meta storyboard below is historical and must not be narrated as the current recording mode.
+
 **0:00–0:18 — Hook.** 'Testing drought-resilient maize across years and treatments is difficult. NeuroLab accelerates the research *analysis*, not the field trial.' Show Ghana dataset source DOI and trial design.
 
 **0:18–0:38 — Real evidence.** Show 864 Ghana plot records, 72 genotypes, two regimes, three environments; click provenance and uncertainty.
