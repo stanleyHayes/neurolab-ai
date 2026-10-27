@@ -1,0 +1,31 @@
+{
+  "verified_at_utc": "2026-10-27T20:08:22.893589+00:00",
+  "code_commit": "68d20e35d1ed777b15b058382a0f6ecf14d58926",
+  "environment": "Two independent production-profile Uvicorn processes, disposable local PostgreSQL, generated temporary auth/service secrets, synthetic operational IPs",
+  "successful_same_owner_profile_requests": 10,
+  "actual_profile_rows": 864,
+  "eleventh_request_status": 429,
+  "retry_after_seconds": 38,
+  "api_restart_preserved_account_denial": true,
+  "different_owner_profile_status": 200,
+  "database_admission_outage_status": 503,
+  "health_remained_liveness": true,
+  "model_inference_enabled": false,
+  "scope": "Real HTTP/auth/SQL/tool execution and API restart; direct trusted service relay, not external ingress/BFF/TLS or paid-provider acceptance. No run/artifact IDs fabricated.",
+  "local_rollout": {
+    "verified_at_utc": "2026-10-27T20:09:14.310773+00:00",
+    "primary_and_review_api_health": 200,
+    "uvicorn_proxy_headers_disabled": true,
+    "review_production_frontend_reloaded": true,
+    "bff_login_profile_refresh_me_statuses": 200,
+    "profile_rows": 864,
+    "model_inference_enabled": false,
+    "scope": "Existing isolated local owner account through Next production BFF and FastAPI; no browser interaction or external ingress attribution acceptance.",
+    "primary_rate_tables": [
+      "request_rate_buckets",
+      "request_rate_control"
+    ],
+    "unowned_runs_with_job_rows": 0,
+    "unowned_history_count": 3
+  }
+}
