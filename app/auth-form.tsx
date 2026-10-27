@@ -7,6 +7,7 @@ import { Suspense, useEffect, useRef, useState } from "react";
 import type { ReactNode, SyntheticEvent } from "react";
 import { authRequest, ensureCsrfCookie } from "./auth-client";
 import { EyeIcon, KeyIcon, LockIcon, MailIcon, UserIcon } from "./auth-icons";
+import { ThemeControl } from "./theme-control";
 import { AuthField } from "./auth/AuthField";
 
 type AuthResponse = {
@@ -348,6 +349,9 @@ function AuthForm({ mode }: Readonly<{ mode: "sign-in" | "register" }>) {
               </span>
             </p>
           </section>
+          <div className="auth-theme-control">
+            <ThemeControl />
+          </div>
           <p className="auth-panel-foot">
             NEUROLAB AI <span>·</span> RESEARCH PROTOTYPE
           </p>

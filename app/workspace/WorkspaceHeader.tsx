@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { ThemeControl } from "../theme-control";
 import type { RefObject } from "react";
 
 type WorkspaceHeaderProps = {
@@ -69,6 +70,7 @@ export function WorkspaceHeader({
         <span className="breadcrumb">NEUROLAB / {title.toUpperCase()}</span>
       </div>
       <div className="topbar-actions">
+        <ThemeControl />
         <span className="research-mode">
           <span className="mode-dot" aria-hidden="true" /> RESEARCH MODE
         </span>

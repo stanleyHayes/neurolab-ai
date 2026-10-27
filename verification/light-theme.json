@@ -1,0 +1,41 @@
+{
+  "scope": "Light theme local implementation; rendered acceptance pending",
+  "source_sha256": {
+    "app/theme-control.tsx": "29880c7993fd0be05f7ead9aa2a9c59c94de414ec9cce59a0d42ce7fe00ac56f",
+    "app/globals.css": "9f21c49476fe9b8652add3c164df81f81b16e244fadea670202eda7a8b86770b",
+    "app/layout.tsx": "34884b22181cc21e385379d8eb8da9ea09b9ab23c0a894503ab3ef016d0476da",
+    "app/auth-form.tsx": "d397caf642795a2f01dca9e1b456e7feccd7f6a80984cbd76eb537b7d5e9e0f9",
+    "app/workspace/WorkspaceHeader.tsx": "108dd339080efda09afbc74a46f1207448202925d31df4c34bf176bd65613522",
+    "tests/ui/theme.test.tsx": "c744a649e996889150ec36ff3b357193de361d6c55a189889e9853adb84a0062"
+  },
+  "checks": {
+    "ui_tests": 72,
+    "ui_files": 13,
+    "eslint": "passed",
+    "typescript": "passed",
+    "production_build": "passed",
+    "text_token_minimum_contrast": 4.5,
+    "boundary_token_minimum_contrast": 3,
+    "tested_surfaces": [
+      "bg",
+      "panel",
+      "panel-raised",
+      "day-surface-accent"
+    ],
+    "dark_css_fallback_values_preserved": true
+  },
+  "browser_verified": false,
+  "browser_error": "CUA_REPL_ENABLED_SURFACES is required",
+  "sonar": "Current gate unverified; earlier infrastructure failures preserved separately",
+  "limitations": [
+    "Numeric token checks are not complete rendered accessibility acceptance.",
+    "Saved preference is restored after client hydration; no zero-flash guarantee.",
+    "No screenshot or browser visual review was fabricated."
+  ],
+  "log_sha256": {
+    "neurolab-theme-full-ui-final.log": "028a36feed7fcbe12234cb3dc3b506c587b8924037bd845c463ecb09afcdcd94",
+    "neurolab-theme-final-lint.log": "312dd8bc08aa23ad23b6e26cfe9b299ab191428dd6b8e99ff43cd6b6ac0bd0e8",
+    "neurolab-theme-final-types.log": "daada66d0b047d15edd39910e28cd8648d5d5eeebb04cfcc3b571e454df9f8d7",
+    "neurolab-theme-build.log": "7f209974b1849bf7dd1c16c55b496db89df8721c6c9ba09a6b57f0054fdc5b5f"
+  }
+}

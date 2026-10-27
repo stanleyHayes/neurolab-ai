@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { ThemePreference } from "./theme-control";
 
 export const metadata: Metadata = {
   title: "NeuroLab AI — Field Evidence Lab",
@@ -12,7 +13,10 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <ThemePreference />
+        {children}
+      </body>
     </html>
   );
 }
