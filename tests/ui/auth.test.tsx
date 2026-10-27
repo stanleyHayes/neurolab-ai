@@ -33,6 +33,7 @@ beforeEach(() => {
         document.cookie = "neurolab_csrf=fixture-csrf; path=/";
         return Response.json({ csrf_ready: true });
       }
+      if (url.includes("/research-runs?limit=")) return Response.json([]);
       if (url.endsWith("/me"))
         return Response.json(
           init?.method === "PATCH"
@@ -112,6 +113,11 @@ it("updates profile and changes password with current-password confirmation", as
     "textContent",
     "Profile updated.",
   );
+  expect(
+    await screen.findByRole("link", {
+      name: "Account settings for Updated Researcher",
+    }),
+  ).toBeTruthy();
   fireEvent.change(screen.getByLabelText("Current password"), {
     target: { value: "fixture-password-current" },
   });
@@ -142,7 +148,8 @@ it("updates profile and changes password with current-password confirmation", as
   expect(getAccessToken()).toBe("");
 });
 
-it("offers account section navigation and appearance controls", async () => {
+it("offers account section navigation and appearance controls inside the app shell", async () => {
+  navigation.pathname = "/settings/account";
   render(<AccountSettingsPage />);
   await screen.findByText(user.email);
   expect(
@@ -160,6 +167,48 @@ it("offers account section navigation and appearance controls", async () => {
   ).toBe("#account-password");
   expect(screen.getByRole("button", { name: "Light mode" })).toBeTruthy();
   expect(screen.getByText("Member since October 2026")).toBeTruthy();
+  expect(screen.getAllByRole("main")).toHaveLength(1);
+  expect(screen.getAllByRole("banner")).toHaveLength(1);
+  expect(
+    screen.getByRole("complementary", { name: "Primary navigation" }),
+  ).toBeTruthy();
+  expect(
+    screen.getByRole("link", { name: "Overview" }).getAttribute("href"),
+  ).toBe("/");
+  expect(
+    screen.getByPlaceholderText("Enter your researcher name"),
+  ).toBeTruthy();
+});
+
+it("keeps password visibility controls independent and outside form submission", async () => {
+  render(<AccountSettingsPage />);
+  await screen.findByText(user.email);
+  const current = screen.getByPlaceholderText(
+    "Enter your current password",
+  ) as HTMLInputElement;
+  const next = screen.getByPlaceholderText(
+    "Create a new password",
+  ) as HTMLInputElement;
+  const confirm = screen.getByPlaceholderText(
+    "Re-enter your new password",
+  ) as HTMLInputElement;
+  fireEvent.change(current, { target: { value: "fixture-current-password" } });
+  fireEvent.click(
+    screen.getByRole("button", { name: "Show current password" }),
+  );
+  expect(current.type).toBe("text");
+  expect(current.value).toBe("fixture-current-password");
+  expect(next.type).toBe("password");
+  expect(confirm.type).toBe("password");
+  fireEvent.click(
+    screen.getByRole("button", { name: "Hide current password" }),
+  );
+  expect(current.type).toBe("password");
+  expect(
+    vi
+      .mocked(fetch)
+      .mock.calls.some(([url]) => String(url).endsWith("/change-password")),
+  ).toBe(false);
 });
 
 it("revokes all sessions through the authenticated CSRF-protected action", async () => {

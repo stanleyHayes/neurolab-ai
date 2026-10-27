@@ -4,6 +4,7 @@ import Link from "next/link";
 import dynamic from "next/dynamic";
 import { usePathname, useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import type { ReactNode } from "react";
 import {
   authenticatedFetch,
   clearAccessToken,
@@ -207,8 +208,14 @@ function usePrefersReducedMotion(): boolean {
 
 export function ResearchWorkspace({
   section = "overview",
+  children,
+  pageTitle,
+  accountDisplayName,
 }: Readonly<{
   section?: WorkspaceSection;
+  children?: ReactNode;
+  pageTitle?: string;
+  accountDisplayName?: string;
 }>) {
   const pathname = usePathname();
   const router = useRouter();
@@ -792,7 +799,7 @@ export function ResearchWorkspace({
       />
       <div className="main-column">
         <WorkspaceHeader
-          title={sectionCopy.title}
+          title={pageTitle ?? sectionCopy.title}
           providerLabel={providerLabel}
           runId={runId}
           savedRuns={savedRuns}
@@ -803,7 +810,11 @@ export function ResearchWorkspace({
             setReplayIndex(0);
             setRunId(id);
           }}
-          account={account}
+          account={
+            account && accountDisplayName
+              ? { ...account, display_name: accountDisplayName }
+              : account
+          }
           isOverview={showOverview}
           sidebarCollapsed={sidebarCollapsed}
           setSidebarCollapsed={setSidebarCollapsed}
@@ -817,320 +828,335 @@ export function ResearchWorkspace({
           id="main"
           className={`page-content${showOverview ? " overview-page" : " detail-page"}`}
         >
-          {Object.entries(errors).map(([context, details]) => {
-            const errorCopy: Record<
-              ErrorContext,
-              {
-                title: string;
-                description: string;
-                action: string;
-                retry: () => void | Promise<void>;
-              }
-            > = {
-              dataset: {
-                title: "Dataset profile unavailable",
-                description:
-                  "The verified source summary could not be loaded. You can retry without losing your current workspace.",
-                action: "Reload dataset",
-                retry: loadProfile,
-              },
-              history: {
-                title: "Saved runs couldn’t be loaded",
-                description:
-                  "Your current workspace is still available. Try loading saved runs again.",
-                action: "Reload saved runs",
-                retry: loadHistory,
-              },
-              run: {
-                title: "This run couldn’t be opened",
-                description:
-                  "The saved run may be temporarily unavailable. Try loading its persisted events and results again.",
-                action: "Reload run",
-                retry: async () => {
-                  if (runId) await loadRun(runId);
-                },
-              },
-              start: {
-                title: "The research run couldn’t start",
-                description:
-                  "Check the research question and analysis configuration, then try starting a new run.",
-                action: "Try again",
-                retry: runAnalysis,
-              },
-              cancel: {
-                title: "Cancellation wasn’t confirmed",
-                description:
-                  "The run may still be active. Retry the cancellation request or check its saved timeline.",
-                action: "Retry cancellation",
-                retry: cancelRun,
-              },
-              failedRun: {
-                title: "The research run stopped before completing",
-                description:
-                  "No completed report is available for this run. You can start a fresh attempt; previous saved events remain available.",
-                action: "Start a new run",
-                retry: runAnalysis,
-              },
-            };
-            const errorContext = context as ErrorContext;
-            const copy = errorCopy[errorContext];
-            return (
-              <WorkspaceErrorItem
-                key={context}
-                context={errorContext}
-                details={details}
-                copy={copy}
-                retrying={retryingContext === errorContext}
-                onRetry={retryError}
-              />
-            );
-          })}
-
-          {!showOverview && (
-            <section className="page-title-block">
-              <span className="eyebrow">NEUROLAB RESEARCH WORKSPACE</span>
-              <h1>{sectionCopy.title}</h1>
-              <p>{sectionCopy.description}</p>
-            </section>
-          )}
-
-          {showOverview && (
-            <WorkspaceOverview
-              profile={profile}
-              profileLoading={profileLoading}
-              runStatus={runStatus}
-              busy={busy}
-              reducedMotion={reducedMotion}
-            />
-          )}
-
-          {showExperiment && (
-            <div className="section-heading">
-              <div>
-                <span className="eyebrow">RESEARCH WORKSPACE</span>
-                <h2>{renderedChoice1}</h2>
-              </div>
-              <span className="workspace-caption">
-                REAL DATA · PERSISTED RUNS · TRACEABLE RESULTS
-              </span>
-            </div>
-          )}
-
-          {showTimeline && (
-            <CinematicPlayer
-              runId={runId}
-              runStatus={runStatus}
-              report={report}
-              events={events}
-              artifacts={artifacts}
-              reducedMotion={reducedMotion}
-              retrieving={runRetrieving}
-              playing={presenting}
-              setPlaying={setPresenting}
-              index={replayIndex}
-              setIndex={setReplayIndex}
-              downloadFile={downloadFile}
-            />
-          )}
-
-          <section
-            className={`workspace-grid workspace-${section}`}
-            aria-label={sectionCopy.title}
-          >
-            {showExperiment && (
-              <ExperimentSetup
-                objective={objective}
-                setObjective={setObjective}
-                mode={mode}
-                setMode={setMode}
-                busy={busy}
-                canceling={canceling}
-                runId={runId}
-                runStatus={runStatus}
-                toolCalls={report?.tool_calls}
-                runAnalysis={runAnalysis}
-                cancelRun={cancelRun}
-              />
-            )}
-
-            {showProvenance && (
-              <SourceProvenance
-                profile={profile}
-                profileLoading={profileLoading}
-                report={report}
-              />
-            )}
-
-            {showEvidence && (
-              <EvidenceResults
-                section={section}
-                artifacts={artifacts}
-                report={report}
-                events={events}
-                retrieving={runRetrieving}
-                showContrast={showContrast}
-                showRanking={showRanking}
-                contrast={contrast}
-                ranking={ranking}
-                resultValues={resultValues}
-                means={means}
-                topGenotypes={topGenotypes}
-                contrastCI={
-                  record(contrast?.uncertainty).yield_difference_95_ci_kg_ha
-                }
-                formatNumber={number}
-                downloadFile={downloadFile}
-              />
-            )}
-
-            {showTimeline && (
-              <ResearchTimeline
-                events={events}
-                runRetrieving={runRetrieving}
-                runId={runId}
-                runStatus={runStatus}
-                presenting={presenting}
-                setPresenting={setPresenting}
-                replayIndex={replayIndex}
-                setReplayIndex={setReplayIndex}
-                replayLoadingId={replayLoadingId}
-                historyLoading={historyLoading}
-                historyLoaded={historyLoaded}
-                historyError={errors.history}
-                savedRuns={savedRuns}
-                loadHistory={loadHistory}
-                replaySavedRun={replaySavedRun}
-              />
-            )}
-          </section>
-
-          {report && isScientificReportSection(section) && (
-            <ScientificReportView report={report} downloadFile={downloadFile} />
-          )}
-          {report &&
-            (showReproducibility || showTimeline || showExperiment) && (
-              <ResearchRunPlan report={report} />
-            )}
-
-          {showReproducibility && (
-            <section
-              className="report-strip"
-              id="report-strip"
-              aria-label="Reproducibility report"
-            >
-              {report ? (
-                <>
-                  <div>
-                    <span>RUN</span>
-                    <code>{report.run_id}</code>
-                  </div>
-                  <div>
-                    <span>SEED</span>
-                    <code>{report.seed}</code>
-                  </div>
-                  <div>
-                    <span>ANALYSIS</span>
-                    <code>
-                      {report.mode === "meta"
-                        ? `${report.model_provider ?? "Meta"} · ${report.model_id ?? "configured model"}`
-                        : "Deterministic replay · no inference"}
-                    </code>
-                  </div>
-                  <div>
-                    <span>CLAIM SCOPE</span>
-                    <code>Observational / exploratory</code>
-                  </div>
-                  {report.limitations.map((limitation) => (
-                    <p className="report-limitation" key={limitation}>
-                      {limitation}
-                    </p>
-                  ))}
-                  <div className="export-row">
-                    <button
-                      className="secondary-button"
-                      type="button"
-                      onClick={() =>
-                        downloadFile(
-                          `neurolab-${report.run_id}.json`,
-                          { report, artifacts, events },
-                          "application/json",
-                        )
-                      }
-                    >
-                      Export evidence JSON
-                    </button>
-                    <button
-                      className="secondary-button"
-                      type="button"
-                      onClick={() =>
-                        downloadFile(
-                          `neurolab-${report.run_id}.csv`,
-                          [
-                            "artifact_id,tool_name,claim_scope,sample_size,source_sha256",
-                            ...artifacts.map(
-                              (item) =>
-                                `${item.artifact_id},${item.tool_name},${item.claim_scope},${item.sample_size},${item.source_sha256}`,
-                            ),
-                          ].join("\n"),
-                          "text/csv",
-                        )
-                      }
-                    >
-                      Export artifact index CSV
-                    </button>
-                  </div>
-                </>
-              ) : (
-                <EmptyState
-                  icon="report"
-                  title="No completed report selected"
-                  description="Run or replay an experiment to see its seed, source identity, analysis mode, limitations, and artifact exports."
-                  action={
-                    <Link className="primary-link" href="/experiment-studio">
-                      Create a research run <span aria-hidden="true">↗</span>
-                    </Link>
+          {children ?? (
+            <>
+              {Object.entries(errors).map(([context, details]) => {
+                const errorCopy: Record<
+                  ErrorContext,
+                  {
+                    title: string;
+                    description: string;
+                    action: string;
+                    retry: () => void | Promise<void>;
                   }
+                > = {
+                  dataset: {
+                    title: "Dataset profile unavailable",
+                    description:
+                      "The verified source summary could not be loaded. You can retry without losing your current workspace.",
+                    action: "Reload dataset",
+                    retry: loadProfile,
+                  },
+                  history: {
+                    title: "Saved runs couldn’t be loaded",
+                    description:
+                      "Your current workspace is still available. Try loading saved runs again.",
+                    action: "Reload saved runs",
+                    retry: loadHistory,
+                  },
+                  run: {
+                    title: "This run couldn’t be opened",
+                    description:
+                      "The saved run may be temporarily unavailable. Try loading its persisted events and results again.",
+                    action: "Reload run",
+                    retry: async () => {
+                      if (runId) await loadRun(runId);
+                    },
+                  },
+                  start: {
+                    title: "The research run couldn’t start",
+                    description:
+                      "Check the research question and analysis configuration, then try starting a new run.",
+                    action: "Try again",
+                    retry: runAnalysis,
+                  },
+                  cancel: {
+                    title: "Cancellation wasn’t confirmed",
+                    description:
+                      "The run may still be active. Retry the cancellation request or check its saved timeline.",
+                    action: "Retry cancellation",
+                    retry: cancelRun,
+                  },
+                  failedRun: {
+                    title: "The research run stopped before completing",
+                    description:
+                      "No completed report is available for this run. You can start a fresh attempt; previous saved events remain available.",
+                    action: "Start a new run",
+                    retry: runAnalysis,
+                  },
+                };
+                const errorContext = context as ErrorContext;
+                const copy = errorCopy[errorContext];
+                return (
+                  <WorkspaceErrorItem
+                    key={context}
+                    context={errorContext}
+                    details={details}
+                    copy={copy}
+                    retrying={retryingContext === errorContext}
+                    onRetry={retryError}
+                  />
+                );
+              })}
+
+              {!showOverview && (
+                <section className="page-title-block">
+                  <span className="eyebrow">NEUROLAB RESEARCH WORKSPACE</span>
+                  <h1>{sectionCopy.title}</h1>
+                  <p>{sectionCopy.description}</p>
+                </section>
+              )}
+
+              {showOverview && (
+                <WorkspaceOverview
+                  profile={profile}
+                  profileLoading={profileLoading}
+                  runStatus={runStatus}
+                  busy={busy}
+                  reducedMotion={reducedMotion}
                 />
               )}
-            </section>
-          )}
-          {showGroundedClaims && (
-            <section
-              className="grounded-report"
-              id="grounded-report"
-              aria-label="Evidence-linked report claims"
-            >
-              <div className="card-head">
-                <span className="eyebrow">EVIDENCE-LINKED INSIGHTS</span>
-              </div>
-              <h2>Research insights</h2>
-              {report?.grounded_claims && report.grounded_claims.length > 0 ? (
-                report.grounded_claims.map((item) => (
-                  <p
-                    className="grounded-claim"
-                    key={item.evidence_ids.join("-")}
-                  >
-                    <span>
-                      {item.claim_scope} · evidence{" "}
-                      {item.evidence_ids.join(", ")}
-                    </span>
-                    {item.claim}
-                  </p>
-                ))
-              ) : (
-                <EmptyState
-                  compact
-                  icon="insight"
-                  title="No evidence-linked insights yet"
-                  description="AI narratives are not scientific results. Complete a run with persisted tool evidence to review grounded claims."
-                  action={
-                    <Link className="primary-link" href="/experiment-studio">
-                      Start an experiment <span aria-hidden="true">↗</span>
-                    </Link>
-                  }
+
+              {showExperiment && (
+                <div className="section-heading">
+                  <div>
+                    <span className="eyebrow">RESEARCH WORKSPACE</span>
+                    <h2>{renderedChoice1}</h2>
+                  </div>
+                  <span className="workspace-caption">
+                    REAL DATA · PERSISTED RUNS · TRACEABLE RESULTS
+                  </span>
+                </div>
+              )}
+
+              {showTimeline && (
+                <CinematicPlayer
+                  runId={runId}
+                  runStatus={runStatus}
+                  report={report}
+                  events={events}
+                  artifacts={artifacts}
+                  reducedMotion={reducedMotion}
+                  retrieving={runRetrieving}
+                  playing={presenting}
+                  setPlaying={setPresenting}
+                  index={replayIndex}
+                  setIndex={setReplayIndex}
+                  downloadFile={downloadFile}
                 />
               )}
-            </section>
+
+              <section
+                className={`workspace-grid workspace-${section}`}
+                aria-label={sectionCopy.title}
+              >
+                {showExperiment && (
+                  <ExperimentSetup
+                    objective={objective}
+                    setObjective={setObjective}
+                    mode={mode}
+                    setMode={setMode}
+                    busy={busy}
+                    canceling={canceling}
+                    runId={runId}
+                    runStatus={runStatus}
+                    toolCalls={report?.tool_calls}
+                    runAnalysis={runAnalysis}
+                    cancelRun={cancelRun}
+                  />
+                )}
+
+                {showProvenance && (
+                  <SourceProvenance
+                    profile={profile}
+                    profileLoading={profileLoading}
+                    report={report}
+                  />
+                )}
+
+                {showEvidence && (
+                  <EvidenceResults
+                    section={section}
+                    artifacts={artifacts}
+                    report={report}
+                    events={events}
+                    retrieving={runRetrieving}
+                    showContrast={showContrast}
+                    showRanking={showRanking}
+                    contrast={contrast}
+                    ranking={ranking}
+                    resultValues={resultValues}
+                    means={means}
+                    topGenotypes={topGenotypes}
+                    contrastCI={
+                      record(contrast?.uncertainty).yield_difference_95_ci_kg_ha
+                    }
+                    formatNumber={number}
+                    downloadFile={downloadFile}
+                  />
+                )}
+
+                {showTimeline && (
+                  <ResearchTimeline
+                    events={events}
+                    runRetrieving={runRetrieving}
+                    runId={runId}
+                    runStatus={runStatus}
+                    presenting={presenting}
+                    setPresenting={setPresenting}
+                    replayIndex={replayIndex}
+                    setReplayIndex={setReplayIndex}
+                    replayLoadingId={replayLoadingId}
+                    historyLoading={historyLoading}
+                    historyLoaded={historyLoaded}
+                    historyError={errors.history}
+                    savedRuns={savedRuns}
+                    loadHistory={loadHistory}
+                    replaySavedRun={replaySavedRun}
+                  />
+                )}
+              </section>
+
+              {report && isScientificReportSection(section) && (
+                <ScientificReportView
+                  report={report}
+                  downloadFile={downloadFile}
+                />
+              )}
+              {report &&
+                (showReproducibility || showTimeline || showExperiment) && (
+                  <ResearchRunPlan report={report} />
+                )}
+
+              {showReproducibility && (
+                <section
+                  className="report-strip"
+                  id="report-strip"
+                  aria-label="Reproducibility report"
+                >
+                  {report ? (
+                    <>
+                      <div>
+                        <span>RUN</span>
+                        <code>{report.run_id}</code>
+                      </div>
+                      <div>
+                        <span>SEED</span>
+                        <code>{report.seed}</code>
+                      </div>
+                      <div>
+                        <span>ANALYSIS</span>
+                        <code>
+                          {report.mode === "meta"
+                            ? `${report.model_provider ?? "Meta"} · ${report.model_id ?? "configured model"}`
+                            : "Deterministic replay · no inference"}
+                        </code>
+                      </div>
+                      <div>
+                        <span>CLAIM SCOPE</span>
+                        <code>Observational / exploratory</code>
+                      </div>
+                      {report.limitations.map((limitation) => (
+                        <p className="report-limitation" key={limitation}>
+                          {limitation}
+                        </p>
+                      ))}
+                      <div className="export-row">
+                        <button
+                          className="secondary-button"
+                          type="button"
+                          onClick={() =>
+                            downloadFile(
+                              `neurolab-${report.run_id}.json`,
+                              { report, artifacts, events },
+                              "application/json",
+                            )
+                          }
+                        >
+                          Export evidence JSON
+                        </button>
+                        <button
+                          className="secondary-button"
+                          type="button"
+                          onClick={() =>
+                            downloadFile(
+                              `neurolab-${report.run_id}.csv`,
+                              [
+                                "artifact_id,tool_name,claim_scope,sample_size,source_sha256",
+                                ...artifacts.map(
+                                  (item) =>
+                                    `${item.artifact_id},${item.tool_name},${item.claim_scope},${item.sample_size},${item.source_sha256}`,
+                                ),
+                              ].join("\n"),
+                              "text/csv",
+                            )
+                          }
+                        >
+                          Export artifact index CSV
+                        </button>
+                      </div>
+                    </>
+                  ) : (
+                    <EmptyState
+                      icon="report"
+                      title="No completed report selected"
+                      description="Run or replay an experiment to see its seed, source identity, analysis mode, limitations, and artifact exports."
+                      action={
+                        <Link
+                          className="primary-link"
+                          href="/experiment-studio"
+                        >
+                          Create a research run{" "}
+                          <span aria-hidden="true">↗</span>
+                        </Link>
+                      }
+                    />
+                  )}
+                </section>
+              )}
+              {showGroundedClaims && (
+                <section
+                  className="grounded-report"
+                  id="grounded-report"
+                  aria-label="Evidence-linked report claims"
+                >
+                  <div className="card-head">
+                    <span className="eyebrow">EVIDENCE-LINKED INSIGHTS</span>
+                  </div>
+                  <h2>Research insights</h2>
+                  {report?.grounded_claims &&
+                  report.grounded_claims.length > 0 ? (
+                    report.grounded_claims.map((item) => (
+                      <p
+                        className="grounded-claim"
+                        key={item.evidence_ids.join("-")}
+                      >
+                        <span>
+                          {item.claim_scope} · evidence{" "}
+                          {item.evidence_ids.join(", ")}
+                        </span>
+                        {item.claim}
+                      </p>
+                    ))
+                  ) : (
+                    <EmptyState
+                      compact
+                      icon="insight"
+                      title="No evidence-linked insights yet"
+                      description="AI narratives are not scientific results. Complete a run with persisted tool evidence to review grounded claims."
+                      action={
+                        <Link
+                          className="primary-link"
+                          href="/experiment-studio"
+                        >
+                          Start an experiment <span aria-hidden="true">↗</span>
+                        </Link>
+                      }
+                    />
+                  )}
+                </section>
+              )}
+            </>
           )}
         </main>
 

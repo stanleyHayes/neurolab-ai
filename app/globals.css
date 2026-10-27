@@ -7554,3 +7554,69 @@ output {
     align-items: flex-start;
   }
 }
+
+/* Account content uses the same shell and navigation as every workspace page. */
+.account-in-workspace {
+  width: 100%;
+  padding: 0;
+}
+.account-in-workspace .account-content {
+  max-width: 1160px;
+  margin: 0;
+}
+.account-in-workspace .account-identity {
+  top: 168px;
+}
+.account-in-workspace .account-panel {
+  scroll-margin-top: 170px;
+}
+.account-panel .auth-input-wrap {
+  min-width: 0;
+}
+.account-panel .auth-input-wrap > input {
+  min-height: 46px;
+  padding-right: 8px;
+  font-size: 14px;
+}
+.account-panel .auth-password-toggle {
+  width: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  flex: 0 0 44px;
+}
+.account-panel .auth-input-wrap > input::placeholder {
+  color: var(--muted);
+  opacity: 1;
+}
+.account-form-footer button > svg,
+.account-session-row button > svg {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+}
+.account-workspace-return {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  color: var(--cyan);
+  font-size: 12px;
+  margin-top: 16px;
+  text-decoration: none;
+}
+.account-workspace-return svg {
+  width: 16px;
+  height: 16px;
+  transform: rotate(180deg);
+}
+@media (max-width: 700px) {
+  .account-in-workspace {
+    padding: 0;
+  }
+  .account-in-workspace .account-content {
+    margin: 0;
+  }
+}
