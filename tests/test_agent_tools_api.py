@@ -775,6 +775,127 @@ class ApiTests(unittest.TestCase):
         self.assertEqual(self.client.get(f"/research-runs/{rid}").json()["status"], "CANCELLED")
         self.assertEqual(self.client.get(f"/research-runs/{rid}/job").json()["state"], "CANCELLED")
 
+    def test_actual_adapter_spending_is_owner_bound_for_worker_and_refinement(self):
+        from unittest.mock import Mock
+
+        from neurolab.api import STORE
+        from neurolab.research_context import ResearchConfiguration, build_deterministic_plan
+        from tests.test_providers import SPEND_ENV
+
+        owner = self.register(f"spend-owner-{uuid.uuid4()}@example.test").json()["user"]
+        objective = "Profile the Ghana source records"
+        config = ResearchConfiguration(
+            preferred_methods=["dataset_profile"],
+            constraints={"max_steps": 1, "max_tool_calls": 1, "max_seconds": 60},
+            autonomy_preferences={"auto_plan_with_meta": False},
+        )
+        proposed = build_deterministic_plan(objective, config).model_dump(mode="json")
+        for key in ("planning_mode", "objective_sha256"):
+            proposed.pop(key)
+        for task in proposed["tasks"]:
+            task.pop("status")
+            task.pop("evidence_ids")
+        for suggestion in proposed["dataset_suggestions"]:
+            suggestion.pop("enabled_for_analysis")
+        action = {
+            "action": "dataset_profile",
+            "bootstrap_samples": None,
+            "decision_summary": "Inspect source records",
+        }
+        responses = []
+        for content in (action, proposed):
+            response = Mock(status=200)
+            response.read.return_value = json.dumps(
+                {"choices": [{"message": {"content": json.dumps(content)}}]}
+            ).encode()
+            responses.append(response)
+        connection = Mock()
+        connection.getresponse.side_effect = responses
+        with (
+            patch.dict(
+                os.environ,
+                {
+                    **SPEND_ENV,
+                    "META_MODEL_API_KEY": "fixture-only-secret",
+                    "META_MODEL_VERIFIED": "true",
+                    "MODEL_INFERENCE_ENABLED": "true",
+                },
+            ),
+            patch("neurolab.providers.http.client.HTTPSConnection", return_value=connection),
+        ):
+            accepted = self.client.post(
+                "/research-runs",
+                json={
+                    "objective": objective,
+                    "mode": "meta",
+                    "configuration": config.model_dump(mode="json"),
+                },
+            )
+            self.assertEqual(accepted.status_code, 202, accepted.text)
+            run_id = accepted.json()["run_id"]
+            run = self.client.get("/research-runs/" + run_id).json()
+            self.assertEqual(run["status"], "COMPLETE", run)
+            refined = self.client.post(
+                "/research-objectives/refine",
+                json={"objective": objective, "configuration": config.model_dump(mode="json")},
+            )
+            self.assertEqual(refined.status_code, 200, refined.text)
+        with STORE._lock:
+            rows = [
+                dict(row)
+                for row in STORE._execute("SELECT * FROM model_spend_reservations").fetchall()
+            ]
+        self.assertEqual(len(rows), 2)
+        self.assertEqual({row["owner_user_id"] for row in rows}, {owner["user_id"]})
+        self.assertIn("run:" + run_id, {row["scope_id"] for row in rows})
+        self.assertTrue(any(row["scope_id"].startswith("refine:") for row in rows))
+        self.assertTrue(
+            all(row["outcome"] == "completed" and row["reserved_micro_usd"] > 0 for row in rows)
+        )
+        self.assertNotIn("fixture-only-secret", json.dumps(rows))
+
+    def test_exhausted_model_budget_does_not_claim_live_inference_after_recovery(self):
+        from neurolab.api import STORE
+        from tests.test_providers import SPEND_ENV
+
+        self.register(f"spend-denied-{uuid.uuid4()}@example.test")
+        with (
+            patch.dict(
+                os.environ,
+                {
+                    **SPEND_ENV,
+                    "MODEL_MAX_COST_USD": "0.000001",
+                    "META_MODEL_API_KEY": "fixture",
+                    "META_MODEL_VERIFIED": "true",
+                    "MODEL_INFERENCE_ENABLED": "true",
+                },
+            ),
+            patch("neurolab.providers.http.client.HTTPSConnection") as transport,
+        ):
+            accepted = self.client.post(
+                "/research-runs",
+                json={
+                    "objective": "Profile source records",
+                    "mode": "meta",
+                    "configuration": {
+                        "preferred_methods": ["dataset_profile"],
+                        "constraints": {"max_steps": 1, "max_tool_calls": 1, "max_seconds": 60},
+                        "autonomy_preferences": {"auto_plan_with_meta": False},
+                    },
+                },
+            )
+            self.assertEqual(accepted.status_code, 202, accepted.text)
+            run = self.client.get("/research-runs/" + accepted.json()["run_id"]).json()
+        transport.assert_not_called()
+        self.assertEqual(run["status"], "PARTIAL")
+        self.assertNotIn("Live configured Meta inference", run["report"]["replay_label"])
+        self.assertTrue(run["report"]["tool_failures"])
+        with STORE._lock:
+            count = STORE._execute("SELECT COUNT(*) AS n FROM model_spend_reservations").fetchone()[
+                "n"
+            ]
+        self.assertEqual(count, 0)
+
     def test_account_analysis_limits_hold_across_peers_without_consuming_other_accounts(self):
         from fastapi.testclient import TestClient
 

@@ -2,18 +2,36 @@
 
 from __future__ import annotations
 
+import os
 import sys
+import uuid
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from neurolab.providers import ModelProviderError, OpenAICompatibleAdapter  # noqa: E402
+from neurolab.model_spend import ModelSpendError  # noqa: E402
+from neurolab.providers import (  # noqa: E402
+    ModelProviderError,
+    OpenAICompatibleAdapter,
+    require_inference_enabled,
+)
+from neurolab.store import RunStore  # noqa: E402
 
 
 def main() -> int:
+    store = None
     try:
-        adapter = OpenAICompatibleAdapter.from_environment()
+        require_inference_enabled()
+        owner = os.getenv("MODEL_SMOKE_OWNER_USER_ID", "").strip()
+        if not owner:
+            raise ModelSpendError(
+                "Smoke test requires an operator-selected active owner for shared admission"
+            )
+        store = RunStore(os.getenv("DATABASE_URL", "postgresql:///neurolab"))
+        adapter = OpenAICompatibleAdapter.from_environment().bind_spending(
+            store, owner, "smoke:" + str(uuid.uuid4())
+        )
         response = adapter.generate_structured(
             [
                 {
@@ -30,9 +48,12 @@ def main() -> int:
             },
             timeout=20,
         )
-    except ModelProviderError as exc:
+    except (ModelProviderError, ModelSpendError) as exc:
         print(f"FAIL: {exc}", file=sys.stderr)
         return 1
+    finally:
+        if store is not None:
+            store.close()
     if response != {"ok": True}:
         print("FAIL: provider returned an unexpected smoke-test response", file=sys.stderr)
         return 1

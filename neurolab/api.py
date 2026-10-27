@@ -36,6 +36,7 @@ from .execution import execute_run
 from .ghana import load_ghana
 from .investigation_profile import PROFILE_OUTPUT, profile_plan_check
 from .jobs import QueueLimitError, ResearchJobs
+from .model_spend import ModelSpendError
 from .planner import refine_plan, validate_execution_plan
 from .providers import (
     ModelContextLimitError,
@@ -974,10 +975,12 @@ def refine_research_objective(
         )
     adapter = OpenAICompatibleAdapter.from_environment()
     try:
+        if isinstance(adapter, OpenAICompatibleAdapter):
+            adapter.bind_spending(STORE, user["user_id"], "refine:" + str(uuid.uuid4()))
         plan = refine_plan(payload.objective, payload.configuration, adapter, timeout=45)
     except ModelContextLimitError as exc:
         raise HTTPException(status_code=422, detail=str(exc)) from exc
-    except ModelProviderError as exc:
+    except (ModelProviderError, ModelSpendError) as exc:
         raise HTTPException(status_code=503, detail=str(exc)) from exc
     except Exception as exc:
         raise HTTPException(

@@ -470,7 +470,7 @@ export function EvidenceResults(props: Readonly<EvidenceResultsProps>) {
     );
   const mode =
     report?.mode === "meta"
-      ? `${report.model_provider ?? "Configured provider"} · ${report.model_id ?? "model not recorded"}`
+      ? `Meta requested · ${report.model_provider ?? "Configured provider"} · ${report.model_id ?? "model not recorded"}`
       : "Deterministic replay · no model call";
   return (
     <article className="card evidence-card results-workbench" id="evidence">

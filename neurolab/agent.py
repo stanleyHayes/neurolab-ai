@@ -501,7 +501,7 @@ class ResearchAgent:
         )
         unsupported = self.research_plan.unsupported_requirements if self.research_plan else []
         limitations = [
-            "Model-selected actions do not validate scientific interpretation; server tools compute numerical results."
+            "Meta mode was requested; configured provider identity does not prove a completed model call. Provider attempts may be blocked or fail; server tools compute numerical results."
             if is_meta
             else "Replay planner is deterministic and is not Meta inference.",
             "Ghana water regime is confounded with trial environment.",
@@ -535,7 +535,7 @@ class ResearchAgent:
             "dataset_id": self.configuration.dataset_id,
             "source_sha256": self.dataset.source_sha256,
             "mode": "meta" if is_meta else "deterministic_replay",
-            "replay_label": "Live configured Meta inference"
+            "replay_label": "Meta mode requested; inspect the recorded trace for provider activity"
             if is_meta
             else "Replay baseline — no model call was made",
             "model_provider": self.model_adapter.provider if is_meta else None,

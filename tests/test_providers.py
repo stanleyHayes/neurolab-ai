@@ -3,26 +3,61 @@
 import json
 import os
 import unittest
+import uuid
 from unittest.mock import Mock, patch
 
+from neurolab.model_spend import ModelSpendGuard, SpendPolicy
 from neurolab.providers import ModelProviderError, OpenAICompatibleAdapter, adapter_status
+from neurolab.store import RunStore
 
 MESSAGES = [{"role": "user", "content": "Fixture-only structured action request"}]
 SCHEMA = {"type": "object"}
+SPEND_ENV = {
+    "MODEL_PROVIDER": "meta",
+    "META_MODEL_ID": "fixture",
+    "META_MODEL_API_BASE_URL": "https://provider.invalid/v1/chat/completions",
+    "MODEL_INPUT_USD_PER_MILLION_TOKENS": "1",
+    "MODEL_OUTPUT_USD_PER_MILLION_TOKENS": "2",
+    "MODEL_MAX_COST_USD": "1",
+    "MODEL_OWNER_DAILY_COST_USD": "10",
+    "MODEL_GLOBAL_DAILY_COST_USD": "100",
+    "MODEL_INPUT_OVERHEAD_TOKENS": "1",
+}  # Explicit synthetic test pricing; not provider rates.
 
 
-def adapter():
+def adapter(guard=None):
     return OpenAICompatibleAdapter(
         endpoint="https://provider.invalid/v1/chat/completions",
         api_key="fixture-only-private-value",
         model_id="fixture",
+        provider="meta",
         max_output_tokens=100,
+        spend_guard=guard,
     )
 
 
 class ProviderContractTests(unittest.TestCase):
+    def setUp(self):
+        self.store = RunStore(":memory:")
+        self.owner = self.store.create_user("provider@example.test", "store-fixture", "Test")
+        self.addCleanup(self.store.close)
+
+    def model(self):
+        with patch.dict(os.environ, SPEND_ENV):
+            policy = SpendPolicy.from_environment()
+        return adapter(
+            ModelSpendGuard(
+                self.store,
+                self.owner["user_id"],
+                "refine:" + str(uuid.uuid4()),
+                "meta",
+                "fixture",
+                policy,
+            )
+        )
+
     def test_success_is_json_with_server_only_credentials_and_reserved_budget(self):
-        model = adapter()
+        model = self.model()
         response = Mock(status=200)
         response.read.return_value = json.dumps(
             {"choices": [{"message": {"content": '{"action":"dataset_profile"}'}}]}
@@ -55,7 +90,7 @@ class ProviderContractTests(unittest.TestCase):
         ]
         for status, payload, transport_error in cases:
             with self.subTest(status=status, payload=payload):
-                model = adapter()
+                model = self.model()
                 response = Mock(status=status)
                 response.read.return_value = payload
                 connection = Mock()
@@ -92,7 +127,7 @@ class ProviderContractTests(unittest.TestCase):
         self.assertFalse(status["enabled_for_runs"])
 
     def test_credit_pause_blocks_even_a_previously_created_adapter_without_transport(self):
-        model = adapter()
+        model = self.model()
         with (
             patch.dict(os.environ, {"MODEL_INFERENCE_ENABLED": "false"}),
             patch("neurolab.providers.http.client.HTTPSConnection") as connection,
@@ -104,6 +139,7 @@ class ProviderContractTests(unittest.TestCase):
 
     def test_environment_validation_and_independent_refinement_output_budget(self):
         valid = {
+            **SPEND_ENV,
             "MODEL_PROVIDER": "meta",
             "META_MODEL_API_BASE_URL": "https://provider.invalid/chat",
             "META_MODEL_API_KEY": "fixture",

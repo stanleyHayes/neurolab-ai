@@ -1,0 +1,10 @@
+{
+  "verified_at_utc": "2026-10-27T20:25:06.565460+00:00",
+  "database": "Disposable local PostgreSQL database; isolated schema per test",
+  "server_version_number": 180001,
+  "tests_passed": 31,
+  "command": "NEUROLAB_TEST_POSTGRES_URL=<disposable local DB> python3 -m unittest tests.test_model_spend.SharedModelSpendTests tests.test_durable_jobs -v",
+  "live_inference_performed": false,
+  "transport_contract_cases": "Fixture-only branches enabled inside mocked HTTPS contexts; no live provider request",
+  "scope": "Actual concurrent SQL money/token reservations, run/owner/global ceilings, UTC rollover, restart/unknown charges, policy mismatch/CAS audit, ownership and pre-transport denials; plus durable-job fixture regressions. Synthetic prices and mocked HTTPS only, no paid provider or invoice acceptance."
+}

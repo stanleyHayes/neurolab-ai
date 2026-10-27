@@ -6,6 +6,7 @@ import time
 
 from .agent import ResearchAgent
 from .jobs import LeaseCheckedAdapter
+from .model_spend import ModelSpendError
 from .planner import refine_plan
 from .providers import ModelProviderError, OpenAICompatibleAdapter
 from .research_context import (
@@ -39,11 +40,10 @@ def execute_run(
         if store.cancel_requested(run_id):
             store.add_event(run_id, "run.cancelled", {"reason": "cancelled_before_planning"})
             return
-        adapter = (
-            LeaseCheckedAdapter(adapter_factory(), store, run_id)
-            if request.mode == "meta"
-            else None
-        )
+        model = adapter_factory() if request.mode == "meta" else None
+        if isinstance(model, OpenAICompatibleAdapter):
+            model.bind_spending(store, persisted["owner_user_id"], "run:" + run_id)
+        adapter = LeaseCheckedAdapter(model, store, run_id) if model else None
         plan = request.plan or build_deterministic_plan(request.objective, configuration)
         if (
             adapter
@@ -98,7 +98,7 @@ def execute_run(
     except Exception as exc:
         sanitized = (
             str(exc)
-            if isinstance(exc, (ModelProviderError, TimeoutError, ValueError))
+            if isinstance(exc, (ModelProviderError, ModelSpendError, TimeoutError, ValueError))
             else (
                 "Unexpected research execution error; inspect server logs without exposing secrets."
             )

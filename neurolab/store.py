@@ -119,6 +119,36 @@ class RunStore:
                 );
                 CREATE INDEX IF NOT EXISTS auth_sessions_user_idx ON auth_sessions(user_id);
                 CREATE INDEX IF NOT EXISTS auth_sessions_family_idx ON auth_sessions(family_id);
+                CREATE TABLE IF NOT EXISTS model_spend_control (
+                    control_id INTEGER PRIMARY KEY,
+                    revision INTEGER NOT NULL DEFAULT 0,
+                    policy_sha256 TEXT,
+                    policy_json TEXT
+                );
+                INSERT INTO model_spend_control (control_id,revision) VALUES (1,0) ON CONFLICT (control_id) DO NOTHING;
+                CREATE TABLE IF NOT EXISTS model_spend_policy_events (
+                    event_id TEXT PRIMARY KEY,
+                    previous_sha256 TEXT,
+                    policy_sha256 TEXT NOT NULL,
+                    policy_json TEXT NOT NULL,
+                    source TEXT NOT NULL,
+                    recorded_epoch DOUBLE PRECISION NOT NULL
+                );
+                CREATE TABLE IF NOT EXISTS model_spend_reservations (
+                    reservation_id TEXT PRIMARY KEY,
+                    owner_user_id TEXT NOT NULL REFERENCES users(user_id) ON DELETE RESTRICT,
+                    scope_id TEXT NOT NULL,
+                    provider TEXT NOT NULL,
+                    model_id TEXT NOT NULL,
+                    day_number INTEGER NOT NULL,
+                    input_tokens INTEGER NOT NULL CHECK(input_tokens > 0),
+                    output_tokens INTEGER NOT NULL CHECK(output_tokens > 0),
+                    reserved_micro_usd BIGINT NOT NULL CHECK(reserved_micro_usd > 0),
+                    policy_sha256 TEXT NOT NULL,
+                    outcome TEXT NOT NULL
+                );
+                CREATE INDEX IF NOT EXISTS model_spend_day ON model_spend_reservations(day_number,owner_user_id);
+                CREATE INDEX IF NOT EXISTS model_spend_scope ON model_spend_reservations(scope_id);
                 CREATE TABLE IF NOT EXISTS request_rate_buckets (
                     bucket_key TEXT PRIMARY KEY,
                     count INTEGER NOT NULL,

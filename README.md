@@ -65,7 +65,7 @@ The local project verification records (2026-10-26) document a passing quality g
 
 The live Meta `muse-spark-1.3` adapter was smoke-tested, and a bounded run executed real tools on the Ghana source. That run was **partial and failed its requested research objective**: it profiled the data, inspected missingness, then recovered from an invalid action by repeating the profile. It did not produce genotype stability analysis or a justified next experiment. Full-source checkout references: `verification/AGENT_EXECUTION_TRACE.md`, `verification/UI_ACCEPTANCE.md`, and `verification/DEFECT_REGISTER.md`.
 
-**This is not production-launch-ready.** Invite-gated first-party authentication and owner-scoped research resources are present and covered by local tests. SQL-backed durable jobs and shared request/account limits have local test evidence; verified target ingress, provider-wide spend reservation, deployment, and production backup/restore acceptance remain open. Browser interaction and accessibility acceptance is incomplete. Do not expose the service as a public multi-user application.
+**This is not production-launch-ready.** Invite-gated first-party authentication and owner-scoped research resources are present and covered by local tests. SQL-backed durable jobs and shared request/account limits have local test evidence; verified target ingress, provider billing reconciliation and external spend verification, deployment, and production backup/restore acceptance remain open. Browser interaction and accessibility acceptance is incomplete. Do not expose the service as a public multi-user application.
 
 ## Getting started (full source checkout)
 
@@ -136,9 +136,13 @@ Shared SQL request limits and verified-account budgets persist across replicas. 
 
 Requests and queue claims persist in SQL; started work is not automatically retried after lease loss. See [durable research jobs](docs/DURABLE_RESEARCH_JOBS.md) for cancellation, deadlines, owner quotas and remaining operational gates.
 
+### Shared model reservations
+
+[SQL-backed spending admission](docs/SHARED_MODEL_SPENDING.md) now bounds run, owner-day and global-day token/money reservations before transport. Missing reviewed prices/overhead/limits block inference. Failures and unknown billing retain reservations. These are conservative admission amounts, not provider invoices; external account spending controls and real pricing/usage verification remain open. Meta is paused; do not run paid smoke tests while credits are exhausted.
+
 ### Optional Meta provider
 
-Replay mode requires no provider credential. Live provider mode is optional and may incur provider charges. Configure the server-side variables documented in `.env.example` (`META_MODEL_API_KEY`, provider/model settings, budgets, and verification flag). Set `META_MODEL_VERIFIED=true` only after successfully running the provider smoke check with your own credentials:
+Replay mode requires no provider credential. Live provider mode is optional and may incur provider charges. It additionally requires the reviewed shared spending settings and an active `MODEL_SMOKE_OWNER_USER_ID` for the operator smoke command; see the spending contract above. Configure the server-side variables documented in `.env.example` (`META_MODEL_API_KEY`, provider/model settings, budgets, and verification flag). Set `META_MODEL_VERIFIED=true` only after successfully running the provider smoke check with your own credentials:
 
 ```bash
 set -a; source .env; set +a

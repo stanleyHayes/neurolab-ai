@@ -13,6 +13,7 @@ from dataclasses import dataclass
 from typing import Any, Protocol
 from urllib.parse import urlsplit
 
+from .model_spend import ModelSpendError, ModelSpendGuard, SpendPolicy
 from .research_context import (
     META_CONTEXT_SAFETY_RESERVE_TOKENS,
     META_CONTEXT_WINDOW_TOKENS,
@@ -66,6 +67,7 @@ class OpenAICompatibleAdapter:
     max_context_tokens: int = META_CONTEXT_WINDOW_TOKENS
     tokens_reserved: int = 0
     _last_input_token_upper_bound: int = 0
+    spend_guard: ModelSpendGuard | None = None
 
     def _request_structured(
         self,
@@ -91,16 +93,17 @@ class OpenAICompatibleAdapter:
         # The current integration uses Chat Completions. It has no exact input
         # token-count endpoint here; a UTF-8-byte upper bound avoids relying on
         # an average chars/token ratio and we reject rather than truncate.
+        overhead = self.spend_guard.policy.input_overhead_tokens if self.spend_guard else 0
         context_ceiling = min(
             self.max_context_tokens,
             META_CONTEXT_WINDOW_TOKENS - META_CONTEXT_SAFETY_RESERVE_TOKENS,
         )
-        if serialized_bytes + max_tokens > context_ceiling:
+        if serialized_bytes + max_tokens + overhead > context_ceiling:
             raise ModelContextLimitError(
                 "The complete request exceeds the safe Meta context limit; no objective text was truncated. "
                 "Reduce supplied context or use the saved plan/task workflow."
             )
-        reservation = serialized_bytes + max_tokens
+        reservation = serialized_bytes + max_tokens + overhead
         if self.tokens_reserved + reservation > self.max_run_tokens:
             raise ModelProviderError(
                 "Per-run model token budget exhausted before request; no prompt was truncated."
@@ -120,12 +123,38 @@ class OpenAICompatibleAdapter:
                 "json_schema": {"name": "research_action", "strict": True, "schema": schema},
             },
         }
-        self.tokens_reserved += reservation
-        self._last_input_token_upper_bound = serialized_bytes
-        connection = http.client.HTTPSConnection(
-            endpoint.hostname, endpoint.port or 443, timeout=timeout
-        )
+        if self.spend_guard is None:
+            raise ModelProviderError("Model request requires shared owner spending admission")
         try:
+            self.spend_guard.check_transport(self.endpoint, self.provider, self.model_id)
+            identifier = self.spend_guard.reserve(serialized_bytes, max_tokens)
+        except ModelSpendError as exc:
+            raise ModelProviderError(str(exc)) from None
+        self.tokens_reserved += reservation
+        self._last_input_token_upper_bound = serialized_bytes + overhead
+        completed = False
+        try:
+            result = self._send_structured(endpoint, body, timeout)
+            completed = True
+            return result
+        finally:
+            try:
+                self.spend_guard.record_outcome(identifier, completed)
+            except ModelSpendError as exc:
+                raise ModelProviderError(str(exc)) from None
+
+    def bind_spending(self, store, owner_id, scope_id):
+        self.spend_guard = ModelSpendGuard.from_environment(
+            store, owner_id, scope_id, self.provider, self.model_id
+        )
+        return self
+
+    def _send_structured(self, endpoint, body, timeout):
+        connection = None
+        try:
+            connection = http.client.HTTPSConnection(
+                endpoint.hostname, endpoint.port or 443, timeout=timeout
+            )
             connection.request(
                 "POST",
                 endpoint.path or "/",
@@ -139,7 +168,10 @@ class OpenAICompatibleAdapter:
             response = connection.getresponse()
             if response.status < 200 or response.status >= 300:
                 raise ModelProviderError(f"Model provider returned HTTP {response.status}")
-            payload = json.loads(response.read().decode("utf-8"))
+            raw = response.read(1_048_577)
+            if len(raw) > 1_048_576:
+                raise ModelProviderError("Model provider response exceeds the size limit")
+            payload = json.loads(raw.decode("utf-8"))
         except ModelProviderError:
             raise
         except (OSError, http.client.HTTPException) as exc:
@@ -147,7 +179,8 @@ class OpenAICompatibleAdapter:
         except (UnicodeDecodeError, json.JSONDecodeError) as exc:
             raise ModelProviderError("Model provider returned malformed JSON") from exc
         finally:
-            connection.close()
+            if connection is not None:
+                connection.close()
         try:
             content = payload["choices"][0]["message"]["content"]
             result = json.loads(content) if isinstance(content, str) else content
@@ -244,11 +277,20 @@ def adapter_status() -> dict[str, Any]:
         )
     except ValueError:
         max_context_tokens = None
+    try:
+        SpendPolicy.from_environment()
+        spending_configured = True
+    except ModelSpendError:
+        spending_configured = False
     return {
+        "spending_configured": spending_configured,
         "provider": "meta" if configured else None,
         "configured": configured,
         "smoke_test_verified": verified,
-        "enabled_for_runs": configured and verified and inference_is_enabled(),
+        "enabled_for_runs": configured
+        and verified
+        and inference_is_enabled()
+        and spending_configured,
         "inference_paused": not inference_is_enabled(),
         "model_id": os.getenv("META_MODEL_ID") if configured else None,
         "endpoint_configured": bool(os.getenv("META_MODEL_API_BASE_URL", "").strip()),
