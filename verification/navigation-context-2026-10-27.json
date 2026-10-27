@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-27",
+  "source_commit": "4f5d8bcbc1b1201be4a5e70d9e8566475ab05e2f",
+  "production_url": "https://neurolab-ai.vercel.app",
+  "deployment_url": "https://neurolab-bzjrymsbi-hayfordstanleys-projects.vercel.app",
+  "deployment_state": "READY",
+  "http_checks": {
+    "/research-results": 200,
+    "/api/health": 200
+  },
+  "hosted_css": {
+    "experiment_context": true,
+    "circular_reveal": true
+  },
+  "validation": {
+    "ui_tests": 77,
+    "ui_files": 13,
+    "final_focused_tests": 20,
+    "eslint": "passed zero warnings",
+    "typescript": "passed",
+    "next_build": "passed",
+    "diff_check": "passed"
+  },
+  "limitations": [
+    "Browser visual acceptance unavailable: CUA_REPL_ENABLED_SURFACES is required",
+    "Sonar server acceptance remains unverified; see prior server instability evidence"
+  ],
+  "provider_calls_created": 0
+}
