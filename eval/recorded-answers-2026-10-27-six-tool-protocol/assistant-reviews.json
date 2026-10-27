@@ -1,0 +1,506 @@
+[
+  {
+    "answer_id": "fixed_workflow/yield-contrast",
+    "answer_sha256": "cd890f93937723f9ecb8a81cd21c88fe57861dcd164db6bdf3995b58ed0fa673",
+    "reviewer": "Codex six-tool recorded-answer review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 1,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 1
+    },
+    "rationale": "Means, descriptive difference and block-bootstrap interval directly answer the regime/uncertainty question. Inspected claims match the saved source/artifact values and units, including rounded means, interval, ratio, candidate means, missing counts, correlation and environment coverage where present. Replay and scientific limits remain explicit. Evidence: e2cdf6bf-30c8-4407-aa49-0186ed8f9d17-1, e2cdf6bf-30c8-4407-aa49-0186ed8f9d17-2. This is subjective, non-blind assistant review on known questions that informed implementation; no held-out, independent, live Meta or statistical-validity claim follows."
+  },
+  {
+    "answer_id": "seeded_random/yield-contrast",
+    "answer_sha256": "b0ba08e493ea66bf9618c4bbe76c06bf721a04e2fab6b12948282716a119d451",
+    "reviewer": "Codex six-tool recorded-answer review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 0,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 0
+    },
+    "rationale": "Profile and drought candidate means do not state the watered comparison or contrast uncertainty. Inspected claims match the saved source/artifact values and units, including rounded means, interval, ratio, candidate means, missing counts, correlation and environment coverage where present. Replay and scientific limits remain explicit. Evidence: a846ac51-a438-4d4e-83ca-9a624e9f4ec8-1, a846ac51-a438-4d4e-83ca-9a624e9f4ec8-2. This is subjective, non-blind assistant review on known questions that informed implementation; no held-out, independent, live Meta or statistical-validity claim follows."
+  },
+  {
+    "answer_id": "deterministic_replay/yield-contrast",
+    "answer_sha256": "66653c404999f71b902d650bcc71ea51a3c10b746f576344862263892ba8c803",
+    "reviewer": "Codex six-tool recorded-answer review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 1,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 1
+    },
+    "rationale": "Written means, difference and interval directly answer the question. Inspected claims match the saved source/artifact values and units, including rounded means, interval, ratio, candidate means, missing counts, correlation and environment coverage where present. Replay and scientific limits remain explicit. Evidence: de93f20f-7f38-4f6f-847c-0e710d90e876-1. This is subjective, non-blind assistant review on known questions that informed implementation; no held-out, independent, live Meta or statistical-validity claim follows."
+  },
+  {
+    "answer_id": "fixed_workflow/drought-candidates",
+    "answer_sha256": "9084eaf5fba90d16de68356332ba329d54eff276db1be051c83a411b9e1bb0aa",
+    "reviewer": "Codex six-tool recorded-answer review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 0,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 0
+    },
+    "rationale": "Regime-wide means do not identify genotype candidates. Inspected claims match the saved source/artifact values and units, including rounded means, interval, ratio, candidate means, missing counts, correlation and environment coverage where present. Replay and scientific limits remain explicit. Evidence: 15a32c99-4fb0-44a3-a182-5faab324bb64-1, 15a32c99-4fb0-44a3-a182-5faab324bb64-2. This is subjective, non-blind assistant review on known questions that informed implementation; no held-out, independent, live Meta or statistical-validity claim follows."
+  },
+  {
+    "answer_id": "seeded_random/drought-candidates",
+    "answer_sha256": "acf54cab7f4d15eea35f3e262c5e33fe5a59c448cbe5f7c76b81b4790c29eb40",
+    "reviewer": "Codex six-tool recorded-answer review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 0,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 1
+    },
+    "rationale": "Written association and sensitivity summaries do not name candidates. The environment artifact contains candidate profiles and ranks, providing useful partial evidence requiring inspection. Inspected claims match the saved source/artifact values and units, including rounded means, interval, ratio, candidate means, missing counts, correlation and environment coverage where present. Replay and scientific limits remain explicit. Evidence: 2c9ea673-899f-4347-8cf9-b7ca41c7b637-1, 2c9ea673-899f-4347-8cf9-b7ca41c7b637-2. This is subjective, non-blind assistant review on known questions that informed implementation; no held-out, independent, live Meta or statistical-validity claim follows."
+  },
+  {
+    "answer_id": "deterministic_replay/drought-candidates",
+    "answer_sha256": "e32575806d3d5038bcac803ad94020a050af70fc00b8e9338ee3f6b9a5f36705",
+    "reviewer": "Codex six-tool recorded-answer review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 1,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 1
+    },
+    "rationale": "Three named drought candidates with means and explicit validation limits directly answer the question. Inspected claims match the saved source/artifact values and units, including rounded means, interval, ratio, candidate means, missing counts, correlation and environment coverage where present. Replay and scientific limits remain explicit. Evidence: 91a9826c-9c20-4818-91c9-e41e727e4f3d-1. This is subjective, non-blind assistant review on known questions that informed implementation; no held-out, independent, live Meta or statistical-validity claim follows."
+  },
+  {
+    "answer_id": "fixed_workflow/missingness",
+    "answer_sha256": "11265ed38777b9ef04f93b76fc8697a9e147ad86878e41131af0ebe63f2282e2",
+    "reviewer": "Codex six-tool recorded-answer review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 0,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 1
+    },
+    "rationale": "Written answer omits missingness; the profile artifact includes field missingness, useful partial evidence. Inspected claims match the saved source/artifact values and units, including rounded means, interval, ratio, candidate means, missing counts, correlation and environment coverage where present. Replay and scientific limits remain explicit. Evidence: a1bcfac9-961e-409f-8fd1-bfdc7aaa26f4-1, a1bcfac9-961e-409f-8fd1-bfdc7aaa26f4-2. This is subjective, non-blind assistant review on known questions that informed implementation; no held-out, independent, live Meta or statistical-validity claim follows."
+  },
+  {
+    "answer_id": "seeded_random/missingness",
+    "answer_sha256": "c3c614c38d257fba3d38ef9ec1d482b3748013aa4f542559389b2abc27c79d06",
+    "reviewer": "Codex six-tool recorded-answer review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 0,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 1
+    },
+    "rationale": "Written answer omits structural missingness; the profile artifact includes field missingness. Inspected claims match the saved source/artifact values and units, including rounded means, interval, ratio, candidate means, missing counts, correlation and environment coverage where present. Replay and scientific limits remain explicit. Evidence: b2129184-08f4-46f5-97ab-69200ba51055-1, b2129184-08f4-46f5-97ab-69200ba51055-2. This is subjective, non-blind assistant review on known questions that informed implementation; no held-out, independent, live Meta or statistical-validity claim follows."
+  },
+  {
+    "answer_id": "deterministic_replay/missingness",
+    "answer_sha256": "17a47f0db595243559384abfcb30d7241e83a6772be71005978f770b450e0786",
+    "reviewer": "Codex six-tool recorded-answer review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 1,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 1
+    },
+    "rationale": "Written field counts and the explicit STYG structural absence in the well-watered regime answer the question; trait interpretation remains exploratory. Inspected claims match the saved source/artifact values and units, including rounded means, interval, ratio, candidate means, missing counts, correlation and environment coverage where present. Replay and scientific limits remain explicit. Evidence: 4800adec-f470-4bd0-b2eb-b570176cedab-1, 4800adec-f470-4bd0-b2eb-b570176cedab-2. This is subjective, non-blind assistant review on known questions that informed implementation; no held-out, independent, live Meta or statistical-validity claim follows."
+  },
+  {
+    "answer_id": "fixed_workflow/dataset-structure",
+    "answer_sha256": "f322960d4c03f986519b5119c51321bff9606b9d6efb2b24ab098567168e26b7",
+    "reviewer": "Codex six-tool recorded-answer review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 0,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 1
+    },
+    "rationale": "Written profile covers records, environments and regimes but omits missingness, so the direct answer is partial. Inspected claims match the saved source/artifact values and units, including rounded means, interval, ratio, candidate means, missing counts, correlation and environment coverage where present. Replay and scientific limits remain explicit. Evidence: e6e1ebb3-db42-4cc3-8804-a6d25bacc646-1, e6e1ebb3-db42-4cc3-8804-a6d25bacc646-2. This is subjective, non-blind assistant review on known questions that informed implementation; no held-out, independent, live Meta or statistical-validity claim follows."
+  },
+  {
+    "answer_id": "seeded_random/dataset-structure",
+    "answer_sha256": "3046837311ea7e49f1b52bc2db9a4cca900e40fbaf562f19824e91d81e1f67a6",
+    "reviewer": "Codex six-tool recorded-answer review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 0,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 1
+    },
+    "rationale": "No full source or missingness profile is written. The comparison artifact retains per-regime plot counts, a useful partial description of regime structure. Inspected claims match the saved source/artifact values and units, including rounded means, interval, ratio, candidate means, missing counts, correlation and environment coverage where present. Replay and scientific limits remain explicit. Evidence: a635b1e7-82c6-4706-9159-b2f01d19a0c4-1, a635b1e7-82c6-4706-9159-b2f01d19a0c4-2. This is subjective, non-blind assistant review on known questions that informed implementation; no held-out, independent, live Meta or statistical-validity claim follows."
+  },
+  {
+    "answer_id": "deterministic_replay/dataset-structure",
+    "answer_sha256": "a2d613d311e5be48debb420020c8ee82147db99dfd05ab8ef203ab2173c056a0",
+    "reviewer": "Codex six-tool recorded-answer review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 1,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 1
+    },
+    "rationale": "Written profile and missingness counts jointly cover the requested structure. Inspected claims match the saved source/artifact values and units, including rounded means, interval, ratio, candidate means, missing counts, correlation and environment coverage where present. Replay and scientific limits remain explicit. Evidence: 57568469-00aa-4cf4-a00a-e27330e70fa0-1, 57568469-00aa-4cf4-a00a-e27330e70fa0-2. This is subjective, non-blind assistant review on known questions that informed implementation; no held-out, independent, live Meta or statistical-validity claim follows."
+  },
+  {
+    "answer_id": "fixed_workflow/scientific-caveat",
+    "answer_sha256": "0339022fdba2ce45e35d3514ef0bd75400156fed234598661edce69252145eb2",
+    "reviewer": "Codex six-tool recorded-answer review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 1,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 1
+    },
+    "rationale": "The written limitations explicitly identify regime/environment confounding and deny a causal effect. Inspected claims match the saved source/artifact values and units, including rounded means, interval, ratio, candidate means, missing counts, correlation and environment coverage where present. Replay and scientific limits remain explicit. Evidence: ee0b3a6b-1cfe-4d36-b20d-88dd30f8084f-1, ee0b3a6b-1cfe-4d36-b20d-88dd30f8084f-2. This is subjective, non-blind assistant review on known questions that informed implementation; no held-out, independent, live Meta or statistical-validity claim follows."
+  },
+  {
+    "answer_id": "seeded_random/scientific-caveat",
+    "answer_sha256": "b8919f31a736d093589d2941f36700917ecc356ce5eb2c45c77703e43ed2eb53",
+    "reviewer": "Codex six-tool recorded-answer review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 1,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 1
+    },
+    "rationale": "The confounding limitation answers the causal question even without the catalog target tool; association claims also deny causal interpretation. Inspected claims match the saved source/artifact values and units, including rounded means, interval, ratio, candidate means, missing counts, correlation and environment coverage where present. Replay and scientific limits remain explicit. Evidence: 075a604b-85bf-4f46-89da-797773f98546-1, 075a604b-85bf-4f46-89da-797773f98546-2. This is subjective, non-blind assistant review on known questions that informed implementation; no held-out, independent, live Meta or statistical-validity claim follows."
+  },
+  {
+    "answer_id": "deterministic_replay/scientific-caveat",
+    "answer_sha256": "56adcabe8c1cf6d2d7de132cec71677a91ba93f91fb1ff6781cb3c64fe946b73",
+    "reviewer": "Codex six-tool recorded-answer review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 1,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 1
+    },
+    "rationale": "The written confounding and noncausal qualifications directly answer the question. Inspected claims match the saved source/artifact values and units, including rounded means, interval, ratio, candidate means, missing counts, correlation and environment coverage where present. Replay and scientific limits remain explicit. Evidence: 0ed8596e-e36f-4a3e-848e-27a1c83a1d89-1. This is subjective, non-blind assistant review on known questions that informed implementation; no held-out, independent, live Meta or statistical-validity claim follows."
+  },
+  {
+    "answer_id": "fixed_workflow/calendar-year-boundary",
+    "answer_sha256": "2390b539adcdea5cefa49d29c88fe2f81e01e61e7be2ba6d1363e061bb9def78",
+    "reviewer": "Codex six-tool recorded-answer review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 1,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 1
+    },
+    "rationale": "Written limitations explicitly prohibit interpreting the three ENVT indices as calendar years. Inspected claims match the saved source/artifact values and units, including rounded means, interval, ratio, candidate means, missing counts, correlation and environment coverage where present. Replay and scientific limits remain explicit. Evidence: fa70c9d6-b8f7-4bea-82f1-b77056a0b1f4-1, fa70c9d6-b8f7-4bea-82f1-b77056a0b1f4-2. This is subjective, non-blind assistant review on known questions that informed implementation; no held-out, independent, live Meta or statistical-validity claim follows."
+  },
+  {
+    "answer_id": "seeded_random/calendar-year-boundary",
+    "answer_sha256": "d85250c310ed0aabe9b97868c7c0c7a3d288f83c1e0eb11ae87bbbb9b85b5902",
+    "reviewer": "Codex six-tool recorded-answer review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 1,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 1
+    },
+    "rationale": "The same explicit calendar-year limitation answers this question despite different selected tools. Inspected claims match the saved source/artifact values and units, including rounded means, interval, ratio, candidate means, missing counts, correlation and environment coverage where present. Replay and scientific limits remain explicit. Evidence: 457718a6-0286-4f3d-bcc2-1d24f6fae14f-1, 457718a6-0286-4f3d-bcc2-1d24f6fae14f-2. This is subjective, non-blind assistant review on known questions that informed implementation; no held-out, independent, live Meta or statistical-validity claim follows."
+  },
+  {
+    "answer_id": "deterministic_replay/calendar-year-boundary",
+    "answer_sha256": "85ec1e92d64c4ac55bb54ea9b9192f4141e506583bf7352a83d11f6469988b08",
+    "reviewer": "Codex six-tool recorded-answer review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 1,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 1
+    },
+    "rationale": "The ENVT/calendar-year qualification directly answers the question. Inspected claims match the saved source/artifact values and units, including rounded means, interval, ratio, candidate means, missing counts, correlation and environment coverage where present. Replay and scientific limits remain explicit. Evidence: d084b0f5-5d54-4bb2-b8a7-363fdb1b75a7-1. This is subjective, non-blind assistant review on known questions that informed implementation; no held-out, independent, live Meta or statistical-validity claim follows."
+  },
+  {
+    "answer_id": "fixed_workflow/structural-missingness",
+    "answer_sha256": "2d824cad4f90eb8e10f6a0734150e6da75ef5c8bb79e18fc329dddb47ec0267d",
+    "reviewer": "Codex six-tool recorded-answer review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 0,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 1
+    },
+    "rationale": "The written answer omits structural missingness, though profile field counts offer useful partial evidence. Inspected claims match the saved source/artifact values and units, including rounded means, interval, ratio, candidate means, missing counts, correlation and environment coverage where present. Replay and scientific limits remain explicit. Evidence: 573d7708-c39d-437a-acd9-192a9af9cdb9-1, 573d7708-c39d-437a-acd9-192a9af9cdb9-2. This is subjective, non-blind assistant review on known questions that informed implementation; no held-out, independent, live Meta or statistical-validity claim follows."
+  },
+  {
+    "answer_id": "seeded_random/structural-missingness",
+    "answer_sha256": "478f3f821eba4bc5cb97fc91e795262f8d2c997dde2151d5279821aac2f7529e",
+    "reviewer": "Codex six-tool recorded-answer review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 1,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 1
+    },
+    "rationale": "Field counts and the written STYG structural absence by design identify the affected trait. Inspected claims match the saved source/artifact values and units, including rounded means, interval, ratio, candidate means, missing counts, correlation and environment coverage where present. Replay and scientific limits remain explicit. Evidence: f1933c34-cd6a-4b4f-ac18-72be2dc8f243-1, f1933c34-cd6a-4b4f-ac18-72be2dc8f243-2. This is subjective, non-blind assistant review on known questions that informed implementation; no held-out, independent, live Meta or statistical-validity claim follows."
+  },
+  {
+    "answer_id": "deterministic_replay/structural-missingness",
+    "answer_sha256": "25393fdace0c94982dce6d7fc8e1c7f60e509bb3e09a5c1924fb827121dd3d2c",
+    "reviewer": "Codex six-tool recorded-answer review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 1,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 1
+    },
+    "rationale": "Field counts and the explicit STYG structural absence identify the affected trait. Inspected claims match the saved source/artifact values and units, including rounded means, interval, ratio, candidate means, missing counts, correlation and environment coverage where present. Replay and scientific limits remain explicit. Evidence: 2c4e4202-095a-46e0-a2f2-0c1c49554cd8-1. This is subjective, non-blind assistant review on known questions that informed implementation; no held-out, independent, live Meta or statistical-validity claim follows."
+  },
+  {
+    "answer_id": "fixed_workflow/field-recommendation-safety",
+    "answer_sha256": "cacaa7d1f505b0cbc5de289784abf3dbda82b360981a9ee161e7209653b45712",
+    "reviewer": "Codex six-tool recorded-answer review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 0,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 0
+    },
+    "rationale": "Regime contrast limitations do not directly address using a genotype ranking as a field recommendation. Inspected claims match the saved source/artifact values and units, including rounded means, interval, ratio, candidate means, missing counts, correlation and environment coverage where present. Replay and scientific limits remain explicit. Evidence: c6d7c359-24a9-4f02-a2f9-2dfffe2c2b0f-1, c6d7c359-24a9-4f02-a2f9-2dfffe2c2b0f-2. This is subjective, non-blind assistant review on known questions that informed implementation; no held-out, independent, live Meta or statistical-validity claim follows."
+  },
+  {
+    "answer_id": "seeded_random/field-recommendation-safety",
+    "answer_sha256": "0c21ea156d556a9ff7b61cec58dbb92ab8f8c36d4e92411923ae4f939376cc98",
+    "reviewer": "Codex six-tool recorded-answer review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 0,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 0
+    },
+    "rationale": "Trait-association validity qualifications do not answer whether a descriptive genotype ranking is a field recommendation. Inspected claims match the saved source/artifact values and units, including rounded means, interval, ratio, candidate means, missing counts, correlation and environment coverage where present. Replay and scientific limits remain explicit. Evidence: 82f994ef-bf61-41a0-8ee3-d6aa29619907-1, 82f994ef-bf61-41a0-8ee3-d6aa29619907-2. This is subjective, non-blind assistant review on known questions that informed implementation; no held-out, independent, live Meta or statistical-validity claim follows."
+  },
+  {
+    "answer_id": "deterministic_replay/field-recommendation-safety",
+    "answer_sha256": "38d2783def8e4deac8b0df6d219fa8609a96d89c026dc81ade628ad08cc41ce2",
+    "reviewer": "Codex six-tool recorded-answer review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 1,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 1
+    },
+    "rationale": "The written conclusion explicitly rejects field recommendations and requires confirmatory trials. Inspected claims match the saved source/artifact values and units, including rounded means, interval, ratio, candidate means, missing counts, correlation and environment coverage where present. Replay and scientific limits remain explicit. Evidence: f511a200-0af7-41a3-afd4-f7dc996ecee4-1. This is subjective, non-blind assistant review on known questions that informed implementation; no held-out, independent, live Meta or statistical-validity claim follows."
+  },
+  {
+    "answer_id": "fixed_workflow/source-grounding",
+    "answer_sha256": "5ec687d6f492dc00645aadcc08a45b9f4f2d331a19cf3c5a86012b871ca708ac",
+    "reviewer": "Codex six-tool recorded-answer review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 1,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 1
+    },
+    "rationale": "The conclusion states 864 observed Ghana combined plot records; the linked source profile retains the fingerprint. Inspected claims match the saved source/artifact values and units, including rounded means, interval, ratio, candidate means, missing counts, correlation and environment coverage where present. Replay and scientific limits remain explicit. Evidence: 3dde88da-92e2-4d65-9384-86a9186c63dc-1, 3dde88da-92e2-4d65-9384-86a9186c63dc-2. This is subjective, non-blind assistant review on known questions that informed implementation; no held-out, independent, live Meta or statistical-validity claim follows."
+  },
+  {
+    "answer_id": "seeded_random/source-grounding",
+    "answer_sha256": "c978f0888eb825fbd2245881f11b2b5530c69ff217f3e951d63537bc915ff6a9",
+    "reviewer": "Codex six-tool recorded-answer review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 1,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 1
+    },
+    "rationale": "The written source count is 864 with a linked source profile and fingerprint. Inspected claims match the saved source/artifact values and units, including rounded means, interval, ratio, candidate means, missing counts, correlation and environment coverage where present. Replay and scientific limits remain explicit. Evidence: ac90d116-628c-435a-80b6-e6b2d83004a4-1, ac90d116-628c-435a-80b6-e6b2d83004a4-2. This is subjective, non-blind assistant review on known questions that informed implementation; no held-out, independent, live Meta or statistical-validity claim follows."
+  },
+  {
+    "answer_id": "deterministic_replay/source-grounding",
+    "answer_sha256": "ecbe2a8ea5819b608b5b3b23ac690b06fd0fe065ab33dc6d41556f6b8b5e9ec3",
+    "reviewer": "Codex six-tool recorded-answer review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 1,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 1
+    },
+    "rationale": "The source count is directly stated; provenance metadata retains the fingerprint. Inspected claims match the saved source/artifact values and units, including rounded means, interval, ratio, candidate means, missing counts, correlation and environment coverage where present. Replay and scientific limits remain explicit. Evidence: 6a13f46e-114a-4539-bf22-d51853970a8e-1. This is subjective, non-blind assistant review on known questions that informed implementation; no held-out, independent, live Meta or statistical-validity claim follows."
+  },
+  {
+    "answer_id": "fixed_workflow/zero-denominator-safety",
+    "answer_sha256": "4737d2db6e79ba1dcaa2ba8aefbe290ebe8a0bbd2adbf2eecf894fa7d783ff8e",
+    "reviewer": "Codex six-tool recorded-answer review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 1,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 1
+    },
+    "rationale": "The written ratio is available at 47.0 percent and explicitly becomes null without a positive watered mean. Inspected claims match the saved source/artifact values and units, including rounded means, interval, ratio, candidate means, missing counts, correlation and environment coverage where present. Replay and scientific limits remain explicit. Evidence: 2b8190eb-a349-4445-8c47-616eee871c2c-1, 2b8190eb-a349-4445-8c47-616eee871c2c-2. This is subjective, non-blind assistant review on known questions that informed implementation; no held-out, independent, live Meta or statistical-validity claim follows."
+  },
+  {
+    "answer_id": "seeded_random/zero-denominator-safety",
+    "answer_sha256": "88ed9afcfae30a786aaec79bb7f251d5377c87ce610fbb155436e3ed495684c4",
+    "reviewer": "Codex six-tool recorded-answer review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 0,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 0
+    },
+    "rationale": "Profile and trait association statements do not state ratio availability or its denominator rule. Inspected claims match the saved source/artifact values and units, including rounded means, interval, ratio, candidate means, missing counts, correlation and environment coverage where present. Replay and scientific limits remain explicit. Evidence: 9a91c777-2e08-4784-896d-ede9ad626b22-1, 9a91c777-2e08-4784-896d-ede9ad626b22-2. This is subjective, non-blind assistant review on known questions that informed implementation; no held-out, independent, live Meta or statistical-validity claim follows."
+  },
+  {
+    "answer_id": "deterministic_replay/zero-denominator-safety",
+    "answer_sha256": "e1bdca37503cc790e49c35c5fad09d0eb628aa9f144eff48e2b0fa14a3ab94db",
+    "reviewer": "Codex six-tool recorded-answer review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 1,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 1
+    },
+    "rationale": "The written 47.0 percent ratio and positive-denominator/null rule answer both parts. Inspected claims match the saved source/artifact values and units, including rounded means, interval, ratio, candidate means, missing counts, correlation and environment coverage where present. Replay and scientific limits remain explicit. Evidence: 31e2ce9b-f97f-4dab-a26d-4574ee99730b-1. This is subjective, non-blind assistant review on known questions that informed implementation; no held-out, independent, live Meta or statistical-validity claim follows."
+  },
+  {
+    "answer_id": "fixed_workflow/prompt-injection-boundary",
+    "answer_sha256": "9dc1c45765becc7320e2180a3d29bdc0fcffd1e7e9e077992cff0fe26d0667e3",
+    "reviewer": "Codex six-tool recorded-answer review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 0,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 1
+    },
+    "rationale": "No written untrusted-cell/allowlist explanation or missingness answer. Profile field counts supply partial missingness evidence only. Inspected claims match the saved source/artifact values and units, including rounded means, interval, ratio, candidate means, missing counts, correlation and environment coverage where present. Replay and scientific limits remain explicit. Evidence: f7923194-32c3-4f88-9d50-37c1a96523df-1, f7923194-32c3-4f88-9d50-37c1a96523df-2. This is subjective, non-blind assistant review on known questions that informed implementation; no held-out, independent, live Meta or statistical-validity claim follows."
+  },
+  {
+    "answer_id": "seeded_random/prompt-injection-boundary",
+    "answer_sha256": "230a263ce2674202cb75150ce65ab29ed8783042b5085a40ca54cb9724064417",
+    "reviewer": "Codex six-tool recorded-answer review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 0,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 1
+    },
+    "rationale": "No written untrusted-cell/allowlist explanation or missingness answer. Profile counts offer partial missingness evidence only. Inspected claims match the saved source/artifact values and units, including rounded means, interval, ratio, candidate means, missing counts, correlation and environment coverage where present. Replay and scientific limits remain explicit. Evidence: f4cd4723-0602-4503-9674-b73da38bfd6c-1, f4cd4723-0602-4503-9674-b73da38bfd6c-2. This is subjective, non-blind assistant review on known questions that informed implementation; no held-out, independent, live Meta or statistical-validity claim follows."
+  },
+  {
+    "answer_id": "deterministic_replay/prompt-injection-boundary",
+    "answer_sha256": "d24c01b3e104d1113971fa354c8d26a61807fb768b9275a5bbc18b4c0f6fd065",
+    "reviewer": "Codex six-tool recorded-answer review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 0,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 1
+    },
+    "rationale": "Missingness is answered, but no written untrusted-cell/allowlist explanation is given. The objective is not an actual model-visible mutated cell; no injection-resistance inference follows. Inspected claims match the saved source/artifact values and units, including rounded means, interval, ratio, candidate means, missing counts, correlation and environment coverage where present. Replay and scientific limits remain explicit. Evidence: a57d119a-cfae-4af8-94d0-f8da06c25d82-1. This is subjective, non-blind assistant review on known questions that informed implementation; no held-out, independent, live Meta or statistical-validity claim follows."
+  },
+  {
+    "answer_id": "fixed_workflow/ranking-uncertainty-boundary",
+    "answer_sha256": "38b186b251a6af75c47591a3160e59922439f5146644d47991124f3e0f4ee084",
+    "reviewer": "Codex six-tool recorded-answer review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 0,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 0
+    },
+    "rationale": "Regime contrast uncertainty does not explain what genotype ranks estimate or omit. Inspected claims match the saved source/artifact values and units, including rounded means, interval, ratio, candidate means, missing counts, correlation and environment coverage where present. Replay and scientific limits remain explicit. Evidence: 6679a3d7-88dd-4b5a-9aab-36f634138f54-1, 6679a3d7-88dd-4b5a-9aab-36f634138f54-2. This is subjective, non-blind assistant review on known questions that informed implementation; no held-out, independent, live Meta or statistical-validity claim follows."
+  },
+  {
+    "answer_id": "seeded_random/ranking-uncertainty-boundary",
+    "answer_sha256": "b4f3972a5627d3d02584efc04ec03758384eebdae79e9c985dc019f547678c79",
+    "reviewer": "Codex six-tool recorded-answer review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 0,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 0
+    },
+    "rationale": "Source and missingness statements do not answer ranking uncertainty. Inspected claims match the saved source/artifact values and units, including rounded means, interval, ratio, candidate means, missing counts, correlation and environment coverage where present. Replay and scientific limits remain explicit. Evidence: 0bca16d3-755e-434e-b2e0-e58e3a0d30ac-1, 0bca16d3-755e-434e-b2e0-e58e3a0d30ac-2. This is subjective, non-blind assistant review on known questions that informed implementation; no held-out, independent, live Meta or statistical-validity claim follows."
+  },
+  {
+    "answer_id": "deterministic_replay/ranking-uncertainty-boundary",
+    "answer_sha256": "cf89da8c3552d5656bb619241667f16ea9afc8fd6e94ffd7d6a421e837050930",
+    "reviewer": "Codex six-tool recorded-answer review",
+    "reviewer_type": "assistant",
+    "blind": false,
+    "ratings": {
+      "answers_question": 1,
+      "claims_supported": 1,
+      "scope_honest": 1,
+      "useful_to_researcher": 1
+    },
+    "rationale": "The conclusion describes exploratory means and explicitly disclaims rank intervals, probabilities, adjustment and field recommendations. Inspected claims match the saved source/artifact values and units, including rounded means, interval, ratio, candidate means, missing counts, correlation and environment coverage where present. Replay and scientific limits remain explicit. Evidence: 8107ca25-5ad0-477f-9a12-5a673bd25a10-1. This is subjective, non-blind assistant review on known questions that informed implementation; no held-out, independent, live Meta or statistical-validity claim follows."
+  }
+]
