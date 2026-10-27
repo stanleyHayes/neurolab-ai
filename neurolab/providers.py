@@ -64,7 +64,17 @@ class OpenAICompatibleAdapter:
         timeout: int,
         max_tokens: int,
     ) -> dict[str, Any]:
-        serialized_messages = json.dumps(messages, ensure_ascii=False, separators=(",", ":"))
+        serialized_messages = json.dumps(
+            {
+                "messages": messages,
+                "response_format": {
+                    "type": "json_schema",
+                    "json_schema": {"name": "research_action", "strict": True, "schema": schema},
+                },
+            },
+            ensure_ascii=False,
+            separators=(",", ":"),
+        )
         serialized_bytes = len(serialized_messages.encode("utf-8"))
         # The current integration uses Chat Completions. It has no exact input
         # token-count endpoint here; a UTF-8-byte upper bound avoids relying on

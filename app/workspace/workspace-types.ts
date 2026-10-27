@@ -1,3 +1,8 @@
+import type {
+  ResearchConfiguration,
+  ResearchPlan,
+} from "./research-editor-types";
+
 export type WorkspaceSection =
   | "overview"
   | "experiment-studio"
@@ -29,6 +34,9 @@ export type ResearchReport = {
   model_provider?: string | null;
   model_id?: string | null;
   objective: string;
+  refined_objective?: string;
+  research_plan?: ResearchPlan;
+  research_configuration?: ResearchConfiguration;
   seed: number;
   tool_calls: number;
   completion_status: string;

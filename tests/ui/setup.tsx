@@ -23,6 +23,18 @@ vi.mock("next/dynamic", () => ({
 }));
 
 beforeEach(() => {
+  Object.defineProperty(HTMLDialogElement.prototype, "showModal", {
+    configurable: true,
+    value() {
+      this.open = true;
+    },
+  });
+  Object.defineProperty(HTMLDialogElement.prototype, "close", {
+    configurable: true,
+    value() {
+      this.open = false;
+    },
+  });
   sessionStorage.clear();
   document.cookie = "neurolab_csrf=; Max-Age=0; path=/";
   Object.defineProperty(window, "matchMedia", {

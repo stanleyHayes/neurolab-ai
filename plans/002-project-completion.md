@@ -6,11 +6,12 @@ Goal: finish the authoritative Ghana-first research prototype with reproducible 
 
 1. Restore a clean quality gate and repair incompatible run/configuration contracts. Regression coverage must preserve the exact objective, selected methods and budgets.
 2. Resolve SonarQube code findings against actual scans; review security-sensitive intentional behavior with evidence. Do not disable rules, exclude application files, lower gates, or claim a quality-gate pass without checking it.
-3. Complete the scientific objective: environment-aware exploratory stability/uncertainty tools, evidence-grounded hypotheses and a justified follow-up design. Retain confounding, small-environment, multiplicity and design-adjustment limitations.
-4. Verify the full authenticated browser workflow, cancellation/reconnection and mobile/keyboard/reduced-motion behavior against actual stored results.
-5. Reconcile the dated verification records, benchmark answer quality and adversarial behavior, then exercise a bounded live provider run if configured. Fixture adapters are never live inference evidence.
-6. Add and rehearse durable jobs, shared abuse/provider-spend controls and deployment/backup operations before public multi-user readiness. Invite gating remains mandatory.
-7. Publish only reviewed source/assets with appropriate rights, record a <=3-minute real/replay-labeled demo, and verify submission details with the owner.
+3. Complete the advanced objective editor and context workflow from the owner-supplied task, with exact 20,000-character browser acceptance. Editor acceptance is now recorded in `verification/RESEARCH_INPUT_ACCEPTANCE.md`; live scientific answer quality remains separate.
+4. Complete the scientific objective: environment-aware exploratory stability/uncertainty tools, evidence-grounded hypotheses and a justified follow-up design. Retain confounding, small-environment, multiplicity and design-adjustment limitations.
+5. Verify the full authenticated browser workflow, cancellation/reconnection and mobile/keyboard/reduced-motion behavior against actual stored results.
+6. Reconcile the dated verification records, benchmark answer quality and adversarial behavior, then exercise a bounded live provider run if configured. Fixture adapters are never live inference evidence.
+7. Add and rehearse durable jobs, shared abuse/provider-spend controls and deployment/backup operations before public multi-user readiness. Invite gating remains mandatory.
+8. Publish only reviewed source/assets with appropriate rights, record a <=3-minute real/replay-labeled demo, and verify submission details with the owner.
 
 ## Evidence and attribution
 

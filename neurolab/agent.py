@@ -101,7 +101,7 @@ class ResearchAgent:
         *,
         max_steps: int = 6,
         max_tool_calls: int = 10,
-        max_wall_time: int = 180,
+        max_wall_time: float = 180,
         mode: str = "replay",
         model_adapter: StructuredModelAdapter | None = None,
         configuration: ResearchConfiguration | None = None,
@@ -111,8 +111,8 @@ class ResearchAgent:
             raise ValueError("mode must be replay or meta")
         if not 1 <= max_steps <= 6 or not 1 <= max_tool_calls <= 10:
             raise ValueError("Research budgets exceed allowed limits")
-        if not 1 <= max_wall_time <= 180:
-            raise ValueError("max_wall_time must be between 1 and 180 seconds")
+        if not 0 < max_wall_time <= 180:
+            raise ValueError("max_wall_time must be positive and at most 180 seconds")
         self.dataset = dataset
         self.store = store
         self.max_steps = max_steps
@@ -252,6 +252,8 @@ class ResearchAgent:
             "dataset_id": call["dataset_id"],
             "hypothesis_id": call["hypothesis_id"],
             "mode": self.mode,
+            "parameters": call["parameters"],
+            "seed": seed,
         }
         if recovery_for:
             payload["recovery_for"] = recovery_for
@@ -376,6 +378,7 @@ class ResearchAgent:
                 evidence,
                 timeout=max(1, int(self.max_wall_time - (time.monotonic() - start))),
                 active_tasks=pending,
+                include_objective=not decisions and self.research_plan.planning_mode != "meta",
             )
             task = next((task for task in pending if task.tool_name == choice["action"]), None)
             if task is None:
@@ -471,6 +474,9 @@ class ResearchAgent:
             "model_provider": self.model_adapter.provider if is_meta else None,
             "model_id": self.model_adapter.model_id if is_meta else None,
             "objective": objective,
+            "refined_objective": self.research_plan.refined_objective,
+            "research_configuration": self.configuration.model_dump(mode="json"),
+            "research_plan": self.store.get_run(run_id)["research_plan"],
             "seed": seed,
             "tool_calls": calls,
             "completion_status": "complete" if complete and not unsupported else "partial",
@@ -489,7 +495,11 @@ class ResearchAgent:
             task for task in self.research_plan.tasks if task.status == "pending" and task.tool_name
         ]
         if not tasks:
-            raise AgentConfigurationError("No supported pending research tasks are available")
+            report = self._build_report(run_id, objective, seed, start, [], [], [], [], 0)
+            report["limitations"].append(
+                "No supported pending task is available; no scientific tools ran."
+            )
+            return self._finish(run_id, report, [])
         evidence, decisions, failures = [], [], []
         calls = 0
         pending = list(tasks)
@@ -500,6 +510,7 @@ class ResearchAgent:
             task, parameters = self._choose_task(
                 run_id, objective, pending, evidence, decisions, failures, start
             )
+            self._check_wall_time(start)
             call = self._call(run_id, task.tool_name, task.task_id, parameters)
             calls += 1
             try:
@@ -515,6 +526,7 @@ class ResearchAgent:
                 self._replay_decision(run_id, task, result, tasks, decisions)
         if self.store.cancel_requested(run_id):
             return self._cancelled(run_id, "user_requested_at_safe_boundary")
+        self._check_wall_time(start)
         report = self._build_report(
             run_id, objective, seed, start, tasks, evidence, decisions, failures, calls
         )
@@ -579,4 +591,16 @@ class ResearchAgent:
         )
         if self.store.cancel_requested(run_id):
             return self._cancelled(run_id, "user_requested_before_execution")
+        preferences = self.configuration.autonomy_preferences
+        if not preferences.execute_supported_tasks or (
+            preferences.stop_if_unsupported and self.research_plan.unsupported_requirements
+        ):
+            report = self._build_report(
+                run_id, objective, seed, start, self.research_plan.tasks, [], [], [], 0
+            )
+            report["completion_status"] = "plan_only"
+            report["limitations"].append(
+                "Scientific execution was disabled or stopped by the researcher's configured preferences; no numeric tools ran."
+            )
+            return self._finish(run_id, report, [])
         return self._run_tasks(run_id, objective, seed, start)

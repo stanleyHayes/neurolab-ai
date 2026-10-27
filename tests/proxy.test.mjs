@@ -21,7 +21,7 @@ const compiled = ts.transpileModule(route, {
 mkdirSync(new URL("../.test-build/", import.meta.url), { recursive: true });
 const compiledUrl = new URL("../.test-build/proxy-route.mjs", import.meta.url);
 writeFileSync(compiledUrl, compiled);
-const { GET, POST } = await import(compiledUrl.href);
+const { GET, POST, PUT, PATCH } = await import(compiledUrl.href);
 
 const originalFetch = globalThis.fetch;
 const originalEnvironment = { ...process.env };
@@ -142,3 +142,36 @@ test("production rejects missing service configuration", async () => {
   const response = await GET(request(), context);
   assert.equal(response.status, 503);
 });
+
+for (const [method, handler] of [
+  ["PUT", PUT],
+  ["PATCH", PATCH],
+]) {
+  test(`${method} preserves authenticated draft/profile mutation semantics`, async () => {
+    globalThis.fetch = async (_target, init) => {
+      assert.equal(init.method, method);
+      assert.equal(init.headers.get("authorization"), "Bearer fixture-access");
+      assert.equal(init.headers.get("x-csrf-token"), "csrf");
+      assert.equal(
+        new TextDecoder().decode(init.body),
+        '{"objective":"Exact\\ntext"}',
+      );
+      return new Response('{"revision":1}', {
+        headers: { "content-type": "application/json" },
+      });
+    };
+    const response = await handler(
+      request(
+        method,
+        {
+          origin: "http://localhost:3000",
+          authorization: "Bearer fixture-access",
+          "x-csrf-token": "csrf",
+        },
+        '{"objective":"Exact\\ntext"}',
+      ),
+      context,
+    );
+    assert.equal(response.status, 200);
+  });
+}

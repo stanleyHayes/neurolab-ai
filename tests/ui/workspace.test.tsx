@@ -20,7 +20,7 @@ const reply = (value: unknown, status = 200) =>
 function seedSavedRun(section: WorkspaceSection) {
   navigation.pathname = section === "overview" ? "/" : `/${section}`;
   sessionStorage.setItem(
-    "neurolab-research-state",
+    "neurolab-research-state:fixture-user",
     JSON.stringify({
       objective: fixture.report.objective,
       runId,
@@ -36,8 +36,11 @@ beforeEach(() => {
     "fetch",
     vi.fn(async (input: RequestInfo | URL, init?: RequestInit) => {
       const url = String(input);
+      if (url === "/api/research-draft")
+        return reply({ revision: 0, draft: {}, updated_at: null });
       if (url === "/api/auth/me")
         return reply({
+          user_id: "fixture-user",
           email: "fixture@example.test",
           display_name: "Fixture Researcher",
         });

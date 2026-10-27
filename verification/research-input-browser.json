@@ -1,0 +1,22 @@
+{
+  "checked_at": "2026-10-27",
+  "environment": "Isolated local browser review, FastAPI 8107 / Next 3107 / SQLite test database",
+  "run_id": "c86c9fc4-2c0d-41f8-b282-b23ed64411cd",
+  "status": "COMPLETE",
+  "objective_characters": 20000,
+  "draft_exact_match": true,
+  "run_exact_match": true,
+  "report_exact_match": true,
+  "objective_sha256": "09aa555806963af3b343e7ec1df202209e95ad1dfc1b457457f914ca55c74337",
+  "tool_calls": 1,
+  "artifact_count": 1,
+  "artifact_sample_size": 864,
+  "source_sha256": "2e37c07f30e00efb33b59954dd6d02a04f3d67349790d782b70dbedfdaff05bc",
+  "mode": "deterministic_replay",
+  "browser_checks": [
+    "20,000-character counter displayed",
+    "Draft saved via authenticated PUT through Next proxy",
+    "Real page refresh restored exact full value",
+    "One dataset_profile task completed with persisted evidence ID"
+  ]
+}

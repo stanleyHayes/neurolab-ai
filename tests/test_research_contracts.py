@@ -86,7 +86,7 @@ class ResearchContractTests(unittest.TestCase):
         self.assertEqual(result["run"]["status"], "COMPLETE")
         self.assertEqual(len(adapter.contexts), 3)
         for index, context in enumerate(adapter.contexts):
-            self.assertEqual(context["objective"], objective)
+            self.assertEqual(context["objective"], objective if index == 0 else None)
             self.assertEqual(len(context["context"]["active_plan_tasks"]), 3 - index)
             self.assertEqual(len(context["evidence"]), index)
         self.assertTrue(

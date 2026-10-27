@@ -2,7 +2,7 @@
 
 ## Resources in the current product
 
-The only mutable persisted user resource in this prototype is a research run, including its nested report JSON, artifact rows, and event rows. There is no experiment table, private upload, saved finding table, or server-side export store yet. The authenticated run contract is therefore the complete current isolation surface; future private resource types must add an owner foreign key and owner-filtered reads/writes before UI exposure.
+Mutable private resources are research runs (including original objectives, configuration, plans, reports, artifacts and events) and one revision-controlled research draft per authenticated owner. There is no private upload, saved-finding or server-side export store yet. Draft routes derive the owner exclusively from the verified JWT; the conditional revision update prevents stale overwrites. New resource types must add owner-filtered reads and writes before UI exposure.
 
 ## Enforcement
 
@@ -11,8 +11,9 @@ The only mutable persisted user resource in this prototype is a research run, in
 3. Lookup and list methods include owner equality in SQL. Inaccessible resources are indistinguishable from absent IDs (404).
 4. Nested event/artifact/report access first resolves the owner-scoped parent. Cancellation is owner-scoped.
 5. SSE validates parent ownership before opening and rechecks both owner and active session each poll/reconnect. Bearer tokens never appear in event URLs.
-6. Shared Ghana dataset/profile data is curated read-only, not user-owned content.
-7. Existing run rows get NULL owner on migration and are intentionally quarantined from user-visible lists. Operator-approved mapping is required before any legacy transfer.
+6. Draft GET/PUT queries use the authenticated owner as their key; bodies cannot assign ownership. Original draft text is not cached in browser storage. The selected-run locator is namespaced by authenticated account ID.
+7. Shared Ghana dataset/profile data is curated read-only, not user-owned content.
+8. Existing run rows get NULL owner on migration and are intentionally quarantined from user-visible lists. Operator-approved mapping is required before any legacy transfer.
 
 ## Direct-object reference test matrix
 

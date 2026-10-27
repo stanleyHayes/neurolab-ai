@@ -10,7 +10,7 @@ from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 MAX_RESEARCH_OBJECTIVE_CHARS = 20_000
 MAX_RESEARCH_REQUEST_BYTES = 256 * 1024
-META_CONTEXT_WINDOW_TOKENS = 1_000_000
+META_CONTEXT_WINDOW_TOKENS = 1_048_576
 META_CONTEXT_SAFETY_RESERVE_TOKENS = 8_000
 
 SupportedMethod = Literal[
@@ -103,6 +103,7 @@ class ResearchPlan(BaseModel):
     objective_sha256: str = Field(pattern=r"^[a-f0-9]{64}$")
     planning_mode: Literal["deterministic", "meta"]
     title: str = Field(default="", max_length=200)
+    important_constraints: list[str] = Field(default_factory=list, max_length=40)
     refined_objective: str = Field(min_length=1, max_length=MAX_RESEARCH_OBJECTIVE_CHARS)
     ambiguities: list[str] = Field(default_factory=list, max_length=12)
     research_questions: list[str] = Field(default_factory=list, max_length=20)
@@ -127,6 +128,16 @@ class ResearchDraft(BaseModel):
     desired_outputs: list[DesiredOutput] = Field(default_factory=list, max_length=5)
     autonomy_preferences: AutonomyPreferences = Field(default_factory=AutonomyPreferences)
     accepted_plan: ResearchPlan | None = None
+
+    @model_validator(mode="after")
+    def validate_accepted_plan(self) -> ResearchDraft:
+        if self.accepted_plan and self.accepted_plan.objective_sha256 != objective_digest(
+            self.objective
+        ):
+            raise ValueError(
+                "Accepted plan does not match the exact draft objective; refine it again"
+            )
+        return self
 
     def configuration(self) -> ResearchConfiguration:
         return ResearchConfiguration(
@@ -312,6 +323,7 @@ def build_refinement_schema() -> dict[str, Any]:
         "required": [
             "title",
             "refined_objective",
+            "important_constraints",
             "ambiguities",
             "research_questions",
             "hypotheses",
@@ -323,6 +335,7 @@ def build_refinement_schema() -> dict[str, Any]:
         ],
         "properties": {
             "title": {"type": "string", "maxLength": 200},
+            "important_constraints": {"type": "array", "maxItems": 40, "items": text_item},
             "refined_objective": {
                 "type": "string",
                 "minLength": 1,
@@ -402,10 +415,11 @@ def build_execution_context(
         "objective_characters": len(objective),
         "title": config.title,
         "dataset_id": config.dataset_id,
-        "research_questions": config.research_questions,
-        "hypotheses": config.hypotheses,
+        "research_questions": config.research_questions or plan.research_questions,
+        "hypotheses": config.hypotheses or plan.hypotheses,
         "constraints": config.constraints.model_dump(mode="json"),
         "active_plan_tasks": [task.model_dump(mode="json") for task in pending_tasks],
+        "important_constraints": plan.important_constraints,
         "plan_ambiguities": plan.ambiguities,
         "plan_unsupported_requirements": plan.unsupported_requirements,
     }

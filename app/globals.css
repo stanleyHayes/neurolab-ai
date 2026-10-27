@@ -3667,3 +3667,270 @@ output {
 .retrieval-description {
   display: block;
 }
+
+/* Research writing and account-scoped drafts. */
+.research-objective-editor {
+  display: grid;
+  gap: 12px;
+}
+.objective-heading,
+.editor-meta,
+.editor-actions,
+.expanded-editor-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.objective-heading label {
+  margin: 0;
+  font-weight: 600;
+  color: var(--text);
+}
+.research-objective-editor textarea {
+  width: 100%;
+  min-height: 180px;
+  resize: vertical;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #071a20;
+  color: var(--text);
+  font:
+    14px/1.7 "DM Sans",
+    sans-serif;
+  white-space: pre-wrap;
+}
+.research-objective-editor textarea:focus,
+.editor-configuration-fields input:focus {
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
+}
+.research-objective-editor textarea[aria-invalid="true"] {
+  border-color: var(--red);
+}
+.editor-meta {
+  color: var(--muted);
+  font-size: 12px;
+}
+.editor-actions {
+  justify-content: flex-start;
+}
+.editor-validation {
+  min-height: 18px;
+  margin: 0;
+  font-size: 12px;
+  color: var(--gold);
+}
+.editor-notice {
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--green);
+  font-size: 13px;
+}
+.research-configuration,
+.accepted-research-plan {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 14px;
+}
+.research-configuration summary,
+.accepted-research-plan summary {
+  cursor: pointer;
+  color: var(--text);
+  font-weight: 600;
+}
+.research-configuration summary span {
+  display: block;
+  margin-top: 6px;
+  color: var(--muted);
+  font-weight: 400;
+  font-size: 12px;
+}
+.editor-configuration-fields {
+  display: grid;
+  gap: 12px;
+  padding-top: 18px;
+}
+.editor-configuration-fields input {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #071a20;
+  color: var(--text);
+  padding: 12px;
+  font: inherit;
+}
+.editor-configuration-fields textarea,
+.research-plan-review textarea {
+  min-height: 100px;
+}
+.editor-option-group {
+  min-width: 0;
+  border: 0;
+  margin: 0;
+  padding: 12px 0;
+}
+.editor-option-group legend {
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.editor-options-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+.editor-option,
+.editor-output-choice {
+  text-align: left;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #0b2025;
+  color: var(--text);
+  padding: 12px;
+  font: inherit;
+  cursor: pointer;
+}
+.editor-option strong,
+.editor-option span {
+  display: block;
+}
+.editor-option span {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+.editor-option[aria-pressed="true"],
+.editor-output-choice[aria-pressed="true"] {
+  border-color: var(--green);
+  background: #15362f;
+}
+.editor-option:focus-visible,
+.editor-output-choice:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
+}
+.preference-option {
+  width: 100%;
+  margin-top: 8px;
+}
+.preference-option b {
+  display: inline-block;
+  margin-top: 8px;
+  color: var(--green);
+  font-size: 12px;
+}
+.editor-budget-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+.editor-budget-grid label span {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.research-plan-review {
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+.research-plan-review h3,
+.expanded-editor-header h2 {
+  font-family: "Zilla Slab", Georgia, serif;
+}
+.objective-comparison {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+.objective-verbatim {
+  max-height: 360px;
+  overflow: auto;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #071a20;
+  color: var(--text);
+  font:
+    13px/1.7 "DM Sans",
+    sans-serif;
+}
+.research-plan-review li p {
+  margin: 6px 0;
+  color: var(--muted);
+  line-height: 1.5;
+}
+.expanded-objective-dialog {
+  width: min(1100px, calc(100vw - 32px));
+  height: min(900px, calc(100dvh - 32px));
+  max-width: none;
+  max-height: none;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 24px;
+  background: var(--panel);
+  color: var(--text);
+}
+.expanded-objective-dialog[open] {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.expanded-objective-dialog::backdrop {
+  background: #020b10e8;
+  backdrop-filter: blur(6px);
+}
+.expanded-objective-dialog textarea {
+  flex: 1;
+  min-height: 0;
+  resize: none;
+}
+.expanded-objective-dialog h2 {
+  margin: 8px 0 0;
+}
+.expanded-objective-dialog > span {
+  color: var(--muted);
+  font-size: 12px;
+}
+@media (max-width: 650px) {
+  .objective-comparison,
+  .editor-options-grid {
+    grid-template-columns: 1fr;
+  }
+  .editor-budget-grid {
+    grid-template-columns: 1fr;
+  }
+  .expanded-objective-dialog {
+    padding: 16px;
+  }
+}
+.research-run-plan {
+  margin-top: 24px;
+}
+.run-plan-task-list {
+  padding-left: 24px;
+}
+.run-plan-task-list li {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+}
+.run-plan-task-list li > div {
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+}
+.run-plan-task-list p {
+  color: var(--muted);
+  line-height: 1.6;
+}
+.task-state {
+  color: var(--green);
+  font-size: 12px;
+}

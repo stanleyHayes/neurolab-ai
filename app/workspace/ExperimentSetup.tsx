@@ -1,5 +1,11 @@
 import type { Dispatch, SetStateAction } from "react";
 import { LoadingDots } from "./LoadingDots";
+import { useResearchEditor } from "./use-research-editor";
+import { ResearchObjectiveEditor } from "./ResearchObjectiveEditor";
+import type {
+  ResearchConfiguration,
+  ResearchPlan,
+} from "./research-editor-types";
 
 type ExperimentSetupProps = {
   objective: string;
@@ -11,7 +17,10 @@ type ExperimentSetupProps = {
   runId: string;
   runStatus: string;
   toolCalls?: number;
-  runAnalysis: () => Promise<void>;
+  runAnalysis: (
+    configuration?: ResearchConfiguration,
+    plan?: ResearchPlan | null,
+  ) => Promise<void>;
   cancelRun: () => Promise<void>;
 };
 
@@ -28,6 +37,7 @@ export function ExperimentSetup({
   runAnalysis,
   cancelRun,
 }: Readonly<ExperimentSetupProps>) {
+  const editor = useResearchEditor(objective, setObjective);
   const toolCountLabel =
     toolCalls === undefined ? "" : " · " + toolCalls + " tool calls";
   const renderedChoice1 = (() => {
@@ -46,18 +56,18 @@ export function ExperimentSetup({
         <span className="source-status">SOURCE DATA</span>
       </div>
       <h2>Research brief</h2>
-      <label htmlFor="objective">
-        <span>Research question</span>
-      </label>
-      <textarea
-        id="objective"
-        value={objective}
-        onChange={(event) => setObjective(event.target.value)}
-        maxLength={20000}
+      <ResearchObjectiveEditor
+        objective={objective}
+        editor={editor}
+        busy={busy}
       />
       <div className="setup-meta">
         <span>Ghana · combined field trial</span>
-        <span>Seed 2026 · max 3 decisions · 5 calls · 60 s</span>
+        <span>
+          Seed 2026 · {editor.configuration.constraints.max_steps} steps ·{" "}
+          {editor.configuration.constraints.max_tool_calls} calls ·{" "}
+          {editor.configuration.constraints.max_seconds} s
+        </span>
       </div>
       <div className="planner-field" id="settings">
         <span className="field-label" id="analysis-planner-label">
@@ -104,8 +114,10 @@ export function ExperimentSetup({
         <button
           className="primary-button"
           type="button"
-          onClick={() => void runAnalysis()}
-          disabled={busy || !objective.trim()}
+          onClick={() =>
+            void runAnalysis(editor.configuration, editor.acceptedPlan)
+          }
+          disabled={busy || Boolean(editor.validation)}
           aria-busy={busy}
         >
           Generate experiment plan ↗{busy && <LoadingDots />}

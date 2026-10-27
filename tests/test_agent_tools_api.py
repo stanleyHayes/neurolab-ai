@@ -467,6 +467,11 @@ class ApiTests(unittest.TestCase):
 
         STORE.close()
         STORE.reopen()
+        from fastapi.testclient import TestClient
+
+        from neurolab.api import app
+
+        self.client = TestClient(app, client=(f"fixture-{self._testMethodName}", 50000))
         self.client.cookies.clear()
         self.client.headers.clear()
         self.client.get("/auth/csrf")
@@ -506,6 +511,145 @@ class ApiTests(unittest.TestCase):
 
     def tearDown(self):
         self.environment.stop()
+
+    def test_long_objectives_survive_draft_persistence_and_actual_run_execution(self):
+        self.register(f"long-{uuid.uuid4()}@example.test")
+        revision = 0
+        for size in (40, 5_000, 20_000):
+            with self.subTest(characters=size):
+                base = "# Research objective\r\n\nPreserve λ, paragraphs and **Markdown**.\n"
+                objective = (base * (size // len(base) + 1))[:size]
+                config = {
+                    "preferred_methods": ["dataset_profile"],
+                    "constraints": {"max_steps": 1, "max_tool_calls": 1, "max_seconds": 30},
+                }
+                saved = self.client.put(
+                    "/research-draft",
+                    json={
+                        "expected_revision": revision,
+                        "draft": {"objective": objective, **config},
+                    },
+                )
+                self.assertEqual(saved.status_code, 200, saved.text)
+                revision = saved.json()["revision"]
+                self.assertEqual(
+                    self.client.get("/research-draft").json()["draft"]["objective"], objective
+                )
+                accepted = self.client.post(
+                    "/research-runs", json={"objective": objective, "configuration": config}
+                )
+                self.assertEqual(accepted.status_code, 202, accepted.text)
+                run = self.client.get("/research-runs/" + accepted.json()["run_id"]).json()
+                self.assertEqual(run["status"], "COMPLETE")
+                self.assertEqual(run["objective"], objective)
+                self.assertEqual(run["report"]["objective"], objective)
+                self.assertEqual(run["report"]["research_plan"]["tasks"][0]["status"], "completed")
+                self.assertEqual(run["report"]["tool_calls"], 1)
+
+    def test_drafts_are_owner_scoped_and_stale_revision_cannot_overwrite(self):
+        first = self.register(f"draft-a-{uuid.uuid4()}@example.test").json()["access_token"]
+        original = "Private first-owner objective\n<script>alert('test')</script>"
+        self.assertEqual(
+            self.client.put(
+                "/research-draft", json={"expected_revision": 0, "draft": {"objective": original}}
+            ).status_code,
+            200,
+        )
+        self.register(f"draft-b-{uuid.uuid4()}@example.test")
+        self.assertEqual(self.client.get("/research-draft").json()["revision"], 0)
+        invalid = self.client.put(
+            "/research-draft",
+            json={
+                "expected_revision": 0,
+                "owner_user_id": "forged",
+                "draft": {"objective": "Other"},
+            },
+        )
+        self.assertEqual(invalid.status_code, 422)
+        self.authenticate(first)
+        self.assertEqual(self.client.get("/research-draft").json()["draft"]["objective"], original)
+        updated = self.client.put(
+            "/research-draft", json={"expected_revision": 1, "draft": {"objective": "New revision"}}
+        )
+        self.assertEqual(updated.status_code, 200)
+        stale = self.client.put(
+            "/research-draft",
+            json={"expected_revision": 1, "draft": {"objective": "Stale overwrite"}},
+        )
+        self.assertEqual(stale.status_code, 409)
+        self.assertEqual(
+            self.client.get("/research-draft").json()["draft"]["objective"], "New revision"
+        )
+
+    def test_oversized_objective_is_rejected_without_replacing_saved_draft(self):
+        self.register(f"draft-size-{uuid.uuid4()}@example.test")
+        valid = {"expected_revision": 0, "draft": {"objective": "Kept draft"}}
+        self.assertEqual(self.client.put("/research-draft", json=valid).status_code, 200)
+        invalid = {"expected_revision": 1, "draft": {"objective": "λ" * 20_001}}
+        self.assertEqual(self.client.put("/research-draft", json=invalid).status_code, 422)
+        self.assertEqual(
+            self.client.get("/research-draft").json()["draft"]["objective"], "Kept draft"
+        )
+        self.assertEqual(
+            self.client.post("/research-runs", json={"objective": "λ" * 20_001}).status_code, 422
+        )
+
+    def test_refinement_and_automatic_planning_use_validated_fixture_contracts(self):
+        from unittest.mock import Mock
+
+        from neurolab.research_context import ResearchConfiguration, build_deterministic_plan
+
+        self.register(f"refine-{uuid.uuid4()}@example.test")
+        original = "# Full original\n\n" + "λ" * 5000
+        config = ResearchConfiguration(preferred_methods=["dataset_profile"])
+        proposed = build_deterministic_plan(original, config).model_dump(mode="json")
+        for key in ("planning_mode", "objective_sha256"):
+            proposed.pop(key)
+        for task in proposed["tasks"]:
+            task.pop("status")
+            task.pop("evidence_ids")
+        for suggestion in proposed["dataset_suggestions"]:
+            suggestion.pop("enabled_for_analysis")
+        proposed["important_constraints"] = ["Never pool unrelated experiments"]
+        adapter = Mock(provider="test-fixture", model_id="not-live-inference")
+        adapter.generate_refinement.return_value = proposed
+        adapter.generate_structured.return_value = {
+            "action": "dataset_profile",
+            "bootstrap_samples": None,
+            "decision_summary": "Inspect the supported source",
+        }
+        with (
+            patch("neurolab.api.adapter_status", return_value={"enabled_for_runs": True}),
+            patch("neurolab.api.OpenAICompatibleAdapter.from_environment", return_value=adapter),
+        ):
+            refined = self.client.post(
+                "/research-objectives/refine",
+                json={"objective": original, "configuration": config.model_dump(mode="json")},
+            )
+            self.assertEqual(refined.status_code, 200, refined.text)
+            self.assertEqual(refined.json()["original_objective"], original)
+            accepted = self.client.post(
+                "/research-runs",
+                json={
+                    "objective": original,
+                    "mode": "meta",
+                    "configuration": config.model_dump(mode="json"),
+                },
+            )
+        run = self.client.get("/research-runs/" + accepted.json()["run_id"]).json()
+        self.assertEqual(run["status"], "COMPLETE")
+        self.assertEqual(run["report"]["objective"], original)
+        self.assertEqual(run["report"]["tool_calls"], 1)
+        self.assertEqual(
+            run["report"]["research_plan"]["important_constraints"],
+            proposed["important_constraints"],
+        )
+        self.assertEqual(run["report"]["research_plan"]["tasks"][0]["status"], "completed")
+        context = json.loads(adapter.generate_structured.call_args.args[0][1]["content"])
+        self.assertIsNone(context["objective"])
+        self.assertEqual(
+            context["context"]["important_constraints"], proposed["important_constraints"]
+        )
 
     def test_dataset_requires_user_and_profile_is_readable(self):
         self.assertEqual(self.client.get("/datasets").status_code, 401)

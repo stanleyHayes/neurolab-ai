@@ -8,6 +8,10 @@ import {
   clearAccessToken,
   configureAuthRedirect,
 } from "./auth-client";
+import type {
+  ResearchConfiguration,
+  ResearchPlan,
+} from "./workspace/research-editor-types";
 import { EmptyState } from "./workspace/EmptyState";
 import { WorkspaceSidebar } from "./workspace/WorkspaceSidebar";
 import { WorkspaceOverview } from "./workspace/WorkspaceOverview";
@@ -16,6 +20,7 @@ import { WorkspaceErrorItem } from "./workspace/WorkspaceErrorItem";
 import { EvidenceResults } from "./workspace/EvidenceResults";
 import { ExperimentSetup } from "./workspace/ExperimentSetup";
 import { SourceProvenance } from "./workspace/SourceProvenance";
+import { ResearchRunPlan } from "./workspace/ResearchRunPlan";
 import { ResearchTimeline } from "./workspace/ResearchTimeline";
 import { INITIAL_OBJECTIVE, SECTION_COPY } from "./workspace/workspace-config";
 import type {
@@ -216,6 +221,7 @@ export function ResearchWorkspace({
   const [replayIndex, setReplayIndex] = useState(0);
   const [stateRestored, setStateRestored] = useState(false);
   const [account, setAccount] = useState<{
+    user_id: string;
     email: string;
     display_name: string;
   } | null>(null);
@@ -223,6 +229,8 @@ export function ResearchWorkspace({
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const [isMobileViewport, setIsMobileViewport] = useState(false);
   const [collapsedNavGroups, setCollapsedNavGroups] = useState<string[]>([]);
+  const accountId = account?.user_id;
+  const restoredFor = useRef("");
   const explicitRunLoad = useRef("");
   const sidebarRef = useRef<HTMLElement>(null);
   const mobileNavTriggerRef = useRef<HTMLButtonElement>(null);
@@ -305,6 +313,7 @@ export function ResearchWorkspace({
         const response = await authenticatedFetch("/api/auth/me");
         if (!response.ok) throw new Error("Please sign in.");
         const user = (await response.json()) as {
+          user_id: string;
           email: string;
           display_name: string;
         };
@@ -324,29 +333,32 @@ export function ResearchWorkspace({
   }, [router]);
 
   useEffect(() => {
+    if (!accountId) return;
     const timer = window.setTimeout(() => {
+      window.sessionStorage.removeItem("neurolab-research-state");
       const navigation = readSessionState("neurolab-sidebar-state");
       if (typeof navigation.collapsed === "boolean")
         setSidebarCollapsed(navigation.collapsed);
       if (isStringArray(navigation.collapsedGroups))
         setCollapsedNavGroups(navigation.collapsedGroups);
-      const state = readSessionState("neurolab-research-state");
-      if (typeof state.objective === "string") setObjective(state.objective);
+      const state = readSessionState(`neurolab-research-state:${accountId}`);
       if (typeof state.runId === "string") setRunId(state.runId);
       if (typeof state.runStatus === "string") setRunStatus(state.runStatus);
       if (state.mode === "replay" || state.mode === "meta") setMode(state.mode);
+      restoredFor.current = accountId;
       setStateRestored(true);
     }, 0);
     return () => window.clearTimeout(timer);
-  }, []);
+  }, [accountId]);
 
   useEffect(() => {
-    if (!stateRestored) return;
+    if (!stateRestored || !accountId || restoredFor.current !== accountId)
+      return;
     window.sessionStorage.setItem(
-      "neurolab-research-state",
-      JSON.stringify({ objective, runId, runStatus, mode }),
+      `neurolab-research-state:${accountId}`,
+      JSON.stringify({ runId, runStatus, mode }),
     );
-  }, [objective, runId, runStatus, mode, stateRestored]);
+  }, [runId, runStatus, mode, stateRestored, accountId]);
 
   useEffect(() => {
     if (!stateRestored) return;
@@ -613,7 +625,10 @@ export function ResearchWorkspace({
     }
   }
 
-  async function runAnalysis(): Promise<void> {
+  async function runAnalysis(
+    configuration?: ResearchConfiguration,
+    plan?: ResearchPlan | null,
+  ): Promise<void> {
     setBusy(true);
     setErrors((current) => {
       const next = { ...current };
@@ -635,10 +650,10 @@ export function ResearchWorkspace({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           objective,
-          dataset_id: "ghana_combined",
           mode,
           seed: 2026,
-          constraints: { max_steps: 3, max_tool_calls: 5, max_seconds: 60 },
+          configuration,
+          plan,
         }),
       });
       setRunId(accepted.run_id);
@@ -934,6 +949,11 @@ export function ResearchWorkspace({
               />
             )}
           </section>
+
+          {report &&
+            (showReproducibility || showTimeline || showExperiment) && (
+              <ResearchRunPlan report={report} />
+            )}
 
           {showReproducibility && (
             <section
