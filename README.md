@@ -194,6 +194,10 @@ python scripts/run_evaluation.py --seed 77 --budget 2
 
 This fixture evaluates tool-selection coverage on a fixed task catalog. It does **not** score scientific-answer quality, model groundedness, human-rated utility, or live Meta performance; do not present it as such.
 
+## License
+
+The application code is licensed under the [MIT License](LICENSE), selected by the owner on 2026-10-27. Dataset files, bundled fonts and third-party assets retain their original licenses and attribution requirements; the code license does not relicense them. Dataset notices are below and in `docs/18_Attribution_and_Data_Citation.md`; font notices are bundled with their assets.
+
 ## Data provenance
 
 - **Ghana maize trial data:** Abu et al. (2026), *Phenotypic data: drought-tolerance evaluation of early and extra-early African maize (Zea mays L.) landraces*, [Zenodo DOI 10.5281/zenodo.22666201](https://doi.org/10.5281/zenodo.22666201), CC BY 4.0. The 864-row combined CSV is the active analysis source; regime component files are retained for cross-checking and must not be counted again.

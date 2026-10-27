@@ -1,6 +1,7 @@
 {
   "name": "neurolab-scientific-build",
   "version": "0.1.0",
+  "license": "MIT",
   "description": "Research prototype for reproducible, evidence-linked analysis of African maize trials, with a Next.js workspace and bounded AI-assisted workflows.",
   "scripts": {
     "dev": "next dev",
