@@ -4,7 +4,7 @@
 
 > **Status:** Working research prototype; not a production agronomy service. The current analysis MVP uses the Ghana maize dataset. A real Meta Model API adapter has been smoke-tested, but an audited end-to-end agent run did **not** meet its target research objective. Results are exploratory and must not be used as field recommendations.
 
-**Repository reference:** [github.com/stanleyHayes/neurolab-ai](https://github.com/stanleyHayes/neurolab-ai). This checkout has no configured remote; current public source availability is unverified. Local commits and a local clone do not establish public publication.
+**Repository:** [github.com/stanleyHayes/neurolab-ai](https://github.com/stanleyHayes/neurolab-ai), delivery branch `main`. The configured remote was verified to contain the historical README; application source publication is being prepared separately. Deployment target: Vercel.
 
 ---
 

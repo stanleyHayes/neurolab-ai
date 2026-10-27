@@ -437,3 +437,10 @@ Replaced the API's SQLite default with PostgreSQL (`DATABASE_URL=postgresql:///n
 - **Files:** added standard MIT `LICENSE` with NeuroLab AI contributors attribution; aligned package/lock root license metadata; documented application-code scope and separate dataset/font/third-party notices in README; updated completion gate. Dataset/asset licenses remain unchanged.
 - **Validation:** package/lock JSON parses with matching MIT metadata; root license text contains the permission, copyright inclusion and warranty clauses. `git diff --check` passed. No runtime code or dependencies changed; application tests were not repeated for license/documentation metadata.
 - **Remaining blockers:** remote URL/hosting choice, browser attachment, current Sonar gate after infrastructure recovery, and live-provider acceptance while inference is paused.
+
+
+## 2026-10-27 — Connect owner repository and preserve both histories
+
+- Owner supplied `git@github.com:stanleyHayes/neurolab-ai.git` and then specified Vercel for all application hosting. Configured `origin`, verified SSH access and fetched remote `main` at `3edbacafd4f4630c8a416c48f206b0cf586dd4fb`. Remote tree contains the historical README only.
+- Local and remote histories are unrelated. Merged the remote history without force rewriting; resolved the README add/add conflict by retaining the current comprehensive README after inspecting its differences against the remote. Other remote files were absent. Both histories remain ancestors of the resulting merge.
+- `git status` and diff checks used for merge resolution; publication has not yet occurred. Full source/history exposure checks and Vercel deployment preparation follow. No secrets/services or model settings changed.
