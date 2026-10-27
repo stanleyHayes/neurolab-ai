@@ -51,36 +51,38 @@ export function SourceProvenance({
       id="provenance"
       aria-busy={profileLoading}
     >
-      <header className="source-header">
-        <div>
-          <span className="results-overline">
-            <ResultIcon name="source" /> SOURCE DATA
-          </span>
-          <h2>Source provenance</h2>
-          <p>Ghana combined · maize phenotypes</p>
-        </div>
-        <span className="source-loaded">
-          <ResultIcon name={profile ? "complete" : "record"} />
-          {profile && !profileLoading ? "SOURCE LOADED" : status}
-        </span>
-      </header>
-      <dl className="source-metrics" aria-label="Source dataset counts">
-        {metrics.map((metric) => (
-          <div key={metric.label}>
-            <dt>
-              <ResultIcon name={metric.icon} />
-              {metric.label}
-            </dt>
-            <dd>
-              {profileLoading ? (
-                <Skeleton className="skeleton-number" />
-              ) : (
-                formatNumber(metric.value)
-              )}
-            </dd>
+      <div className="source-overview">
+        <header className="source-header">
+          <div>
+            <span className="results-overline">
+              <ResultIcon name="source" /> SOURCE DATA
+            </span>
+            <h2>Ghana maize trials</h2>
+            <p>Combined phenotypes · source provenance</p>
           </div>
-        ))}
-      </dl>
+          <span className="source-loaded">
+            <ResultIcon name={profile ? "complete" : "record"} />
+            {profile && !profileLoading ? "SOURCE LOADED" : status}
+          </span>
+        </header>
+        <dl className="source-metrics" aria-label="Source dataset counts">
+          {metrics.map((metric) => (
+            <div key={metric.label}>
+              <dt>
+                <ResultIcon name={metric.icon} />
+                {metric.label}
+              </dt>
+              <dd>
+                {profileLoading ? (
+                  <Skeleton className="skeleton-number" />
+                ) : (
+                  formatNumber(metric.value)
+                )}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </div>
       <div className="source-detail-grid">
         <section
           className="source-citation"
@@ -89,7 +91,7 @@ export function SourceProvenance({
           <span className="source-section-label">
             <ResultIcon name="record" /> ORIGINAL STUDY
           </span>
-          <h3>Credit the field research.</h3>
+          <h3>Original study & attribution</h3>
           <a
             className="source-study-link"
             href="https://doi.org/10.5281/zenodo.22666201"
@@ -138,7 +140,7 @@ export function SourceProvenance({
               <ResultIcon name="copy" /> Copy source hash
             </button>
           </div>
-          <h3>One source. A traceable record.</h3>
+          <h3>Source fingerprint</h3>
           <p className="caption">
             The SHA-256 identifies the exact source bytes used by the analysis.
           </p>
@@ -170,7 +172,7 @@ export function SourceProvenance({
       <div className="source-science-note">
         <ResultIcon name="caution" />
         <div>
-          <strong>Read the trial design alongside the result.</strong>
+          <strong>Interpretation boundaries</strong>
           <p>
             Water regime is confounded with trial environment. ENVT indices are
             not calendar years. The combined source and its regime-specific

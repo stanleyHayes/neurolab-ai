@@ -5759,12 +5759,20 @@ output {
   padding: 28px 32px;
   max-width: 1240px;
 }
+.source-overview {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 32px;
+  align-items: center;
+  padding-bottom: 28px;
+  margin-bottom: 28px;
+  border-bottom: 1px solid #344d50;
+}
 .source-header {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  margin-bottom: 28px;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 18px;
 }
 .source-header h2 {
   font-size: 30px;
@@ -5798,7 +5806,7 @@ output {
   grid-template-columns: repeat(3, 1fr);
   border: 1px solid #344d50;
   border-radius: 8px;
-  margin: 0 0 28px;
+  margin: 0;
   overflow: hidden;
   background: #14272c;
 }
@@ -5822,7 +5830,7 @@ output {
 }
 .source-metrics dd {
   margin: 12px 0 0;
-  font-size: 34px;
+  font-size: clamp(30px, 3vw, 44px);
   line-height: 1.1;
   letter-spacing: -0.04em;
   font-variant-numeric: tabular-nums;
@@ -6041,6 +6049,15 @@ output {
   color: #d9d1ba;
 }
 @media (max-width: 950px) {
+  .source-overview {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .source-header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
   .source-detail-grid {
     grid-template-columns: 1fr;
     gap: 24px;
