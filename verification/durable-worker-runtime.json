@@ -70,5 +70,38 @@
     "observed_plot_count": 864,
     "model_id": null,
     "inline_api_worker": false
+  },
+  "post_rollout_profile": {
+    "run_id": "e0cf0baa-7792-4b1d-88da-9d807357e955",
+    "run_status": "COMPLETE",
+    "job_attempts": 1,
+    "code_commit": "4e224e903068bec9024274ae2942a4221942b50b",
+    "source_sha256": "2e37c07f30e00efb33b59954dd6d02a04f3d67349790d782b70dbedfdaff05bc",
+    "tool_calls": 1,
+    "model_id": null
+  },
+  "local_process_observation": {
+    "observed_at_utc": "2026-10-27T19:46:42.948437+00:00",
+    "workers": [
+      {
+        "pid": 65538,
+        "database_kind": "Isolated SQLite review",
+        "inference_enabled": false,
+        "jwt_signing_key_present": false,
+        "service_bearer_present": false,
+        "provider_key_present": false
+      },
+      {
+        "pid": 65566,
+        "database_kind": "Primary PostgreSQL",
+        "inference_enabled": false,
+        "jwt_signing_key_present": false,
+        "service_bearer_present": false,
+        "provider_key_present": false
+      }
+    ],
+    "legacy_nonterminal_metadata_matches_pre_migration_observation": true,
+    "unowned_runs_adopted_into_jobs": 0,
+    "supervision_scope": "Local execution sessions; target deployment supervision not verified"
   }
 }
