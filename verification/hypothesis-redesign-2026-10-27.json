@@ -1,0 +1,27 @@
+{
+  "deployment_code_commit": "d38ae00ff095b06468e5a1d107f12ece0d727979",
+  "production_url": "https://neurolab-ai.vercel.app",
+  "deployment_url": "https://neurolab-ofnx45m6c-hayfordstanleys-projects.vercel.app",
+  "vercel_ready": true,
+  "production_alias_matches": true,
+  "reports_http": 200,
+  "new_card_css_served": true,
+  "backend_proxy_health_http": 200,
+  "checks": {
+    "ui_tests": 75,
+    "final_run_plan_cinematic_tests": 13,
+    "eslint": "passed",
+    "typescript": "passed",
+    "production_build": "passed",
+    "source_objective_and_constraint_retention": "tested"
+  },
+  "source_sha256": {
+    "app/workspace/ResearchHypotheses.tsx": "94552fe02e358312821ca4fa844f6507eea8fcfbb5f990ba1ee0778b016b60ba",
+    "app/workspace/ResearchRunPlan.tsx": "bd0fef962c7528d0b7ca28d9a2e913d01a7b40f323d86b1fe5669ed616ff8330",
+    "app/globals.css": "35a826214783af0b90b905da13c11a7eeb966b0ce2e0665ae18bbb53eb650d0f",
+    "tests/ui/run-plan.test.tsx": "59eaf0d911a15884a027944e07fa76cd8a44c8e3a02288aef7f779a1fdb75c68"
+  },
+  "browser_visual_review": false,
+  "browser_blocker": "CUA_REPL_ENABLED_SURFACES is required",
+  "scope": "Frontend presentation only; persisted science, source text, criteria, owner boundaries and replay mode unchanged."
+}
