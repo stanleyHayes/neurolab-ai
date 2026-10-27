@@ -220,3 +220,40 @@ test("proxy forwards only a single valid IP from the configured trusted ingress 
   );
   assert.deepEqual(received, ["2001:db8::1", null, null]);
 });
+
+test("SSE reconnect forwards the persisted event cursor without replaying earlier frames", async () => {
+  process.env.RESEARCH_API_URL = "http://private-api:8000";
+  process.env.API_BEARER_TOKEN = "fixture-service-token-32-characters";
+  globalThis.fetch = async (target, init) => {
+    assert.equal(
+      String(target),
+      "http://private-api:8000/research-runs/owned-run/events",
+    );
+    assert.equal(init.headers.get("last-event-id"), "41");
+    assert.equal(init.headers.get("authorization"), "Bearer fixture-access");
+    return new Response("id: 42\nevent: evidence.updated\ndata: {}\n\n", {
+      headers: {
+        "content-type": "text/event-stream",
+        "cache-control": "no-cache",
+      },
+    });
+  };
+  const response = await GET(
+    request("GET", {
+      accept: "text/event-stream",
+      authorization: "Bearer fixture-access",
+      "last-event-id": "41",
+    }),
+    {
+      params: Promise.resolve({
+        path: ["research-runs", "owned-run", "events"],
+      }),
+    },
+  );
+  assert.equal(response.status, 200);
+  assert.equal(response.headers.get("content-type"), "text/event-stream");
+  assert.equal(
+    await response.text(),
+    "id: 42\nevent: evidence.updated\ndata: {}\n\n",
+  );
+});

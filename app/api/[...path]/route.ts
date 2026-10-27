@@ -81,11 +81,13 @@ function upstreamHeaders(
   const headers = new Headers();
   const contentType = request.headers.get("content-type");
   const accept = request.headers.get("accept");
+  const lastEventId = request.headers.get("last-event-id");
   const authorization = request.headers.get("authorization");
   const csrfToken = request.headers.get("x-csrf-token");
   const cookie = request.headers.get("cookie");
   if (contentType) headers.set("content-type", contentType);
   if (accept) headers.set("accept", accept);
+  if (lastEventId) headers.set("last-event-id", lastEventId);
   if (authorization) headers.set("authorization", authorization);
   if (csrfToken) headers.set("x-csrf-token", csrfToken);
   if (cookie) {
