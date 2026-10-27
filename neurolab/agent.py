@@ -132,6 +132,7 @@ class ResearchAgent:
         model_adapter: StructuredModelAdapter | None = None,
         configuration: ResearchConfiguration | None = None,
         research_plan: ResearchPlan | None = None,
+        model_feedback: bool = True,
     ) -> None:
         if mode not in {"replay", "meta"}:
             raise ValueError("mode must be replay or meta")
@@ -139,6 +140,11 @@ class ResearchAgent:
             raise ValueError("Research budgets exceed allowed limits")
         if not 0 < max_wall_time <= 180:
             raise ValueError("max_wall_time must be positive and at most 180 seconds")
+        if not isinstance(model_feedback, bool):
+            raise ValueError("model_feedback must be a boolean evaluation control")
+        if not model_feedback and mode != "meta":
+            raise ValueError("Result-feedback ablation requires explicit meta evaluation mode")
+        self.model_feedback = model_feedback
         self.dataset = dataset
         self.store = store
         self.max_steps = max_steps
@@ -148,6 +154,21 @@ class ResearchAgent:
         self.model_adapter = model_adapter
         self.configuration = configuration or ResearchConfiguration()
         self.research_plan = research_plan.model_copy(deep=True) if research_plan else None
+
+    def _evidence_context(self, evidence):
+        if not self.model_feedback:
+            return []
+        return [
+            {
+                "artifact_id": item["artifact_id"],
+                "tool_name": item["tool_name"],
+                "sample_size": item["sample_size"],
+                "claim_scope": item["claim_scope"],
+                "results": item["results"].get("model_summary", item["results"]),
+                "warnings": item["warnings"],
+            }
+            for item in evidence
+        ]
 
     def _select_action(
         self,
@@ -181,17 +202,7 @@ class ResearchAgent:
                 "decision_summary": {"type": "string", "minLength": 1, "maxLength": 240},
             },
         }
-        safe_evidence = [
-            {
-                "artifact_id": item["artifact_id"],
-                "tool_name": item["tool_name"],
-                "sample_size": item["sample_size"],
-                "claim_scope": item["claim_scope"],
-                "results": item["results"].get("model_summary", item["results"]),
-                "warnings": item["warnings"],
-            }
-            for item in evidence
-        ]
+        safe_evidence = self._evidence_context(evidence)
         result = self.model_adapter.generate_structured(
             [
                 {
@@ -386,13 +397,15 @@ class ResearchAgent:
         }
 
     def _record_decision(self, run_id, decisions, task, evidence, source):
-        latest = evidence[-1] if evidence else None
+        latest = evidence[-1] if evidence and self.model_feedback else None
         summary = "Selected a pending allowlisted task; no result evidence exists yet."
         if latest:
             summary = (
                 f"Selected {task.tool_name} after reviewing computed "
                 f"{latest['tool_name']} evidence ({latest['artifact_id']})."
             )
+        if source == "model_without_result_feedback":
+            summary = "Evaluation ablation selected a pending task with prior tool results withheld from the model."
         if source == "deterministic_plan_recovery":
             summary = "Model decision rejected; execute the next validated pending plan task."
         decision = {
@@ -409,7 +422,7 @@ class ResearchAgent:
         if self.mode != "meta":
             selected = decisions[-1]["selected_action"] if decisions else None
             return next((task for task in pending if task.tool_name == selected), pending[0]), {}
-        source = "model"
+        source = "model" if self.model_feedback else "model_without_result_feedback"
         try:
             choice = self._select_action(
                 objective,
@@ -491,6 +504,21 @@ class ResearchAgent:
         )
         return PROFILE_OUTPUT in outputs
 
+    def _mode_limitations(self):
+        limitations = [
+            "Meta mode was requested; configured provider identity does not prove a completed model call. Provider attempts may be blocked or fail; server tools compute numerical results."
+            if self.mode == "meta"
+            else "Replay planner is deterministic and is not Meta inference.",
+            "Ghana water regime is confounded with trial environment.",
+            "Only three ENVT indices are present; do not reinterpret them as calendar years.",
+            "Completion status describes the accepted method tasks, not semantic coverage of every sentence in the objective.",
+        ]
+        if self.mode == "meta" and not self.model_feedback:
+            limitations.append(
+                "Evaluation ablation: prior numeric tool results were withheld from model action selection; backend evidence remains recorded."
+            )
+        return limitations
+
     def _build_report(
         self, run_id, objective, seed, start, tasks, evidence, decisions, failures, calls
     ):
@@ -500,14 +528,7 @@ class ResearchAgent:
             bool(tasks) and not failures and all(task.status == "completed" for task in tasks)
         )
         unsupported = self.research_plan.unsupported_requirements if self.research_plan else []
-        limitations = [
-            "Meta mode was requested; configured provider identity does not prove a completed model call. Provider attempts may be blocked or fail; server tools compute numerical results."
-            if is_meta
-            else "Replay planner is deterministic and is not Meta inference.",
-            "Ghana water regime is confounded with trial environment.",
-            "Only three ENVT indices are present; do not reinterpret them as calendar years.",
-            "Completion status describes the accepted method tasks, not semantic coverage of every sentence in the objective.",
-        ]
+        limitations = self._mode_limitations()
         if failures:
             limitations.append(
                 "At least one decision or analysis failed; diagnostic recovery does not replace missing analysis."

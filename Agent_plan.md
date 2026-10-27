@@ -120,3 +120,9 @@ D1 data and repo; D2 normalization; D3 statistical tools; D4 API; D5 Meta agent;
 
 - [x] Add explicit, bounded Ed25519 verification overlap, current-only issuance, strict startup validation and generated-key/API rollover/retirement tests.
 - [ ] Rehearse the committed multi-instance local fixture workflow, then separately verify secret distribution/rollout, retirement, incident response and browser/session behavior on the actual target. Operational keys and pepper remain unchanged.
+
+## Synthetic model-visible containment and feedback controls
+
+- [x] Exercise synthetic CSV labels through actual normalization/ranking/model input, reject programmed unsafe replies and prevent invented model summaries from becoming report claims; retain exact inputs/replies and failed trials.
+- [x] Add internal result-feedback withholding with truthful decision/report labeling; keep normal HTTP requests unchanged and replay evidence intact.
+- [ ] Execute committed collection; retain live Meta resistance/usefulness ablations, independent semantic review and browser/external delivery as separate unverified gates.

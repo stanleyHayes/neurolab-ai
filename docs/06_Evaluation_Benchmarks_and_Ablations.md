@@ -18,3 +18,7 @@ Save `eval/tasks.json`, `eval/results.jsonl`, report with mean and confidence in
 ## 2026-10-27 recorded-answer increment
 
 [Recorded-answer evaluation](RECORDED_ANSWER_EVALUATION.md) adds actual offline question/policy runs, preserved failures, trace audits and evidence-bound review scoring. Non-blind assistant ratings are available; no live Meta, blind-human review or feedback ablation has been completed. Action coverage remains distinct from answer quality.
+
+## Synthetic containment and feedback contracts 27 October 2026
+
+[CSV-to-prompt containment and result-feedback controls](ADVERSARIAL_FEEDBACK_CONTRACTS.md) now exercise actual loader/tool/agent/report paths with explicitly synthetic data and programmed replies. Both input conditions and all outcomes are preserved. This is local contract validation, not live Meta injection resistance or a usefulness ablation. No independent/held-out or semantic-quality gate is marked complete by these controls.
