@@ -1,0 +1,20 @@
+{
+  "verified_at_utc": "2026-10-27T20:38:08.974016+00:00",
+  "code_commit": "f43c7e767ddf83732c92e21e611bd23f166fde26",
+  "environment": "Two production-profile Uvicorn API processes sharing disposable local PostgreSQL with generated fixture secrets",
+  "old_token_accepted_by_new_signer_during_overlap": true,
+  "new_token_accepted_by_old_staged_verifier": true,
+  "refresh_into_new_signer_status": 200,
+  "unrotated_old_session_accepted_before_retirement": true,
+  "old_key_access_after_explicit_retirement": [
+    401,
+    401
+  ],
+  "new_key_access_after_retirement": [
+    200,
+    200
+  ],
+  "model_spending_reservations": 0,
+  "live_model_requests": 0,
+  "scope": "Actual HTTP staged verification/signer rollover and immediate fixture-key retirement, not elapsed grace-period, production secret manager, TLS/browser or operational key rotation acceptance."
+}
