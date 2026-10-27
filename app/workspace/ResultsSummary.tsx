@@ -1,6 +1,8 @@
+import { MetricVisual, GenotypeMiniPlot } from "./EvidenceVisualizations";
+import { finiteMeasure } from "./ResultInterval";
 import { ResultIcon } from "./ResultIcon";
 import type { ResearchArtifact, ResearchReport } from "./workspace-types";
-import type { ComponentProps } from "react";
+import type { ComponentProps, ReactNode } from "react";
 
 type IconName = ComponentProps<typeof ResultIcon>["name"];
 function ResultMetric({
@@ -9,12 +11,14 @@ function ResultMetric({
   value,
   unit,
   note,
+  visual,
 }: Readonly<{
   icon: IconName;
   label: string;
   value: string;
   unit?: string;
   note: string;
+  visual?: ReactNode;
 }>) {
   return (
     <div className="result-metric">
@@ -26,6 +30,7 @@ function ResultMetric({
         {value}
         {unit && <span>{unit}</span>}
         <small>{note}</small>
+        {visual}
       </dd>
     </div>
   );
@@ -46,10 +51,22 @@ export function ResultsSummary({
   const genotypes = Array.isArray(ranking?.results.genotypes)
     ? ranking.results.genotypes
     : undefined;
+  const maximum = Math.max(
+    finiteMeasure(means?.DROUGHT) ?? 0,
+    finiteMeasure(means?.WELL_WATERED) ?? 0,
+    1,
+  );
   return (
     <dl className="results-metric-strip" aria-label="Measured result summary">
       <ResultMetric
         icon="comparison"
+        visual={
+          <MetricVisual
+            value={means?.DROUGHT}
+            maximum={maximum}
+            description="Managed drought mean yield, kg/ha"
+          />
+        }
         label="Managed drought"
         value={formatNumber(means?.DROUGHT)}
         unit="kg/ha"
@@ -61,6 +78,13 @@ export function ResultsSummary({
       />
       <ResultMetric
         icon="plots"
+        visual={
+          <MetricVisual
+            value={means?.WELL_WATERED}
+            maximum={maximum}
+            description="Well-watered mean yield, kg/ha"
+          />
+        }
         label="Well-watered"
         value={formatNumber(means?.WELL_WATERED)}
         unit="kg/ha"
@@ -72,6 +96,16 @@ export function ResultsSummary({
       />
       <ResultMetric
         icon="retention"
+        visual={
+          <MetricVisual
+            value={
+              contrast?.results.drought_to_well_watered_yield_ratio_percent
+            }
+            maximum={100}
+            reference={100}
+            description="Observed yield retention, percent"
+          />
+        }
         label="Descriptive yield retention"
         value={formatNumber(
           contrast?.results.drought_to_well_watered_yield_ratio_percent,
@@ -81,6 +115,7 @@ export function ResultsSummary({
       />
       <ResultMetric
         icon="genotype"
+        visual={genotypes ? <GenotypeMiniPlot entries={genotypes} /> : null}
         label="Genotypes summarized"
         value={genotypes ? genotypes.length.toLocaleString() : "—"}
         note={

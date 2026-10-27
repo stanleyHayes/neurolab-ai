@@ -7620,3 +7620,245 @@ output {
     margin: 0;
   }
 }
+
+/* Saved numeric evidence, with exact readouts retained beside each visual. */
+.metric-visual {
+  margin: 18px 0 0;
+  color: var(--cyan);
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+.metric-visual svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.metric-visual-track {
+  fill: var(--panel-raised);
+  stroke: var(--line);
+  stroke-width: 1;
+}
+.metric-visual-fill {
+  fill: var(--cyan);
+}
+.result-metric:first-child .metric-visual-fill {
+  fill: var(--gold);
+}
+.metric-visual-reference {
+  stroke: var(--text);
+  stroke-width: 2;
+}
+.metric-visual figcaption {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+.genotype-mini-plot svg {
+  height: auto;
+  fill: var(--green);
+}
+.evidence-comparison-plot {
+  margin: 24px 0;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--bg);
+}
+.evidence-comparison-plot > figcaption {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.evidence-comparison-plot > figcaption strong {
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 600;
+}
+.evidence-comparison-plot > figcaption > span {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.7;
+}
+.association-plot-row {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr) 64px;
+  align-items: center;
+  gap: 12px;
+  min-height: 48px;
+  border-bottom: 1px solid var(--line);
+}
+.association-plot-row > span:first-child,
+.environment-plot-row > span:first-child {
+  color: var(--text);
+  font-size: 12px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+.association-plot-row > strong {
+  text-align: right;
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+.association-plot-row svg,
+.environment-plot-row svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.association-plot-axis,
+.environment-plot-axis {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.5;
+  padding: 0 12px;
+}
+.association-plot-axis {
+  margin-left: 192px;
+  margin-right: 76px;
+}
+.comparison-axis {
+  stroke: var(--line);
+  stroke-width: 1;
+}
+.comparison-zero {
+  stroke: var(--muted);
+  stroke-width: 1;
+  stroke-dasharray: 3 3;
+}
+.comparison-range {
+  stroke: var(--cyan);
+  stroke-width: 2;
+  fill: none;
+}
+.association-negative {
+  fill: var(--gold);
+  stroke: var(--bg);
+  stroke-width: 1.5;
+}
+.association-positive {
+  fill: var(--green);
+  stroke: var(--bg);
+  stroke-width: 1.5;
+}
+.environment-plot-row {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+  min-height: 48px;
+  border-bottom: 1px solid var(--line);
+}
+.environment-plot-axis {
+  margin-left: 192px;
+}
+.environment-yield-plot .comparison-range {
+  stroke: var(--muted);
+  stroke-width: 1.5;
+}
+.environment-plot-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+  margin: 0 0 18px;
+  color: var(--muted);
+  font-size: 11px;
+}
+.environment-plot-legend > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+.environment-symbol {
+  display: block;
+  width: 9px;
+  height: 9px;
+}
+.environment-symbol-0 {
+  border-radius: 50%;
+  background: var(--cyan);
+}
+.environment-symbol-1 {
+  background: var(--gold);
+}
+.environment-symbol-2 {
+  background: var(--green);
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+.environment-point-0 {
+  fill: var(--cyan);
+}
+.environment-point-1 {
+  fill: var(--gold);
+}
+.environment-point-2 {
+  fill: var(--green);
+}
+.environment-point {
+  stroke: var(--bg);
+  stroke-width: 1;
+}
+.evidence-comparison-plot .caption {
+  margin-bottom: 0;
+}
+.plot-missing {
+  color: var(--muted);
+  font-size: 11px;
+}
+@media (max-width: 760px) {
+  .evidence-comparison-plot {
+    padding: 16px;
+  }
+  .association-plot-row {
+    grid-template-columns: minmax(0, 1fr) 56px;
+    gap: 0 12px;
+    padding: 10px 0;
+  }
+  .association-plot-row > span:first-child {
+    grid-column: 1 / -1;
+  }
+  .association-plot-axis {
+    margin-left: 0;
+    margin-right: 68px;
+  }
+  .environment-plot-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+    padding: 10px 0;
+  }
+  .environment-plot-axis {
+    margin-left: 0;
+  }
+}
+.inline-evidence-measure {
+  display: grid;
+  gap: 7px;
+  min-width: 96px;
+  font-variant-numeric: tabular-nums;
+}
+.inline-evidence-track {
+  display: block;
+  width: 100%;
+  height: 5px;
+  border-radius: 3px;
+  background: var(--panel-raised);
+}
+.inline-evidence-track > span {
+  display: block;
+  height: 5px;
+  border-radius: 3px;
+  background: var(--cyan);
+}

@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { EvidenceBundleButton } from "./EvidenceBundleButton";
+import { InlineMeasure } from "./EvidenceVisualizations";
+import { finiteMeasure } from "./ResultInterval";
 import { ResultIcon } from "./ResultIcon";
 import type {
   ResearchReport,
@@ -67,6 +69,13 @@ function consistencyLabel(value: boolean | null | undefined) {
 }
 function CandidateTable({ science }: Readonly<{ science: ScientificReport }>) {
   const entries = science.candidate_summaries ?? [];
+  const yieldMaximum = Math.max(
+    1,
+    ...entries.flatMap((item) => [
+      finiteMeasure(item.drought_mean_kg_ha) ?? 0,
+      finiteMeasure(item.observed_regime_summary?.well_watered_mean_kg_ha) ?? 0,
+    ]),
+  );
   return (
     <section
       className="scientific-section"
@@ -106,11 +115,23 @@ function CandidateTable({ science }: Readonly<{ science: ScientificReport }>) {
             {entries.map((item) => (
               <tr key={item.genotype_id}>
                 <th scope="row">{item.genotype_id}</th>
-                <td>{number(item.drought_mean_kg_ha)}</td>
                 <td>
-                  {number(
-                    item.observed_regime_summary?.well_watered_mean_kg_ha,
-                  )}
+                  <InlineMeasure
+                    value={item.drought_mean_kg_ha}
+                    maximum={yieldMaximum}
+                    formatted={number(item.drought_mean_kg_ha)}
+                  />
+                </td>
+                <td>
+                  <InlineMeasure
+                    value={
+                      item.observed_regime_summary?.well_watered_mean_kg_ha
+                    }
+                    maximum={yieldMaximum}
+                    formatted={number(
+                      item.observed_regime_summary?.well_watered_mean_kg_ha,
+                    )}
+                  />
                 </td>
                 <td>
                   {number(
@@ -141,6 +162,13 @@ function CandidateTable({ science }: Readonly<{ science: ScientificReport }>) {
           </tbody>
         </table>
       </section>
+      {entries.length > 0 && (
+        <p className="caption">
+          Yield bars share a zero-based scale from 0 to {number(yieldMaximum)}{" "}
+          kg/ha within this table. Numeric estimates remain printed above each
+          bar.
+        </p>
+      )}
       {!entries.length && <p>No complete candidate evidence is available.</p>}
       <p className="caption">
         A ratio above 100% can reflect differing trial environments or a low

@@ -47,7 +47,11 @@ it("does not convert missing correlation evidence into a zero", () => {
   rows[0].spearman_rho_95_percentile_interval = null;
   render(<ExtendedEvidence artifacts={[altered]} />);
   expect(screen.getByText("Not estimated")).toBeTruthy();
-  expect(screen.getByText("—")).toBeTruthy();
+  expect(
+    within(
+      screen.getByRole("table", { name: /Spearman association/ }),
+    ).getByText("—"),
+  ).toBeTruthy();
 });
 
 it("selects only relevant computed artifacts and exposes them during cinematic playback", () => {

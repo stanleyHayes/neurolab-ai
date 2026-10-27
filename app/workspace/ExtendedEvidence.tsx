@@ -1,5 +1,9 @@
 "use client";
 import { useState } from "react";
+import {
+  TraitAssociationPlot,
+  EnvironmentYieldPlot,
+} from "./EvidenceVisualizations";
 import { ResultIcon } from "./ResultIcon";
 import { finiteMeasure } from "./ResultInterval";
 import type { ResearchArtifact, WorkspaceSection } from "./workspace-types";
@@ -65,6 +69,7 @@ function TraitEvidence({ artifact }: Readonly<{ artifact: ResearchArtifact }>) {
         gives a conditional genotype-resampling interval, not validated
         population coverage.
       </p>
+      <TraitAssociationPlot associations={associations} />
       <section
         className="results-table-scroll"
         aria-label="Trait association table"
@@ -172,6 +177,11 @@ function EnvironmentEvidence({
               {label(regime)} · {numeric(data.complete_genotype_count, 0)}{" "}
               genotypes with complete coverage
             </h4>
+            <EnvironmentYieldPlot
+              entries={entries}
+              environments={envs}
+              regime={regime}
+            />
             <section
               className="results-table-scroll"
               aria-label={`${label(regime)} environment means`}

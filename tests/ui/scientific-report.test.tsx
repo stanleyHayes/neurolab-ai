@@ -100,3 +100,30 @@ it("leaves historical non-profile reports intact", () => {
   );
   expect(container.textContent).toBe("");
 });
+
+it("keeps candidate yield numbers while comparing bars on one shared zero-based scale", () => {
+  const { container } = render(
+    <ScientificReportView report={report} downloadFile={vi.fn()} />,
+  );
+  const entries = report.scientific_report!.candidate_summaries!;
+  const maximum = Math.max(
+    1,
+    ...entries.flatMap((entry) => [
+      entry.drought_mean_kg_ha ?? 0,
+      entry.observed_regime_summary?.well_watered_mean_kg_ha ?? 0,
+    ]),
+  );
+  const bars = container.querySelectorAll<HTMLElement>(
+    ".inline-evidence-track > span",
+  );
+  expect(bars).toHaveLength(entries.length * 2);
+  expect(Number.parseFloat(bars[0].style.width)).toBeCloseTo(
+    (Number(entries[0].drought_mean_kg_ha) / maximum) * 100,
+  );
+  expect(bars[0].closest("td")?.textContent).toBe(
+    Number(entries[0].drought_mean_kg_ha).toLocaleString(undefined, {
+      maximumFractionDigits: 1,
+    }),
+  );
+  expect(screen.getByText(/Yield bars share a zero-based scale/)).toBeTruthy();
+});
