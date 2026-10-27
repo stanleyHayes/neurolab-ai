@@ -20,3 +20,9 @@ Four findings are reviewed false positives, with rationale recorded on each serv
 ## Acceptance boundaries
 
 A zero-open-issue result and the quality gate are separate checks. The default gate also requires coverage on new code. Real coverage reports are being supplied; thresholds remain unchanged. No deployed security, live provider scientific acceptance, human accessibility signoff or public-production readiness follows from static analysis.
+
+## Verified acceptance result
+
+The 2026-10-27 16:17 UTC analysis reports **0 open issues**, **80.6% new-code coverage**, **0.27108% duplicated new lines**, and **quality gate OK**. The four intentional-use security findings remain individually documented false positives; they are not hidden rule suppressions. Subsequent source changes require another scan.
+
+`make quality` passed with 52 Python tests and six Node proxy tests; the subsequent frontend run passed 25 UI/authentication/renderer-contract tests (83.33% frontend line coverage). Python line coverage is 85%; proxy line coverage is 98.05%. The renderer tests mock the renderer boundary and do not prove GPU rendering. The UI suite uses a real-source deterministic replay fixture, not fabricated scientific measurements. No actual browser acceptance is implied.

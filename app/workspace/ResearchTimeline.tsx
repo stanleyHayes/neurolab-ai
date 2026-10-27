@@ -158,23 +158,21 @@ export function ResearchTimeline(props: Readonly<ResearchTimelineProps>) {
     }
     if (historyLoading) {
       return (
-        <output
-          className="history-skeleton-list"
-
-          aria-label="Loading saved runs"
-        >
-          <span className="sr-only">Loading saved runs</span>
-          {[0, 1, 2].map((index) => (
-            <span
-              className="history-skeleton-row"
-              aria-hidden="true"
-              key={index}
-            >
-              <Skeleton className="skeleton-line" />
-              <Skeleton className="skeleton-line skeleton-line-short" />
-            </span>
-          ))}
-        </output>
+        <li className="history-skeleton-list">
+          <output aria-label="Loading saved runs">
+            <span className="sr-only">Loading saved runs</span>
+            {[0, 1, 2].map((index) => (
+              <span
+                className="history-skeleton-row"
+                aria-hidden="true"
+                key={index}
+              >
+                <Skeleton className="skeleton-line" />
+                <Skeleton className="skeleton-line skeleton-line-short" />
+              </span>
+            ))}
+          </output>
+        </li>
       );
     }
     if (historyLoaded && !historyError) {
@@ -205,13 +203,13 @@ export function ResearchTimeline(props: Readonly<ResearchTimelineProps>) {
       {runRetrieving && (
         <output className="experiment-retrieval" aria-live="polite">
           <span className="retrieval-signal" aria-hidden="true" />
-          <div>
+          <span className="retrieval-copy">
             <strong>Retrieving persisted experiment results</strong>
-            <p>
+            <span className="retrieval-description">
               Loading saved events and artifacts for run {runId.slice(0, 8)}.
               Results appear when retrieved.
-            </p>
-          </div>
+            </span>
+          </span>
         </output>
       )}
       <div className="stage-strip" aria-label="Current research stage">

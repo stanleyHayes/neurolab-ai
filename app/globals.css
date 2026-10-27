@@ -1876,7 +1876,7 @@ a {
   color: var(--gold);
   font-size: 12px;
 }
-.experiment-retrieval p {
+.experiment-retrieval .retrieval-description {
   margin: 4px 0 0;
   color: var(--muted);
   font-size: 10px;
@@ -3634,7 +3634,7 @@ li.event:not(:last-child) .dot::after {
 }
 
 fieldset.planner-options,
-fieldset.maize-scene-controls {
+fieldset.scene-controls {
   margin: 0;
   min-width: 0;
   border: 0;
@@ -3660,5 +3660,10 @@ dialog.sidebar:not([open]) {
 }
 
 output {
+  display: block;
+}
+
+.retrieval-copy,
+.retrieval-description {
   display: block;
 }

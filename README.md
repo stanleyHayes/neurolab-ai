@@ -61,7 +61,7 @@ The live Meta `muse-spark-1.3` adapter was smoke-tested, and a bounded run execu
 ### Prerequisites
 
 - Python 3.12
-- Node.js 20.19 or newer and npm
+- Node.js 22.22.2+, 24.15+ or 26+ and npm (matching the test-tool engines)
 - PostgreSQL for the service’s default local configuration
 - macOS/Linux shell for the commands below (adapt virtual-environment activation for Windows)
 

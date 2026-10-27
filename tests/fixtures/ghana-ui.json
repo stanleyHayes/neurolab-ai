@@ -1,0 +1,1152 @@
+{
+  "fixture_label": "Deterministic test replay on the real immutable Ghana source; no model call",
+  "profile": {
+    "dataset_id": "ghana_combined",
+    "source_file": "data/raw/ghana/maize_combined_phenotypes.csv",
+    "source_sha256": "2e37c07f30e00efb33b59954dd6d02a04f3d67349790d782b70dbedfdaff05bc",
+    "row_count": 864,
+    "yield_unit": "kg/ha",
+    "genotype_count": 72,
+    "environment_codes": [
+      "DROUGHT_Y1",
+      "DROUGHT_Y2",
+      "DROUGHT_Y3",
+      "WELL_WATERED_Y1",
+      "WELL_WATERED_Y2",
+      "WELL_WATERED_Y3"
+    ],
+    "year_codes": [
+      "1",
+      "2",
+      "3"
+    ],
+    "water_regimes": {
+      "DROUGHT": 432,
+      "WELL_WATERED": 432
+    },
+    "missingness": {
+      "anthesis_days": {
+        "missing": 0,
+        "total": 864
+      },
+      "asi_days": {
+        "missing": 0,
+        "total": 864
+      },
+      "block": {
+        "missing": 0,
+        "total": 864
+      },
+      "ear_height_unit": {
+        "missing": 0,
+        "total": 864
+      },
+      "ear_height_value": {
+        "missing": 1,
+        "total": 864
+      },
+      "ears_per_plant": {
+        "missing": 0,
+        "total": 864
+      },
+      "environment_code": {
+        "missing": 0,
+        "total": 864
+      },
+      "genotype_id": {
+        "missing": 0,
+        "total": 864
+      },
+      "grain_yield_unit": {
+        "missing": 0,
+        "total": 864
+      },
+      "grain_yield_value": {
+        "missing": 0,
+        "total": 864
+      },
+      "location_code": {
+        "missing": 864,
+        "total": 864
+      },
+      "plant_height_unit": {
+        "missing": 0,
+        "total": 864
+      },
+      "plant_height_value": {
+        "missing": 1,
+        "total": 864
+      },
+      "plot": {
+        "missing": 864,
+        "total": 864
+      },
+      "replication": {
+        "missing": 0,
+        "total": 864
+      },
+      "silking_days": {
+        "missing": 0,
+        "total": 864
+      },
+      "source_dataset": {
+        "missing": 0,
+        "total": 864
+      },
+      "source_file": {
+        "missing": 0,
+        "total": 864
+      },
+      "source_row_number": {
+        "missing": 0,
+        "total": 864
+      },
+      "source_sha256": {
+        "missing": 0,
+        "total": 864
+      },
+      "stay_green_score": {
+        "missing": 432,
+        "total": 864
+      },
+      "trial_family": {
+        "missing": 0,
+        "total": 864
+      },
+      "water_regime": {
+        "missing": 0,
+        "total": 864
+      },
+      "year_code": {
+        "missing": 0,
+        "total": 864
+      }
+    },
+    "warnings": []
+  },
+  "report": {
+    "run_id": "241cc4f8-bf09-4162-8089-61753b29642c",
+    "dataset_id": "ghana_combined",
+    "source_sha256": "2e37c07f30e00efb33b59954dd6d02a04f3d67349790d782b70dbedfdaff05bc",
+    "mode": "deterministic_replay",
+    "replay_label": "Replay baseline \u2014 no model call was made",
+    "model_provider": null,
+    "model_id": null,
+    "objective": "Fixture replay: summarize observed Ghana regime and genotype patterns",
+    "seed": 2026,
+    "tool_calls": 3,
+    "completion_status": "complete",
+    "tool_failures": [],
+    "decisions": [
+      {
+        "decision_number": 1,
+        "based_on_evidence_id": "241cc4f8-bf09-4162-8089-61753b29642c-1",
+        "selected_action": "rank_genotypes",
+        "decision_summary": "Computed evidence recorded; continue with the next supported task.",
+        "selection_source": "deterministic_replay"
+      },
+      {
+        "decision_number": 2,
+        "based_on_evidence_id": "241cc4f8-bf09-4162-8089-61753b29642c-2",
+        "selected_action": "inspect_missingness",
+        "decision_summary": "Top descriptive candidate spans 3/3 ENVT indices; inspect data coverage and caveats.",
+        "selection_source": "deterministic_replay"
+      },
+      {
+        "decision_number": 3,
+        "based_on_evidence_id": "241cc4f8-bf09-4162-8089-61753b29642c-3",
+        "selected_action": "generate_report",
+        "decision_summary": "Computed evidence recorded; continue with the next supported task.",
+        "selection_source": "deterministic_replay"
+      }
+    ],
+    "evidence_ids": [
+      "241cc4f8-bf09-4162-8089-61753b29642c-1",
+      "241cc4f8-bf09-4162-8089-61753b29642c-2",
+      "241cc4f8-bf09-4162-8089-61753b29642c-3"
+    ],
+    "grounded_claims": [
+      {
+        "claim": "Equal-weighted observed yield means were 1230.3 kg/ha (managed drought) and 2616.0 kg/ha (well-watered); the descriptive drought-minus-control contrast was -1385.8 kg/ha (95% block-bootstrap interval -1552.2 to -1215.7).",
+        "evidence_ids": [
+          "241cc4f8-bf09-4162-8089-61753b29642c-1"
+        ],
+        "claim_scope": "exploratory"
+      },
+      {
+        "claim": "Top descriptive drought genotype yield summaries (equal-environment mean, kg/ha): TZm-1179 2370.3; TZEE-W HDT C3 STR C5 (CHECK) 2356.7; TZm-480 2334.9. These are not field recommendations.",
+        "evidence_ids": [
+          "241cc4f8-bf09-4162-8089-61753b29642c-2"
+        ],
+        "claim_scope": "descriptive"
+      },
+      {
+        "claim": "Observed missing values by field: ear_height_value: 1 of 864; location_code: 864 of 864; plant_height_value: 1 of 864; plot: 864 of 864; stay_green_score: 432 of 864.",
+        "evidence_ids": [
+          "241cc4f8-bf09-4162-8089-61753b29642c-3"
+        ],
+        "claim_scope": "descriptive"
+      }
+    ],
+    "conclusion": "Equal-weighted observed yield means were 1230.3 kg/ha (managed drought) and 2616.0 kg/ha (well-watered); the descriptive drought-minus-control contrast was -1385.8 kg/ha (95% block-bootstrap interval -1552.2 to -1215.7). Top descriptive drought genotype yield summaries (equal-environment mean, kg/ha): TZm-1179 2370.3; TZEE-W HDT C3 STR C5 (CHECK) 2356.7; TZm-480 2334.9. These are not field recommendations. Observed missing values by field: ear_height_value: 1 of 864; location_code: 864 of 864; plant_height_value: 1 of 864; plot: 864 of 864; stay_green_score: 432 of 864.",
+    "limitations": [
+      "Replay planner is deterministic and is not Meta inference.",
+      "Ghana water regime is confounded with trial environment.",
+      "Only three ENVT indices are present; do not reinterpret them as calendar years."
+    ],
+    "elapsed_seconds": 0.2418
+  },
+  "events": [
+    {
+      "event_id": "7174ef80-3f43-4bd9-a621-07bbeaca804a",
+      "run_id": "241cc4f8-bf09-4162-8089-61753b29642c",
+      "sequence": 1,
+      "event_type": "run.created",
+      "timestamp": "2026-10-27T16:09:36.872218Z",
+      "payload": {
+        "dataset_id": "ghana_combined",
+        "source_sha256": "2e37c07f30e00efb33b59954dd6d02a04f3d67349790d782b70dbedfdaff05bc"
+      }
+    },
+    {
+      "event_id": "62212337-d5d8-43ab-9053-e3a339917ff2",
+      "run_id": "241cc4f8-bf09-4162-8089-61753b29642c",
+      "sequence": 2,
+      "event_type": "research.workflow_proposed",
+      "timestamp": "2026-10-27T16:09:36.872253Z",
+      "payload": {
+        "summary": "Preparing validated tasks for the submitted research objective.",
+        "mode": "deterministic_replay",
+        "source": "server_workflow",
+        "label": "Workflow setup; not a model-generated scientific hypothesis"
+      }
+    },
+    {
+      "event_id": "40cb653b-3083-479a-a27e-11f9d8e28ed4",
+      "run_id": "241cc4f8-bf09-4162-8089-61753b29642c",
+      "sequence": 3,
+      "event_type": "stage.changed",
+      "timestamp": "2026-10-27T16:09:36.872274Z",
+      "payload": {
+        "stage": "PLANNING",
+        "public_summary": "Preparing bounded Ghana observational analysis",
+        "progress_completed": null,
+        "progress_total": null,
+        "artifact_refs": []
+      }
+    },
+    {
+      "event_id": "e149ae5c-6d70-451a-b866-6c606f83ce46",
+      "run_id": "241cc4f8-bf09-4162-8089-61753b29642c",
+      "sequence": 4,
+      "event_type": "research.objective_preserved",
+      "timestamp": "2026-10-27T16:09:36.872300Z",
+      "payload": {
+        "objective_sha256": "8dad7ad5aafc803145d8a3fc25804a207b06fe1adb137bd649dff28e8b753ba3",
+        "objective_characters": 69
+      }
+    },
+    {
+      "event_id": "b01fd037-1b9a-4816-83a1-a6a7eebb02bd",
+      "run_id": "241cc4f8-bf09-4162-8089-61753b29642c",
+      "sequence": 5,
+      "event_type": "stage.changed",
+      "timestamp": "2026-10-27T16:09:36.872332Z",
+      "payload": {
+        "stage": "ANALYZING",
+        "public_summary": "Running allowlisted compare_regimes analysis",
+        "progress_completed": null,
+        "progress_total": null,
+        "artifact_refs": []
+      }
+    },
+    {
+      "event_id": "e5a52448-5e65-42ff-b96d-570b3bb18e03",
+      "run_id": "241cc4f8-bf09-4162-8089-61753b29642c",
+      "sequence": 6,
+      "event_type": "tool.requested",
+      "timestamp": "2026-10-27T16:09:36.872350Z",
+      "payload": {
+        "call_id": "ca6b28ae-47da-474e-bcd3-cd05f9cabc58",
+        "action": "compare_regimes",
+        "dataset_id": "ghana_combined",
+        "hypothesis_id": "task-1",
+        "mode": "replay"
+      }
+    },
+    {
+      "event_id": "6bbc7ea1-e401-4e3b-8671-6837ec229e4c",
+      "run_id": "241cc4f8-bf09-4162-8089-61753b29642c",
+      "sequence": 7,
+      "event_type": "tool.validated",
+      "timestamp": "2026-10-27T16:09:36.872404Z",
+      "payload": {
+        "call_id": "ca6b28ae-47da-474e-bcd3-cd05f9cabc58",
+        "action": "compare_regimes"
+      }
+    },
+    {
+      "event_id": "286bf9d3-29fc-4317-be32-2254d42d8589",
+      "run_id": "241cc4f8-bf09-4162-8089-61753b29642c",
+      "sequence": 8,
+      "event_type": "tool.completed",
+      "timestamp": "2026-10-27T16:09:37.111278Z",
+      "payload": {
+        "call_id": "ca6b28ae-47da-474e-bcd3-cd05f9cabc58",
+        "artifact_id": "241cc4f8-bf09-4162-8089-61753b29642c-1",
+        "sample_size": 864
+      }
+    },
+    {
+      "event_id": "e85070cc-b80a-474e-bdc7-87be5d0efc07",
+      "run_id": "241cc4f8-bf09-4162-8089-61753b29642c",
+      "sequence": 9,
+      "event_type": "evidence.updated",
+      "timestamp": "2026-10-27T16:09:37.111310Z",
+      "payload": {
+        "evidence_id": "241cc4f8-bf09-4162-8089-61753b29642c-1"
+      }
+    },
+    {
+      "event_id": "8e8ac4c3-3a8f-446e-95ba-034fa1a3f3cf",
+      "run_id": "241cc4f8-bf09-4162-8089-61753b29642c",
+      "sequence": 10,
+      "event_type": "stage.changed",
+      "timestamp": "2026-10-27T16:09:37.111328Z",
+      "payload": {
+        "stage": "RUNNING",
+        "public_summary": "Evidence recorded; selecting the next bounded analysis",
+        "progress_completed": null,
+        "progress_total": null,
+        "artifact_refs": []
+      }
+    },
+    {
+      "event_id": "f113a664-5355-4c92-9b67-00e67589a47c",
+      "run_id": "241cc4f8-bf09-4162-8089-61753b29642c",
+      "sequence": 11,
+      "event_type": "decision.recorded",
+      "timestamp": "2026-10-27T16:09:37.111424Z",
+      "payload": {
+        "decision_number": 1,
+        "based_on_evidence_id": "241cc4f8-bf09-4162-8089-61753b29642c-1",
+        "selected_action": "rank_genotypes",
+        "decision_summary": "Computed evidence recorded; continue with the next supported task.",
+        "selection_source": "deterministic_replay"
+      }
+    },
+    {
+      "event_id": "3d64fbe6-5e04-4018-837f-6240d0c3a71e",
+      "run_id": "241cc4f8-bf09-4162-8089-61753b29642c",
+      "sequence": 12,
+      "event_type": "stage.changed",
+      "timestamp": "2026-10-27T16:09:37.111452Z",
+      "payload": {
+        "stage": "ANALYZING",
+        "public_summary": "Running allowlisted rank_genotypes analysis",
+        "progress_completed": null,
+        "progress_total": null,
+        "artifact_refs": []
+      }
+    },
+    {
+      "event_id": "b70f32c3-bb77-4a0f-a8cf-30c70722c588",
+      "run_id": "241cc4f8-bf09-4162-8089-61753b29642c",
+      "sequence": 13,
+      "event_type": "tool.requested",
+      "timestamp": "2026-10-27T16:09:37.111471Z",
+      "payload": {
+        "call_id": "b0fc4686-41da-464a-b939-191fff0961d6",
+        "action": "rank_genotypes",
+        "dataset_id": "ghana_combined",
+        "hypothesis_id": "task-2",
+        "mode": "replay"
+      }
+    },
+    {
+      "event_id": "62b78ddb-787e-4b46-8d3d-63d121679c8d",
+      "run_id": "241cc4f8-bf09-4162-8089-61753b29642c",
+      "sequence": 14,
+      "event_type": "tool.validated",
+      "timestamp": "2026-10-27T16:09:37.111537Z",
+      "payload": {
+        "call_id": "b0fc4686-41da-464a-b939-191fff0961d6",
+        "action": "rank_genotypes"
+      }
+    },
+    {
+      "event_id": "db170f4f-104d-46ae-88b2-a96651233c72",
+      "run_id": "241cc4f8-bf09-4162-8089-61753b29642c",
+      "sequence": 15,
+      "event_type": "tool.completed",
+      "timestamp": "2026-10-27T16:09:37.112064Z",
+      "payload": {
+        "call_id": "b0fc4686-41da-464a-b939-191fff0961d6",
+        "artifact_id": "241cc4f8-bf09-4162-8089-61753b29642c-2",
+        "sample_size": 432
+      }
+    },
+    {
+      "event_id": "04e4971d-4ce8-48ed-adc9-1596a7427353",
+      "run_id": "241cc4f8-bf09-4162-8089-61753b29642c",
+      "sequence": 16,
+      "event_type": "evidence.updated",
+      "timestamp": "2026-10-27T16:09:37.112079Z",
+      "payload": {
+        "evidence_id": "241cc4f8-bf09-4162-8089-61753b29642c-2"
+      }
+    },
+    {
+      "event_id": "3611b96e-dd1e-4f4c-987c-75e8606addd0",
+      "run_id": "241cc4f8-bf09-4162-8089-61753b29642c",
+      "sequence": 17,
+      "event_type": "stage.changed",
+      "timestamp": "2026-10-27T16:09:37.112095Z",
+      "payload": {
+        "stage": "RUNNING",
+        "public_summary": "Evidence recorded; selecting the next bounded analysis",
+        "progress_completed": null,
+        "progress_total": null,
+        "artifact_refs": []
+      }
+    },
+    {
+      "event_id": "2db1bcb7-66cb-4708-a6ac-b0e333642f03",
+      "run_id": "241cc4f8-bf09-4162-8089-61753b29642c",
+      "sequence": 18,
+      "event_type": "decision.recorded",
+      "timestamp": "2026-10-27T16:09:37.112147Z",
+      "payload": {
+        "decision_number": 2,
+        "based_on_evidence_id": "241cc4f8-bf09-4162-8089-61753b29642c-2",
+        "selected_action": "inspect_missingness",
+        "decision_summary": "Top descriptive candidate spans 3/3 ENVT indices; inspect data coverage and caveats.",
+        "selection_source": "deterministic_replay"
+      }
+    },
+    {
+      "event_id": "d6c49c76-faf3-4cf7-b937-4582c0970acb",
+      "run_id": "241cc4f8-bf09-4162-8089-61753b29642c",
+      "sequence": 19,
+      "event_type": "stage.changed",
+      "timestamp": "2026-10-27T16:09:37.112168Z",
+      "payload": {
+        "stage": "ANALYZING",
+        "public_summary": "Running allowlisted inspect_missingness analysis",
+        "progress_completed": null,
+        "progress_total": null,
+        "artifact_refs": []
+      }
+    },
+    {
+      "event_id": "ff1b6ead-c7bd-4343-8717-0bc0c209aa08",
+      "run_id": "241cc4f8-bf09-4162-8089-61753b29642c",
+      "sequence": 20,
+      "event_type": "tool.requested",
+      "timestamp": "2026-10-27T16:09:37.112185Z",
+      "payload": {
+        "call_id": "47684911-cabf-4fe3-aac2-6e3790bbb4f5",
+        "action": "inspect_missingness",
+        "dataset_id": "ghana_combined",
+        "hypothesis_id": "task-3",
+        "mode": "replay"
+      }
+    },
+    {
+      "event_id": "19995118-06cf-494d-92b7-dd53ea15e8f0",
+      "run_id": "241cc4f8-bf09-4162-8089-61753b29642c",
+      "sequence": 21,
+      "event_type": "tool.validated",
+      "timestamp": "2026-10-27T16:09:37.112234Z",
+      "payload": {
+        "call_id": "47684911-cabf-4fe3-aac2-6e3790bbb4f5",
+        "action": "inspect_missingness"
+      }
+    },
+    {
+      "event_id": "5f09b0ef-84a0-4d3e-b5bc-5e84255a6b6c",
+      "run_id": "241cc4f8-bf09-4162-8089-61753b29642c",
+      "sequence": 22,
+      "event_type": "tool.completed",
+      "timestamp": "2026-10-27T16:09:37.113555Z",
+      "payload": {
+        "call_id": "47684911-cabf-4fe3-aac2-6e3790bbb4f5",
+        "artifact_id": "241cc4f8-bf09-4162-8089-61753b29642c-3",
+        "sample_size": 864
+      }
+    },
+    {
+      "event_id": "47806bfb-c7fb-4198-b457-b88889ed6956",
+      "run_id": "241cc4f8-bf09-4162-8089-61753b29642c",
+      "sequence": 23,
+      "event_type": "evidence.updated",
+      "timestamp": "2026-10-27T16:09:37.113569Z",
+      "payload": {
+        "evidence_id": "241cc4f8-bf09-4162-8089-61753b29642c-3"
+      }
+    },
+    {
+      "event_id": "2b647df9-86bc-4f68-9e37-98c13a9fe3a3",
+      "run_id": "241cc4f8-bf09-4162-8089-61753b29642c",
+      "sequence": 24,
+      "event_type": "stage.changed",
+      "timestamp": "2026-10-27T16:09:37.113582Z",
+      "payload": {
+        "stage": "RUNNING",
+        "public_summary": "Evidence recorded; selecting the next bounded analysis",
+        "progress_completed": null,
+        "progress_total": null,
+        "artifact_refs": []
+      }
+    },
+    {
+      "event_id": "b38e98c5-2321-4c09-a113-e5d681d1c95f",
+      "run_id": "241cc4f8-bf09-4162-8089-61753b29642c",
+      "sequence": 25,
+      "event_type": "decision.recorded",
+      "timestamp": "2026-10-27T16:09:37.113627Z",
+      "payload": {
+        "decision_number": 3,
+        "based_on_evidence_id": "241cc4f8-bf09-4162-8089-61753b29642c-3",
+        "selected_action": "generate_report",
+        "decision_summary": "Computed evidence recorded; continue with the next supported task.",
+        "selection_source": "deterministic_replay"
+      }
+    },
+    {
+      "event_id": "3947f10f-d4e7-4149-a557-c64ae13a5f9d",
+      "run_id": "241cc4f8-bf09-4162-8089-61753b29642c",
+      "sequence": 26,
+      "event_type": "stage.changed",
+      "timestamp": "2026-10-27T16:09:37.113691Z",
+      "payload": {
+        "stage": "COMPLETE",
+        "public_summary": "Evidence-linked research report is complete",
+        "progress_completed": null,
+        "progress_total": null,
+        "artifact_refs": []
+      }
+    },
+    {
+      "event_id": "2ddd3540-03eb-45e6-a333-08c31943c70f",
+      "run_id": "241cc4f8-bf09-4162-8089-61753b29642c",
+      "sequence": 27,
+      "event_type": "run.completed",
+      "timestamp": "2026-10-27T16:09:37.113712Z",
+      "payload": {
+        "completion_status": "complete",
+        "artifact_count": 3,
+        "mode": "deterministic_replay",
+        "evidence_ids": [
+          "241cc4f8-bf09-4162-8089-61753b29642c-1",
+          "241cc4f8-bf09-4162-8089-61753b29642c-2",
+          "241cc4f8-bf09-4162-8089-61753b29642c-3"
+        ]
+      }
+    }
+  ],
+  "artifacts": [
+    {
+      "analysis_version": "ghana-exploratory-v1",
+      "artifact_id": "241cc4f8-bf09-4162-8089-61753b29642c-1",
+      "claim_scope": "exploratory",
+      "estimand": "equal-weighted mean across ENVT indices: DROUGHT minus WELL_WATERED grain yield",
+      "results": {
+        "drought_to_well_watered_yield_ratio_percent": 47.0278777332517,
+        "environment_stratified": true,
+        "mean_yield_by_regime": {
+          "DROUGHT": 1230.2687815072015,
+          "WELL_WATERED": 2616.0414647785037
+        },
+        "plot_count_by_regime": {
+          "DROUGHT": 432,
+          "WELL_WATERED": 432
+        },
+        "yield_difference_kg_ha": -1385.7726832713022
+      },
+      "sample_size": 864,
+      "source_file": "data/raw/ghana/maize_combined_phenotypes.csv",
+      "source_sha256": "2e37c07f30e00efb33b59954dd6d02a04f3d67349790d782b70dbedfdaff05bc",
+      "tool_name": "compare_regimes",
+      "uncertainty": {
+        "method": "percentile cluster bootstrap resampling BLK within CONDITION x ENVT x REP strata",
+        "replicates": 2000,
+        "seed": 2026,
+        "yield_difference_95_ci_kg_ha": [
+          -1552.2316855923577,
+          -1215.71407882247
+        ]
+      },
+      "warnings": [
+        "Exploratory observational contrast; water regime is confounded with environment and this is not a causal treatment effect.",
+        "Only three ENVT indices and two replications are represented; generalization is limited.",
+        "The yield-retention ratio is descriptive and is null if the well-watered denominator is not positive."
+      ]
+    },
+    {
+      "analysis_version": "ghana-exploratory-v1",
+      "artifact_id": "241cc4f8-bf09-4162-8089-61753b29642c-2",
+      "claim_scope": "descriptive",
+      "results": {
+        "genotypes": [
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 2370.290522875817,
+            "genotype_id": "TZm-1179",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 2356.731699346405,
+            "genotype_id": "TZEE-W HDT C3 STR C5 (CHECK)",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 2334.9387254901962,
+            "genotype_id": "TZm-480",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 2287.580718954248,
+            "genotype_id": "TZm-1530",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 2118.6783496732023,
+            "genotype_id": "TZm-1470",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 2110.8838235294115,
+            "genotype_id": "TZm-1352",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 2088.173611111111,
+            "genotype_id": "TZm-92",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 2019.981290849673,
+            "genotype_id": "TZm-358",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 1841.5955065359474,
+            "genotype_id": "TZm-1420",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 1747.6178104575158,
+            "genotype_id": "TZm-1472",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 1727.619975490196,
+            "genotype_id": "TZm-1163",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 1700.2539215686272,
+            "genotype_id": "TZm-1466",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 1691.943382352941,
+            "genotype_id": "TZm-1473",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 1680.4236928104574,
+            "genotype_id": "TZm-1396",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 1676.6209150326795,
+            "genotype_id": "TZm-1448",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 1664.4966503267972,
+            "genotype_id": "TZm-1307",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 1574.7906045751631,
+            "genotype_id": "TZm-1532",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 1530.8271241830064,
+            "genotype_id": "TZm-1353",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 1525.1805555555554,
+            "genotype_id": "TZm-325",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 1516.111764705882,
+            "genotype_id": "TZm-326",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 1511.1633169934637,
+            "genotype_id": "TZm-96",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 1475.7428104575163,
+            "genotype_id": "TZm-1167",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 1421.840710784314,
+            "genotype_id": "Aburohemaa (CHECK)",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 1417.5374183006534,
+            "genotype_id": "TZm-182",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 1360.5621732026143,
+            "genotype_id": "TZm-4",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 1332.8798202614378,
+            "genotype_id": "TZm-1273",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 1332.3156862745097,
+            "genotype_id": "TZm-1178",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 1312.2185457516337,
+            "genotype_id": "TZm-1317",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 1252.986111111111,
+            "genotype_id": "TZm-1488",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 1237.1227124183006,
+            "genotype_id": "TZm-179",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 1233.6906862745097,
+            "genotype_id": "GH-4859",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 1155.9763888888886,
+            "genotype_id": "TZm-1159",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 1152.6921568627452,
+            "genotype_id": "TZm-89",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 1135.1420751633987,
+            "genotype_id": "TZm-1543",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 1135.1091503267974,
+            "genotype_id": "TZm-324",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 1107.7486928104574,
+            "genotype_id": "TZm-144",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 1083.226225490196,
+            "genotype_id": "TZm-304",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 1069.8987745098036,
+            "genotype_id": "TZm-1551",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 1068.8819444444443,
+            "genotype_id": "TZm-180",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 1065.6691721132895,
+            "genotype_id": "TZm-1119",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 1026.095424836601,
+            "genotype_id": "TZm-1443",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 1000.7509803921566,
+            "genotype_id": "TZm-1158",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 993.0815359477123,
+            "genotype_id": "TZm-1496",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 985.7732843137252,
+            "genotype_id": "TZm-1536",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 954.743382352941,
+            "genotype_id": "TZm-1511",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 946.5475490196078,
+            "genotype_id": "TZm-328",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 925.7418300653593,
+            "genotype_id": "TZm-1162",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 919.8016339869281,
+            "genotype_id": "TZm-1157",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 918.4441993464051,
+            "genotype_id": "TZm-1452",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 905.9794117647058,
+            "genotype_id": "TZm-270",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 905.8752450980392,
+            "genotype_id": "TZm-1481",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 903.4681372549018,
+            "genotype_id": "TZm-354",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 884.1689542483658,
+            "genotype_id": "TZm-1440",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 872.8504901960783,
+            "genotype_id": "TZm-290",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 856.2535947712418,
+            "genotype_id": "TZm-1485",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 836.7101307189541,
+            "genotype_id": "TZm-1360",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 812.8547385620914,
+            "genotype_id": "TZm-1171",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 808.1995098039214,
+            "genotype_id": "TZm-1441",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 804.4132352941175,
+            "genotype_id": "TZm-1561",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 802.5228758169933,
+            "genotype_id": "TZm-1160",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 797.408496732026,
+            "genotype_id": "TZm-1349",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 796.7234477124181,
+            "genotype_id": "TZm-351",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 788.1194444444444,
+            "genotype_id": "TZm-1506",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 774.7302287581697,
+            "genotype_id": "TZEE-Y HDT C3 STR C5 (CHECK)",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 757.974836601307,
+            "genotype_id": "TZm-1454",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 734.253267973856,
+            "genotype_id": "2011 TZE-WDT STR Synthetic (CHECK)",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 626.0357026143789,
+            "genotype_id": "TZm-29",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 616.3141339869281,
+            "genotype_id": "TZm-1174",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 593.3013071895424,
+            "genotype_id": "TZm-1508",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 555.0760620915032,
+            "genotype_id": "TZm-1483",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 539.3199346405228,
+            "genotype_id": "TZm-384",
+            "plot_count": 6
+          },
+          {
+            "environment_count": 3,
+            "equal_environment_mean_yield_kg_ha": 508.67404411764693,
+            "genotype_id": "TZm-353",
+            "plot_count": 6
+          }
+        ],
+        "regime": "DROUGHT",
+        "yield_unit": "kg/ha"
+      },
+      "sample_size": 432,
+      "source_file": "data/raw/ghana/maize_combined_phenotypes.csv",
+      "source_sha256": "2e37c07f30e00efb33b59954dd6d02a04f3d67349790d782b70dbedfdaff05bc",
+      "tool_name": "rank_genotypes",
+      "uncertainty": null,
+      "warnings": [
+        "Descriptive exploratory ranking only; alpha-lattice effects and multiplicity are not modeled.",
+        "Not a field recommendation; candidates require confirmatory trials and model-based assessment."
+      ]
+    },
+    {
+      "analysis_version": "ghana-exploratory-v1",
+      "artifact_id": "241cc4f8-bf09-4162-8089-61753b29642c-3",
+      "claim_scope": "descriptive",
+      "results": {
+        "missingness": {
+          "anthesis_days": {
+            "missing": 0,
+            "total": 864
+          },
+          "asi_days": {
+            "missing": 0,
+            "total": 864
+          },
+          "block": {
+            "missing": 0,
+            "total": 864
+          },
+          "ear_height_unit": {
+            "missing": 0,
+            "total": 864
+          },
+          "ear_height_value": {
+            "missing": 1,
+            "total": 864
+          },
+          "ears_per_plant": {
+            "missing": 0,
+            "total": 864
+          },
+          "environment_code": {
+            "missing": 0,
+            "total": 864
+          },
+          "genotype_id": {
+            "missing": 0,
+            "total": 864
+          },
+          "grain_yield_unit": {
+            "missing": 0,
+            "total": 864
+          },
+          "grain_yield_value": {
+            "missing": 0,
+            "total": 864
+          },
+          "location_code": {
+            "missing": 864,
+            "total": 864
+          },
+          "plant_height_unit": {
+            "missing": 0,
+            "total": 864
+          },
+          "plant_height_value": {
+            "missing": 1,
+            "total": 864
+          },
+          "plot": {
+            "missing": 864,
+            "total": 864
+          },
+          "replication": {
+            "missing": 0,
+            "total": 864
+          },
+          "silking_days": {
+            "missing": 0,
+            "total": 864
+          },
+          "source_dataset": {
+            "missing": 0,
+            "total": 864
+          },
+          "source_file": {
+            "missing": 0,
+            "total": 864
+          },
+          "source_row_number": {
+            "missing": 0,
+            "total": 864
+          },
+          "source_sha256": {
+            "missing": 0,
+            "total": 864
+          },
+          "stay_green_score": {
+            "missing": 432,
+            "total": 864
+          },
+          "trial_family": {
+            "missing": 0,
+            "total": 864
+          },
+          "water_regime": {
+            "missing": 0,
+            "total": 864
+          },
+          "year_code": {
+            "missing": 0,
+            "total": 864
+          }
+        }
+      },
+      "sample_size": 864,
+      "source_file": "data/raw/ghana/maize_combined_phenotypes.csv",
+      "source_sha256": "2e37c07f30e00efb33b59954dd6d02a04f3d67349790d782b70dbedfdaff05bc",
+      "tool_name": "inspect_missingness",
+      "uncertainty": null,
+      "warnings": [
+        "STYG is structurally absent for the well-watered source regime, by design."
+      ]
+    }
+  ]
+}

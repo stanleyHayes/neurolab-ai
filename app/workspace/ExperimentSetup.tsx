@@ -53,7 +53,7 @@ export function ExperimentSetup({
         id="objective"
         value={objective}
         onChange={(event) => setObjective(event.target.value)}
-        maxLength={2000}
+        maxLength={20000}
       />
       <div className="setup-meta">
         <span>Ghana · combined field trial</span>

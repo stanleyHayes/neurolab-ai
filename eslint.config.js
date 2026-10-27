@@ -4,12 +4,23 @@ import nextTypeScript from "eslint-config-next/typescript";
 
 const eslintConfig = [
   {
-ignores: ["data/**", "eval/**", "node_modules/**", ".next/**", "out/**", "build/**", "next-env.d.ts", "**/__pycache__/**"],
+    ignores: [
+      "coverage/**",
+      ".test-build/**",
+      "data/**",
+      "eval/**",
+      "node_modules/**",
+      ".next/**",
+      "out/**",
+      "build/**",
+      "next-env.d.ts",
+      "**/__pycache__/**",
+    ],
   },
-...nextVitals,
-...nextTypeScript,
+  ...nextVitals,
+  ...nextTypeScript,
   {
-files: ["scripts/**/*.js"],
+    files: ["scripts/**/*.js"],
     languageOptions: {
       ecmaVersion: 2022,
       sourceType: "script",
@@ -32,8 +43,11 @@ files: ["scripts/**/*.js"],
       "no-unreachable-loop": "error",
       "no-unsafe-optional-chaining": "error",
       "no-unused-private-class-members": "error",
-      "no-unused-vars": ["error", { "argsIgnorePattern": "^_", "caughtErrorsIgnorePattern": "^_" }],
-      "no-use-before-define": ["error", { "functions": false }],
+      "no-unused-vars": [
+        "error",
+        { argsIgnorePattern: "^_", caughtErrorsIgnorePattern: "^_" },
+      ],
+      "no-use-before-define": ["error", { functions: false }],
       "object-shorthand": ["error", "always"],
       "prefer-const": "error",
       "prefer-template": "error",
@@ -43,14 +57,14 @@ files: ["scripts/**/*.js"],
       yoda: "error",
     },
   },
-{
-files: ["app/**/*.{ts,tsx}"],
-languageOptions: {
-ecmaVersion: "latest",
-sourceType: "module",
-globals: { ...globals.browser, ...globals.node },
-},
-},
+  {
+    files: ["app/**/*.{ts,tsx}"],
+    languageOptions: {
+      ecmaVersion: "latest",
+      sourceType: "module",
+      globals: { ...globals.browser, ...globals.node },
+    },
+  },
 ];
 
 export default eslintConfig;

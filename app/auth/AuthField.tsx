@@ -35,11 +35,12 @@ export function AuthField({
 }: Readonly<AuthFieldProps>) {
   return (
     <label className="auth-field">
-      <span>{label}</span>
+      <span id={`auth-${name}-label`}>{label}</span>
       <span className="auth-input-wrap">
         <FieldIcon>{icon}</FieldIcon>
         <input
           name={name}
+          aria-labelledby={`auth-${name}-label`}
           type={type}
           autoComplete={autocomplete}
           required

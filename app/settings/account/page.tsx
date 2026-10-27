@@ -209,9 +209,10 @@ export default function AccountSettingsPage() {
               />
             </label>
             <label>
-              <span>New password</span>
+              <span id="new-password-label">New password</span>
               <input
                 name="new_password"
+                aria-labelledby="new-password-label"
                 type="password"
                 autoComplete="new-password"
                 required

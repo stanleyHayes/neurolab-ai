@@ -594,7 +594,9 @@ export function ResearchWorkspace({
       setReplayIndex(0);
       const terminal =
         Boolean(finalRun.report) ||
-        ["FAILED", "CANCELLED", "TIMED_OUT"].includes(finalRun.status);
+        ["PARTIAL", "FAILED", "CANCELLED", "TIMED_OUT"].includes(
+          finalRun.status,
+        );
       setBusy(!terminal);
       if (!terminal) window.setTimeout(() => void loadRun(id), 900);
       return true;
@@ -673,8 +675,7 @@ export function ResearchWorkspace({
       await apiJson(`/api/research-runs/${encodeURIComponent(runId)}/cancel`, {
         method: "POST",
       });
-      setRunStatus("CANCELLED");
-      setBusy(false);
+      setRunStatus("CANCEL_REQUESTED");
       await loadRun(runId);
     } catch (cause) {
       setErrors((current) => ({
