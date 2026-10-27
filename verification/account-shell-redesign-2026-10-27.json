@@ -1,0 +1,32 @@
+{
+  "date": "2026-10-27",
+  "source_commit": "4d21b4719ba26d985709798c55c7684e95b35982",
+  "production_url": "https://neurolab-ai.vercel.app/settings/account",
+  "deployment_url": "neurolab-c9w655jgu-hayfordstanleys-projects.vercel.app",
+  "state": "READY",
+  "http_checks": {
+    "/settings/account": 200,
+    "/api/health": 200
+  },
+  "markup_and_asset_checks": {
+    "one_main": true,
+    "one_header": true,
+    "shared_sidebar": true,
+    "shared_app_shell": true,
+    "account_panel_styles": true,
+    "circle_flex_constraint": true
+  },
+  "validation": {
+    "ui_tests": 80,
+    "ui_test_files": 13,
+    "final_auth_tests": 9,
+    "eslint": "passed zero warnings",
+    "typescript": "passed",
+    "production_build": "passed"
+  },
+  "limitations": [
+    "HTTP/markup/assets do not establish visual browser acceptance",
+    "CUA unavailable: CUA_REPL_ENABLED_SURFACES is required",
+    "Sonar server acceptance remains unverified"
+  ]
+}
