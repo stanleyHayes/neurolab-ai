@@ -1,0 +1,98 @@
+{
+  "verified_at_utc": "2026-10-27T20:26:06.468892+00:00",
+  "code_commit": "6b0d00cb95e25993c7687c884965c0bfd38ae98d",
+  "environment": "Independent Python processes sharing disposable local PostgreSQL; synthetic token bounds/prices and store-only owner fixture",
+  "simultaneous_process_outcomes": [
+    {
+      "accepted": 2,
+      "denied": 0,
+      "policy_mismatch": 0
+    },
+    {
+      "accepted": 1,
+      "denied": 1,
+      "policy_mismatch": 0
+    }
+  ],
+  "restarted_process_outcomes": {
+    "accepted": 0,
+    "denied": 2,
+    "policy_mismatch": 0
+  },
+  "different_policy_process_outcomes": {
+    "accepted": 0,
+    "denied": 0,
+    "policy_mismatch": 2
+  },
+  "persisted_reservations": 3,
+  "reserved_micro_usd_synthetic": 363,
+  "unknown_outcomes_retained": 3,
+  "live_provider_requests": 0,
+  "operator_cli_applied_without_reset": true,
+  "post_policy_change_outcomes": {
+    "accepted": 0,
+    "denied": 2,
+    "policy_mismatch": 0
+  },
+  "scope": "Direct SQL admission rehearsal, not inference, actual provider usage/billing, auth HTTP or scientific results. Fixture prices are not provider prices.",
+  "local_rollout": {
+    "verified_at_utc": "2026-10-27T20:27:22.107078+00:00",
+    "run_id": "a228eee5-ac42-4ba7-b453-f7d75bf12b78",
+    "loaded_science_commit": "6b0d00cb95e25993c7687c884965c0bfd38ae98d",
+    "status": "COMPLETE",
+    "mode": "deterministic_replay",
+    "inference_enabled": false,
+    "tool_calls": 6,
+    "artifact_count": 6,
+    "tool_names": [
+      "dataset_profile",
+      "inspect_missingness",
+      "compare_regimes",
+      "rank_genotypes",
+      "summarize_environment_stability",
+      "analyze_trait_associations"
+    ],
+    "evidence_ids": [
+      "a228eee5-ac42-4ba7-b453-f7d75bf12b78-1",
+      "a228eee5-ac42-4ba7-b453-f7d75bf12b78-2",
+      "a228eee5-ac42-4ba7-b453-f7d75bf12b78-3",
+      "a228eee5-ac42-4ba7-b453-f7d75bf12b78-4",
+      "a228eee5-ac42-4ba7-b453-f7d75bf12b78-5",
+      "a228eee5-ac42-4ba7-b453-f7d75bf12b78-6"
+    ],
+    "source_sha256": "2e37c07f30e00efb33b59954dd6d02a04f3d67349790d782b70dbedfdaff05bc",
+    "event_count": 59,
+    "original_objective_preserved": true,
+    "evidence_coverage": "complete",
+    "bff_login_refresh_profile_reports_http_checks": 200,
+    "scope": "Exact original objective through current local production Next BFF/API and separate replay worker; no live Meta or browser/GPU/target deployment acceptance.",
+    "ledgers_after_real_replay": [
+      {
+        "port": 8000,
+        "model_reservations": 0,
+        "policy_events": 0,
+        "policy_unset": true,
+        "inference_enabled": false,
+        "spending_configured": false
+      },
+      {
+        "port": 8107,
+        "model_reservations": 0,
+        "policy_events": 0,
+        "policy_unset": true,
+        "inference_enabled": false,
+        "spending_configured": false
+      }
+    ],
+    "standalone_consumers": [
+      {
+        "inference_enabled": false,
+        "has_api_auth_or_provider_credentials": false
+      },
+      {
+        "inference_enabled": false,
+        "has_api_auth_or_provider_credentials": false
+      }
+    ]
+  }
+}
