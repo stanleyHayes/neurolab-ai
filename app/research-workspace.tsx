@@ -21,6 +21,7 @@ import { WorkspaceErrorItem } from "./workspace/WorkspaceErrorItem";
 import { EvidenceResults } from "./workspace/EvidenceResults";
 import { ExperimentSetup } from "./workspace/ExperimentSetup";
 import { SourceProvenance } from "./workspace/SourceProvenance";
+import { ScientificReportView } from "./workspace/ScientificReportView";
 import { ResearchRunPlan } from "./workspace/ResearchRunPlan";
 import { ResearchTimeline } from "./workspace/ResearchTimeline";
 import { INITIAL_OBJECTIVE, SECTION_COPY } from "./workspace/workspace-config";
@@ -45,6 +46,10 @@ const CinematicPlayer = dynamic(
 
 export { WORKSPACE_SECTIONS } from "./workspace/workspace-config";
 export type { WorkspaceSection };
+
+function isScientificReportSection(section: WorkspaceSection): boolean {
+  return ["reports", "ai-insights"].includes(section);
+}
 
 function record(value: unknown): Record<string, unknown> {
   return typeof value === "object" && value !== null
@@ -964,6 +969,9 @@ export function ResearchWorkspace({
             )}
           </section>
 
+          {report && isScientificReportSection(section) && (
+            <ScientificReportView report={report} downloadFile={downloadFile} />
+          )}
           {report &&
             (showReproducibility || showTimeline || showExperiment) && (
               <ResearchRunPlan report={report} />

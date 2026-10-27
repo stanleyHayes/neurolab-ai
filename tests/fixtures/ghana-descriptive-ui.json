@@ -2,10 +2,10 @@
   "fixture_label": "Actual deterministic Ghana numeric tools; not Meta inference or synthetic crop data",
   "artifacts": [
     {
-      "artifact_id": "analyze_trait_associations-0e2bc1a0005fb33c",
+      "artifact_id": "analyze_trait_associations-07e2dd2548f9cf01",
       "source_file": "data/raw/ghana/maize_combined_phenotypes.csv",
       "source_sha256": "2e37c07f30e00efb33b59954dd6d02a04f3d67349790d782b70dbedfdaff05bc",
-      "analysis_version": "ghana-descriptive-sensitivity-v1",
+      "analysis_version": "ghana-descriptive-sensitivity-v2",
       "tool_name": "analyze_trait_associations",
       "claim_scope": "exploratory",
       "sample_size": 432,
@@ -17618,10 +17618,10 @@
       ]
     },
     {
-      "artifact_id": "summarize_environment_stability-d55c0903c510eb4c",
+      "artifact_id": "summarize_environment_stability-1c536fb7003b783a",
       "source_file": "data/raw/ghana/maize_combined_phenotypes.csv",
       "source_sha256": "2e37c07f30e00efb33b59954dd6d02a04f3d67349790d782b70dbedfdaff05bc",
-      "analysis_version": "ghana-descriptive-sensitivity-v1",
+      "analysis_version": "ghana-descriptive-sensitivity-v2",
       "tool_name": "summarize_environment_stability",
       "claim_scope": "exploratory",
       "sample_size": 864,
@@ -24274,6 +24274,584 @@
             "genotypes_without_numeric_yield": []
           }
         },
+        "regime_retention_by_genotype": [
+          {
+            "genotype_id": "TZm-1179",
+            "drought_mean_kg_ha": 2370.290522875817,
+            "well_watered_mean_kg_ha": 3662.5416339869266,
+            "descriptive_retention_percent": 64.71709429540583,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZEE-W HDT C3 STR C5 (CHECK)",
+            "drought_mean_kg_ha": 2356.731699346405,
+            "well_watered_mean_kg_ha": 4889.698104575158,
+            "descriptive_retention_percent": 48.19789788537814,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-480",
+            "drought_mean_kg_ha": 2334.9387254901962,
+            "well_watered_mean_kg_ha": 2759.4307189542487,
+            "descriptive_retention_percent": 84.61668232696476,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-1530",
+            "drought_mean_kg_ha": 2287.580718954248,
+            "well_watered_mean_kg_ha": 2776.517647058823,
+            "descriptive_retention_percent": 82.390281991454,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-1470",
+            "drought_mean_kg_ha": 2118.6783496732023,
+            "well_watered_mean_kg_ha": 1694.7345098039204,
+            "descriptive_retention_percent": 125.01535417003646,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-1352",
+            "drought_mean_kg_ha": 2110.8838235294115,
+            "well_watered_mean_kg_ha": 3883.336535947712,
+            "descriptive_retention_percent": 54.35747852366494,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-92",
+            "drought_mean_kg_ha": 2088.173611111111,
+            "well_watered_mean_kg_ha": 4196.988823529412,
+            "descriptive_retention_percent": 49.75409034697129,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-358",
+            "drought_mean_kg_ha": 2019.981290849673,
+            "well_watered_mean_kg_ha": 3807.5249673202616,
+            "descriptive_retention_percent": 53.05234524230414,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-1420",
+            "drought_mean_kg_ha": 1841.5955065359474,
+            "well_watered_mean_kg_ha": 2935.3651633986933,
+            "descriptive_retention_percent": 62.738208162274034,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-1472",
+            "drought_mean_kg_ha": 1747.6178104575158,
+            "well_watered_mean_kg_ha": 2674.9420915032683,
+            "descriptive_retention_percent": 65.33292126243326,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-1163",
+            "drought_mean_kg_ha": 1727.619975490196,
+            "well_watered_mean_kg_ha": 1924.6944444444432,
+            "descriptive_retention_percent": 89.76073996976014,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-1466",
+            "drought_mean_kg_ha": 1700.2539215686272,
+            "well_watered_mean_kg_ha": 4117.301307189541,
+            "descriptive_retention_percent": 41.29534845068737,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-1473",
+            "drought_mean_kg_ha": 1691.943382352941,
+            "well_watered_mean_kg_ha": 4292.648954248366,
+            "descriptive_retention_percent": 39.41490208926709,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-1396",
+            "drought_mean_kg_ha": 1680.4236928104574,
+            "well_watered_mean_kg_ha": 1837.8248366013052,
+            "descriptive_retention_percent": 91.43546541236596,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-1448",
+            "drought_mean_kg_ha": 1676.6209150326795,
+            "well_watered_mean_kg_ha": 3066.0079084967315,
+            "descriptive_retention_percent": 54.684167982290994,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-1307",
+            "drought_mean_kg_ha": 1664.4966503267972,
+            "well_watered_mean_kg_ha": 2903.744379084968,
+            "descriptive_retention_percent": 57.32242349966479,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-1532",
+            "drought_mean_kg_ha": 1574.7906045751631,
+            "well_watered_mean_kg_ha": 3661.5738562091497,
+            "descriptive_retention_percent": 43.00857135258099,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-1353",
+            "drought_mean_kg_ha": 1530.8271241830064,
+            "well_watered_mean_kg_ha": 2766.1798039215682,
+            "descriptive_retention_percent": 55.340839449871545,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-325",
+            "drought_mean_kg_ha": 1525.1805555555554,
+            "well_watered_mean_kg_ha": 3379.9193464052296,
+            "descriptive_retention_percent": 45.12476184313945,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-326",
+            "drought_mean_kg_ha": 1516.111764705882,
+            "well_watered_mean_kg_ha": 3965.866339869282,
+            "descriptive_retention_percent": 38.22901819620714,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-96",
+            "drought_mean_kg_ha": 1511.1633169934637,
+            "well_watered_mean_kg_ha": 2688.9672549019615,
+            "descriptive_retention_percent": 56.198650773401106,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-1167",
+            "drought_mean_kg_ha": 1475.7428104575163,
+            "well_watered_mean_kg_ha": 2369.1303267973885,
+            "descriptive_retention_percent": 62.29048667206242,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "Aburohemaa (CHECK)",
+            "drought_mean_kg_ha": 1421.840710784314,
+            "well_watered_mean_kg_ha": 4419.346732026144,
+            "descriptive_retention_percent": 32.17309699826247,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-182",
+            "drought_mean_kg_ha": 1417.5374183006534,
+            "well_watered_mean_kg_ha": 3954.2470588235283,
+            "descriptive_retention_percent": 35.84847879288555,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-4",
+            "drought_mean_kg_ha": 1360.5621732026143,
+            "well_watered_mean_kg_ha": 2464.7642483660143,
+            "descriptive_retention_percent": 55.20049936234602,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-1273",
+            "drought_mean_kg_ha": 1332.8798202614378,
+            "well_watered_mean_kg_ha": 1768.5273856209133,
+            "descriptive_retention_percent": 75.36664860824173,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-1178",
+            "drought_mean_kg_ha": 1332.3156862745097,
+            "well_watered_mean_kg_ha": 2971.480065359476,
+            "descriptive_retention_percent": 44.836770126988284,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-1317",
+            "drought_mean_kg_ha": 1312.2185457516337,
+            "well_watered_mean_kg_ha": 3210.8411111111113,
+            "descriptive_retention_percent": 40.86837374825877,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-1488",
+            "drought_mean_kg_ha": 1252.986111111111,
+            "well_watered_mean_kg_ha": 3157.5635294117656,
+            "descriptive_retention_percent": 39.68205546586531,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-179",
+            "drought_mean_kg_ha": 1237.1227124183006,
+            "well_watered_mean_kg_ha": 1754.0984313725476,
+            "descriptive_retention_percent": 70.52755365901994,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "GH-4859",
+            "drought_mean_kg_ha": 1233.6906862745097,
+            "well_watered_mean_kg_ha": 2509.4071241830084,
+            "descriptive_retention_percent": 49.162635842765624,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-1159",
+            "drought_mean_kg_ha": 1155.9763888888886,
+            "well_watered_mean_kg_ha": 1621.6596078431382,
+            "descriptive_retention_percent": 71.28354084285148,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-89",
+            "drought_mean_kg_ha": 1152.6921568627452,
+            "well_watered_mean_kg_ha": 4179.5534640522865,
+            "descriptive_retention_percent": 27.579313598375467,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-1543",
+            "drought_mean_kg_ha": 1135.1420751633987,
+            "well_watered_mean_kg_ha": 3356.6956209150326,
+            "descriptive_retention_percent": 33.81724777458255,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-324",
+            "drought_mean_kg_ha": 1135.1091503267974,
+            "well_watered_mean_kg_ha": 1057.5752679738557,
+            "descriptive_retention_percent": 107.33128739871954,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-144",
+            "drought_mean_kg_ha": 1107.7486928104574,
+            "well_watered_mean_kg_ha": 1971.5735947712417,
+            "descriptive_retention_percent": 56.18601789698789,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-304",
+            "drought_mean_kg_ha": 1083.226225490196,
+            "well_watered_mean_kg_ha": 3499.9754901960787,
+            "descriptive_retention_percent": 30.949537461746925,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-1551",
+            "drought_mean_kg_ha": 1069.8987745098036,
+            "well_watered_mean_kg_ha": 2612.13568627451,
+            "descriptive_retention_percent": 40.95877484969851,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-180",
+            "drought_mean_kg_ha": 1068.8819444444443,
+            "well_watered_mean_kg_ha": 2192.5909150326793,
+            "descriptive_retention_percent": 48.749720575601,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-1119",
+            "drought_mean_kg_ha": 1065.6691721132895,
+            "well_watered_mean_kg_ha": 2012.5766013071898,
+            "descriptive_retention_percent": 52.95049000475938,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-1443",
+            "drought_mean_kg_ha": 1026.095424836601,
+            "well_watered_mean_kg_ha": 2434.773986928103,
+            "descriptive_retention_percent": 42.1433541817654,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-1158",
+            "drought_mean_kg_ha": 1000.7509803921566,
+            "well_watered_mean_kg_ha": 1897.4990849673204,
+            "descriptive_retention_percent": 52.74052505850837,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-1496",
+            "drought_mean_kg_ha": 993.0815359477123,
+            "well_watered_mean_kg_ha": 1525.5667973856205,
+            "descriptive_retention_percent": 65.09590649518371,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-1536",
+            "drought_mean_kg_ha": 985.7732843137252,
+            "well_watered_mean_kg_ha": 1804.9211111111117,
+            "descriptive_retention_percent": 54.61586538299626,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-1511",
+            "drought_mean_kg_ha": 954.743382352941,
+            "well_watered_mean_kg_ha": 2334.671895424836,
+            "descriptive_retention_percent": 40.89411382489821,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-328",
+            "drought_mean_kg_ha": 946.5475490196078,
+            "well_watered_mean_kg_ha": 1506.5549673202615,
+            "descriptive_retention_percent": 62.828610276547046,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-1162",
+            "drought_mean_kg_ha": 925.7418300653593,
+            "well_watered_mean_kg_ha": 2304.0432026143785,
+            "descriptive_retention_percent": 40.179013527824814,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-1157",
+            "drought_mean_kg_ha": 919.8016339869281,
+            "well_watered_mean_kg_ha": 2990.27202614379,
+            "descriptive_retention_percent": 30.75979796972152,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-1452",
+            "drought_mean_kg_ha": 918.4441993464051,
+            "well_watered_mean_kg_ha": 2488.678888888888,
+            "descriptive_retention_percent": 36.90488971666649,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-270",
+            "drought_mean_kg_ha": 905.9794117647058,
+            "well_watered_mean_kg_ha": 2076.898562091505,
+            "descriptive_retention_percent": 43.6217458233663,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-1481",
+            "drought_mean_kg_ha": 905.8752450980392,
+            "well_watered_mean_kg_ha": 2212.3502614379067,
+            "descriptive_retention_percent": 40.94628508368606,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-354",
+            "drought_mean_kg_ha": 903.4681372549018,
+            "well_watered_mean_kg_ha": 1987.1216339869297,
+            "descriptive_retention_percent": 45.46617186398386,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-1440",
+            "drought_mean_kg_ha": 884.1689542483658,
+            "well_watered_mean_kg_ha": 1693.8650980392133,
+            "descriptive_retention_percent": 52.19830996410891,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-290",
+            "drought_mean_kg_ha": 872.8504901960783,
+            "well_watered_mean_kg_ha": 1742.5174509803917,
+            "descriptive_retention_percent": 50.09134856612121,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-1485",
+            "drought_mean_kg_ha": 856.2535947712418,
+            "well_watered_mean_kg_ha": 2672.637647058825,
+            "descriptive_retention_percent": 32.037773459994796,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-1360",
+            "drought_mean_kg_ha": 836.7101307189541,
+            "well_watered_mean_kg_ha": 3193.0334640522865,
+            "descriptive_retention_percent": 26.204239327234713,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-1171",
+            "drought_mean_kg_ha": 812.8547385620914,
+            "well_watered_mean_kg_ha": 2202.6695424836616,
+            "descriptive_retention_percent": 36.90316331543504,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-1441",
+            "drought_mean_kg_ha": 808.1995098039214,
+            "well_watered_mean_kg_ha": 1969.6073856209132,
+            "descriptive_retention_percent": 41.03353367296289,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-1561",
+            "drought_mean_kg_ha": 804.4132352941175,
+            "well_watered_mean_kg_ha": 1563.5680392156871,
+            "descriptive_retention_percent": 51.44728052241494,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-1160",
+            "drought_mean_kg_ha": 802.5228758169933,
+            "well_watered_mean_kg_ha": 1769.4926797385617,
+            "descriptive_retention_percent": 45.35327469880035,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-1349",
+            "drought_mean_kg_ha": 797.408496732026,
+            "well_watered_mean_kg_ha": 1894.1992156862755,
+            "descriptive_retention_percent": 42.09739345938447,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-351",
+            "drought_mean_kg_ha": 796.7234477124181,
+            "well_watered_mean_kg_ha": 2152.98699346405,
+            "descriptive_retention_percent": 37.00549283999757,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-1506",
+            "drought_mean_kg_ha": 788.1194444444444,
+            "well_watered_mean_kg_ha": 2201.129542483661,
+            "descriptive_retention_percent": 35.80522769028686,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZEE-Y HDT C3 STR C5 (CHECK)",
+            "drought_mean_kg_ha": 774.7302287581697,
+            "well_watered_mean_kg_ha": 3937.9184967320252,
+            "descriptive_retention_percent": 19.673597343395958,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-1454",
+            "drought_mean_kg_ha": 757.974836601307,
+            "well_watered_mean_kg_ha": 1520.9877124182985,
+            "descriptive_retention_percent": 49.834382645745556,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "2011 TZE-WDT STR Synthetic (CHECK)",
+            "drought_mean_kg_ha": 734.253267973856,
+            "well_watered_mean_kg_ha": 3925.270392156863,
+            "descriptive_retention_percent": 18.70580099248647,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-29",
+            "drought_mean_kg_ha": 626.0357026143789,
+            "well_watered_mean_kg_ha": 2284.1998692810457,
+            "descriptive_retention_percent": 27.40722084059239,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-1174",
+            "drought_mean_kg_ha": 616.3141339869281,
+            "well_watered_mean_kg_ha": 2124.6355555555565,
+            "descriptive_retention_percent": 29.00799303557604,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-1508",
+            "drought_mean_kg_ha": 593.3013071895424,
+            "well_watered_mean_kg_ha": 1631.3740522875798,
+            "descriptive_retention_percent": 36.36819565430692,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-1483",
+            "drought_mean_kg_ha": 555.0760620915032,
+            "well_watered_mean_kg_ha": 2074.4885620915024,
+            "descriptive_retention_percent": 26.75724861706997,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-384",
+            "drought_mean_kg_ha": 539.3199346405228,
+            "well_watered_mean_kg_ha": 1720.4071895424838,
+            "descriptive_retention_percent": 31.348388795326223,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          {
+            "genotype_id": "TZm-353",
+            "drought_mean_kg_ha": 508.67404411764693,
+            "well_watered_mean_kg_ha": 1547.0932679738542,
+            "descriptive_retention_percent": 32.87933925172012,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          }
+        ],
         "model_summary": {
           "DROUGHT": {
             "environment_codes": [
@@ -24579,7 +25157,8 @@
         "Water regimes are summarized separately. ENVT indices are not calendar years; no environment extrapolation is justified.",
         "Ranks and environmental centering use only genotypes observed in every available environment of that regime; incomplete coverage is retained and labeled.",
         "Leave-one-environment-out rank changes are sensitivity analyses, not confidence intervals. Three environments cannot establish broad adaptation.",
-        "Alpha-lattice block effects, genotype ranking uncertainty and multiplicity are not modeled. Low variation alone does not imply high yield or drought tolerance."
+        "Alpha-lattice block effects, genotype ranking uncertainty and multiplicity are not modeled. Low variation alone does not imply high yield or drought tolerance.",
+        "Genotype retention joins only canonical identities within this same Ghana source, after separate regime summaries; it does not prove matched causal irrigation contrasts. A high ratio can reflect a low watered denominator."
       ]
     }
   ]

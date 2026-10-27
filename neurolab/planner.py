@@ -6,6 +6,7 @@ import json
 
 from jsonschema import Draft202012Validator
 
+from .investigation_profile import PROFILE_OUTPUT, profile_plan_check
 from .providers import StructuredModelAdapter
 from .research_context import (
     METHOD_TO_TOOL,
@@ -20,6 +21,8 @@ from .research_context import (
 
 def validate_execution_plan(plan: ResearchPlan, objective: str) -> None:
     validate_plan_objective(plan, objective)
+    if PROFILE_OUTPUT in plan.desired_outputs:
+        profile_plan_check(plan)
     task_ids = [task.task_id for task in plan.tasks]
     if len(task_ids) != len(set(task_ids)):
         raise ValueError("Research plan task IDs must be unique")

@@ -509,6 +509,59 @@ class ApiTests(unittest.TestCase):
             adapter.assert_not_called()
             self.assertEqual(self.client.get("/research-runs").json(), [])
 
+    def test_full_investigation_api_and_invalid_profile_plan_are_owner_scoped_and_model_free(self):
+        self.register("investigation@example.test")
+        objective = (ROOT / "tests/fixtures/ghana-research-objective.txt").read_text()
+        configuration = {
+            "desired_outputs": ["ghana_drought_investigation"],
+            "constraints": {"max_steps": 6, "max_tool_calls": 6, "max_seconds": 180},
+        }
+        with (
+            patch.dict(os.environ, {"MODEL_INFERENCE_ENABLED": "false"}),
+            patch("neurolab.api.OpenAICompatibleAdapter.from_environment") as adapter,
+        ):
+            created = self.client.post(
+                "/research-runs",
+                json={"objective": objective, "mode": "replay", "configuration": configuration},
+            )
+            self.assertEqual(created.status_code, 202)
+            run_id = created.json()["run_id"]
+            saved = self.client.get(f"/research-runs/{run_id}").json()
+            self.assertEqual(saved["status"], "COMPLETE")
+            self.assertEqual(saved["report"]["objective"], objective)
+            self.assertEqual(len(saved["report"]["scientific_report"]["hypothesis_evaluations"]), 4)
+            self.assertEqual(len(self.client.get(f"/research-runs/{run_id}/artifacts").json()), 6)
+            from neurolab.research_context import ResearchConfiguration, build_deterministic_plan
+
+            incompatible = build_deterministic_plan(objective, ResearchConfiguration()).model_dump(
+                mode="json"
+            )
+            rejected = self.client.post(
+                "/research-runs",
+                json={
+                    "objective": objective,
+                    "mode": "replay",
+                    "configuration": configuration,
+                    "plan": incompatible,
+                },
+            )
+            self.assertEqual(rejected.status_code, 409)
+            invalid = self.client.post(
+                "/research-runs",
+                json={
+                    "objective": objective,
+                    "configuration": {**configuration, "preferred_methods": ["dataset_profile"]},
+                },
+            )
+            self.assertEqual(invalid.status_code, 422)
+            fixed = self.client.post(
+                "/research-objectives/refine",
+                json={"objective": objective, "configuration": configuration},
+            )
+            self.assertEqual(fixed.status_code, 422)
+            adapter.assert_not_called()
+            self.assertEqual(len(self.client.get("/research-runs").json()), 1)
+
     @property
     def csrf(self):
         return self.client.cookies.get("neurolab_csrf", "")

@@ -60,3 +60,11 @@ D1 data and repo; D2 normalization; D3 statistical tools; D4 API; D5 Meta agent;
 - [x] Add genotype-unit drought trait associations with conditional percentile resampling intervals, per-environment correlations, excluded counts and source-row lineage. These are exploratory, not confirmatory stability/causal estimates.
 - [x] Wire both methods through strict schemas/registry/plans, bounded execution, artifact-linked report claims/limitations, result tables/association heatmap and event-bound cinematic reveals. Preserve over-budget selected tasks as pending/partial.
 - [ ] Complete the full owner's investigation with explicitly evaluated hypotheses, candidate trade-offs and justified follow-up reporting; perform actual browser acceptance. Live Meta acceptance is paused by the owner's exhausted credits.
+
+## 2026-10-27 full deterministic investigation/report increment
+
+- [x] Add an explicit six-method Ghana investigation preset that keeps the exact original objective, declares four retrospective exploratory hypotheses/criteria before execution, and separates workflow completion from scientific validation.
+- [x] Make missingness/follow-up ordering genuinely depend on computed evidence and honor the recorded choices. Report source-linked criterion evaluations, contradictions, candidate retention/variability trade-offs and an executed omitted-environment follow-up.
+- [x] Add source-byte-verified inventory/comparability evidence, source/manifest hashes, loaded-code provenance and a clearly separate proposed randomized field trial with no invented power calculation.
+- [x] Render/export the structured report and add exact-original-objective, partial/mismatched/custom-hypothesis, API and renderer tests. Preserve all six methods across budget limits; fix the persisted plan's former four-approach cap.
+- [ ] Verify the full committed profile through the running authenticated service and browser. Live Meta quality remains blocked by exhausted credits; no field-validation or production-launch claim follows from this profile.

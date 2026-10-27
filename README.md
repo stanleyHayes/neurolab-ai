@@ -21,6 +21,12 @@ NeuroLab is designed for agricultural researchers, plant breeders, and students 
 
 NeuroLab studies existing computational trial records. It does not run a real-world irrigation experiment, perform wet-lab work, or include a calibrated crop simulator.
 
+## Full deterministic Ghana investigation
+
+The **Full Ghana investigation** preset preserves the supplied objective and selects all six numeric tools without a Meta call. It declares four retrospective evaluation criteria before execution, records evidence-dependent follow-up decisions, and presents hypothesis assessments, candidate trade-offs, the seven-trait screen, source inventory and reproducibility in Reports. Unsupported requests and proposed future field work remain explicit. This does not supersede the unsuccessful historical live-agent acceptance above.
+
+Methods, scope and acceptance boundaries: [deterministic investigation profile](docs/DETERMINISTIC_INVESTIGATION_PROFILE.md). Source provenance now includes dataset metrics, original-study attribution, observed regime counts, hash copying and selected-run source matching. Meta inference remains paused following the owner's exhausted credits.
+
 ## Scientific and safety boundaries
 
 - Treat outputs as **descriptive or exploratory evidence**, not causal effects, validated predictions, or agronomic recommendations.

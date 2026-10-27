@@ -39,3 +39,7 @@ Both methods are selectable in research configuration and constrained by the act
 Trait Analytics, Environments, Research Results and event-bound cinematic playback read the actual matching artifacts. No-artifact and source-mismatch cases do not substitute a fabricated chart. Synthetic datasets appear only in explicitly labeled unit tests with hand-calculated numerical oracles. Full scientific hypothesis evaluation/follow-up reporting and actual browser acceptance remain separate unfinished gates.
 
 A subsequent authenticated API check ran the two methods under committed code `9666c16` with inference disabled. Focused run `a3358b92-ef34-4488-88fb-4c794c831d8a` completed with two artifacts and 23 persisted events. Its scope and exact summaries are in `verification/descriptive-analysis-runtime.json`. This is actual deterministic computation and saved-event acceptance, not a Meta run or completion of the full original investigation.
+
+## 2026-10-27 follow-on contribution
+
+The [deterministic investigation profile](DETERMINISTIC_INVESTIGATION_PROFILE.md) adds pre-execution retrospective criteria, evidence-linked assessments and candidate reporting using these tools. Earlier next-step notes describe their historical state. Neither this profile nor its conditional intervals establish prospective field stability or live-model answer quality.

@@ -129,6 +129,9 @@ export const INITIAL_OBJECTIVE =
   "Which genotypes warrant follow-up under managed drought, and what limitations affect that comparison?";
 
 export const EVENT_LABELS: Record<string, string> = {
+  "report.generated": "Evidence-linked report saved",
+  "research.investigation_prepared":
+    "Exploratory investigation criteria declared",
   "run.created": "Run created",
   "stage.changed": "Research stage",
   "hypothesis.proposed": "Hypothesis proposed",

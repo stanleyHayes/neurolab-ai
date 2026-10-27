@@ -1,0 +1,152 @@
+Research Objective: Discovering Drought-Resilient Maize Genotypes in West Africa
+
+Background
+
+Climate change and increasingly unpredictable rainfall threaten maize production across sub-Saharan Africa. Developing drought-resilient maize varieties is essential for improving agricultural productivity and food security.
+
+I want to investigate whether the available experimental datasets contain evidence that certain maize genotypes consistently perform better under drought stress.
+
+Primary Research Question
+
+Which maize genotypes demonstrate the strongest drought tolerance while maintaining relatively stable grain yield, and which measurable plant characteristics are most strongly associated with that resilience?
+
+Instructions to NeuroLab AI
+
+Act as an autonomous scientific research agent.
+
+Use the available maize research datasets, including the University of Ghana/WACCI drought-tolerance dataset and relevant IITA experimental data where scientifically appropriate.
+
+Conduct the investigation through the following stages.
+
+Stage 1 — Dataset Exploration
+
+1. Identify all relevant available datasets.
+2. Examine their structures, variables, experimental conditions, and provenance.
+3. Identify drought-stressed and well-watered observations.
+4. Examine missing values and potential data-quality problems.
+5. Determine whether observations can be compared or combined without compromising scientific validity.
+
+Do not combine unrelated experiments or genotype identifiers without a defensible scientific basis.
+
+Stage 2 — Hypothesis Generation
+
+Generate at least three scientifically testable hypotheses.
+
+Consider hypotheses involving:
+
+* Grain yield stability under drought stress.
+* Anthesis–silking interval and drought resilience.
+* Stay-green characteristics and grain yield.
+* Genotype-by-environment interactions.
+
+Explain the scientific rationale for each hypothesis.
+
+Stage 3 — Experimental Design
+
+Design an appropriate statistical investigation.
+
+Specify:
+
+* Independent and dependent variables.
+* Experimental groups and environmental conditions.
+* Statistical methods.
+* Confounding factors.
+* Assumptions and limitations.
+* Criteria for evaluating each hypothesis.
+
+Prioritize methods appropriate for the actual experimental design and available observations.
+
+Stage 4 — Autonomous Experimentation
+
+Execute the analyses using the platform’s available scientific tools.
+
+Calculate, where supported:
+
+1. Mean grain yield under drought stress.
+2. Mean grain yield under well-watered conditions.
+3. Relative yield retention.
+4. Yield variability across environments.
+5. Trait correlations.
+6. Genotype performance rankings.
+7. Relevant statistical uncertainty.
+
+Do not invent observations or statistical results.
+
+Distinguish observed data, calculated statistics, model predictions, and AI interpretations.
+
+Stage 5 — Evidence Evaluation
+
+Evaluate each hypothesis against the actual experimental evidence.
+
+For every hypothesis:
+
+* Present the relevant results.
+* Explain whether the evidence supports it.
+* Report uncertainty and limitations.
+* Identify contradictory findings.
+* Explain what cannot be concluded from the available data.
+
+Avoid treating correlations as proof of causation.
+
+Stage 6 — Autonomous Scientific Reasoning
+
+Based on the results:
+
+1. Identify the most promising genotype candidates.
+2. Explain why they deserve further investigation.
+3. Identify weaknesses in the available evidence.
+4. Propose the next scientifically useful experiment.
+5. Explain what additional data would improve confidence.
+
+Where supported, autonomously select and execute one follow-up analysis that could reduce an important uncertainty.
+
+Stage 7 — Scientific Visualization
+
+Generate meaningful visualizations, including:
+
+* Genotype yield comparisons.
+* Drought versus well-watered performance.
+* Trait correlation heatmaps.
+* Yield stability across experimental environments.
+* Evidence supporting the leading genotype candidates.
+
+Use actual experimental results.
+
+Stage 8 — Final Research Report
+
+Produce a structured scientific report containing:
+
+1. Research objective.
+2. Dataset sources and provenance.
+3. Hypotheses.
+4. Methodology.
+5. Statistical findings.
+6. Visualizations.
+7. Most promising genotype candidates.
+8. Scientific limitations.
+9. Recommended next experiments.
+10. Reproducibility information.
+
+Include the actual tools, parameters, datasets, and computational steps used.
+
+Autonomous Execution Requirements
+
+Execute the investigation from beginning to end without requiring approval between ordinary analysis stages.
+
+Show genuine execution progress, including dataset inspection, hypothesis generation, tool execution, evidence evaluation, and report generation.
+
+Do not simulate tool calls, scientific results, or execution progress.
+
+If an operation is unsupported, explicitly identify the limitation and continue with a scientifically defensible alternative.
+
+Expected Outcome
+
+At the end of this investigation, I should understand:
+
+* Which maize genotypes appear most drought-resilient.
+* Which plant characteristics are associated with resilience.
+* How strongly the available evidence supports these findings.
+* What additional experiments should be performed.
+* How NeuroLab AI arrived at its conclusions.
+
+Begin the investigation using the available research data.

@@ -4,6 +4,7 @@ import { ResultIcon } from "./ResultIcon";
 import { useInferenceAvailability } from "./use-inference-availability";
 import { LoadingDots } from "./LoadingDots";
 import { useResearchEditor } from "./use-research-editor";
+import { ghanaInvestigationConfiguration } from "./research-editor-types";
 import { ResearchObjectiveEditor } from "./ResearchObjectiveEditor";
 import type {
   ResearchConfiguration,
@@ -67,6 +68,29 @@ export function ExperimentSetup({
         <h2>Shape the next investigation.</h2>
         <p>Start with a question. Keep the evidence traceable.</p>
       </header>
+      <button
+        className="investigation-preset"
+        type="button"
+        disabled={busy}
+        onClick={() => {
+          setMode("replay");
+          editor.changeConfiguration(
+            ghanaInvestigationConfiguration(editor.configuration),
+          );
+        }}
+      >
+        <span className="setup-mode-icon">
+          <ResultIcon name="method" />
+        </span>
+        <span>
+          <strong>Full Ghana investigation</strong>
+          <small>
+            Keep my objective · six methods · four exploratory hypotheses ·
+            evidence-linked report · no Meta credits
+          </small>
+        </span>
+        <ResultIcon name="arrow" />
+      </button>
       <ResearchObjectiveEditor
         objective={objective}
         editor={editor}

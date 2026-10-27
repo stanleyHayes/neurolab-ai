@@ -180,6 +180,26 @@ class DescriptiveScienceTests(unittest.TestCase):
         finally:
             store.close()
 
+    def test_retention_uses_complete_same_source_regime_means_and_nonpositive_denominators_are_null(
+        self,
+    ):
+        dataset = synthetic()
+        result = summarize_environment_stability(dataset)
+        summaries = result["results"]["regime_retention_by_genotype"]
+        self.assertEqual(len(summaries), 4)
+        self.assertTrue(all(entry["descriptive_retention_percent"] == 100 for entry in summaries))
+        for row in dataset.records:
+            if row["water_regime"] == "WELL_WATERED" and row["genotype_id"] == "A":
+                row["grain_yield_value"] = 0
+        result = summarize_environment_stability(dataset)
+        entry = next(
+            item
+            for item in result["results"]["regime_retention_by_genotype"]
+            if item["genotype_id"] == "A"
+        )
+        self.assertIsNone(entry["descriptive_retention_percent"])
+        self.assertEqual(entry["well_watered_mean_kg_ha"], 0)
+
     def test_budget_and_missing_identity_reject_before_inventing_results(self):
         budget_dataset = synthetic()
         for value in [99, 10001, True, 100.5]:

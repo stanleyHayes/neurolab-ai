@@ -475,3 +475,40 @@ it("explains unavailable draft storage without replacing the original writing or
     (screen.getByLabelText("Research question") as HTMLTextAreaElement).value,
   ).toBe("Initial objective");
 });
+
+it("applies the six-method investigation preset without replacing the original objective", async () => {
+  render(<EditorHarness />);
+  const original = "Original full objective\n\nKeep **every** constraint.";
+  fireEvent.change(screen.getByLabelText("Research question"), {
+    target: { value: original },
+  });
+  fireEvent.click(
+    screen.getByRole("button", { name: /Full Ghana investigation/ }),
+  );
+  expect(
+    (screen.getByLabelText("Research question") as HTMLTextAreaElement).value,
+  ).toBe(original);
+  fireEvent.click(
+    screen.getByRole("button", { name: "Generate experiment plan" }),
+  );
+  expect(run).toHaveBeenCalledWith(
+    expect.objectContaining({
+      preferred_methods: expect.arrayContaining([
+        "dataset_profile",
+        "missingness_audit",
+        "block_bootstrap_contrast",
+        "genotype_ranking",
+        "trait_associations",
+        "environment_stability",
+      ]),
+      desired_outputs: expect.arrayContaining(["ghana_drought_investigation"]),
+      constraints: { max_steps: 6, max_tool_calls: 6, max_seconds: 180 },
+      autonomy_preferences: {
+        auto_plan_with_meta: false,
+        execute_supported_tasks: true,
+        stop_if_unsupported: false,
+      },
+    }),
+    null,
+  );
+});

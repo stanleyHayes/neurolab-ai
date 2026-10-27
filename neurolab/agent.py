@@ -9,6 +9,14 @@ from typing import Any
 
 from .descriptive import descriptive_claim
 from .ghana import GhanaDataset
+from .investigation_profile import (
+    PROFILE_HYPOTHESES,
+    PROFILE_NOTICE,
+    PROFILE_OUTPUT,
+    profile_followup,
+    profile_plan_check,
+)
+from .provenance import RUNTIME_PROVENANCE
 from .providers import StructuredModelAdapter
 from .research_context import (
     ResearchConfiguration,
@@ -20,6 +28,7 @@ from .research_context import (
     validate_objective,
     validate_plan_objective,
 )
+from .scientific_report import build_scientific_report
 from .store import RunStore
 from .tools import REGISTRY, execute_tool, validate_tool_call
 
@@ -315,6 +324,15 @@ class ResearchAgent:
     ) -> dict[str, Any]:
         complete = report["completion_status"] == "complete"
         self.store.set_report(run_id, report)
+        self.store.add_event(
+            run_id,
+            "report.generated",
+            {
+                "public_summary": "Evidence-linked report persisted; scientific conclusions remain subject to its stated scope and limitations.",
+                "completion_status": report["completion_status"],
+                "evidence_ids": report["evidence_ids"],
+            },
+        )
         self.store.set_stage(
             run_id,
             "COMPLETE" if complete else "PARTIAL",
@@ -368,7 +386,8 @@ class ResearchAgent:
 
     def _choose_task(self, run_id, objective, pending, evidence, decisions, failures, start):
         if self.mode != "meta":
-            return pending[0], {}
+            selected = decisions[-1]["selected_action"] if decisions else None
+            return next((task for task in pending if task.tool_name == selected), pending[0]), {}
         source = "model"
         try:
             choice = self._select_action(
@@ -426,16 +445,28 @@ class ResearchAgent:
             top = result["results"]["genotypes"][:1]
             coverage = top[0]["environment_count"] if top else 0
             summary = f"Top descriptive candidate spans {coverage}/3 ENVT indices; inspect data coverage and caveats."
+        source = "deterministic_replay"
+        if self._uses_investigation_profile():
+            followup = profile_followup(result, pending)
+            if followup:
+                next_action, summary = followup
+                source = "deterministic_evidence_rule"
         decisions.append(
             {
                 "decision_number": len(decisions) + 1,
                 "based_on_evidence_id": result["artifact_id"],
                 "selected_action": next_action,
                 "decision_summary": summary,
-                "selection_source": "deterministic_replay",
+                "selection_source": source,
             }
         )
         self.store.add_event(run_id, DECISION_RECORDED, decisions[-1])
+
+    def _uses_investigation_profile(self):
+        outputs = self.configuration.desired_outputs + (
+            self.research_plan.desired_outputs if self.research_plan else []
+        )
+        return PROFILE_OUTPUT in outputs
 
     def _build_report(
         self, run_id, objective, seed, start, tasks, evidence, decisions, failures, calls
@@ -461,8 +492,22 @@ class ResearchAgent:
             limitations.append(
                 "Some requested analyses remain incomplete; this report does not establish the full objective."
             )
+        scientific_report = (
+            build_scientific_report(
+                objective, evidence, decisions, RUNTIME_PROVENANCE, self.research_plan.hypotheses
+            )
+            if self._uses_investigation_profile()
+            else None
+        )
+        if scientific_report and scientific_report.get("additional_hypotheses_not_assessed"):
+            complete = False
+            limitations.append(
+                "Additional user hypotheses were retained but are not automatically evaluated by the selected fixed investigation profile."
+            )
         return {
             "run_id": run_id,
+            "scientific_report": scientific_report,
+            "reproducibility": RUNTIME_PROVENANCE,
             "dataset_id": self.configuration.dataset_id,
             "source_sha256": self.dataset.source_sha256,
             "mode": "meta" if is_meta else "deterministic_replay",
@@ -540,6 +585,19 @@ class ResearchAgent:
         if time.monotonic() - start > self.max_wall_time:
             raise TimeoutError("Research run exceeded its wall-time budget")
 
+    def _record_investigation_criteria(self, run_id):
+        if self._uses_investigation_profile():
+            self.store.add_event(
+                run_id,
+                "research.investigation_prepared",
+                {
+                    "public_summary": "Declared four retrospective exploratory hypotheses and evaluation criteria before numeric execution.",
+                    "source": "deterministic_investigation_profile",
+                    "label": PROFILE_NOTICE,
+                    "hypotheses": list(PROFILE_HYPOTHESES),
+                },
+            )
+
     def run(self, objective: str, *, seed: int = 2026, run_id: str | None = None) -> dict[str, Any]:
         if self.mode == "meta" and self.model_adapter is None:
             raise AgentConfigurationError(
@@ -551,6 +609,8 @@ class ResearchAgent:
         if self.research_plan is None:
             self.research_plan = build_deterministic_plan(objective, self.configuration)
         validate_plan_objective(self.research_plan, objective)
+        if self._uses_investigation_profile():
+            profile_plan_check(self.research_plan)
         start = time.monotonic()
         run_id = run_id or self.store.create_run(
             self.configuration.dataset_id,
@@ -584,6 +644,7 @@ class ResearchAgent:
                         "label": "Proposed hypothesis; not a scientific result",
                     },
                 )
+        self._record_investigation_criteria(run_id)
         self.store.set_stage(run_id, "PLANNING", "Preparing bounded Ghana observational analysis")
         self.store.add_event(
             run_id,

@@ -41,6 +41,7 @@ export const OUTPUTS = [
   "provenance_export",
   "trait_associations",
   "environment_summaries",
+  "ghana_drought_investigation",
 ] as const;
 export type ResearchMethod = (typeof METHODS)[number]["id"];
 export type ResearchOutput = (typeof OUTPUTS)[number];
@@ -133,6 +134,15 @@ export function objectiveError(value: string): string {
   return "";
 }
 export function configurationError(config: ResearchConfiguration): string {
+  if (
+    config.desired_outputs.includes("ghana_drought_investigation") &&
+    config.preferred_methods.length &&
+    (config.dataset_id !== "ghana_combined" ||
+      GHANA_INVESTIGATION_METHODS.some(
+        (method) => !config.preferred_methods.includes(method),
+      ))
+  )
+    return "The Ghana investigation needs all six methods. Deselect its output to run a focused analysis.";
   const {
     max_steps: steps,
     max_tool_calls: calls,
@@ -147,4 +157,30 @@ export function configurationError(config: ResearchConfiguration): string {
   if (config.research_questions.length > 20 || config.hypotheses.length > 20)
     return "Use at most 20 research questions and 20 hypotheses.";
   return "";
+}
+
+export const GHANA_INVESTIGATION_METHODS: ResearchMethod[] = [
+  "dataset_profile",
+  "missingness_audit",
+  "block_bootstrap_contrast",
+  "genotype_ranking",
+  "trait_associations",
+  "environment_stability",
+];
+export function ghanaInvestigationConfiguration(
+  current: ResearchConfiguration,
+): ResearchConfiguration {
+  return {
+    ...current,
+    title: current.title || "Ghana drought investigation",
+    dataset_id: "ghana_combined",
+    preferred_methods: [...GHANA_INVESTIGATION_METHODS],
+    desired_outputs: [...OUTPUTS],
+    constraints: { max_steps: 6, max_tool_calls: 6, max_seconds: 180 },
+    autonomy_preferences: {
+      auto_plan_with_meta: false,
+      execute_supported_tasks: true,
+      stop_if_unsupported: false,
+    },
+  };
 }

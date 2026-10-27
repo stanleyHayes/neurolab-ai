@@ -32,7 +32,7 @@ function displayText(value: unknown, fallback = "—"): string {
 
 function eventSummary(event: ResearchEvent): string {
   const payload = event.payload ?? {};
-  if (event.event_type === "stage.changed")
+  if (["stage.changed", "report.generated"].includes(event.event_type))
     return displayText(payload.public_summary);
   if (event.event_type === "tool.completed")
     return `${displayText(payload.artifact_id)} · n=${displayText(payload.sample_size)}`;

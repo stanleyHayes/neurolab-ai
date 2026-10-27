@@ -1,0 +1,2047 @@
+{
+  "fixture_label": "Actual deterministic Ghana full-profile execution; retrospective template evaluation, not Meta inference or a field trial",
+  "report": {
+    "run_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49",
+    "scientific_report": {
+      "version": "ghana-investigation-v1",
+      "additional_hypotheses_not_assessed": [],
+      "inventory_manifest_sha256": "c23281e4f3321645d3018cbda40d020d376b5dbca0b0c1b963a39055a681fa04",
+      "objective": "Research Objective: Discovering Drought-Resilient Maize Genotypes in West Africa\n\nBackground\n\nClimate change and increasingly unpredictable rainfall threaten maize production across sub-Saharan Africa. Developing drought-resilient maize varieties is essential for improving agricultural productivity and food security.\n\nI want to investigate whether the available experimental datasets contain evidence that certain maize genotypes consistently perform better under drought stress.\n\nPrimary Research Question\n\nWhich maize genotypes demonstrate the strongest drought tolerance while maintaining relatively stable grain yield, and which measurable plant characteristics are most strongly associated with that resilience?\n\nInstructions to NeuroLab AI\n\nAct as an autonomous scientific research agent.\n\nUse the available maize research datasets, including the University of Ghana/WACCI drought-tolerance dataset and relevant IITA experimental data where scientifically appropriate.\n\nConduct the investigation through the following stages.\n\nStage 1 \u2014 Dataset Exploration\n\n1. Identify all relevant available datasets.\n2. Examine their structures, variables, experimental conditions, and provenance.\n3. Identify drought-stressed and well-watered observations.\n4. Examine missing values and potential data-quality problems.\n5. Determine whether observations can be compared or combined without compromising scientific validity.\n\nDo not combine unrelated experiments or genotype identifiers without a defensible scientific basis.\n\nStage 2 \u2014 Hypothesis Generation\n\nGenerate at least three scientifically testable hypotheses.\n\nConsider hypotheses involving:\n\n* Grain yield stability under drought stress.\n* Anthesis\u2013silking interval and drought resilience.\n* Stay-green characteristics and grain yield.\n* Genotype-by-environment interactions.\n\nExplain the scientific rationale for each hypothesis.\n\nStage 3 \u2014 Experimental Design\n\nDesign an appropriate statistical investigation.\n\nSpecify:\n\n* Independent and dependent variables.\n* Experimental groups and environmental conditions.\n* Statistical methods.\n* Confounding factors.\n* Assumptions and limitations.\n* Criteria for evaluating each hypothesis.\n\nPrioritize methods appropriate for the actual experimental design and available observations.\n\nStage 4 \u2014 Autonomous Experimentation\n\nExecute the analyses using the platform\u2019s available scientific tools.\n\nCalculate, where supported:\n\n1. Mean grain yield under drought stress.\n2. Mean grain yield under well-watered conditions.\n3. Relative yield retention.\n4. Yield variability across environments.\n5. Trait correlations.\n6. Genotype performance rankings.\n7. Relevant statistical uncertainty.\n\nDo not invent observations or statistical results.\n\nDistinguish observed data, calculated statistics, model predictions, and AI interpretations.\n\nStage 5 \u2014 Evidence Evaluation\n\nEvaluate each hypothesis against the actual experimental evidence.\n\nFor every hypothesis:\n\n* Present the relevant results.\n* Explain whether the evidence supports it.\n* Report uncertainty and limitations.\n* Identify contradictory findings.\n* Explain what cannot be concluded from the available data.\n\nAvoid treating correlations as proof of causation.\n\nStage 6 \u2014 Autonomous Scientific Reasoning\n\nBased on the results:\n\n1. Identify the most promising genotype candidates.\n2. Explain why they deserve further investigation.\n3. Identify weaknesses in the available evidence.\n4. Propose the next scientifically useful experiment.\n5. Explain what additional data would improve confidence.\n\nWhere supported, autonomously select and execute one follow-up analysis that could reduce an important uncertainty.\n\nStage 7 \u2014 Scientific Visualization\n\nGenerate meaningful visualizations, including:\n\n* Genotype yield comparisons.\n* Drought versus well-watered performance.\n* Trait correlation heatmaps.\n* Yield stability across experimental environments.\n* Evidence supporting the leading genotype candidates.\n\nUse actual experimental results.\n\nStage 8 \u2014 Final Research Report\n\nProduce a structured scientific report containing:\n\n1. Research objective.\n2. Dataset sources and provenance.\n3. Hypotheses.\n4. Methodology.\n5. Statistical findings.\n6. Visualizations.\n7. Most promising genotype candidates.\n8. Scientific limitations.\n9. Recommended next experiments.\n10. Reproducibility information.\n\nInclude the actual tools, parameters, datasets, and computational steps used.\n\nAutonomous Execution Requirements\n\nExecute the investigation from beginning to end without requiring approval between ordinary analysis stages.\n\nShow genuine execution progress, including dataset inspection, hypothesis generation, tool execution, evidence evaluation, and report generation.\n\nDo not simulate tool calls, scientific results, or execution progress.\n\nIf an operation is unsupported, explicitly identify the limitation and continue with a scientifically defensible alternative.\n\nExpected Outcome\n\nAt the end of this investigation, I should understand:\n\n* Which maize genotypes appear most drought-resilient.\n* Which plant characteristics are associated with resilience.\n* How strongly the available evidence supports these findings.\n* What additional experiments should be performed.\n* How NeuroLab AI arrived at its conclusions.\n\nBegin the investigation using the available research data.",
+      "scope": "Deterministic retrospective Ghana investigation profile; template hypotheses are proposals, not Meta-generated findings or a preregistered confirmatory study.",
+      "conclusion_status": "exploratory_not_field_validated",
+      "evidence_coverage": "complete",
+      "missing_tools": [],
+      "dataset_inventory_evidence_ids": [
+        "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-1"
+      ],
+      "dataset_inventory": [
+        {
+          "source_file": "data/raw/ghana/data_dictionary.csv",
+          "source_sha256": "0c9e14e7cb37bf5444032e7a0f9e8ef56d5d9eb28363b8d14871a1e2de3599f8",
+          "physical_rows": 21,
+          "fully_empty_rows": 0,
+          "substantive_rows": 21,
+          "original_columns": [
+            "column",
+            "description",
+            "unit_or_type"
+          ],
+          "analysis_enabled": false,
+          "eligibility_reason": "Source metadata, not independent plot observations.",
+          "count_provenance": "Audited manifest counts, verified against current source-byte hash at tool execution"
+        },
+        {
+          "source_file": "data/raw/ghana/data_dictionary_uploaded.csv",
+          "source_sha256": "0c9e14e7cb37bf5444032e7a0f9e8ef56d5d9eb28363b8d14871a1e2de3599f8",
+          "physical_rows": 21,
+          "fully_empty_rows": 0,
+          "substantive_rows": 21,
+          "original_columns": [
+            "column",
+            "description",
+            "unit_or_type"
+          ],
+          "analysis_enabled": false,
+          "eligibility_reason": "Source metadata, not independent plot observations.",
+          "count_provenance": "Audited manifest counts, verified against current source-byte hash at tool execution"
+        },
+        {
+          "source_file": "data/raw/ghana/maize_combined_phenotypes.csv",
+          "source_sha256": "2e37c07f30e00efb33b59954dd6d02a04f3d67349790d782b70dbedfdaff05bc",
+          "physical_rows": 864,
+          "fully_empty_rows": 0,
+          "substantive_rows": 864,
+          "original_columns": [
+            "CONDITION",
+            "ENV",
+            "GENOTYPE",
+            "ENVT",
+            "REP",
+            "BLK",
+            "POLLEN",
+            "SILK",
+            "ASI",
+            "PLHT",
+            "EHT",
+            "STYG",
+            "PASP",
+            "HUSKC",
+            "RLPERC",
+            "SLPERC",
+            "EPP",
+            "EASP",
+            "EROT",
+            "YIELD"
+          ],
+          "analysis_enabled": true,
+          "eligibility_reason": "Canonical combined analysis source.",
+          "count_provenance": "Audited manifest counts, verified against current source-byte hash at tool execution"
+        },
+        {
+          "source_file": "data/raw/ghana/maize_drought_phenotypes.csv",
+          "source_sha256": "6b0d6136f179f7774152ad028132f31d31cc31fd29907dcd7e8c0a33c2c354b0",
+          "physical_rows": 432,
+          "fully_empty_rows": 0,
+          "substantive_rows": 432,
+          "original_columns": [
+            "GENOTYPE",
+            "GENO",
+            "ENVT",
+            "REP",
+            "BLK",
+            "POLLEN",
+            "SILK",
+            "ASI",
+            "PLHT",
+            "EHT",
+            "STYG",
+            "PASP",
+            "HUSKC",
+            "RLPERC",
+            "SLPERC",
+            "EPP",
+            "EASP",
+            "EROT",
+            "YIELD"
+          ],
+          "analysis_enabled": false,
+          "eligibility_reason": "Regime component overlaps the combined source; never add as independent observations.",
+          "count_provenance": "Audited manifest counts, verified against current source-byte hash at tool execution"
+        },
+        {
+          "source_file": "data/raw/ghana/maize_wellwatered_phenotypes.csv",
+          "source_sha256": "a40bb2ca65e3390c3f10e3a38cbe6fae6364bae1c88dca8ea4f58b87583efed5",
+          "physical_rows": 432,
+          "fully_empty_rows": 0,
+          "substantive_rows": 432,
+          "original_columns": [
+            "GENOTYPE",
+            "REP",
+            "BLK",
+            "ENVT",
+            "POLLEN",
+            "SILK",
+            "ASI",
+            "PLHT",
+            "EHT",
+            "PASP",
+            "HUSKC",
+            "RLPERC",
+            "SLPERC",
+            "EPP",
+            "EASP",
+            "EROT",
+            "YIELD"
+          ],
+          "analysis_enabled": false,
+          "eligibility_reason": "Regime component overlaps the combined source; never add as independent observations.",
+          "count_provenance": "Audited manifest counts, verified against current source-byte hash at tool execution"
+        },
+        {
+          "source_file": "data/raw/iita/m28drought_stress-data.csv",
+          "source_sha256": "49b84ec403b83c3c94cccde1c3708629841b06fea41ead2691af6cfd1ab28676",
+          "physical_rows": 960,
+          "fully_empty_rows": 0,
+          "substantive_rows": 960,
+          "original_columns": [
+            "YEAR",
+            "REP",
+            "BLK",
+            "PLOT",
+            "ENTRY",
+            "YIELD (kg/ha)",
+            "Antheis Day",
+            "Silking date",
+            "ASI",
+            "Plant height",
+            "Eear height",
+            "Ears per plant",
+            "Husk cover",
+            "Leaf senescence",
+            "Ear aspect",
+            "Plant aspect"
+          ],
+          "analysis_enabled": false,
+          "eligibility_reason": "Audited reference only; matched year/replicate/environment semantics and cross-source genotype identity are not proven. No pooling or row-order joining.",
+          "count_provenance": "Audited manifest counts, verified against current source-byte hash at tool execution"
+        },
+        {
+          "source_file": "data/raw/iita/m28fulli_irrigation-data.csv",
+          "source_sha256": "311efbee3fd8294930e364e98934bc388645dbc243c000c3de27a847805b6e40",
+          "physical_rows": 337913,
+          "fully_empty_rows": 336953,
+          "substantive_rows": 960,
+          "original_columns": [
+            "YEAR",
+            "REP",
+            "",
+            "PLOT",
+            "ENTRY",
+            "YIELD (kg/ha)",
+            "Antheis Day",
+            "ASI",
+            "Plant height",
+            "Eear height",
+            "Ears per plant",
+            "Husk cover",
+            "Ear aspect",
+            "Plant aspect",
+            "Silking date"
+          ],
+          "analysis_enabled": false,
+          "eligibility_reason": "Audited reference only; matched year/replicate/environment semantics and cross-source genotype identity are not proven. No pooling or row-order joining.",
+          "count_provenance": "Audited manifest counts, verified against current source-byte hash at tool execution"
+        },
+        {
+          "source_file": "data/raw/iita/m28multiloc-data-ii.csv",
+          "source_sha256": "4f05cbfc9d1e6b3035a2d13c1eea29290e07f81344e1628eea929ff8eca38922",
+          "physical_rows": 176,
+          "fully_empty_rows": 0,
+          "substantive_rows": 176,
+          "original_columns": [
+            "YEAR",
+            "LOC",
+            "ENV",
+            "REP",
+            "BLK",
+            "PLOT",
+            "ENTRY",
+            "NAME",
+            "YIELD",
+            "AD",
+            "ASI",
+            "PH",
+            "EH",
+            "RL",
+            "SL",
+            "EPP",
+            "HC",
+            "PS",
+            "SENES1",
+            "MOI",
+            "NP",
+            "MSV",
+            "EA",
+            "PA",
+            "HM",
+            "PL",
+            "SD",
+            "CUR",
+            "SENES2",
+            "ER"
+          ],
+          "analysis_enabled": false,
+          "eligibility_reason": "Audited reference only; matched year/replicate/environment semantics and cross-source genotype identity are not proven. No pooling or row-order joining.",
+          "count_provenance": "Audited manifest counts, verified against current source-byte hash at tool execution"
+        },
+        {
+          "source_file": "data/raw/iita/m28multiloc-data.csv",
+          "source_sha256": "764314cb4429b5eb90eee91093bee6d029a750e5e95fbcfa88cf381df4f863ab",
+          "physical_rows": 23616,
+          "fully_empty_rows": 0,
+          "substantive_rows": 23616,
+          "original_columns": [
+            "YEAR",
+            "LOC",
+            "ENV",
+            "REP",
+            "BLK",
+            "PLOT",
+            "ENTRY",
+            "YIELD (kg/ha)",
+            "Antheis Day",
+            "Silking date",
+            "ASI",
+            "Plant height",
+            "Eear height",
+            "Ears per plant",
+            "Husk cover",
+            "Ear aspect",
+            "Plant aspect",
+            "MSV",
+            "Curvularia leaf spot",
+            ""
+          ],
+          "analysis_enabled": false,
+          "eligibility_reason": "Audited reference only; matched year/replicate/environment semantics and cross-source genotype identity are not proven. No pooling or row-order joining.",
+          "count_provenance": "Audited manifest counts, verified against current source-byte hash at tool execution"
+        },
+        {
+          "source_file": "data/raw/iita/m28striga-data.csv",
+          "source_sha256": "358fea710ea823fc05f921421e3d025c53ebbc77ea09a69bb9b2d3b3cb13e735",
+          "physical_rows": 1636,
+          "fully_empty_rows": 0,
+          "substantive_rows": 1636,
+          "original_columns": [
+            "YEAR",
+            "LOC",
+            "ENV",
+            "REP",
+            "PLOT",
+            "ENTRY",
+            "Yield infested",
+            "Yield non-infested",
+            "Silking days infested",
+            "Silking days non-infested",
+            "Anthesis days infested",
+            "Anthesis days non-infested",
+            "Plant height infested",
+            "Plant height non-infested",
+            "Ear height non-infested",
+            "Striga rating 8 WAP",
+            "Striga rating 10 WAP",
+            "Striga count 8 WAP",
+            "Striga counet 10 WAP",
+            "Plant aspect non-infested",
+            "Husk cover non-infested",
+            "Eear aspect infested",
+            "Eear aspect non-infested",
+            "ASI-Infested",
+            "Ears per plant infested"
+          ],
+          "analysis_enabled": false,
+          "eligibility_reason": "Audited reference only; matched year/replicate/environment semantics and cross-source genotype identity are not proven. No pooling or row-order joining.",
+          "count_provenance": "Audited manifest counts, verified against current source-byte hash at tool execution"
+        }
+      ],
+      "source_citations": [
+        {
+          "authors": "Abu et al. (2026)",
+          "doi": "10.5281/zenodo.22666201",
+          "license": "CC BY 4.0; source authors do not endorse these interpretations",
+          "role": "Ghana canonical analysis source"
+        },
+        {
+          "authors": "Menkir et al.",
+          "doi": "10.25502/4xv7-bc93/d",
+          "license": "CC BY 4.0 per supplied source pack",
+          "role": "IITA audited reference only; not pooled or treated as matched observations"
+        }
+      ],
+      "methodology": {
+        "dependent_variable": "Observed grain yield, kg/ha",
+        "explanatory_variables": "Canonical genotype, observed water regime and environment; measured flowering, stature, ears/plant and ordinal stay-green traits.",
+        "design": "Source Ghana alpha-lattice: incomplete block within replication within observed environment; regimes analyzed descriptively because regime and environment are confounded.",
+        "methods": [
+          {
+            "tool": "dataset_profile",
+            "analysis_version": "ghana-exploratory-v1",
+            "sample_size": 864,
+            "uncertainty": null,
+            "evidence_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-1"
+          },
+          {
+            "tool": "inspect_missingness",
+            "analysis_version": "ghana-exploratory-v1",
+            "sample_size": 864,
+            "uncertainty": null,
+            "evidence_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-2"
+          },
+          {
+            "tool": "compare_regimes",
+            "analysis_version": "ghana-exploratory-v1",
+            "sample_size": 864,
+            "uncertainty": {
+              "method": "percentile cluster bootstrap resampling BLK within CONDITION x ENVT x REP strata",
+              "replicates": 2000,
+              "seed": 2026,
+              "yield_difference_95_ci_kg_ha": [
+                -1552.2316855923577,
+                -1215.71407882247
+              ]
+            },
+            "evidence_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-3"
+          },
+          {
+            "tool": "rank_genotypes",
+            "analysis_version": "ghana-exploratory-v1",
+            "sample_size": 432,
+            "uncertainty": null,
+            "evidence_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-4"
+          },
+          {
+            "tool": "summarize_environment_stability",
+            "analysis_version": "ghana-descriptive-sensitivity-v2",
+            "sample_size": 864,
+            "uncertainty": null,
+            "evidence_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-5"
+          },
+          {
+            "tool": "analyze_trait_associations",
+            "analysis_version": "ghana-descriptive-sensitivity-v2",
+            "sample_size": 432,
+            "uncertainty": {
+              "method": "genotype-profile percentile bootstrap for Spearman rho",
+              "seed": 2026,
+              "replicates": 1000
+            },
+            "evidence_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-6"
+          }
+        ],
+        "assumptions_and_limits": [
+          "Dataset profile is descriptive; ENVT codes are not interpreted as calendar years.",
+          "STYG is structurally absent for the well-watered source regime, by design.",
+          "Exploratory observational contrast; water regime is confounded with environment and this is not a causal treatment effect.",
+          "Only three ENVT indices and two replications are represented; generalization is limited.",
+          "The yield-retention ratio is descriptive and is null if the well-watered denominator is not positive.",
+          "Descriptive exploratory ranking only; alpha-lattice effects and multiplicity are not modeled.",
+          "Not a field recommendation; candidates require confirmatory trials and model-based assessment.",
+          "Descriptive variation across observed ENVT indices, not a validated stability model or confirmatory genotype-by-environment interaction test.",
+          "Water regimes are summarized separately. ENVT indices are not calendar years; no environment extrapolation is justified.",
+          "Ranks and environmental centering use only genotypes observed in every available environment of that regime; incomplete coverage is retained and labeled.",
+          "Leave-one-environment-out rank changes are sensitivity analyses, not confidence intervals. Three environments cannot establish broad adaptation.",
+          "Alpha-lattice block effects, genotype ranking uncertainty and multiplicity are not modeled. Low variation alone does not imply high yield or drought tolerance.",
+          "Genotype retention joins only canonical identities within this same Ghana source, after separate regime summaries; it does not prove matched causal irrigation contrasts. A high ratio can reflect a low watered denominator.",
+          "Exploratory association with observed drought yield, not a causal trait effect, validated drought tolerance measure, or predictive model.",
+          "Each genotype contributes one equal-environment mean per trait; incomplete genotype/environment trait-yield pairs are excluded for that trait and counts/lineage are retained.",
+          "Percentile intervals resample genotype profiles, conditional on the observed environments; they do not quantify uncertainty across future environments or correct alpha-lattice effects.",
+          "Spearman ranks average ties. Constant or insufficient data produce null correlations, not zero; degenerate bootstrap draws are omitted and counted.",
+          "Seven exploratory trait comparisons have no multiplicity adjustment or confirmatory significance test. Stay-green score direction is not established by the source dictionary.",
+          "Genotype case-resampling assumes exchangeable profiles and ignores relatedness, genotype selection and within-genotype plot error; these intervals do not establish validated population coverage."
+        ]
+      },
+      "hypothesis_evaluations": [
+        {
+          "id": "H1",
+          "proposal": "At least one complete-coverage genotype is in the observed drought-yield top quartile in every available drought environment.",
+          "rationale": "A large pooled mean can hide poor performance in an individual observed environment.",
+          "criterion": "For the finite complete-coverage panel, require environment-specific mean-yield ranks no greater than ceil(panel size / 4) in every observed drought environment. This is a descriptive operational criterion, not validated broad adaptation.",
+          "verdict": "criterion_met",
+          "findings": "5 of 72 complete genotype profiles met the observed rank threshold of 18 in every drought environment.",
+          "evidence_ids": [
+            "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-5"
+          ],
+          "contradictions": [],
+          "scope": "Retrospective descriptive criterion, not a confirmatory hypothesis test or field validation.",
+          "matching_genotype_ids": [
+            "TZm-1179",
+            "TZm-480",
+            "TZm-1530",
+            "TZm-1352",
+            "TZm-1163"
+          ],
+          "rank_threshold": 18
+        },
+        {
+          "id": "H2",
+          "proposal": "Longer observed anthesis\u2013silking interval is negatively associated with drought yield across genotype means.",
+          "rationale": "The measured SILK-minus-POLLEN interval provides a falsifiable timing association to investigate; its biological mechanism is not established here.",
+          "criterion": "Require a negative Spearman rho, a conditional genotype-profile resampling interval entirely below zero, and negative associations in every observed environment. Mixed directions or a zero-crossing interval are inconclusive.",
+          "verdict": "inconclusive",
+          "findings": "72 genotype means: rho=-0.250; conditional percentile interval -0.467 to 0.013.",
+          "evidence_ids": [
+            "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-6"
+          ],
+          "contradictions": [
+            "The conditional resampling interval includes zero."
+          ],
+          "scope": "Retrospective descriptive criterion, not a confirmatory hypothesis test or field validation.",
+          "statistics": {
+            "genotype_count": 72,
+            "spearman_rho": -0.25035601520992046,
+            "conditional_interval": [
+              -0.4672793032125348,
+              0.013117178338713916
+            ],
+            "per_environment": [
+              {
+                "environment_code": "DROUGHT_Y1",
+                "genotype_count": 72,
+                "spearman_rho": -0.19758252520909897
+              },
+              {
+                "environment_code": "DROUGHT_Y2",
+                "genotype_count": 72,
+                "spearman_rho": -0.11426258199911914
+              },
+              {
+                "environment_code": "DROUGHT_Y3",
+                "genotype_count": 72,
+                "spearman_rho": -0.42961435602356385
+              }
+            ]
+          }
+        },
+        {
+          "id": "H3",
+          "proposal": "Lower numeric stay-green scores are associated with higher observed drought yield across genotype means.",
+          "rationale": "Variation in the recorded ordinal score can be compared with yield. Source score direction is unverified, so this hypothesis is about numeric codes, not an assertion that greener plants perform better.",
+          "criterion": "Require a negative Spearman rho, a conditional resampling interval entirely below zero, and negative associations in every observed environment. No causal or biological score-direction claim is permitted.",
+          "verdict": "criterion_met",
+          "findings": "72 genotype means: rho=-0.294; conditional percentile interval -0.490 to -0.047.",
+          "evidence_ids": [
+            "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-6"
+          ],
+          "contradictions": [],
+          "scope": "Retrospective descriptive criterion, not a confirmatory hypothesis test or field validation.",
+          "statistics": {
+            "genotype_count": 72,
+            "spearman_rho": -0.2939934804602039,
+            "conditional_interval": [
+              -0.48970001180297806,
+              -0.04739850035072619
+            ],
+            "per_environment": [
+              {
+                "environment_code": "DROUGHT_Y1",
+                "genotype_count": 72,
+                "spearman_rho": -0.154651936304684
+              },
+              {
+                "environment_code": "DROUGHT_Y2",
+                "genotype_count": 72,
+                "spearman_rho": -0.1892454642192498
+              },
+              {
+                "environment_code": "DROUGHT_Y3",
+                "genotype_count": 72,
+                "spearman_rho": -0.5247891110438415
+              }
+            ]
+          }
+        },
+        {
+          "id": "H4",
+          "proposal": "At least one of the three largest observed drought means has a rank sensitivity of a quartile of the panel or more when an environment is omitted.",
+          "rationale": "Only a few environments contribute to the mean, making environment composition a useful follow-up uncertainty to examine.",
+          "criterion": "Among the three leading complete-coverage mean-yield candidates, require an omitted-environment rank range width at least ceil(panel size / 4), with at least three observed environments. This operational sensitivity threshold is not a significance test.",
+          "verdict": "criterion_met",
+          "findings": "1 of 3 leading observed means changed by at least 18 rank positions when an environment was omitted.",
+          "evidence_ids": [
+            "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-5"
+          ],
+          "contradictions": [],
+          "scope": "Retrospective descriptive criterion, not a confirmatory hypothesis test or field validation.",
+          "rank_ranges": [
+            {
+              "genotype_id": "TZm-1179",
+              "minimum_rank": 3.0,
+              "maximum_rank": 5.0,
+              "range_width": 2.0
+            },
+            {
+              "genotype_id": "TZEE-W HDT C3 STR C5 (CHECK)",
+              "minimum_rank": 1.0,
+              "maximum_rank": 26.0,
+              "range_width": 25.0
+            },
+            {
+              "genotype_id": "TZm-480",
+              "minimum_rank": 2.0,
+              "maximum_rank": 8.0,
+              "range_width": 6.0
+            }
+          ],
+          "range_width_threshold": 18
+        }
+      ],
+      "findings": {
+        "observed_regime_comparison": {
+          "results": {
+            "mean_yield_by_regime": {
+              "DROUGHT": 1230.2687815072015,
+              "WELL_WATERED": 2616.0414647785037
+            },
+            "plot_count_by_regime": {
+              "DROUGHT": 432,
+              "WELL_WATERED": 432
+            },
+            "yield_difference_kg_ha": -1385.7726832713022,
+            "drought_to_well_watered_yield_ratio_percent": 47.0278777332517,
+            "environment_stratified": true
+          },
+          "uncertainty": {
+            "method": "percentile cluster bootstrap resampling BLK within CONDITION x ENVT x REP strata",
+            "replicates": 2000,
+            "seed": 2026,
+            "yield_difference_95_ci_kg_ha": [
+              -1552.2316855923577,
+              -1215.71407882247
+            ]
+          },
+          "evidence_ids": [
+            "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-3"
+          ]
+        },
+        "trait_associations": {
+          "associations": [
+            {
+              "excluded_genotype_ids": [],
+              "paired_plot_count": 432,
+              "trait": "asi_days",
+              "unit": "days",
+              "genotype_count": 72,
+              "spearman_rho": -0.25035601520992046,
+              "pearson_r": -0.28348611566730114,
+              "spearman_rho_95_percentile_interval": [
+                -0.4672793032125348,
+                0.013117178338713916
+              ],
+              "valid_bootstrap_replicates": 1000,
+              "per_environment": [
+                {
+                  "environment_code": "DROUGHT_Y1",
+                  "genotype_count": 72,
+                  "spearman_rho": -0.19758252520909897
+                },
+                {
+                  "environment_code": "DROUGHT_Y2",
+                  "genotype_count": 72,
+                  "spearman_rho": -0.11426258199911914
+                },
+                {
+                  "environment_code": "DROUGHT_Y3",
+                  "genotype_count": 72,
+                  "spearman_rho": -0.42961435602356385
+                }
+              ]
+            },
+            {
+              "excluded_genotype_ids": [],
+              "paired_plot_count": 432,
+              "trait": "stay_green_score",
+              "unit": "ordinal score 1\u20139; direction not established here",
+              "genotype_count": 72,
+              "spearman_rho": -0.2939934804602039,
+              "pearson_r": -0.2990131739044331,
+              "spearman_rho_95_percentile_interval": [
+                -0.48970001180297806,
+                -0.04739850035072619
+              ],
+              "valid_bootstrap_replicates": 1000,
+              "per_environment": [
+                {
+                  "environment_code": "DROUGHT_Y1",
+                  "genotype_count": 72,
+                  "spearman_rho": -0.154651936304684
+                },
+                {
+                  "environment_code": "DROUGHT_Y2",
+                  "genotype_count": 72,
+                  "spearman_rho": -0.1892454642192498
+                },
+                {
+                  "environment_code": "DROUGHT_Y3",
+                  "genotype_count": 72,
+                  "spearman_rho": -0.5247891110438415
+                }
+              ]
+            },
+            {
+              "excluded_genotype_ids": [],
+              "paired_plot_count": 432,
+              "trait": "ears_per_plant",
+              "unit": "ears/plant",
+              "genotype_count": 72,
+              "spearman_rho": 0.3606662807897614,
+              "pearson_r": 0.30452625673614814,
+              "spearman_rho_95_percentile_interval": [
+                0.15423042361036818,
+                0.5533297223404633
+              ],
+              "valid_bootstrap_replicates": 1000,
+              "per_environment": [
+                {
+                  "environment_code": "DROUGHT_Y1",
+                  "genotype_count": 72,
+                  "spearman_rho": 0.4253601758219022
+                },
+                {
+                  "environment_code": "DROUGHT_Y2",
+                  "genotype_count": 72,
+                  "spearman_rho": 0.12309734187190137
+                },
+                {
+                  "environment_code": "DROUGHT_Y3",
+                  "genotype_count": 72,
+                  "spearman_rho": 0.6666237885466256
+                }
+              ]
+            },
+            {
+              "excluded_genotype_ids": [],
+              "paired_plot_count": 432,
+              "trait": "plant_height_value",
+              "unit": "cm",
+              "genotype_count": 72,
+              "spearman_rho": 0.4634097322303279,
+              "pearson_r": 0.45011463913548666,
+              "spearman_rho_95_percentile_interval": [
+                0.2390989287634187,
+                0.6379606987533869
+              ],
+              "valid_bootstrap_replicates": 1000,
+              "per_environment": [
+                {
+                  "environment_code": "DROUGHT_Y1",
+                  "genotype_count": 72,
+                  "spearman_rho": 0.29873690690569754
+                },
+                {
+                  "environment_code": "DROUGHT_Y2",
+                  "genotype_count": 72,
+                  "spearman_rho": 0.29035188588179056
+                },
+                {
+                  "environment_code": "DROUGHT_Y3",
+                  "genotype_count": 72,
+                  "spearman_rho": 0.5385660535813267
+                }
+              ]
+            },
+            {
+              "excluded_genotype_ids": [],
+              "paired_plot_count": 432,
+              "trait": "ear_height_value",
+              "unit": "cm",
+              "genotype_count": 72,
+              "spearman_rho": 0.4534375200977555,
+              "pearson_r": 0.42576318296868043,
+              "spearman_rho_95_percentile_interval": [
+                0.2406418442465969,
+                0.6349101124444806
+              ],
+              "valid_bootstrap_replicates": 1000,
+              "per_environment": [
+                {
+                  "environment_code": "DROUGHT_Y1",
+                  "genotype_count": 72,
+                  "spearman_rho": 0.35372618382255305
+                },
+                {
+                  "environment_code": "DROUGHT_Y2",
+                  "genotype_count": 72,
+                  "spearman_rho": 0.3481120016833956
+                },
+                {
+                  "environment_code": "DROUGHT_Y3",
+                  "genotype_count": 72,
+                  "spearman_rho": 0.5107411042823707
+                }
+              ]
+            },
+            {
+              "excluded_genotype_ids": [],
+              "paired_plot_count": 432,
+              "trait": "anthesis_days",
+              "unit": "days",
+              "genotype_count": 72,
+              "spearman_rho": 0.21008619971775974,
+              "pearson_r": 0.15173947313956226,
+              "spearman_rho_95_percentile_interval": [
+                -0.03359726960885771,
+                0.43891596847503467
+              ],
+              "valid_bootstrap_replicates": 1000,
+              "per_environment": [
+                {
+                  "environment_code": "DROUGHT_Y1",
+                  "genotype_count": 72,
+                  "spearman_rho": -0.03791287561851314
+                },
+                {
+                  "environment_code": "DROUGHT_Y2",
+                  "genotype_count": 72,
+                  "spearman_rho": 0.19191536324538067
+                },
+                {
+                  "environment_code": "DROUGHT_Y3",
+                  "genotype_count": 72,
+                  "spearman_rho": 0.3854320035162318
+                }
+              ]
+            },
+            {
+              "excluded_genotype_ids": [],
+              "paired_plot_count": 432,
+              "trait": "silking_days",
+              "unit": "days",
+              "genotype_count": 72,
+              "spearman_rho": 0.09564399648655741,
+              "pearson_r": 0.06592051900593893,
+              "spearman_rho_95_percentile_interval": [
+                -0.14677694201869912,
+                0.32932439911780803
+              ],
+              "valid_bootstrap_replicates": 1000,
+              "per_environment": [
+                {
+                  "environment_code": "DROUGHT_Y1",
+                  "genotype_count": 72,
+                  "spearman_rho": -0.20448829777928498
+                },
+                {
+                  "environment_code": "DROUGHT_Y2",
+                  "genotype_count": 72,
+                  "spearman_rho": 0.07123946597039979
+                },
+                {
+                  "environment_code": "DROUGHT_Y3",
+                  "genotype_count": 72,
+                  "spearman_rho": 0.21000809531672002
+                }
+              ]
+            }
+          ],
+          "screen_summary": "Among 7 exploratory drought trait associations, the largest absolute observed Spearman correlation was plant_height_value versus yield (rho=0.463, 72 genotype means). Selection across traits is exploratory and unadjusted; association does not establish causal drought resilience.",
+          "evidence_ids": [
+            "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-6"
+          ]
+        }
+      },
+      "candidate_summaries": [
+        {
+          "genotype_id": "TZm-1179",
+          "drought_mean_kg_ha": 2370.290522875817,
+          "environment_mean_sd_kg_ha": 1050.320176410916,
+          "environment_centered_sd_kg_ha": 267.51714569273264,
+          "environment_count": 3,
+          "omitted_environment_rank_range": [
+            3.0,
+            5.0
+          ],
+          "observed_regime_summary": {
+            "genotype_id": "TZm-1179",
+            "drought_mean_kg_ha": 2370.290522875817,
+            "well_watered_mean_kg_ha": 3662.5416339869266,
+            "descriptive_retention_percent": 64.71709429540583,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          "selection_basis": "Largest complete-coverage observed drought means; not a combined tolerance/stability score.",
+          "evidence_ids": [
+            "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-5"
+          ],
+          "meets_observed_top_quartile_each_environment": true
+        },
+        {
+          "genotype_id": "TZEE-W HDT C3 STR C5 (CHECK)",
+          "drought_mean_kg_ha": 2356.731699346405,
+          "environment_mean_sd_kg_ha": 2498.951549342349,
+          "environment_centered_sd_kg_ha": 1743.727082295526,
+          "environment_count": 3,
+          "omitted_environment_rank_range": [
+            1.0,
+            26.0
+          ],
+          "observed_regime_summary": {
+            "genotype_id": "TZEE-W HDT C3 STR C5 (CHECK)",
+            "drought_mean_kg_ha": 2356.731699346405,
+            "well_watered_mean_kg_ha": 4889.698104575158,
+            "descriptive_retention_percent": 48.19789788537814,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          "selection_basis": "Largest complete-coverage observed drought means; not a combined tolerance/stability score.",
+          "evidence_ids": [
+            "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-5"
+          ],
+          "meets_observed_top_quartile_each_environment": false
+        },
+        {
+          "genotype_id": "TZm-480",
+          "drought_mean_kg_ha": 2334.9387254901962,
+          "environment_mean_sd_kg_ha": 1188.2800521369131,
+          "environment_centered_sd_kg_ha": 597.8882052541271,
+          "environment_count": 3,
+          "omitted_environment_rank_range": [
+            2.0,
+            8.0
+          ],
+          "observed_regime_summary": {
+            "genotype_id": "TZm-480",
+            "drought_mean_kg_ha": 2334.9387254901962,
+            "well_watered_mean_kg_ha": 2759.4307189542487,
+            "descriptive_retention_percent": 84.61668232696476,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          "selection_basis": "Largest complete-coverage observed drought means; not a combined tolerance/stability score.",
+          "evidence_ids": [
+            "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-5"
+          ],
+          "meets_observed_top_quartile_each_environment": true
+        },
+        {
+          "genotype_id": "TZm-1530",
+          "drought_mean_kg_ha": 2287.580718954248,
+          "environment_mean_sd_kg_ha": 701.0690734911785,
+          "environment_centered_sd_kg_ha": 950.0634606140768,
+          "environment_count": 3,
+          "omitted_environment_rank_range": [
+            1.0,
+            16.0
+          ],
+          "observed_regime_summary": {
+            "genotype_id": "TZm-1530",
+            "drought_mean_kg_ha": 2287.580718954248,
+            "well_watered_mean_kg_ha": 2776.517647058823,
+            "descriptive_retention_percent": 82.390281991454,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          "selection_basis": "Largest complete-coverage observed drought means; not a combined tolerance/stability score.",
+          "evidence_ids": [
+            "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-5"
+          ],
+          "meets_observed_top_quartile_each_environment": true
+        },
+        {
+          "genotype_id": "TZm-1470",
+          "drought_mean_kg_ha": 2118.6783496732023,
+          "environment_mean_sd_kg_ha": 1527.9466606645494,
+          "environment_centered_sd_kg_ha": 1165.499342201971,
+          "environment_count": 3,
+          "omitted_environment_rank_range": [
+            2.0,
+            15.0
+          ],
+          "observed_regime_summary": {
+            "genotype_id": "TZm-1470",
+            "drought_mean_kg_ha": 2118.6783496732023,
+            "well_watered_mean_kg_ha": 1694.7345098039204,
+            "descriptive_retention_percent": 125.01535417003646,
+            "drought_plot_count": 6,
+            "well_watered_plot_count": 6
+          },
+          "selection_basis": "Largest complete-coverage observed drought means; not a combined tolerance/stability score.",
+          "evidence_ids": [
+            "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-5"
+          ],
+          "meets_observed_top_quartile_each_environment": false
+        }
+      ],
+      "follow_up_analysis": {
+        "analysis": "Leave-one-environment-out rank sensitivity",
+        "executed": true,
+        "adaptively_selected": true,
+        "selection_source": "deterministic evidence rule, not Meta inference",
+        "selection_evidence_ids": [
+          "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-4"
+        ],
+        "result_evidence_ids": [
+          "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-5"
+        ],
+        "uncertainty_addressed": "Whether the ranking of leading observed mean yields depends strongly on which recorded environment contributes.",
+        "remaining_uncertainty": "This sensitivity calculation cannot predict performance in an independent new environment or estimate causal drought tolerance."
+      },
+      "next_experiment": {
+        "status": "proposal_only_not_executed",
+        "title": "A replicated, randomized multi-environment water-regime trial",
+        "candidate_ids": [
+          "TZm-1179",
+          "TZEE-W HDT C3 STR C5 (CHECK)",
+          "TZm-480"
+        ],
+        "basis_evidence_ids": [
+          "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-1",
+          "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-2",
+          "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-3",
+          "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-4",
+          "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-5",
+          "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-6"
+        ],
+        "design": "Where irrigation is a hard-to-change factor, randomize independently replicated water-regime whole plots within each site-season/block, and randomize candidate genotypes plus a common check to subplots within each whole plot. Avoid treating multiple plants/subplots as independent irrigation replicates.",
+        "additional_data": [
+          "Verified site-season identities and trial dates, rather than inferred calendar years from ENVT codes.",
+          "Water delivery, soil moisture and soil/site covariates with units; treatment randomization and independent whole-plot replicate/block identities.",
+          "Consistent genotype/barcode identities and seed lots; validated stay-green scale direction and measurement reliability.",
+          "Plot-level yield and flowering observations, missing-data reasons, protocol deviations and blinded score records where feasible."
+        ],
+        "analysis_plan": "Predeclare the primary genotype-by-water-regime contrast, the whole-plot and subplot error structure, multiplicity control, and the independent validation environments. Fit a design-aware mixed model with replication/block nesting, examine residuals and convergence, and report uncertainty and missingness sensitivity.",
+        "sample_size": "Not calculated. Choose numbers of independent environments and whole-plot replicates through a design-aware power/precision study using justified pilot variance components; the current descriptive summaries do not justify a numeric powered sample size.",
+        "reference": {
+          "title": "Penn State STAT 503 \u2014 Nested and Split Plot Designs",
+          "url": "https://online.stat.psu.edu/stat503/Lesson14.html"
+        }
+      },
+      "reproducibility": {
+        "snapshot": "API/module startup, not a claim about later filesystem edits",
+        "code_commit": "3d99d713c52496840d42bcaaf033397f3e5732b9",
+        "worktree_dirty_at_startup": null,
+        "dirty_status_note": "Not asserted by the application; exact relevant source-byte hashes are recorded.",
+        "python_version": "3.12.3",
+        "module_sha256": {
+          "neurolab/__init__.py": "a2087837f9c2ec58efe0de91ab4c7829d0ccb72c2e5933e755972d2ce7394c2b",
+          "neurolab/agent.py": "ef36c39881ac38cce527d82b3854155fe77b309d0cf5cc935c663ab9e0bc8098",
+          "neurolab/api.py": "c9b5e0b6da5f7d68b883c5d87667550ba7d8b9f5d1a7b94ea811349e0f92f534",
+          "neurolab/auth.py": "87dc28ecc6af0d5d1481a4de78978872d42c1243ff7cf24add19b8cf36b64ef7",
+          "neurolab/descriptive.py": "74af11e1d7b698c8490437234e796d50720a52dce24821b46ba7d3dab63145fb",
+          "neurolab/evaluation.py": "e92bc23c7f95045dd0217fef86223a434dcd671b93c0866f1a738b5e00e9c31f",
+          "neurolab/ghana.py": "0ddebfab3351500a7753c14613b5949bfe9218a0f3e72f311c78e4ae085586a1",
+          "neurolab/investigation_profile.py": "920b84aa2b3e9fecb8c2ba93c4c9874e90a2983cb70598ed297b34550e36da80",
+          "neurolab/planner.py": "afb6317b92f3964e21925d6a01f714b7e1fef8c37acbb5dd4f822c8a0c040a35",
+          "neurolab/provenance.py": "78bd0ca8c3a79c2a66c24bb38266fc86b9ee2955a9654714901d7ceed0387370",
+          "neurolab/providers.py": "579ad1978e147e06480c64b6b7f881b5ef7d666b841bbbc8cbf7dfa3a8bfe701",
+          "neurolab/research_context.py": "d5b423b013c2b45dffa20efae203d85e21cb5c1d96b0613ac048f66fb28c17a4",
+          "neurolab/science.py": "10d2afa61653af20023aa10f193942e9e7e7bc860b8b52c12852bf7bd5acd81a",
+          "neurolab/scientific_report.py": "deec95cb03b83018f22ce31f94fcbbeb4bf355e2641d6c05cfd672559937d384",
+          "neurolab/source_inventory.py": "10a1317c4c887b614fb6818bddce8fb1efc5f1fc839861f15c0e785dbc1c6bfc",
+          "neurolab/store.py": "8e80e7e16f8458373db1b976d2843b8c2f76be084b436c4be366b5768c160d37",
+          "neurolab/tools.py": "abe37bffc1de4d1409ffc31764e4cfe73092723f1ec5c864686468ccad6dfa8b",
+          "schemas/agent_tool_call.schema.json": "743fa3e3ffbd796ad9676d0bcc2f7bdcac067a41240f2ed958dbddbbdc90f282"
+        }
+      },
+      "unresolved_scope": [
+        "No cross-source genotype merge or matched IITA inference is justified by the supplied identifiers alone.",
+        "No causal irrigation effect, calibrated crop simulation, field recommendation or validated broad adaptation is established.",
+        "Template criteria are retrospective operational definitions, not preregistered tests; resampling intervals are conditional and unadjusted for multiple traits/relatedness."
+      ]
+    },
+    "reproducibility": {
+      "snapshot": "API/module startup, not a claim about later filesystem edits",
+      "code_commit": "3d99d713c52496840d42bcaaf033397f3e5732b9",
+      "worktree_dirty_at_startup": null,
+      "dirty_status_note": "Not asserted by the application; exact relevant source-byte hashes are recorded.",
+      "python_version": "3.12.3",
+      "module_sha256": {
+        "neurolab/__init__.py": "a2087837f9c2ec58efe0de91ab4c7829d0ccb72c2e5933e755972d2ce7394c2b",
+        "neurolab/agent.py": "ef36c39881ac38cce527d82b3854155fe77b309d0cf5cc935c663ab9e0bc8098",
+        "neurolab/api.py": "c9b5e0b6da5f7d68b883c5d87667550ba7d8b9f5d1a7b94ea811349e0f92f534",
+        "neurolab/auth.py": "87dc28ecc6af0d5d1481a4de78978872d42c1243ff7cf24add19b8cf36b64ef7",
+        "neurolab/descriptive.py": "74af11e1d7b698c8490437234e796d50720a52dce24821b46ba7d3dab63145fb",
+        "neurolab/evaluation.py": "e92bc23c7f95045dd0217fef86223a434dcd671b93c0866f1a738b5e00e9c31f",
+        "neurolab/ghana.py": "0ddebfab3351500a7753c14613b5949bfe9218a0f3e72f311c78e4ae085586a1",
+        "neurolab/investigation_profile.py": "920b84aa2b3e9fecb8c2ba93c4c9874e90a2983cb70598ed297b34550e36da80",
+        "neurolab/planner.py": "afb6317b92f3964e21925d6a01f714b7e1fef8c37acbb5dd4f822c8a0c040a35",
+        "neurolab/provenance.py": "78bd0ca8c3a79c2a66c24bb38266fc86b9ee2955a9654714901d7ceed0387370",
+        "neurolab/providers.py": "579ad1978e147e06480c64b6b7f881b5ef7d666b841bbbc8cbf7dfa3a8bfe701",
+        "neurolab/research_context.py": "d5b423b013c2b45dffa20efae203d85e21cb5c1d96b0613ac048f66fb28c17a4",
+        "neurolab/science.py": "10d2afa61653af20023aa10f193942e9e7e7bc860b8b52c12852bf7bd5acd81a",
+        "neurolab/scientific_report.py": "deec95cb03b83018f22ce31f94fcbbeb4bf355e2641d6c05cfd672559937d384",
+        "neurolab/source_inventory.py": "10a1317c4c887b614fb6818bddce8fb1efc5f1fc839861f15c0e785dbc1c6bfc",
+        "neurolab/store.py": "8e80e7e16f8458373db1b976d2843b8c2f76be084b436c4be366b5768c160d37",
+        "neurolab/tools.py": "abe37bffc1de4d1409ffc31764e4cfe73092723f1ec5c864686468ccad6dfa8b",
+        "schemas/agent_tool_call.schema.json": "743fa3e3ffbd796ad9676d0bcc2f7bdcac067a41240f2ed958dbddbbdc90f282"
+      }
+    },
+    "dataset_id": "ghana_combined",
+    "source_sha256": "2e37c07f30e00efb33b59954dd6d02a04f3d67349790d782b70dbedfdaff05bc",
+    "mode": "deterministic_replay",
+    "replay_label": "Replay baseline \u2014 no model call was made",
+    "model_provider": null,
+    "model_id": null,
+    "objective": "Research Objective: Discovering Drought-Resilient Maize Genotypes in West Africa\n\nBackground\n\nClimate change and increasingly unpredictable rainfall threaten maize production across sub-Saharan Africa. Developing drought-resilient maize varieties is essential for improving agricultural productivity and food security.\n\nI want to investigate whether the available experimental datasets contain evidence that certain maize genotypes consistently perform better under drought stress.\n\nPrimary Research Question\n\nWhich maize genotypes demonstrate the strongest drought tolerance while maintaining relatively stable grain yield, and which measurable plant characteristics are most strongly associated with that resilience?\n\nInstructions to NeuroLab AI\n\nAct as an autonomous scientific research agent.\n\nUse the available maize research datasets, including the University of Ghana/WACCI drought-tolerance dataset and relevant IITA experimental data where scientifically appropriate.\n\nConduct the investigation through the following stages.\n\nStage 1 \u2014 Dataset Exploration\n\n1. Identify all relevant available datasets.\n2. Examine their structures, variables, experimental conditions, and provenance.\n3. Identify drought-stressed and well-watered observations.\n4. Examine missing values and potential data-quality problems.\n5. Determine whether observations can be compared or combined without compromising scientific validity.\n\nDo not combine unrelated experiments or genotype identifiers without a defensible scientific basis.\n\nStage 2 \u2014 Hypothesis Generation\n\nGenerate at least three scientifically testable hypotheses.\n\nConsider hypotheses involving:\n\n* Grain yield stability under drought stress.\n* Anthesis\u2013silking interval and drought resilience.\n* Stay-green characteristics and grain yield.\n* Genotype-by-environment interactions.\n\nExplain the scientific rationale for each hypothesis.\n\nStage 3 \u2014 Experimental Design\n\nDesign an appropriate statistical investigation.\n\nSpecify:\n\n* Independent and dependent variables.\n* Experimental groups and environmental conditions.\n* Statistical methods.\n* Confounding factors.\n* Assumptions and limitations.\n* Criteria for evaluating each hypothesis.\n\nPrioritize methods appropriate for the actual experimental design and available observations.\n\nStage 4 \u2014 Autonomous Experimentation\n\nExecute the analyses using the platform\u2019s available scientific tools.\n\nCalculate, where supported:\n\n1. Mean grain yield under drought stress.\n2. Mean grain yield under well-watered conditions.\n3. Relative yield retention.\n4. Yield variability across environments.\n5. Trait correlations.\n6. Genotype performance rankings.\n7. Relevant statistical uncertainty.\n\nDo not invent observations or statistical results.\n\nDistinguish observed data, calculated statistics, model predictions, and AI interpretations.\n\nStage 5 \u2014 Evidence Evaluation\n\nEvaluate each hypothesis against the actual experimental evidence.\n\nFor every hypothesis:\n\n* Present the relevant results.\n* Explain whether the evidence supports it.\n* Report uncertainty and limitations.\n* Identify contradictory findings.\n* Explain what cannot be concluded from the available data.\n\nAvoid treating correlations as proof of causation.\n\nStage 6 \u2014 Autonomous Scientific Reasoning\n\nBased on the results:\n\n1. Identify the most promising genotype candidates.\n2. Explain why they deserve further investigation.\n3. Identify weaknesses in the available evidence.\n4. Propose the next scientifically useful experiment.\n5. Explain what additional data would improve confidence.\n\nWhere supported, autonomously select and execute one follow-up analysis that could reduce an important uncertainty.\n\nStage 7 \u2014 Scientific Visualization\n\nGenerate meaningful visualizations, including:\n\n* Genotype yield comparisons.\n* Drought versus well-watered performance.\n* Trait correlation heatmaps.\n* Yield stability across experimental environments.\n* Evidence supporting the leading genotype candidates.\n\nUse actual experimental results.\n\nStage 8 \u2014 Final Research Report\n\nProduce a structured scientific report containing:\n\n1. Research objective.\n2. Dataset sources and provenance.\n3. Hypotheses.\n4. Methodology.\n5. Statistical findings.\n6. Visualizations.\n7. Most promising genotype candidates.\n8. Scientific limitations.\n9. Recommended next experiments.\n10. Reproducibility information.\n\nInclude the actual tools, parameters, datasets, and computational steps used.\n\nAutonomous Execution Requirements\n\nExecute the investigation from beginning to end without requiring approval between ordinary analysis stages.\n\nShow genuine execution progress, including dataset inspection, hypothesis generation, tool execution, evidence evaluation, and report generation.\n\nDo not simulate tool calls, scientific results, or execution progress.\n\nIf an operation is unsupported, explicitly identify the limitation and continue with a scientifically defensible alternative.\n\nExpected Outcome\n\nAt the end of this investigation, I should understand:\n\n* Which maize genotypes appear most drought-resilient.\n* Which plant characteristics are associated with resilience.\n* How strongly the available evidence supports these findings.\n* What additional experiments should be performed.\n* How NeuroLab AI arrived at its conclusions.\n\nBegin the investigation using the available research data.",
+    "refined_objective": "Research Objective: Discovering Drought-Resilient Maize Genotypes in West Africa\n\nBackground\n\nClimate change and increasingly unpredictable rainfall threaten maize production across sub-Saharan Africa. Developing drought-resilient maize varieties is essential for improving agricultural productivity and food security.\n\nI want to investigate whether the available experimental datasets contain evidence that certain maize genotypes consistently perform better under drought stress.\n\nPrimary Research Question\n\nWhich maize genotypes demonstrate the strongest drought tolerance while maintaining relatively stable grain yield, and which measurable plant characteristics are most strongly associated with that resilience?\n\nInstructions to NeuroLab AI\n\nAct as an autonomous scientific research agent.\n\nUse the available maize research datasets, including the University of Ghana/WACCI drought-tolerance dataset and relevant IITA experimental data where scientifically appropriate.\n\nConduct the investigation through the following stages.\n\nStage 1 \u2014 Dataset Exploration\n\n1. Identify all relevant available datasets.\n2. Examine their structures, variables, experimental conditions, and provenance.\n3. Identify drought-stressed and well-watered observations.\n4. Examine missing values and potential data-quality problems.\n5. Determine whether observations can be compared or combined without compromising scientific validity.\n\nDo not combine unrelated experiments or genotype identifiers without a defensible scientific basis.\n\nStage 2 \u2014 Hypothesis Generation\n\nGenerate at least three scientifically testable hypotheses.\n\nConsider hypotheses involving:\n\n* Grain yield stability under drought stress.\n* Anthesis\u2013silking interval and drought resilience.\n* Stay-green characteristics and grain yield.\n* Genotype-by-environment interactions.\n\nExplain the scientific rationale for each hypothesis.\n\nStage 3 \u2014 Experimental Design\n\nDesign an appropriate statistical investigation.\n\nSpecify:\n\n* Independent and dependent variables.\n* Experimental groups and environmental conditions.\n* Statistical methods.\n* Confounding factors.\n* Assumptions and limitations.\n* Criteria for evaluating each hypothesis.\n\nPrioritize methods appropriate for the actual experimental design and available observations.\n\nStage 4 \u2014 Autonomous Experimentation\n\nExecute the analyses using the platform\u2019s available scientific tools.\n\nCalculate, where supported:\n\n1. Mean grain yield under drought stress.\n2. Mean grain yield under well-watered conditions.\n3. Relative yield retention.\n4. Yield variability across environments.\n5. Trait correlations.\n6. Genotype performance rankings.\n7. Relevant statistical uncertainty.\n\nDo not invent observations or statistical results.\n\nDistinguish observed data, calculated statistics, model predictions, and AI interpretations.\n\nStage 5 \u2014 Evidence Evaluation\n\nEvaluate each hypothesis against the actual experimental evidence.\n\nFor every hypothesis:\n\n* Present the relevant results.\n* Explain whether the evidence supports it.\n* Report uncertainty and limitations.\n* Identify contradictory findings.\n* Explain what cannot be concluded from the available data.\n\nAvoid treating correlations as proof of causation.\n\nStage 6 \u2014 Autonomous Scientific Reasoning\n\nBased on the results:\n\n1. Identify the most promising genotype candidates.\n2. Explain why they deserve further investigation.\n3. Identify weaknesses in the available evidence.\n4. Propose the next scientifically useful experiment.\n5. Explain what additional data would improve confidence.\n\nWhere supported, autonomously select and execute one follow-up analysis that could reduce an important uncertainty.\n\nStage 7 \u2014 Scientific Visualization\n\nGenerate meaningful visualizations, including:\n\n* Genotype yield comparisons.\n* Drought versus well-watered performance.\n* Trait correlation heatmaps.\n* Yield stability across experimental environments.\n* Evidence supporting the leading genotype candidates.\n\nUse actual experimental results.\n\nStage 8 \u2014 Final Research Report\n\nProduce a structured scientific report containing:\n\n1. Research objective.\n2. Dataset sources and provenance.\n3. Hypotheses.\n4. Methodology.\n5. Statistical findings.\n6. Visualizations.\n7. Most promising genotype candidates.\n8. Scientific limitations.\n9. Recommended next experiments.\n10. Reproducibility information.\n\nInclude the actual tools, parameters, datasets, and computational steps used.\n\nAutonomous Execution Requirements\n\nExecute the investigation from beginning to end without requiring approval between ordinary analysis stages.\n\nShow genuine execution progress, including dataset inspection, hypothesis generation, tool execution, evidence evaluation, and report generation.\n\nDo not simulate tool calls, scientific results, or execution progress.\n\nIf an operation is unsupported, explicitly identify the limitation and continue with a scientifically defensible alternative.\n\nExpected Outcome\n\nAt the end of this investigation, I should understand:\n\n* Which maize genotypes appear most drought-resilient.\n* Which plant characteristics are associated with resilience.\n* How strongly the available evidence supports these findings.\n* What additional experiments should be performed.\n* How NeuroLab AI arrived at its conclusions.\n\nBegin the investigation using the available research data.",
+    "research_configuration": {
+      "title": "",
+      "research_questions": [],
+      "hypotheses": [],
+      "dataset_id": "ghana_combined",
+      "constraints": {
+        "max_steps": 6,
+        "max_tool_calls": 6,
+        "max_seconds": 180
+      },
+      "preferred_methods": [],
+      "desired_outputs": [
+        "research_report",
+        "regime_contrast",
+        "genotype_summaries",
+        "missingness_summary",
+        "provenance_export",
+        "trait_associations",
+        "environment_summaries",
+        "ghana_drought_investigation"
+      ],
+      "autonomy_preferences": {
+        "auto_plan_with_meta": true,
+        "execute_supported_tasks": true,
+        "stop_if_unsupported": false
+      }
+    },
+    "research_plan": {
+      "objective_sha256": "8e9c3b5334a4d54ea5616b6bef2cdf5b36b1b1f9ed87e3d2ef275e17a5ff314c",
+      "planning_mode": "deterministic",
+      "title": "",
+      "important_constraints": [
+        "Deterministic retrospective Ghana investigation profile; template hypotheses are proposals, not Meta-generated findings or a preregistered confirmatory study.",
+        "H1: At least one complete-coverage genotype is in the observed drought-yield top quartile in every available drought environment. Rationale: A large pooled mean can hide poor performance in an individual observed environment. Criterion: For the finite complete-coverage panel, require environment-specific mean-yield ranks no greater than ceil(panel size / 4) in every observed drought environment. This is a descriptive operational criterion, not validated broad adaptation.",
+        "H2: Longer observed anthesis\u2013silking interval is negatively associated with drought yield across genotype means. Rationale: The measured SILK-minus-POLLEN interval provides a falsifiable timing association to investigate; its biological mechanism is not established here. Criterion: Require a negative Spearman rho, a conditional genotype-profile resampling interval entirely below zero, and negative associations in every observed environment. Mixed directions or a zero-crossing interval are inconclusive.",
+        "H3: Lower numeric stay-green scores are associated with higher observed drought yield across genotype means. Rationale: Variation in the recorded ordinal score can be compared with yield. Source score direction is unverified, so this hypothesis is about numeric codes, not an assertion that greener plants perform better. Criterion: Require a negative Spearman rho, a conditional resampling interval entirely below zero, and negative associations in every observed environment. No causal or biological score-direction claim is permitted.",
+        "H4: At least one of the three largest observed drought means has a rank sensitivity of a quartile of the panel or more when an environment is omitted. Rationale: Only a few environments contribute to the mean, making environment composition a useful follow-up uncertainty to examine. Criterion: Among the three leading complete-coverage mean-yield candidates, require an omitted-environment rank range width at least ceil(panel size / 4), with at least three observed environments. This operational sensitivity threshold is not a significance test."
+      ],
+      "refined_objective": "Research Objective: Discovering Drought-Resilient Maize Genotypes in West Africa\n\nBackground\n\nClimate change and increasingly unpredictable rainfall threaten maize production across sub-Saharan Africa. Developing drought-resilient maize varieties is essential for improving agricultural productivity and food security.\n\nI want to investigate whether the available experimental datasets contain evidence that certain maize genotypes consistently perform better under drought stress.\n\nPrimary Research Question\n\nWhich maize genotypes demonstrate the strongest drought tolerance while maintaining relatively stable grain yield, and which measurable plant characteristics are most strongly associated with that resilience?\n\nInstructions to NeuroLab AI\n\nAct as an autonomous scientific research agent.\n\nUse the available maize research datasets, including the University of Ghana/WACCI drought-tolerance dataset and relevant IITA experimental data where scientifically appropriate.\n\nConduct the investigation through the following stages.\n\nStage 1 \u2014 Dataset Exploration\n\n1. Identify all relevant available datasets.\n2. Examine their structures, variables, experimental conditions, and provenance.\n3. Identify drought-stressed and well-watered observations.\n4. Examine missing values and potential data-quality problems.\n5. Determine whether observations can be compared or combined without compromising scientific validity.\n\nDo not combine unrelated experiments or genotype identifiers without a defensible scientific basis.\n\nStage 2 \u2014 Hypothesis Generation\n\nGenerate at least three scientifically testable hypotheses.\n\nConsider hypotheses involving:\n\n* Grain yield stability under drought stress.\n* Anthesis\u2013silking interval and drought resilience.\n* Stay-green characteristics and grain yield.\n* Genotype-by-environment interactions.\n\nExplain the scientific rationale for each hypothesis.\n\nStage 3 \u2014 Experimental Design\n\nDesign an appropriate statistical investigation.\n\nSpecify:\n\n* Independent and dependent variables.\n* Experimental groups and environmental conditions.\n* Statistical methods.\n* Confounding factors.\n* Assumptions and limitations.\n* Criteria for evaluating each hypothesis.\n\nPrioritize methods appropriate for the actual experimental design and available observations.\n\nStage 4 \u2014 Autonomous Experimentation\n\nExecute the analyses using the platform\u2019s available scientific tools.\n\nCalculate, where supported:\n\n1. Mean grain yield under drought stress.\n2. Mean grain yield under well-watered conditions.\n3. Relative yield retention.\n4. Yield variability across environments.\n5. Trait correlations.\n6. Genotype performance rankings.\n7. Relevant statistical uncertainty.\n\nDo not invent observations or statistical results.\n\nDistinguish observed data, calculated statistics, model predictions, and AI interpretations.\n\nStage 5 \u2014 Evidence Evaluation\n\nEvaluate each hypothesis against the actual experimental evidence.\n\nFor every hypothesis:\n\n* Present the relevant results.\n* Explain whether the evidence supports it.\n* Report uncertainty and limitations.\n* Identify contradictory findings.\n* Explain what cannot be concluded from the available data.\n\nAvoid treating correlations as proof of causation.\n\nStage 6 \u2014 Autonomous Scientific Reasoning\n\nBased on the results:\n\n1. Identify the most promising genotype candidates.\n2. Explain why they deserve further investigation.\n3. Identify weaknesses in the available evidence.\n4. Propose the next scientifically useful experiment.\n5. Explain what additional data would improve confidence.\n\nWhere supported, autonomously select and execute one follow-up analysis that could reduce an important uncertainty.\n\nStage 7 \u2014 Scientific Visualization\n\nGenerate meaningful visualizations, including:\n\n* Genotype yield comparisons.\n* Drought versus well-watered performance.\n* Trait correlation heatmaps.\n* Yield stability across experimental environments.\n* Evidence supporting the leading genotype candidates.\n\nUse actual experimental results.\n\nStage 8 \u2014 Final Research Report\n\nProduce a structured scientific report containing:\n\n1. Research objective.\n2. Dataset sources and provenance.\n3. Hypotheses.\n4. Methodology.\n5. Statistical findings.\n6. Visualizations.\n7. Most promising genotype candidates.\n8. Scientific limitations.\n9. Recommended next experiments.\n10. Reproducibility information.\n\nInclude the actual tools, parameters, datasets, and computational steps used.\n\nAutonomous Execution Requirements\n\nExecute the investigation from beginning to end without requiring approval between ordinary analysis stages.\n\nShow genuine execution progress, including dataset inspection, hypothesis generation, tool execution, evidence evaluation, and report generation.\n\nDo not simulate tool calls, scientific results, or execution progress.\n\nIf an operation is unsupported, explicitly identify the limitation and continue with a scientifically defensible alternative.\n\nExpected Outcome\n\nAt the end of this investigation, I should understand:\n\n* Which maize genotypes appear most drought-resilient.\n* Which plant characteristics are associated with resilience.\n* How strongly the available evidence supports these findings.\n* What additional experiments should be performed.\n* How NeuroLab AI arrived at its conclusions.\n\nBegin the investigation using the available research data.",
+      "ambiguities": [],
+      "research_questions": [],
+      "hypotheses": [
+        "H1: At least one complete-coverage genotype is in the observed drought-yield top quartile in every available drought environment.",
+        "H2: Longer observed anthesis\u2013silking interval is negatively associated with drought yield across genotype means.",
+        "H3: Lower numeric stay-green scores are associated with higher observed drought yield across genotype means.",
+        "H4: At least one of the three largest observed drought means has a rank sensitivity of a quartile of the panel or more when an environment is omitted."
+      ],
+      "dataset_suggestions": [
+        {
+          "dataset_id": "ghana_combined",
+          "rationale": "Only Ghana combined is currently enabled for run execution; other datasets are suggestions only.",
+          "enabled_for_analysis": true
+        }
+      ],
+      "analysis_approaches": [
+        {
+          "method_id": "dataset_profile",
+          "rationale": "Profile the enabled Ghana combined dataset and its provenance."
+        },
+        {
+          "method_id": "missingness_audit",
+          "rationale": "Inspect observed missingness while preserving source-row counts and caveats."
+        },
+        {
+          "method_id": "block_bootstrap_contrast",
+          "rationale": "Estimate an exploratory drought-versus-well-watered contrast with block-bootstrap uncertainty."
+        },
+        {
+          "method_id": "genotype_ranking",
+          "rationale": "Compute descriptive genotype summaries across observed environments."
+        },
+        {
+          "method_id": "trait_associations",
+          "rationale": "Estimate exploratory drought genotype-mean trait associations with conditional genotype-profile bootstrap intervals."
+        },
+        {
+          "method_id": "environment_stability",
+          "rationale": "Summarize observed environment yield variability and leave-one-environment-out rank sensitivity; not validated stability."
+        }
+      ],
+      "desired_outputs": [
+        "research_report",
+        "regime_contrast",
+        "genotype_summaries",
+        "missingness_summary",
+        "provenance_export",
+        "trait_associations",
+        "environment_summaries",
+        "ghana_drought_investigation"
+      ],
+      "tasks": [
+        {
+          "task_id": "task-1",
+          "title": "Dataset Profile",
+          "description": "Profile the enabled Ghana combined dataset and its provenance.",
+          "tool_name": "dataset_profile",
+          "status": "completed",
+          "evidence_ids": [
+            "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-1"
+          ]
+        },
+        {
+          "task_id": "task-2",
+          "title": "Missingness Audit",
+          "description": "Inspect observed missingness while preserving source-row counts and caveats.",
+          "tool_name": "inspect_missingness",
+          "status": "completed",
+          "evidence_ids": [
+            "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-2"
+          ]
+        },
+        {
+          "task_id": "task-3",
+          "title": "Block Bootstrap Contrast",
+          "description": "Estimate an exploratory drought-versus-well-watered contrast with block-bootstrap uncertainty.",
+          "tool_name": "compare_regimes",
+          "status": "completed",
+          "evidence_ids": [
+            "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-3"
+          ]
+        },
+        {
+          "task_id": "task-4",
+          "title": "Genotype Ranking",
+          "description": "Compute descriptive genotype summaries across observed environments.",
+          "tool_name": "rank_genotypes",
+          "status": "completed",
+          "evidence_ids": [
+            "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-4"
+          ]
+        },
+        {
+          "task_id": "task-5",
+          "title": "Trait Associations",
+          "description": "Estimate exploratory drought genotype-mean trait associations with conditional genotype-profile bootstrap intervals.",
+          "tool_name": "analyze_trait_associations",
+          "status": "completed",
+          "evidence_ids": [
+            "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-6"
+          ]
+        },
+        {
+          "task_id": "task-6",
+          "title": "Environment Stability",
+          "description": "Summarize observed environment yield variability and leave-one-environment-out rank sensitivity; not validated stability.",
+          "tool_name": "summarize_environment_stability",
+          "status": "completed",
+          "evidence_ids": [
+            "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-5"
+          ]
+        }
+      ],
+      "unsupported_requirements": []
+    },
+    "seed": 2026,
+    "tool_calls": 6,
+    "completion_status": "complete",
+    "tool_failures": [],
+    "decisions": [
+      {
+        "decision_number": 1,
+        "based_on_evidence_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-1",
+        "selected_action": "inspect_missingness",
+        "decision_summary": "Observed missingness requires a diagnostic audit before comparison.",
+        "selection_source": "deterministic_evidence_rule"
+      },
+      {
+        "decision_number": 2,
+        "based_on_evidence_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-2",
+        "selected_action": "compare_regimes",
+        "decision_summary": "Computed evidence recorded; continue with the next supported task.",
+        "selection_source": "deterministic_replay"
+      },
+      {
+        "decision_number": 3,
+        "based_on_evidence_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-3",
+        "selected_action": "rank_genotypes",
+        "decision_summary": "Computed evidence recorded; continue with the next supported task.",
+        "selection_source": "deterministic_replay"
+      },
+      {
+        "decision_number": 4,
+        "based_on_evidence_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-4",
+        "selected_action": "summarize_environment_stability",
+        "decision_summary": "Leading descriptive means span multiple environments; select omitted-environment rank sensitivity as the follow-up before interpreting candidates.",
+        "selection_source": "deterministic_evidence_rule"
+      },
+      {
+        "decision_number": 5,
+        "based_on_evidence_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-5",
+        "selected_action": "analyze_trait_associations",
+        "decision_summary": "Computed evidence recorded; continue with the next supported task.",
+        "selection_source": "deterministic_replay"
+      },
+      {
+        "decision_number": 6,
+        "based_on_evidence_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-6",
+        "selected_action": "generate_report",
+        "decision_summary": "Computed evidence recorded; continue with the next supported task.",
+        "selection_source": "deterministic_replay"
+      }
+    ],
+    "evidence_ids": [
+      "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-1",
+      "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-2",
+      "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-3",
+      "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-4",
+      "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-5",
+      "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-6"
+    ],
+    "grounded_claims": [
+      {
+        "claim": "The Ghana combined source contains 864 plot records, 72 genotypes, and environment indices DROUGHT_Y1, DROUGHT_Y2, DROUGHT_Y3, WELL_WATERED_Y1, WELL_WATERED_Y2, WELL_WATERED_Y3.",
+        "evidence_ids": [
+          "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-1"
+        ],
+        "claim_scope": "descriptive"
+      },
+      {
+        "claim": "Observed missing values by field: ear_height_value: 1 of 864; location_code: 864 of 864; plant_height_value: 1 of 864; plot: 864 of 864; stay_green_score: 432 of 864.",
+        "evidence_ids": [
+          "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-2"
+        ],
+        "claim_scope": "descriptive"
+      },
+      {
+        "claim": "Equal-weighted observed yield means were 1230.3 kg/ha (managed drought) and 2616.0 kg/ha (well-watered); the descriptive drought-minus-control contrast was -1385.8 kg/ha (95% block-bootstrap interval -1552.2 to -1215.7).",
+        "evidence_ids": [
+          "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-3"
+        ],
+        "claim_scope": "exploratory"
+      },
+      {
+        "claim": "Top descriptive drought genotype yield summaries (equal-environment mean, kg/ha): TZm-1179 2370.3; TZEE-W HDT C3 STR C5 (CHECK) 2356.7; TZm-480 2334.9. These are not field recommendations.",
+        "evidence_ids": [
+          "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-4"
+        ],
+        "claim_scope": "descriptive"
+      },
+      {
+        "claim": "Observed drought variability was summarized across 3 environment codes; 72 genotypes had complete environment coverage. Leave-one-environment-out ranks quantify sensitivity, not validated adaptation or confidence intervals.",
+        "evidence_ids": [
+          "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-5"
+        ],
+        "claim_scope": "exploratory"
+      },
+      {
+        "claim": "Among 7 exploratory drought trait associations, the largest absolute observed Spearman correlation was plant_height_value versus yield (rho=0.463, 72 genotype means). Selection across traits is exploratory and unadjusted; association does not establish causal drought resilience.",
+        "evidence_ids": [
+          "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-6"
+        ],
+        "claim_scope": "exploratory"
+      }
+    ],
+    "conclusion": "The Ghana combined source contains 864 plot records, 72 genotypes, and environment indices DROUGHT_Y1, DROUGHT_Y2, DROUGHT_Y3, WELL_WATERED_Y1, WELL_WATERED_Y2, WELL_WATERED_Y3. Observed missing values by field: ear_height_value: 1 of 864; location_code: 864 of 864; plant_height_value: 1 of 864; plot: 864 of 864; stay_green_score: 432 of 864. Equal-weighted observed yield means were 1230.3 kg/ha (managed drought) and 2616.0 kg/ha (well-watered); the descriptive drought-minus-control contrast was -1385.8 kg/ha (95% block-bootstrap interval -1552.2 to -1215.7). Top descriptive drought genotype yield summaries (equal-environment mean, kg/ha): TZm-1179 2370.3; TZEE-W HDT C3 STR C5 (CHECK) 2356.7; TZm-480 2334.9. These are not field recommendations. Observed drought variability was summarized across 3 environment codes; 72 genotypes had complete environment coverage. Leave-one-environment-out ranks quantify sensitivity, not validated adaptation or confidence intervals. Among 7 exploratory drought trait associations, the largest absolute observed Spearman correlation was plant_height_value versus yield (rho=0.463, 72 genotype means). Selection across traits is exploratory and unadjusted; association does not establish causal drought resilience.",
+    "limitations": [
+      "Replay planner is deterministic and is not Meta inference.",
+      "Ghana water regime is confounded with trial environment.",
+      "Only three ENVT indices are present; do not reinterpret them as calendar years.",
+      "Dataset profile is descriptive; ENVT codes are not interpreted as calendar years.",
+      "STYG is structurally absent for the well-watered source regime, by design.",
+      "Exploratory observational contrast; water regime is confounded with environment and this is not a causal treatment effect.",
+      "Only three ENVT indices and two replications are represented; generalization is limited.",
+      "The yield-retention ratio is descriptive and is null if the well-watered denominator is not positive.",
+      "Descriptive exploratory ranking only; alpha-lattice effects and multiplicity are not modeled.",
+      "Not a field recommendation; candidates require confirmatory trials and model-based assessment.",
+      "Descriptive variation across observed ENVT indices, not a validated stability model or confirmatory genotype-by-environment interaction test.",
+      "Water regimes are summarized separately. ENVT indices are not calendar years; no environment extrapolation is justified.",
+      "Ranks and environmental centering use only genotypes observed in every available environment of that regime; incomplete coverage is retained and labeled.",
+      "Leave-one-environment-out rank changes are sensitivity analyses, not confidence intervals. Three environments cannot establish broad adaptation.",
+      "Alpha-lattice block effects, genotype ranking uncertainty and multiplicity are not modeled. Low variation alone does not imply high yield or drought tolerance.",
+      "Genotype retention joins only canonical identities within this same Ghana source, after separate regime summaries; it does not prove matched causal irrigation contrasts. A high ratio can reflect a low watered denominator.",
+      "Exploratory association with observed drought yield, not a causal trait effect, validated drought tolerance measure, or predictive model.",
+      "Each genotype contributes one equal-environment mean per trait; incomplete genotype/environment trait-yield pairs are excluded for that trait and counts/lineage are retained.",
+      "Percentile intervals resample genotype profiles, conditional on the observed environments; they do not quantify uncertainty across future environments or correct alpha-lattice effects.",
+      "Spearman ranks average ties. Constant or insufficient data produce null correlations, not zero; degenerate bootstrap draws are omitted and counted.",
+      "Seven exploratory trait comparisons have no multiplicity adjustment or confirmatory significance test. Stay-green score direction is not established by the source dictionary.",
+      "Genotype case-resampling assumes exchangeable profiles and ignores relatedness, genotype selection and within-genotype plot error; these intervals do not establish validated population coverage."
+    ],
+    "elapsed_seconds": 0.5284
+  },
+  "events": [
+    {
+      "event_id": "dcbe0cf0-a81e-4c58-a92c-5a1cc2372a96",
+      "run_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49",
+      "sequence": 1,
+      "event_type": "run.created",
+      "timestamp": "2026-10-27T18:38:18.029414Z",
+      "payload": {
+        "dataset_id": "ghana_combined",
+        "source_sha256": "2e37c07f30e00efb33b59954dd6d02a04f3d67349790d782b70dbedfdaff05bc"
+      }
+    },
+    {
+      "event_id": "148f2605-a4bb-4f05-b304-0727c09a40f1",
+      "run_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49",
+      "sequence": 2,
+      "event_type": "research.workflow_proposed",
+      "timestamp": "2026-10-27T18:38:18.029452Z",
+      "payload": {
+        "summary": "Preparing validated tasks for the submitted research objective.",
+        "mode": "deterministic_replay",
+        "source": "server_workflow",
+        "label": "Workflow setup; not a model-generated scientific hypothesis"
+      }
+    },
+    {
+      "event_id": "8f924db8-78a7-4339-b47e-9989e375b0ab",
+      "run_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49",
+      "sequence": 3,
+      "event_type": "hypothesis.proposed",
+      "timestamp": "2026-10-27T18:38:18.029475Z",
+      "payload": {
+        "summary": "H1: At least one complete-coverage genotype is in the observed drought-yield top quartile in every available drought environment.",
+        "source": "accepted_research_plan",
+        "planning_mode": "deterministic",
+        "label": "Proposed hypothesis; not a scientific result"
+      }
+    },
+    {
+      "event_id": "e1ffca53-e0f4-4cb4-b4b2-b3d2515e93cd",
+      "run_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49",
+      "sequence": 4,
+      "event_type": "hypothesis.proposed",
+      "timestamp": "2026-10-27T18:38:18.029496Z",
+      "payload": {
+        "summary": "H2: Longer observed anthesis\u2013silking interval is negatively associated with drought yield across genotype means.",
+        "source": "accepted_research_plan",
+        "planning_mode": "deterministic",
+        "label": "Proposed hypothesis; not a scientific result"
+      }
+    },
+    {
+      "event_id": "dc4d44f5-73e6-43ca-88f0-f9c9e800d505",
+      "run_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49",
+      "sequence": 5,
+      "event_type": "hypothesis.proposed",
+      "timestamp": "2026-10-27T18:38:18.029516Z",
+      "payload": {
+        "summary": "H3: Lower numeric stay-green scores are associated with higher observed drought yield across genotype means.",
+        "source": "accepted_research_plan",
+        "planning_mode": "deterministic",
+        "label": "Proposed hypothesis; not a scientific result"
+      }
+    },
+    {
+      "event_id": "f14280a0-775f-4435-9609-0d8b66afe487",
+      "run_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49",
+      "sequence": 6,
+      "event_type": "hypothesis.proposed",
+      "timestamp": "2026-10-27T18:38:18.029533Z",
+      "payload": {
+        "summary": "H4: At least one of the three largest observed drought means has a rank sensitivity of a quartile of the panel or more when an environment is omitted.",
+        "source": "accepted_research_plan",
+        "planning_mode": "deterministic",
+        "label": "Proposed hypothesis; not a scientific result"
+      }
+    },
+    {
+      "event_id": "faadb8c3-f643-4081-86eb-3803dcd78995",
+      "run_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49",
+      "sequence": 7,
+      "event_type": "research.investigation_prepared",
+      "timestamp": "2026-10-27T18:38:18.029551Z",
+      "payload": {
+        "public_summary": "Declared four retrospective exploratory hypotheses and evaluation criteria before numeric execution.",
+        "source": "deterministic_investigation_profile",
+        "label": "Deterministic retrospective Ghana investigation profile; template hypotheses are proposals, not Meta-generated findings or a preregistered confirmatory study.",
+        "hypotheses": [
+          {
+            "id": "H1",
+            "proposal": "At least one complete-coverage genotype is in the observed drought-yield top quartile in every available drought environment.",
+            "rationale": "A large pooled mean can hide poor performance in an individual observed environment.",
+            "criterion": "For the finite complete-coverage panel, require environment-specific mean-yield ranks no greater than ceil(panel size / 4) in every observed drought environment. This is a descriptive operational criterion, not validated broad adaptation."
+          },
+          {
+            "id": "H2",
+            "proposal": "Longer observed anthesis\u2013silking interval is negatively associated with drought yield across genotype means.",
+            "rationale": "The measured SILK-minus-POLLEN interval provides a falsifiable timing association to investigate; its biological mechanism is not established here.",
+            "criterion": "Require a negative Spearman rho, a conditional genotype-profile resampling interval entirely below zero, and negative associations in every observed environment. Mixed directions or a zero-crossing interval are inconclusive."
+          },
+          {
+            "id": "H3",
+            "proposal": "Lower numeric stay-green scores are associated with higher observed drought yield across genotype means.",
+            "rationale": "Variation in the recorded ordinal score can be compared with yield. Source score direction is unverified, so this hypothesis is about numeric codes, not an assertion that greener plants perform better.",
+            "criterion": "Require a negative Spearman rho, a conditional resampling interval entirely below zero, and negative associations in every observed environment. No causal or biological score-direction claim is permitted."
+          },
+          {
+            "id": "H4",
+            "proposal": "At least one of the three largest observed drought means has a rank sensitivity of a quartile of the panel or more when an environment is omitted.",
+            "rationale": "Only a few environments contribute to the mean, making environment composition a useful follow-up uncertainty to examine.",
+            "criterion": "Among the three leading complete-coverage mean-yield candidates, require an omitted-environment rank range width at least ceil(panel size / 4), with at least three observed environments. This operational sensitivity threshold is not a significance test."
+          }
+        ]
+      }
+    },
+    {
+      "event_id": "f350242a-7ea8-452c-a46d-773882cd279e",
+      "run_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49",
+      "sequence": 8,
+      "event_type": "stage.changed",
+      "timestamp": "2026-10-27T18:38:18.029577Z",
+      "payload": {
+        "stage": "PLANNING",
+        "public_summary": "Preparing bounded Ghana observational analysis",
+        "progress_completed": null,
+        "progress_total": null,
+        "artifact_refs": []
+      }
+    },
+    {
+      "event_id": "dd4b7cf9-988d-4f32-aa09-b7b221e5f102",
+      "run_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49",
+      "sequence": 9,
+      "event_type": "research.objective_preserved",
+      "timestamp": "2026-10-27T18:38:18.029608Z",
+      "payload": {
+        "objective_sha256": "8e9c3b5334a4d54ea5616b6bef2cdf5b36b1b1f9ed87e3d2ef275e17a5ff314c",
+        "objective_characters": 5321
+      }
+    },
+    {
+      "event_id": "a76b13d5-a114-4438-b948-a741d8fe9843",
+      "run_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49",
+      "sequence": 10,
+      "event_type": "stage.changed",
+      "timestamp": "2026-10-27T18:38:18.029643Z",
+      "payload": {
+        "stage": "ANALYZING",
+        "public_summary": "Running allowlisted dataset_profile analysis",
+        "progress_completed": null,
+        "progress_total": null,
+        "artifact_refs": []
+      }
+    },
+    {
+      "event_id": "03e47c0f-c692-4580-9168-2e5075d70ef4",
+      "run_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49",
+      "sequence": 11,
+      "event_type": "tool.requested",
+      "timestamp": "2026-10-27T18:38:18.029668Z",
+      "payload": {
+        "call_id": "eeb0f9a0-c63d-4f78-80c0-92d095c196a2",
+        "action": "dataset_profile",
+        "dataset_id": "ghana_combined",
+        "hypothesis_id": "task-1",
+        "mode": "replay",
+        "parameters": {},
+        "seed": 2026
+      }
+    },
+    {
+      "event_id": "9a8eb311-15a7-49c9-a1a8-a0709ab5af48",
+      "run_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49",
+      "sequence": 12,
+      "event_type": "tool.validated",
+      "timestamp": "2026-10-27T18:38:18.029747Z",
+      "payload": {
+        "call_id": "eeb0f9a0-c63d-4f78-80c0-92d095c196a2",
+        "action": "dataset_profile"
+      }
+    },
+    {
+      "event_id": "39022b82-83aa-4bce-a48d-a186b357c12b",
+      "run_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49",
+      "sequence": 13,
+      "event_type": "tool.completed",
+      "timestamp": "2026-10-27T18:38:18.038895Z",
+      "payload": {
+        "call_id": "eeb0f9a0-c63d-4f78-80c0-92d095c196a2",
+        "artifact_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-1",
+        "sample_size": 864
+      }
+    },
+    {
+      "event_id": "4d330abc-ac39-410a-8cc3-e6930e54d574",
+      "run_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49",
+      "sequence": 14,
+      "event_type": "evidence.updated",
+      "timestamp": "2026-10-27T18:38:18.038929Z",
+      "payload": {
+        "evidence_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-1"
+      }
+    },
+    {
+      "event_id": "6d1d87e7-f9d4-4675-8831-eba1b2e4b286",
+      "run_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49",
+      "sequence": 15,
+      "event_type": "stage.changed",
+      "timestamp": "2026-10-27T18:38:18.038948Z",
+      "payload": {
+        "stage": "RUNNING",
+        "public_summary": "Evidence recorded; selecting the next bounded analysis",
+        "progress_completed": null,
+        "progress_total": null,
+        "artifact_refs": []
+      }
+    },
+    {
+      "event_id": "da93957a-9ec6-4ca0-8d25-e7b7f8a417d8",
+      "run_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49",
+      "sequence": 16,
+      "event_type": "decision.recorded",
+      "timestamp": "2026-10-27T18:38:18.039102Z",
+      "payload": {
+        "decision_number": 1,
+        "based_on_evidence_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-1",
+        "selected_action": "inspect_missingness",
+        "decision_summary": "Observed missingness requires a diagnostic audit before comparison.",
+        "selection_source": "deterministic_evidence_rule"
+      }
+    },
+    {
+      "event_id": "042daa00-ddaa-4833-8962-2adf2cd26a26",
+      "run_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49",
+      "sequence": 17,
+      "event_type": "stage.changed",
+      "timestamp": "2026-10-27T18:38:18.039132Z",
+      "payload": {
+        "stage": "ANALYZING",
+        "public_summary": "Running allowlisted inspect_missingness analysis",
+        "progress_completed": null,
+        "progress_total": null,
+        "artifact_refs": []
+      }
+    },
+    {
+      "event_id": "f431ed7e-e4d4-46f7-8f69-a02f11ceeb01",
+      "run_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49",
+      "sequence": 18,
+      "event_type": "tool.requested",
+      "timestamp": "2026-10-27T18:38:18.039157Z",
+      "payload": {
+        "call_id": "119ab71d-1b11-473b-a048-8e7226d506ec",
+        "action": "inspect_missingness",
+        "dataset_id": "ghana_combined",
+        "hypothesis_id": "task-2",
+        "mode": "replay",
+        "parameters": {},
+        "seed": 2026
+      }
+    },
+    {
+      "event_id": "d4d6054e-d700-40c7-bd1e-00932b778ea5",
+      "run_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49",
+      "sequence": 19,
+      "event_type": "tool.validated",
+      "timestamp": "2026-10-27T18:38:18.039222Z",
+      "payload": {
+        "call_id": "119ab71d-1b11-473b-a048-8e7226d506ec",
+        "action": "inspect_missingness"
+      }
+    },
+    {
+      "event_id": "7427b370-075b-498d-920d-77efaaa1645b",
+      "run_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49",
+      "sequence": 20,
+      "event_type": "tool.completed",
+      "timestamp": "2026-10-27T18:38:18.040600Z",
+      "payload": {
+        "call_id": "119ab71d-1b11-473b-a048-8e7226d506ec",
+        "artifact_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-2",
+        "sample_size": 864
+      }
+    },
+    {
+      "event_id": "2c677c6e-5dc9-4467-80c3-73db60b05dd6",
+      "run_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49",
+      "sequence": 21,
+      "event_type": "evidence.updated",
+      "timestamp": "2026-10-27T18:38:18.040617Z",
+      "payload": {
+        "evidence_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-2"
+      }
+    },
+    {
+      "event_id": "0b336063-f0a7-4cf4-8a1a-96c8ae5d7eff",
+      "run_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49",
+      "sequence": 22,
+      "event_type": "stage.changed",
+      "timestamp": "2026-10-27T18:38:18.040633Z",
+      "payload": {
+        "stage": "RUNNING",
+        "public_summary": "Evidence recorded; selecting the next bounded analysis",
+        "progress_completed": null,
+        "progress_total": null,
+        "artifact_refs": []
+      }
+    },
+    {
+      "event_id": "89495bfd-9403-4477-83bd-c9361559085e",
+      "run_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49",
+      "sequence": 23,
+      "event_type": "decision.recorded",
+      "timestamp": "2026-10-27T18:38:18.040736Z",
+      "payload": {
+        "decision_number": 2,
+        "based_on_evidence_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-2",
+        "selected_action": "compare_regimes",
+        "decision_summary": "Computed evidence recorded; continue with the next supported task.",
+        "selection_source": "deterministic_replay"
+      }
+    },
+    {
+      "event_id": "6b1dd6ca-f42a-43b8-a939-ff47b7980fcb",
+      "run_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49",
+      "sequence": 24,
+      "event_type": "stage.changed",
+      "timestamp": "2026-10-27T18:38:18.040760Z",
+      "payload": {
+        "stage": "ANALYZING",
+        "public_summary": "Running allowlisted compare_regimes analysis",
+        "progress_completed": null,
+        "progress_total": null,
+        "artifact_refs": []
+      }
+    },
+    {
+      "event_id": "cacd3c52-267f-4ecd-bd38-a670fe117b1e",
+      "run_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49",
+      "sequence": 25,
+      "event_type": "tool.requested",
+      "timestamp": "2026-10-27T18:38:18.040782Z",
+      "payload": {
+        "call_id": "e4848f84-9dd9-4549-b96e-bd7b3c2ccf44",
+        "action": "compare_regimes",
+        "dataset_id": "ghana_combined",
+        "hypothesis_id": "task-3",
+        "mode": "replay",
+        "parameters": {},
+        "seed": 2026
+      }
+    },
+    {
+      "event_id": "e81f6476-05d4-4f57-badb-0790233645fd",
+      "run_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49",
+      "sequence": 26,
+      "event_type": "tool.validated",
+      "timestamp": "2026-10-27T18:38:18.040826Z",
+      "payload": {
+        "call_id": "e4848f84-9dd9-4549-b96e-bd7b3c2ccf44",
+        "action": "compare_regimes"
+      }
+    },
+    {
+      "event_id": "41da91a8-78d2-43c4-b639-389f9cc27ba4",
+      "run_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49",
+      "sequence": 27,
+      "event_type": "tool.completed",
+      "timestamp": "2026-10-27T18:38:18.281811Z",
+      "payload": {
+        "call_id": "e4848f84-9dd9-4549-b96e-bd7b3c2ccf44",
+        "artifact_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-3",
+        "sample_size": 864
+      }
+    },
+    {
+      "event_id": "2b46a01c-0d0a-4560-b057-903c7e71cae2",
+      "run_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49",
+      "sequence": 28,
+      "event_type": "evidence.updated",
+      "timestamp": "2026-10-27T18:38:18.281866Z",
+      "payload": {
+        "evidence_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-3"
+      }
+    },
+    {
+      "event_id": "bdb3a4d2-be78-4e61-92c7-0dfd4be70f1a",
+      "run_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49",
+      "sequence": 29,
+      "event_type": "stage.changed",
+      "timestamp": "2026-10-27T18:38:18.281887Z",
+      "payload": {
+        "stage": "RUNNING",
+        "public_summary": "Evidence recorded; selecting the next bounded analysis",
+        "progress_completed": null,
+        "progress_total": null,
+        "artifact_refs": []
+      }
+    },
+    {
+      "event_id": "0a77a2aa-7195-44c6-bd4f-7913f5059fce",
+      "run_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49",
+      "sequence": 30,
+      "event_type": "decision.recorded",
+      "timestamp": "2026-10-27T18:38:18.282030Z",
+      "payload": {
+        "decision_number": 3,
+        "based_on_evidence_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-3",
+        "selected_action": "rank_genotypes",
+        "decision_summary": "Computed evidence recorded; continue with the next supported task.",
+        "selection_source": "deterministic_replay"
+      }
+    },
+    {
+      "event_id": "2f284572-8a38-4a8f-b03d-0e859d43e20e",
+      "run_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49",
+      "sequence": 31,
+      "event_type": "stage.changed",
+      "timestamp": "2026-10-27T18:38:18.282059Z",
+      "payload": {
+        "stage": "ANALYZING",
+        "public_summary": "Running allowlisted rank_genotypes analysis",
+        "progress_completed": null,
+        "progress_total": null,
+        "artifact_refs": []
+      }
+    },
+    {
+      "event_id": "5695caf0-062a-4c9f-a949-04a279618246",
+      "run_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49",
+      "sequence": 32,
+      "event_type": "tool.requested",
+      "timestamp": "2026-10-27T18:38:18.282083Z",
+      "payload": {
+        "call_id": "f165b739-67dd-4f74-ab34-fb3937a6daa7",
+        "action": "rank_genotypes",
+        "dataset_id": "ghana_combined",
+        "hypothesis_id": "task-4",
+        "mode": "replay",
+        "parameters": {},
+        "seed": 2026
+      }
+    },
+    {
+      "event_id": "b73b0fc4-84d3-42b8-b58d-6ff00c8820f6",
+      "run_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49",
+      "sequence": 33,
+      "event_type": "tool.validated",
+      "timestamp": "2026-10-27T18:38:18.282166Z",
+      "payload": {
+        "call_id": "f165b739-67dd-4f74-ab34-fb3937a6daa7",
+        "action": "rank_genotypes"
+      }
+    },
+    {
+      "event_id": "9ecdd328-59d6-495c-8574-bba4845c82f3",
+      "run_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49",
+      "sequence": 34,
+      "event_type": "tool.completed",
+      "timestamp": "2026-10-27T18:38:18.282744Z",
+      "payload": {
+        "call_id": "f165b739-67dd-4f74-ab34-fb3937a6daa7",
+        "artifact_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-4",
+        "sample_size": 432
+      }
+    },
+    {
+      "event_id": "419e08ea-d292-44ae-85ab-9be779e2317d",
+      "run_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49",
+      "sequence": 35,
+      "event_type": "evidence.updated",
+      "timestamp": "2026-10-27T18:38:18.282761Z",
+      "payload": {
+        "evidence_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-4"
+      }
+    },
+    {
+      "event_id": "fb4a09fb-1b32-453a-a098-5d8c48da20d3",
+      "run_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49",
+      "sequence": 36,
+      "event_type": "stage.changed",
+      "timestamp": "2026-10-27T18:38:18.282776Z",
+      "payload": {
+        "stage": "RUNNING",
+        "public_summary": "Evidence recorded; selecting the next bounded analysis",
+        "progress_completed": null,
+        "progress_total": null,
+        "artifact_refs": []
+      }
+    },
+    {
+      "event_id": "5299a7df-2800-4e90-93f6-a9732d5993ab",
+      "run_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49",
+      "sequence": 37,
+      "event_type": "decision.recorded",
+      "timestamp": "2026-10-27T18:38:18.282882Z",
+      "payload": {
+        "decision_number": 4,
+        "based_on_evidence_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-4",
+        "selected_action": "summarize_environment_stability",
+        "decision_summary": "Leading descriptive means span multiple environments; select omitted-environment rank sensitivity as the follow-up before interpreting candidates.",
+        "selection_source": "deterministic_evidence_rule"
+      }
+    },
+    {
+      "event_id": "edc83288-5101-419a-829f-5ef3b7a6a12e",
+      "run_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49",
+      "sequence": 38,
+      "event_type": "stage.changed",
+      "timestamp": "2026-10-27T18:38:18.282907Z",
+      "payload": {
+        "stage": "ANALYZING",
+        "public_summary": "Running allowlisted summarize_environment_stability analysis",
+        "progress_completed": null,
+        "progress_total": null,
+        "artifact_refs": []
+      }
+    },
+    {
+      "event_id": "20c96490-eb7c-43ce-8e02-21c4d644cbee",
+      "run_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49",
+      "sequence": 39,
+      "event_type": "tool.requested",
+      "timestamp": "2026-10-27T18:38:18.282929Z",
+      "payload": {
+        "call_id": "687bb78e-d937-48f9-8516-693b19f6405b",
+        "action": "summarize_environment_stability",
+        "dataset_id": "ghana_combined",
+        "hypothesis_id": "task-6",
+        "mode": "replay",
+        "parameters": {},
+        "seed": 2026
+      }
+    },
+    {
+      "event_id": "da7ef984-2e0f-416f-b0fd-53ad2fadb47b",
+      "run_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49",
+      "sequence": 40,
+      "event_type": "tool.validated",
+      "timestamp": "2026-10-27T18:38:18.282982Z",
+      "payload": {
+        "call_id": "687bb78e-d937-48f9-8516-693b19f6405b",
+        "action": "summarize_environment_stability"
+      }
+    },
+    {
+      "event_id": "26011a94-0da1-4e1e-9186-d3c3553e50ca",
+      "run_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49",
+      "sequence": 41,
+      "event_type": "tool.completed",
+      "timestamp": "2026-10-27T18:38:18.289544Z",
+      "payload": {
+        "call_id": "687bb78e-d937-48f9-8516-693b19f6405b",
+        "artifact_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-5",
+        "sample_size": 864
+      }
+    },
+    {
+      "event_id": "18b94182-f630-4785-a3fb-066fbcda8c4f",
+      "run_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49",
+      "sequence": 42,
+      "event_type": "evidence.updated",
+      "timestamp": "2026-10-27T18:38:18.289567Z",
+      "payload": {
+        "evidence_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-5"
+      }
+    },
+    {
+      "event_id": "0351670a-378f-40c8-9953-54259b65e597",
+      "run_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49",
+      "sequence": 43,
+      "event_type": "stage.changed",
+      "timestamp": "2026-10-27T18:38:18.289583Z",
+      "payload": {
+        "stage": "RUNNING",
+        "public_summary": "Evidence recorded; selecting the next bounded analysis",
+        "progress_completed": null,
+        "progress_total": null,
+        "artifact_refs": []
+      }
+    },
+    {
+      "event_id": "3df34f55-056b-4461-9c34-9a70514f9002",
+      "run_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49",
+      "sequence": 44,
+      "event_type": "decision.recorded",
+      "timestamp": "2026-10-27T18:38:18.289700Z",
+      "payload": {
+        "decision_number": 5,
+        "based_on_evidence_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-5",
+        "selected_action": "analyze_trait_associations",
+        "decision_summary": "Computed evidence recorded; continue with the next supported task.",
+        "selection_source": "deterministic_replay"
+      }
+    },
+    {
+      "event_id": "32ed9507-1f4c-4e7d-98b9-f3deece0eabc",
+      "run_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49",
+      "sequence": 45,
+      "event_type": "stage.changed",
+      "timestamp": "2026-10-27T18:38:18.289724Z",
+      "payload": {
+        "stage": "ANALYZING",
+        "public_summary": "Running allowlisted analyze_trait_associations analysis",
+        "progress_completed": null,
+        "progress_total": null,
+        "artifact_refs": []
+      }
+    },
+    {
+      "event_id": "ce5b3e19-dd37-4264-9df1-a9e69caad527",
+      "run_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49",
+      "sequence": 46,
+      "event_type": "tool.requested",
+      "timestamp": "2026-10-27T18:38:18.289750Z",
+      "payload": {
+        "call_id": "f836be29-3bd4-4751-8d3e-5a99fd7ee1ac",
+        "action": "analyze_trait_associations",
+        "dataset_id": "ghana_combined",
+        "hypothesis_id": "task-5",
+        "mode": "replay",
+        "parameters": {},
+        "seed": 2026
+      }
+    },
+    {
+      "event_id": "83c80c9a-e7df-4cbd-8041-814eae5f4b88",
+      "run_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49",
+      "sequence": 47,
+      "event_type": "tool.validated",
+      "timestamp": "2026-10-27T18:38:18.289794Z",
+      "payload": {
+        "call_id": "f836be29-3bd4-4751-8d3e-5a99fd7ee1ac",
+        "action": "analyze_trait_associations"
+      }
+    },
+    {
+      "event_id": "1b6222a6-5820-49c7-8d08-4e683c5dd864",
+      "run_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49",
+      "sequence": 48,
+      "event_type": "tool.completed",
+      "timestamp": "2026-10-27T18:38:18.557043Z",
+      "payload": {
+        "call_id": "f836be29-3bd4-4751-8d3e-5a99fd7ee1ac",
+        "artifact_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-6",
+        "sample_size": 432
+      }
+    },
+    {
+      "event_id": "7e0192da-b8e3-4499-893e-9121e969c80b",
+      "run_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49",
+      "sequence": 49,
+      "event_type": "evidence.updated",
+      "timestamp": "2026-10-27T18:38:18.557077Z",
+      "payload": {
+        "evidence_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-6"
+      }
+    },
+    {
+      "event_id": "f042e130-e170-4707-bdff-e57c80ac1bd8",
+      "run_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49",
+      "sequence": 50,
+      "event_type": "stage.changed",
+      "timestamp": "2026-10-27T18:38:18.557097Z",
+      "payload": {
+        "stage": "RUNNING",
+        "public_summary": "Evidence recorded; selecting the next bounded analysis",
+        "progress_completed": null,
+        "progress_total": null,
+        "artifact_refs": []
+      }
+    },
+    {
+      "event_id": "51a49e86-ce7b-4ebb-b7d0-73a697964620",
+      "run_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49",
+      "sequence": 51,
+      "event_type": "decision.recorded",
+      "timestamp": "2026-10-27T18:38:18.557229Z",
+      "payload": {
+        "decision_number": 6,
+        "based_on_evidence_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-6",
+        "selected_action": "generate_report",
+        "decision_summary": "Computed evidence recorded; continue with the next supported task.",
+        "selection_source": "deterministic_replay"
+      }
+    },
+    {
+      "event_id": "430ee187-07e0-4cb0-9997-afc6f91e7ad4",
+      "run_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49",
+      "sequence": 52,
+      "event_type": "report.generated",
+      "timestamp": "2026-10-27T18:38:18.557718Z",
+      "payload": {
+        "public_summary": "Evidence-linked report persisted; scientific conclusions remain subject to its stated scope and limitations.",
+        "completion_status": "complete",
+        "evidence_ids": [
+          "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-1",
+          "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-2",
+          "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-3",
+          "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-4",
+          "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-5",
+          "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-6"
+        ]
+      }
+    },
+    {
+      "event_id": "11c5cb8a-eb9e-40e8-a390-598875218a42",
+      "run_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49",
+      "sequence": 53,
+      "event_type": "stage.changed",
+      "timestamp": "2026-10-27T18:38:18.557746Z",
+      "payload": {
+        "stage": "COMPLETE",
+        "public_summary": "Evidence-linked research report is complete",
+        "progress_completed": null,
+        "progress_total": null,
+        "artifact_refs": []
+      }
+    },
+    {
+      "event_id": "093baac5-ba41-410f-91ad-8a043d31a3f8",
+      "run_id": "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49",
+      "sequence": 54,
+      "event_type": "run.completed",
+      "timestamp": "2026-10-27T18:38:18.557803Z",
+      "payload": {
+        "completion_status": "complete",
+        "artifact_count": 6,
+        "mode": "deterministic_replay",
+        "evidence_ids": [
+          "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-1",
+          "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-2",
+          "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-3",
+          "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-4",
+          "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-5",
+          "5c2acd8f-f766-407e-8a5c-43aa1f2e8d49-6"
+        ]
+      }
+    }
+  ]
+}

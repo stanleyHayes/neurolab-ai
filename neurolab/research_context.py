@@ -8,6 +8,13 @@ from typing import Any, Literal
 
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
+from .investigation_profile import (
+    PROFILE_HYPOTHESES,
+    PROFILE_METHODS,
+    PROFILE_OUTPUT,
+    profile_constraints,
+)
+
 MAX_RESEARCH_OBJECTIVE_CHARS = 20_000
 MAX_RESEARCH_REQUEST_BYTES = 256 * 1024
 META_CONTEXT_WINDOW_TOKENS = 1_048_576
@@ -44,6 +51,7 @@ DesiredOutput = Literal[
     "provenance_export",
     "trait_associations",
     "environment_summaries",
+    "ghana_drought_investigation",
 ]
 ResearchText = str
 
@@ -73,8 +81,13 @@ class ResearchConfiguration(BaseModel):
     dataset_id: DatasetId = "ghana_combined"
     constraints: ResearchConstraints = Field(default_factory=ResearchConstraints)
     preferred_methods: list[SupportedMethod] = Field(default_factory=list, max_length=6)
-    desired_outputs: list[DesiredOutput] = Field(default_factory=list, max_length=7)
+    desired_outputs: list[DesiredOutput] = Field(default_factory=list, max_length=8)
     autonomy_preferences: AutonomyPreferences = Field(default_factory=AutonomyPreferences)
+
+    @model_validator(mode="after")
+    def validate_profile(self):
+        validate_profile_selection(self.dataset_id, self.preferred_methods, self.desired_outputs)
+        return self
 
 
 class DatasetSuggestion(BaseModel):
@@ -115,8 +128,8 @@ class ResearchPlan(BaseModel):
     research_questions: list[str] = Field(default_factory=list, max_length=20)
     hypotheses: list[str] = Field(default_factory=list, max_length=20)
     dataset_suggestions: list[DatasetSuggestion] = Field(default_factory=list, max_length=5)
-    analysis_approaches: list[AnalysisApproach] = Field(default_factory=list, max_length=4)
-    desired_outputs: list[DesiredOutput] = Field(default_factory=list, max_length=7)
+    analysis_approaches: list[AnalysisApproach] = Field(default_factory=list, max_length=6)
+    desired_outputs: list[DesiredOutput] = Field(default_factory=list, max_length=8)
     tasks: list[ResearchTask] = Field(default_factory=list, max_length=10)
     unsupported_requirements: list[str] = Field(default_factory=list, max_length=20)
 
@@ -131,12 +144,13 @@ class ResearchDraft(BaseModel):
     dataset_id: DatasetId = "ghana_combined"
     constraints: ResearchConstraints = Field(default_factory=ResearchConstraints)
     preferred_methods: list[SupportedMethod] = Field(default_factory=list, max_length=6)
-    desired_outputs: list[DesiredOutput] = Field(default_factory=list, max_length=7)
+    desired_outputs: list[DesiredOutput] = Field(default_factory=list, max_length=8)
     autonomy_preferences: AutonomyPreferences = Field(default_factory=AutonomyPreferences)
     accepted_plan: ResearchPlan | None = None
 
     @model_validator(mode="after")
     def validate_accepted_plan(self) -> ResearchDraft:
+        validate_profile_selection(self.dataset_id, self.preferred_methods, self.desired_outputs)
         if self.accepted_plan and self.accepted_plan.objective_sha256 != objective_digest(
             self.objective
         ):
@@ -218,6 +232,15 @@ class DraftSaveRequest(BaseModel):
     draft: ResearchDraft
 
 
+def validate_profile_selection(dataset_id, methods, outputs):
+    if PROFILE_OUTPUT in outputs and (
+        dataset_id != "ghana_combined" or (methods and set(methods) != set(PROFILE_METHODS))
+    ):
+        raise ValueError(
+            "The Ghana investigation requires all six supported Ghana methods; remove the investigation output for a focused run."
+        )
+
+
 def objective_digest(objective: str) -> str:
     return hashlib.sha256(objective.encode("utf-8")).hexdigest()
 
@@ -269,11 +292,16 @@ METHOD_TO_TOOL: dict[str, tuple[str, str]] = {
 
 def build_deterministic_plan(objective: str, config: ResearchConfiguration) -> ResearchPlan:
     validate_objective(objective)
-    methods = config.preferred_methods or [
-        "block_bootstrap_contrast",
-        "genotype_ranking",
-        "missingness_audit",
-    ]
+    profile = PROFILE_OUTPUT in config.desired_outputs
+    methods = config.preferred_methods or (
+        list(PROFILE_METHODS)
+        if profile
+        else ["block_bootstrap_contrast", "genotype_ranking", "missingness_audit"]
+    )
+    if profile and (set(methods) != set(PROFILE_METHODS) or config.dataset_id != "ghana_combined"):
+        raise ValueError(
+            "The Ghana investigation requires all six supported Ghana methods; remove the investigation output for a focused run."
+        )
     tasks = [
         ResearchTask(
             task_id=f"task-{index + 1}",
@@ -289,7 +317,11 @@ def build_deterministic_plan(objective: str, config: ResearchConfiguration) -> R
         title=config.title,
         refined_objective=objective,
         research_questions=config.research_questions,
-        hypotheses=config.hypotheses,
+        hypotheses=config.hypotheses
+        or (
+            [f"{item['id']}: {item['proposal']}" for item in PROFILE_HYPOTHESES] if profile else []
+        ),
+        important_constraints=profile_constraints() if profile else [],
         dataset_suggestions=[
             DatasetSuggestion(
                 dataset_id=config.dataset_id,
@@ -388,7 +420,7 @@ def build_refinement_schema() -> dict[str, Any]:
             },
             "desired_outputs": {
                 "type": "array",
-                "maxItems": 7,
+                "maxItems": 8,
                 "items": {"type": "string", "enum": outputs},
             },
             "tasks": {

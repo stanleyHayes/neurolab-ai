@@ -114,7 +114,10 @@ export function ResearchObjectiveEditor({
             busy ||
             editor.refining ||
             Boolean(editor.validation) ||
-            !inferenceAvailable
+            !inferenceAvailable ||
+            editor.configuration.desired_outputs.includes(
+              "ghana_drought_investigation",
+            )
           }
           onClick={() => void editor.refine()}
           aria-busy={editor.refining}

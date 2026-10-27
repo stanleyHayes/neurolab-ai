@@ -20,3 +20,9 @@ max_steps=6, max_tool_calls=10, max_wall_time=180s, model cost cap configured, m
 
 ## Acceptance
 Two genuinely result-dependent tool selections; one failed/invalid action recovered gracefully; no unauthorized tool execution; reproducible replay trace; live Meta model call in production demo; model unavailable -> labeled replay fallback only.
+
+## Current runtime naming and deterministic fallback — 2026-10-27
+
+The implemented schema/registry uses `analyze_trait_associations` and `summarize_environment_stability` for the two scientific operations previously named singular `analyze_trait_association` / `check_environment_stability` in the proposed allowlist. The current six executable actions are profile, contrast, descriptive ranking, missingness, trait associations and environment sensitivity. `generate_report` is server-owned finalization, not a model-callable action; workflow baseline evaluation remains a separate evaluation command, not a crop simulator or fabricated agent tool. Do not send the earlier proposed aliases as executable actions.
+
+The explicit full Ghana deterministic profile now persists exploratory criteria before tools, makes actual evidence-dependent selections and renders an evidence-linked scientific report. See `DETERMINISTIC_INVESTIGATION_PROFILE.md`. This is the owner's requested no-credit fallback. It does not satisfy or replace the live Meta acceptance requirement above; that remains blocked while inference is paused.

@@ -12,6 +12,7 @@ from jsonschema import Draft202012Validator
 from .descriptive import analyze_trait_associations, summarize_environment_stability
 from .ghana import GhanaDataset
 from .science import compare_regimes, dataset_profile, inspect_missingness, rank_genotypes
+from .source_inventory import source_inventory
 
 ROOT = Path(__file__).resolve().parents[1]
 SCHEMA_PATH = ROOT / "schemas/agent_tool_call.schema.json"
@@ -40,6 +41,9 @@ Tool = Callable[[GhanaDataset, dict[str, Any], int], dict[str, Any]]
 
 def _profile(dataset: GhanaDataset, _parameters: dict[str, Any], _seed: int) -> dict[str, Any]:
     profile = dataset_profile(dataset)
+    inventory = source_inventory(ROOT)
+    profile["available_source_inventory"] = inventory["files"]
+    profile["inventory_manifest_sha256"] = inventory["manifest_sha256"]
     return {
         "artifact_id": "ghana-profile-" + dataset.source_sha256[:16],
         "source_file": dataset.source_file,

@@ -25,7 +25,7 @@ TRAITS = {
     "anthesis_days": "days",
     "silking_days": "days",
 }
-VERSION = "ghana-descriptive-sensitivity-v1"
+VERSION = "ghana-descriptive-sensitivity-v2"
 
 
 def _artifact(dataset, name, results, size, warnings, uncertainty=None):
@@ -181,6 +181,37 @@ def _regime_summary(dataset, regime):
     return result
 
 
+def _regime_retention(regimes):
+    watered = {
+        entry["genotype_id"]: entry
+        for entry in regimes["WELL_WATERED"]["genotypes"]
+        if entry["complete_environment_coverage"]
+    }
+    result = []
+    for drought in regimes["DROUGHT"]["genotypes"]:
+        control = watered.get(drought["genotype_id"])
+        if not drought["complete_environment_coverage"] or control is None:
+            continue
+        denominator = control["mean_yield_kg_ha"]
+        result.append(
+            {
+                "genotype_id": drought["genotype_id"],
+                "drought_mean_kg_ha": drought["mean_yield_kg_ha"],
+                "well_watered_mean_kg_ha": denominator,
+                "descriptive_retention_percent": 100 * drought["mean_yield_kg_ha"] / denominator
+                if denominator > 0
+                else None,
+                "drought_plot_count": sum(
+                    env["plot_count"] for env in drought["environment_means"]
+                ),
+                "well_watered_plot_count": sum(
+                    env["plot_count"] for env in control["environment_means"]
+                ),
+            }
+        )
+    return result
+
+
 def summarize_environment_stability(dataset: GhanaDataset) -> dict[str, Any]:
     regimes = {regime: _regime_summary(dataset, regime) for regime in ("DROUGHT", "WELL_WATERED")}
     size = sum(
@@ -201,7 +232,11 @@ def summarize_environment_stability(dataset: GhanaDataset) -> dict[str, Any]:
     return _artifact(
         dataset,
         "summarize_environment_stability",
-        {"regimes": regimes, "model_summary": summary},
+        {
+            "regimes": regimes,
+            "regime_retention_by_genotype": _regime_retention(regimes),
+            "model_summary": summary,
+        },
         size,
         [
             "Descriptive variation across observed ENVT indices, not a validated stability model or confirmatory genotype-by-environment interaction test.",
@@ -209,6 +244,7 @@ def summarize_environment_stability(dataset: GhanaDataset) -> dict[str, Any]:
             "Ranks and environmental centering use only genotypes observed in every available environment of that regime; incomplete coverage is retained and labeled.",
             "Leave-one-environment-out rank changes are sensitivity analyses, not confidence intervals. Three environments cannot establish broad adaptation.",
             "Alpha-lattice block effects, genotype ranking uncertainty and multiplicity are not modeled. Low variation alone does not imply high yield or drought tolerance.",
+            "Genotype retention joins only canonical identities within this same Ghana source, after separate regime summaries; it does not prove matched causal irrigation contrasts. A high ratio can reflect a low watered denominator.",
         ],
     )
 

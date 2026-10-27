@@ -34,6 +34,7 @@ from .auth import (
 )
 from .evaluation import write_evaluation
 from .ghana import load_ghana
+from .investigation_profile import PROFILE_OUTPUT, profile_plan_check
 from .planner import refine_plan, validate_execution_plan
 from .providers import (
     ModelContextLimitError,
@@ -904,6 +905,8 @@ def create_research_run(
     if request.plan is not None:
         try:
             validate_execution_plan(request.plan, request.objective)
+            if PROFILE_OUTPUT in configuration.desired_outputs:
+                profile_plan_check(request.plan)
         except ValueError as exc:
             raise HTTPException(status_code=409, detail=str(exc)) from exc
         plan = request.plan
@@ -993,6 +996,11 @@ def refine_research_objective(
         validate_objective(payload.objective)
     except ValueError as exc:
         raise HTTPException(status_code=422, detail=str(exc)) from exc
+    if PROFILE_OUTPUT in payload.configuration.desired_outputs:
+        raise HTTPException(
+            status_code=422,
+            detail="The deterministic Ghana investigation uses fixed declared criteria. Remove its output to request a separate Meta-refined plan.",
+        )
     if not adapter_status()["enabled_for_runs"]:
         raise HTTPException(
             status_code=503,
