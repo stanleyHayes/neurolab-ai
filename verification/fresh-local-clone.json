@@ -1,0 +1,34 @@
+{
+  "commit": "26f5fbd2ca6398f11ea9638bbec87f76def9ea96",
+  "clone_method": "git clone --no-local from local source repository; fresh virtualenv and npm ci",
+  "public_clone_verified": false,
+  "credentials_copied": false,
+  "external_services_started": false,
+  "python": "3.12.3",
+  "node": "26.5.0",
+  "quality_exit_code": 0,
+  "tests": {
+    "python": 166,
+    "proxy": 10,
+    "ui": 68
+  },
+  "initial_failure": "ESLint traversed Python virtualenv dependency JavaScript; corrected by excluding .venv/venv directories without disabling source rules.",
+  "normalization": {
+    "source_records": 864,
+    "quarantined": 0,
+    "source_sha256": "2e37c07f30e00efb33b59954dd6d02a04f3d67349790d782b70dbedfdaff05bc"
+  },
+  "clone_tracked_tree_clean": true,
+  "log_sha256": {
+    "neurolab-fresh-python-install.log": "3789a9252fb7cb32fb3294cd7532b4b33250c27a25455a3687abed82ffc2d89d",
+    "neurolab-fresh-npm-install.log": "0786f58c14742db3406d59c3a88ebd13a08da26565867a3a5cfba1b74c014783",
+    "neurolab-fresh-quality-initial-failure.log": "6085dcf8c64b84903b6f324a831510cff51fc36d5c78146a652cfddefc7b984c",
+    "neurolab-fresh-quality-corrected.log": "f5ed036cb099fe61db95e919ac8eb2a9215cd2948f8a29681fd368fe6f16a965",
+    "neurolab-fresh-normalize.log": "009be2b278a745be833b284e7945b483558e0fb8b49f9c55b17f81865664a260"
+  },
+  "limitations": [
+    "Local source origin only; no public repository availability or code-license approval proof.",
+    "No browser, rendered HTML export, screen-reader or production provider acceptance.",
+    "No target deployment or actual offsite recovery verified."
+  ]
+}
