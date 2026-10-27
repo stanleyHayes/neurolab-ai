@@ -39,6 +39,7 @@ class KeyRotationTests(unittest.TestCase):
         self.new = Ed25519PrivateKey.generate()
         self.old_env = {
             "APP_ENV": "production",
+            "AUTH_INVITE_CODE": "private-fixture-invite",
             "AUTH_ED25519_PRIVATE_KEY": private_pem(self.old),
             "AUTH_JWT_KID": "old-v1",
             "AUTH_TOKEN_PEPPER": new_refresh_token(),
@@ -50,6 +51,17 @@ class KeyRotationTests(unittest.TestCase):
             "AUTH_JWT_KID": "new-v2",
             "AUTH_ED25519_PREVIOUS_PUBLIC_KEYS": json.dumps({"old-v1": public_pem(self.old)}),
         }
+
+    def test_production_requires_invite_while_development_can_close_signup(self):
+        for invite in ("", "   "):
+            with (
+                self.subTest(invite=invite),
+                patch.dict(os.environ, {**self.old_env, "AUTH_INVITE_CODE": invite}, clear=True),
+                self.assertRaisesRegex(RuntimeError, "Production requires AUTH_INVITE_CODE"),
+            ):
+                assert_production_auth_config()
+        with patch.dict(os.environ, {"APP_ENV": "development", "AUTH_INVITE_CODE": ""}, clear=True):
+            assert_production_auth_config()
 
     def test_staged_rollover_accepts_old_and_new_then_retires_old(self):
         with patch.dict(

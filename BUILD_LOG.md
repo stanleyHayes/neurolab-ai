@@ -401,3 +401,13 @@ Replaced the API's SQLite default with PostgreSQL (`DATABASE_URL=postgresql:///n
 - **Command/output:** `make quality PYTHON=.venv/bin/python` exited 0: Ruff/format, ESLint, TypeScript, 166 Python tests, 10 proxy tests, 68 UI tests, source audit, compilation and production Next build passed. `scripts/normalize_ghana.py` exited 0 with 864 records, zero quarantined and canonical source SHA-256 unchanged. Example config asserts paused inference and closed blank-invite registration.
 - **Evidence:** `verification/fresh-local-clone.json` records exact commit, versions, counts, limitations and SHA-256 digests of initial failure, corrected quality/install and normalization logs retained under `/tmp/neurolab-fresh-*`. Initial failed attempt remains preserved.
 - **Boundary:** this proves a fresh local source install/quality path, not public availability, licensing, target deployment or UI browser acceptance. Existing running APIs, JWT keys, databases and Meta pause were preserved. `git diff --check` passed.
+
+
+## 2026-10-27 — Production invite startup requirement
+
+- **Requirement:** document 11 explicitly requires production startup to fail closed without an invite secret. Code review found that blank invites safely closed registration but still allowed production startup, contradicting that stronger startup contract.
+- **Files:** `neurolab/auth.py` now rejects missing/blank production `AUTH_INVITE_CODE`; key-rotation fixtures and the production HTTP/service-auth fixture provide a private test invite. New unit coverage checks blank/whitespace rejection and unchanged development startup with registration closed. `.env.example`, README and auth documentation distinguish the two modes.
+- **Checks:** `python3 -m unittest tests.test_auth_key_rotation tests.test_agent_tools_api -q`: 49 tests, OK. Six key-rotation/config tests also passed under coverage append; XML regenerated. Scoped Ruff/format passed after fixing nested test context style; `git diff --check` passed. Sonar scan results are recorded below after completion.
+- **Boundary:** no running API, invite value, database, session signer or model configuration changed. Production operators must configure the invite before the next rollout; this local startup correction does not verify target deployment or close browser/live Meta gates.
+
+- **Sonar observation:** scanner uploaded analysis task `6b8778a0-84ef-41fe-9798-25ce2fbef7df`; gate processing remains pending at this checkpoint. An issues endpoint read timed out. Existing container is running (restart count 34, started 21:06:03 UTC); it was not restarted. Log: `/tmp/neurolab-production-invite-sonar.log`. No passing gate or zero-issue claim is made for this scan until its actual outcome is retrieved.

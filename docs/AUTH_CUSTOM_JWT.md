@@ -31,7 +31,7 @@ AUTH_INVITE_CODE=<operator-issued-high-entropy-invite>
 
 Use a secret manager, not source control or `NEXT_PUBLIC_*`. Example key creation: `openssl genpkey -algorithm ED25519 -out auth-ed25519.pem`; protect the private file (`0600`), inject the PEM securely, and rotate key IDs with an explicit old-public-key verification overlap before changing production. Current local development generates ephemeral Ed25519 key material if no key is configured, invalidating local JWTs on process restart.
 
-Production startup fails closed if private key, token pepper, key ID, service bearer, or host allowlist configuration is missing/invalid. The API does not load `.env` automatically.
+Production startup fails closed if private key, token pepper, key ID, invite secret, service bearer, or host allowlist configuration is missing/invalid. A blank invite in development closes registration. The API does not load `.env` automatically.
 
 ## HTTP contract
 

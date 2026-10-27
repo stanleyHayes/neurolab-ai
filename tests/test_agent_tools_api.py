@@ -1251,6 +1251,7 @@ class ApiTests(unittest.TestCase):
             "APP_ENV": "production",
             "API_BEARER_TOKEN": "x" * 32,
             "ALLOWED_HOSTS": "api.example.test",
+            "AUTH_INVITE_CODE": "private-fixture-invite",
             "AUTH_ED25519_PRIVATE_KEY": key,
             "AUTH_TOKEN_PEPPER": "p" * 40,
             "AUTH_JWT_KID": "test-v1",

@@ -95,7 +95,7 @@ For a local PostgreSQL setup, create the development database before starting th
 createdb neurolab
 ```
 
-Copy `.env.example` to `.env`. Keep `MODEL_INFERENCE_ENABLED=false` for the replay walkthrough. Set a private, high-entropy `AUTH_INVITE_CODE` before starting the API, then enter that code on the registration page to create your own account. A blank invite code closes registration; it does not enable open signup. Keep the invite out of recorded footage. Configure other values as needed. The Python API does not automatically load `.env`; export its values in the API shell before startup. Keep `.env`, model credentials, and production secrets out of source control.
+Copy `.env.example` to `.env`. Keep `MODEL_INFERENCE_ENABLED=false` for the replay walkthrough. Set a private, high-entropy `AUTH_INVITE_CODE` before starting the API, then enter that code on the registration page to create your own account. A blank invite code closes development registration; production startup rejects a blank invite. It never enables open signup. Keep the invite out of recorded footage. Configure other values as needed. The Python API does not automatically load `.env`; export its values in the API shell before startup. Keep `.env`, model credentials, and production secrets out of source control.
 
 ### Audit and prepare data
 

@@ -234,6 +234,8 @@ def assert_production_auth_config() -> None:
     _verification_keys()
     if os.getenv("APP_ENV", "development").strip().lower() != "production":
         return
+    if not os.getenv("AUTH_INVITE_CODE", "").strip():
+        raise RuntimeError("Production requires AUTH_INVITE_CODE")
     if not os.getenv("AUTH_ED25519_PRIVATE_KEY", "").strip():
         raise RuntimeError("Production requires AUTH_ED25519_PRIVATE_KEY")
     if len(os.getenv("AUTH_TOKEN_PEPPER", "").encode("utf-8")) < 32:
