@@ -1,0 +1,9 @@
+{
+  "verified_at_utc": "2026-10-27T20:10:36.998512+00:00",
+  "database": "Disposable local PostgreSQL database; isolated schema per test",
+  "server_version_number": 180001,
+  "tests_passed": 27,
+  "command": "NEUROLAB_TEST_POSTGRES_URL=<disposable local DB> python3 -m unittest tests.test_shared_rate_limits.SharedRateLimitTests tests.test_durable_jobs -v",
+  "inference_enabled": false,
+  "scope": "Concurrent ancestor refresh replay versus descendant rotation leaves no live family session, plus SQL budgets and durable-job fixture regressions. Synthetic operational identities/clocks; actual PostgreSQL transactions. No target ingress, paid-provider or public-deployment acceptance."
+}

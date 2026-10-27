@@ -11,7 +11,7 @@ from pathlib import Path
 from typing import Annotated, Any
 
 from fastapi import BackgroundTasks, Depends, FastAPI, HTTPException, Request, Response
-from fastapi.responses import StreamingResponse
+from fastapi.responses import JSONResponse, StreamingResponse
 from pydantic import BaseModel, ConfigDict, Field, StringConstraints, model_validator
 from starlette.concurrency import run_in_threadpool
 from starlette.middleware.trustedhost import TrustedHostMiddleware
@@ -629,11 +629,19 @@ def login(payload: LoginRequest, request: Request, response: Response) -> dict[s
     return _create_login_session(user, response)
 
 
+def _invalid_refresh_response() -> Response:
+    failure = JSONResponse({"detail": "Authentication session is invalid"}, status_code=401)
+    _auth_response_headers(failure)
+    _clear_auth_cookies(failure)
+    return failure
+
+
 @app.post(
     "/auth/refresh",
     responses=HTTP_ERROR_RESPONSES,
+    response_model=None,
 )
-def refresh_session(request: Request, response: Response) -> dict[str, Any]:
+def refresh_session(request: Request, response: Response) -> dict[str, Any] | Response:
     _auth_response_headers(response)
     old_token = request.cookies.get("neurolab_refresh", "")
     if not old_token:
@@ -641,8 +649,7 @@ def refresh_session(request: Request, response: Response) -> dict[str, Any]:
     _require_csrf(request, old_token)
     owner = STORE.get_refresh_owner(keyed_hash(old_token), session_now())
     if owner is None:
-        _clear_auth_cookies(response)
-        raise HTTPException(status_code=401, detail="Authentication session is invalid")
+        return _invalid_refresh_response()
     _shared_account_budget(owner, "account:refresh", 30)
     new_token = new_refresh_token()
     csrf_token = new_csrf_token()
@@ -656,8 +663,7 @@ def refresh_session(request: Request, response: Response) -> dict[str, Any]:
         now=now,
     )
     if state != "rotated" or result is None:
-        _clear_auth_cookies(response)
-        raise HTTPException(status_code=401, detail="Authentication session is invalid")
+        return _invalid_refresh_response()
     _set_auth_cookies(response, new_token, csrf_token)
     return _issue_auth_response(result["user"], result["session_id"])
 

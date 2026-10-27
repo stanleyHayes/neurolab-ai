@@ -831,6 +831,65 @@ class ApiTests(unittest.TestCase):
             self.authenticate(first.json()["access_token"])
             self.assertEqual(self.client.get("/auth/me").status_code, 200)
 
+    def test_http_refresh_reuse_revokes_descendants_and_clears_cookies(self):
+        from neurolab.api import STORE
+
+        self.register(f"reuse-{uuid.uuid4()}@example.test")
+        old_refresh, old_csrf = self.client.cookies.get("neurolab_refresh"), self.csrf
+        other_login = self.login(self.client.get("/auth/me").json()["email"])
+        self.assertEqual(other_login.status_code, 200)
+        separate_token = other_login.json()["access_token"]
+        old_headers = {
+            "cookie": f"neurolab_refresh={old_refresh}; neurolab_csrf={old_csrf}",
+            "x-csrf-token": old_csrf,
+        }
+        rotated = self.client.post("/auth/refresh", headers=old_headers)
+        self.assertEqual(rotated.status_code, 200, rotated.text)
+        descendant_token = rotated.json()["access_token"]
+        self.authenticate(descendant_token)
+        self.assertEqual(self.client.get("/auth/me").status_code, 200)
+        # Expired ancestors still identify reuse of a live descendant family.
+        with STORE._lock, STORE._transaction():
+            STORE._execute(
+                "UPDATE auth_sessions SET expires_at=? WHERE refresh_token_hash=?",
+                ("2020-01-01T00:00:00Z", keyed_hash(old_refresh)),
+            )
+        reused = self.client.post("/auth/refresh", headers=old_headers)
+        self.assertEqual(reused.status_code, 401)
+        cookies = reused.headers.get_list("set-cookie")
+        self.assertTrue(
+            any("neurolab_refresh=" in value and "Max-Age=0" in value for value in cookies)
+        )
+        self.assertTrue(
+            any("neurolab_csrf=" in value and "Max-Age=0" in value for value in cookies)
+        )
+        self.assertEqual(self.client.get("/auth/me").status_code, 401)
+        self.authenticate(separate_token)
+        self.assertEqual(self.client.get("/auth/me").status_code, 200)
+
+    def test_refresh_replay_with_forged_csrf_cannot_revoke_current_family(self):
+        self.register(f"csrf-reuse-{uuid.uuid4()}@example.test")
+        ancestor = self.client.cookies.get("neurolab_refresh")
+        csrf = self.csrf
+        rotated = self.client.post(
+            "/auth/refresh",
+            headers={
+                "cookie": f"neurolab_refresh={ancestor}; neurolab_csrf={csrf}",
+                "x-csrf-token": csrf,
+            },
+        )
+        self.assertEqual(rotated.status_code, 200)
+        self.authenticate(rotated.json()["access_token"])
+        denied = self.client.post(
+            "/auth/refresh",
+            headers={
+                "cookie": f"neurolab_refresh={ancestor}; neurolab_csrf=forged",
+                "x-csrf-token": "forged",
+            },
+        )
+        self.assertEqual(denied.status_code, 403)
+        self.assertEqual(self.client.get("/auth/me").status_code, 200)
+
     def test_invalid_access_token_cannot_allocate_a_claimed_account_bucket(self):
         from neurolab.api import STORE
 

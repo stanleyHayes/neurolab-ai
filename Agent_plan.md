@@ -109,3 +109,5 @@ D1 data and repo; D2 normalization; D3 statistical tools; D4 API; D5 Meta agent;
 
 - [x] Replace per-process peer buckets with bounded SQL fixed-window admission; add verified-account and prospective-login-subject limits, atomic failure counters, fail-closed behavior and explicit proxy trust. Local PostgreSQL/SQLite tests recorded separately from target ingress.
 - [ ] Rehearse actual deployed ingress header replacement/private networking and multi-replica behavior; enforce shared provider/user spend reservations. Keep invite-only signup and Meta paused. Refresh reuse HTTP-path audit, rotation/monitoring and full browser acceptance remain open.
+
+- [x] Correct refresh reuse HTTP path and returned failure-cookie clearing; test descendant family revocation, expired ancestors, forged-CSRF non-revocation and cross-connection rotation/replay races. Deployed/browser cookie lifecycle and key rotation remain unverified.

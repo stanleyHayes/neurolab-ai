@@ -7,7 +7,7 @@ import unittest
 from concurrent.futures import ThreadPoolExecutor
 from unittest.mock import patch
 
-from neurolab.auth import keyed_hash
+from neurolab.auth import keyed_hash, new_csrf_token, new_refresh_token, new_session_expiry
 from neurolab.rate_limits import (
     SharedRateLimiter,
     canonical_ip,
@@ -120,6 +120,52 @@ class SharedRateLimitTests(unittest.TestCase):
             ).fetchone()
         self.assertEqual(row["failures"], 6)
         self.assertEqual(self.store.login_rate_limit_seconds(key, "2026-10-27T00:00:00Z"), 60)
+
+    def test_concurrent_ancestor_replay_cannot_leave_a_new_descendant_active(self):
+        user = self.store.create_user("family@example.test", "store-only-hash-fixture", "Test")
+        ancestor, current = new_refresh_token(), new_refresh_token()
+        self.store.create_auth_session(
+            session_id="ancestor",
+            user_id=user["user_id"],
+            refresh_token_hash=keyed_hash(ancestor),
+            csrf_token_hash=keyed_hash(new_csrf_token()),
+            family_id="test-family",
+            expires_at=new_session_expiry(),
+        )
+
+        def rotate(store, token, session):
+            return store.rotate_auth_session(
+                old_refresh_hash=keyed_hash(token),
+                new_session_id=session,
+                new_refresh_hash=keyed_hash(
+                    current if session == "current" else new_refresh_token()
+                ),
+                new_csrf_hash=keyed_hash(new_csrf_token()),
+                new_expires_at=new_session_expiry(),
+                now=store._now(),
+            )[0]
+
+        self.assertEqual(rotate(self.store, ancestor, "current"), "rotated")
+        barrier = threading.Barrier(2)
+
+        def compete(index):
+            store = RunStore(self.path)
+            try:
+                barrier.wait()
+                return rotate(store, ancestor if index == 0 else current, "compete-" + str(index))
+            finally:
+                store.close()
+
+        with ThreadPoolExecutor(max_workers=2) as pool:
+            states = list(pool.map(compete, range(2)))
+        self.assertEqual(states[0], "reuse")
+        self.assertIn(states[1], {"rotated", "invalid"})
+        with self.store._lock:
+            live = self.store._execute(
+                "SELECT COUNT(*) AS n FROM auth_sessions WHERE family_id=? AND revoked_at IS NULL",
+                ("test-family",),
+            ).fetchone()["n"]
+        self.assertEqual(live, 0)
 
     def test_invalid_limits_fail_before_mutation(self):
         with self.assertRaises(ValueError):

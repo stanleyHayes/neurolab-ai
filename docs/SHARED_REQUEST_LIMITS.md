@@ -13,7 +13,7 @@ The 2026-10-27 increment replaces process-local HTTP counters with SQL-backed fi
 | Authenticated analysis POSTs | 10 | Same verified user |
 | Login attempts | 30 | Normalized proposed email, HMAC digested |
 | Invite-authorized registration attempts | 30 | Normalized proposed email, HMAC digested |
-| Refresh rotations | 30 | Server-resolved active refresh-session owner after CSRF validation |
+| Refresh rotations | 30 | Server-resolved refresh-session owner after CSRF validation |
 
 Authentication POSTs are register, login, refresh and change-password. Analysis POSTs are research-runs, legacy research-runs, objective refinement, direct tool execution and baseline evaluations. General admission is charged before narrower budgets; a rejected narrower request still consumes the general attempt. Fixed windows can allow up to twice the limit across a boundary; this is not a sliding-window or daily spend ledger. Registration remains invite-gated.
 
@@ -46,4 +46,6 @@ Local synthetic-header tests prove these application rules. They do not prove th
 
 `tests/test_shared_rate_limits.py` exercises separate SQL connections, exact admission counts, restart persistence, boundary/Retry-After, capacity without eviction, pseudonym storage, atomic failure increments, proxy trust and fail-closed middleware. API tests execute real Ghana numeric profiles under a shared owner budget across distinct peers, reject invalid-JWT bucket allocation and bound actual refresh rotation. Proxy tests verify trusted-header opt-in and reject raw browser forwarding. Synthetic identities/clocks are operational test inputs, not scientific measurements.
 
-`verification/postgresql-shared-rate-tests.json` records the actual disposable local PostgreSQL run, including durable-job fixture regressions. It is not target deployment acceptance. Provider-wide/user daily spend reservation, refresh replay HTTP audit, production key rotation, external HTTPS/browser acceptance, supervised deployment, production backup/retention and independent live-model quality remain open. Meta inference stays paused after exhausted credits; no paid verification is authorized by this increment.
+`verification/postgresql-shared-rate-tests.json` records the actual disposable local PostgreSQL run, including durable-job fixture regressions. It is not target deployment acceptance. Provider-wide/user daily spend reservation, target refresh replay/browser acceptance, production key rotation, external HTTPS/browser acceptance, supervised deployment, production backup/retention and independent live-model quality remain open. Meta inference stays paused after exhausted credits; no paid verification is authorized by this increment.
+
+The subsequent [refresh replay correction](AUTH_CUSTOM_JWT.md) adds local HTTP/family-race evidence. Rotated ancestors can resolve an owner for admission/revocation only; they cannot obtain an access token. Local checks do not close deployed cookie/refresh acceptance.

@@ -715,6 +715,14 @@ CREATE TABLE IF NOT EXISTS research_drafts (
     ) -> tuple[str, dict[str, Any] | None]:
         """Atomically rotate a refresh token; reused ancestors revoke the entire family."""
         with self._lock, self._transaction():
+            if self._connection.is_postgresql:
+                # Serialize rotations/replays before taking session-row locks so a
+                # concurrent descendant cannot appear after family revocation's snapshot.
+                self._execute(
+                    "SELECT u.user_id FROM users u JOIN auth_sessions s ON s.user_id=u.user_id "
+                    "WHERE s.refresh_token_hash=? FOR UPDATE OF u",
+                    (old_refresh_hash,),
+                ).fetchone()
             query = (
                 "SELECT s.*, u.is_active FROM auth_sessions s JOIN users u ON u.user_id = s.user_id "
                 "WHERE s.refresh_token_hash = ?"
@@ -777,11 +785,12 @@ CREATE TABLE IF NOT EXISTS research_drafts (
             return row is not None
 
     def get_refresh_owner(self, refresh_token_hash: str, now: str) -> str | None:
+        """Resolve admission only; rotated ancestors must reach atomic reuse revocation."""
         with self._lock:
             row = self._execute(
                 "SELECT s.user_id FROM auth_sessions s JOIN users u ON u.user_id=s.user_id "
-                "WHERE s.refresh_token_hash=? AND s.revoked_at IS NULL AND s.rotated_at IS NULL "
-                "AND s.expires_at>? AND u.is_active=1",
+                "WHERE s.refresh_token_hash=? AND s.revoked_at IS NULL "
+                "AND (s.rotated_at IS NOT NULL OR s.expires_at>?) AND u.is_active=1",
                 (refresh_token_hash, now),
             ).fetchone()
             return row["user_id"] if row else None
@@ -790,7 +799,7 @@ CREATE TABLE IF NOT EXISTS research_drafts (
         with self._lock:
             row = self._execute(
                 "SELECT csrf_token_hash FROM auth_sessions WHERE refresh_token_hash = ? "
-                "AND revoked_at IS NULL AND rotated_at IS NULL",
+                "AND revoked_at IS NULL",
                 (refresh_token_hash,),
             ).fetchone()
             return row["csrf_token_hash"] if row else None
