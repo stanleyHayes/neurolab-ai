@@ -113,15 +113,17 @@ class RestoreVerificationTests(unittest.TestCase):
                 ("hostaddr", "203.0.113.1"),
                 ("service", "production"),
             ]:
+                candidate = make_conninfo(dsn, **{key: value})
                 with self.subTest(key=key), self.assertRaises(ValueError):
-                    local_restore_parameters(make_conninfo(dsn, **{key: value}))
+                    local_restore_parameters(candidate)
             for variable in ["PGHOSTADDR", "PGSERVICE", "PGSERVICEFILE"]:
                 with patch.dict(os.environ, {variable: "fixture"}), self.assertRaises(ValueError):
                     local_restore_parameters(dsn)
 
     def test_compares_every_table_column_value_and_sequence_without_writes(self):
+        snapshot = parse_dump(DUMP)
         connection, _ = restored_connection()
-        result = verify_restored(parse_dump(DUMP), connection)
+        result = verify_restored(snapshot, connection)
         self.assertTrue(result["all_table_counts_and_content_digests_match"])
         self.assertTrue(result["sequence_states_match"])
         self.assertEqual(result["tables"], {"users": 2, "empty": 0})
@@ -135,6 +137,7 @@ class RestoreVerificationTests(unittest.TestCase):
         )
 
     def test_rejects_incomplete_inventory_changed_data_or_sequence_state(self):
+        snapshot = parse_dump(DUMP)
         replacements = [
             (0, Mock(fetchone=lambda: ("off",))),
             (1, Mock(fetchall=lambda: [("users",)])),
@@ -148,13 +151,13 @@ class RestoreVerificationTests(unittest.TestCase):
                 values[index] = replacement
                 connection.execute.side_effect = values
                 with self.assertRaises(ValueError):
-                    verify_restored(parse_dump(DUMP), connection)
+                    verify_restored(snapshot, connection)
         connection, _ = restored_connection()
         connection.cursor.return_value.copy.side_effect = [
             copied([b"b\tchanged\n", b"a\thi\\nthere\n"])
         ]
         with self.assertRaisesRegex(ValueError, "Table content differs"):
-            verify_restored(parse_dump(DUMP), connection)
+            verify_restored(snapshot, connection)
 
     def test_cli_success_and_errors_never_print_source_rows_or_credentials(self):
         with tempfile.TemporaryDirectory() as temporary, patch.dict(os.environ, {}, clear=True):
