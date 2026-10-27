@@ -1,0 +1,81 @@
+{
+  "protocol_id": "future-meta-evaluation-2026-10-27-v1",
+  "status": "FROZEN PLAN ONLY; NOT EXECUTED; INFERENCE PAUSED",
+  "freeze_commit": "6a68d063bc9d92b24b1191f58184e8cedf145054",
+  "input_sha256": {
+    "eval/tasks.json": "1c476f67b0311567943a1493d1774cf42a3b73d15fe8cda343aceee7632bdb45",
+    "eval/adversarial_cases.json": "0d5a880ccacd0bdb770b04fc1033f5b548812aa4a7110c1e3a23cffb0d858600",
+    "neurolab/agent.py": "5d96bfa9cc6943f081e3f7e9434ea4026e850a4681e6ecff2a28ae437e902140",
+    "neurolab/tools.py": "abe37bffc1de4d1409ffc31764e4cfe73092723f1ec5c864686468ccad6dfa8b",
+    "neurolab/research_context.py": "8762040024840519723c14e0e1b70dfd3da4d814743d024a76274fbde7317c7a",
+    "neurolab/answer_evaluation.py": "e37a821422f0a520c9b6c976b3ef0d308e02723f030434df39f2465781cc0c04",
+    "neurolab/providers.py": "7697b7013663fc6ec62ee96df38211b8dcd3c2834dd2091a0facb8a52796b00b",
+    "neurolab/model_spend.py": "2f987a5c0f47ccbf471e6b4b05c70dc97f8c0a407cc42cdaa63e221bb77bc3cd",
+    "docs/06_Evaluation_Benchmarks_and_Ablations.md": "980ba3a6fc46cb62b102296e829b515487697691b0373a4b093a69c92b870607",
+    "docs/RECORDED_ANSWER_EVALUATION.md": "5c01b77ed01b3a830f81406a37ae9a0d4e00a39e31a8575e6019e7851eb15c46",
+    "data/raw/ghana/maize_combined_phenotypes.csv": "2e37c07f30e00efb33b59954dd6d02a04f3d67349790d782b70dbedfdaff05bc"
+  },
+  "accuracy_tasks": [
+    "yield-contrast",
+    "drought-candidates",
+    "missingness",
+    "dataset-structure",
+    "scientific-caveat",
+    "calendar-year-boundary",
+    "structural-missingness",
+    "field-recommendation-safety",
+    "source-grounding",
+    "zero-denominator-safety",
+    "prompt-injection-boundary",
+    "ranking-uncertainty-boundary"
+  ],
+  "utility_tasks": [
+    "yield-contrast",
+    "drought-candidates",
+    "missingness",
+    "dataset-structure",
+    "scientific-caveat",
+    "calendar-year-boundary",
+    "structural-missingness",
+    "field-recommendation-safety",
+    "source-grounding",
+    "zero-denominator-safety"
+  ],
+  "seeds": [
+    2026,
+    77,
+    113
+  ],
+  "policies": [
+    "meta_with_results",
+    "meta_without_result_evidence",
+    "deterministic_focused",
+    "fixed_profile_then_contrast",
+    "seeded_random_without_replacement"
+  ],
+  "per_trial_maxima": {
+    "numeric_calls": 2,
+    "steps": 2,
+    "wall_seconds": 60
+  },
+  "planned_research_trials": 180,
+  "planned_meta_trials": 72,
+  "model_id": null,
+  "model_prices": null,
+  "approved_spend_cap_usd": null,
+  "semantic_review": {
+    "dimensions": [
+      "answers_question",
+      "claims_supported",
+      "scope_honest",
+      "useful_to_researcher"
+    ],
+    "independent_reviewer_type": "human",
+    "policy_masked": true,
+    "preserve_failure_status_and_scientific_limits": true,
+    "known_question_set": true,
+    "held_out": false
+  },
+  "run_authorization": "NOT GRANTED: owner requires inference pause; explicit future authorization required",
+  "execution_support": "Future live collector and reviewed spending configuration required. Existing offline collector does not execute this plan."
+}

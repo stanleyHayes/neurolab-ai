@@ -23,11 +23,11 @@ This dated ledger supersedes current-state statements in the 2026-10-26 read-onl
 ## External integration blockers
 
 - Meta credits exhausted: owner required replay, and `MODEL_INFERENCE_ENABLED=false` remains enforced. Do not spend or enable inference to clear the live-agent gate.
-- Browser control repeatedly times out/returns unavailable. DOM tests, HTTP 200, static plots and earlier screenshots do not establish acceptance of the new UI.
+- Browser control currently returns `CUA_REPL_ENABLED_SURFACES is required`; earlier attempts timed out. DOM tests, HTTP 200, static plots and earlier screenshots do not establish acceptance of the new UI.
 - No target deployment or public-source remote configured in this checkout. Production acceptance, domain/secret/account setup, licensing and entrant selections require their real external state; none is inferred.
 
 ## Next locally actionable work
 
-Corrected-protocol assistant adjudication is recorded; complete a frozen future live-model evaluation plan and independent review without claiming acceptance from known-set assistant ratings. Synthetic model-visible containment/result-feedback contracts are now recorded, separate from live resistance/usefulness. Complete a human/browser walkthrough when access is available, then record the video using the prepared guide. Prepare publication/licensing and target deployment evidence; do not invent owner/organizer decisions or deploy with ephemeral signing keys. The generated-answer harness, shared controls and durable queue already exist and must not be listed as missing implementations.
+Corrected-protocol assistant adjudication is recorded; the frozen future live-model protocol is recorded in `docs/FUTURE_LIVE_EVALUATION.md` and `eval/future-live-protocol.json`. A reviewed live collector, explicit future authorization and independent review remain required; known-set assistant ratings do not establish acceptance. Synthetic model-visible containment/result-feedback contracts are now recorded, separate from live resistance/usefulness. Complete a human/browser walkthrough when access is available, then record the video using the prepared guide. Prepare publication/licensing and target deployment evidence; do not invent owner/organizer decisions or deploy with ephemeral signing keys. The generated-answer harness, shared controls and durable queue already exist and must not be listed as missing implementations.
 
 Core replay is suitable for a labeled demo rehearsal. The full goal remains open: neither a green suite nor this ledger establishes submission eligibility, production readiness or completion of the unverified external gates.

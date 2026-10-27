@@ -126,3 +126,10 @@ D1 data and repo; D2 normalization; D3 statistical tools; D4 API; D5 Meta agent;
 - [x] Exercise synthetic CSV labels through actual normalization/ranking/model input, reject programmed unsafe replies and prevent invented model summaries from becoming report claims; retain exact inputs/replies and failed trials.
 - [x] Add internal result-feedback withholding with truthful decision/report labeling; keep normal HTTP requests unchanged and replay evidence intact.
 - [ ] Execute committed collection; retain live Meta resistance/usefulness ablations, independent semantic review and browser/external delivery as separate unverified gates.
+
+
+## 2026-10-27 current evaluation and execution boundary
+
+- [x] Preserve ten synthetic CSV/feedback contract trials and complete 36 separate non-blind assistant reviews of the corrected six-tool collection. Historical combined unchecked items above retain their external/live/independent portions; see the current completion ledger.
+- [x] Freeze a future live evaluation protocol with twelve accuracy tasks, ten fixed utility tasks, matched budgets/policies/seeds and eleven implementation/source hashes. See `docs/FUTURE_LIVE_EVALUATION.md` and `eval/future-live-protocol.json`.
+- [ ] Build/review the future live collector before use, obtain explicit authorization and verified pricing/spend configuration, then execute all preserved trials, independent adjudication, safety and two result-dependent Meta decision acceptance. Meta remains paused; no live outcome is claimed.
