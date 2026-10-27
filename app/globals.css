@@ -6668,3 +6668,201 @@ output {
   :is(.brand-full-lockup, .brand-symbol-lockup, .auth-brand img) {
   filter: brightness(0.38);
 }
+
+.run-plan-heading,
+.plan-section-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.run-plan-heading {
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.run-plan-heading h2 {
+  margin: 0;
+}
+.plan-cinematic-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  min-height: 44px;
+  max-width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  line-height: 1.5;
+  white-space: normal;
+}
+.plan-cinematic-link .result-icon {
+  flex: 0 0 18px;
+}
+.plan-hypotheses,
+.plan-boundaries {
+  margin-block: 28px;
+}
+.plan-section-heading {
+  margin-bottom: 16px;
+}
+.plan-section-heading h3 {
+  margin: 0;
+  font-size: 20px;
+}
+.plan-section-heading p {
+  margin: 5px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+.plan-section-icon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--cyan);
+  background: var(--panel-raised);
+}
+.plan-section-count {
+  margin-left: auto;
+  font-size: 12px;
+  color: var(--muted);
+}
+.hypothesis-card-grid {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+.hypothesis-card {
+  min-width: 0;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  overflow-wrap: anywhere;
+}
+.hypothesis-card-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.hypothesis-card-label span:first-child {
+  color: var(--cyan);
+  font-weight: 700;
+  font-family: ui-monospace, monospace;
+}
+.hypothesis-card h4 {
+  margin: 16px 0 20px;
+  font:
+    500 16px/1.65 "DM Sans",
+    Arial,
+    sans-serif;
+  color: var(--text);
+}
+.hypothesis-card h5 {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0 0 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--cyan);
+}
+.hypothesis-card h5 .result-icon {
+  width: 16px;
+  height: 16px;
+}
+.hypothesis-card p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.75;
+}
+.hypothesis-rationale {
+  margin-bottom: 18px;
+  color: var(--muted);
+}
+.hypothesis-criterion {
+  padding: 14px 16px;
+  border-left: 2px solid var(--gold);
+  border-radius: 0 8px 8px 0;
+  background: var(--panel-raised);
+  color: var(--text);
+}
+.hypothesis-criterion h5 {
+  color: var(--gold);
+}
+.hypothesis-original {
+  margin-top: 18px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+  font-size: 12px;
+  color: var(--muted);
+}
+.hypothesis-original summary {
+  cursor: pointer;
+  color: var(--cyan);
+}
+.hypothesis-original p {
+  margin-top: 12px;
+  font-size: 12px;
+}
+.plan-boundaries {
+  padding: 20px;
+  background: var(--panel-raised);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.plan-boundaries .plan-section-icon {
+  color: var(--gold);
+}
+.plan-boundary-notes {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 12px;
+}
+.plan-boundary-notes li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.plan-boundary-notes .result-icon {
+  flex: 0 0 18px;
+  color: var(--gold);
+  margin-top: 4px;
+}
+.plan-boundary-notes p {
+  margin: 0;
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.75;
+  overflow-wrap: anywhere;
+}
+.plan-cinematic-link:focus-visible,
+.hypothesis-original summary:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 4px;
+}
+@media (max-width: 900px) {
+  .hypothesis-card-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .hypothesis-card {
+    padding: 18px;
+  }
+  .plan-section-count {
+    margin-left: 0;
+  }
+}

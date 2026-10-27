@@ -1,3 +1,6 @@
+import Link from "next/link";
+import { ResultIcon } from "./ResultIcon";
+import { ResearchHypotheses } from "./ResearchHypotheses";
 import type { ResearchReport } from "./workspace-types";
 
 export function ResearchRunPlan({
@@ -9,7 +12,16 @@ export function ResearchRunPlan({
       aria-labelledby="run-plan-title"
     >
       <span className="eyebrow">PERSISTED INVESTIGATION CONTRACT</span>
-      <h2 id="run-plan-title">Original objective &amp; execution plan</h2>
+      <div className="run-plan-heading">
+        <h2 id="run-plan-title">Original objective &amp; execution plan</h2>
+        <Link
+          href="/live-experiment"
+          className="secondary-button plan-cinematic-link"
+        >
+          <ResultIcon name="retention" /> Watch cinematic replay{" "}
+          <ResultIcon name="arrow" />
+        </Link>
+      </div>
       <h3>Original objective · exact submitted text</h3>
       <pre className="objective-verbatim">{report.objective}</pre>
       {report.refined_objective && (
@@ -24,16 +36,10 @@ export function ResearchRunPlan({
             Planning mode: {report.research_plan.planning_mode}. Hypotheses are
             proposals, not scientific results.
           </p>
-          {report.research_plan.hypotheses.length > 0 && (
-            <>
-              <h3>Proposed hypotheses</h3>
-              <ol>
-                {report.research_plan.hypotheses.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ol>
-            </>
-          )}
+          <ResearchHypotheses
+            hypotheses={report.research_plan.hypotheses}
+            constraints={report.research_plan.important_constraints ?? []}
+          />
           {report.research_plan.ambiguities?.length > 0 && (
             <div className="notice">
               <h3>Planning limits and unresolved questions</h3>
@@ -62,17 +68,6 @@ export function ResearchRunPlan({
               </li>
             ))}
           </ol>
-          {report.research_plan.important_constraints &&
-            report.research_plan.important_constraints.length > 0 && (
-              <>
-                <h3>Preserved research constraints</h3>
-                <ul>
-                  {report.research_plan.important_constraints.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </>
-            )}
           {report.research_plan.unsupported_requirements.length > 0 && (
             <div className="notice">
               <h3>Unmet research requirements</h3>
