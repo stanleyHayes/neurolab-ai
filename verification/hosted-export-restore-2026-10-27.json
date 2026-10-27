@@ -1,0 +1,73 @@
+{
+  "date": "2026-10-27",
+  "provider": {
+    "database_id": "dpg-dbghtorl550s738emhv0-a",
+    "database_name": "neurolab-db",
+    "status": "available",
+    "plan": "0.1c-256mb",
+    "region": "frankfurt",
+    "version": "18",
+    "created_at": "2026-10-27T22:00:03.153977Z",
+    "public_allowlist_count": 0,
+    "recovery": {
+      "recoveryStatus": "AVAILABLE",
+      "startsAt": "2026-10-27T22:12:55Z"
+    }
+  },
+  "export_id": "dpg-dbghtorl550s738emhv0-a/2026-10-27T22:59Z",
+  "export_created_at": "2026-10-27T22:59:00Z",
+  "archive_sha256": "01fd33eaea8bf866ade5776fc55fcb25cb2bfc653c42ce8191455bc3120a8c84",
+  "archive_bytes": 92424,
+  "encrypted_archive_sha256": "b8bd7a6dd5a14fb92d07ee36f5e1c05f253edd68af5b64ecc094aa7a42f76b7c",
+  "verification": {
+    "all_table_counts_and_content_digests_match": true,
+    "sequence_states_match": true,
+    "read_only": true,
+    "tables": {
+      "artifacts": 8,
+      "auth_login_limits": 0,
+      "auth_rate_limits": 0,
+      "auth_sessions": 7,
+      "events": 85,
+      "model_spend_control": 1,
+      "model_spend_policy_events": 0,
+      "model_spend_reservations": 0,
+      "queue_control": 1,
+      "request_rate_buckets": 6,
+      "request_rate_control": 1,
+      "research_drafts": 0,
+      "research_jobs": 2,
+      "runs": 2,
+      "users": 2
+    },
+    "sequence_count": 0,
+    "source_hashes_match_canonical": true,
+    "local_restore_has_tcp_listener": false,
+    "job_states": {
+      "DONE": 2
+    }
+  },
+  "encryption": {
+    "format": "Fernet authenticated encryption",
+    "roundtrip_verified": true,
+    "private_archive_mode": "0600",
+    "private_key_mode": "0600",
+    "key_in_repository": false,
+    "same_host_key_custody_only": true
+  },
+  "cleanup": {
+    "plaintext_working_data_removed": true,
+    "disposable_cluster_stopped_and_removed": true
+  },
+  "live_database_connection_or_allowlist_changed": false,
+  "api_or_worker_restarted": false,
+  "new_paid_cloud_instance_created": false,
+  "model_calls": 0,
+  "initial_verifier_result": "Rejected provider quote-all-identifiers format before comparison; parser regression added and same snapshot verified successfully",
+  "scope": "Hosted provider export restored and compared locally; not a managed PITR cutover or established scheduled offsite recovery policy",
+  "remaining": [
+    "Storage destination/retention and independent key custody",
+    "Scheduled backup automation and monitored restore/RPO/RTO acceptance",
+    "Managed target PITR/cutover and live recovery/rollback acceptance"
+  ]
+}

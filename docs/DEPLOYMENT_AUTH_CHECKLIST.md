@@ -21,7 +21,7 @@ No outbound mail service exists, so there is no password-reset endpoint or reset
 
 ## Rollback / key rotation
 
-Back up and verify restore before schema changes. Current schema initialization adds `owner_user_id` without assigning legacy records; roll forward is preferred. Rolling back application code must not expose the now-private run store again; use an isolated database backup and keep the service closed. For JWT rotation, configure the new signing `kid`, provide a verification keyring with the old public key accepted during overlap, roll all instances, wait at least max access lifetime, then retire old key. A production keyring/automated rotation is not implemented; do not rotate ad hoc while service remains open.
+Back up and verify restore before schema changes. Current schema initialization adds `owner_user_id` without assigning legacy records; roll forward is preferred. Rolling back application code must not expose the now-private run store again; use an isolated database backup and keep the service closed. For JWT rotation, configure the new signing `kid`, provide a verification keyring with the old public key accepted during overlap, roll all instances, wait at least max access lifetime, then retire old key. The application supports a verification keyring; actual target distribution and retirement remain operator-controlled and unverified. Do not rotate ad hoc while the service remains open.
 
 ## Go/no-go
 
@@ -41,3 +41,7 @@ Authentication is a useful prototype hardening contribution, not a production la
 ## Signing key overlap increment 27 October 2026
 
 Use [the staged signing-key rotation runbook](AUTH_SIGNING_KEY_ROTATION.md): distribute the upcoming public verifier before changing signers, stop all old issuers, drain the access lifetime/leeway, then remove the old verifier. Overlap retirement is operator-controlled. Local fixture/API tests are separate from actual deployed secret distribution, monitoring, retirement and incident response. Do not rotate the HMAC pepper as part of this operation.
+
+## Hosted export restore rehearsal — 27 October 2026
+
+[The snapshot restore runbook](POSTGRES_RECOVERY_REHEARSAL.md) now records a real hosted Render export restored into an isolated local PostgreSQL 18 cluster, with all application table counts/content digests and sequence inventory/state matching. Runtime secrets remain separate from database snapshots. This closes the recorded snapshot/data verification step; managed PITR cutover, scheduled offsite retention, independent key custody, alerts and target operational recovery remain open.

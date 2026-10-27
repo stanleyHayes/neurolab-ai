@@ -48,3 +48,7 @@ docker build -f Dockerfile.worker -t neurolab-render-worker:review .
 ```
 
 Blueprint validation and local Docker/PostgreSQL checks do not create infrastructure or establish hosted acceptance. Actual service IDs/URLs, Vercel project/environment, production secrets, database provisioning and release evidence must be recorded after deployment. Earlier Vercel-only evidence remains historical, not the current topology.
+
+## Hosted snapshot recovery rehearsal
+
+A logical export of the actual Render database was restored in a separate local PostgreSQL 18 cluster and compared read-only against every public table/column/content digest and sequence state. See [the recovery runbook](POSTGRES_RECOVERY_REHEARSAL.md) and `verification/hosted-export-restore-2026-10-27.json`. Provider PITR availability and this snapshot restore are verified separately from a managed PITR cutover, scheduled offsite retention, key custody, alerts and target RPO/RTO. The live database and its empty public-access allowlist were unchanged.
