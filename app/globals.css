@@ -7127,3 +7127,430 @@ output {
     transition: none;
   }
 }
+
+/* Circle dimensions must agree with flex sizing at every breakpoint. */
+.workspace-navigation .avatar {
+  inline-size: 36px;
+  min-inline-size: 36px;
+  max-inline-size: 36px;
+  block-size: 36px;
+  min-block-size: 36px;
+  flex: 0 0 36px;
+  aspect-ratio: 1;
+  padding: 0;
+  line-height: 1;
+  border-radius: 50%;
+}
+.workspace-status .mode-dot {
+  width: 7px;
+  height: 7px;
+  flex: 0 0 7px;
+  aspect-ratio: 1;
+  margin: 0;
+}
+.theme-control .theme-switch-track {
+  flex: 0 0 64px;
+}
+.theme-control .theme-switch-thumb {
+  box-sizing: border-box;
+  min-width: 28px;
+  max-width: 28px;
+  min-height: 28px;
+  max-height: 28px;
+  aspect-ratio: 1;
+  flex: none;
+  padding: 0;
+}
+.theme-control .theme-switch-track svg {
+  flex: 0 0 17px;
+  aspect-ratio: 1;
+}
+
+/* Account: a researcher identity rail beside focused account controls. */
+.account-redesign {
+  padding: 0 32px 56px;
+}
+.account-redesign .account-header {
+  max-width: 1160px;
+  min-height: 88px;
+  padding: 16px 0;
+}
+.account-redesign .auth-brand img {
+  width: 164px;
+  height: auto;
+}
+.account-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.account-back-link {
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  min-height: 44px;
+  color: var(--text);
+  font-size: 13px;
+  text-decoration: none;
+}
+.account-back-link svg {
+  transform: rotate(180deg);
+  width: 18px;
+  height: 18px;
+}
+.account-redesign .account-content {
+  max-width: 1160px;
+  margin-top: 44px;
+  gap: 24px;
+}
+.account-page-heading .eyebrow {
+  color: var(--cyan);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  margin: 0 0 12px;
+}
+.account-redesign .account-page-heading h1 {
+  font-size: clamp(30px, 4vw, 44px);
+  margin: 0;
+  line-height: 1.15;
+}
+.account-page-heading > p:last-child {
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+.account-layout {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  gap: 32px;
+  align-items: start;
+  margin-top: 8px;
+}
+.account-identity {
+  position: sticky;
+  top: 24px;
+  min-width: 0;
+  padding: 24px 20px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+}
+.account-identity-avatar {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  aspect-ratio: 1;
+  flex: 0 0 64px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--panel-raised);
+  color: var(--green);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1;
+}
+.account-identity h2 {
+  font-family: inherit;
+  font-size: 18px;
+  line-height: 1.4;
+  margin: 20px 0 6px;
+  overflow-wrap: anywhere;
+}
+.account-identity-email {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.6;
+  margin: 0 0 14px;
+  overflow-wrap: anywhere;
+}
+.account-role {
+  display: inline-flex;
+  padding: 5px 9px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--green);
+  font-size: 11px;
+  text-transform: capitalize;
+}
+.account-joined {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.6;
+  margin-top: 16px;
+}
+.account-section-nav {
+  display: grid;
+  gap: 6px;
+  border-top: 1px solid var(--line);
+  padding-top: 20px;
+  margin-top: 24px;
+}
+.account-section-nav a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  padding: 8px;
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 12px;
+  text-decoration: none;
+}
+.account-section-nav a:hover {
+  background: var(--panel-raised);
+}
+.account-section-nav a > span {
+  margin-left: auto;
+  color: var(--muted);
+}
+.account-section-nav svg,
+.account-evidence-link svg {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+}
+.account-evidence-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-top: 1px solid var(--line);
+  padding-top: 20px;
+  margin-top: 20px;
+  color: var(--cyan);
+  font-size: 12px;
+  line-height: 1.6;
+  text-decoration: none;
+}
+.account-panels {
+  display: grid;
+  gap: 24px;
+  min-width: 0;
+}
+.account-panel {
+  padding: 28px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  scroll-margin-top: 24px;
+}
+.account-panel-heading {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+.account-section-icon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--cyan);
+  background: var(--panel-raised);
+}
+.account-section-icon svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  fill: none;
+}
+.account-panel-heading h2 {
+  margin: 0 0 6px;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+.account-panel-heading p {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.6;
+  margin: 0;
+}
+.account-panel .auth-form {
+  margin-top: 26px;
+  gap: 20px;
+}
+.account-panel .auth-form input {
+  min-height: 46px;
+  font-size: 14px;
+  border-radius: 8px;
+}
+.account-panel .auth-form label {
+  align-content: start;
+  font-size: 12px;
+}
+.account-password-form {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.account-current-password,
+.account-form-footer {
+  grid-column: 1 / -1;
+}
+.account-form-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border-top: 1px solid var(--line);
+  padding-top: 20px;
+  margin-top: 4px;
+}
+.account-form-footer > span {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.6;
+}
+.account-form-footer button,
+.account-session-row button {
+  display: inline-flex;
+  gap: 9px;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  border-radius: 8px;
+  flex-shrink: 0;
+  font-size: 12px;
+}
+.account-form-footer button svg {
+  width: 16px;
+  height: 16px;
+}
+.account-session-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  border-top: 1px solid var(--line);
+  margin-top: 24px;
+  padding-top: 22px;
+}
+.account-session-row h3 {
+  font-family: inherit;
+  font-size: 13px;
+  margin: 0 0 6px;
+}
+.account-session-row p {
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--muted);
+  margin: 0;
+}
+.account-recovery-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 0 4px;
+  color: var(--muted);
+}
+.account-recovery-note > svg {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  color: var(--gold);
+  margin-top: 2px;
+}
+.account-recovery-note p {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.7;
+}
+.account-recovery-note strong,
+.account-recovery-note span {
+  display: block;
+}
+.account-recovery-note strong {
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+.account-redesign a:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 4px;
+  border-radius: 8px;
+}
+@media (max-width: 900px) {
+  .account-layout {
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: 20px;
+  }
+  .account-panel {
+    padding: 22px;
+  }
+  .account-form-footer,
+  .account-session-row {
+    flex-wrap: wrap;
+  }
+}
+@media (max-width: 700px) {
+  .account-redesign {
+    padding: 0 16px 36px;
+  }
+  .account-redesign .account-header {
+    min-height: 76px;
+  }
+  .account-redesign .auth-brand img {
+    width: 130px;
+  }
+  .account-header-actions {
+    gap: 12px;
+  }
+  .account-back-link {
+    width: 44px;
+    justify-content: center;
+  }
+  .account-back-link > span {
+    display: none;
+  }
+  .account-redesign .account-content {
+    margin-top: 28px;
+    gap: 20px;
+  }
+  .account-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+  .account-identity {
+    position: static;
+    padding: 20px;
+  }
+  .account-section-nav {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    margin-top: 20px;
+    padding-top: 16px;
+  }
+  .account-section-nav a {
+    justify-content: center;
+    gap: 7px;
+    padding: 6px 0;
+    font-size: 11px;
+  }
+  .account-section-nav a > span {
+    display: none;
+  }
+  .account-evidence-link {
+    display: none;
+  }
+  .account-password-form {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .account-panel {
+    padding: 20px;
+  }
+  .account-form-footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .account-session-row {
+    align-items: flex-start;
+  }
+}

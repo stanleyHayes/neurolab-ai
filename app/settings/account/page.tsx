@@ -1,6 +1,10 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
+import { ThemeControl } from "../../theme-control";
+import { UserIcon, LockIcon } from "../../auth-icons";
+import { ResultIcon } from "../../workspace/ResultIcon";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import type { SyntheticEvent } from "react";
@@ -146,121 +150,268 @@ export default function AccountSettingsPage() {
     }
   }
 
+  const initials =
+    user?.display_name
+      .trim()
+      .split(/\s+/)
+      .map((part) => part[0])
+      .slice(0, 2)
+      .join("")
+      .toUpperCase() || "NL";
+  const joined = user ? new Date(user.created_at) : null;
+  const joinedLabel =
+    joined && Number.isFinite(joined.getTime())
+      ? joined.toLocaleDateString("en-GB", {
+          month: "long",
+          year: "numeric",
+          timeZone: "Africa/Accra",
+        })
+      : null;
+
   return (
-    <main className="account-shell">
+    <main className="account-shell account-redesign">
       <header className="account-header">
-        <Link className="auth-brand" href="/">
-          ◈ <span>NEUROLAB AI</span>
+        <Link className="auth-brand" href="/" aria-label="NeuroLab AI overview">
+          <Image
+            src="/brand/04_full_horizontal.svg"
+            width={180}
+            height={55}
+            alt="NeuroLab AI"
+            priority
+          />
         </Link>
-        <Link className="text-link" href="/">
-          Back to workspace
-        </Link>
+        <div className="account-header-actions">
+          <ThemeControl />
+          <Link
+            className="account-back-link"
+            href="/"
+            aria-label="Back to workspace"
+          >
+            <ResultIcon name="arrow" /> <span>Back to workspace</span>
+          </Link>
+        </div>
       </header>
       <section className="account-content" aria-labelledby="account-title">
-        <p className="eyebrow">IDENTITY & SECURITY</p>
-        <h1 id="account-title">Account settings</h1>
-        <p className="auth-description">
-          Manage your researcher profile and credentials.
-        </p>
+        <div className="account-page-heading">
+          <p className="eyebrow">YOUR RESEARCH WORKSPACE</p>
+          <h1 id="account-title">Account settings</h1>
+          <p>
+            Manage your researcher identity, password and signed-in sessions.
+          </p>
+        </div>
         {error && (
           <p className="auth-error" role="alert">
             {error}
           </p>
         )}
         {notice && <output className="account-notice">{notice}</output>}
-        <article className="card account-card">
-          <h2>Researcher profile</h2>
-          <p className="auth-description">
-            Signed in as <strong>{user?.email ?? "Loading…"}</strong>
-          </p>
-          <form className="auth-form" onSubmit={updateProfile}>
-            <label>
-              <span>Display name</span>
-              <input
-                name="display_name"
-                autoComplete="name"
-                required
-                minLength={1}
-                maxLength={80}
-                defaultValue={user?.display_name ?? ""}
-                key={user?.display_name ?? "loading"}
-              />
-            </label>
-            <button
-              className="primary-button"
-              type="submit"
-              disabled={busy || !user}
+        <div className="account-layout">
+          <aside
+            className="account-identity"
+            aria-label="Researcher identity"
+            aria-busy={!user && !error}
+          >
+            <span className="account-identity-avatar" aria-hidden="true">
+              {initials}
+            </span>
+            <h2>{user?.display_name ?? "Loading profile…"}</h2>
+            <p className="account-identity-email">
+              {user?.email ?? "Your account details will appear here."}
+            </p>
+            {user && <span className="account-role">{user.role}</span>}
+            {joinedLabel && (
+              <p className="account-joined">Member since {joinedLabel}</p>
+            )}
+            <nav className="account-section-nav" aria-label="Account sections">
+              <a href="#researcher-profile">
+                <UserIcon /> Researcher profile <span>↗</span>
+              </a>
+              <a href="#account-password">
+                <LockIcon /> Password <span>↗</span>
+              </a>
+              <a href="#account-sessions">
+                <ResultIcon name="retention" /> Sessions <span>↗</span>
+              </a>
+            </nav>
+            <Link className="account-evidence-link" href="/reports">
+              <ResultIcon name="record" />
+              <span>Return to your research reports</span>
+            </Link>
+          </aside>
+          <div className="account-panels">
+            <article
+              className="account-panel"
+              id="researcher-profile"
+              aria-labelledby="profile-heading"
             >
-              Save profile
-            </button>
-          </form>
-        </article>
-        <article className="card account-card">
-          <h2>Change password</h2>
-          <form className="auth-form" onSubmit={changePassword}>
-            <label>
-              <span>Current password</span>
-              <input
-                name="current_password"
-                type="password"
-                autoComplete="current-password"
-                required
-                maxLength={1024}
-              />
-            </label>
-            <label>
-              <span id="new-password-label">New password</span>
-              <input
-                name="new_password"
-                aria-labelledby="new-password-label"
-                type="password"
-                autoComplete="new-password"
-                required
-                minLength={12}
-                maxLength={1024}
-              />
-              <small>Use at least 12 characters.</small>
-            </label>
-            <label>
-              <span>Confirm new password</span>
-              <input
-                name="confirm_password"
-                type="password"
-                autoComplete="new-password"
-                required
-                minLength={12}
-                maxLength={1024}
-              />
-            </label>
-            <button className="primary-button" type="submit" disabled={busy}>
-              Change password
-            </button>
-          </form>
-        </article>
-        <article className="card account-card signout-actions">
-          <h2>Sessions</h2>
-          <p>Sign out here, or revoke all your active sessions.</p>
-          <button
-            className="secondary-button"
-            type="button"
-            onClick={() => void signOut(false)}
-            disabled={busy}
-          >
-            Sign out
-          </button>
-          <button
-            className="quiet-button"
-            type="button"
-            onClick={() => void signOut(true)}
-            disabled={busy}
-          >
-            Sign out all sessions
-          </button>
-        </article>
-        <p className="auth-security">
-          Password recovery requires a verified operator-assisted reset. No
-          email reset channel is configured.
-        </p>
+              <div className="account-panel-heading">
+                <span className="account-section-icon" aria-hidden="true">
+                  <UserIcon />
+                </span>
+                <div>
+                  <h2 id="profile-heading">Researcher profile</h2>
+                  <p>Choose the name shown in your workspace.</p>
+                </div>
+              </div>
+              <form
+                className="auth-form account-profile-form"
+                onSubmit={updateProfile}
+              >
+                <label>
+                  <span>Display name</span>
+                  <input
+                    name="display_name"
+                    autoComplete="name"
+                    required
+                    minLength={1}
+                    maxLength={80}
+                    defaultValue={user?.display_name ?? ""}
+                    key={user?.display_name ?? "loading"}
+                    disabled={!user || busy}
+                  />
+                </label>
+                <div className="account-form-footer">
+                  <span>Keep your name recognizable.</span>
+                  <button
+                    className="primary-button"
+                    type="submit"
+                    disabled={busy || !user}
+                  >
+                    <ResultIcon name="save" /> Save profile
+                  </button>
+                </div>
+              </form>
+            </article>
+            <article
+              className="account-panel"
+              id="account-password"
+              aria-labelledby="password-heading"
+            >
+              <div className="account-panel-heading">
+                <span className="account-section-icon" aria-hidden="true">
+                  <LockIcon />
+                </span>
+                <div>
+                  <h2 id="password-heading">Change password</h2>
+                  <p>
+                    Use a unique password to protect access to your research.
+                  </p>
+                </div>
+              </div>
+              <form
+                className="auth-form account-password-form"
+                onSubmit={changePassword}
+              >
+                <label className="account-current-password">
+                  <span>Current password</span>
+                  <input
+                    name="current_password"
+                    type="password"
+                    autoComplete="current-password"
+                    required
+                    maxLength={1024}
+                    disabled={!user || busy}
+                  />
+                </label>
+                <label>
+                  <span id="new-password-label">New password</span>
+                  <input
+                    name="new_password"
+                    aria-labelledby="new-password-label"
+                    aria-describedby="account-password-help"
+                    type="password"
+                    autoComplete="new-password"
+                    required
+                    minLength={12}
+                    maxLength={1024}
+                    disabled={!user || busy}
+                  />
+                  <small id="account-password-help">
+                    Use at least 12 characters.
+                  </small>
+                </label>
+                <label>
+                  <span>Confirm new password</span>
+                  <input
+                    name="confirm_password"
+                    type="password"
+                    autoComplete="new-password"
+                    required
+                    minLength={12}
+                    maxLength={1024}
+                    disabled={!user || busy}
+                  />
+                </label>
+                <div className="account-form-footer">
+                  <span>Changing your password signs out other sessions.</span>
+                  <button
+                    className="secondary-button"
+                    type="submit"
+                    disabled={busy || !user}
+                  >
+                    Change password
+                  </button>
+                </div>
+              </form>
+            </article>
+            <article
+              className="account-panel"
+              id="account-sessions"
+              aria-labelledby="sessions-heading"
+            >
+              <div className="account-panel-heading">
+                <span className="account-section-icon" aria-hidden="true">
+                  <ResultIcon name="retention" />
+                </span>
+                <div>
+                  <h2 id="sessions-heading">Sessions</h2>
+                  <p>End this session or sign out on every device.</p>
+                </div>
+              </div>
+              <div className="account-session-row">
+                <div>
+                  <h3>This session</h3>
+                  <p>Sign out of the account in this browser.</p>
+                </div>
+                <button
+                  className="secondary-button"
+                  type="button"
+                  onClick={() => void signOut(false)}
+                  disabled={busy || !user}
+                >
+                  Sign out
+                </button>
+              </div>
+              <div className="account-session-row">
+                <div>
+                  <h3>All sessions</h3>
+                  <p>
+                    You will need to sign in again on each device, including
+                    this one.
+                  </p>
+                </div>
+                <button
+                  className="quiet-button"
+                  type="button"
+                  onClick={() => void signOut(true)}
+                  disabled={busy || !user}
+                >
+                  Sign out all sessions
+                </button>
+              </div>
+            </article>
+            <div className="account-recovery-note">
+              <ResultIcon name="caution" />
+              <p>
+                <strong>Need help recovering your account?</strong>
+                <span>
+                  Password recovery requires a verified operator-assisted reset.
+                  No email reset channel is configured.
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
   );

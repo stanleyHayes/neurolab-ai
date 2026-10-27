@@ -142,6 +142,44 @@ it("updates profile and changes password with current-password confirmation", as
   expect(getAccessToken()).toBe("");
 });
 
+it("offers account section navigation and appearance controls", async () => {
+  render(<AccountSettingsPage />);
+  await screen.findByText(user.email);
+  expect(
+    screen
+      .getByRole("link", { name: "Back to workspace" })
+      .getAttribute("href"),
+  ).toBe("/");
+  expect(
+    screen
+      .getByRole("link", { name: /Researcher profile/ })
+      .getAttribute("href"),
+  ).toBe("#researcher-profile");
+  expect(
+    screen.getByRole("link", { name: /^Password/ }).getAttribute("href"),
+  ).toBe("#account-password");
+  expect(screen.getByRole("button", { name: "Light mode" })).toBeTruthy();
+  expect(screen.getByText("Member since October 2026")).toBeTruthy();
+});
+
+it("revokes all sessions through the authenticated CSRF-protected action", async () => {
+  render(<AccountSettingsPage />);
+  await screen.findByText(user.email);
+  fireEvent.click(
+    screen.getByRole("button", { name: "Sign out all sessions" }),
+  );
+  await waitFor(() =>
+    expect(navigation.router.replace).toHaveBeenCalledWith("/sign-in"),
+  );
+  const request = vi
+    .mocked(fetch)
+    .mock.calls.find(([url]) => String(url).endsWith("/logout-all"));
+  expect(request?.[1]?.method).toBe("POST");
+  expect(new Headers(request?.[1]?.headers).get("x-csrf-token")).toBe(
+    "fixture-csrf",
+  );
+});
+
 it("coalesces concurrent refreshes and retries with the rotated access credential", async () => {
   document.cookie = "neurolab_csrf=fixture-csrf; path=/";
   setAccessToken("expired-fixture");
