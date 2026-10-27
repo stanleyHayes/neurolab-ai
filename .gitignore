@@ -30,3 +30,6 @@ nohup.out
 /*.docx
 
 /skill-observations/
+
+# Unreviewed demo recordings, generated narration and render intermediates.
+/output/demo-video/

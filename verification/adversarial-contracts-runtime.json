@@ -1,0 +1,11 @@
+{
+  "collection_file": "eval/synthetic-contracts-2026-10-27.json",
+  "sha256": "04452cdc9070aeadcc64764e8a713a00d835e31a11342cecdd9434e7fd52e76c",
+  "loaded_code_commit": "f5d4409dfd1e2204ecac14f40c1f2ff90da89716",
+  "records": 10,
+  "all_contract_checks_passed": true,
+  "canonical_sources_unchanged": true,
+  "fixture_adapter_calls": 20,
+  "live_model_calls": 0,
+  "scope": "Synthetic CSV containment and result-feedback input contracts with programmed replies; no live Meta behavior, scientific measurements or policy-superiority inference."
+}
