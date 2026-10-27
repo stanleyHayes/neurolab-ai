@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ResearchResult",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "artifact_id",
+    "source_sha256",
+    "tool_name",
+    "claim_scope",
+    "sample_size",
+    "results",
+    "warnings"
+  ],
+  "properties": {
+    "artifact_id": {
+      "type": "string"
+    },
+    "source_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "source_file": {
+      "type": "string",
+      "minLength": 1
+    },
+    "analysis_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tool_name": {
+      "type": "string"
+    },
+    "claim_scope": {
+      "enum": [
+        "descriptive",
+        "exploratory",
+        "validated_model"
+      ]
+    },
+    "sample_size": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "results": {
+      "type": "object"
+    },
+    "estimand": {
+      "type": "string"
+    },
+    "uncertainty": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "code_commit": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

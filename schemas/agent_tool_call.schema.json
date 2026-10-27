@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ResearchToolCall",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "trace_id",
+    "hypothesis_id",
+    "dataset_id",
+    "action",
+    "parameters"
+  ],
+  "properties": {
+    "trace_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "hypothesis_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "dataset_id": {
+      "type": "string",
+      "enum": [
+        "ghana_combined",
+        "iita_drought",
+        "iita_full_irrigation",
+        "iita_multiloc",
+        "iita_striga"
+      ]
+    },
+    "action": {
+      "type": "string",
+      "enum": [
+        "dataset_profile",
+        "compare_regimes",
+        "rank_genotypes",
+        "inspect_missingness"
+      ]
+    },
+    "parameters": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "bootstrap_samples": {
+          "type": "integer",
+          "minimum": 100,
+          "maximum": 10000
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "action": {
+            "const": "compare_regimes"
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "parameters": {
+            "maxProperties": 0
+          }
+        }
+      }
+    }
+  ]
+}

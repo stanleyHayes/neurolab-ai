@@ -1,0 +1,2 @@
+# Preserve source bytes exactly; manifest SHA-256 checks depend on original line endings.
+data/raw/** -text

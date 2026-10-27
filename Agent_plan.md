@@ -1,0 +1,47 @@
+# Codex execution plan — prioritized, autonomous
+
+## Phase 0 (immediately)
+- [x] Audit and hash data; execute `scripts/audit_datasets.py`; inspect anomaly report.
+- [x] Add a repeatable local quality gate: Ruff lint/format, ESLint plus JavaScript syntax, tests, Python compilation and dataset integrity audit. Configure SonarQube analysis; server-side analysis remains conditional on a provisioned server and token.
+- [x] Confirm Meta API credentials and model availability via `python scripts/smoke_meta_provider.py`; set `META_MODEL_VERIFIED=true` only after a successful real response. **2026-10-26: Meta Model API `muse-spark-1.3` returned schema-constrained JSON; one-step live agent run selected an allowlisted action and completed with persisted, tool-derived evidence.**
+- [ ] Set up public Git repository and `BUILD_LOG.md`; record implementation start date. **Blocked/not available: no Git repository is present in workspace.**
+
+## Phase 1: Real data MVP (P0)
+- [x] Run preprocessing, assert Ghana combined rows = 864 and two regime-specific files = 432 each.
+- [x] Validate IITA irrigation file: 337,913 physical records, 336,953 empty, 960 substantive; preserve audit trail.
+- [x] Implement canonical normalized Ghana dataset with source IDs, unit metadata and controlled missingness. IITA remains staged/audited, not enabled for analysis.
+- [x] Build profile, regime contrast, genotype ranking and missingness endpoints/tools.
+- [x] Implement exploratory block-bootstrap comparison and caveats; no confirmatory model.
+- [x] Add unit and integration tests with deterministic execution; no separate property-test suite.
+
+## Phase 2: Meta-powered scientific agent (P0)
+- [x] Implement allowlisted tool registry and request/result JSON schema validation.
+- [x] Implement bounded Meta-compatible structured adapter and model-selected allowlisted tool loop; model selection follows computed evidence, tool schemas and budgets are validated server-side. Fixture tests are not proof of a live Meta call.
+- [x] Demonstrate sequential evidence-grounded replay decisions; this is not a live agent demo.
+- [x] Store event trace/artifacts and expose concise decision summaries, not hidden chain-of-thought.
+- [ ] Score groundedness, adversarial-injection and invalid-action answer quality. The runtime now emits evidence-ID-linked, tool-derived report claims and fake-adapter safety tests; the 12-task catalog checks action coverage only, not generated-answer quality. No live Meta comparison has run.
+
+## Phase 3: Benchmarks and demo (P0)
+- [x] Compare replay tool selections with fixed/random workflow baseline using same budgets/tasks. Not a human-rated utility benchmark.
+- [x] Build interactive evidence workspace with persisted timeline, source citation, actual measured-result plots, report/artifact exports, saved run replay, provenance and error recovery.
+- [x] Implement persisted stage transitions, SSE cursor replay, asynchronous Meta-mode background execution, and safe-boundary cancellation. Replay baseline remains synchronous for deterministic existing fixtures.
+- [ ] Complete automated browser/accessibility testing, visual QA at mobile/tablet/1080p, plus test the live provider and prove cancellation under actual async execution. Current evidence report claims are generated from computed artifacts with linked evidence IDs.
+- [x] Add a lightweight, explicitly illustrative React Three Fiber maize/soil scene to the overview with orbit/zoom/reset, low-power render settings, WebGL/error fallback, and reduced-motion static mode. The scene does not encode measured crop morphology or simulated measurements.
+- [x] Task-scoped browser smoke: desktop WebGL scene and camera buttons, reduced-motion static illustration, and 390px mobile static fallback/no horizontal overflow. WebGL-disabled runtime fallback and full keyboard/screen-reader accessibility acceptance remain pending.
+- [ ] Record complete 3-minute demo with visible provenance, live working product and new-code evidence.
+- [ ] Verify deployment, README, license attribution, public Git, video access and submission.
+
+## Phase 4: Optional prizes (P1; only after P0 green)
+- [ ] Run actual Muse Spark Open/Glimmer through eligible provider and verify eligible serving; capture logs.
+- [ ] Publish genuine X demo post and submit its URL if pursuing viral prize; prepare public gallery entry.
+- [ ] Consider Muse Image/Wonder-generated explanatory asset only if it materially enhances the scientific experience and complies with prize rules.
+
+## Production hardening (release gate; 2026-10-26)
+- [x] Add production API authentication between Next.js and FastAPI, host allowlisting, hidden API docs, request-body caps, bounded per-process throttling, CSRF-origin checking and security headers.
+- [x] Implement first-party email/password auth with Ed25519 JWT access tokens, Argon2id, rotating opaque refresh sessions, CSRF cookies, profile/password management, invite-gated signup, and owner isolation for runs/reports/artifacts/events/SSE/cancel. This is not an external identity-provider integration.
+- [ ] Verify auth and isolation on deployed HTTPS; configure production secrets/invite process; complete missing exhaustive JWT matrix, concurrency tests, key-rotation rehearsal and browser acceptance.
+- [ ] Add gateway/shared-store abuse controls, durable background workers, deployment/DB lifecycle and backup procedures, observability, and provider spend/tenant quotas; validate these on the target deployment.
+- [ ] Complete automated browser, keyboard/accessibility, mobile/tablet/1080p and async live-provider acceptance.
+
+## Day-by-day gates
+D1 data and repo; D2 normalization; D3 statistical tools; D4 API; D5 Meta agent; D6 closed loop; D7 benchmark; D8 cinematic UI; D9 rehearsal and recording; D10 buffer/submission. If behind, drop optional model/visual features, not validation.

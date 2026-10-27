@@ -1,0 +1,39 @@
+{
+  "name": "neurolab-scientific-build",
+  "version": "0.1.0",
+  "description": "Research prototype for reproducible, evidence-linked analysis of African maize trials, with a Next.js workspace and bounded AI-assisted workflows.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint . --max-warnings=0",
+    "typecheck": "tsc --noEmit",
+    "test": "c8 --reporter=lcov --reporter=text node --test tests/*.test.mjs",
+    "format:check": "prettier --check \"app/**/*.{ts,tsx,css}\""
+  },
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "dependencies": {
+    "@react-three/drei": "^10.7.9",
+    "@react-three/fiber": "^9.8.2",
+    "next": "16.4.3",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "three": "^0.186.1"
+  },
+  "devDependencies": {
+    "@types/node": "26.6.5",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@types/three": "^0.186.0",
+    "c8": "^12.0.0",
+    "eslint": "9.39.5",
+    "eslint-config-next": "16.4.3",
+    "globals": "17.13.0",
+    "prettier": "^3.9.10",
+    "typescript": "6.0.3"
+  }
+}

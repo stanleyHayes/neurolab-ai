@@ -1,0 +1,22 @@
+column,description,unit_or_type
+CONDITION,combined file only: watering regime (DROUGHT or WELL_WATERED),factor
+ENV,combined file only: environment = CONDITION x trial year (e.g. DROUGHT_Y1),factor
+GENOTYPE,accession name; 68 African landraces + 4 elite check populations,factor
+GENO,internal genotype alias code (drought file only),factor
+ENVT,trial year/season index within a watering regime (1-3),integer
+REP,replication within environment (1-2),integer
+BLK,incomplete block within replication (9 x 8 alpha lattice),integer
+POLLEN,days to 50% anthesis (pollen shed),days
+SILK,days to 50% silking,days
+ASI,anthesis-silking interval = SILK - POLLEN,days
+PLHT,plant height,cm
+EHT,ear height,cm
+STYG,"stay-green, visual score 1-9 (drought file only)",score 1-9
+PASP,"plant aspect, visual score 1-9 (lower is better)",score 1-9
+HUSKC,"husk cover, visual score 1-9",score 1-9
+RLPERC,"root lodging, percentage of plants per plot",percent
+SLPERC,"stalk lodging, percentage of plants per plot",percent
+EPP,ears per plant,ratio
+EASP,"ear aspect, visual score 1-9 (lower is better)",score 1-9
+EROT,"ear rot, percentage of rotten ears",percent
+YIELD,grain yield adjusted to a standard moisture basis,kg/ha

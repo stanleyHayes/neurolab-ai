@@ -1,0 +1,17 @@
+# 10 — Security, data rights, scientific integrity
+
+Data license: Ghana Zenodo CC BY 4.0; IITA dataset landing page CC BY 4.0. Include citations and license copies/notices. Verify that included raw files correspond to stated sources before public redistribution. Do not include CIRAD CC BY-NC-SA data without explicit permissions for intended uses.
+
+Keys: ignored local env; secret manager for deployment; redact model prompts containing secrets; server-side inference only. Model cost caps and request limits; input size cap; CSV injection sanitization on export; prohibit arbitrary code execution by model; dependency pinning and license review.
+
+## Runtime hardening implemented (2026-10-26)
+
+- FastAPI production profile requires an explicit host allowlist and a 32+ character server-to-server bearer secret; except for minimal liveness, API requests require that secret. OpenAPI/docs are disabled in production. Never use this shared service credential as end-user identity/authentication.
+- FastAPI and its Next.js proxy enforce 64 KiB request-body limits. FastAPI applies bounded per-process/per-peer request limits, returning `429` and `Retry-After`; Next.js rejects cross-origin state-changing requests. Security response headers are set at both tiers; HTTPS ingress remains an operator responsibility.
+- Production deployment must keep FastAPI private to the Next.js service. The bearer token is injected by the server-side proxy and must not be exposed to browser code.
+- First-party user authentication and per-owner research-run authorization were added on 2026-10-26; see `docs/AUTH_CUSTOM_JWT.md`. The service bearer remains a separate Next-to-FastAPI credential. Signup is invite-gated.
+- **Launch blockers:** throttling/cooldown is not a globally shared abuse-control system and trusted-proxy IP behavior is unverified; jobs are in-process background tasks, not a durable queue; production hosting, managed DB migration/backup/restore, provider billing limits, signing-key rotation, deployment TLS and operational monitoring remain unimplemented/unverified. Do not advertise this as a public multi-user production-ready service until those are closed.
+
+Science: hypotheses and results must be separated; confidence intervals, sample size, assumptions and uncertainty visible; no claims of proven causal effects or guaranteed yield. Dataset cards include time, locations, trial design, units, missingness and provenance.
+
+Hackathon: public repo; original contributions implemented within event; disclose reused assets; no unlicensed graphics/music; video shows only new features; source evidence and commit history preserved. Track eligibility and award requirements from official guide; avoid unsupported 'all bonuses guaranteed' messaging.
