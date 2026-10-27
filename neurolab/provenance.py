@@ -50,8 +50,11 @@ def git_revision(root: Path):
         git = _git_directory(root)
         return _resolve_revision(git, (git / "HEAD").read_text().strip())
     except (OSError, ValueError):
-        revision = os.getenv("VERCEL_GIT_COMMIT_SHA", "")
-        return revision if re.fullmatch(r"[a-f0-9]{40}|[a-f0-9]{64}", revision) else None
+        for name in ("RENDER_GIT_COMMIT", "VERCEL_GIT_COMMIT_SHA"):
+            revision = os.getenv(name, "")
+            if re.fullmatch(r"[a-f0-9]{40}|[a-f0-9]{64}", revision):
+                return revision
+        return None
 
 
 def capture_runtime_provenance():

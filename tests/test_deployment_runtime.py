@@ -1,4 +1,4 @@
-"""Vercel profile admission and graceful queue draining; no provider requests."""
+"""Deployment profile admission and graceful queue draining; no provider requests."""
 
 import os
 import subprocess
@@ -9,12 +9,12 @@ import unittest
 from pathlib import Path
 from unittest.mock import Mock, patch
 
+from neurolab.deployment_runtime import configure_replay
 from neurolab.provenance import git_revision
-from neurolab.vercel_runtime import configure_replay
 from neurolab.worker import poll_queue
 
 
-class VercelRuntimeTests(unittest.TestCase):
+class DeploymentRuntimeTests(unittest.TestCase):
     def test_profile_rejects_ephemeral_database_before_modifying_environment(self):
         for database in ("", "sqlite:///:memory:", "local-app.db"):
             with (
@@ -111,6 +111,8 @@ store.close.assert_called_once()
                     patch.dict(os.environ, {"VERCEL_GIT_COMMIT_SHA": value}),
                 ):
                     self.assertEqual(git_revision(root), value if len(value) in (40, 64) else None)
+            with patch.dict(os.environ, {"RENDER_GIT_COMMIT": "d" * 40}, clear=True):
+                self.assertEqual(git_revision(root), "d" * 40)
             (root / ".git").mkdir()
             (root / ".git/HEAD").write_text("c" * 40)
             with patch.dict(os.environ, {"VERCEL_GIT_COMMIT_SHA": "a" * 40}):

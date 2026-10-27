@@ -1,4 +1,4 @@
-"""Owner-requested replay-only Vercel deployment admission."""
+"""Replay-only deployment admission for hosted API and worker processes."""
 
 import os
 
@@ -6,7 +6,7 @@ import os
 def configure_replay(*, worker=False):
     database = os.getenv("DATABASE_URL", "").strip()
     if not database.startswith(("postgres://", "postgresql://", "postgresql+psycopg://")):
-        raise RuntimeError("Vercel requires persistent PostgreSQL DATABASE_URL")
+        raise RuntimeError("Deployment requires persistent PostgreSQL DATABASE_URL")
     os.environ["DATABASE_URL"] = database
     os.environ["APP_ENV"] = "production"
     os.environ["MODEL_INFERENCE_ENABLED"] = "false"

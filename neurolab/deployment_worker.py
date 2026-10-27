@@ -1,6 +1,6 @@
-"""Vercel Daemon entrypoint with no HTTP/JWT/provider credential access."""
+"""Deployment Daemon entrypoint with no HTTP/JWT/provider credential access."""
 
-from .vercel_runtime import configure_replay
+from .deployment_runtime import configure_replay
 
 
 def main():

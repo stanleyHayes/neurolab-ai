@@ -25,7 +25,7 @@ This dated ledger supersedes current-state statements in the 2026-10-26 read-onl
 
 - Meta credits exhausted: owner required replay, and `MODEL_INFERENCE_ENABLED=false` remains enforced. Do not spend or enable inference to clear the live-agent gate.
 - Browser control currently returns `CUA_REPL_ENABLED_SURFACES is required`; earlier attempts timed out. DOM tests, HTTP 200, static plots and earlier screenshots do not establish acceptance of the new UI.
-- Owner selected Vercel and supplied the GitHub remote; deployment configuration is prepared, but hosted project/database/secrets remain open; complete source publication and unauthenticated clone are now verified. Production acceptance, domain/secret/account setup, licensing and entrant selections require their real external state; none is inferred.
+- Owner selected Render backend/Vercel frontend and supplied the GitHub remote; deployment configuration is prepared, but hosted project/database/secrets remain open; complete source publication and unauthenticated clone are now verified. Production acceptance, domain/secret/account setup, licensing and entrant selections require their real external state; none is inferred.
 
 ## Next locally actionable work
 
@@ -34,4 +34,4 @@ Corrected-protocol assistant adjudication is recorded; the frozen future live-mo
 Core replay is suitable for a labeled demo rehearsal. The full goal remains open: neither a green suite nor this ledger establishes submission eligibility, production readiness or completion of the unverified external gates.
 
 
-Vercel preparation: `docs/VERCEL_DEPLOYMENT.md`, `vercel.json`, the worker image and `verification/vercel-preparation.json` record schema validation, local PostgreSQL API/worker execution, graceful shutdown and quality checks. Native Vercel Services/Daemons host the whole application plan; no external API host is assumed. Hosted feature availability, project/database/secret setup and route/worker/security acceptance remain unverified.
+Current hosting plan supersedes the earlier all-Vercel preparation: Render Docker API/background worker/PostgreSQL plus standard Vercel Next.js frontend. See `docs/RENDER_VERCEL_DEPLOYMENT.md`, `render.yaml` and the dated split-host evidence. Earlier Vercel-only proof remains historical. Resource provisioning, actual cross-host BFF/auth/cookie/SSE behavior and operations remain unverified.

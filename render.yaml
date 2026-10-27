@@ -1,0 +1,80 @@
+# Backend only. The Next.js frontend is deployed separately on Vercel.
+# Paid baseline resources: review the plans before creating this Blueprint.
+services:
+  - type: web
+    name: neurolab-api
+    runtime: docker
+    repo: https://github.com/stanleyHayes/neurolab-ai
+    branch: main
+    region: frankfurt
+    plan: 0.5c-512mb
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /health
+    maxShutdownDelaySeconds: 210
+    autoDeployTrigger: "off"
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: MODEL_INFERENCE_ENABLED
+        value: "false"
+      - key: RESEARCH_INLINE_WORKER
+        value: "false"
+      - key: DATABASE_URL
+        fromDatabase:
+          name: neurolab-db
+          property: connectionString
+      - key: ALLOWED_HOSTS
+        fromService:
+          name: neurolab-api
+          type: web
+          envVarKey: RENDER_EXTERNAL_HOSTNAME
+      - key: API_BEARER_TOKEN
+        generateValue: true
+      - key: AUTH_TOKEN_PEPPER
+        generateValue: true
+      - key: AUTH_INVITE_CODE
+        generateValue: true
+      - key: AUTH_ED25519_PRIVATE_KEY
+        sync: false
+      - key: AUTH_JWT_KID
+        value: neurolab-render-v1
+      - key: AUTH_ED25519_PREVIOUS_PUBLIC_KEYS
+        value: "{}"
+      - key: AUTH_JWT_ISSUER
+        sync: false
+      - key: AUTH_JWT_AUDIENCE
+        value: neurolab-web
+      - key: RESEARCH_MAX_RUNNING_JOBS
+        value: "2"
+  - type: worker
+    name: neurolab-worker
+    runtime: docker
+    repo: https://github.com/stanleyHayes/neurolab-ai
+    branch: main
+    region: frankfurt
+    plan: 0.5c-512mb
+    dockerfilePath: ./Dockerfile.worker
+    dockerContext: .
+    maxShutdownDelaySeconds: 210
+    autoDeployTrigger: "off"
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: MODEL_INFERENCE_ENABLED
+        value: "false"
+      - key: DATABASE_URL
+        fromDatabase:
+          name: neurolab-db
+          property: connectionString
+      - key: RESEARCH_MAX_RUNNING_JOBS
+        value: "2"
+databases:
+  - name: neurolab-db
+    region: frankfurt
+    plan: 0.1c-256mb
+    postgresMajorVersion: "18"
+    databaseName: neurolab
+    user: neurolab
+    diskSizeGB: 5
+    ipAllowList: []

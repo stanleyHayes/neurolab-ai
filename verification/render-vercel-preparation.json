@@ -1,0 +1,86 @@
+{
+  "topology": "Render Docker API + worker + PostgreSQL; Vercel Next.js frontend",
+  "blueprint_validation": {
+    "plan": {
+      "databases": [
+        "neurolab-db"
+      ],
+      "services": [
+        "neurolab-api",
+        "neurolab-worker"
+      ],
+      "totalActions": 4
+    },
+    "valid": true
+  },
+  "images": {
+    "api": {
+      "image_id": "sha256:791fb8320b07ae1454da1f0b43ad50f8a4ce094316dffefd59ccb24475b903ca",
+      "user": "research",
+      "command": [
+        "sh",
+        "-c",
+        "exec uvicorn neurolab.deployment_api:app --host 0.0.0.0 --port \"${PORT:-10000}\" --no-proxy-headers"
+      ],
+      "read_only_no_network_source_check": "passed",
+      "license_and_data_notices_present": true
+    },
+    "worker": {
+      "image_id": "sha256:01b633f18afbe58b3c9e719b3b31715d7a04d1c7ecd0863c4ba62757cc80bf06",
+      "user": "research",
+      "command": [
+        "python",
+        "-m",
+        "neurolab.deployment_worker"
+      ],
+      "read_only_no_network_source_check": "passed",
+      "license_and_data_notices_present": true
+    }
+  },
+  "quality": {
+    "make_quality_exit_code": 0,
+    "python_tests": 173,
+    "proxy_tests": 10,
+    "ui_tests": 72,
+    "total": 255,
+    "targeted_profile_durable_report_tests": 36
+  },
+  "local_postgresql_profile": {
+    "profile": "Render API and separate background worker entrypoints on disposable local PostgreSQL",
+    "run_id": "a122868b-87c7-4512-a130-948a9850352b",
+    "mode": "deterministic_replay",
+    "model_id": null,
+    "artifact_response_type": "list",
+    "status": "complete",
+    "inference_enabled": "false",
+    "inline_worker": "false",
+    "provider_key_present": false,
+    "hosted_acceptance": false
+  },
+  "existing_neurodyne_services": "Different repository; not modified",
+  "created_hosted_resources": false,
+  "limitations": [
+    "Blueprint/resource creation, real secret configuration and hosted cross-platform acceptance remain outstanding.",
+    "Earlier all-Vercel evidence is historical; the active topology no longer requires Services/Daemons beta.",
+    "Current Sonar gate remains unverified following documented infrastructure failures."
+  ],
+  "source_sha256": {
+    "render.yaml": "0ca9829a2c81324247c15c08317bd6a4bb4d1fe8aa31aa1d9ce35fb6bbc333af",
+    "vercel.json": "c7939e74f7e88c47f1417a87ffce689c4dfeef20fc22331b033bcc46fa9e81d7",
+    "Dockerfile": "6ba628aeca16f1b2aad1442fa8327d51dc60675ceac730483f2dd40d5e4ab0e6",
+    "Dockerfile.worker": "856f6a9598f610b12bb2461b94b0998c1277137cdee2bedbe64166f78e7a7c28",
+    "neurolab/deployment_runtime.py": "3e27daa7f699efa8312b01771fa923059e5003a1e525b7489ac544940e893b35",
+    "neurolab/deployment_api.py": "c2f97002b72e70e148be507503c3b848c4a2d884d29e91c3bfaca6e335d0c393",
+    "neurolab/deployment_worker.py": "57e5bbb65daadbe6d2bce1263ec68db621e516da13a3fb5cc2a37770e1039cc3",
+    "neurolab/provenance.py": "218bd840b1dca442039ece6663d8eb048c956b9ae84b6a494312b9375d11dbf9",
+    "tests/test_deployment_runtime.py": "e7a58463aeb8766b77b8cee76dfaeec8eecdcb3df769598cbe8d5e99792eb24f"
+  },
+  "log_sha256": {
+    "neurolab-render-vercel-quality.log": "cfa07e5cd6c081f453807dc15f955c3aece5110479c2f8c06c517d1bf4d477fd",
+    "neurolab-render-targeted-tests.log": "9d86cb37a7646004818872c420e5e934e561841956eaa289d0c87c011050fc77",
+    "neurolab-render-api-build-final.log": "3213d95c375149f0dad4b8966b03df4caf1c59ec84d355e801c41c980693192f",
+    "neurolab-render-worker-build-final.log": "31e6b05dc200f7a0334b812fd5f3c0b816823a542bc11af98adb5ef303296d9c",
+    "neurolab-render-api-build-release.log": "085fd7deb6a25caa3602d2e5651f1713e5e5c4d3c7a92bd18edfcc669ea7c66f",
+    "neurolab-render-worker-build-release.log": "e4a58ee096a04c1750cd5112692f5acb12dccfa077056c9cfba9c3a845697a1f"
+  }
+}

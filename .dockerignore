@@ -12,3 +12,5 @@ output
 *.key
 *.db
 *.dump
+
+data/processed
