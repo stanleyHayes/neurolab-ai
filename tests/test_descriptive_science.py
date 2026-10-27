@@ -226,8 +226,10 @@ class EvidenceContextTests(unittest.TestCase):
                 context = json.loads(messages[1]["content"])
                 self.contexts.append(context)
                 return {
-                    "action": context["context"]["active_plan_tasks"][0]["tool_name"],
-                    "bootstrap_samples": None,
+                    "choice": {
+                        "action": context["context"]["active_plan_tasks"][0]["tool_name"],
+                        "bootstrap_samples": None,
+                    },
                     "decision_summary": "Fixture selects the next supported task.",
                 }
 

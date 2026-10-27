@@ -1,0 +1,53 @@
+{
+  "verified_at_utc": "2026-10-27T23:51:18.740283+00:00",
+  "scope": "Current changed source; not live scientific acceptance",
+  "scm_base": "995e0d5b04df5d28db6f6cc4de47416edeabcbb4",
+  "python_tests": 187,
+  "proxy_tests": 11,
+  "ui_tests": 89,
+  "quality_command": "MODEL_INFERENCE_ENABLED=false make quality PYTHON=python3",
+  "quality_exit_code": 0,
+  "sonar_gate": {
+    "status": "OK",
+    "conditions": [
+      {
+        "status": "OK",
+        "metricKey": "new_coverage",
+        "comparator": "LT",
+        "errorThreshold": "80",
+        "actualValue": "87.0"
+      },
+      {
+        "status": "OK",
+        "metricKey": "new_duplicated_lines_density",
+        "comparator": "GT",
+        "errorThreshold": "3",
+        "actualValue": "0.12017"
+      },
+      {
+        "status": "OK",
+        "metricKey": "new_violations",
+        "comparator": "GT",
+        "errorThreshold": "0",
+        "actualValue": "0"
+      }
+    ],
+    "ignoredConditions": false,
+    "period": {
+      "mode": "PREVIOUS_VERSION",
+      "date": "2026-10-27T15:53:12+0000"
+    },
+    "caycStatus": "compliant"
+  },
+  "unresolved_issues": 0,
+  "hotspots_to_review": 0,
+  "source_sha256": {
+    "neurolab/action_selection.py": "025d9ee3fc715f6e564e20d6e770aaf195196cc2305c149ca8ccb0750c0fa6a2",
+    "neurolab/model_evidence.py": "f828daa9d77c60abbcbbb86a299b04b3c825f9a244d0339d6cede27d302f1893",
+    "neurolab/agent.py": "ac87646c028971e39d649e9fc9aba2e5d34c03c5822c8961b5ba7813e632529e",
+    "neurolab/providers.py": "bbbdbb5f6525d1b23b55ae212f7fece6a9cecdf0c77050adbe3e87f3e6f3df87",
+    "tests/test_action_selection.py": "12d9e5b874bba606912a084c126c9184ff8f45b4c08ce08046c4b75dd14059ea"
+  },
+  "quality_log_sha256": "000a0dbfccc6420d93d96f6475fb48241bed2797407a3024109c91823271578b",
+  "sonar_log_sha256": "42a531b2e4b6dcb09559199e08c1545b27e9a5fbad5ed3d1708d41521f3ef25d"
+}

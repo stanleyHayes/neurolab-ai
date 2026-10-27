@@ -262,7 +262,9 @@ class OpenAICompatibleAdapter:
             messages,
             schema,
             timeout=timeout,
-            max_tokens=min(4000, max(self.max_output_tokens, 2000)),
+            # Live Meta planning exhausted 2000 tokens entirely in reasoning.
+            # Reserve this full bound before transport; never retry invisibly.
+            max_tokens=4000,
         )
 
 

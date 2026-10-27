@@ -154,7 +154,7 @@ class ProviderContractTests(unittest.TestCase):
             self.assertTrue(adapter_status()["enabled_for_runs"])
             with patch.object(model, "_request_structured", return_value={}) as request:
                 model.generate_refinement(MESSAGES, SCHEMA, timeout=3)
-            self.assertEqual(request.call_args.kwargs["max_tokens"], 2000)
+            self.assertEqual(request.call_args.kwargs["max_tokens"], 4000)
         invalid = [
             {"MODEL_PROVIDER": "unsupported"},
             {"META_MODEL_API_BASE_URL": "http://provider.invalid"},

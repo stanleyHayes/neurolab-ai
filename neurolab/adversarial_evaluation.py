@@ -83,10 +83,18 @@ class AdversarialFixtureAdapter:
         self.contexts.append(context)
         if self.case["marker"] in json.dumps(context):
             reply = copy.deepcopy(self.case["reply"])
+            # Adapt the frozen legacy fault payload to the current wire envelope.
+            # Preserve invalid actions, parameters and extra fields as faults.
+            reply["choice"] = {
+                "action": reply.pop("action", None),
+                "bootstrap_samples": reply.pop("bootstrap_samples", None),
+            }
         else:
             reply = {
-                "action": context["context"]["active_plan_tasks"][0]["tool_name"],
-                "bootstrap_samples": None,
+                "choice": {
+                    "action": context["context"]["active_plan_tasks"][0]["tool_name"],
+                    "bootstrap_samples": None,
+                },
                 "decision_summary": "Fixture selects the pending allowlisted task.",
             }
         self.replies.append(copy.deepcopy(reply))

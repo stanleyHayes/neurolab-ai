@@ -327,8 +327,7 @@ class DurableJobTests(unittest.TestCase):
         def cancel_during_decision(*args, **kwargs):
             self.store.request_cancel(next_id)
             return {
-                "action": "dataset_profile",
-                "bootstrap_samples": None,
+                "choice": {"action": "dataset_profile", "bootstrap_samples": None},
                 "decision_summary": "Explicit test-only cancellation response",
             }
 

@@ -39,8 +39,10 @@ class PendingTaskAdapter:
         self.contexts.append(context)
         action = context["context"]["active_plan_tasks"][0]["tool_name"]
         return {
-            "action": action,
-            "bootstrap_samples": 100 if action == "compare_regimes" else None,
+            "choice": {
+                "action": action,
+                "bootstrap_samples": 100 if action == "compare_regimes" else None,
+            },
             "decision_summary": "Fixture selects the next pending analysis.",
         }
 

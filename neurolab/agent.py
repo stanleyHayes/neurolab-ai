@@ -7,6 +7,7 @@ import time
 import uuid
 from typing import Any
 
+from .action_selection import selection_schema, validated_selection
 from .descriptive import descriptive_claim
 from .ghana import GhanaDataset
 from .investigation_profile import (
@@ -16,6 +17,7 @@ from .investigation_profile import (
     profile_followup,
     profile_plan_check,
 )
+from .model_evidence import evidence_results
 from .provenance import RUNTIME_PROVENANCE
 from .providers import StructuredModelAdapter
 from .research_context import (
@@ -164,7 +166,8 @@ class ResearchAgent:
                 "tool_name": item["tool_name"],
                 "sample_size": item["sample_size"],
                 "claim_scope": item["claim_scope"],
-                "results": item["results"].get("model_summary", item["results"]),
+                "results": evidence_results(item),
+                "uncertainty": item.get("uncertainty"),
                 "warnings": item["warnings"],
             }
             for item in evidence
@@ -180,27 +183,9 @@ class ResearchAgent:
     ) -> dict[str, Any]:
         if self.model_adapter is None:
             raise AgentConfigurationError("Meta model adapter is not configured")
-        schema = {
-            "type": "object",
-            "additionalProperties": False,
-            "required": ["action", "bootstrap_samples", "decision_summary"],
-            "properties": {
-                "action": {
-                    "type": "string",
-                    "enum": sorted(
-                        {task.tool_name for task in active_tasks}
-                        if active_tasks
-                        else self.ALLOWED_ACTIONS
-                    ),
-                },
-                "bootstrap_samples": {
-                    "type": ["integer", "null"],
-                    "minimum": 100,
-                    "maximum": 10000,
-                },
-                "decision_summary": {"type": "string", "minLength": 1, "maxLength": 240},
-            },
-        }
+        schema = selection_schema(
+            {task.tool_name for task in active_tasks} if active_tasks else self.ALLOWED_ACTIONS
+        )
         safe_evidence = self._evidence_context(evidence)
         result = self.model_adapter.generate_structured(
             [
@@ -235,6 +220,7 @@ class ResearchAgent:
             schema,
             timeout=timeout,
         )
+        result = validated_selection(result, schema)
         if set(result) != {"action", "bootstrap_samples", "decision_summary"}:
             raise ValueError("Model action contains unexpected or missing fields")
         if result["action"] not in self.ALLOWED_ACTIONS:

@@ -165,8 +165,10 @@ class RunOrchestrationTests(unittest.TestCase):
             def generate_structured(self, messages, schema, *, timeout):
                 self.calls.append(messages)
                 return {
-                    "action": "compare_regimes" if len(self.calls) == 1 else "rank_genotypes",
-                    "bootstrap_samples": 200 if len(self.calls) == 1 else None,
+                    "choice": {
+                        "action": "compare_regimes" if len(self.calls) == 1 else "rank_genotypes",
+                        "bootstrap_samples": 200 if len(self.calls) == 1 else None,
+                    },
                     "decision_summary": "Choose a bounded analysis relevant to the objective.",
                 }
 
@@ -211,8 +213,7 @@ class RunOrchestrationTests(unittest.TestCase):
                 self.calls += 1
                 action = "execute_shell" if self.calls == 1 else "dataset_profile"
                 return {
-                    "action": action,
-                    "bootstrap_samples": None,
+                    "choice": {"action": action, "bootstrap_samples": None},
                     "decision_summary": "Use a bounded descriptive analysis.",
                 }
 
@@ -716,8 +717,7 @@ class ApiTests(unittest.TestCase):
         adapter = Mock(provider="test-fixture", model_id="not-live-inference")
         adapter.generate_refinement.return_value = proposed
         adapter.generate_structured.return_value = {
-            "action": "dataset_profile",
-            "bootstrap_samples": None,
+            "choice": {"action": "dataset_profile", "bootstrap_samples": None},
             "decision_summary": "Inspect the supported source",
         }
         with (
@@ -799,8 +799,7 @@ class ApiTests(unittest.TestCase):
         for suggestion in proposed["dataset_suggestions"]:
             suggestion.pop("enabled_for_analysis")
         action = {
-            "action": "dataset_profile",
-            "bootstrap_samples": None,
+            "choice": {"action": "dataset_profile", "bootstrap_samples": None},
             "decision_summary": "Inspect source records",
         }
         responses = []

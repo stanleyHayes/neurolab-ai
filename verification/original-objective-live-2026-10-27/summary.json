@@ -18,18 +18,35 @@
       "status": "PARTIAL",
       "failure_type": null,
       "exchanges": 4
+    },
+    {
+      "attempt": 4,
+      "status": "PARTIAL",
+      "failure_type": null,
+      "exchanges": 5,
+      "scope": "Reuse unchanged actual Meta plan/hypotheses; action/context correction verification, not full objective success"
     }
   ],
-  "reported_total_tokens": 18404,
-  "list_price_usage_estimate_usd": "0.04481500",
+  "reported_total_tokens": 32316,
+  "list_price_usage_estimate_usd": "0.06981900",
   "cost_scope": "Token usage times published standard input/output rates; no cache discount applied. Not a provider invoice or balance reconciliation. TLS attempt has no reported provider usage.",
   "live_acceptance_satisfied": false,
   "production_inference_enabled": false,
   "remaining_failures": [
-    "Action-specific bootstrap parameter incompatibility on ranking",
-    "Conservative byte-bound context reservations exhausted the per-scope token ceiling",
-    "Model plan explicitly leaves final synthesis unsupported; custom hypotheses not automatically assessed"
+    "Model plan explicitly leaves final synthesis unsupported; custom hypotheses not automatically assessed",
+    "Useful result-dependent scientific decision quality still requires semantic review; valid generation and evidence availability alone are insufficient"
   ],
   "original_historical_trace": "verification/AGENT_EXECUTION_TRACE.md",
-  "operator_runner_source_scope": "Final runner used for attempt 3; attempt 1 created the ledger/owner and lacked the trusted CA environment, attempt 2 used 2000 output tokens and default reasoning. Exact HTTP bodies/responses for every attempted exchange are retained separately."
+  "operator_runner_source_scope": "Final runner used for attempt 3; attempt 1 created the ledger/owner and lacked the trusted CA environment, attempt 2 used 2000 output tokens and default reasoning. Exact HTTP bodies/responses for every attempted exchange are retained separately.",
+  "verified_corrections": {
+    "run_id": "6e85e507-2677-4b50-8e1c-cacc0ae1ed20",
+    "all_five_actions_model_selected": true,
+    "decision_or_tool_failures": 0,
+    "reserved_tokens": 64846,
+    "full_artifacts_retained": true,
+    "context_overhead_allowance": 1024,
+    "operator_policy_transition_recorded": true,
+    "old_reservations_retained": true,
+    "final_status": "PARTIAL"
+  }
 }
