@@ -1129,6 +1129,20 @@ def research_run_report(run_id: str, user: UserDependency) -> dict[str, Any]:
     return run["report"]
 
 
+@app.get("/research-runs/{run_id}/bundle", responses=HTTP_ERROR_RESPONSES)
+def research_run_bundle(run_id: str, user: UserDependency) -> dict[str, Any]:
+    """Portable evidence only: no owner/session records or credentials."""
+    run = _run_or_404(run_id, user["user_id"])
+    if run["report"] is None or not _terminal_run(run):
+        raise HTTPException(status_code=409, detail="A terminal report is required for export")
+    return {
+        "bundle_version": "neurolab-evidence-v1",
+        "report": run["report"],
+        "artifacts": STORE.list_artifacts(run_id),
+        "events": STORE.list_events(run_id),
+    }
+
+
 @app.post(
     "/evaluations/baselines",
     responses=HTTP_ERROR_RESPONSES,

@@ -68,3 +68,9 @@ D1 data and repo; D2 normalization; D3 statistical tools; D4 API; D5 Meta agent;
 - [x] Add source-byte-verified inventory/comparability evidence, source/manifest hashes, loaded-code provenance and a clearly separate proposed randomized field trial with no invented power calculation.
 - [x] Render/export the structured report and add exact-original-objective, partial/mismatched/custom-hypothesis, API and renderer tests. Preserve all six methods across budget limits; fix the persisted plan's former four-approach cap.
 - [ ] Verify the full committed profile through the running authenticated service and browser. Live Meta quality remains blocked by exhausted credits; no field-validation or production-launch claim follows from this profile.
+
+## 2026-10-27 portable scientific reporting increment
+
+- [x] Verify the full committed profile through the owner-authenticated running service: `verification/full-investigation-runtime.json`. Browser acceptance remains separate and pending.
+- [x] Add owner-scoped terminal evidence bundles and offline HTML reports with four actual-data PNG/SVG figure pairs, unrounded figure data and preserved source/code/event provenance.
+- [ ] Finish generated-answer evaluation, live-provider acceptance when credits return, browser QA and external deployment/publication/submission gates.

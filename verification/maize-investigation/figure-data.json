@@ -1,0 +1,609 @@
+{
+  "regime_comparison": {
+    "evidence_ids": [
+      "971d3426-4768-4784-bb0d-a665bdb0b007-3"
+    ],
+    "results": {
+      "drought_to_well_watered_yield_ratio_percent": 47.0278777332517,
+      "environment_stratified": true,
+      "mean_yield_by_regime": {
+        "DROUGHT": 1230.2687815072015,
+        "WELL_WATERED": 2616.0414647785037
+      },
+      "plot_count_by_regime": {
+        "DROUGHT": 432,
+        "WELL_WATERED": 432
+      },
+      "yield_difference_kg_ha": -1385.7726832713022
+    },
+    "uncertainty": {
+      "method": "percentile cluster bootstrap resampling BLK within CONDITION x ENVT x REP strata",
+      "replicates": 2000,
+      "seed": 2026,
+      "yield_difference_95_ci_kg_ha": [
+        -1552.2316855923577,
+        -1215.71407882247
+      ]
+    }
+  },
+  "candidate_comparisons": [
+    {
+      "drought_mean_kg_ha": 2370.290522875817,
+      "environment_centered_sd_kg_ha": 267.51714569273264,
+      "environment_count": 3,
+      "environment_mean_sd_kg_ha": 1050.320176410916,
+      "evidence_ids": [
+        "971d3426-4768-4784-bb0d-a665bdb0b007-5"
+      ],
+      "genotype_id": "TZm-1179",
+      "meets_observed_top_quartile_each_environment": true,
+      "observed_regime_summary": {
+        "descriptive_retention_percent": 64.71709429540583,
+        "drought_mean_kg_ha": 2370.290522875817,
+        "drought_plot_count": 6,
+        "genotype_id": "TZm-1179",
+        "well_watered_mean_kg_ha": 3662.5416339869266,
+        "well_watered_plot_count": 6
+      },
+      "omitted_environment_rank_range": [
+        3.0,
+        5.0
+      ],
+      "selection_basis": "Largest complete-coverage observed drought means; not a combined tolerance/stability score."
+    },
+    {
+      "drought_mean_kg_ha": 2356.731699346405,
+      "environment_centered_sd_kg_ha": 1743.727082295526,
+      "environment_count": 3,
+      "environment_mean_sd_kg_ha": 2498.951549342349,
+      "evidence_ids": [
+        "971d3426-4768-4784-bb0d-a665bdb0b007-5"
+      ],
+      "genotype_id": "TZEE-W HDT C3 STR C5 (CHECK)",
+      "meets_observed_top_quartile_each_environment": false,
+      "observed_regime_summary": {
+        "descriptive_retention_percent": 48.19789788537814,
+        "drought_mean_kg_ha": 2356.731699346405,
+        "drought_plot_count": 6,
+        "genotype_id": "TZEE-W HDT C3 STR C5 (CHECK)",
+        "well_watered_mean_kg_ha": 4889.698104575158,
+        "well_watered_plot_count": 6
+      },
+      "omitted_environment_rank_range": [
+        1.0,
+        26.0
+      ],
+      "selection_basis": "Largest complete-coverage observed drought means; not a combined tolerance/stability score."
+    },
+    {
+      "drought_mean_kg_ha": 2334.9387254901962,
+      "environment_centered_sd_kg_ha": 597.8882052541271,
+      "environment_count": 3,
+      "environment_mean_sd_kg_ha": 1188.2800521369131,
+      "evidence_ids": [
+        "971d3426-4768-4784-bb0d-a665bdb0b007-5"
+      ],
+      "genotype_id": "TZm-480",
+      "meets_observed_top_quartile_each_environment": true,
+      "observed_regime_summary": {
+        "descriptive_retention_percent": 84.61668232696476,
+        "drought_mean_kg_ha": 2334.9387254901962,
+        "drought_plot_count": 6,
+        "genotype_id": "TZm-480",
+        "well_watered_mean_kg_ha": 2759.4307189542487,
+        "well_watered_plot_count": 6
+      },
+      "omitted_environment_rank_range": [
+        2.0,
+        8.0
+      ],
+      "selection_basis": "Largest complete-coverage observed drought means; not a combined tolerance/stability score."
+    },
+    {
+      "drought_mean_kg_ha": 2287.580718954248,
+      "environment_centered_sd_kg_ha": 950.0634606140768,
+      "environment_count": 3,
+      "environment_mean_sd_kg_ha": 701.0690734911785,
+      "evidence_ids": [
+        "971d3426-4768-4784-bb0d-a665bdb0b007-5"
+      ],
+      "genotype_id": "TZm-1530",
+      "meets_observed_top_quartile_each_environment": true,
+      "observed_regime_summary": {
+        "descriptive_retention_percent": 82.390281991454,
+        "drought_mean_kg_ha": 2287.580718954248,
+        "drought_plot_count": 6,
+        "genotype_id": "TZm-1530",
+        "well_watered_mean_kg_ha": 2776.517647058823,
+        "well_watered_plot_count": 6
+      },
+      "omitted_environment_rank_range": [
+        1.0,
+        16.0
+      ],
+      "selection_basis": "Largest complete-coverage observed drought means; not a combined tolerance/stability score."
+    },
+    {
+      "drought_mean_kg_ha": 2118.6783496732023,
+      "environment_centered_sd_kg_ha": 1165.499342201971,
+      "environment_count": 3,
+      "environment_mean_sd_kg_ha": 1527.9466606645494,
+      "evidence_ids": [
+        "971d3426-4768-4784-bb0d-a665bdb0b007-5"
+      ],
+      "genotype_id": "TZm-1470",
+      "meets_observed_top_quartile_each_environment": false,
+      "observed_regime_summary": {
+        "descriptive_retention_percent": 125.01535417003646,
+        "drought_mean_kg_ha": 2118.6783496732023,
+        "drought_plot_count": 6,
+        "genotype_id": "TZm-1470",
+        "well_watered_mean_kg_ha": 1694.7345098039204,
+        "well_watered_plot_count": 6
+      },
+      "omitted_environment_rank_range": [
+        2.0,
+        15.0
+      ],
+      "selection_basis": "Largest complete-coverage observed drought means; not a combined tolerance/stability score."
+    }
+  ],
+  "trait_correlations": [
+    {
+      "excluded_genotype_ids": [],
+      "genotype_count": 72,
+      "paired_plot_count": 432,
+      "pearson_r": -0.28348611566730114,
+      "per_environment": [
+        {
+          "environment_code": "DROUGHT_Y1",
+          "genotype_count": 72,
+          "spearman_rho": -0.19758252520909897
+        },
+        {
+          "environment_code": "DROUGHT_Y2",
+          "genotype_count": 72,
+          "spearman_rho": -0.11426258199911914
+        },
+        {
+          "environment_code": "DROUGHT_Y3",
+          "genotype_count": 72,
+          "spearman_rho": -0.42961435602356385
+        }
+      ],
+      "spearman_rho": -0.25035601520992046,
+      "spearman_rho_95_percentile_interval": [
+        -0.4672793032125348,
+        0.013117178338713916
+      ],
+      "trait": "asi_days",
+      "unit": "days",
+      "valid_bootstrap_replicates": 1000
+    },
+    {
+      "excluded_genotype_ids": [],
+      "genotype_count": 72,
+      "paired_plot_count": 432,
+      "pearson_r": -0.2990131739044331,
+      "per_environment": [
+        {
+          "environment_code": "DROUGHT_Y1",
+          "genotype_count": 72,
+          "spearman_rho": -0.154651936304684
+        },
+        {
+          "environment_code": "DROUGHT_Y2",
+          "genotype_count": 72,
+          "spearman_rho": -0.1892454642192498
+        },
+        {
+          "environment_code": "DROUGHT_Y3",
+          "genotype_count": 72,
+          "spearman_rho": -0.5247891110438415
+        }
+      ],
+      "spearman_rho": -0.2939934804602039,
+      "spearman_rho_95_percentile_interval": [
+        -0.48970001180297806,
+        -0.04739850035072619
+      ],
+      "trait": "stay_green_score",
+      "unit": "ordinal score 1\u20139; direction not established here",
+      "valid_bootstrap_replicates": 1000
+    },
+    {
+      "excluded_genotype_ids": [],
+      "genotype_count": 72,
+      "paired_plot_count": 432,
+      "pearson_r": 0.30452625673614814,
+      "per_environment": [
+        {
+          "environment_code": "DROUGHT_Y1",
+          "genotype_count": 72,
+          "spearman_rho": 0.4253601758219022
+        },
+        {
+          "environment_code": "DROUGHT_Y2",
+          "genotype_count": 72,
+          "spearman_rho": 0.12309734187190137
+        },
+        {
+          "environment_code": "DROUGHT_Y3",
+          "genotype_count": 72,
+          "spearman_rho": 0.6666237885466256
+        }
+      ],
+      "spearman_rho": 0.3606662807897614,
+      "spearman_rho_95_percentile_interval": [
+        0.15423042361036818,
+        0.5533297223404633
+      ],
+      "trait": "ears_per_plant",
+      "unit": "ears/plant",
+      "valid_bootstrap_replicates": 1000
+    },
+    {
+      "excluded_genotype_ids": [],
+      "genotype_count": 72,
+      "paired_plot_count": 432,
+      "pearson_r": 0.45011463913548666,
+      "per_environment": [
+        {
+          "environment_code": "DROUGHT_Y1",
+          "genotype_count": 72,
+          "spearman_rho": 0.29873690690569754
+        },
+        {
+          "environment_code": "DROUGHT_Y2",
+          "genotype_count": 72,
+          "spearman_rho": 0.29035188588179056
+        },
+        {
+          "environment_code": "DROUGHT_Y3",
+          "genotype_count": 72,
+          "spearman_rho": 0.5385660535813267
+        }
+      ],
+      "spearman_rho": 0.4634097322303279,
+      "spearman_rho_95_percentile_interval": [
+        0.2390989287634187,
+        0.6379606987533869
+      ],
+      "trait": "plant_height_value",
+      "unit": "cm",
+      "valid_bootstrap_replicates": 1000
+    },
+    {
+      "excluded_genotype_ids": [],
+      "genotype_count": 72,
+      "paired_plot_count": 432,
+      "pearson_r": 0.42576318296868043,
+      "per_environment": [
+        {
+          "environment_code": "DROUGHT_Y1",
+          "genotype_count": 72,
+          "spearman_rho": 0.35372618382255305
+        },
+        {
+          "environment_code": "DROUGHT_Y2",
+          "genotype_count": 72,
+          "spearman_rho": 0.3481120016833956
+        },
+        {
+          "environment_code": "DROUGHT_Y3",
+          "genotype_count": 72,
+          "spearman_rho": 0.5107411042823707
+        }
+      ],
+      "spearman_rho": 0.4534375200977555,
+      "spearman_rho_95_percentile_interval": [
+        0.2406418442465969,
+        0.6349101124444806
+      ],
+      "trait": "ear_height_value",
+      "unit": "cm",
+      "valid_bootstrap_replicates": 1000
+    },
+    {
+      "excluded_genotype_ids": [],
+      "genotype_count": 72,
+      "paired_plot_count": 432,
+      "pearson_r": 0.15173947313956226,
+      "per_environment": [
+        {
+          "environment_code": "DROUGHT_Y1",
+          "genotype_count": 72,
+          "spearman_rho": -0.03791287561851314
+        },
+        {
+          "environment_code": "DROUGHT_Y2",
+          "genotype_count": 72,
+          "spearman_rho": 0.19191536324538067
+        },
+        {
+          "environment_code": "DROUGHT_Y3",
+          "genotype_count": 72,
+          "spearman_rho": 0.3854320035162318
+        }
+      ],
+      "spearman_rho": 0.21008619971775974,
+      "spearman_rho_95_percentile_interval": [
+        -0.03359726960885771,
+        0.43891596847503467
+      ],
+      "trait": "anthesis_days",
+      "unit": "days",
+      "valid_bootstrap_replicates": 1000
+    },
+    {
+      "excluded_genotype_ids": [],
+      "genotype_count": 72,
+      "paired_plot_count": 432,
+      "pearson_r": 0.06592051900593893,
+      "per_environment": [
+        {
+          "environment_code": "DROUGHT_Y1",
+          "genotype_count": 72,
+          "spearman_rho": -0.20448829777928498
+        },
+        {
+          "environment_code": "DROUGHT_Y2",
+          "genotype_count": 72,
+          "spearman_rho": 0.07123946597039979
+        },
+        {
+          "environment_code": "DROUGHT_Y3",
+          "genotype_count": 72,
+          "spearman_rho": 0.21000809531672002
+        }
+      ],
+      "spearman_rho": 0.09564399648655741,
+      "spearman_rho_95_percentile_interval": [
+        -0.14677694201869912,
+        0.32932439911780803
+      ],
+      "trait": "silking_days",
+      "unit": "days",
+      "valid_bootstrap_replicates": 1000
+    }
+  ],
+  "environment_profiles": {
+    "environment_codes": [
+      "DROUGHT_Y1",
+      "DROUGHT_Y2",
+      "DROUGHT_Y3"
+    ],
+    "genotypes": [
+      {
+        "complete_environment_coverage": true,
+        "environment_centered_sd_kg_ha": 267.51714569273264,
+        "environment_count": 3,
+        "environment_mean_cv_percent": 44.31187511717288,
+        "environment_mean_sd_kg_ha": 1050.320176410916,
+        "environment_means": [
+          {
+            "environment_code": "DROUGHT_Y1",
+            "mean_yield_kg_ha": 3489.090686274509,
+            "plot_count": 2,
+            "rank_among_complete_genotypes": 6.0,
+            "source_row_numbers": [
+              112,
+              113
+            ]
+          },
+          {
+            "environment_code": "DROUGHT_Y2",
+            "mean_yield_kg_ha": 2216.337254901961,
+            "plot_count": 2,
+            "rank_among_complete_genotypes": 4.0,
+            "source_row_numbers": [
+              256,
+              257
+            ]
+          },
+          {
+            "environment_code": "DROUGHT_Y3",
+            "mean_yield_kg_ha": 1405.4436274509803,
+            "plot_count": 2,
+            "rank_among_complete_genotypes": 5.0,
+            "source_row_numbers": [
+              400,
+              401
+            ]
+          }
+        ],
+        "genotype_id": "TZm-1179",
+        "leave_one_environment_out_ranks": {
+          "DROUGHT_Y1": 3.0,
+          "DROUGHT_Y2": 5.0,
+          "DROUGHT_Y3": 4.0
+        },
+        "mean_yield_kg_ha": 2370.290522875817
+      },
+      {
+        "complete_environment_coverage": true,
+        "environment_centered_sd_kg_ha": 1743.727082295526,
+        "environment_count": 3,
+        "environment_mean_cv_percent": 106.03462201638762,
+        "environment_mean_sd_kg_ha": 2498.951549342349,
+        "environment_means": [
+          {
+            "environment_code": "DROUGHT_Y1",
+            "mean_yield_kg_ha": 5231.893137254901,
+            "plot_count": 2,
+            "rank_among_complete_genotypes": 1.0,
+            "source_row_numbers": [
+              138,
+              139
+            ]
+          },
+          {
+            "environment_code": "DROUGHT_Y2",
+            "mean_yield_kg_ha": 1130.9147058823526,
+            "plot_count": 2,
+            "rank_among_complete_genotypes": 30.0,
+            "source_row_numbers": [
+              282,
+              283
+            ]
+          },
+          {
+            "environment_code": "DROUGHT_Y3",
+            "mean_yield_kg_ha": 707.3872549019607,
+            "plot_count": 2,
+            "rank_among_complete_genotypes": 20.0,
+            "source_row_numbers": [
+              426,
+              427
+            ]
+          }
+        ],
+        "genotype_id": "TZEE-W HDT C3 STR C5 (CHECK)",
+        "leave_one_environment_out_ranks": {
+          "DROUGHT_Y1": 26.0,
+          "DROUGHT_Y2": 1.0,
+          "DROUGHT_Y3": 1.0
+        },
+        "mean_yield_kg_ha": 2356.731699346405
+      },
+      {
+        "complete_environment_coverage": true,
+        "environment_centered_sd_kg_ha": 597.8882052541271,
+        "environment_count": 3,
+        "environment_mean_cv_percent": 50.89127346960448,
+        "environment_mean_sd_kg_ha": 1188.2800521369131,
+        "environment_means": [
+          {
+            "environment_code": "DROUGHT_Y1",
+            "mean_yield_kg_ha": 3296.0394607843136,
+            "plot_count": 2,
+            "rank_among_complete_genotypes": 9.0,
+            "source_row_numbers": [
+              8,
+              9
+            ]
+          },
+          {
+            "environment_code": "DROUGHT_Y2",
+            "mean_yield_kg_ha": 2702.458823529412,
+            "plot_count": 2,
+            "rank_among_complete_genotypes": 1.0,
+            "source_row_numbers": [
+              152,
+              153
+            ]
+          },
+          {
+            "environment_code": "DROUGHT_Y3",
+            "mean_yield_kg_ha": 1006.3178921568626,
+            "plot_count": 2,
+            "rank_among_complete_genotypes": 8.0,
+            "source_row_numbers": [
+              296,
+              297
+            ]
+          }
+        ],
+        "genotype_id": "TZm-480",
+        "leave_one_environment_out_ranks": {
+          "DROUGHT_Y1": 2.0,
+          "DROUGHT_Y2": 8.0,
+          "DROUGHT_Y3": 2.0
+        },
+        "mean_yield_kg_ha": 2334.9387254901962
+      },
+      {
+        "complete_environment_coverage": true,
+        "environment_centered_sd_kg_ha": 950.0634606140768,
+        "environment_count": 3,
+        "environment_mean_cv_percent": 30.646746918363064,
+        "environment_mean_sd_kg_ha": 701.0690734911785,
+        "environment_means": [
+          {
+            "environment_code": "DROUGHT_Y1",
+            "mean_yield_kg_ha": 2692.343137254901,
+            "plot_count": 2,
+            "rank_among_complete_genotypes": 18.0,
+            "source_row_numbers": [
+              54,
+              55
+            ]
+          },
+          {
+            "environment_code": "DROUGHT_Y2",
+            "mean_yield_kg_ha": 1478.055882352941,
+            "plot_count": 2,
+            "rank_among_complete_genotypes": 15.0,
+            "source_row_numbers": [
+              198,
+              199
+            ]
+          },
+          {
+            "environment_code": "DROUGHT_Y3",
+            "mean_yield_kg_ha": 2692.343137254901,
+            "plot_count": 2,
+            "rank_among_complete_genotypes": 1.0,
+            "source_row_numbers": [
+              342,
+              343
+            ]
+          }
+        ],
+        "genotype_id": "TZm-1530",
+        "leave_one_environment_out_ranks": {
+          "DROUGHT_Y1": 1.0,
+          "DROUGHT_Y2": 3.0,
+          "DROUGHT_Y3": 16.0
+        },
+        "mean_yield_kg_ha": 2287.580718954248
+      },
+      {
+        "complete_environment_coverage": true,
+        "environment_centered_sd_kg_ha": 1165.499342201971,
+        "environment_count": 3,
+        "environment_mean_cv_percent": 72.1179154400775,
+        "environment_mean_sd_kg_ha": 1527.9466606645494,
+        "environment_means": [
+          {
+            "environment_code": "DROUGHT_Y1",
+            "mean_yield_kg_ha": 3653.829166666666,
+            "plot_count": 2,
+            "rank_among_complete_genotypes": 4.0,
+            "source_row_numbers": [
+              76,
+              77
+            ]
+          },
+          {
+            "environment_code": "DROUGHT_Y2",
+            "mean_yield_kg_ha": 598.0392156862745,
+            "plot_count": 2,
+            "rank_among_complete_genotypes": 54.0,
+            "source_row_numbers": [
+              220,
+              221
+            ]
+          },
+          {
+            "environment_code": "DROUGHT_Y3",
+            "mean_yield_kg_ha": 2104.1666666666665,
+            "plot_count": 2,
+            "rank_among_complete_genotypes": 2.0,
+            "source_row_numbers": [
+              364,
+              365
+            ]
+          }
+        ],
+        "genotype_id": "TZm-1470",
+        "leave_one_environment_out_ranks": {
+          "DROUGHT_Y1": 8.0,
+          "DROUGHT_Y2": 2.0,
+          "DROUGHT_Y3": 15.0
+        },
+        "mean_yield_kg_ha": 2118.6783496732023
+      }
+    ]
+  }
+}

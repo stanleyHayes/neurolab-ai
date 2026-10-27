@@ -20,7 +20,7 @@ build:
 	npm run build
 
 test:
-	$(PYTHON) -m coverage run --source=neurolab -m unittest discover -s tests -v
+	$(PYTHON) -m coverage run --source=neurolab,scripts -m unittest discover -s tests -v
 	$(PYTHON) -m coverage xml -o coverage/python.xml
 	npm test
 

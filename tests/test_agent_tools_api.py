@@ -752,7 +752,7 @@ class ApiTests(unittest.TestCase):
         second = self.register(f"second-{uuid.uuid4()}@example.test", display_name="Second")
         self.assertEqual(second.status_code, 201)
         self.assertEqual(self.client.get("/research-runs").json(), [])
-        for suffix in ("", "/events", "/artifacts", "/report"):
+        for suffix in ("", "/events", "/artifacts", "/report", "/bundle"):
             with self.subTest(resource=suffix):
                 self.assertEqual(
                     self.client.get(f"/research-runs/{run_id}{suffix}").status_code, 404
@@ -760,6 +760,12 @@ class ApiTests(unittest.TestCase):
         self.assertEqual(self.client.post(f"/research-runs/{run_id}/cancel").status_code, 404)
         self.authenticate(first.json()["access_token"])
         self.assertEqual(self.client.get(f"/research-runs/{run_id}").status_code, 200)
+        bundle = self.client.get(f"/research-runs/{run_id}/bundle")
+        self.assertEqual(bundle.status_code, 200)
+        self.assertEqual(set(bundle.json()), {"bundle_version", "report", "artifacts", "events"})
+        self.assertEqual(bundle.json()["report"]["run_id"], run_id)
+        self.assertEqual(len(bundle.json()["artifacts"]), 3)
+        self.assertEqual(bundle.json()["events"][-1]["event_type"], "run.completed")
         self.assertIn(
             "event: run.completed", self.client.get(f"/research-runs/{run_id}/events").text
         )

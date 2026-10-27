@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { EvidenceBundleButton } from "./EvidenceBundleButton";
 import { ResultIcon } from "./ResultIcon";
 import type {
   ResearchReport,
@@ -377,6 +378,16 @@ export function ScientificReportView({
           <ResultIcon name="download" /> Export scientific report
         </button>
       </header>
+      <div className="export-row">
+        <EvidenceBundleButton
+          runId={report.run_id}
+          downloadFile={downloadFile}
+        />
+        <p className="caption">
+          The evidence bundle includes the saved report, numeric artifacts and
+          recorded events for reproducible figure export.
+        </p>
+      </div>
       <div className="scientific-scope">
         <ResultIcon name="caution" />
         <p>

@@ -1,5 +1,7 @@
 # NeuroLab AI Implementation Audit
 
+> Historical 2026-10-26 snapshot. Current code/evidence and remaining gates are tracked in [CURRENT_COMPLETION_GATES.md](CURRENT_COMPLETION_GATES.md); preserve this audit as evidence of the earlier state.
+
 **Audit date:** 2026-10-26  
 **Scope:** Read-only audit of the implementation and its current local evidence. The nine files in this verification package are audit deliverables; no product implementation was changed.  
 **Overall verified requirement completion:** **55% (22 of 40 equally weighted P0/release checkpoints)**. See methodology below; this is a rubric score, not a code-completion estimate or scientific-quality score.

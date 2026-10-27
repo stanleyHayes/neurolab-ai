@@ -1,5 +1,7 @@
 # Hackathon Acceptance / Readiness
 
+> Historical 2026-10-26 snapshot. Current code/evidence and remaining gates are tracked in [CURRENT_COMPLETION_GATES.md](CURRENT_COMPLETION_GATES.md); preserve this audit as evidence of the earlier state.
+
 **Audit date:** 2026-10-26  
 **Deadline stated by project pack:** November 4, 2026 at 9 PM Eastern Time; re-check platform timezone/countdown nearer submission.
 

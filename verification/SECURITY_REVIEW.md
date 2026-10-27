@@ -1,5 +1,7 @@
 # Security and Production Readiness Review
 
+> Historical 2026-10-26 snapshot. Current code/evidence and remaining gates are tracked in [CURRENT_COMPLETION_GATES.md](CURRENT_COMPLETION_GATES.md); preserve this audit as evidence of the earlier state.
+
 **Audit date:** 2026-10-26  
 **Risk posture:** Local prototype hardening is present; public multi-user production launch is **BLOCKED**.
 

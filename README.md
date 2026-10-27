@@ -27,6 +27,8 @@ The **Full Ghana investigation** preset preserves the supplied objective and sel
 
 Methods, scope and acceptance boundaries: [deterministic investigation profile](docs/DETERMINISTIC_INVESTIGATION_PROFILE.md). Source provenance now includes dataset metrics, original-study attribution, observed regime counts, hash copying and selected-run source matching. Meta inference remains paused following the owner's exhausted credits.
 
+Portable offline HTML reports and actual-data PNG/SVG figure exports are available from saved evidence bundles. See [scientific report export](docs/SCIENTIFIC_REPORT_EXPORT.md).
+
 ## Scientific and safety boundaries
 
 - Treat outputs as **descriptive or exploratory evidence**, not causal effects, validated predictions, or agronomic recommendations.
