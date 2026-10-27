@@ -1,0 +1,21 @@
+{
+  "scope": "Sonar infrastructure observation; not a quality verdict",
+  "first_task_id": "6b8778a0-84ef-41fe-9798-25ce2fbef7df",
+  "first_task_status": "FAILED",
+  "first_task_error": "Cannot persist analyzed test source during server restart",
+  "second_scan_status": "FAILED before upload; no task accepted",
+  "container_restart_count": 36,
+  "elasticsearch_exit_code": 137,
+  "docker_memory_bytes": 4110086144,
+  "container_memory_limit_bytes": 0,
+  "container_oom_kill_counter": 0,
+  "cause": "Unproven; global VM memory pressure is plausible given shared Docker workloads. Exit 137 alone is not proof of OOM.",
+  "manual_restart_performed": false,
+  "unrelated_services_modified": false,
+  "rules_or_gates_weakened": false,
+  "logs": {
+    "neurolab-production-invite-sonar.log": "55b59ca94498ae94237b134379846c3793e69e5505bad40be484036c1b409ddd",
+    "neurolab-production-invite-sonar-recovered.log": "707294f0c96e8dcc8c36f9b7bb8f82e8fb9295f4f7b29607f2455d9366485868"
+  },
+  "remaining": "Restore stable Sonar resources, then run current committed tree and retrieve actual gate/issues."
+}
