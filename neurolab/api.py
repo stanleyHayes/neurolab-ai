@@ -16,7 +16,6 @@ from fastapi.responses import StreamingResponse
 from pydantic import BaseModel, ConfigDict, Field, StringConstraints, model_validator
 from starlette.middleware.trustedhost import TrustedHostMiddleware
 
-from .agent import ResearchAgent
 from .auth import (
     AuthenticationError,
     assert_production_auth_config,
@@ -33,8 +32,10 @@ from .auth import (
     verify_password,
 )
 from .evaluation import write_evaluation
+from .execution import execute_run
 from .ghana import load_ghana
 from .investigation_profile import PROFILE_OUTPUT, profile_plan_check
+from .jobs import QueueLimitError, ResearchJobs
 from .planner import refine_plan, validate_execution_plan
 from .providers import (
     ModelContextLimitError,
@@ -50,12 +51,12 @@ from .research_context import (
     ResearchPlanRefinementRequest,
     ResearchRunRequest,
     build_deterministic_plan,
-    objective_digest,
     validate_objective,
 )
 from .science import dataset_profile
 from .store import RunStore
 from .tools import ToolValidationError, execute_tool
+from .worker import QueueWorker
 
 HEALTH_PATH = "/health"
 AUTH_REQUIRED = "Authentication is required"
@@ -809,76 +810,9 @@ def research_tool_execute(request: ToolCallRequest, user: UserDependency) -> dic
 
 
 def _execute_run(request: ResearchRunRequest, run_id: str) -> None:
-    try:
-        started = time.monotonic()
-        configuration = request.configuration or ResearchConfiguration(
-            dataset_id=request.dataset_id, constraints=request.constraints
-        )
-        adapter = OpenAICompatibleAdapter.from_environment() if request.mode == "meta" else None
-        plan = request.plan or build_deterministic_plan(request.objective, configuration)
-        if (
-            adapter
-            and request.plan is None
-            and configuration.autonomy_preferences.auto_plan_with_meta
-        ):
-            STORE.add_event(
-                run_id,
-                "planning.requested",
-                {
-                    "provider": adapter.provider,
-                    "model_id": adapter.model_id,
-                    "objective_sha256": objective_digest(request.objective),
-                },
-            )
-            plan = refine_plan(
-                request.objective,
-                configuration,
-                adapter,
-                timeout=min(45, configuration.constraints.max_seconds),
-            )
-            STORE.update_research_plan(run_id, plan.model_dump(mode="json"))
-            STORE.add_event(
-                run_id,
-                "planning.completed",
-                {
-                    "provider": adapter.provider,
-                    "model_id": adapter.model_id,
-                    "task_count": len(plan.tasks),
-                    "unsupported_requirements": plan.unsupported_requirements,
-                },
-            )
-        remaining = configuration.constraints.max_seconds - (time.monotonic() - started)
-        if remaining <= 0:
-            raise TimeoutError("Research planning exhausted the run time budget before analysis")
-        agent = ResearchAgent(
-            DATASET,
-            STORE,
-            max_steps=configuration.constraints.max_steps,
-            max_tool_calls=configuration.constraints.max_tool_calls,
-            max_wall_time=remaining,
-            mode=request.mode,
-            model_adapter=adapter,
-            configuration=configuration,
-            research_plan=plan,
-        )
-        agent.run(request.objective, seed=request.seed, run_id=run_id)
-    except Exception as exc:
-        sanitized = (
-            str(exc)
-            if isinstance(exc, (ModelProviderError, TimeoutError, ValueError))
-            else (
-                "Unexpected research execution error; inspect server logs without exposing secrets."
-            )
-        )
-        STORE.add_event(
-            run_id,
-            "run.failed",
-            {
-                "error_type": type(exc).__name__,
-                "message": sanitized[:200],
-                "retryable": isinstance(exc, ModelProviderError),
-            },
-        )
+    execute_run(
+        STORE, DATASET, request, run_id, adapter_factory=OpenAICompatibleAdapter.from_environment
+    )
 
 
 @app.post(
@@ -919,35 +853,26 @@ def create_research_run(
         )
     if not request.objective.strip():
         raise HTTPException(status_code=422, detail="objective must contain non-whitespace text")
-    if STORE.count_active_runs(user["user_id"]) >= 2:
-        raise HTTPException(
-            status_code=429, detail="You already have the maximum number of active runs"
+    durable_request = request.model_copy(update={"configuration": configuration})
+    try:
+        run_id = ResearchJobs(STORE).enqueue(
+            durable_request,
+            user["user_id"],
+            DATASET.source_sha256,
+            queue_limit=int(os.getenv("RESEARCH_MAX_QUEUED_JOBS", "100")),
+            initial_plan=plan,
         )
-    run_id = STORE.create_run(
-        configuration.dataset_id,
-        request.objective,
-        DATASET.source_sha256,
-        request.seed,
-        owner_user_id=user["user_id"],
-        research_configuration=configuration.model_dump(mode="json"),
-        research_plan=plan.model_dump(mode="json"),
+    except QueueLimitError as exc:
+        raise HTTPException(status_code=429, detail=str(exc)) from exc
+    inline = (
+        os.getenv("RESEARCH_INLINE_WORKER", "false" if APP_ENV == "production" else "true").lower()
+        == "true"
     )
-    STORE.add_event(
-        run_id,
-        "request.accepted",
-        {
-            "mode": request.mode,
-            "max_steps": configuration.constraints.max_steps,
-            "max_tool_calls": configuration.constraints.max_tool_calls,
-            "objective_characters": len(request.objective),
-            "objective_sha256": objective_digest(request.objective),
-        },
-    )
-    STORE.set_stage(
-        run_id, "PLANNING", "Validated structured research plan and exact original objective"
-    )
-    STORE.set_stage(run_id, "QUEUED", "Run accepted and queued for bounded execution")
-    background_tasks.add_task(_execute_run, request, run_id)
+    if inline:
+        worker = QueueWorker(
+            STORE, _execute_run, max_running=int(os.getenv("RESEARCH_MAX_RUNNING_JOBS", "2"))
+        )
+        background_tasks.add_task(worker.drain)
     report = None
     return {
         "run_id": run_id,
@@ -1168,12 +1093,16 @@ def cancel_research_run(run_id: str, user: UserDependency) -> dict[str, str]:
         )
     if run["status"] in {"PARTIAL", "FAILED", "CANCELLED", "TIMED_OUT"}:
         raise HTTPException(status_code=409, detail="Run is already terminal")
-    STORE.request_cancel(run_id)
-    event = STORE.add_event(
-        run_id,
-        "run.cancel_requested",
-        {"note": "Cancellation will be applied at the next safe boundary"},
-    )
-    if run["status"] in {"CREATED", "QUEUED"}:
-        STORE.add_event(run_id, "run.cancelled", {"reason": "cancelled_before_execution"})
+    event = ResearchJobs(STORE).cancel(run_id, user["user_id"])
+    if event is None:
+        raise HTTPException(status_code=409, detail="Run is already terminal")
     return {"run_id": run_id, "status": "cancel_requested", "event_id": event["event_id"]}
+
+
+@app.get("/research-runs/{run_id}/job", responses=HTTP_ERROR_RESPONSES)
+def research_run_job(run_id: str, user: UserDependency) -> dict[str, Any]:
+    _run_or_404(run_id, user["user_id"])
+    status = ResearchJobs(STORE).public_status(run_id, user["user_id"])
+    if status is None:
+        raise HTTPException(status_code=404, detail="This historical run has no durable job")
+    return status

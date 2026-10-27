@@ -72,11 +72,22 @@ class _DatabaseConnection:
         self.connection.close()
 
 
+class ExecutionCancelled(RuntimeError):
+    """Owner requested cancellation before another external action."""
+
+
+class ExecutionLeaseLost(RuntimeError):
+    """The worker no longer owns a live execution lease."""
+
+
 class RunStore:
     def __init__(self, path: Path | str = ":memory:") -> None:
         self.path = str(path)
         self._connection = _DatabaseConnection(self.path)
         self._lock = threading.RLock()
+        self._transaction_depth = 0
+        self._transaction_failed = False
+        self._execution = threading.local()
         with self._lock, self._connection:
             if not self._connection.is_postgresql:
                 self._connection.execute("PRAGMA foreign_keys = ON")
@@ -135,6 +146,25 @@ class RunStore:
  research_configuration_json TEXT,
  research_plan_json TEXT
  );
+                CREATE TABLE IF NOT EXISTS research_jobs (
+                    run_id TEXT PRIMARY KEY REFERENCES runs(run_id) ON DELETE CASCADE,
+                    request_json TEXT NOT NULL,
+                    state TEXT NOT NULL DEFAULT 'QUEUED',
+                    claim_token TEXT,
+                    worker_id TEXT,
+                    lease_until DOUBLE PRECISION,
+                    deadline DOUBLE PRECISION,
+                    attempts INTEGER NOT NULL DEFAULT 0,
+                    created_at TEXT NOT NULL,
+                    started_at TEXT,
+                    finished_at TEXT
+                );
+                CREATE INDEX IF NOT EXISTS research_jobs_state ON research_jobs(state, created_at);
+                CREATE TABLE IF NOT EXISTS queue_control (
+                    control_id INTEGER PRIMARY KEY,
+                    revision INTEGER NOT NULL DEFAULT 0
+                );
+                INSERT INTO queue_control (control_id, revision) VALUES (1, 0) ON CONFLICT (control_id) DO NOTHING;
                 CREATE TABLE IF NOT EXISTS events (
                     run_id TEXT NOT NULL,
                     sequence INTEGER NOT NULL,
@@ -199,8 +229,75 @@ CREATE TABLE IF NOT EXISTS research_drafts (
 
     @contextmanager
     def _transaction(self) -> Iterator[None]:
-        with self._connection:
+        if self._transaction_depth:
+            self._transaction_depth += 1
+            try:
+                yield
+            except BaseException:
+                self._transaction_failed = True
+                raise
+            finally:
+                self._transaction_depth -= 1
+            return
+        self._transaction_depth = 1
+        self._transaction_failed = False
+        try:
+            with self._connection:
+                if not self._connection.is_postgresql:
+                    self._execute("BEGIN IMMEDIATE")
+                self.assert_execution_lease(lock=True)
+                yield
+                if self._transaction_failed:
+                    raise RuntimeError("A nested store transaction failed; all writes rolled back")
+                self.assert_execution_lease()
+        finally:
+            self._transaction_depth = 0
+
+    @contextmanager
+    def atomic(self):
+        """Join nested store writes into one cross-connection transaction."""
+        with self._lock, self._transaction():
             yield
+
+    def database_epoch(self):
+        sql = (
+            "SELECT EXTRACT(EPOCH FROM clock_timestamp()) AS epoch"
+            if self._connection.is_postgresql
+            else "SELECT (julianday('now') - 2440587.5) * 86400 AS epoch"
+        )
+        return float(self._execute(sql).fetchone()["epoch"])
+
+    def assert_execution_lease(self, *, lock=False):
+        lease = getattr(self._execution, "lease", None)
+        if lease is None:
+            return
+        with self._lock:
+            query = (
+                "SELECT j.state, j.claim_token, j.lease_until, u.is_active FROM research_jobs j "
+                "JOIN runs r ON r.run_id = j.run_id JOIN users u ON u.user_id = r.owner_user_id WHERE j.run_id = ?"
+            )
+            if lock and self._connection.is_postgresql:
+                query += " FOR UPDATE OF j"
+            row = self._execute(query, (lease[0],)).fetchone()
+            if (
+                not row
+                or row["state"] != "RUNNING"
+                or row["claim_token"] != lease[1]
+                or row["lease_until"] <= self.database_epoch()
+                or not row["is_active"]
+            ):
+                raise ExecutionLeaseLost("Worker execution lease expired or was replaced")
+
+    @contextmanager
+    def execution_lease(self, run_id, token):
+        if getattr(self._execution, "lease", None) is not None:
+            raise RuntimeError("Nested worker execution is not supported")
+        self._execution.lease = (run_id, token)
+        try:
+            self.assert_execution_lease()
+            yield
+        finally:
+            self._execution.lease = None
 
     def _execute(self, query: str, parameters: tuple[Any, ...] = ()):
         return self._connection.execute(query, parameters)
@@ -338,7 +435,7 @@ CREATE TABLE IF NOT EXISTS research_drafts (
         }
         if stage not in allowed:
             raise ValueError(f"Unsupported run stage: {stage}")
-        with self._lock:
+        with self._lock, self._transaction():
             event = self.add_event(
                 run_id,
                 "stage.changed",
@@ -388,6 +485,10 @@ CREATE TABLE IF NOT EXISTS research_drafts (
 
     def add_event(self, run_id: str, event_type: str, payload: dict[str, Any]) -> dict[str, Any]:
         with self._lock, self._transaction():
+            if self._connection.is_postgresql:
+                self._execute(
+                    "SELECT run_id FROM runs WHERE run_id = ? FOR UPDATE", (run_id,)
+                ).fetchone()
             row = self._execute(
                 "SELECT COALESCE(MAX(sequence), 0) + 1 AS next FROM events WHERE run_id = ?",
                 (run_id,),
@@ -417,6 +518,7 @@ CREATE TABLE IF NOT EXISTS research_drafts (
                 "run.partial": "PARTIAL",
                 "run.failed": "FAILED",
                 "run.cancelled": "CANCELLED",
+                "run.timed_out": "TIMED_OUT",
             }.get(event_type)
             if terminal_status:
                 self._execute(
@@ -696,7 +798,7 @@ CREATE TABLE IF NOT EXISTS research_drafts (
         with self._lock:
             row = self._execute(
                 "SELECT COUNT(*) AS count FROM runs WHERE owner_user_id = ? "
-                "AND status IN ('CREATED', 'QUEUED', 'RUNNING', 'PLANNING', 'ANALYZING')",
+                "AND status NOT IN ('COMPLETE', 'PARTIAL', 'FAILED', 'CANCELLED', 'TIMED_OUT')",
                 (owner_user_id,),
             ).fetchone()
             return int(row["count"])

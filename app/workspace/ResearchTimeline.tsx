@@ -32,7 +32,11 @@ function displayText(value: unknown, fallback = "—"): string {
 
 function eventSummary(event: ResearchEvent): string {
   const payload = event.payload ?? {};
-  if (["stage.changed", "report.generated"].includes(event.event_type))
+  if (
+    ["stage.changed", "report.generated", "job.queued", "job.claimed"].includes(
+      event.event_type,
+    )
+  )
     return displayText(payload.public_summary);
   if (event.event_type === "tool.completed")
     return `${displayText(payload.artifact_id)} · n=${displayText(payload.sample_size)}`;
@@ -40,7 +44,9 @@ function eventSummary(event: ResearchEvent): string {
     return `Allowlisted tool · ${displayText(payload.action)}`;
   if (event.event_type === "decision.recorded")
     return `${displayText(payload.selected_action)} · ${displayText(payload.decision_summary)}`;
-  if (event.event_type === "tool.failed" || event.event_type === "run.failed") {
+  if (
+    ["tool.failed", "run.failed", "run.timed_out"].includes(event.event_type)
+  ) {
     return `${displayText(payload.error_type, "Error")} · ${displayText(payload.message, "See run error details")}`;
   }
   if (event.event_type === "run.created")

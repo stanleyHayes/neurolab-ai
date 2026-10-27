@@ -92,3 +92,12 @@ D1 data and repo; D2 normalization; D3 statistical tools; D4 API; D5 Meta agent;
 - [x] Preserve known-question regression and identify the old four-tool/random versus six-tool/router eligibility mismatch. Correct the protocol and collect a separate six-tool 36-answer set with ratings pending; preserve all prior attempts.
 - [ ] Complete fresh semantic adjudication of the corrected protocol, independent/held-out/live-provider evaluation and model-visible adversarial tests; retain the known-set and non-blind limitations.
 - [ ] Address explicitly observed historical nonterminal state and durable/shared job lifecycle; do not infer an active executor or mark old evidence complete from a stale status alone.
+
+## 2026-10-27 durable queue increment
+
+- [x] Persist owned run/request/admission/events atomically; enforce two nonterminal runs per owner and queue/leased concurrency limits under shared SQL coordination.
+- [x] Add standalone worker with database-time leases/heartbeats, stale-worker publication/provider fencing, source-hash preflight, cancellation and inactive-owner handling; never automatically retry started work. Keep legacy unowned records untouched.
+- [x] Commit numeric artifacts/completion events and final reports/terminal events atomically. Add owner-only job status and terminal timeout UI/replay handling.
+- [x] Verify isolated SQLite and disposable PostgreSQL operational/concurrency tests, separate worker execution without JWT signing key, and private local pre-migration backup/restore.
+- [ ] Rehearse the committed API/worker restart and interruption paths on the isolated authenticated review service, then configure supervised local workers.
+- [ ] Complete shared HTTP/account abuse controls, provider spend/tenant quotas, target deployment/supervision/backup policy, and remaining browser/live-model/submission gates.

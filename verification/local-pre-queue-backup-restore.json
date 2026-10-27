@@ -1,0 +1,20 @@
+{
+  "verified_at_utc": "2026-10-27T19:32:38.512447+00:00",
+  "database_kind": "PostgreSQL",
+  "snapshot_tables_verified": [
+    "artifacts",
+    "auth_login_limits",
+    "auth_rate_limits",
+    "auth_sessions",
+    "events",
+    "research_drafts",
+    "runs",
+    "users"
+  ],
+  "all_table_counts_and_content_digests_match": true,
+  "backup_sha256": "809e6946a2bc6f37f8c872a1752fc425cb561a11966010320b599e0ac793641b",
+  "private_backup_basename": "neurolab-pre-queue-6295ce97a6d04457903efcf7738e7ff6.dump",
+  "backup_mode": "0600",
+  "backup_location": "Private /tmp file outside repository; no database contents or connection credentials in this evidence",
+  "scope": "Local pre-migration backup and disposable restore rehearsal only; no production/offsite/encryption/retention acceptance. Original database unchanged."
+}

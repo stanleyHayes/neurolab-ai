@@ -243,3 +243,21 @@ it("uses the recorded source during active processing before the final report ex
   };
   expect(eventDescription(malicious)).not.toContain("[object Object]");
 });
+
+it("records worker timeout/failure as terminal without revealing uncompleted evidence", () => {
+  const initial = fixture.events[0];
+  const terminal = {
+    ...initial,
+    sequence: 2,
+    event_type: "run.timed_out",
+    payload: { message: "Execution deadline exceeded." },
+  };
+  expect(recordedStage([initial, terminal])).toBe("TIMED_OUT");
+  expect(
+    recordedStage([initial, { ...terminal, event_type: "run.failed" }]),
+  ).toBe("FAILED");
+  expect(
+    revealedArtifacts([initial, terminal], artifacts, report.source_sha256),
+  ).toEqual([]);
+  expect(eventTitle(terminal)).toBe("Run timed out");
+});

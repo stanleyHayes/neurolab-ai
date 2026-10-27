@@ -156,6 +156,7 @@ async function consumeRunEvents(
           "run.completed",
           "run.partial",
           "run.failed",
+          "run.timed_out",
           "run.cancelled",
         ].includes(event.event_type);
       });
@@ -475,7 +476,7 @@ export function ResearchWorkspace({
           { cache: "no-store", signal: controller.signal },
         );
         await consumeEventStream(eventResponse, (event) => {
-          if (event.event_type === "run.failed") {
+          if (["run.failed", "run.timed_out"].includes(event.event_type)) {
             setErrors((current) => ({
               ...current,
               failedRun: text(
@@ -579,7 +580,7 @@ export function ResearchWorkspace({
       await consumeRunEvents(id, (event) => {
         if (seen.has(event.sequence)) return;
         seen.add(event.sequence);
-        if (event.event_type === "run.failed") {
+        if (["run.failed", "run.timed_out"].includes(event.event_type)) {
           setErrors((current) => ({
             ...current,
             failedRun: text(event.payload.message, "The research run failed."),

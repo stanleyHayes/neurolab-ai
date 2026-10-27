@@ -63,6 +63,14 @@ export function revealedArtifacts(
 
 export function recordedStage(events: ResearchEvent[]): string {
   for (const event of [...events].reverse()) {
+    const terminal: Record<string, string> = {
+      "run.completed": "COMPLETE",
+      "run.partial": "PARTIAL",
+      "run.failed": "FAILED",
+      "run.cancelled": "CANCELLED",
+      "run.timed_out": "TIMED_OUT",
+    };
+    if (terminal[event.event_type]) return terminal[event.event_type];
     if (
       event.event_type === "stage.changed" &&
       typeof event.payload.stage === "string"

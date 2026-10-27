@@ -29,7 +29,7 @@ from .research_context import (
     validate_plan_objective,
 )
 from .scientific_report import build_scientific_report
-from .store import RunStore
+from .store import ExecutionCancelled, ExecutionLeaseLost, RunStore
 from .tools import REGISTRY, execute_tool, validate_tool_call
 
 DECISION_RECORDED = "decision.recorded"
@@ -303,20 +303,21 @@ class ResearchAgent:
                 },
             )
             raise
-        self.store.add_artifact(run_id, result)
-        self.store.add_event(
-            run_id,
-            "tool.completed",
-            {
-                "call_id": call_id,
-                "artifact_id": result["artifact_id"],
-                "sample_size": result.get("sample_size"),
-            },
-        )
-        self.store.add_event(run_id, "evidence.updated", {"evidence_id": result["artifact_id"]})
-        self.store.set_stage(
-            run_id, "RUNNING", "Evidence recorded; selecting the next bounded analysis"
-        )
+        with self.store.atomic():
+            self.store.add_artifact(run_id, result)
+            self.store.add_event(
+                run_id,
+                "tool.completed",
+                {
+                    "call_id": call_id,
+                    "artifact_id": result["artifact_id"],
+                    "sample_size": result.get("sample_size"),
+                },
+            )
+            self.store.add_event(run_id, "evidence.updated", {"evidence_id": result["artifact_id"]})
+            self.store.set_stage(
+                run_id, "RUNNING", "Evidence recorded; selecting the next bounded analysis"
+            )
         return result
 
     def _record_failure(
@@ -341,34 +342,35 @@ class ResearchAgent:
     def _finish(
         self, run_id: str, report: dict[str, Any], evidence: list[dict[str, Any]]
     ) -> dict[str, Any]:
-        complete = report["completion_status"] == "complete"
-        self.store.set_report(run_id, report)
-        self.store.add_event(
-            run_id,
-            "report.generated",
-            {
-                "public_summary": "Evidence-linked report persisted; scientific conclusions remain subject to its stated scope and limitations.",
-                "completion_status": report["completion_status"],
-                "evidence_ids": report["evidence_ids"],
-            },
-        )
-        self.store.set_stage(
-            run_id,
-            "COMPLETE" if complete else "PARTIAL",
-            "Evidence-linked research report is complete"
-            if complete
-            else "Partial report: requested analyses remain incomplete; review limitations",
-        )
-        self.store.add_event(
-            run_id,
-            "run.completed" if complete else "run.partial",
-            {
-                "completion_status": report["completion_status"],
-                "artifact_count": len(evidence),
-                "mode": report["mode"],
-                "evidence_ids": report["evidence_ids"],
-            },
-        )
+        with self.store.atomic():
+            complete = report["completion_status"] == "complete"
+            self.store.set_report(run_id, report)
+            self.store.add_event(
+                run_id,
+                "report.generated",
+                {
+                    "public_summary": "Evidence-linked report persisted; scientific conclusions remain subject to its stated scope and limitations.",
+                    "completion_status": report["completion_status"],
+                    "evidence_ids": report["evidence_ids"],
+                },
+            )
+            self.store.set_stage(
+                run_id,
+                "COMPLETE" if complete else "PARTIAL",
+                "Evidence-linked research report is complete"
+                if complete
+                else "Partial report: requested analyses remain incomplete; review limitations",
+            )
+            self.store.add_event(
+                run_id,
+                "run.completed" if complete else "run.partial",
+                {
+                    "completion_status": report["completion_status"],
+                    "artifact_count": len(evidence),
+                    "mode": report["mode"],
+                    "evidence_ids": report["evidence_ids"],
+                },
+            )
         return {
             "run": self.store.get_run(run_id),
             "report": report,
@@ -420,6 +422,8 @@ class ResearchAgent:
             if task is None:
                 raise ValueError("Model selected no remaining supported plan task")
             parameters = choice["parameters"]
+        except (ExecutionCancelled, ExecutionLeaseLost):
+            raise
         except Exception as exc:
             self._record_failure(
                 run_id,
@@ -579,6 +583,8 @@ class ResearchAgent:
             task, parameters = self._choose_task(
                 run_id, objective, pending, evidence, decisions, failures, start
             )
+            if self.store.cancel_requested(run_id):
+                return self._cancelled(run_id, "user_requested_after_decision")
             self._check_wall_time(start)
             call = self._call(run_id, task.tool_name, task.task_id, parameters)
             calls += 1

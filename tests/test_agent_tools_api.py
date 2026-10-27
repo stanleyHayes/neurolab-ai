@@ -760,6 +760,21 @@ class ApiTests(unittest.TestCase):
         self.assertEqual(profile.status_code, 200)
         self.assertEqual(profile.json()["row_count"], 864)
 
+    def test_durable_queue_survives_http_without_inline_execution_and_cancel_is_owner_scoped(self):
+        self.register(f"queued-{uuid.uuid4()}@example.test")
+        with patch.dict(os.environ, {"RESEARCH_INLINE_WORKER": "false"}):
+            response = self.client.post("/research-runs", json={"objective": "Profile the source."})
+        self.assertEqual(response.status_code, 202)
+        rid = response.json()["run_id"]
+        self.assertEqual(self.client.get(f"/research-runs/{rid}").json()["status"], "QUEUED")
+        status = self.client.get(f"/research-runs/{rid}/job")
+        self.assertEqual(status.status_code, 200)
+        self.assertEqual(status.json()["state"], "QUEUED")
+        self.assertNotIn("claim_token", status.json())
+        self.assertEqual(self.client.post(f"/research-runs/{rid}/cancel").status_code, 202)
+        self.assertEqual(self.client.get(f"/research-runs/{rid}").json()["status"], "CANCELLED")
+        self.assertEqual(self.client.get(f"/research-runs/{rid}/job").json()["state"], "CANCELLED")
+
     def test_cross_user_run_resources_are_isolated(self):
         first = self.register(f"first-{uuid.uuid4()}@example.test")
         created = self.client.post("/research-runs", json={"objective": "private owner run"})
@@ -768,7 +783,7 @@ class ApiTests(unittest.TestCase):
         second = self.register(f"second-{uuid.uuid4()}@example.test", display_name="Second")
         self.assertEqual(second.status_code, 201)
         self.assertEqual(self.client.get("/research-runs").json(), [])
-        for suffix in ("", "/events", "/artifacts", "/report", "/bundle"):
+        for suffix in ("", "/events", "/artifacts", "/report", "/bundle", "/job"):
             with self.subTest(resource=suffix):
                 self.assertEqual(
                     self.client.get(f"/research-runs/{run_id}{suffix}").status_code, 404
@@ -859,10 +874,11 @@ class ApiTests(unittest.TestCase):
             .isoformat()
             .replace("+00:00", "Z")
         )
-        STORE._execute(
-            "UPDATE auth_login_limits SET blocked_until = ? WHERE identifier_hash = ?",
-            (expired_at, identifier_hash),
-        )
+        with STORE.atomic():
+            STORE._execute(
+                "UPDATE auth_login_limits SET blocked_until = ? WHERE identifier_hash = ?",
+                (expired_at, identifier_hash),
+            )
 
         failed = self.login(email, "incorrect-password")
         self.assertEqual(failed.status_code, 401)
@@ -870,10 +886,11 @@ class ApiTests(unittest.TestCase):
         self.assertEqual(escalated.status_code, 429)
         self.assertEqual(escalated.headers["retry-after"], "60")
 
-        STORE._execute(
-            "UPDATE auth_login_limits SET blocked_until = ? WHERE identifier_hash = ?",
-            (expired_at, identifier_hash),
-        )
+        with STORE.atomic():
+            STORE._execute(
+                "UPDATE auth_login_limits SET blocked_until = ? WHERE identifier_hash = ?",
+                (expired_at, identifier_hash),
+            )
         succeeded = self.login(email)
         self.assertEqual(succeeded.status_code, 200)
         self.assertEqual(STORE.login_rate_limit_seconds(identifier_hash, session_now()), 0)

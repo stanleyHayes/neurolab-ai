@@ -113,16 +113,26 @@ Start the API in one terminal:
 ```bash
 source .venv/bin/activate
 set -a; source .env; set +a
-uvicorn neurolab.api:app --reload --port 8000
+RESEARCH_INLINE_WORKER=false uvicorn neurolab.api:app --reload --port 8000
 ```
 
-Start the Next.js app in a second terminal:
+Start a durable queue worker in a second terminal, with the same exported database/model environment (replay requires no provider key):
+
+```bash
+source .venv/bin/activate
+set -a; source .env; set +a
+python -m neurolab.worker
+```
+
+Start the Next.js app in a third terminal:
 
 ```bash
 npm run dev
 ```
 
 Open <http://localhost:3000> for the workspace. In development, FastAPI OpenAPI docs are at <http://127.0.0.1:8000/docs>. Set `RESEARCH_API_URL` if FastAPI is not listening at `http://127.0.0.1:8000`.
+
+Requests and queue claims persist in SQL; started work is not automatically retried after lease loss. See [durable research jobs](docs/DURABLE_RESEARCH_JOBS.md) for cancellation, deadlines, owner quotas and remaining operational gates.
 
 ### Optional Meta provider
 

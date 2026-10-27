@@ -26,3 +26,6 @@ Back up and verify restore before schema changes. Current schema initialization 
 ## Go/no-go
 
 Authentication is a useful prototype hardening contribution, not a production launch authorization. Public multi-user release remains **NO-GO** until global/shared abuse and spend controls, durable jobs, target DB migrations/backup-restore, TLS ingress, observability, key rotation, and deployed browser/security acceptance are demonstrated.
+## 2026-10-27 local durability evidence
+
+[Durable research jobs](DURABLE_RESEARCH_JOBS.md) now documents SQL queue admission, atomic owner quotas, leased/fenced standalone execution and explicit interrupted states. SQLite and actual disposable PostgreSQL tests are recorded. The worker needs no API signing key and does not serve HTTP. `verification/local-pre-queue-backup-restore.json` proves a private local data restore, not target backup operations. Before release, configure consistent limits and supervised workers, test the migration on the actual target, verify shared HTTP/account abuse and provider spend controls, and retain the HTTPS/identity/key-rotation/monitoring gates above. Signup remains invite-gated.

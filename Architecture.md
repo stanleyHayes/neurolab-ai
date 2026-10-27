@@ -3,10 +3,10 @@
 ```
 Next.js UI (dashboard / lab / evidence / replay + same-origin auth BFF)
 | typed HTTPS + SSE + in-memory EdDSA access JWT
-Python FastAPI (first-party identity / experiments / tool registry / event stream)
+Python FastAPI (first-party identity / durable admission / tool registry / event stream)
   |-- Data loader -> immutable CSV -> normalized Parquet/SQLite
   |-- Stats tools -> estimates / confidence intervals / plots
-  |-- Experiment runner -> bounded research tasks -> persisted artifacts
+  |-- SQL queue -> leased standalone worker -> bounded research tasks -> persisted artifacts
   |-- Agent orchestrator -> Meta API adapter / open-weight adapter
   |-- Evaluator -> task benchmarks, trace checks, cost accounting
 `-- Artifact store -> provenance manifest / reports / figures
@@ -19,3 +19,7 @@ The 'experiment' in P0 is a computational research analysis on observed trials. 
 Use SSE events (`run.created`, `hypothesis.proposed`, `tool.requested`, `tool.validated`, `tool.completed`, `evidence.updated`, `decision.recorded`, `run.completed`, `run.failed`) emitted only after corresponding state transitions. IDs and timestamps must be stable. Backend controls execution; frontend never invents state.
 
 Contracts: `schemas/agent_tool_call.schema.json` and `schemas/research_result.schema.json`; add OpenAPI generation from FastAPI. The scientific service persists runs, events, and artifacts in PostgreSQL; SQLite is retained only for isolated in-memory tests. Protect model keys server-side, rate limit and redact logs. Production-like demo must run from clean checkout with seeded real data and no hidden network dependency except configured inference.
+
+## 2026-10-27 durable execution increment
+
+New owned HTTP requests persist atomically with SQL jobs and quota reservation. Standalone workers claim exclusive leases, heartbeat against database time, fence stale result/report writes, and explicitly fail/timestamp interrupted work without automatic paid retries. Local inline wakeups use the same queue and default off in production. PostgreSQL and SQLite operational tests are separate from target-deployment acceptance. [Lifecycle contract](docs/DURABLE_RESEARCH_JOBS.md). Legacy unowned records are never adopted. Shared request throttling/spend accounting, supervision, deployment, backups and live-provider recovery validation remain open.

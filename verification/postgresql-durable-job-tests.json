@@ -1,0 +1,9 @@
+{
+  "verified_at_utc": "2026-10-27T19:36:04.020532+00:00",
+  "database": "Disposable local PostgreSQL database; isolated schema per test",
+  "server_version_number": 180001,
+  "tests_passed": 19,
+  "command": "NEUROLAB_TEST_POSTGRES_URL=<disposable local DB> python3 -m unittest tests.test_durable_jobs -v",
+  "inference_enabled": false,
+  "scope": "Same queue/restart/worker/transaction/cross-connection tests as SQLite, including actual numeric source profile and standalone worker process. No deployment or paid-provider acceptance."
+}
