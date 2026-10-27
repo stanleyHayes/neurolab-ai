@@ -1,0 +1,41 @@
+{
+  "generator": "Local Kokoro via HyperFrames 0.8.209",
+  "voice": "bm_george",
+  "speed": 0.96,
+  "ai_generated": true,
+  "duration_seconds": 166.84799999999998,
+  "caption_method": "Actual sentence-clip boundaries, not word-level transcription",
+  "script_sha256": "b0b87a7d957b770a9d71be9deca399e5f54cb4067133fab438c2464ca88943b6",
+  "outputs": {
+    "neurolab-narration.mp3": "db6bf0d9f503960ee46b095f872cb6c2f5e1606a8b4981e1a0ddb1cf045dcb15",
+    "neurolab-narration.srt": "890cbfd8e145231d2eb248b5c06dbb483571cfba96bd0300c60f5d72fc7ca619",
+    "neurolab-narration.txt": "440ada5b7e1e2c89dbd4376aa410b2c1e53b4d2ce13bc64440575a0e4f91c9ff"
+  },
+  "paid_voice_api_calls": 0,
+  "meta_api_calls": 0,
+  "browser_footage_captured": false,
+  "status": "Narration asset awaiting actual footage; not a complete video",
+  "ffprobe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "mp3",
+        "sample_rate": "48000",
+        "channels": 1
+      }
+    ],
+    "format": {
+      "duration": "166.848000"
+    }
+  },
+  "segment_count": 28,
+  "validation": {
+    "script_matches_metadata": true,
+    "captions_contiguous": true,
+    "caption_max_lines": 2,
+    "caption_bounds_within_audio": true
+  },
+  "listening_review": "pending",
+  "final_video": "not produced"
+}

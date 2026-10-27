@@ -14,7 +14,9 @@ Landscape 1920 by 1080 MP4, target about 2 minutes 50 seconds and no more than t
 
 ## Voice preference
 
-Owner explicitly selected a natural-sounding generated narrator. The first local preview uses Kokoro `bm_george` at speed 0.96 through HyperFrames 0.8.209. It is synthetic speech, not a human recording or a cloned personal voice. Preview files are in ignored `output/demo-video/`; they do not contain browser footage. Actual screen capture remains unavailable because CUA discovery times out. No cloud speech account or paid voice API was used for the preview.
+Owner explicitly selected a natural-sounding generated narrator. The first local preview uses Kokoro `bm_george` at speed 0.96 through HyperFrames 0.8.209. It is synthetic speech, not a human recording or a cloned personal voice. Preview files are in ignored `output/demo-video/`; they do not contain browser footage. Actual screen capture remains unavailable because browser control reports `CUA_REPL_ENABLED_SURFACES is required`. Approval has been received, but no browser surface is attached. No cloud speech account or paid voice API was used for the preview.
+
+The full local narration is now available at `output/demo-video/full-narration/neurolab-narration.mp3`, with a matching SRT and metadata. Its verified duration is 166.848 seconds. See `RECORDING_CUES.md` for the timed capture plan. Audio listening review and final footage alignment remain pending.
 
 ## Scientific boundaries
 
