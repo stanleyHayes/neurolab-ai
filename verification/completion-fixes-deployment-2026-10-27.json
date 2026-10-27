@@ -1,0 +1,12 @@
+{
+  "date": "2026-10-27",
+  "source_commit": "8da4f54afa3de1c98a633683e269a20f7b9d87d5",
+  "production_url": "https://neurolab-ai.vercel.app",
+  "deployment_url": "neurolab-o75m7ywbc-hayfordstanleys-projects.vercel.app",
+  "state": "READY",
+  "http_checks": {
+    "/settings/account": 200,
+    "/api/health": 200
+  },
+  "scope": "Frontend deployment and HTTP acceptance only; no rendered browser acceptance; no Render redeploy required for these frontend/test changes"
+}

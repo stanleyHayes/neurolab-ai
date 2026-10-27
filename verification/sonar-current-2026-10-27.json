@@ -1,0 +1,58 @@
+{
+  "date": "2026-10-27",
+  "source_commit": "8da4f54afa3de1c98a633683e269a20f7b9d87d5",
+  "analysis_id": "c33b1348-cc01-431e-ae11-195180eab505",
+  "task_id": "61ce4460-0e52-49e8-bbec-cfc64bc18299",
+  "task_status": "SUCCESS",
+  "quality_gate": {
+    "status": "OK",
+    "conditions": [
+      {
+        "status": "OK",
+        "metricKey": "new_coverage",
+        "comparator": "LT",
+        "errorThreshold": "80",
+        "actualValue": "86.8"
+      },
+      {
+        "status": "OK",
+        "metricKey": "new_duplicated_lines_density",
+        "comparator": "GT",
+        "errorThreshold": "3",
+        "actualValue": "0.12265"
+      },
+      {
+        "status": "OK",
+        "metricKey": "new_violations",
+        "comparator": "GT",
+        "errorThreshold": "0",
+        "actualValue": "0"
+      }
+    ],
+    "ignoredConditions": false,
+    "period": {
+      "mode": "PREVIOUS_VERSION",
+      "date": "2026-10-27T15:53:12+0000"
+    },
+    "caycStatus": "compliant"
+  },
+  "unresolved_issues": 0,
+  "security_hotspots": 0,
+  "rules_or_gate_weakened": false,
+  "initial_findings": 14,
+  "first_rescan_remaining_findings": 1,
+  "quality_command": "MODEL_INFERENCE_ENABLED=false make quality PYTHON=python3",
+  "quality_exit_code": 0,
+  "tests": {
+    "python": 174,
+    "proxy": 11,
+    "ui": 89
+  },
+  "log_sha256": {
+    "neurolab-completion-quality-corrected.log": "c5a88da5cf64a6a0de8458312707e333c5a5ae05b0796af356e5fc5238964fee",
+    "neurolab-completion-sonar.log": "81abd3cf6d6ac9b1f34a2ae7c557f2fa6be53f66cf16e1998ad7a64c1d5cd3c8",
+    "neurolab-completion-sonar-corrected.log": "995dfc06115996f81e78277662cfac3dc2c211196e3b49474782e8913bc84719",
+    "neurolab-completion-sonar-final.log": "7fc1225f7654b6d027f2e3c1522e60fbb9e80c5df6a8f66ff53708de3730a728"
+  },
+  "scope": "Local committed source quality; does not establish browser, live Meta, deployment operations or submission acceptance"
+}

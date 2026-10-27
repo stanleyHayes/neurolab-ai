@@ -4,7 +4,7 @@
 - [x] Audit and hash data; execute `scripts/audit_datasets.py`; inspect anomaly report.
 - [x] Add a repeatable local quality gate: Ruff lint/format, ESLint plus JavaScript syntax, tests, Python compilation and dataset integrity audit. Configure SonarQube analysis; server-side analysis remains conditional on a provisioned server and token.
 - [x] Confirm Meta API credentials and model availability via `python scripts/smoke_meta_provider.py`; set `META_MODEL_VERIFIED=true` only after a successful real response. **2026-10-26: Meta Model API `muse-spark-1.3` returned schema-constrained JSON; one-step live agent run selected an allowlisted action and completed with persisted, tool-derived evidence.**
-- [ ] Publish the application source in the public Git repository. Local Git history and `BUILD_LOG.md` now exist; public source publication and licensing remain open.
+- [x] Publish application source on owner-selected GitHub `main` with MIT and preserved attribution. Anonymous fresh public clone, isolated installs, 274 tests, source audit/normalization and build verified at `8da4f54`; see `verification/fresh-public-install-2026-10-27.json`.
 
 ## Phase 1: Real data MVP (P0)
 - [x] Run preprocessing, assert Ghana combined rows = 864 and two regime-specific files = 432 each.

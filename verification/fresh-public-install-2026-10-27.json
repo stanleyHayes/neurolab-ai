@@ -1,0 +1,41 @@
+{
+  "source_commit": "8da4f54afa3de1c98a633683e269a20f7b9d87d5",
+  "unauthenticated_https_clone": true,
+  "fresh_python_virtualenv": true,
+  "npm_ci": true,
+  "credentials_copied": false,
+  "model_inference_enabled": false,
+  "quality_exit_code": 0,
+  "normalization_exit_code": 0,
+  "tracked_tree_clean": true,
+  "log_sha256": {
+    "normalize.log": "009be2b278a745be833b284e7945b483558e0fb8b49f9c55b17f81865664a260",
+    "quality.log": "2b22f2d8abec487ce1955f57b06fbaea820c4ab23b1d8f0b1ce32b85469069e3",
+    "clone.log": "a05cb0cf5a5e0457cfd91f39c62ad6ad459dac6830ce2651f3b0f0226ee23c47",
+    "venv.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "python-install.log": "595656cd85bdb3b3fc13cd9a8758d3d36cc726c259d22127911d5aeabff30d23",
+    "npm-install.log": "7ff00afd68767a2345881b7d1027183e740799c7edf5677bf465a6c8fe17c757"
+  },
+  "date": "2026-10-27",
+  "tests": {
+    "python": 174,
+    "proxy": 11,
+    "ui": 89
+  },
+  "normalization": {
+    "source_records": 864,
+    "quarantined": 0,
+    "source_sha256": "2e37c07f30e00efb33b59954dd6d02a04f3d67349790d782b70dbedfdaff05bc"
+  },
+  "initial_paused_environment_failure": {
+    "source_commit": "a68192b74fe77a08520e893a735d36e6e6d3dd0d",
+    "quality_exit_code": 2,
+    "cause": "Fixture-only provider tests inherited the paused operator setting; tests now scope mocked enabled behavior explicitly. No running service or provider pause was relaxed.",
+    "log_sha256": "1a0d519934866dfca709bc7a5dcca639c029cd37432cf2421db3fdcdfe46ad5c"
+  },
+  "limitations": [
+    "No browser rendering, GPU or assistive-technology acceptance",
+    "No live Meta inference or independent blind evaluation",
+    "No target offsite recovery or submission acceptance"
+  ]
+}

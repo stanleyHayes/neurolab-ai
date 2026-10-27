@@ -55,7 +55,7 @@ No password reset endpoint is implemented. Do not add one until verified outboun
 
 `RunStore` initializes/migrates `users`, `auth_sessions`, rate-limit records, and `runs.owner_user_id` with owner/time indexes. SQLite enables foreign keys. Owner is derived only from the verified JWT, never from request fields. Existing rows migrate with `owner_user_id=NULL`; they remain preserved but inaccessible to all users. Do not assign them to the first account.
 
-SQLite schema initialization is currently in `RunStore.__init__` and is repeatable. PostgreSQL schema compatibility has not been rehearsed against a fresh deployment database; complete that before production rollout.
+SQLite schema initialization is currently in `RunStore.__init__` and is repeatable. Fresh hosted PostgreSQL initialization and first-party auth/owned replay were verified during the Render deployment (`verification/hosted-deployment-2026-10-27.json`). This is separate from target offsite restore, production key retirement, exhaustive concurrency and browser acceptance, which remain open in `verification/CURRENT_COMPLETION_GATES.md`.
 
 ## Endpoints and privacy
 
