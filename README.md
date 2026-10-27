@@ -4,7 +4,7 @@
 
 > **Status:** Working research prototype; not a production agronomy service. The current analysis MVP uses the Ghana maize dataset. A real Meta Model API adapter has been smoke-tested, but an audited end-to-end agent run did **not** meet its target research objective. Results are exploratory and must not be used as field recommendations.
 
-**Repository:** [github.com/stanleyHayes/neurolab-ai](https://github.com/stanleyHayes/neurolab-ai), delivery branch `main`. Complete application source is published on `main`; an unauthenticated HTTPS clone was verified on 2026-10-27. Hosting targets: Render Docker backend and Vercel frontend; hosted deployment remains pending.
+**Repository:** [github.com/stanleyHayes/neurolab-ai](https://github.com/stanleyHayes/neurolab-ai), delivery branch `main`. Complete application source is published on `main`; an unauthenticated HTTPS clone was verified on 2026-10-27. Live frontend: [neurolab-ai.vercel.app](https://neurolab-ai.vercel.app). Backend: [neurolab-api.onrender.com](https://neurolab-api.onrender.com/health), hosted with its worker and PostgreSQL on Render. HTTP/API acceptance is recorded; full browser and production operations gates remain open.
 
 ---
 
@@ -69,7 +69,7 @@ The live Meta `muse-spark-1.3` adapter was smoke-tested, and a bounded run execu
 
 ## Hosting: Render backend and Vercel frontend
 
-The [deployment guide](docs/RENDER_VERCEL_DEPLOYMENT.md) covers the Render Docker Blueprint (`render.yaml`) for FastAPI, the SQL worker and PostgreSQL, plus the standard Vercel Next.js frontend. Server-side proxy credentials connect them; the browser keeps its same-origin API/auth flow. The hosted backend profile enforces replay while credits are exhausted. Actual resource provisioning, server secrets and hosted acceptance remain pending. [Review and deploy the backend Blueprint](https://render.com/deploy?repo=https://github.com/stanleyHayes/neurolab-ai).
+The [deployment guide](docs/RENDER_VERCEL_DEPLOYMENT.md) covers the Render Docker Blueprint (`render.yaml`) for FastAPI, the SQL worker and PostgreSQL, plus the standard Vercel Next.js frontend. Server-side proxy credentials connect them; the browser keeps its same-origin API/auth flow. The hosted backend profile enforces replay while credits are exhausted. The hosted split is deployed, with authenticated six-tool replay and SSE cursor-resume checks recorded in `verification/hosted-deployment-2026-10-27.json`. Managed Blueprint autosync is not attached; live resources were provisioned through the Render API from these settings. [Review and deploy the backend Blueprint](https://render.com/deploy?repo=https://github.com/stanleyHayes/neurolab-ai).
 
 ## Getting started (full source checkout)
 

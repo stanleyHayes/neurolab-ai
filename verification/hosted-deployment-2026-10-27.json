@@ -1,0 +1,82 @@
+{
+  "date": "2026-10-27",
+  "frontend": {
+    "url": "https://neurolab-ai.vercel.app",
+    "project": "neurolab-ai",
+    "code_commit": "06c0a2594bc07bae00679480d6db87c0330c38bc",
+    "deployment_url": "https://neurolab-2l1rgjgxo-hayfordstanleys-projects.vercel.app",
+    "ready": true
+  },
+  "render": {
+    "project_id": "prj-dbghto8n74is73bfmf6g",
+    "environment_id": "evm-dbghto8n74is73bfmf80",
+    "database_id": "dpg-dbghtorl550s738emhv0-a",
+    "api_id": "srv-dbghulhsrm7s73f4kq5g",
+    "worker_id": "srv-dbghummk1f9s738r96ug",
+    "api_deploy_id": "dep-dbghvvgm7kps739dbtog",
+    "worker_deploy_id": "dep-dbghun6k1f9s738r99tg",
+    "api_url": "https://neurolab-api.onrender.com"
+  },
+  "backend_commit": "6cbc4a3e9123a55ee69b024609e7bee3113c2dd9",
+  "resource_topology": "Render API/worker/PostgreSQL plus Vercel frontend",
+  "managed_blueprint_instance": false,
+  "provisioning_method": "Public Render API using checked render.yaml declarations; auto-deploy off. No claim of Blueprint autosync.",
+  "hosted_acceptance": {
+    "frontend_url": "https://neurolab-ai.vercel.app",
+    "backend_url": "https://neurolab-api.onrender.com",
+    "frontend_http": 200,
+    "proxied_redacted_health_http": 200,
+    "direct_backend_without_service_credential": 401,
+    "proxied_private_dataset_without_user": 401,
+    "run_id": "6f8f922a-dfdd-46b3-bb65-035e6983f25e",
+    "run_status": "COMPLETE",
+    "artifact_count": 6,
+    "canonical_source_hash_matches": true,
+    "canonical_regime_means_match": true,
+    "mode": "deterministic_replay",
+    "model_id": null,
+    "sse_event_count": 59,
+    "sse_cursor": 30,
+    "resumed_min_id": 31,
+    "sse_cursor_resume_verified": true,
+    "refresh_cookie_secure_httponly": true,
+    "cross_origin_mutation_http": 403,
+    "cross_owner_run_http": 404,
+    "other_owner_history_excludes_run": true,
+    "job_state": "DONE",
+    "browser_acceptance": false,
+    "initial_probe": "SSE header resume failed before proxy fix; original log preserved",
+    "scientific_scope": "Exploratory deterministic Ghana analysis; no causal/field validation or live Meta inference."
+  },
+  "configuration_checks": {
+    "database_external_ip_access_disabled": true,
+    "api_replay_env_and_provider_key_absence_verified": true,
+    "worker_replay_env_and_provider_key_absence_verified": true,
+    "worker_auth_secrets_absent": true
+  },
+  "preserved_failures": {
+    "api_initial_deployments": [
+      {
+        "id": "dep-dbghum9srm7s73f4kshg",
+        "status": "update_failed",
+        "reason": "Initial database connection refused; database now records successful worker SQL activity."
+      }
+    ],
+    "initial_hosted_probe": "Six-tool run completed, then header SSE cursor assertion failed before proxy fix.",
+    "initial_hosted_probe_sha256": "ae5f819888c71d4fa8a50412bb6d3914db9357d055500bff2df544b7af981c27"
+  },
+  "validation": {
+    "hostname_and_api_python_tests": 50,
+    "sse_proxy_tests": 11,
+    "eslint": "passed",
+    "typescript": "passed",
+    "production_build": "passed"
+  },
+  "limitations": [
+    "No browser visual/keyboard/GPU/screen-reader acceptance asserted.",
+    "Current Sonar gate unverified after prior infrastructure failures.",
+    "Database offsite retention/restore, full operations, independent/live-model evaluation and submission gates remain open.",
+    "Invite-gated prototype, not unrestricted public production approval."
+  ],
+  "secrets": "Generated deployment-only credentials kept outside Git; no values included."
+}

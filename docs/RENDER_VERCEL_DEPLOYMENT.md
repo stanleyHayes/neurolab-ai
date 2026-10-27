@@ -1,6 +1,8 @@
 # Render backend and Vercel frontend
 
-This is the owner's current hosting choice, superseding the earlier all-Vercel proposal. GitHub `stanleyHayes/neurolab-ai`, branch `main`, contains both parts. The application code is MIT licensed. Prepared configuration and local tests are not proof of a hosted deployment.
+This is the owner's current hosting choice, superseding the earlier all-Vercel proposal. GitHub `stanleyHayes/neurolab-ai`, branch `main`, contains both parts. The application code is MIT licensed. The live frontend is `https://neurolab-ai.vercel.app` and API is `https://neurolab-api.onrender.com`. Both Render services and PostgreSQL are provisioned in the NeuroLab AI project. Hosted HTTP/auth/queue/science/SSE checks are recorded in `verification/hosted-deployment-2026-10-27.json`; browser and wider operational acceptance remain open.
+
+The deployed resources were created via the public Render API using the Blueprint declarations. No managed Blueprint instance/autosync was created. Do not apply a second fresh Blueprint in this workspace expecting it to represent the existing resources automatically. Auto-deploy is off; use the recorded service IDs for explicit releases.
 
 ## Components
 
@@ -13,7 +15,7 @@ Unlike the earlier Vercel private service plan, the Render API is internet reach
 
 ## Render Blueprint
 
-Import this repository's `render.yaml` through Render's New Blueprint flow. It declares both Docker services and PostgreSQL, all on `main` in Frankfurt. The proposed compute/database plans are paid resources; inspect Render's displayed costs before applying. No paid resource has been created by preparing or validating the file. Auto-deploy is off so a source push does not automatically roll out an unverified release.
+Import this repository's `render.yaml` through Render's New Blueprint flow. It declares both Docker services and PostgreSQL, all on `main` in Frankfurt. The proposed compute/database plans are paid resources; inspect Render's displayed costs before applying. Preparing/validating the file creates no resources; the owner subsequently explicitly authorized deployment and the declared baseline resources are now running. Auto-deploy is off so a source push does not automatically roll out an unverified release.
 
 The official [Blueprint reference](https://render.com/docs/blueprint-spec) describes generated secrets, database connection references and prompted variables. The Blueprint generates a service bearer, token pepper and private invite. Supply a **new deployment-only Ed25519 private key** and stable JWT issuer when prompted. Preserve the generated values across redeployments. Do not reuse or rotate the existing local ephemeral signer.
 
