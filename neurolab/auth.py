@@ -4,7 +4,9 @@ from __future__ import annotations
 
 import hashlib
 import hmac
+import json
 import os
+import re
 import secrets
 import uuid
 from datetime import UTC, datetime, timedelta
@@ -15,7 +17,7 @@ import jwt
 from argon2 import PasswordHasher
 from argon2.exceptions import InvalidHashError, VerificationError
 from cryptography.hazmat.primitives import serialization
-from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
+from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey, Ed25519PublicKey
 
 INVALID_ACCESS_MESSAGE = "Invalid access token"
 
@@ -55,9 +57,60 @@ def verify_password(password_hash: str, password: str) -> bool:
         return False
 
 
+def _valid_kid(kid):
+    return isinstance(kid, str) and re.fullmatch(r"[A-Za-z0-9._-]{1,80}", kid) is not None
+
+
+def _unique_key_entries(pairs):
+    result = {}
+    for kid, value in pairs:
+        if kid in result:
+            raise ValueError("Duplicate key identifier")
+        result[kid] = value
+    return result
+
+
+@lru_cache(maxsize=4)
+def _previous_public_keys(configured, current_kid):
+    try:
+        if len(configured) > 16384:
+            raise ValueError("Oversized verification-key configuration")
+        entries = json.loads(configured, object_pairs_hook=_unique_key_entries)
+        if not isinstance(entries, dict) or len(entries) > 3:
+            raise ValueError("Invalid verification-key configuration")
+        parsed = {}
+        for kid, pem in entries.items():
+            if (
+                not _valid_kid(kid)
+                or kid == current_kid
+                or not isinstance(pem, str)
+                or len(pem) > 4096
+            ):
+                raise ValueError("Invalid verification-key entry")
+            public = serialization.load_pem_public_key(pem.replace("\\n", "\n").encode())
+            if not isinstance(public, Ed25519PublicKey):
+                raise ValueError("Verification key must be Ed25519 public material")
+            parsed[kid] = public.public_bytes(
+                serialization.Encoding.PEM, serialization.PublicFormat.SubjectPublicKeyInfo
+            )
+        return parsed
+    except (ValueError, TypeError):
+        raise RuntimeError("Invalid previous Ed25519 verification-key configuration") from None
+
+
+def _verification_keys():
+    _private, public, kid = _key_material()
+    previous = _previous_public_keys(os.getenv("AUTH_ED25519_PREVIOUS_PUBLIC_KEYS", "{}"), kid)
+    return {kid: public, **previous}
+
+
 def _parse_key_material(
     configured: str, kid: str, production: bool
 ) -> tuple[Ed25519PrivateKey, bytes, str]:
+    if not _valid_kid(kid):
+        raise RuntimeError(
+            "AUTH_JWT_KID requires 1 to 80 ASCII letters, digits, dots, underscores or hyphens"
+        )
     if configured:
         key = serialization.load_pem_private_key(configured.encode("utf-8"), password=None)
         if not isinstance(key, Ed25519PrivateKey):
@@ -130,15 +183,21 @@ def issue_access_token(user_id: str, session_id: str, *, now: datetime | None = 
 
 
 def decode_access_token(token: str, *, now: datetime | None = None) -> dict[str, Any]:
-    _private_key, public_key, kid = _key_material()
+    keys = _verification_keys()
     try:
         header = jwt.get_unverified_header(token)
-        if header.get("alg") != "EdDSA" or header.get("kid") != kid or header.get("typ") != "JWT":
+        kid = header.get("kid")
+        if (
+            header.get("alg") != "EdDSA"
+            or not isinstance(kid, str)
+            or kid not in keys
+            or header.get("typ") != "JWT"
+        ):
             raise AuthenticationError(INVALID_ACCESS_MESSAGE)
         # PyJWT's clock is patched in tests if boundary-time behavior needs checking.
         claims = jwt.decode(
             token,
-            public_key,
+            keys[kid],
             algorithms=["EdDSA"],
             issuer=ISSUER,
             audience=AUDIENCE,
@@ -171,6 +230,8 @@ def session_now() -> str:
 
 
 def assert_production_auth_config() -> None:
+    # Validate configured public overlap in every mode; no request selects a URL/key.
+    _verification_keys()
     if os.getenv("APP_ENV", "development").strip().lower() != "production":
         return
     if not os.getenv("AUTH_ED25519_PRIVATE_KEY", "").strip():

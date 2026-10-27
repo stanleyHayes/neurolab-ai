@@ -37,3 +37,7 @@ Authentication is a useful prototype hardening contribution, not a production la
 ## 2026-10-27 shared model reservations
 
 [Shared model spending](SHARED_MODEL_SPENDING.md) adds SQL run/owner-day/global-day money and token reservations before transport, pinned policy matching and audited compare-and-swap changes. Local mocked-transport/actual-SQL evidence is separate from real provider billing. Unknown calls retain charges; replay requires no prices and makes no reservation. Real pricing/overhead/billing verification, provider-account controls, key rotation, deployed HTTPS/browser/operations and independent live Meta quality remain open. Signup stays invite-gated; Meta remains paused.
+
+## Signing key overlap increment 27 October 2026
+
+Use [the staged signing-key rotation runbook](AUTH_SIGNING_KEY_ROTATION.md): distribute the upcoming public verifier before changing signers, stop all old issuers, drain the access lifetime/leeway, then remove the old verifier. Overlap retirement is operator-controlled. Local fixture/API tests are separate from actual deployed secret distribution, monitoring, retirement and incident response. Do not rotate the HMAC pepper as part of this operation.

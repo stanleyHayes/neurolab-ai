@@ -952,6 +952,46 @@ class ApiTests(unittest.TestCase):
             self.authenticate(first.json()["access_token"])
             self.assertEqual(self.client.get("/auth/me").status_code, 200)
 
+    def test_refresh_issues_new_signing_key_during_verification_overlap(self):
+        import jwt
+
+        from tests.test_auth_key_rotation import private_pem, public_pem
+
+        old, new = Ed25519PrivateKey.generate(), Ed25519PrivateKey.generate()
+        with patch.dict(
+            os.environ,
+            {
+                "AUTH_ED25519_PRIVATE_KEY": private_pem(old),
+                "AUTH_JWT_KID": "rotation-old",
+                "AUTH_ED25519_PREVIOUS_PUBLIC_KEYS": "{}",
+            },
+        ):
+            created = self.register(f"rotation-{uuid.uuid4()}@example.test")
+            self.assertEqual(created.status_code, 201)
+            old_token = created.json()["access_token"]
+        updated = {
+            "AUTH_ED25519_PRIVATE_KEY": private_pem(new),
+            "AUTH_JWT_KID": "rotation-new",
+            "AUTH_ED25519_PREVIOUS_PUBLIC_KEYS": json.dumps({"rotation-old": public_pem(old)}),
+        }
+        with patch.dict(os.environ, updated):
+            self.assertEqual(self.client.get("/auth/me").status_code, 200)
+            rotated = self.client.post(
+                "/auth/refresh",
+                headers={
+                    "cookie": f"neurolab_refresh={self.client.cookies.get('neurolab_refresh')}; neurolab_csrf={self.csrf}",
+                    "x-csrf-token": self.csrf,
+                },
+            )
+            self.assertEqual(rotated.status_code, 200, rotated.text)
+            new_token = rotated.json()["access_token"]
+            self.assertEqual(jwt.get_unverified_header(new_token)["kid"], "rotation-new")
+        with patch.dict(os.environ, {**updated, "AUTH_ED25519_PREVIOUS_PUBLIC_KEYS": "{}"}):
+            with self.assertRaises(AuthenticationError):
+                decode_access_token(old_token)
+            self.authenticate(new_token)
+            self.assertEqual(self.client.get("/auth/me").status_code, 200)
+
     def test_http_refresh_reuse_revokes_descendants_and_clears_cookies(self):
         from neurolab.api import STORE
 

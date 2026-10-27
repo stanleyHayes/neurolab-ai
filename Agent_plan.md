@@ -115,3 +115,8 @@ D1 data and repo; D2 normalization; D3 statistical tools; D4 API; D5 Meta agent;
 ## 2026-10-27 shared model reservations
 
 [Shared model spending](docs/SHARED_MODEL_SPENDING.md) adds SQL run/owner-day/global-day money and token reservations before transport, pinned policy matching and audited compare-and-swap changes. Local mocked-transport/actual-SQL evidence is separate from real provider billing. Unknown calls retain charges; replay requires no prices and makes no reservation. Real pricing/overhead/billing verification, provider-account controls, key rotation, deployed HTTPS/browser/operations and independent live Meta quality remain open. Signup stays invite-gated; Meta remains paused.
+
+## 2026-10-27 signing key overlap
+
+- [x] Add explicit, bounded Ed25519 verification overlap, current-only issuance, strict startup validation and generated-key/API rollover/retirement tests.
+- [ ] Rehearse the committed multi-instance local fixture workflow, then separately verify secret distribution/rollout, retirement, incident response and browser/session behavior on the actual target. Operational keys and pepper remain unchanged.
