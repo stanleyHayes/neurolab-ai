@@ -8,7 +8,7 @@ from typing import Any, Literal
 
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
-from .focused_planning import focused_methods
+from .focused_planning import focused_methods, requests_maize_investigation
 from .investigation_profile import (
     PROFILE_HYPOTHESES,
     PROFILE_METHODS,
@@ -293,7 +293,12 @@ METHOD_TO_TOOL: dict[str, tuple[str, str]] = {
 
 def build_deterministic_plan(objective: str, config: ResearchConfiguration) -> ResearchPlan:
     validate_objective(objective)
-    profile = PROFILE_OUTPUT in config.desired_outputs
+    inferred_profile = (
+        not config.preferred_methods
+        and config.dataset_id == "ghana_combined"
+        and requests_maize_investigation(objective)
+    )
+    profile = PROFILE_OUTPUT in config.desired_outputs or inferred_profile
     constraints, ambiguities = [], []
     if config.preferred_methods:
         methods = config.preferred_methods
@@ -337,7 +342,9 @@ def build_deterministic_plan(objective: str, config: ResearchConfiguration) -> R
             AnalysisApproach(method_id=method, rationale=METHOD_TO_TOOL[method][1])
             for method in methods
         ],
-        desired_outputs=config.desired_outputs,
+        desired_outputs=list(
+            dict.fromkeys(config.desired_outputs + ([PROFILE_OUTPUT] if profile else []))
+        ),
         tasks=tasks,
         unsupported_requirements=[],
     )

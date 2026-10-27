@@ -11,6 +11,38 @@ from neurolab.store import RunStore
 
 
 class FocusedPlanningTests(unittest.TestCase):
+    def test_historical_multi_stage_objective_cannot_complete_as_one_stability_task(self):
+        objective = (
+            "Investigate which maize genotypes demonstrate the strongest drought tolerance "
+            "while maintaining relatively stable grain yield across the available experimental "
+            "environments. Form hypotheses, select appropriate statistical analyses, execute "
+            "the analyses, evaluate the evidence, and recommend the next experiment."
+        )
+        dataset = load_ghana()
+        for steps, expected_status in [(3, "PARTIAL"), (6, "COMPLETE")]:
+            with self.subTest(steps=steps):
+                store = RunStore(":memory:")
+                try:
+                    result = ResearchAgent(
+                        dataset, store, max_steps=steps, max_tool_calls=6, max_wall_time=120
+                    ).run(objective, seed=2026)
+                    report = result["report"]
+                    self.assertEqual(result["run"]["status"], expected_status)
+                    self.assertEqual(report["objective"], objective)
+                    self.assertEqual(len(report["research_plan"]["tasks"]), 6)
+                    self.assertEqual(report["tool_calls"], steps)
+                    self.assertEqual(report["mode"], "deterministic_replay")
+                    if steps == 6:
+                        science = report["scientific_report"]
+                        self.assertTrue(science["candidate_summaries"])
+                        self.assertEqual(len(science["hypothesis_evaluations"]), 4)
+                finally:
+                    store.close()
+        explicit = build_deterministic_plan(
+            objective, ResearchConfiguration(preferred_methods=["dataset_profile"])
+        )
+        self.assertEqual(len(explicit.tasks), 1)
+
     def test_supported_paraphrases_route_to_relevant_methods(self):
         for objective, expected in [
             ("How many plots are in the supplied source?", ["dataset_profile"]),

@@ -40,6 +40,22 @@ FALLBACK_METHODS = ["block_bootstrap_contrast", "genotype_ranking", "missingness
 ROUTING_NOTICE = "Focused replay uses deterministic keyword routing v1, not Meta inference or complete semantic interpretation. Workflow completion means selected tasks finished; it does not establish every requested scientific claim."
 
 
+def requests_maize_investigation(objective: str) -> bool:
+    """Recognize an explicit multi-stage investigation, never infer its findings."""
+    text = _positive_clauses(objective)
+    return all(
+        re.search(pattern, text)
+        for pattern in (
+            r"\bmaize\b",
+            r"\bdrought\b",
+            r"\bgenotypes?\b",
+            r"\b(?:stable|stability)\b",
+            r"\bhypothes\w*\b",
+            r"\bnext experiment\b",
+        )
+    )
+
+
 def _positive_clauses(objective):
     clauses = re.split(r"[;.!?\n]|\b(?:but|instead|only)\b", objective.casefold())
     parts = []
