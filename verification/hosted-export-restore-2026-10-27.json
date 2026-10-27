@@ -66,8 +66,8 @@
   "initial_verifier_result": "Rejected provider quote-all-identifiers format before comparison; parser regression added and same snapshot verified successfully",
   "scope": "Hosted provider export restored and compared locally; not a managed PITR cutover or established scheduled offsite recovery policy",
   "remaining": [
-    "Storage destination/retention and independent key custody",
-    "Scheduled backup automation and monitored restore/RPO/RTO acceptance",
-    "Managed target PITR/cutover and live recovery/rollback acceptance"
-  ]
+    "Managed target PITR/cutover and live recovery/rollback acceptance",
+    "Monitoring/alerts and target RPO/RTO; scheduled offsite retention/key custody are deferred future scope"
+  ],
+  "scheduled_offsite_backup_status": "Deferred by owner on 2026-10-27; record as a future addition"
 }

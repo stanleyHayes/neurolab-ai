@@ -1,0 +1,58 @@
+{
+  "date": "2026-10-27",
+  "source_commit": "15ea0f24e76b55ce6b15da456f2bc921a30a4f38",
+  "task_id": "1b79fd6c-3b2e-4294-b1a1-68ae1f160fc2",
+  "analysis_id": "8b29c2ab-9283-426b-859a-7e8c1e1627ae",
+  "task_status": "SUCCESS",
+  "quality_gate": {
+    "status": "OK",
+    "conditions": [
+      {
+        "status": "OK",
+        "metricKey": "new_coverage",
+        "comparator": "LT",
+        "errorThreshold": "80",
+        "actualValue": "87.0"
+      },
+      {
+        "status": "OK",
+        "metricKey": "new_duplicated_lines_density",
+        "comparator": "GT",
+        "errorThreshold": "3",
+        "actualValue": "0.12119"
+      },
+      {
+        "status": "OK",
+        "metricKey": "new_violations",
+        "comparator": "GT",
+        "errorThreshold": "0",
+        "actualValue": "0"
+      }
+    ],
+    "ignoredConditions": false,
+    "period": {
+      "mode": "PREVIOUS_VERSION",
+      "date": "2026-10-27T15:53:12+0000"
+    },
+    "caycStatus": "compliant"
+  },
+  "unresolved_issues": 0,
+  "security_hotspots": 0,
+  "rules_or_gate_weakened": false,
+  "tests": {
+    "python": 181,
+    "proxy": 11,
+    "ui": 89,
+    "restore_verifier_focused": 7
+  },
+  "quality_command": "MODEL_INFERENCE_ENABLED=false make quality PYTHON=python3",
+  "quality_exit_code": 0,
+  "initial_analysis_findings": 3,
+  "correction": "Exception tests now precompute setup so only the intended invocation can raise",
+  "log_sha256": {
+    "neurolab-recovery-quality.log": "e2d556713b10200e5e53df743504a9bb231430b6850bf722e5d01e6f8f1e7ac9",
+    "neurolab-recovery-tests-final.log": "275aa3efb6ced5aa4e53ec9c3e743b5b2d82f7484d585311c6d6ead91de5e6d9",
+    "neurolab-recovery-sonar.log": "3ee96922becc724352d85a197e974139be2de2c04cf1a4c58a1a70f0a6bbdae1",
+    "neurolab-recovery-sonar-final.log": "d2725e61f5bea5ef4f4b9aaf245e298fb25cbba761c7aac139e9cddc42fcf361"
+  }
+}
