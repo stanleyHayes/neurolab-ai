@@ -1,0 +1,92 @@
+{
+  "verified_at_utc": "2026-10-27T17:56:18.971369+00:00",
+  "code_commit": "9666c16934ff9f6e63942b137fd7df3f9ece6416",
+  "run_id": "a3358b92-ef34-4488-88fb-4c794c831d8a",
+  "scope": "Focused exploratory analysis: quantify observed Ghana environment yield variation and rank sensitivity, and genotype-mean drought trait associations. This is not the complete maize investigation or a field recommendation.",
+  "status": "COMPLETE",
+  "mode": "deterministic_replay",
+  "inference_enabled": false,
+  "source_sha256": "2e37c07f30e00efb33b59954dd6d02a04f3d67349790d782b70dbedfdaff05bc",
+  "tool_calls": 2,
+  "tool_names": [
+    "summarize_environment_stability",
+    "analyze_trait_associations"
+  ],
+  "recorded_tool_completion_events": 2,
+  "terminal_event": "run.completed",
+  "event_count": 23,
+  "drought_complete_genotype_count": 72,
+  "trait_summary": [
+    {
+      "genotype_count": 72,
+      "paired_plot_count": 432,
+      "spearman_rho": -0.25035601520992046,
+      "spearman_rho_95_percentile_interval": [
+        -0.4672793032125348,
+        0.013117178338713916
+      ],
+      "trait": "asi_days"
+    },
+    {
+      "genotype_count": 72,
+      "paired_plot_count": 432,
+      "spearman_rho": -0.2939934804602039,
+      "spearman_rho_95_percentile_interval": [
+        -0.48970001180297806,
+        -0.04739850035072619
+      ],
+      "trait": "stay_green_score"
+    },
+    {
+      "genotype_count": 72,
+      "paired_plot_count": 432,
+      "spearman_rho": 0.3606662807897614,
+      "spearman_rho_95_percentile_interval": [
+        0.15423042361036818,
+        0.5533297223404633
+      ],
+      "trait": "ears_per_plant"
+    },
+    {
+      "genotype_count": 72,
+      "paired_plot_count": 432,
+      "spearman_rho": 0.4634097322303279,
+      "spearman_rho_95_percentile_interval": [
+        0.2390989287634187,
+        0.6379606987533869
+      ],
+      "trait": "plant_height_value"
+    },
+    {
+      "genotype_count": 72,
+      "paired_plot_count": 432,
+      "spearman_rho": 0.4534375200977555,
+      "spearman_rho_95_percentile_interval": [
+        0.2406418442465969,
+        0.6349101124444806
+      ],
+      "trait": "ear_height_value"
+    },
+    {
+      "genotype_count": 72,
+      "paired_plot_count": 432,
+      "spearman_rho": 0.21008619971775974,
+      "spearman_rho_95_percentile_interval": [
+        -0.03359726960885771,
+        0.43891596847503467
+      ],
+      "trait": "anthesis_days"
+    },
+    {
+      "genotype_count": 72,
+      "paired_plot_count": 432,
+      "spearman_rho": 0.09564399648655741,
+      "spearman_rho_95_percentile_interval": [
+        -0.14677694201869912,
+        0.32932439911780803
+      ],
+      "trait": "silking_days"
+    }
+  ],
+  "limitations": "Focused deterministic run only. No live Meta, full original-objective, browser or field-validity acceptance is claimed."
+}
