@@ -30,6 +30,9 @@
   "live_diagnostics": "model-rationale-live-2026-10-28/summary.json",
   "fresh_install_commit": "5ea24ad3821eeb2b6b68d547b868e6865247c4dc",
   "browser_acceptance": false,
-  "hosted_correction_deployed": false,
-  "hosted_meta_inference_verified": false
+  "hosted_meta_inference_verified": false,
+  "hosted_correction_deployed_at_quality_time": false,
+  "hosted_correction_deployed": true,
+  "deployment_evidence": "model-rationale-deployment-2026-10-28.json",
+  "isolated_public_current_source_check": "public-current-source-check-2026-10-28.json"
 }

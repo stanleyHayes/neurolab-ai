@@ -1,0 +1,112 @@
+{
+  "verified_at_utc": "2026-10-28T01:38:14.770250+00:00",
+  "release": {
+    "requested_at_utc": "2026-10-28T01:30:19.862277+00:00",
+    "target_commit": "ebf1111ba5f13c1fb874203cf2b93dc88946e569",
+    "services": {
+      "worker": {
+        "service_id": "srv-dbghummk1f9s738r96ug",
+        "deploy_id": "dep-dbgl0b942hec73dcf67g",
+        "requested_commit": "ebf1111ba5f13c1fb874203cf2b93dc88946e569",
+        "started_at_utc": "2026-10-28T01:30:21.286512+00:00",
+        "status": "live",
+        "reported_commit": "ebf1111ba5f13c1fb874203cf2b93dc88946e569"
+      },
+      "api": {
+        "service_id": "srv-dbghulhsrm7s73f4kq5g",
+        "deploy_id": "dep-dbgl1loae00c73cok0bg",
+        "requested_commit": "ebf1111ba5f13c1fb874203cf2b93dc88946e569",
+        "started_at_utc": "2026-10-28T01:33:11.345106+00:00",
+        "status": "live",
+        "reported_commit": "ebf1111ba5f13c1fb874203cf2b93dc88946e569"
+      }
+    }
+  },
+  "health": [
+    {
+      "url": "https://neurolab-api.onrender.com/health",
+      "http": 200,
+      "redacted": true
+    },
+    {
+      "url": "https://neurolab-ai.vercel.app/api/health",
+      "http": 200,
+      "redacted": true
+    },
+    {
+      "url": "https://neurolab-api.onrender.com/research-runs",
+      "http": 401,
+      "unauthenticated_private_access_denied": true
+    },
+    {
+      "url": "https://neurolab-ai.vercel.app/api/research-runs",
+      "http": 401,
+      "unauthenticated_private_access_denied": true
+    }
+  ],
+  "frontend_bundle": {
+    "page_http": 200,
+    "page": "/live-experiment",
+    "assets_checked": 10,
+    "new_label_in_public_assets": true,
+    "matching_assets": [
+      {
+        "path": "/_next/static/immutable/chunks/0kfp4p-l4f-c7.js",
+        "http_status": 200,
+        "sha256": "b746fec7ad20b30d4c452b00d67d3fe2897bbf1a7c793eaa05275806e6aef4cb",
+        "new_rationale_label": true
+      }
+    ],
+    "scope": "HTTP/client-bundle evidence only, not rendered UI/browser acceptance"
+  },
+  "hosted_owner_check": {
+    "run_id": "e4a93800-5505-4735-9736-8c1b4bac5d23",
+    "created_at_utc": "2026-10-28T01:35:58.396953+00:00",
+    "scope": "One-action hosted deployment smoke; not original-objective rerun or evaluation matrix",
+    "verified_at_utc": "2026-10-28T01:36:01.210352+00:00",
+    "status": "PARTIAL",
+    "owner_scope_verified": true,
+    "worker_commit": "ebf1111ba5f13c1fb874203cf2b93dc88946e569",
+    "expected_commit": "ebf1111ba5f13c1fb874203cf2b93dc88946e569",
+    "source_sha256": "2e37c07f30e00efb33b59954dd6d02a04f3d67349790d782b70dbedfdaff05bc",
+    "model": "muse-spark-1.3",
+    "failures": [
+      {
+        "action": "model_decision",
+        "error_type": "ModelProviderError",
+        "provider_http_status": 404,
+        "provider_requests_stopped": true,
+        "recovered": true
+      }
+    ],
+    "artifact_count": 1,
+    "selection_sources": [
+      "deterministic_plan_recovery"
+    ],
+    "event_model_rationale_count": 0,
+    "scientific_report_excludes_model_rationale": true,
+    "actual_provider_usage": "Not exposed by production API; no invoice claim"
+  },
+  "local": {
+    "worker_restarted_gracefully": true,
+    "active_jobs_before_restart": 0,
+    "old_worker_exit_code": 0,
+    "api_process_and_signing_session_preserved": true,
+    "new_worker_process_confirmed": true,
+    "health": [
+      {
+        "url": "http://127.0.0.1:8000/health",
+        "http": 200,
+        "configured_inference_live": true
+      },
+      {
+        "url": "http://127.0.0.1:3000/api/health",
+        "http": 200,
+        "configured_inference_live": true
+      }
+    ]
+  },
+  "hosted_meta_inference_verified": false,
+  "browser_acceptance": false,
+  "no_new_resources_or_secret_changes": true
+}

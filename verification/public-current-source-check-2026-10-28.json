@@ -1,0 +1,39 @@
+{
+  "started_at_utc": "2026-10-28T01:33:54.628669+00:00",
+  "source_commit": "ebf1111ba5f13c1fb874203cf2b93dc88946e569",
+  "initial_install_commit": "5ea24ad3821eeb2b6b68d547b868e6865247c4dc",
+  "steps": [
+    {
+      "name": "fetch",
+      "exit_code": 0,
+      "elapsed_seconds": 1.4635827920865268,
+      "log_sha256": "99504271863bc520c3b355f996df06c836b15a1cc7d3e8e43f6151fda4861813"
+    },
+    {
+      "name": "checkout",
+      "exit_code": 0,
+      "elapsed_seconds": 0.028272207942791283,
+      "log_sha256": "e33293f34e903fc788c343954e31476bb70512e01338e62272222e83e78d81e3"
+    },
+    {
+      "name": "quality",
+      "exit_code": 0,
+      "elapsed_seconds": 63.481923084007576,
+      "log_sha256": "bc884d554e4b442fd8bf297aa558a1fee314a314800da1cb895cb54caf7ce7a9"
+    }
+  ],
+  "credentials_copied": false,
+  "model_inference_enabled": false,
+  "dependency_configuration_unchanged": true,
+  "tracked_tree_clean": true,
+  "status": "passed",
+  "completed_at_utc": "2026-10-28T01:34:59.650946+00:00",
+  "tests": {
+    "backend": 219,
+    "proxy": 11,
+    "ui": 92,
+    "total": 322
+  },
+  "initial_install_evidence": "fresh-public-install-2026-10-28.json",
+  "scope": "Public source ebf1111 in the isolated fresh-install environment; dependency configuration unchanged; no browser or real inference acceptance"
+}
