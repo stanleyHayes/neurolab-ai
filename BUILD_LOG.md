@@ -904,3 +904,8 @@ Replaced the API's SQLite default with PostgreSQL (`DATABASE_URL=postgresql:///n
 - Sanitizedproof verification/judge-access-2026-10-28/proof.json plus privatefullbundle/hash. README nowgivesprivateaccesshandoff, exact6methodthenMetaselection, sampleobjective, results/replaydistinction, prereviewfunds/accesschecks, accountseparation, existing$1run/account/globaldaycaps and safeproviderfailurebehavior. No increases/deployments/authchanges; documentation/liveacceptancetests appropriate. Remaining: ownerdeliverprivateaccessnotes, preflightbeforejudging, provider/eventaliasclarification; futureuptimenotguaranteed.
 
 - Local judge-browser captures explicitly ignored to keep session artifacts out of public source; sanitized proof alone published.
+
+## 2026-10-28 — Alternative narration samples for owner listening
+
+- Owner found existing generated voice mechanical. Generated two local Kokoro/HyperFrames0.8.210 samples, af_heart and bf_emma at0.98speed, with shorter spoken sentences and no post-generation acceleration. MP3loudness normalized; ffprobe/nonempty/fullaudio decode checks passed. Samples and metadata remain ignored underoutput/demo-video/voice-revision-previews. No paidvoiceAPI, newinference, clonedhumanvoice or videooverwrite.
+- Owner listening preference remains pending; no claim of independentlyheard voicequality. Existing179.2seconddelivery is unchanged. Suggested nextpass: chosenvoice, shorter narration to fit180seconds without speedingup, then recaption/rerender/recheck. GuideweightsDemo25percent; no explicitAIvoicepenalty identified in suppliedguide, but score effect cannotbe predicted.
