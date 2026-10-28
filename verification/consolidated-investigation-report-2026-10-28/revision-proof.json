@@ -1,0 +1,10 @@
+{
+  "original_annotated_bundle_sha256": "9bad64ac7e10ddd4fff1052fa997d2cff556b1c41f2a43acce72b772c5703383",
+  "original_run_id": "ad9bb399-7e4d-4b42-83fc-450c914eadc5",
+  "scientific_content_unchanged": true,
+  "original_event_count": 53,
+  "original_artifact_count": 6,
+  "engineering_history_entries": 19,
+  "report_revision_scope": "Engineering appendix only, no new inference or numeric analysis",
+  "new_bundle_sha256": "ff709afeb237da85610be279248bc3341e5adcf99966324438f1136b0ec625c2"
+}

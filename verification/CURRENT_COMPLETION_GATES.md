@@ -104,3 +104,7 @@ Render API and worker are LIVE at ebf1111; Vercel serves the new unverified-rati
 ### Real local in-flight cancellation, 28 October
 
 Actual Meta request runbf93f8dd was cancelled after HTTPS send and before HTTP200 headers. Worker/SQL job ended CANCELLED/DONE, one attempt, zero scientific artifacts/report, no second provider request; reported636tokens and retained reservation. Later terminal re-claim returnedNone. An earlier observer-constructor error prevented network transmission; its PARTIAL actual fallback and two unknown reservations remain preserved. This verifies one local case, not forced abort/refund, exhaustive races or hosted live-Meta behavior. Evidence: `real-provider-cancellation-2026-10-28/summary.json`. Runtime source unchanged; no deployment required.
+
+### Consolidated requested report, 28 October
+
+The new portable consolidated investigation report preserves the original scientific report, six artifacts,53events, all unrounded plotting data and byte-identical fourPNGfigures. Only the engineering appendix is updated to19challenges, including local/hosted separation, logging corrections, fresh-source checks and failed/accepted cancellation probes. Earlier reports remain unchanged. Two exporter tests and structural/source/secret checks pass; no inference or new scientific tool ran. Browser creation still returns access-host unavailable; native Chrome still reports cgWindowNotFound. HTML/browser/print and actual video acceptance remain open. Evidence: `consolidated-investigation-report-2026-10-28/verification.json`.

@@ -25,3 +25,9 @@ The exporter performs presentation only: no inference, new resampling, dataset j
 ## Actual recorded case
 
 `verification/maize-investigation/` was generated from authenticated saved run `971d3426-4768-4784-bb0d-a665bdb0b007`: the exact supplied objective, six completed tools, six artifacts, 57 API lifecycle events, canonical source hash `2e37c07f30e00efb33b59954dd6d02a04f3d67349790d782b70dbedfdaff05bc`, loaded science code commit `62ff746`. The original recorded startup byte hashes remain intact; the exporter does not relabel the scientific run as having executed under a later presentation commit. All four actual PNGs were visually inspected locally for labels, legend/caption legibility and observed values. This is figure inspection, not app/browser screenshot acceptance. No live Meta call occurred.
+
+## Consolidated real-Meta investigation report, 28 October2026
+
+[Current portable report](../verification/consolidated-investigation-report-2026-10-28/export/report.html) presents saved real-Meta runad9bb399 and an updated19-entry engineering appendix, including unresolved hosted404, event-only unverified rationale, corrected raw-envelope logging, fresh public-source checks and both actual cancellation probes. The original report/artifacts/53events and unrounded plotting data are unchanged; all four PNGs are byte-identical to the first resolution export. Earlier reports and failed trials remain preserved.
+
+`verification.json` records exact scientific-subtree equality, eleven report sections, four embedded figures, parsed SVGs, no scripts/external asset links, no configured-secret matches and two passing exporter regressions. This revision makes no model calls and executes no new scientific tools. HTML structural checks and identical figure bytes do not establish rendered-browser or print acceptance; browser access remains unavailable.

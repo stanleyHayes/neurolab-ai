@@ -1,0 +1,41 @@
+{
+  "verified_at_utc": "2026-10-28T01:56:28.978152+00:00",
+  "original_run_id": "ad9bb399-7e4d-4b42-83fc-450c914eadc5",
+  "science_subtree_sha256_before": "9cf49c13f59a133cd3da44063ee48847575774ec3f0449e0c3cf40e4f15010b7",
+  "science_subtree_sha256_after": "9cf49c13f59a133cd3da44063ee48847575774ec3f0449e0c3cf40e4f15010b7",
+  "scientific_report_artifacts_events_unchanged": true,
+  "unrounded_figure_data_unchanged": true,
+  "plot_pngs_byte_identical": {
+    "environment-profiles.png": true,
+    "trait-correlations.png": true,
+    "candidate-comparison.png": true,
+    "regime-comparison.png": true
+  },
+  "html_h2_sections": 11,
+  "embedded_figures": 4,
+  "external_src_href_count": 0,
+  "script_tags": 0,
+  "engineering_history_entries": 19,
+  "exporter_regression_tests": 2,
+  "secret_scan_matches": 0,
+  "actual_new_model_calls": 0,
+  "new_scientific_tool_execution": false,
+  "rendered_browser_acceptance": false,
+  "browser_error": "The browser access host is unavailable; native Chrome cgWindowNotFound",
+  "file_sha256": {
+    "annotated-bundle.json": "ff709afeb237da85610be279248bc3341e5adcf99966324438f1136b0ec625c2",
+    "revision-proof.json": "de5b5d0c4560ba63385808474ffbab8ea6895f22ef7732771f9c2624dd0c26b2",
+    "export/evidence.json": "ff709afeb237da85610be279248bc3341e5adcf99966324438f1136b0ec625c2",
+    "export/export-metadata.json": "ed4e16b547a7846f4f4b1941f388b466ccbcb8ebbb712ad7eaf5158ed2d8be96",
+    "export/environment-profiles.png": "7f93f9f65707f32b5dfcbe2335cc166c30d6a7b3dc8e1ea4180f84a751fff285",
+    "export/trait-correlations.png": "1f8e1ab9eea66f54b9c7d9593c6357b1fa4fedb1d0b5779d9700ff69ebb79c71",
+    "export/candidate-comparison.png": "29924f49ba81fe029580dbff4673e236261f4efcaf5be9bdc37283cda97a3a43",
+    "export/candidate-comparison.svg": "af986dd86062104c226b3c0a2c8e223904268b6a4f0dbe812ac5c87e7f0ca863",
+    "export/trait-correlations.svg": "9155bb89e13d46645d2375b7ecf7006b68ef1fe35bb8c745c0f0f23a48783992",
+    "export/environment-profiles.svg": "3bf6904d4a1f851060a7c1a96b1bac931c58c89c33f7260c7741e0ceca6831f1",
+    "export/figure-data.json": "a28eddc889b8c350eb41cda1963d10099b70f4254fb891160ae5cb546f112d0a",
+    "export/regime-comparison.png": "fb880b84bf26650daebf798d9e8bbcdbd4f80eed58b4a071c5f7fbcaf4b88e03",
+    "export/regime-comparison.svg": "37cfc2ed29dcd06d67d0c026433484656e140ee2d3e89d17f4128f15f851b683",
+    "export/report.html": "9d3ccf8c006b599b32dc62c3cb0b288d59f2cf4c9b60df43c9ba1dbf0a4bfae6"
+  }
+}
