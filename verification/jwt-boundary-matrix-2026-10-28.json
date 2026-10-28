@@ -1,0 +1,37 @@
+{
+  "verified_at_utc": "2026-10-28T00:57:15.015222+00:00",
+  "scope": "Local generated-key token validation; not production key rotation",
+  "test_file": "tests/test_auth_key_rotation.py",
+  "test_file_sha256": "53efe5a7f523bbd09489e0cd639967f567b4b2fc5cc51c2e0b3b7b26d3883e39",
+  "focused_tests": 9,
+  "backend_tests": 197,
+  "backend_passed": true,
+  "required_claim_removals": [
+    "iss",
+    "aud",
+    "sub",
+    "sid",
+    "iat",
+    "nbf",
+    "exp",
+    "jti",
+    "token_type"
+  ],
+  "verifier_clock_boundary_cases": {
+    "expired_14_seconds_ago": "accepted within configured leeway",
+    "expired_15_seconds_ago": "rejected",
+    "nbf_plus_15": "accepted",
+    "nbf_plus_16": "rejected",
+    "iat_plus_15": "accepted",
+    "iat_plus_16": "rejected"
+  },
+  "malformed_unsigned_wrong_type": "rejected",
+  "production_credentials_changed": false,
+  "browser_acceptance": "Not verified; Chrome cgWindowNotFound and app discovery timeout",
+  "test_log_sha256": "5467cf3347b6f943d5b09f748e77ac16e2230e6456965dc529caab0a15b7279a",
+  "sonar": {
+    "gate": "PASSED",
+    "issues": 0,
+    "hotspots": 0
+  }
+}

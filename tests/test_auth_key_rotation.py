@@ -3,6 +3,7 @@
 import json
 import os
 import unittest
+from datetime import UTC, datetime
 from unittest.mock import patch
 
 import jwt
@@ -104,6 +105,60 @@ class KeyRotationTests(unittest.TestCase):
                 )
                 with self.subTest(payload=payload), self.assertRaises(AuthenticationError):
                     decode_access_token(forged)
+
+    def test_every_required_claim_is_enforced(self):
+        with patch.dict(os.environ, self.old_env, clear=True):
+            token = issue_access_token("owner", "session")
+            claims = jwt.decode(token, options={"verify_signature": False})
+            for missing in ("iss", "aud", "sub", "sid", "iat", "nbf", "exp", "jti", "token_type"):
+                payload = {key: value for key, value in claims.items() if key != missing}
+                signed = jwt.encode(
+                    payload, self.old, algorithm="EdDSA", headers={"kid": "old-v1", "typ": "JWT"}
+                )
+                with self.subTest(missing=missing), self.assertRaises(AuthenticationError):
+                    decode_access_token(signed)
+
+    def test_clock_skew_boundaries_use_verifier_clock(self):
+        fixed = datetime(2026, 10, 28, tzinfo=UTC)
+        timestamp = int(fixed.timestamp())
+        with patch.dict(os.environ, self.old_env, clear=True):
+            token = issue_access_token("owner", "session")
+            claims = jwt.decode(token, options={"verify_signature": False})
+            base = {**claims, "iat": timestamp, "nbf": timestamp, "exp": timestamp + 720}
+            for field, offset, accepted in (
+                ("exp", -14, True),
+                ("exp", -15, False),
+                ("nbf", 15, True),
+                ("nbf", 16, False),
+                ("iat", 15, True),
+                ("iat", 16, False),
+            ):
+                payload = {**base, field: timestamp + offset}
+                signed = jwt.encode(
+                    payload, self.old, algorithm="EdDSA", headers={"kid": "old-v1", "typ": "JWT"}
+                )
+                with (
+                    self.subTest(field=field, offset=offset),
+                    patch("jwt.api_jwt.datetime") as clock,
+                ):
+                    clock.now.return_value = fixed
+                    if accepted:
+                        self.assertEqual(decode_access_token(signed)["sub"], "owner")
+                    else:
+                        with self.assertRaises(AuthenticationError):
+                            decode_access_token(signed)
+
+    def test_malformed_unsigned_and_wrong_type_headers_are_rejected(self):
+        with patch.dict(os.environ, self.old_env, clear=True):
+            token = issue_access_token("owner", "session")
+            claims = jwt.decode(token, options={"verify_signature": False})
+            unsigned = jwt.encode(claims, key="", algorithm="none", headers={"kid": "old-v1"})
+            wrong_type = jwt.encode(
+                claims, self.old, algorithm="EdDSA", headers={"kid": "old-v1", "typ": "refresh"}
+            )
+            for invalid in ("", "not-a-token", "a.b.c", token + ".extra", unsigned, wrong_type):
+                with self.subTest(token=invalid[:12]), self.assertRaises(AuthenticationError):
+                    decode_access_token(invalid)
 
     def test_unknown_kid_never_selects_a_remote_key(self):
         with patch.dict(os.environ, self.new_env, clear=True):

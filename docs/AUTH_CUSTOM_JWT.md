@@ -71,3 +71,7 @@ Actual HTTP tests cover descendant access denial, cookie clearing, expired ances
 ## 2026-10-27 signing verification overlap
 
 [Signing key rotation](AUTH_SIGNING_KEY_ROTATION.md) supports a bounded set of trusted public verification keys while only the current private key signs new tokens. Existing issuer/audience/lifetime, active-session and owner checks still apply. Local generated-key tests do not rotate operational keys or close deployed secret-manager/browser acceptance. HMAC pepper rotation is a separate, unsupported migration.
+
+## Token-boundary regression evidence (28 October 2026)
+
+Generated-key tests in `tests/test_auth_key_rotation.py` now remove each of the nine required claims separately, reject malformed/unsigned/wrong-type tokens, and freeze the verifier clock at exact leeway boundaries. Expiry at 15 seconds before the verifier time is rejected; expiry 14 seconds before is accepted. Future not-before and issued-at values at +15 seconds are accepted and +16 seconds rejected. These checks supplement issuer/audience/algorithm/key/signature and staged old/new-key tests. They do not establish an exhaustive cryptographic audit or actual deployed signing-key distribution/retirement. No production keys are used or changed.
