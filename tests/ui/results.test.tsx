@@ -157,3 +157,22 @@ it("distinguishes partial artifacts and absent requested outputs", () => {
     screen.getByRole("heading", { name: "Drought vs well-watered" }),
   ).toBeTruthy();
 });
+
+it("distinguishes unreadable evidence from an empty run and withholds cached results", () => {
+  render(<EvidenceResults {...resultsProps()} loadError />);
+  expect(screen.getByText("Evidence unavailable")).toBeTruthy();
+  expect(
+    screen.getByRole("heading", { name: "Saved evidence couldn’t be loaded" }),
+  ).toBeTruthy();
+  expect(screen.getByText(/Use Reload run above/)).toBeTruthy();
+  expect(screen.queryByText(/saved artifacts/)).toBeNull();
+  expect(
+    screen.queryByRole("link", { name: /Start an investigation/ }),
+  ).toBeNull();
+  expect(screen.queryByRole("link", { name: /Cinematic replay/ })).toBeNull();
+  expect(
+    screen.queryByRole("heading", { name: "Drought vs well-watered" }),
+  ).toBeNull();
+  expect(screen.queryByText(/This run has no comparison/)).toBeNull();
+  expect(screen.queryByRole("button", { name: /Download/ })).toBeNull();
+});

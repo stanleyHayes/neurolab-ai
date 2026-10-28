@@ -21,6 +21,7 @@ type EvidenceResultsProps = {
   report: ResearchReport | null;
   events: unknown[];
   retrieving: boolean;
+  loadError?: boolean;
   showContrast: boolean;
   showRanking: boolean;
   contrast: ResearchArtifact | undefined;
@@ -448,6 +449,7 @@ export function EvidenceResults(props: Readonly<EvidenceResultsProps>) {
     report,
     events,
     retrieving,
+    loadError = false,
     showContrast,
     showRanking,
     contrast,
@@ -487,18 +489,20 @@ export function EvidenceResults(props: Readonly<EvidenceResultsProps>) {
         </div>
         <div className="results-run-badges">
           <span className="results-status">
-            <ResultIcon name="complete" />
-            {artifacts.length} saved artifacts
+            <ResultIcon name={loadError ? "caution" : "complete"} />
+            {loadError
+              ? "Evidence unavailable"
+              : `${artifacts.length} saved artifacts`}
           </span>
-          {report && <span className="results-mode">{mode}</span>}
-          {report && (
+          {report && !loadError && <span className="results-mode">{mode}</span>}
+          {report && !loadError && (
             <Link className="primary-link" href="/live-experiment">
               <ResultIcon name="retention" /> Cinematic replay
             </Link>
           )}
         </div>
       </header>
-      {report && report.completion_status !== "complete" && (
+      {report && !loadError && report.completion_status !== "complete" && (
         <output className="results-partial">
           <ResultIcon name="caution" />
           <span>
@@ -507,13 +511,15 @@ export function EvidenceResults(props: Readonly<EvidenceResultsProps>) {
           </span>
         </output>
       )}
-      {!sourceConsistent && (
+      {!loadError && !sourceConsistent && (
         <p className="auth-error" role="alert">
           Saved artifact source hashes do not match this report. Comparisons are
           withheld until the source inconsistency is resolved.
         </p>
       )}
-      <AnalysisScopeNote section={section} available={extended.length > 0} />
+      {!loadError && (
+        <AnalysisScopeNote section={section} available={extended.length > 0} />
+      )}
       {retrieving && (
         <output
           className="results-loading"
@@ -526,7 +532,7 @@ export function EvidenceResults(props: Readonly<EvidenceResultsProps>) {
           <span className="skeleton results-chart-skeleton" />
         </output>
       )}
-      {!retrieving && sourceConsistent && hasResult && (
+      {!loadError && !retrieving && sourceConsistent && hasResult && (
         <>
           {(contrast || ranking) && (
             <ResultsSummary
@@ -576,7 +582,14 @@ export function EvidenceResults(props: Readonly<EvidenceResultsProps>) {
           )}
         </>
       )}
-      {!retrieving && !hasResult && (
+      {loadError && !retrieving && (
+        <EmptyState
+          icon="archive"
+          title="Saved evidence couldn’t be loaded"
+          description="The saved results are temporarily unavailable. Use Reload run above to try loading this experiment again."
+        />
+      )}
+      {!loadError && !retrieving && !hasResult && (
         <EmptyState
           icon="evidence"
           title="A clearer view starts with recorded evidence."
@@ -588,13 +601,17 @@ export function EvidenceResults(props: Readonly<EvidenceResultsProps>) {
           }
         />
       )}
-      <ResultsProvenance report={report} artifacts={artifacts} />
-      <EvidenceExports
-        report={report}
-        artifacts={artifacts}
-        events={events}
-        downloadFile={downloadFile}
-      />
+      {!loadError && (
+        <ResultsProvenance report={report} artifacts={artifacts} />
+      )}
+      {!loadError && (
+        <EvidenceExports
+          report={report}
+          artifacts={artifacts}
+          events={events}
+          downloadFile={downloadFile}
+        />
+      )}
     </article>
   );
 }

@@ -1,0 +1,115 @@
+{
+  "scope": "Read-only actual hosted browser; saved complete deterministic run; no inference or analysis admission",
+  "browser": "149.0.7827.55",
+  "checks": [],
+  "errors": [],
+  "http": [
+    {
+      "path": "/api/auth/csrf",
+      "status": 200
+    },
+    {
+      "path": "/api/auth/login",
+      "status": 200
+    },
+    {
+      "path": "/api/auth/me",
+      "status": 200
+    },
+    {
+      "path": "/api/datasets/ghana_combined/profile",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/8bb26625-d153-4576-a073-d4ebb8f9460a",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/8bb26625-d153-4576-a073-d4ebb8f9460a/artifacts",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/8bb26625-d153-4576-a073-d4ebb8f9460a/events",
+      "status": 200
+    },
+    {
+      "path": "/api/datasets/ghana_combined/profile",
+      "status": 200
+    },
+    {
+      "path": "/api/auth/me",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3/artifacts",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3/events",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3/artifacts",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/8bb26625-d153-4576-a073-d4ebb8f9460a",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/8bb26625-d153-4576-a073-d4ebb8f9460a",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/8bb26625-d153-4576-a073-d4ebb8f9460a/events",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/8bb26625-d153-4576-a073-d4ebb8f9460a",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/8bb26625-d153-4576-a073-d4ebb8f9460a/artifacts",
+      "status": 200
+    }
+  ],
+  "admissions": 0,
+  "failed_read": {
+    "selected": "8bb26625",
+    "summary": null,
+    "artifact_badge": "0 saved artifacts",
+    "alerts": [
+      "!This run couldn\u2019t be openedThe saved run may be temporarily unavailable. Try loading its persisted events and results again.Technical detailsFailed to fetchReload run"
+    ]
+  },
+  "recovered_read": {
+    "selected": "8bb26625",
+    "summary": "Managed drought\n\u2014kg/ha\nNo regime contrast in this run\nWell-watered\n\u2014kg/ha\nNo regime contrast in this run\nDescriptive yield retention\n\u2014%\nDrought mean / well-watered mean\nGenotypes summarized\n72\n432 drought plot records\nRecorded mean yields \u00b7 kg/ha \u00b7 saved order",
+    "artifact_badge": "2 saved artifacts",
+    "alerts": []
+  },
+  "fault_injection": "Browser route.abort on GET artifacts for owned 8bb26625 only; real server run/artifacts remain unchanged. Route removed before real Reload run.",
+  "finding": "Recovery works and old numerical results are withheld, but failure screen incorrectly claims no computed results and offers a new investigation.",
+  "source_run_before": "2993f361-bbeb-4c23-a943-2d3a1ec263e3",
+  "source_run_after": "8bb26625-d153-4576-a073-d4ebb8f9460a",
+  "screenshots": {
+    "before-failed-read.png": "1728a883aa92107bbe6a08237597444b0c1c4dafd5ca12abbc5243a7a8e3d36c",
+    "before-recovered-read.png": "d9355bb7b6493600577d7bfd571bc4ef08ae28900d3cfe5762c2ab2d0896644d"
+  }
+}

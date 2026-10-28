@@ -39,3 +39,5 @@ nohup.out
 
 # Private responsive-browser captures; publish only reviewed verification slices.
 /output/browser-results-sweep*/
+
+/output/browser-run-error-recovery*/

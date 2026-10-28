@@ -15,6 +15,7 @@ const eslintConfig = [
       "node_modules/**",
       ".next/**",
       "out/**",
+      "output/demo-video/**",
       "build/**",
       "next-env.d.ts",
       "**/__pycache__/**",

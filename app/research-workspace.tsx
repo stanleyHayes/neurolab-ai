@@ -1002,6 +1002,7 @@ export function ResearchWorkspace({
                     report={report}
                     events={events}
                     retrieving={runRetrieving}
+                    loadError={Boolean(errors.run)}
                     showContrast={showContrast}
                     showRanking={showRanking}
                     contrast={contrast}

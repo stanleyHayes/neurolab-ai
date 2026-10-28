@@ -1,0 +1,26 @@
+{
+  "ui_tests": 94,
+  "focused_tests": 23,
+  "regression_failed_before": true,
+  "lint": "passed after generated-demo exclusion",
+  "typecheck": "passed",
+  "production_build": "passed",
+  "sonar_gate": "OK",
+  "unresolved_issues": 0,
+  "hotspots": 0,
+  "source_sha256": {
+    "app/research-workspace.tsx": "3aa656df8ad6672901a3762e06ea618db1f4151c11f907537ff6b1be431d63fa",
+    "app/workspace/EvidenceResults.tsx": "e702497310a8296bffb62cf19145ea21e17b739afddde99258e5063b2ef042b2",
+    "tests/ui/results.test.tsx": "64a11432cda86b98ad6a3924813a5cc608bb4e18260486cfd522e7057139ec75",
+    "eslint.config.js": "d6cbe5baae321969a5f960d44e82187dbf9b3eaee3f21724569117c6f14c1f9b"
+  },
+  "log_sha256": {
+    "neurolab-evidence-read-before.log": "507dc99b79c29b2c9ce7ca788d7a113ca2138a08ca1a4c0bd80b7fcc8e443205",
+    "neurolab-evidence-read-after.log": "3ca06f27b3beee7dfee4cd4c5f004e268f4704c73a3fe828bb3c8bd6568acb58",
+    "neurolab-evidence-read-ui.log": "cf8cbc5f90c2943de403ac6d456b31a99873531cb12926300398ceda1dcc34a4",
+    "neurolab-evidence-read-lint-fixed.log": "312dd8bc08aa23ad23b6e26cfe9b299ab191428dd6b8e99ff43cd6b6ac0bd0e8",
+    "neurolab-evidence-read-types.log": "daada66d0b047d15edd39910e28cd8648d5d5eeebb04cfcc3b571e454df9f8d7",
+    "neurolab-evidence-read-build.log": "3bd5354ae8e20db475bd5cfba2b96614609258cd437c72705f57251805949c8f",
+    "neurolab-evidence-read-sonar.log": "9aa357dc9a39ff88b29b0987010da3a984ad579001c8f70ba90a841d847566b0"
+  }
+}
