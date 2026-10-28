@@ -21,7 +21,7 @@ Current requirement-by-requirement status: [28 October acceptance audit](verific
 - [x] Implement bounded Meta-compatible structured adapter and model-selected allowlisted tool loop; model selection follows computed evidence, tool schemas and budgets are validated server-side. Fixture tests are not proof of a live Meta call.
 - [x] Demonstrate sequential evidence-grounded replay decisions; this is not a live agent demo.
 - [x] Store event trace/artifacts and expose concise decision summaries, not hidden chain-of-thought.
-- [ ] Complete actual live answer-quality/feedback/adversarial evaluation and independent review. Evidence-bound offline reviews, policy-masked packets, a guarded180-trial collector and exact question-cluster scorer now exist; their contract fixtures are not Meta performance. No live matrix has run.
+- [ ] Complete actual live answer-quality/feedback/adversarial evaluation and independent review. Evidence-bound offline reviews, policy-masked packets, a guarded180-trial collector and exact question-cluster scorer now exist; their contract fixtures are not Meta performance. The actual owner-approved v4matrix has now recorded180trials/72Meta/144HTTP200responses; semantic ratings remain0, and live CSV-cell adversarial/independent-review gates remain open. See docs/LIVE_COMPARISON_2026_10_28.md.
 
 ## Phase 3: Benchmarks and demo (P0)
 - [x] Compare replay tool selections with fixed/random workflow baseline using same budgets/tasks. Not a human-rated utility benchmark.

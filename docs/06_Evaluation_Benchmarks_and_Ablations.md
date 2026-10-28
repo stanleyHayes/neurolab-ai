@@ -1,5 +1,7 @@
 # 06 — Evaluation and benchmarking
 
+**Current execution status (28 October, after collection):** The owner-approved v4 known-set comparison has now recorded180trials, including72real Meta trials/144HTTP200responses. Independent human ratings remain0; semantic means/intervals and winner remain unset. [Actual comparison report](LIVE_COMPARISON_2026_10_28.md) supersedes earlier not-yet-run status statements below, which describe historical preparation. No live CSV-cell adversarial or hosted Meta success is implied. Exact pre-execution bytes of all48frozen inputs are retained privately; this later status notice does not amend the executed protocol or authorize a rerun.
+
 ## Primary measurement
 Task completion accuracy on 12 prewritten scientific questions; groundedness of claims against computed outputs; proportion of valid tool calls; reproducibility; runtime; inference cost. Record all failed trials. Do not select only favorable examples.
 

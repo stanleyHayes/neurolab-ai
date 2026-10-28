@@ -1,0 +1,292 @@
+{
+  "scope": "Actual local known-set180trial collection; no mocked model transport or synthetic ratings; not independent field evidence or a semantic winner",
+  "verified_at_utc": "2026-10-28T03:37:53.379695+00:00",
+  "protocol": "meta-evaluation-2026-10-28-v4-approved",
+  "protocol_sha256": "1e7eccbf274b7b2305524425014be3c20376d1f28df4ed4efe4adf11525926fe",
+  "collection_terminal_exit": 0,
+  "records": 180,
+  "expected_records": 180,
+  "matrix_cells_unique_and_complete": true,
+  "meta_trials": 72,
+  "actual_provider_requests": 144,
+  "provider_response_statuses": {
+    "200": 144
+  },
+  "provider_failure_count": 0,
+  "identical_initial_meta_pairs": 36,
+  "checked_initial_meta_pairs": 36,
+  "second_request_feedback_pairs_checked": 36,
+  "result_evidence_present_only_in_feedback_condition": true,
+  "source_sha256": "2e37c07f30e00efb33b59954dd6d02a04f3d67349790d782b70dbedfdaff05bc",
+  "all180stored_runs_owner_scoped_and_match": true,
+  "per_policy": {
+    "meta_with_results": {
+      "trials": 36,
+      "completion_statuses": {
+        "partial": 36
+      },
+      "model_calls": 72,
+      "decision_failures": 0,
+      "tool_failures": 0,
+      "decision_sources": {
+        "model": 72
+      },
+      "wall_seconds_total": 170.352399,
+      "wall_seconds_median": 4.6370805,
+      "operational_totals": {
+        "model_calls": 72,
+        "known_model_calls_subtotal": 72,
+        "unknown_call_count_records": 0,
+        "reserved_micro_usd": 838070,
+        "known_reserved_micro_usd_subtotal": 838070,
+        "unknown_reservation_records": 0,
+        "reservation_outcomes": {
+          "completed": 72
+        },
+        "invoice_cost_usd": null,
+        "cost_scope": "Reservations are conservative admission, not invoices",
+        "wall_seconds_total": 170.352399,
+        "reportless_failures": 0
+      },
+      "trace_metrics": {
+        "audited_reports": 36,
+        "requested_calls_in_audited_reports": 72,
+        "schema_valid_calls": 72,
+        "schema_valid_fraction": 1.0,
+        "claims_in_audited_reports": 72,
+        "claims_with_existing_citations": 72,
+        "citation_exists_fraction": 1.0,
+        "source_consistent_reports": 36,
+        "scope": "Only reports with completed trace audits; reportless failures remain separately counted. No semantic entailment score."
+      }
+    },
+    "meta_without_result_evidence": {
+      "trials": 36,
+      "completion_statuses": {
+        "partial": 36
+      },
+      "model_calls": 72,
+      "decision_failures": 0,
+      "tool_failures": 0,
+      "decision_sources": {
+        "model_without_result_feedback": 72
+      },
+      "wall_seconds_total": 163.663706,
+      "wall_seconds_median": 4.299614500000001,
+      "operational_totals": {
+        "model_calls": 72,
+        "known_model_calls_subtotal": 72,
+        "unknown_call_count_records": 0,
+        "reserved_micro_usd": 756359,
+        "known_reserved_micro_usd_subtotal": 756359,
+        "unknown_reservation_records": 0,
+        "reservation_outcomes": {
+          "completed": 72
+        },
+        "invoice_cost_usd": null,
+        "cost_scope": "Reservations are conservative admission, not invoices",
+        "wall_seconds_total": 163.663706,
+        "reportless_failures": 0
+      },
+      "trace_metrics": {
+        "audited_reports": 36,
+        "requested_calls_in_audited_reports": 72,
+        "schema_valid_calls": 72,
+        "schema_valid_fraction": 1.0,
+        "claims_in_audited_reports": 72,
+        "claims_with_existing_citations": 72,
+        "citation_exists_fraction": 1.0,
+        "source_consistent_reports": 36,
+        "scope": "Only reports with completed trace audits; reportless failures remain separately counted. No semantic entailment score."
+      }
+    },
+    "deterministic_focused": {
+      "trials": 36,
+      "completion_statuses": {
+        "complete": 36
+      },
+      "model_calls": 0,
+      "decision_failures": 0,
+      "tool_failures": 0,
+      "decision_sources": {
+        "deterministic_replay": 42
+      },
+      "wall_seconds_total": 3.798622,
+      "wall_seconds_median": 0.021289,
+      "operational_totals": {
+        "model_calls": 0,
+        "known_model_calls_subtotal": 0,
+        "unknown_call_count_records": 0,
+        "reserved_micro_usd": 0,
+        "known_reserved_micro_usd_subtotal": 0,
+        "unknown_reservation_records": 0,
+        "reservation_outcomes": {},
+        "invoice_cost_usd": null,
+        "cost_scope": "Reservations are conservative admission, not invoices",
+        "wall_seconds_total": 3.798622,
+        "reportless_failures": 0
+      },
+      "trace_metrics": {
+        "audited_reports": 36,
+        "requested_calls_in_audited_reports": 42,
+        "schema_valid_calls": 42,
+        "schema_valid_fraction": 1.0,
+        "claims_in_audited_reports": 42,
+        "claims_with_existing_citations": 42,
+        "citation_exists_fraction": 1.0,
+        "source_consistent_reports": 36,
+        "scope": "Only reports with completed trace audits; reportless failures remain separately counted. No semantic entailment score."
+      }
+    },
+    "fixed_profile_then_contrast": {
+      "trials": 36,
+      "completion_statuses": {
+        "complete": 36
+      },
+      "model_calls": 0,
+      "decision_failures": 0,
+      "tool_failures": 0,
+      "decision_sources": {
+        "deterministic_replay": 72
+      },
+      "wall_seconds_total": 9.982632,
+      "wall_seconds_median": 0.2717165,
+      "operational_totals": {
+        "model_calls": 0,
+        "known_model_calls_subtotal": 0,
+        "unknown_call_count_records": 0,
+        "reserved_micro_usd": 0,
+        "known_reserved_micro_usd_subtotal": 0,
+        "unknown_reservation_records": 0,
+        "reservation_outcomes": {},
+        "invoice_cost_usd": null,
+        "cost_scope": "Reservations are conservative admission, not invoices",
+        "wall_seconds_total": 9.982632,
+        "reportless_failures": 0
+      },
+      "trace_metrics": {
+        "audited_reports": 36,
+        "requested_calls_in_audited_reports": 72,
+        "schema_valid_calls": 72,
+        "schema_valid_fraction": 1.0,
+        "claims_in_audited_reports": 72,
+        "claims_with_existing_citations": 72,
+        "citation_exists_fraction": 1.0,
+        "source_consistent_reports": 36,
+        "scope": "Only reports with completed trace audits; reportless failures remain separately counted. No semantic entailment score."
+      }
+    },
+    "seeded_random_without_replacement": {
+      "trials": 36,
+      "completion_statuses": {
+        "complete": 36
+      },
+      "model_calls": 0,
+      "decision_failures": 0,
+      "tool_failures": 0,
+      "decision_sources": {
+        "deterministic_replay": 72
+      },
+      "wall_seconds_total": 4.673166,
+      "wall_seconds_median": 0.020003,
+      "operational_totals": {
+        "model_calls": 0,
+        "known_model_calls_subtotal": 0,
+        "unknown_call_count_records": 0,
+        "reserved_micro_usd": 0,
+        "known_reserved_micro_usd_subtotal": 0,
+        "unknown_reservation_records": 0,
+        "reservation_outcomes": {},
+        "invoice_cost_usd": null,
+        "cost_scope": "Reservations are conservative admission, not invoices",
+        "wall_seconds_total": 4.673166,
+        "reportless_failures": 0
+      },
+      "trace_metrics": {
+        "audited_reports": 36,
+        "requested_calls_in_audited_reports": 72,
+        "schema_valid_calls": 72,
+        "schema_valid_fraction": 1.0,
+        "claims_in_audited_reports": 72,
+        "claims_with_existing_citations": 72,
+        "citation_exists_fraction": 1.0,
+        "source_consistent_reports": 36,
+        "scope": "Only reports with completed trace audits; reportless failures remain separately counted. No semantic entailment score."
+      }
+    }
+  },
+  "reserved_micro_usd_matrix": 1594429,
+  "reserved_micro_usd_shared_day": 1880523,
+  "invoice_cost_usd": null,
+  "daily_cap_micro_usd": 15000000,
+  "semantic_reviews_completed": 0,
+  "review_cases_prepared": 180,
+  "winner": null,
+  "independence_verified": false,
+  "held_out": false,
+  "private_artifact_sha256": {
+    "attempts.jsonl": "18e6230b6adbca74c0c734fd504241608cd6b698c0202e3be220954c81ec62a1",
+    "results.jsonl": "e93c49470813614f2b68b052ebcfde9efccc8929cf37aeac51f879143c892d02",
+    "provider.jsonl": "0d69a1b388a9bde51af2ccb9c4ba9cb1a9a790ff7a3d51c1efc7bd67cbe45f45",
+    "protocol.json": "1e7eccbf274b7b2305524425014be3c20376d1f28df4ed4efe4adf11525926fe",
+    "summary-unreviewed.json": "2bb24cada3601effd1ee420b8e5a4b6ab82ec5cc3d086995b66c8989bc051330",
+    "independent-review/reviewer-packet.json": "bb54f3f8abbc5c3be7c75540b122c41ecf384882ed4a4adeab09f814d46e8739",
+    "independent-review/private-mapping.json": "1fe317535f2ad3ba3f6191eaf8ec40aac2a4e167a84368e3fa9789cd96f7720e",
+    "independent-review/review-template.json": "a2eac0628840f1cffbf228341b96e922ba635b1dfd35a00e4708c73dc3f32d9f"
+  },
+  "aggregation_correction": "Initial public operational projection looked for source instead of selection_source in decisions. Corrected from actual stored records; raw collection and scientific outputs unchanged.",
+  "reviewer_delivery": {
+    "cases": 180,
+    "ratings_completed": 0,
+    "mapping_excluded": true,
+    "zip_sha256": "a959c816b990233fd13cd2e2faab6108fb7ce76076afed968f919118b2ce08c9",
+    "zip_bytes": 1338393
+  },
+  "provider_reported_usage": {
+    "responses": 144,
+    "prompt_tokens": 126618,
+    "completion_tokens": 48144,
+    "total_tokens": 174762,
+    "cached_input_tokens": 42991,
+    "standard_rate_estimate_usd_ignoring_cache_discount": "0.3628845",
+    "invoice_usd": null,
+    "basis": "Actual response usage at freshly verified standard Spark rates; not provider-account reconciliation or invoice. No cached discount assumed."
+  },
+  "frozen_input_snapshot": {
+    "private_relative_path": "frozen-inputs",
+    "file_count": 48,
+    "all_sha256_match_execution_protocol": true,
+    "runtime_source_changed_after_collection": false,
+    "documentation_notice": "Current-status docs may be updated after execution; exact admission/execution bytes remain preserved in this snapshot and original protocol."
+  },
+  "all48frozen_inputs_matched_at_completion_before_status_doc_updates": true,
+  "post_collection_documentation_updates": {
+    "docs/06_Evaluation_Benchmarks_and_Ablations.md": {
+      "execution_sha256": "980ba3a6fc46cb62b102296e829b515487697691b0373a4b093a69c92b870607",
+      "current_status_sha256": "55a6209d881e37fbd8376f6dec664a8894a8cf98061ec9c5b3c6a11d59df0faa"
+    },
+    "docs/FUTURE_LIVE_EVALUATION.md": {
+      "execution_sha256": "24fc31cec3dc1b51ff03fa6a4196f294a9de2bcf310b703f5ff2f610ab4713b7",
+      "current_status_sha256": "3d15fed81460d212826b2b204a0a359aff78c0eb2df904f6303fb31569e44620"
+    },
+    "docs/LIVE_EVALUATION_COLLECTOR.md": {
+      "execution_sha256": "bb95fe5858da05444cf316b3734e2364cdf8d38c64fd2eb662fdb1b63767915b",
+      "current_status_sha256": "275c032063cd9e2fe52360f8877b3e0bf5d28581f0dbe0e7d3dfdfc102a88cd3"
+    },
+    "docs/LIVE_EVALUATION_SCORING.md": {
+      "execution_sha256": "3df9f22d9297ad21b13960168f1384df3cabe3162dd7b1d2270d7be4eafdc8a9",
+      "current_status_sha256": "981e19b11808db7050c0248d849ac7ed262232313ce75899d2b08224bf823273"
+    },
+    "docs/PROVIDER_SPENDING_CONTROL_REVIEW.md": {
+      "execution_sha256": "ebb0bd84193cc7a3f23259d6d0a1c647a9e0792cf169d2fe97217e70695b6e6e",
+      "current_status_sha256": "a1a1b4ab960d046741edc441e3afe114a38d70e3d0af7c5e48e37601faaf4df7"
+    },
+    "docs/RECORDED_ANSWER_EVALUATION.md": {
+      "execution_sha256": "d76c0468629cd51ac3d6bff00982c35043bcba7191b57d16c432205a8ef140f8",
+      "current_status_sha256": "bc12c7f7dbf626b65811e8559148ccf160c4c979c5931c92f4ed6e1b35a93baa"
+    }
+  },
+  "current_runtime_inputs_still_match_execution": true,
+  "empty_review_packet_binding_verified": true,
+  "ratings_not_filled_by_agent": true
+}

@@ -1,5 +1,7 @@
 # Provider spending-control review — 28 October 2026
 
+**Current execution status (28 October, after collection):** The owner-approved v4 known-set comparison has now recorded180trials, including72real Meta trials/144HTTP200responses. Independent human ratings remain0; semantic means/intervals and winner remain unset. [Actual comparison report](LIVE_COMPARISON_2026_10_28.md) supersedes earlier not-yet-run status statements below, which describe historical preparation. No live CSV-cell adversarial or hosted Meta success is implied. Exact pre-execution bytes of all48frozen inputs are retained privately; this later status notice does not amend the executed protocol or authorize a rerun.
+
 Meta's [official spend-alert documentation](https://dev.meta.ai/help/billing/spend-limit-alert) describes a notification threshold rather than an enforceable provider spending cap. A configured alert must not be reported as a hard limit. Actual account-alert settings have not been inspected in this review.
 
 NeuroLab's SQL reservation guards enforce the configured application/owner/run ceilings before transport. Their scope is the shared application ledger, not unrelated uses of the same provider account or key. Unknown calls retain reservations; amounts are not invoices. [Usage documentation](https://dev.meta.ai/help/usage-and-limits/api-usage) explains the provider dashboard and response accounting; per-response records do not reconcile a whole account bill.

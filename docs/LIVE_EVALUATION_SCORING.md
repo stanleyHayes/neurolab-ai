@@ -1,5 +1,7 @@
 # Seed-aware scoring of preserved live-matrix answers
 
+**Current execution status (28 October, after collection):** The owner-approved v4 known-set comparison has now recorded180trials, including72real Meta trials/144HTTP200responses. Independent human ratings remain0; semantic means/intervals and winner remain unset. [Actual comparison report](LIVE_COMPARISON_2026_10_28.md) supersedes earlier not-yet-run status statements below, which describe historical preparation. No live CSV-cell adversarial or hosted Meta success is implied. Exact pre-execution bytes of all48frozen inputs are retained privately; this later status notice does not amend the executed protocol or authorize a rerun.
+
 This is a scoring tool, not a completed evaluation. No180-trial live collection or independent human review is claimed.
 
 ```sh

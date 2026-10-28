@@ -249,3 +249,9 @@ The setup/cinematic increment passes automated tests; fresh browser visual accep
 ## Recorded research walkthrough
 
 A real browser demo with generated narration and subtitles has been rendered locally: `output/demo-video/NeuroLab-Research-Demo.mp4` (2m45.5s,1080p). MatchingSRT and an editable video projectZIP are alongside it; these ignored media files are not publicly uploaded. The recording shows deterministic analysis, saved cinematic replay, results, uncertainty, a two-tool follow-up and report export. It does not claim hosted Meta success. Full decode, run/source checks, representative visual frames and audio measurements passed; subjective listening remains unverified. See [delivery brief](docs/demo/video/BRIEF.md) and [verification evidence](verification/demo-full-walkthrough-2026-10-28.json).
+
+## Actual Meta comparison — collection complete, human review pending
+
+The approved known-set comparison recorded **180 trials across five policies and three seeds**, including **72 Meta trials and 144 real HTTP 200 responses**. All 36 initial Meta pairs had identical request bodies; the second request supplied tool-result evidence only in the feedback condition. No decision failures or deterministic Meta recoveries were recorded. Under the declared two-call/six-method setup, all 72 Meta workflows remain PARTIAL; workflow status is not an answer-quality score. Independent ratings are 0/180, so semantic means/intervals and winner remain unset.
+
+The matrix reserved $1.594429 in the existing application ledger; provider invoice cost is unknown. Exact execution records, limitations, review-packet status and spending scope: [actual comparison report](docs/LIVE_COMPARISON_2026_10_28.md). Hosted Meta availability remains a separate unresolved gate.
