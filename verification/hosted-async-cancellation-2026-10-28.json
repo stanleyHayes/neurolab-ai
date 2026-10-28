@@ -1,0 +1,42 @@
+{
+  "run_id": "456b694f-a151-46e5-ac5c-bda6e4146d7a",
+  "created_at": "2026-10-28T00:58:25.374154+00:00",
+  "mode": "replay",
+  "model_calls_requested": false,
+  "job_observed_before_cancel": {
+    "state": "RUNNING",
+    "attempts": 1,
+    "created_at": "2026-10-28T00:58:25.282704Z",
+    "started_at": "2026-10-28T00:58:26.243059Z",
+    "finished_at": null
+  },
+  "cancel_response": {
+    "http_status": 202,
+    "body": {
+      "run_id": "456b694f-a151-46e5-ac5c-bda6e4146d7a",
+      "status": "cancel_requested",
+      "event_id": "caca875d-2521-4d1e-9f0b-9502c28b1942"
+    }
+  },
+  "verified_at": "2026-10-28T00:58:42.250401+00:00",
+  "final_status": "CANCELLED",
+  "job_final": {
+    "state": "DONE",
+    "attempts": 1,
+    "created_at": "2026-10-28T00:58:25.282704Z",
+    "started_at": "2026-10-28T00:58:26.243059Z",
+    "finished_at": "2026-10-28T00:58:28.155142Z"
+  },
+  "artifact_count": 5,
+  "report_present": false,
+  "owner_scope_verified": true,
+  "scope": "Hosted actual worker cancellation at a safe boundary in explicit replay; no live provider/in-flight request cancellation claim",
+  "repeat_cancel_http": 409,
+  "terminal_event_stream_http": 200,
+  "terminal_event_stream_has_cancellation": true,
+  "cancelled_artifacts_stable": true,
+  "other_owner_job_http": 404,
+  "other_owner_cancel_http": 404,
+  "worker_release_commit": "72b2639ac15c37d632fcc82eda958942a9228d7a",
+  "worker_commit_evidence": "hosted-provider-failure-handling-2026-10-28.json; Render deployment readback, not a report from the cancelled run"
+}

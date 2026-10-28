@@ -74,3 +74,7 @@ The permanent-error correction is now deployed on both services at `72b2639`; au
 ### JWT boundary coverage, 28 October
 
 Added generated-key checks for every required claim, malformed/unsigned/wrong-type tokens, and exact15-second expiry/not-before/issued-at leeway boundaries. Existing signature/key/issuer/audience/rotation cases remain. This strengthens the local token matrix without claiming exhaustive security review or closing actual target key-distribution/retirement, browser or operational gates. Native Chrome attach returned cgWindowNotFound and desktop discovery timed out; visual app acceptance remains unverified.
+
+### Hosted async cancellation, 28 October
+
+Actual standalone-worker run `456b694f-a151-46e5-ac5c-bda6e4146d7a` was observed RUNNING before owner cancellation. It ended CANCELLED with five stable numerical artifacts and no report; terminal event replay, repeated-cancel409 and second-owner404 checks passed. This closes the hosted safe-boundary replay cancellation check, not in-flight paid-model cancellation or browser acceptance. Evidence: `hosted-async-cancellation-2026-10-28.json`.
