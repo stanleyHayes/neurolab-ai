@@ -108,3 +108,7 @@ Actual Meta request runbf93f8dd was cancelled after HTTPS send and before HTTP20
 ### Consolidated requested report, 28 October
 
 The new portable consolidated investigation report preserves the original scientific report, six artifacts,53events, all unrounded plotting data and byte-identical fourPNGfigures. Only the engineering appendix is updated to19challenges, including local/hosted separation, logging corrections, fresh-source checks and failed/accepted cancellation probes. Earlier reports remain unchanged. Two exporter tests and structural/source/secret checks pass; no inference or new scientific tool ran. Browser creation still returns access-host unavailable; native Chrome still reports cgWindowNotFound. HTML/browser/print and actual video acceptance remain open. Evidence: `consolidated-investigation-report-2026-10-28/verification.json`.
+
+### Real local deadline and integration discovery, 28 October
+
+Runf89995d5 sent one actual HTTPS request, observed a socket timeout under a one-second diagnostic deadline, and ended TIMED_OUT at the next safe boundary with no artifact/report/retry. Unknown reservation retained; later reclaim refused. No mock response/delay or application source change. Browser registry lookup reports Browser not installed; optional TinyFish discovery/suggestion is recorded but not connected and receives no credentials. The provider-control review now distinguishes Meta notification alerts from application-enforced SQL limits; it does not approve or execute the matrix (`docs/PROVIDER_SPENDING_CONTROL_REVIEW.md`).

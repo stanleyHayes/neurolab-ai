@@ -1,0 +1,54 @@
+{
+  "run_id": "f89995d5-45eb-4441-8288-f97a89ce94e8",
+  "started_at_utc": "2026-10-28T01:59:24.590437+00:00",
+  "scope": "One deliberately tight local real-provider deadline probe; not scientific acceptance, production SLA or hosted Meta validation",
+  "deadline_seconds": 1,
+  "token_cap": 20000,
+  "output_cap": 500,
+  "synthetic_responses_or_delays": false,
+  "completed_at_utc": "2026-10-28T01:59:25.907320+00:00",
+  "observed_wall_seconds": 1.3167674581054598,
+  "final_status": "TIMED_OUT",
+  "job": {
+    "state": "TIMED_OUT",
+    "attempts": 1,
+    "created_at": "2026-10-28T01:59:24.589578Z",
+    "started_at": "2026-10-28T01:59:24.590769Z",
+    "finished_at": "2026-10-28T01:59:25.901566Z"
+  },
+  "artifact_count": 0,
+  "report_present": false,
+  "actual_https_sends": 1,
+  "transport_entry_attempts": 1,
+  "adapter_observations": [
+    {
+      "timeout_seconds": 1,
+      "error_type": "ModelProviderError",
+      "cause_type": "TimeoutError",
+      "socket_timeout_seen": true
+    }
+  ],
+  "reservations": [
+    {
+      "input_tokens": 2857,
+      "output_tokens": 500,
+      "reserved_micro_usd": 5697,
+      "outcome": "unknown"
+    }
+  ],
+  "trace": [
+    {
+      "event": "https_request_sent",
+      "monotonic": 555859.075623833,
+      "utc": "2026-10-28T01:59:24.893016+00:00"
+    }
+  ],
+  "provider_usage": [],
+  "provider_invoice_cost_usd": null,
+  "no_refund_claim": true,
+  "no_forced_remote_abort": true,
+  "no_automatic_retry": true,
+  "shared_ledger_reused": true,
+  "owner_scope_verified": true,
+  "acceptance_passed": true
+}

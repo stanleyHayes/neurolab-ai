@@ -1,0 +1,11 @@
+{
+  "recorded_at_utc": "2026-10-28T02:10:38.127070+00:00",
+  "browser_control_host": "Latest CUA browser creation unavailable; native Chrome window unavailable in the prior goal turn",
+  "browser_registry_status": "not_installed (both the original reference and Browser name lookup)",
+  "permission_changes_made": false,
+  "alternative": "TinyFish cloud browser",
+  "alternative_latest_confirmed_installed": false,
+  "connection_suggestion_created": true,
+  "credentials_forwarded": false,
+  "limitations": "No TinyFish browser automation or video capability verified. No relevant Meta Model API account-management connector returned by this lookup; directory is not exhaustive."
+}

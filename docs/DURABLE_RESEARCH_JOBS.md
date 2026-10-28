@@ -77,3 +77,9 @@ Local owned run `bf93f8dd-02f1-4b0e-bae2-0c7fe49372d2` used the actual SQL queue
 The initial observer probe failed before HTTPS transmission because replacing the stdlib class conflicted with its constructor. Its PARTIAL recovery, two attempted admissions/unknown reservations and real fallback artifacts are retained. It is not a successful cancellation or model execution. Both probes and exact observer sources are preserved in [the evidence directory](../verification/real-provider-cancellation-2026-10-28/summary.json).
 
 This closes one local in-flight request/safe-boundary case; it is not a forced provider abort, refund, exhaustive race test or hosted PostgreSQL/live-Meta acceptance. The existing private original-investigation ledger was reused without changing caps or resetting reservations. Provider billing reconciliation remains separate. Hosted replay cancellation is verified independently; hosted live Meta still returns404.
+
+## Real provider timeout/deadline case, 28 October2026
+
+Local real-HTTPS runf89995d5 used a deliberately one-second execution deadline, one step/tool allowance and an actual queued/leased worker. One request was sent to Meta; the client observed a genuine socket TimeoutError. At roughly1.317seconds the expired lease/deadline rejected late writes and reconciled the job/run to TIMED_OUT. No numeric artifact, report, automatic retry or second claim followed. The unknown-outcome5697microUSD reservation remains retained; provider usage/billing is unknown. See `verification/real-provider-deadline-2026-10-28/summary.json`.
+
+This is deadline fencing at a safe boundary, not an exact one-second process-kill SLA or remote provider abort/refund. It verifies one local SQLite/real-network path without synthetic replies/delays. Hosted live Meta, exhaustive races and account/invoice reconciliation remain separate.

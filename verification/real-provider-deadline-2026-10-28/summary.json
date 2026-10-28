@@ -1,0 +1,27 @@
+{
+  "verified_at_utc": "2026-10-28T02:10:38.098816+00:00",
+  "run_id": "f89995d5-45eb-4441-8288-f97a89ce94e8",
+  "scope": "One local real-HTTPS timeout and SQL deadline-fencing case, not hosted live acceptance or a one-second process-kill guarantee",
+  "passed": true,
+  "configured_deadline_seconds": 1,
+  "observed_wall_seconds": 1.3167674581054598,
+  "socket_timeout_observed": true,
+  "final_state": "TIMED_OUT",
+  "https_sends": 1,
+  "job_attempts": 1,
+  "artifacts": 0,
+  "scientific_report": false,
+  "late_reclaim_refused": true,
+  "unknown_reservation_retained": true,
+  "provider_usage": "Unknown; no response read after timeout",
+  "invoice_cost_usd": null,
+  "source_commit": "56dccd435793f56490e1cf141b676f0af74ea768",
+  "runtime_source_unchanged": true,
+  "file_sha256": {
+    "proof.json": "9742b1e8514fa24bdb3b7bf9aadb9e0eae9c3b93a0c2d16c47690f27bc5d21da",
+    "events.json": "0b1735f39e87856ef566a683d49ccb9a12ac70677648bf2e96c3918b9130eccc",
+    "provider.jsonl": "fde2eeb1afa99932bd8354a2da5e06110e427acf25d6a7cae93baf816daa61fb",
+    "observer-source.txt": "20db97fc1e1250c625eeb36cec0a691202dc873b3de35a13778a94cdc9d9dd68"
+  },
+  "secret_scan_matches": 0
+}

@@ -1,0 +1,140 @@
+[
+  {
+    "event_id": "05a6162b-4b4e-4c35-bef2-967b1ecf0b33",
+    "run_id": "f89995d5-45eb-4441-8288-f97a89ce94e8",
+    "sequence": 1,
+    "event_type": "run.created",
+    "timestamp": "2026-10-28T01:59:24.589229Z",
+    "payload": {
+      "dataset_id": "ghana_combined",
+      "source_sha256": "2e37c07f30e00efb33b59954dd6d02a04f3d67349790d782b70dbedfdaff05bc"
+    }
+  },
+  {
+    "event_id": "f6320295-58a8-4d84-bef1-d02bfd62c041",
+    "run_id": "f89995d5-45eb-4441-8288-f97a89ce94e8",
+    "sequence": 2,
+    "event_type": "request.accepted",
+    "timestamp": "2026-10-28T01:59:24.589638Z",
+    "payload": {
+      "mode": "meta",
+      "max_steps": 1,
+      "max_tool_calls": 1,
+      "objective_characters": 92,
+      "objective_sha256": "3a9f41d9a5ca954818f0f1e1701b2cb5f13ef81006bc7d2682f90c23849078ec"
+    }
+  },
+  {
+    "event_id": "4dd9d40f-7765-4987-8216-931447b8534e",
+    "run_id": "f89995d5-45eb-4441-8288-f97a89ce94e8",
+    "sequence": 3,
+    "event_type": "job.queued",
+    "timestamp": "2026-10-28T01:59:24.589902Z",
+    "payload": {
+      "public_summary": "Validated request persisted for bounded worker execution; no tools have run."
+    }
+  },
+  {
+    "event_id": "7817f21e-c6f7-494c-aad9-72278a2083d8",
+    "run_id": "f89995d5-45eb-4441-8288-f97a89ce94e8",
+    "sequence": 4,
+    "event_type": "stage.changed",
+    "timestamp": "2026-10-28T01:59:24.589928Z",
+    "payload": {
+      "stage": "QUEUED",
+      "public_summary": "Run durably queued for bounded execution",
+      "progress_completed": null,
+      "progress_total": null,
+      "artifact_refs": []
+    }
+  },
+  {
+    "event_id": "28c45a3a-c114-41b0-9cf3-19362cf8a940",
+    "run_id": "f89995d5-45eb-4441-8288-f97a89ce94e8",
+    "sequence": 5,
+    "event_type": "job.claimed",
+    "timestamp": "2026-10-28T01:59:24.590806Z",
+    "payload": {
+      "public_summary": "Worker acquired an exclusive execution lease.",
+      "attempt": 1
+    }
+  },
+  {
+    "event_id": "dc6a20ad-cf27-4d21-ab00-24e5b227f53b",
+    "run_id": "f89995d5-45eb-4441-8288-f97a89ce94e8",
+    "sequence": 6,
+    "event_type": "stage.changed",
+    "timestamp": "2026-10-28T01:59:24.590852Z",
+    "payload": {
+      "stage": "PLANNING",
+      "public_summary": "Worker acquired the lease and is preparing bounded execution",
+      "progress_completed": null,
+      "progress_total": null,
+      "artifact_refs": []
+    }
+  },
+  {
+    "event_id": "f7366f88-82e2-4c48-9d21-65e3979d7771",
+    "run_id": "f89995d5-45eb-4441-8288-f97a89ce94e8",
+    "sequence": 7,
+    "event_type": "research.workflow_proposed",
+    "timestamp": "2026-10-28T01:59:24.593190Z",
+    "payload": {
+      "summary": "Preparing validated tasks for the submitted research objective.",
+      "mode": "meta",
+      "source": "server_workflow",
+      "label": "Workflow setup; not a model-generated scientific hypothesis"
+    }
+  },
+  {
+    "event_id": "2719e6dc-5403-4a87-b09c-46c5d6127148",
+    "run_id": "f89995d5-45eb-4441-8288-f97a89ce94e8",
+    "sequence": 8,
+    "event_type": "stage.changed",
+    "timestamp": "2026-10-28T01:59:24.593487Z",
+    "payload": {
+      "stage": "PLANNING",
+      "public_summary": "Preparing bounded Ghana observational analysis",
+      "progress_completed": null,
+      "progress_total": null,
+      "artifact_refs": []
+    }
+  },
+  {
+    "event_id": "1203c085-d8c9-47e1-9692-d5b5f751283c",
+    "run_id": "f89995d5-45eb-4441-8288-f97a89ce94e8",
+    "sequence": 9,
+    "event_type": "research.objective_preserved",
+    "timestamp": "2026-10-28T01:59:24.593819Z",
+    "payload": {
+      "objective_sha256": "3a9f41d9a5ca954818f0f1e1701b2cb5f13ef81006bc7d2682f90c23849078ec",
+      "objective_characters": 92
+    }
+  },
+  {
+    "event_id": "0007180e-600b-488f-b39b-f30147fea463",
+    "run_id": "f89995d5-45eb-4441-8288-f97a89ce94e8",
+    "sequence": 10,
+    "event_type": "stage.changed",
+    "timestamp": "2026-10-28T01:59:25.900952Z",
+    "payload": {
+      "stage": "TIMED_OUT",
+      "public_summary": "Execution deadline exceeded",
+      "progress_completed": null,
+      "progress_total": null,
+      "artifact_refs": []
+    }
+  },
+  {
+    "event_id": "45c8c155-1495-482c-afe2-d920e8aab508",
+    "run_id": "f89995d5-45eb-4441-8288-f97a89ce94e8",
+    "sequence": 11,
+    "event_type": "run.timed_out",
+    "timestamp": "2026-10-28T01:59:25.901442Z",
+    "payload": {
+      "error_type": "ExecutionDeadlineExceeded",
+      "message": "Execution deadline exceeded.",
+      "retryable": false
+    }
+  }
+]

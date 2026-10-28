@@ -32,3 +32,7 @@ Create review packets using the policy-masking tools, preserving all failures an
 ## Evidence boundary
 
 Tests use programmed provider transports with actual SQL ownership/reservations and real Ghana tools. They validate enumeration, paired initial prompts/schemas, evidence withholding, owner scoping, failure retention, interruption, exclusive output and approval expiry. They are not actual Meta performance or billing evidence. No180-trial live matrix has run. Hosted Meta404, independent review, actual scored matrix reporting and provider cancellation remain open.
+
+## Meaning of provider-control approval
+
+`provider_account_controls_verified=true` is a reviewer attestation, not a capability discovered by the collector and not proof of a provider hard spending cap. Keep it false until the protocol records the available provider controls, their scope, any unverified account settings, the application's shared SQL budget, and explicit acceptance of residual account-level exposure. Meta's spend alerts are notifications rather than hard caps; see [the provider-control review](PROVIDER_SPENDING_CONTROL_REVIEW.md). A reviewer must not claim an account alert was inspected when it was not. The collector also requires the exact policy digest, current-day authorization and aggregate ceiling; this clarification changes none of those checks. Current draft manifests remain unapproved and must be frozen again against current source before collection.

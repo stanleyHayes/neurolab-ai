@@ -1,0 +1,38 @@
+import os,re,json,time,http.client
+from pathlib import Path
+from datetime import datetime,UTC
+from neurolab.store import RunStore
+from neurolab.jobs import ResearchJobs
+from neurolab.worker import QueueWorker
+from neurolab.execution import execute_run
+from neurolab.live_evaluation import RecordedAdapter
+from neurolab.ghana import load_ghana
+from neurolab.research_context import ResearchRunRequest,ResearchConfiguration,ResearchConstraints,build_deterministic_plan
+private=Path('/Users/shayford/.codex/private/neurolab-render');out=private/'real-provider-deadline-2026-10-28';out.mkdir(mode=0o700,exist_ok=False);os.umask(0o077)
+for line in Path('.env').read_text().splitlines():
+ m=re.match(r'^([A-Z][A-Z0-9_]*)\s*=\s*(.*)$',line)
+ if m and (m[1].startswith(('META_','MODEL_')) or m[1]=='SSL_CERT_FILE'):os.environ[m[1]]=m[2].strip().strip('"\'')
+assert os.environ.get('MODEL_INFERENCE_ENABLED')=='true'
+store=RunStore(str(private/'original-objective-live-20261027T234129Z/execution.sqlite3'));owner=store.get_run('ad9bb399-7e4d-4b42-83fc-450c914eadc5')['owner_user_id'];assert store.get_user(owner)['is_active'] and store.count_active_runs(owner)==0
+dataset=load_ghana();config=ResearchConfiguration(preferred_methods=['dataset_profile'],constraints=ResearchConstraints(max_steps=1,max_tool_calls=1,max_seconds=1));config.autonomy_preferences.auto_plan_with_meta=False;objective='Inspect Ghana maize dataset provenance within a deliberately one-second diagnostic deadline.';plan=build_deterministic_plan(objective,config);request=ResearchRunRequest(objective=objective,mode='meta',seed=2026,configuration=config,plan=plan);run=ResearchJobs(store).enqueue(request,owner,dataset.source_sha256)
+state={'run_id':run,'started_at_utc':datetime.now(UTC).isoformat(),'scope':'One deliberately tight local real-provider deadline probe; not scientific acceptance, production SLA or hosted Meta validation','deadline_seconds':1,'token_cap':20000,'output_cap':500,'synthetic_responses_or_delays':False};(out/'state.json').write_text(json.dumps(state,indent=2))
+trace=[];models=[];original_request=http.client.HTTPSConnection.request
+
+def observed_request(self,*args,**kwargs):
+ result=original_request(self,*args,**kwargs);trace.append({'event':'https_request_sent','monotonic':time.monotonic(),'utc':datetime.now(UTC).isoformat()});return result
+class AuditAdapter(RecordedAdapter):
+ def _send_structured(self,endpoint,body,timeout):
+  self.observed_timeout=timeout
+  try:return super()._send_structured(endpoint,body,timeout)
+  except BaseException as error:
+   self.observed_error_type=type(error).__name__;self.observed_cause_type=type(error.__cause__).__name__ if error.__cause__ else None;self.socket_timeout_seen=isinstance(error.__cause__,TimeoutError);raise
+
+def factory():
+ model=AuditAdapter.from_environment();model.max_run_tokens=min(model.max_run_tokens,20000);model.max_output_tokens=500;model.transcript=out/'provider.jsonl';model.evaluation_run_id=run;model.approved_utc_day=datetime.now(UTC).date().isoformat();models.append(model);return model
+worker=QueueWorker(store,lambda req,rid:execute_run(store,dataset,req,rid,adapter_factory=factory));http.client.HTTPSConnection.request=observed_request;started=time.monotonic();print(json.dumps({'run_id':run,'state':'worker_started','deadline_seconds':1}),flush=True)
+try:
+ worker.run_once(run_id=run);saved=store.get_run(run,owner_user_id=owner);job=ResearchJobs(store).public_status(run,owner);events=store.list_events(run);artifacts=store.list_artifacts(run);reservations=[dict(r) for r in store._execute('SELECT input_tokens,output_tokens,reserved_micro_usd,outcome FROM model_spend_reservations WHERE scope_id=?',('run:'+run,)).fetchall()]
+ proof={**state,'completed_at_utc':datetime.now(UTC).isoformat(),'observed_wall_seconds':time.monotonic()-started,'final_status':saved['status'],'job':job,'artifact_count':len(artifacts),'report_present':saved['report'] is not None,'actual_https_sends':len(trace),'transport_entry_attempts':sum(getattr(m,'requests_attempted',0) for m in models),'adapter_observations':[{'timeout_seconds':getattr(m,'observed_timeout',None),'error_type':getattr(m,'observed_error_type',None),'cause_type':getattr(m,'observed_cause_type',None),'socket_timeout_seen':getattr(m,'socket_timeout_seen',False)} for m in models],'reservations':reservations,'trace':trace,'provider_usage':[u for m in models for u in getattr(m,'reported_usage',[])],'provider_invoice_cost_usd':None,'no_refund_claim':True,'no_forced_remote_abort':True,'no_automatic_retry':True,'shared_ledger_reused':True,'owner_scope_verified':saved['owner_user_id']==owner}
+ proof['acceptance_passed']=saved['status']=='TIMED_OUT' and len(trace)==1 and len(reservations)==1 and not artifacts and saved['report'] is None and any(getattr(m,'socket_timeout_seen',False) for m in models) and job['attempts']==1
+ (out/'proof.json').write_text(json.dumps(proof,indent=2));(out/'events.json').write_text(json.dumps(events,indent=2));print(json.dumps(proof,indent=2))
+finally:http.client.HTTPSConnection.request=original_request;store.close()
