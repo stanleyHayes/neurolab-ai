@@ -1,0 +1,23 @@
+{
+  "verified_at_utc": "2026-10-28T01:01:29.707341+00:00",
+  "source_records": "eval/recorded-answers-2026-10-27-six-tool-protocol/results.jsonl",
+  "source_records_sha256": "6fd0e4eba4e2a2fc98f0eaccd5a399258152b6e41313839c8d30e2e3662a4be9",
+  "packet_case_count": 36,
+  "source_bindings_verified": true,
+  "ratings_completed": 0,
+  "model_calls": 0,
+  "reviewer_packet_sha256": "ce697b0d61bb051e2e01d4b0e4db8460dbea2a6c4a60e6958a42f45e17c8fa1b",
+  "mapping_published": false,
+  "reviewer_assigned": false,
+  "independent_review_complete": false,
+  "blinding_established": false,
+  "limits": "Known-set offline baseline packet. Scientific wording may reveal condition; public original records permit unmasking. No live comparison or held-out claim.",
+  "validation": {
+    "full_backend_tests": 202,
+    "final_focused_tests": 13,
+    "ruff": "passed",
+    "sonar_gate": "PASSED",
+    "issues": 0,
+    "hotspots": 0
+  }
+}

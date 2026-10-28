@@ -82,3 +82,30 @@ A fresh review of all 36 corrected-protocol answers judged direct answers at **5
 The report must state the answer to earn a direct-answer rating. For example, profile artifacts contain missingness tables even when a written conclusion omits missingness: this can provide useful partial evidence while still scoring zero for direct answer. Conversely, the explicit ENVT/calendar-year and confounding limitations can answer their questions without the catalog target tool. The random structure answer receives useful-partial credit for regime counts retained in its comparison artifact, but no direct-answer credit because source structure/missingness are omitted.
 
 This is subjective **assistant, non-blind, known-question** adjudication. The questions informed implementation. The historical purported injection case remains zero for direct answer under all three policies and was never a real model-visible dataset-cell attack. No independent/blind review, held-out generalization, live Meta effectiveness or policy superiority follows from these ratings. The scorer validated answer digests, reviewer metadata and all four ratings; seven evaluator unit tests passed. All earlier answer records, pending templates, summaries and annotations were preserved.
+
+## Policy-masked independent-review packets
+
+Prepare a fresh packet from a preserved collection:
+
+```sh
+python3 -m scripts.evaluate_answers review-packet \
+  --records eval/recorded-answers-2026-10-27-six-tool-protocol/results.jsonl \
+  --output /private/review-collection
+```
+
+Give the reviewer only `reviewer-packet.json` and `review-template.json`. Keep `private-mapping.json`, original policy-labelled records and operational provenance separate. Random opaque IDs and randomized order mask direct labels; written scientific qualifications remain unchanged and may reveal a condition. Record inferred condition and prior exposure. A human must actually perform the review; the tool does not certify independence or blinding and defaults `blind=false`. Do not silently rewrite scientific wording to make masking stronger. Reportless failures remain visible.
+
+Bind completed reviews back to the unchanged original evidence before using the existing scorer:
+
+```sh
+python3 -m scripts.evaluate_answers bind-reviews \
+  --records eval/recorded-answers-2026-10-27-six-tool-protocol/results.jsonl \
+  --packet /private/review-collection/reviewer-packet.json \
+  --mapping /private/review-collection/private-mapping.json \
+  --reviews /private/review-collection/completed-reviews.json \
+  --output /private/review-collection/bound-reviews.json
+```
+
+Use `score --records ... --reviews .../bound-reviews.json --output ...` afterward. Binding validates source digests, exact masked projections, mapping coverage and review metadata; duplicate/unknown reviews or changed answers/evidence are rejected. Hashes detect inconsistent or stale files, not malicious rewriting of an entire trusted collection. Creation refuses an existing output directory. A partial review leaves the other cases unscored. This tool does not execute the frozen live Meta matrix or establish held-out performance.
+
+On28October, an unscored36-case packet was generated from the preserved six-tool offline baseline into private operational storage. No model calls or human-review claims were made. The source records were not changed.

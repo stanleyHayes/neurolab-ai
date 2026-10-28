@@ -78,3 +78,7 @@ Added generated-key checks for every required claim, malformed/unsigned/wrong-ty
 ### Hosted async cancellation, 28 October
 
 Actual standalone-worker run `456b694f-a151-46e5-ac5c-bda6e4146d7a` was observed RUNNING before owner cancellation. It ended CANCELLED with five stable numerical artifacts and no report; terminal event replay, repeated-cancel409 and second-owner404 checks passed. This closes the hosted safe-boundary replay cancellation check, not in-flight paid-model cancellation or browser acceptance. Evidence: `hosted-async-cancellation-2026-10-28.json`.
+
+### Independent-review packet preparation, 28 October
+
+The reviewer packet/binding tool now separates operational policy/model labels from unchanged scientific answers, limits, failures and numeric artifacts. Random opaque IDs order the cases; the private mapping binds exact original and packet digests. A36-case packet was created from the preserved six-tool offline baselines and validated against its sources. No reviewer assigned, no ratings filled, no independence/blinding claim; public original records and wording permit unmasking. Evidence: `independent-review-packet-preparation-2026-10-28.json`. The frozen180-trial live comparison still requires a reviewed collector and versioned protocol amendment before execution; this packet does not substitute for that matrix.

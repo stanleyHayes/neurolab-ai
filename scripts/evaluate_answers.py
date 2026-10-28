@@ -6,6 +6,7 @@ from pathlib import Path
 
 from neurolab.answer_evaluation import summarize_answers, write_answer_evaluation
 from neurolab.ghana import load_ghana
+from neurolab.review_packets import bind_packet_reviews, write_review_packet
 
 
 def main():
@@ -19,6 +20,12 @@ def main():
     score.add_argument("--records", type=Path, required=True)
     score.add_argument("--reviews", type=Path, required=True)
     score.add_argument("--output", type=Path, required=True)
+    packet = commands.add_parser("review-packet")
+    packet.add_argument("--records", type=Path, required=True)
+    packet.add_argument("--output", type=Path, required=True)
+    bind = commands.add_parser("bind-reviews")
+    for option in ("records", "packet", "mapping", "reviews", "output"):
+        bind.add_argument("--" + option, type=Path, required=True)
     args = parser.parse_args()
     if args.command == "collect":
         summary = write_answer_evaluation(
@@ -28,9 +35,21 @@ def main():
         records = [
             json.loads(line) for line in args.records.read_text().splitlines() if line.strip()
         ]
-        summary = summarize_answers(records, json.loads(args.reviews.read_text()))
-        with args.output.open("x") as output:
-            output.write(json.dumps(summary, indent=2) + "\n")
+        if args.command == "review-packet":
+            summary = write_review_packet(records, args.output)
+        else:
+            reviews = json.loads(args.reviews.read_text())
+            if args.command == "bind-reviews":
+                summary = bind_packet_reviews(
+                    records,
+                    json.loads(args.packet.read_text()),
+                    json.loads(args.mapping.read_text()),
+                    reviews,
+                )
+            else:
+                summary = summarize_answers(records, reviews)
+            with args.output.open("x") as output:
+                output.write(json.dumps(summary, indent=2) + "\n")
     print(json.dumps(summary, indent=2))
 
 
