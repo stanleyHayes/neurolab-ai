@@ -1,0 +1,50 @@
+{
+  "browser": "149.0.7827.55",
+  "scope": "Actual hosted saved-run replay, no new science or provider calls",
+  "checks": [
+    {
+      "kind": "keyboard_seek",
+      "end": "20",
+      "max": "20",
+      "start": "1",
+      "after_right": "2"
+    },
+    {
+      "kind": "3d_render",
+      "canvas_count": 1,
+      "gpu": {
+        "context": true,
+        "drawing_width": 740,
+        "drawing_height": 260,
+        "context_lost": false,
+        "renderer": "WebKit WebGL"
+      },
+      "illustrative_label": true
+    },
+    {
+      "kind": "reduced_motion",
+      "canvas_count": 0,
+      "render_switch_disabled": true,
+      "autoplay_disabled": true,
+      "manual_next_enabled": true
+    },
+    {
+      "kind": "actual_download",
+      "run_id": "e4a93800-5505-4735-9736-8c1b4bac5d23",
+      "event_count": 20,
+      "artifact_count": 1,
+      "source": "2e37c07f30e00efb33b59954dd6d02a04f3d67349790d782b70dbedfdaff05bc"
+    },
+    {
+      "kind": "escape_focus",
+      "closed": true,
+      "focus_returned": true
+    }
+  ],
+  "page_errors": [],
+  "console_error_count": 3,
+  "failure": {
+    "type": "Error",
+    "message": "locator.getAttribute: Error: strict mode violation: getByRole('button', { name: 'Close navigation menu', exact: true }) resolved to 3 elements:\n    1) <button type=\"button\" class=\"mobile-nav-close\" aria-label=\"Close navigation menu\">…</button> aka getByRole('dialog', { name: 'Primary navigation' }).getByRole('button', { name: 'Close navigation menu' })\n    2) <button type=\"button\" tabindex=\"-1\" class=\"mobile-nav-backdrop\" aria-label=\"Close navigation menu\"></button> aka getByRole('button', { name: 'Close navigation menu' }).nth(1)\n    3) <button type=\"button\" aria-expanded=\"true\" class=\"mobile-nav-trigger\" aria-label=\"Close navigation menu\" aria-controls=\"primary-navigation\">…</button> aka getByRole('banner').getByRole('button', { name: 'Close navigation menu' })\n\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: 'Close navigation menu', exact: true })\u001b[22m\n"
+  }
+}

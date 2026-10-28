@@ -1,0 +1,32 @@
+{
+  "verified_at_utc": "2026-10-28T02:25:37.725229+00:00",
+  "scope": "Actual hosted Chromium149, saved partial rune4a93800; no new inference/science",
+  "checks_passed": [
+    "WebGL context and canvas, not hardware-performance proof",
+    "Native prefers-reduced-motion disables3D/autoplay; manual next/seek available",
+    "Browser launched --disable-webgl --disable-webgl2 retains static illustration and controls",
+    "Home/End/ArrowRight correctly seek persisted20events",
+    "Cinematic Escape closes and restores focus",
+    "Mobile menu Escape closes and restores focus",
+    "Actual downloaded864row/72genotype source profile and20unique ordered events",
+    "All three actual downloads canonically identical"
+  ],
+  "failed_attempt_retained": "First observer selector matched3legitimate close controls; corrected observer only, app unchanged",
+  "console_errors": "Three HTTP401 challenges on full-page reload in both final runs retained explicitly; auth-client refresh/retry path inspected; no page JS exceptions. Not a zero-console-error claim.",
+  "screenshots": "Actual browser screenshots; WebGL/static inspected, reduced-motion screenshots byte-identical across all3attempts and visually inspected in first attempt. No UI/image reconstruction.",
+  "limitations": [
+    "No GPU hardware/vendor/FPS benchmark",
+    "Not a screen-reader or exhaustive keyboard/security audit",
+    "No live processing, new Meta result or180trial comparison",
+    "No video footage or finalMP4 yet"
+  ],
+  "file_sha256": {
+    "attempt-2.json": "5fb6d1473c364e2e10fab95e1bb857bd393b442b559330d0fae8d6515431bbfa",
+    "webgl.png": "3bb6ce8f87d9d06f765208a8f67992808c17446bea82168e6365ab3b360e8fef",
+    "attempt-3.json": "1e1663488448ab9fc7a980e21afbfc6404f085b9d8c74427880e2fc0054a9a0a",
+    "reduced-motion.png": "91ebf0908db8c51cd275d051b279924d3058590416c72db07f6526f287d9e2b7",
+    "webgl-disabled.png": "b66d3634c3423bbe54dd2918979f8588a7934fc7dbbb10b412037d23e2eb9e8c",
+    "attempt-1.json": "895d75222b2372337adc33d4ff7aea1a968f028d6f46a5ebb26d5009f0331fa0",
+    "recorded-evidence.json": "7c693d1ba4e062a9573d933180ba85e68f9880eb3a9371a2ad4196b2d6920ea3"
+  }
+}

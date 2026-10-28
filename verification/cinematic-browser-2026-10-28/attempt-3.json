@@ -1,0 +1,63 @@
+{
+  "browser": "149.0.7827.55",
+  "scope": "Actual Chromium launched with WebGL disabled; saved hosted replay, not GPU hardware failure or new inference",
+  "checks": [
+    {
+      "kind": "keyboard_seek",
+      "end": "20",
+      "max": "20",
+      "start": "1",
+      "after_right": "2"
+    },
+    {
+      "kind": "3d_render",
+      "canvas_count": 0,
+      "gpu": null,
+      "illustrative_label": true
+    },
+    {
+      "kind": "reduced_motion",
+      "canvas_count": 0,
+      "render_switch_disabled": true,
+      "autoplay_disabled": true,
+      "manual_next_enabled": true
+    },
+    {
+      "kind": "actual_download",
+      "run_id": "e4a93800-5505-4735-9736-8c1b4bac5d23",
+      "event_count": 20,
+      "artifact_count": 1,
+      "source": "2e37c07f30e00efb33b59954dd6d02a04f3d67349790d782b70dbedfdaff05bc"
+    },
+    {
+      "kind": "escape_focus",
+      "closed": true,
+      "focus_returned": true
+    },
+    {
+      "kind": "mobile_nav",
+      "expanded": "true"
+    },
+    {
+      "kind": "mobile_nav_escape",
+      "closed": true,
+      "focus_returned": true
+    }
+  ],
+  "page_errors": [],
+  "console_error_count": 3,
+  "console_errors": [
+    {
+      "text": "Failed to load resource: the server responded with a status of 401 ()",
+      "path": "/api/datasets/ghana_combined/profile"
+    },
+    {
+      "text": "Failed to load resource: the server responded with a status of 401 ()",
+      "path": "/api/research-runs"
+    },
+    {
+      "text": "Failed to load resource: the server responded with a status of 401 ()",
+      "path": "/api/auth/me"
+    }
+  ]
+}
