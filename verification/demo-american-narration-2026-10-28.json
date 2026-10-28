@@ -1,0 +1,86 @@
+{
+  "scope": "Actual final American-voice replacement export; original prior cuts preserved; no public upload or submission",
+  "render_job_id": "f05b3ce6-0c32-4979-bdb6-02979d78a6f6",
+  "tool": "HyperFrames0.8.210 delivery quality hardwareGPU drawElement capture",
+  "duration_seconds": 179.2,
+  "dimensions": [
+    1920,
+    1080
+  ],
+  "fps": 30,
+  "frames": 5376,
+  "codecs": [
+    "h264",
+    "aac"
+  ],
+  "full_decode_errors": 0,
+  "check": {
+    "lint": {
+      "ok": true,
+      "errorCount": 0,
+      "warningCount": 0
+    },
+    "runtime": {
+      "ok": true,
+      "errorCount": 0,
+      "warningCount": 0
+    },
+    "layout": {
+      "ok": true,
+      "errorCount": 0,
+      "warningCount": 0
+    },
+    "contrast": {
+      "ok": true,
+      "errorCount": 0,
+      "warningCount": 0
+    }
+  },
+  "decoded_frames_visually_reviewed_seconds": [
+    0,
+    10,
+    23,
+    70,
+    100,
+    140,
+    173,
+    179
+  ],
+  "audio": {
+    "voice": "af_heart",
+    "language": "en-us",
+    "speed": 0.98,
+    "post_generation_acceleration": false,
+    "all_32_sentences_replaced": true,
+    "integrated_lufs": -16.6,
+    "true_peak_dbfs": -4.6,
+    "loudness_range_lu": 3.2,
+    "user_approved_voice_sample": true,
+    "full_track_human_listening": false
+  },
+  "caption_cues": 32,
+  "speech_and_caption_timing_measured": true,
+  "footage_speed": 1,
+  "new_meta_calls": 0,
+  "paid_voice_calls": 0,
+  "preserved_event_cut_sha256": "110cfad2371b741bd37253421ec2fcd03b866e664bc5bd662b34b8bddec2e2d2",
+  "outputs": {
+    "NeuroLab-American-Demo.mp4": {
+      "bytes": 21594612,
+      "sha256": "c8ff55345e1d67b3c9c5e51ea48c09e1950aee72659a91ff7eb19f4f4f638671"
+    },
+    "NeuroLab-American-Demo.srt": {
+      "bytes": 3495,
+      "sha256": "dadc08bc18978ca2da95bf20d68a65c7fd80576cf5c7d548587fa2943a3eac3d"
+    },
+    "NeuroLab-American-Editable.zip": {
+      "bytes": 59934350,
+      "sha256": "f02788aceadb608c7bff24dc06718fc198320169e81a454f3360c87d2a5c620f"
+    }
+  },
+  "limitations": [
+    "Human full-track listening and final owner review pending",
+    "No public video URL or submission created",
+    "Prior event eligibility, scientific and model alias caveats remain"
+  ]
+}

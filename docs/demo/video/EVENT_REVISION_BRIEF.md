@@ -1,5 +1,11 @@
 # Event-specific video revision required
 
+## Latest delivery with the approved American narrator
+
+The owner selected sample A after listening. The latest local video is now `output/demo-video/NeuroLab-American-Demo.mp4`, **179.20 seconds, 1080p, 30 fps**, with all 32 sentences regenerated using American Kokoro `af_heart` at the approved 0.98 pace. Shortened wording fits without post-generation acceleration. Subtitles and the editable package match this version. Earlier videos remain preserved.
+
+Full exported-file decode passed, sampled decoded frames were reviewed, and layout/runtime/contrast checks passed. Final audio measures -16.6 LUFS and -4.6 dBFS true peak. The full track still needs owner listening; sample approval is not full-track review. No public upload or submission was made. [American narration delivery evidence](../../../verification/demo-american-narration-2026-10-28.json).
+
 ## Revised local delivery on 28 October
 
 The event revision is now rendered locally as `output/demo-video/NeuroLab-Event-Demo.mp4`: **179.20 seconds, 1920×1080, 30 fps, H.264/AAC**, with generated narration, burned-in captions and a separate SRT. It adds the verified October 26 start, actual source excerpt and specific later contributions, reused-data/library disclosure, and the separate real Baseten six-tool evidence with its exact model identity and unresolved event-alias caveat. Actual experiment/follow-up footage remains at 1x. The original video is preserved unchanged.

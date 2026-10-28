@@ -42,7 +42,7 @@ https://github.com/stanleyHayes/neurolab-ai
 
 REQUIRED BEFORE SUBMISSION — insert the publicly accessible URL of the final reviewed demo video.
 
-The revised local video is 2 minutes 59.20 seconds and includes verified start-date/code-contribution disclosure, actual research footage, exact model labels and generated narration/subtitles. Listen through it before publishing, then check signed-out playback. A local file path is not a submission URL.
+The latest American-voice local video, NeuroLab-American-Demo.mp4, is 2 minutes 59.20 seconds and includes verified start-date/code-contribution disclosure, actual research footage, exact model labels and generated narration/subtitles. Listen through it before publishing, then check signed-out playback. A local file path is not a submission URL.
 
 ## Describe your use of Meta products to build the submitted project
 
