@@ -1,0 +1,108 @@
+{
+  "scope": "Read-only actual hosted browser; saved complete deterministic run; no inference or analysis admission",
+  "browser": "149.0.7827.55",
+  "checks": [
+    {
+      "section": "research-results",
+      "run": "c8591707",
+      "summary": "Managed drought\n1,230.3kg/ha\n432 observed plots\n0\n2,616 kg/ha\nWell-watered\n2,616kg/ha\n432 observed plots\n0\n2,616 kg/ha\nDescriptive yield retention\n47%\nDrought mean / well-watered mean\n0\n100% reference\nGenotypes summarized\n72\n432 drought plot records\nRecorded mean yields \u00b7 kg/ha \u00b7 saved order",
+      "mode": "Meta requested \u00b7 baseten \u00b7 meta-models/muse-spark-open",
+      "overflow": false
+    },
+    {
+      "section": "reports",
+      "run": "c8591707",
+      "summary": null,
+      "mode": null,
+      "overflow": false
+    }
+  ],
+  "errors": [],
+  "http": [
+    {
+      "path": "/api/auth/csrf",
+      "status": 200
+    },
+    {
+      "path": "/api/auth/login",
+      "status": 200
+    },
+    {
+      "path": "/api/datasets/ghana_combined/profile",
+      "status": 200
+    },
+    {
+      "path": "/api/auth/me",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/c8591707-1b97-41b9-badf-b94ca1df7ff8/artifacts",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/c8591707-1b97-41b9-badf-b94ca1df7ff8",
+      "status": 200
+    },
+    {
+      "path": "/api/auth/me",
+      "status": 200
+    },
+    {
+      "path": "/api/datasets/ghana_combined/profile",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/c8591707-1b97-41b9-badf-b94ca1df7ff8",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/c8591707-1b97-41b9-badf-b94ca1df7ff8/artifacts",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/c8591707-1b97-41b9-badf-b94ca1df7ff8/events",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/c8591707-1b97-41b9-badf-b94ca1df7ff8",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/c8591707-1b97-41b9-badf-b94ca1df7ff8/artifacts",
+      "status": 200
+    },
+    {
+      "path": "/api/auth/me",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs",
+      "status": 200
+    },
+    {
+      "path": "/api/datasets/ghana_combined/profile",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/c8591707-1b97-41b9-badf-b94ca1df7ff8",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/c8591707-1b97-41b9-badf-b94ca1df7ff8/artifacts",
+      "status": 200
+    }
+  ],
+  "admissions": 0,
+  "visually_inspected_screenshots": {
+    "research-results.png": "a7df6e814b5bc414092d532cd83c24a91ef4c4c779bb9ef86b1afd19d6b8594e",
+    "reports.png": "1958cdd5244423df0e3e8adc9b195cc9cf10f137a866c8799e049e9373adc2ae"
+  }
+}

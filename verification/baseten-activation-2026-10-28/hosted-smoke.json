@@ -1,0 +1,49 @@
+{
+  "scope": "Actual single hosted acknowledgement and operator-policy receipts; not original scientific acceptance",
+  "receipts": [
+    {
+      "policy_before": "0b8d18e8e5d9d9c9b019943ebfb5a76d36326cadd2ec2d14a620222c931ade91",
+      "policy_after": "0b8d18e8e5d9d9c9b019943ebfb5a76d36326cadd2ec2d14a620222c931ade91",
+      "prior_reservations_retained": {
+        "n": 14,
+        "micro_usd": "170764"
+      },
+      "active_jobs": 0,
+      "daily_reserved_before": "170764",
+      "run_cap_micro_usd": 1000000,
+      "global_day_cap_micro_usd": 1000000,
+      "max_run_tokens": 100000
+    },
+    {
+      "provider": "baseten",
+      "model_id": "meta-models/muse-spark-open",
+      "reported_model_id": "meta-models/muse-spark-open",
+      "http_status": 200,
+      "request_identifiers": {
+        "x-baseten-request-id": "54ca701a1817d20357e5aa75fd1fdde7aef71"
+      },
+      "provider_reported_usage": {
+        "prompt_tokens": 682,
+        "completion_tokens": 25,
+        "total_tokens": 707,
+        "prompt_tokens_details": {
+          "audio_tokens": 0,
+          "cached_tokens": 0
+        },
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "reserved_tokens": 3733,
+      "response_schema_verified": true
+    }
+  ],
+  "first_operator_attempt": "Retained job failed after policy CAS but before inference, due Decimal audit serialization. Second job required zero prior Baseten reservations and same reviewed policy; no second migration/provider retry.",
+  "raw_job_logs_sha256": "e0ffab17ae12b9d92f19564fab9c5e68cdc9e6b22c96a3f6cbcc031c76614236",
+  "database_and_auth_settings_unchanged": true,
+  "provider_raw_reasoning_not_exposed": true,
+  "invoice_cost_usd": null
+}

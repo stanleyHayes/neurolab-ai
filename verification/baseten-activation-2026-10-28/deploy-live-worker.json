@@ -1,0 +1,10 @@
+{
+  "service_id": "srv-dbghummk1f9s738r96ug",
+  "deploy_id": "dep-dbgqjeuc6qcc73cd0a50",
+  "requested_commit": "97fce766db210ca9d4c233758f755888527e73b8",
+  "phase": "live",
+  "role": "worker",
+  "requested_at_utc": "2026-10-28T07:52:27.791768+00:00",
+  "status": "live",
+  "reported_commit": "97fce766db210ca9d4c233758f755888527e73b8"
+}

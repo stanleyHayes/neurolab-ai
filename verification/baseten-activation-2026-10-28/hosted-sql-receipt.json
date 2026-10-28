@@ -1,0 +1,67 @@
+{
+  "scope": "Read-only actual PostgreSQL receipt; no new inference",
+  "run_id": "c8591707-1b97-41b9-badf-b94ca1df7ff8",
+  "status": "COMPLETE",
+  "active_owner_verified": true,
+  "reservations": [
+    {
+      "provider": "baseten",
+      "model_id": "meta-models/muse-spark-open",
+      "input_tokens": 9084,
+      "output_tokens": 2000,
+      "reserved_micro_usd": 19855,
+      "outcome": "completed",
+      "policy_sha256": "0b8d18e8e5d9d9c9b019943ebfb5a76d36326cadd2ec2d14a620222c931ade91"
+    },
+    {
+      "provider": "baseten",
+      "model_id": "meta-models/muse-spark-open",
+      "input_tokens": 10790,
+      "output_tokens": 2000,
+      "reserved_micro_usd": 21988,
+      "outcome": "completed",
+      "policy_sha256": "0b8d18e8e5d9d9c9b019943ebfb5a76d36326cadd2ec2d14a620222c931ade91"
+    },
+    {
+      "provider": "baseten",
+      "model_id": "meta-models/muse-spark-open",
+      "input_tokens": 11756,
+      "output_tokens": 2000,
+      "reserved_micro_usd": 23195,
+      "outcome": "completed",
+      "policy_sha256": "0b8d18e8e5d9d9c9b019943ebfb5a76d36326cadd2ec2d14a620222c931ade91"
+    },
+    {
+      "provider": "baseten",
+      "model_id": "meta-models/muse-spark-open",
+      "input_tokens": 13317,
+      "output_tokens": 2000,
+      "reserved_micro_usd": 25147,
+      "outcome": "completed",
+      "policy_sha256": "0b8d18e8e5d9d9c9b019943ebfb5a76d36326cadd2ec2d14a620222c931ade91"
+    },
+    {
+      "provider": "baseten",
+      "model_id": "meta-models/muse-spark-open",
+      "input_tokens": 17655,
+      "output_tokens": 2000,
+      "reserved_micro_usd": 30569,
+      "outcome": "completed",
+      "policy_sha256": "0b8d18e8e5d9d9c9b019943ebfb5a76d36326cadd2ec2d14a620222c931ade91"
+    },
+    {
+      "provider": "baseten",
+      "model_id": "meta-models/muse-spark-open",
+      "input_tokens": 18168,
+      "output_tokens": 2000,
+      "reserved_micro_usd": 31210,
+      "outcome": "completed",
+      "policy_sha256": "0b8d18e8e5d9d9c9b019943ebfb5a76d36326cadd2ec2d14a620222c931ade91"
+    }
+  ],
+  "reserved_tokens": 92770,
+  "reserved_micro_usd_run": 151964,
+  "shared_day_reserved_micro_usd": 333395,
+  "policy_sha256": "0b8d18e8e5d9d9c9b019943ebfb5a76d36326cadd2ec2d14a620222c931ade91",
+  "invoice_cost_usd": null
+}

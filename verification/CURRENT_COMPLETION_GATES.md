@@ -124,3 +124,7 @@ Read-only actual hosted Chromium now verifies24page/viewport combinations over8s
 ### Owner-approved real comparison collected, 28 October
 
 The full180unique-cell matrix is now recorded, including72Meta trials/144HTTP200responses,0decision failures and36matched initial/feedback pairs. Model-selected actions are recorded; actual numeric tools compute. All72Meta workflows are PARTIAL under the original2call/6pending-method protocol. No workflow completion percentage is an accuracy score. Seed-aware validation passes;180policy-masked cases/empty templates prepared,0independent reviews. Null quality means/intervals/winner preserved. Matrix reservations1.594429USD/sharedday1.880523USD under approved15USD; invoiceunknown. Frozen execution bytes preserved before updated docs; no scientific runtime changes or rerun. Report: docs/LIVE_COMPARISON_2026_10_28.md. Hosted provider404, human/scientific review, actual live CSV-cell adversarial, operations/entrant gates remain open.
+
+### Hosted real Meta now works through Baseten, 28 October
+
+Render API/worker97fce76 serve Muse Spark Open via Baseten. Actual acknowledgementHTTP200 and owned original-objective c8591707 completes6model choices/6tools without recovery, preserving prior accepted plan/source/seed.333scoped tests and Sonar pass; actual browser/SQL receipts in baseten-activation-2026-10-28. Previous directMeta404 is historical, not current serving failure. Scientific claim limits, original direct-Meta comparison and0humanreviews remain unchanged; newplan/model-comparison acceptance is not implied.

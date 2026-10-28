@@ -1,6 +1,6 @@
 # Codex execution plan — prioritized, autonomous
 
-Current requirement-by-requirement status: [28 October acceptance audit](verification/PROJECT_ACCEPTANCE_AUDIT_2026-10-28.md). Earlier dated notes remain historical. Local real Meta is verified; hosted Meta returns404. The full goal remains open. Current external dependencies and closure evidence: [external-gate handoff](docs/REMAINING_EXTERNAL_GATES.md).
+Current requirement-by-requirement status: [28 October acceptance audit](verification/PROJECT_ACCEPTANCE_AUDIT_2026-10-28.md). Earlier dated notes remain historical. Local direct Meta is verified; hosted Meta now works through Baseten Muse Spark Open (six real selections/six tools, no recovery). Direct Meta404 remains a separate historical path. The full goal remains open. Current external dependencies and closure evidence: [external-gate handoff](docs/REMAINING_EXTERNAL_GATES.md).
 
 ## Phase 0 (immediately)
 - [x] Audit and hash data; execute `scripts/audit_datasets.py`; inspect anomaly report.

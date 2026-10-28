@@ -2,9 +2,11 @@
 
 The application is a working, invite-gated research prototype. This handoff does not certify production agronomy, independent scientific validity or a submitted hackathon entry. The [current acceptance audit](../verification/PROJECT_ACCEPTANCE_AUDIT_2026-10-28.md) remains the detailed ledger.
 
-## 1. Hosted Meta availability
+## 1. Hosted inference resolved through Baseten; direct Meta remains historical
 
-**Needed from:** the provider/account operator. No support message has been sent.
+**Current serving gate closed:** actual hosted Baseten run `c8591707-1b97-41b9-badf-b94ca1df7ff8` completed the original objective with six real model selections/six tools and no recovery on97fce76. [Baseten proof](../verification/baseten-activation-2026-10-28/original-proof.json).
+
+**Needed only if returning to direct Meta API:** provider/account investigation of the historical404 below. No support message has been sent.
 
 The last recorded one-action hosted diagnostic was `e4a93800-5505-4735-9736-8c1b4bac5d23`, created at 2026-10-28 01:35:58 UTC. Render API and worker reported scientific/backend commit `ebf1111ba5f13c1fb874203cf2b93dc88946e569`. Model `muse-spark-1.3` returned HTTP 404; the adapter stopped further provider requests and retained one explicitly labelled deterministic recovery artifact. Its status is PARTIAL, with no successful Meta selection.
 
@@ -18,7 +20,7 @@ A provider/account operator can investigate:
 
 Share only sanitized run/time/model/status information. Do not include API keys, `.env`, passwords, access tokens, refresh cookies or private signing material. Do not use a proxy or region change to evade an access restriction.
 
-**Evidence that closes this gate:** a bounded real hosted response, followed by the same owned original-objective investigation with actual Meta selections and tool-derived outputs, retained raw/sanitized evidence and no relabelling of fallback as successful inference. Health flags, model catalog entries and fixture responses do not close it. Avoid more paid retries until there is new provider/configuration evidence.
+**Evidence required before returning to the direct Meta path:** a bounded real hosted response, followed by the same owned original-objective investigation with actual Meta selections and tool-derived outputs, retained raw/sanitized evidence and no relabelling of fallback as successful inference. Health flags, model catalog entries and fixture responses do not close it. Avoid more paid retries until there is new provider/configuration evidence.
 
 Sources: [recorded deployed diagnostic](../verification/model-rationale-deployment-2026-10-28.json), [historical engineering addendum](../verification/HOSTED_META_ACTIVATION_ADDENDUM.md), [actual local comparison](LIVE_COMPARISON_2026_10_28.md).
 

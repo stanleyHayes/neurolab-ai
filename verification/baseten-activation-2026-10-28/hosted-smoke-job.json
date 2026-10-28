@@ -1,0 +1,10 @@
+{
+  "service_id": "srv-dbghulhsrm7s73f4kq5g",
+  "job_id": "job-dbgqhfec6qcc73ccral0",
+  "created_at_utc": "2026-10-28T07:48:13.944604+00:00",
+  "commit": "97fce766db210ca9d4c233758f755888527e73b8",
+  "scope": "Explicit operator CAS on existing hosted ledger and one bounded actual Baseten acknowledgement; not scientific acceptance",
+  "status": "failed",
+  "started_at": "2026-10-28T07:48:14Z",
+  "finished_at": "2026-10-28T07:48:27Z"
+}
