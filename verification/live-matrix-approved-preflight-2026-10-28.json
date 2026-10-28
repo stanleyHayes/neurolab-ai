@@ -1,0 +1,34 @@
+{
+  "scope": "Owner-approved exact matrix preflight and policy CAS; no model call or collection yet",
+  "recorded_at_utc": "2026-10-28T03:30:44.598462+00:00",
+  "frozen_inputs_matched": 48,
+  "matrix_trials": 180,
+  "meta_trials": 72,
+  "max_requests": 144,
+  "approved_utc_day": "2026-10-28",
+  "old_policy_sha256": "2df9bbe09ccfc89e2ff5c62008e9d85df390e271cc1ac7defe7dadbf1ac90152",
+  "new_policy_sha256": "573474fdbbbf29ea3db3d7582964ebde935f13b49cf482b238e98f0cd16a1087",
+  "shared_ledger_identity_sha256": "6e23bf52a716dd1be93aff2a9d5ca367fb2902921ee4fb19d466b3e8e0d7ff0e",
+  "existing_active_owner_verified": true,
+  "active_owner_runs_before": 0,
+  "reservation_totals_before": {
+    "reservations": 35,
+    "retained_micro_usd": 729257
+  },
+  "reservation_totals_after": {
+    "reservations": 35,
+    "retained_micro_usd": 729257
+  },
+  "existing_day_reserved_micro_usd": 286094,
+  "new_matrix_bound_micro_usd": 9432144,
+  "combined_bound_micro_usd": 9718238,
+  "daily_micro_usd": 15000000,
+  "per_run_micro_usd": 1000000,
+  "per_run_tokens": 100000,
+  "preflight": "passed",
+  "model_calls": 0,
+  "account_alert_settings_inspected": false,
+  "provider_hard_cap_available": false,
+  "invoice_usd": null,
+  "local_matrix_only": "Environment overrides15USD only for collector on reviewed existing ledger; .env and Render limits unchanged."
+}

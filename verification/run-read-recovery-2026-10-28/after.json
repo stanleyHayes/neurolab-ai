@@ -1,0 +1,118 @@
+{
+  "scope": "Read-only actual hosted browser; saved complete deterministic run; no inference or analysis admission",
+  "browser": "149.0.7827.55",
+  "checks": [],
+  "errors": [],
+  "http": [
+    {
+      "path": "/api/auth/csrf",
+      "status": 200
+    },
+    {
+      "path": "/api/auth/login",
+      "status": 200
+    },
+    {
+      "path": "/api/auth/me",
+      "status": 200
+    },
+    {
+      "path": "/api/datasets/ghana_combined/profile",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/8bb26625-d153-4576-a073-d4ebb8f9460a/artifacts",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/8bb26625-d153-4576-a073-d4ebb8f9460a",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/8bb26625-d153-4576-a073-d4ebb8f9460a/events",
+      "status": 200
+    },
+    {
+      "path": "/api/datasets/ghana_combined/profile",
+      "status": 200
+    },
+    {
+      "path": "/api/auth/me",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3/artifacts",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3/events",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3/artifacts",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/8bb26625-d153-4576-a073-d4ebb8f9460a",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/8bb26625-d153-4576-a073-d4ebb8f9460a",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/8bb26625-d153-4576-a073-d4ebb8f9460a/events",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/8bb26625-d153-4576-a073-d4ebb8f9460a/artifacts",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/8bb26625-d153-4576-a073-d4ebb8f9460a",
+      "status": 200
+    }
+  ],
+  "admissions": 0,
+  "failed_read": {
+    "selected": "8bb26625",
+    "summary": null,
+    "artifact_badge": "Evidence unavailable",
+    "alerts": [
+      "!This run couldn\u2019t be openedThe saved run may be temporarily unavailable. Try loading its persisted events and results again.Technical detailsFailed to fetchReload run"
+    ]
+  },
+  "recovered_read": {
+    "selected": "8bb26625",
+    "summary": "Managed drought\n\u2014kg/ha\nNo regime contrast in this run\nWell-watered\n\u2014kg/ha\nNo regime contrast in this run\nDescriptive yield retention\n\u2014%\nDrought mean / well-watered mean\nGenotypes summarized\n72\n432 drought plot records\nRecorded mean yields \u00b7 kg/ha \u00b7 saved order",
+    "artifact_badge": "2 saved artifacts",
+    "alerts": []
+  },
+  "deployment": {
+    "id": "dpl_Hc7gbVgg4k7Px3NUEhLuU2d5U9Fm",
+    "url": "neurolab-p6x06k9fj-hayfordstanleys-projects.vercel.app",
+    "readyState": "READY",
+    "commit": "b74ecf29ffab32b11f1aca03d87cfcc0a664255a"
+  },
+  "fault_injection": "GET artifacts transport abort only; no fabricated provider/API success body or numeric result. Removed before real Reload run.",
+  "screenshots": {
+    "after-failed-read.png": "8653dac5a8cff799294572717de7bed78583e0e47bf7fc31bdc8c6bb9aa1f7bb",
+    "after-recovered-read.png": "d56d2eb599c22a5a4ad625bf503dab0bb68f1e2cef115a2630b783f15bb8ca59"
+  }
+}
