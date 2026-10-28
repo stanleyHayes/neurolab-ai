@@ -49,3 +49,7 @@ The owner subsequently authorized bounded real inference for the original-object
 ## 28 October seed-aware scoring increment
 
 [Seed-aware scoring](LIVE_EVALUATION_SCORING.md) now implements the exact12/10question subsets, per-seed ratings, automatic no-answer zeros, explicit conditional claim/scope exclusions, pending/missing denominators and exact question-cluster descriptive intervals. Operator counts/reservations are separate from invoices. Tests use synthetic ratings; no actual Meta comparison or independent human scoring has run. The earlier v2 draft becomes stale when scorer/runtime modules change; v3 records the new unapproved snapshot without overwriting either earlier protocol.
+
+## Current review proposal (28 October)
+
+The v4 draft pins source after the batch-level permanent-provider stop. [Budget review](../verification/live-matrix-budget-review-2026-10-28.json) calculates a conservative bound for72Meta trials/144requests under100k reserved tokens per trial, with effective1000output tokens per action. It proposes a $15 shared owner/global UTC-day cap while retaining the $1 run cap and all existing reservations. No policy was applied. This is separate from the previously authorized original-objective rerun. Meta offers alerts rather than hard caps; account alert settings remain uninspected and unrelated account activity is outside this application's ledger. Approval must acknowledge this exposure. No matrix execution, independent review, invoice cost or winning result is claimed.

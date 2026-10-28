@@ -1,0 +1,52 @@
+{
+  "scope": "Review proposal only; no inference or policy change",
+  "prepared_at_utc": "2026-10-28T02:16:01.939391+00:00",
+  "matrix": {
+    "trials": 180,
+    "meta_trials": 72,
+    "max_requests_per_meta_trial": 2,
+    "max_provider_requests": 144,
+    "max_reserved_tokens_per_meta_trial": 100000,
+    "max_reserved_tokens_matrix": 7200000,
+    "configured_output_tokens": 2000,
+    "effective_action_output_tokens": 1000
+  },
+  "pricing": {
+    "input_usd_per_million": "1.25",
+    "output_usd_per_million": "4.25",
+    "verified_source": "https://dev.meta.ai/docs/pricing-rate-limits",
+    "verified_date": "2026-10-28",
+    "cached_discount_assumed": false
+  },
+  "bound_micro_usd": {
+    "one_trial_with_rounding_margin": 131002,
+    "matrix_with_rounding_margin": 9432144,
+    "current_shared_utc_day_reservations": 286094,
+    "combined_existing_plus_matrix": 9718238
+  },
+  "proposed_policy": {
+    "provider": "meta",
+    "model_id": "muse-spark-1.3",
+    "endpoint_sha256": "82673000de8e1b4934fe0200dced239864bab8592027fdb04271c1700080122a",
+    "input_usd_per_million": "1.25",
+    "output_usd_per_million": "4.25",
+    "run_micro_usd": 1000000,
+    "owner_day_micro_usd": 15000000,
+    "global_day_micro_usd": 15000000,
+    "input_overhead_tokens": 1024,
+    "run_tokens": 100000
+  },
+  "proposed_policy_sha256": "573474fdbbbf29ea3db3d7582964ebde935f13b49cf482b238e98f0cd16a1087",
+  "current_policy_sha256": "2df9bbe09ccfc89e2ff5c62008e9d85df390e271cc1ac7defe7dadbf1ac90152",
+  "proposed_daily_approval_micro_usd": 15000000,
+  "provider_controls": {
+    "hard_cap_available": false,
+    "source": "https://dev.meta.ai/help/billing/spend-limit-alert",
+    "account_alert_settings_inspected": false,
+    "shared_sql_scope_only": true,
+    "unrelated_provider_account_usage_not_limited": true
+  },
+  "authorization": false,
+  "invoice_cost_usd": null,
+  "limits": "Conservative application reservation bound at stated rates, not provider invoice guarantee; account activity outside this ledger is excluded. Prior reservations retained; no quota reset/new ledger. Stop permanent provider failures and UTC expiry. No automatic retry/resume. Recheck ledger and prices before admission."
+}
