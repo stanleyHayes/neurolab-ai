@@ -45,3 +45,7 @@ The owner subsequently authorized bounded real inference for the original-object
 ## 28 October collector increment
 
 [Live collector contract](LIVE_EVALUATION_COLLECTOR.md) now defines the implemented collection path and tests. The historical v1 stays untouched and is rejected by its stale/unapproved status. A v2 draft snapshots current code but does not enable execution. Actual matrix collection remains blocked on reviewed protocol/budget/provider-control evidence; seed-aware comparative scoring is still required. The offline scorer now rejects live policy names to prevent omission or false zero-cost/model-call reporting. No fixture transport is presented as a real Meta trial.
+
+## 28 October seed-aware scoring increment
+
+[Seed-aware scoring](LIVE_EVALUATION_SCORING.md) now implements the exact12/10question subsets, per-seed ratings, automatic no-answer zeros, explicit conditional claim/scope exclusions, pending/missing denominators and exact question-cluster descriptive intervals. Operator counts/reservations are separate from invoices. Tests use synthetic ratings; no actual Meta comparison or independent human scoring has run. The earlier v2 draft becomes stale when scorer/runtime modules change; v3 records the new unapproved snapshot without overwriting either earlier protocol.
