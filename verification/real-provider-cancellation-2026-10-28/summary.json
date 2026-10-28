@@ -1,0 +1,55 @@
+{
+  "scope": "Local real Meta cancellation integration; SQLite SQL queue and worker thread, not hosted PostgreSQL live inference",
+  "attempts_preserved": 2,
+  "initial_probe": {
+    "run_id": "6a821a80-efcd-480c-8212-b5cf8fcb1252",
+    "passed": false,
+    "cause": "Observer replaced HTTPSConnection class and conflicted with stdlib super constructor; no HTTPS request sent",
+    "transport_entry_attempts": 2,
+    "actual_observed_https_sends": 0,
+    "reservation_outcomes": "Two unknown reservations retained; no refund or billed-cost claim",
+    "real_recovery_artifacts": 2
+  },
+  "accepted_probe": {
+    "run_id": "bf93f8dd-02f1-4b0e-bae2-0c7fe49372d2",
+    "passed": true,
+    "https_send_utc": "2026-10-28T01:43:26.763090+00:00",
+    "cancel_commit_utc": "2026-10-28T01:43:26.764015+00:00",
+    "response_header_utc": "2026-10-28T01:43:28.822434+00:00",
+    "http_status": 200,
+    "reported_tokens": 636,
+    "status": "CANCELLED",
+    "artifacts": 0,
+    "scientific_report": false,
+    "provider_requests": 1,
+    "reservation_retained": true
+  },
+  "source_commit": "efc7c7d0310c4aca7e07412989d3e22575a35a73",
+  "source_files_unchanged": true,
+  "file_sha256": {
+    "attempt-1-proof.json": "0468375f900196818d898b897dfcfc9d70194c89b43733c26d012c7df452574f",
+    "attempt-1-events.json": "bd1829547afe48b692b725a68c19453f359847d58694d9f4de8a17b668583cbb",
+    "attempt-1-provider.jsonl": "b5bd24a292cf7904c292b789c7c6cc05a7ed6ecb148f199bb9a597a7774ab8b0",
+    "attempt-1-recovery.json": "54f8bfa115bcfe328477098c291c123b25cd7648052c42394a74a6c00e908204",
+    "attempt-1-observer-source.txt": "420c6b68efa351a1db2f4865a99522f5535a6b139a32705750f5add7efb45dbe",
+    "attempt-2-proof.json": "f3489beff17e4b4b11dbbcb27393959af5276505fac93414c5fbfda6422b91de",
+    "attempt-2-events.json": "aa9997e2607572872f8d108f7720b24763809d04cbd3d529ff177fc6b26b998b",
+    "attempt-2-provider.jsonl": "212d8ac853450dc7a92252b5bf1678909a819338883834347d1dff2792fd67d3",
+    "attempt-2-observer-source.txt": "251f7837de0520ac2c7501506ed5a33c736bee3d0d895504101754ec6765e5e7"
+  },
+  "limitations": [
+    "No forced network preemption or refund",
+    "No provider invoice reconciliation",
+    "One local timing case, not all cancellation races",
+    "Hosted live Meta cancellation still unavailable while provider404 persists"
+  ],
+  "secret_scan_matches": 0,
+  "post_terminal_check": {
+    "verified_at_utc": "2026-10-28T01:47:49.549394+00:00",
+    "status": "CANCELLED",
+    "artifacts": 0,
+    "report_present": false,
+    "claim_again_returns_none": true,
+    "attempts": 1
+  }
+}

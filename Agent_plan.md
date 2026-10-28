@@ -31,6 +31,7 @@ Current requirement-by-requirement status: [28 October acceptance audit](verific
 - [x] Add a lightweight, explicitly illustrative React Three Fiber maize/soil scene to the overview with orbit/zoom/reset, low-power render settings, WebGL/error fallback, and reduced-motion static mode. The scene does not encode measured crop morphology or simulated measurements.
 - [x] Task-scoped browser smoke: desktop WebGL scene and camera buttons, reduced-motion static illustration, and 390px mobile static fallback/no horizontal overflow. WebGL-disabled runtime fallback and full keyboard/screen-reader accessibility acceptance remain pending.
 - [x] Hosted standalone-worker safe-boundary cancellation in explicit replay: RUNNING→CANCELLED, retained artifacts/no report, terminal SSE and owner isolation verified (`verification/hosted-async-cancellation-2026-10-28.json`). In-flight real-provider cancellation and full browser acceptance remain open.
+- [x] One local real-Meta in-flight cancellation case: request sent→cancellation committed→HTTP200 response→CANCELLED, no new artifacts/report/second request; failed observer probe and all reservations preserved (`verification/real-provider-cancellation-2026-10-28/summary.json`). Hosted live-provider acceptance and exhaustive races remain open.
 - [ ] Record complete 3-minute demo with visible provenance, live working product and new-code evidence.
 - [ ] Verify deployment, README, license attribution, public Git, video access and submission.
 

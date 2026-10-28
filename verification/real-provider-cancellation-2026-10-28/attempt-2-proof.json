@@ -1,0 +1,76 @@
+{
+  "run_id": "bf93f8dd-02f1-4b0e-bae2-0c7fe49372d2",
+  "started_at_utc": "2026-10-28T01:43:26.669013+00:00",
+  "scope": "Local real Meta request cancellation with actual SQL queue/lease; not hosted inference acceptance",
+  "transport_observation": "Transparent wrappers around original HTTPS request/getresponse methods; real network/response, no synthetic replies or artificial delays",
+  "token_cap": 20000,
+  "model_output_cap": 500,
+  "job_before_cancel": {
+    "state": "RUNNING",
+    "attempts": 1,
+    "created_at": "2026-10-28T01:43:26.668260Z",
+    "started_at": "2026-10-28T01:43:26.669410Z",
+    "finished_at": null
+  },
+  "completed_at_utc": "2026-10-28T01:43:28.830385+00:00",
+  "final_status": "CANCELLED",
+  "job_final": {
+    "state": "DONE",
+    "attempts": 1,
+    "created_at": "2026-10-28T01:43:26.668260Z",
+    "started_at": "2026-10-28T01:43:26.669410Z",
+    "finished_at": "2026-10-28T01:43:28.827886Z"
+  },
+  "worker_errors": [],
+  "artifact_count": 0,
+  "report_present": false,
+  "request_count": 1,
+  "cancel_between_send_and_response": true,
+  "reservations": [
+    {
+      "input_tokens": 3267,
+      "output_tokens": 500,
+      "reserved_micro_usd": 6209,
+      "outcome": "completed"
+    }
+  ],
+  "provider_usage": [
+    {
+      "completion_tokens": 190,
+      "prompt_tokens": 446,
+      "total_tokens": 636,
+      "completion_tokens_details": {
+        "reasoning_tokens": 142
+      },
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      }
+    }
+  ],
+  "trace": [
+    {
+      "event": "https_request_sent",
+      "monotonic": 554900.982097,
+      "utc": "2026-10-28T01:43:26.763090+00:00"
+    },
+    {
+      "event": "cancellation_committed",
+      "monotonic": 554900.983023041,
+      "utc": "2026-10-28T01:43:26.764015+00:00",
+      "accepted": true
+    },
+    {
+      "event": "https_response_headers",
+      "monotonic": 554903.041413458,
+      "utc": "2026-10-28T01:43:28.822434+00:00",
+      "http_status": 200
+    }
+  ],
+  "provider_invoice_cost_usd": null,
+  "no_forced_provider_preemption": true,
+  "no_refund_claim": true,
+  "shared_ledger_reused": true,
+  "no_automatic_retry": true,
+  "owner_scope_verified": true,
+  "acceptance_passed": true
+}

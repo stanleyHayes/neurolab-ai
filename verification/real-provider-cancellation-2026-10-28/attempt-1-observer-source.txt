@@ -1,0 +1,52 @@
+import os,re,json,time,threading,http.client
+from pathlib import Path
+from datetime import datetime,UTC
+from neurolab.store import RunStore
+from neurolab.jobs import ResearchJobs
+from neurolab.worker import QueueWorker
+from neurolab.execution import execute_run
+from neurolab.live_evaluation import RecordedAdapter
+from neurolab.ghana import load_ghana
+from neurolab.research_context import ResearchRunRequest,ResearchConfiguration,ResearchConstraints,build_deterministic_plan
+private=Path('/Users/shayford/.codex/private/neurolab-render');out=private/'real-inflight-cancellation-2026-10-28';out.mkdir(mode=0o700,exist_ok=False);os.umask(0o077)
+for line in Path('.env').read_text().splitlines():
+ m=re.match(r'^([A-Z][A-Z0-9_]*)\s*=\s*(.*)$',line)
+ if m and (m[1].startswith(('META_','MODEL_')) or m[1]=='SSL_CERT_FILE'):os.environ[m[1]]=m[2].strip().strip('"\'')
+assert os.environ.get('MODEL_INFERENCE_ENABLED')=='true'
+database=str(private/'original-objective-live-20261027T234129Z/execution.sqlite3');store=RunStore(database);control=RunStore(database)
+owner=store.get_run('ad9bb399-7e4d-4b42-83fc-450c914eadc5')['owner_user_id'];assert store.get_user(owner)['is_active'];assert store.count_active_runs(owner)==0
+config=ResearchConfiguration(preferred_methods=['dataset_profile','missingness_audit'],constraints=ResearchConstraints(max_steps=2,max_tool_calls=2,max_seconds=45));config.autonomy_preferences.auto_plan_with_meta=False
+objective='Inspect Ghana maize data provenance and missingness before analysis.';plan=build_deterministic_plan(objective,config);request=ResearchRunRequest(objective=objective,mode='meta',seed=2026,configuration=config,plan=plan);dataset=load_ghana();run=ResearchJobs(store).enqueue(request,owner,dataset.source_sha256)
+state={'run_id':run,'started_at_utc':datetime.now(UTC).isoformat(),'scope':'Local real Meta request cancellation with actual SQL queue/lease; not hosted inference acceptance','transport_observation':'Real HTTPSConnection subclass observes send/response timing only; no synthetic replies, delays or network stubs','token_cap':20000,'model_output_cap':500};(out/'state.json').write_text(json.dumps(state,indent=2))
+ready=threading.Event();trace=[];models=[];original=http.client.HTTPSConnection
+class ObservedHTTPS(original):
+ def request(self,*args,**kwargs):
+  result=super().request(*args,**kwargs);trace.append({'event':'https_request_sent','monotonic':time.monotonic(),'utc':datetime.now(UTC).isoformat()});ready.set();return result
+ def getresponse(self,*args,**kwargs):
+  response=super().getresponse(*args,**kwargs);trace.append({'event':'https_response_headers','monotonic':time.monotonic(),'utc':datetime.now(UTC).isoformat(),'http_status':response.status});return response
+
+def factory():
+ model=RecordedAdapter.from_environment();model.max_run_tokens=min(model.max_run_tokens,20000);model.max_output_tokens=500;model.transcript=out/'provider.jsonl';model.evaluation_run_id=run;model.approved_utc_day=datetime.now(UTC).date().isoformat();models.append(model);return model
+worker=QueueWorker(store,lambda req,rid:execute_run(store,dataset,req,rid,adapter_factory=factory));errors=[]
+def work():
+ try:worker.run_once(run_id=run)
+ except BaseException as error:errors.append(type(error).__name__)
+http.client.HTTPSConnection=ObservedHTTPS
+thread=threading.Thread(target=work,name='actual-meta-cancellation-worker');thread.start();print(json.dumps({'run_id':run,'state':'worker_started'}),flush=True)
+try:
+ deadline=time.monotonic()+20
+ while not ready.wait(.1) and thread.is_alive() and time.monotonic()<deadline:pass
+ if ready.is_set():
+  before=ResearchJobs(control).public_status(run,owner);event=ResearchJobs(control).cancel(run,owner);trace.append({'event':'cancellation_committed','monotonic':time.monotonic(),'utc':datetime.now(UTC).isoformat(),'accepted':event is not None});state['job_before_cancel']=before
+ else:state['request_not_observed']=True
+ thread.join(timeout=55)
+ if thread.is_alive():raise TimeoutError('Worker still active; existing run handle retained, no retry')
+ saved=control.get_run(run,owner_user_id=owner);job=ResearchJobs(control).public_status(run,owner);events=control.list_events(run);artifacts=control.list_artifacts(run)
+ reservations=[dict(row) for row in control._execute('SELECT input_tokens,output_tokens,reserved_micro_usd,outcome FROM model_spend_reservations WHERE scope_id=?',('run:'+run,)).fetchall()]
+ sent=next((x['monotonic'] for x in trace if x['event']=='https_request_sent'),None);cancel=next((x['monotonic'] for x in trace if x['event']=='cancellation_committed'),None);headers=next((x['monotonic'] for x in trace if x['event']=='https_response_headers'),None)
+ proof={**state,'completed_at_utc':datetime.now(UTC).isoformat(),'final_status':saved['status'],'job_final':job,'worker_errors':errors,'artifact_count':len(artifacts),'report_present':saved['report'] is not None,'request_count':sum(getattr(m,'requests_attempted',0) for m in models),'cancel_between_send_and_response':sent is not None and cancel is not None and headers is not None and sent<=cancel<headers,'reservations':reservations,'provider_usage':[u for m in models for u in getattr(m,'reported_usage',[])],'trace':trace,'provider_invoice_cost_usd':None,'no_forced_provider_preemption':True,'no_refund_claim':True,'shared_ledger_reused':True,'no_automatic_retry':True,'owner_scope_verified':saved['owner_user_id']==owner}
+ proof['acceptance_passed']=proof['cancel_between_send_and_response'] and proof['final_status']=='CANCELLED' and proof['request_count']==1 and not proof['report_present'] and not errors and len(reservations)==1
+ (out/'proof.json').write_text(json.dumps(proof,indent=2));(out/'events.json').write_text(json.dumps(events,indent=2));print(json.dumps(proof,indent=2))
+finally:
+ http.client.HTTPSConnection=original
+ if not thread.is_alive():store.close();control.close()

@@ -150,7 +150,7 @@ Open <http://localhost:3000> for the workspace. In development, FastAPI OpenAPI 
 
 Shared SQL request limits and verified-account budgets persist across replicas. Client IP forwarding is opt-in and requires a verified ingress trust chain; see [shared request admission](docs/SHARED_REQUEST_LIMITS.md). Signup remains invite-gated. SQL provider spending reservations are implemented; external provider-account caps and actual billing acceptance remain open.
 
-Requests and queue claims persist in SQL; started work is not automatically retried after lease loss. See [durable research jobs](docs/DURABLE_RESEARCH_JOBS.md) for cancellation, deadlines, owner quotas and remaining operational gates.
+Requests and queue claims persist in SQL; started work is not automatically retried after lease loss. A [real local in-flight Meta cancellation](verification/real-provider-cancellation-2026-10-28/summary.json) ended CANCELLED after the already-started request finished, without starting another provider request or scientific tool; the reservation was retained. This is not hosted live-Meta acceptance or a refund guarantee. See [durable research jobs](docs/DURABLE_RESEARCH_JOBS.md) for cancellation, deadlines, owner quotas and remaining operational gates.
 
 ### Shared model reservations
 

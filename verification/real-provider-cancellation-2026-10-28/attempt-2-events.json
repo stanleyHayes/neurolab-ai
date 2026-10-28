@@ -1,0 +1,150 @@
+[
+  {
+    "event_id": "fc048601-46ac-4629-801e-ab9429488aa2",
+    "run_id": "bf93f8dd-02f1-4b0e-bae2-0c7fe49372d2",
+    "sequence": 1,
+    "event_type": "run.created",
+    "timestamp": "2026-10-28T01:43:26.668028Z",
+    "payload": {
+      "dataset_id": "ghana_combined",
+      "source_sha256": "2e37c07f30e00efb33b59954dd6d02a04f3d67349790d782b70dbedfdaff05bc"
+    }
+  },
+  {
+    "event_id": "d6b6fe1e-a0ee-4fc1-a7f8-e032268cf4fa",
+    "run_id": "bf93f8dd-02f1-4b0e-bae2-0c7fe49372d2",
+    "sequence": 2,
+    "event_type": "request.accepted",
+    "timestamp": "2026-10-28T01:43:26.668311Z",
+    "payload": {
+      "mode": "meta",
+      "max_steps": 2,
+      "max_tool_calls": 2,
+      "objective_characters": 68,
+      "objective_sha256": "f335119593bdf2dfec613b328f1d3d6e75c29d3d4182dde79e05066a5f701d5b"
+    }
+  },
+  {
+    "event_id": "64b7bbe6-b3b6-473b-b434-8c660f7cc3d4",
+    "run_id": "bf93f8dd-02f1-4b0e-bae2-0c7fe49372d2",
+    "sequence": 3,
+    "event_type": "job.queued",
+    "timestamp": "2026-10-28T01:43:26.668588Z",
+    "payload": {
+      "public_summary": "Validated request persisted for bounded worker execution; no tools have run."
+    }
+  },
+  {
+    "event_id": "b1cc0fc5-7b20-4c64-87f0-e331dafdab48",
+    "run_id": "bf93f8dd-02f1-4b0e-bae2-0c7fe49372d2",
+    "sequence": 4,
+    "event_type": "stage.changed",
+    "timestamp": "2026-10-28T01:43:26.668605Z",
+    "payload": {
+      "stage": "QUEUED",
+      "public_summary": "Run durably queued for bounded execution",
+      "progress_completed": null,
+      "progress_total": null,
+      "artifact_refs": []
+    }
+  },
+  {
+    "event_id": "7460282e-cc79-497e-94e7-52c295064624",
+    "run_id": "bf93f8dd-02f1-4b0e-bae2-0c7fe49372d2",
+    "sequence": 5,
+    "event_type": "job.claimed",
+    "timestamp": "2026-10-28T01:43:26.669454Z",
+    "payload": {
+      "public_summary": "Worker acquired an exclusive execution lease.",
+      "attempt": 1
+    }
+  },
+  {
+    "event_id": "027dbf49-56d2-4a43-b0fc-c8ec73e8d73b",
+    "run_id": "bf93f8dd-02f1-4b0e-bae2-0c7fe49372d2",
+    "sequence": 6,
+    "event_type": "stage.changed",
+    "timestamp": "2026-10-28T01:43:26.669507Z",
+    "payload": {
+      "stage": "PLANNING",
+      "public_summary": "Worker acquired the lease and is preparing bounded execution",
+      "progress_completed": null,
+      "progress_total": null,
+      "artifact_refs": []
+    }
+  },
+  {
+    "event_id": "775e8c70-9655-4c6e-bf6f-103ed5bb9587",
+    "run_id": "bf93f8dd-02f1-4b0e-bae2-0c7fe49372d2",
+    "sequence": 7,
+    "event_type": "research.workflow_proposed",
+    "timestamp": "2026-10-28T01:43:26.670138Z",
+    "payload": {
+      "summary": "Preparing validated tasks for the submitted research objective.",
+      "mode": "meta",
+      "source": "server_workflow",
+      "label": "Workflow setup; not a model-generated scientific hypothesis"
+    }
+  },
+  {
+    "event_id": "953eff5c-5774-43af-a827-395c2d45ecc5",
+    "run_id": "bf93f8dd-02f1-4b0e-bae2-0c7fe49372d2",
+    "sequence": 8,
+    "event_type": "stage.changed",
+    "timestamp": "2026-10-28T01:43:26.670467Z",
+    "payload": {
+      "stage": "PLANNING",
+      "public_summary": "Preparing bounded Ghana observational analysis",
+      "progress_completed": null,
+      "progress_total": null,
+      "artifact_refs": []
+    }
+  },
+  {
+    "event_id": "cd2f1df0-cc50-4efc-90f0-b0256bad6434",
+    "run_id": "bf93f8dd-02f1-4b0e-bae2-0c7fe49372d2",
+    "sequence": 9,
+    "event_type": "research.objective_preserved",
+    "timestamp": "2026-10-28T01:43:26.671083Z",
+    "payload": {
+      "objective_sha256": "f335119593bdf2dfec613b328f1d3d6e75c29d3d4182dde79e05066a5f701d5b",
+      "objective_characters": 68
+    }
+  },
+  {
+    "event_id": "de611b87-1288-4921-95d0-17d1969094e1",
+    "run_id": "bf93f8dd-02f1-4b0e-bae2-0c7fe49372d2",
+    "sequence": 10,
+    "event_type": "run.cancel_requested",
+    "timestamp": "2026-10-28T01:43:26.763452Z",
+    "payload": {
+      "note": "Cancellation will be applied at the next safe boundary"
+    }
+  },
+  {
+    "event_id": "8d621f6e-179d-4438-956a-7489cc2ddc3b",
+    "run_id": "bf93f8dd-02f1-4b0e-bae2-0c7fe49372d2",
+    "sequence": 11,
+    "event_type": "decision.recorded",
+    "timestamp": "2026-10-28T01:43:28.825710Z",
+    "payload": {
+      "decision_number": 1,
+      "based_on_evidence_id": null,
+      "selected_action": "dataset_profile",
+      "decision_summary": "Selected a pending allowlisted task; no result evidence exists yet.",
+      "selection_source": "model",
+      "model_decision_summary": "No evidence yet; profile provenance first to establish source-row counts before auditing missingness.",
+      "model_summary_scope": "Unverified model-provided action rationale; not a scientific finding."
+    }
+  },
+  {
+    "event_id": "49aa72d1-6bcf-4cbc-b86c-bee598a50552",
+    "run_id": "bf93f8dd-02f1-4b0e-bae2-0c7fe49372d2",
+    "sequence": 12,
+    "event_type": "run.cancelled",
+    "timestamp": "2026-10-28T01:43:28.826565Z",
+    "payload": {
+      "reason": "user_requested_after_decision"
+    }
+  }
+]

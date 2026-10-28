@@ -242,7 +242,7 @@ For each follow-up, write down: parent run ID; observation that triggered it; ne
 
 ## 8 Demonstrate cancellation and handle problems
 
-Cancellation is optional in the short cut. For a longer recording, click **Request cancellation** only while a run is active, then show the acknowledged terminal state. A tool already running may finish before the worker observes cancellation. Do not call a cancellation request an immediate process kill. Fast runs can finish before you click; never manufacture a cancellation result.
+Cancellation is optional in the short cut. For a longer recording, click **Request cancellation** only while a run is active, then show the acknowledged terminal state. A tool already running may finish before the worker observes cancellation. An in-flight model request may also finish and incur usage; stopping a run does not promise a refund. A real local request/response cancellation case is recorded in `verification/real-provider-cancellation-2026-10-28/summary.json`. Do not call a cancellation request an immediate process kill. Fast runs can finish before you click; never manufacture a cancellation result.
 
 If a run remains queued, check the worker instead of repeatedly submitting. If a request is throttled, respect the retry delay. If a run times out, inspect which tasks completed before choosing a bounded follow-up. A partial report can be audited but cannot stand in for a complete six-method investigation.
 

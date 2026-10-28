@@ -1,0 +1,363 @@
+[
+  {
+    "event_id": "fcf03f6e-1318-4e6a-a1ee-6af13718f8d3",
+    "run_id": "6a821a80-efcd-480c-8212-b5cf8fcb1252",
+    "sequence": 1,
+    "event_type": "run.created",
+    "timestamp": "2026-10-28T01:42:32.271631Z",
+    "payload": {
+      "dataset_id": "ghana_combined",
+      "source_sha256": "2e37c07f30e00efb33b59954dd6d02a04f3d67349790d782b70dbedfdaff05bc"
+    }
+  },
+  {
+    "event_id": "d1ee06de-f20d-44c4-961d-d4e3f0392074",
+    "run_id": "6a821a80-efcd-480c-8212-b5cf8fcb1252",
+    "sequence": 2,
+    "event_type": "request.accepted",
+    "timestamp": "2026-10-28T01:42:32.272329Z",
+    "payload": {
+      "mode": "meta",
+      "max_steps": 2,
+      "max_tool_calls": 2,
+      "objective_characters": 68,
+      "objective_sha256": "f335119593bdf2dfec613b328f1d3d6e75c29d3d4182dde79e05066a5f701d5b"
+    }
+  },
+  {
+    "event_id": "6303e1b5-0942-4609-95cd-2140907363c7",
+    "run_id": "6a821a80-efcd-480c-8212-b5cf8fcb1252",
+    "sequence": 3,
+    "event_type": "job.queued",
+    "timestamp": "2026-10-28T01:42:32.272508Z",
+    "payload": {
+      "public_summary": "Validated request persisted for bounded worker execution; no tools have run."
+    }
+  },
+  {
+    "event_id": "366180e3-4ec0-4505-ba2a-2295675b9164",
+    "run_id": "6a821a80-efcd-480c-8212-b5cf8fcb1252",
+    "sequence": 4,
+    "event_type": "stage.changed",
+    "timestamp": "2026-10-28T01:42:32.272829Z",
+    "payload": {
+      "stage": "QUEUED",
+      "public_summary": "Run durably queued for bounded execution",
+      "progress_completed": null,
+      "progress_total": null,
+      "artifact_refs": []
+    }
+  },
+  {
+    "event_id": "131a5251-e247-4fb8-b8c4-582b79995b90",
+    "run_id": "6a821a80-efcd-480c-8212-b5cf8fcb1252",
+    "sequence": 5,
+    "event_type": "job.claimed",
+    "timestamp": "2026-10-28T01:42:32.273786Z",
+    "payload": {
+      "public_summary": "Worker acquired an exclusive execution lease.",
+      "attempt": 1
+    }
+  },
+  {
+    "event_id": "bd590c9e-356d-4397-917a-677fc8bb73b0",
+    "run_id": "6a821a80-efcd-480c-8212-b5cf8fcb1252",
+    "sequence": 6,
+    "event_type": "stage.changed",
+    "timestamp": "2026-10-28T01:42:32.273863Z",
+    "payload": {
+      "stage": "PLANNING",
+      "public_summary": "Worker acquired the lease and is preparing bounded execution",
+      "progress_completed": null,
+      "progress_total": null,
+      "artifact_refs": []
+    }
+  },
+  {
+    "event_id": "d9f9b391-4012-478b-8ca5-690583162594",
+    "run_id": "6a821a80-efcd-480c-8212-b5cf8fcb1252",
+    "sequence": 7,
+    "event_type": "research.workflow_proposed",
+    "timestamp": "2026-10-28T01:42:32.274596Z",
+    "payload": {
+      "summary": "Preparing validated tasks for the submitted research objective.",
+      "mode": "meta",
+      "source": "server_workflow",
+      "label": "Workflow setup; not a model-generated scientific hypothesis"
+    }
+  },
+  {
+    "event_id": "04163796-5dcc-4e2c-a7b3-a8b9fb887a48",
+    "run_id": "6a821a80-efcd-480c-8212-b5cf8fcb1252",
+    "sequence": 8,
+    "event_type": "stage.changed",
+    "timestamp": "2026-10-28T01:42:32.275955Z",
+    "payload": {
+      "stage": "PLANNING",
+      "public_summary": "Preparing bounded Ghana observational analysis",
+      "progress_completed": null,
+      "progress_total": null,
+      "artifact_refs": []
+    }
+  },
+  {
+    "event_id": "37b76c05-dc1a-46cc-80d5-16d8f80262bd",
+    "run_id": "6a821a80-efcd-480c-8212-b5cf8fcb1252",
+    "sequence": 9,
+    "event_type": "research.objective_preserved",
+    "timestamp": "2026-10-28T01:42:32.276602Z",
+    "payload": {
+      "objective_sha256": "f335119593bdf2dfec613b328f1d3d6e75c29d3d4182dde79e05066a5f701d5b",
+      "objective_characters": 68
+    }
+  },
+  {
+    "event_id": "4f20088f-505a-4992-9550-00a5d4dafda3",
+    "run_id": "6a821a80-efcd-480c-8212-b5cf8fcb1252",
+    "sequence": 10,
+    "event_type": "decision.failed",
+    "timestamp": "2026-10-28T01:42:32.278233Z",
+    "payload": {
+      "error_type": "TypeError",
+      "message": "HTTPSConnection.__init__() takes from 2 to 3 positional arguments but 5 positional arguments (and 1 keyword-only argument) were given"
+    }
+  },
+  {
+    "event_id": "b9706baa-bcdb-4bb5-af2a-8199dca0a869",
+    "run_id": "6a821a80-efcd-480c-8212-b5cf8fcb1252",
+    "sequence": 11,
+    "event_type": "decision.recorded",
+    "timestamp": "2026-10-28T01:42:32.278598Z",
+    "payload": {
+      "decision_number": 1,
+      "based_on_evidence_id": null,
+      "selected_action": "dataset_profile",
+      "decision_summary": "Model decision rejected; execute the next validated pending plan task.",
+      "selection_source": "deterministic_plan_recovery"
+    }
+  },
+  {
+    "event_id": "931021b5-149a-4783-9cd8-38f1b1e4beb2",
+    "run_id": "6a821a80-efcd-480c-8212-b5cf8fcb1252",
+    "sequence": 12,
+    "event_type": "stage.changed",
+    "timestamp": "2026-10-28T01:42:32.279243Z",
+    "payload": {
+      "stage": "ANALYZING",
+      "public_summary": "Running allowlisted dataset_profile analysis",
+      "progress_completed": null,
+      "progress_total": null,
+      "artifact_refs": []
+    }
+  },
+  {
+    "event_id": "9510540e-465a-44e6-80e4-38d5cbeb0241",
+    "run_id": "6a821a80-efcd-480c-8212-b5cf8fcb1252",
+    "sequence": 13,
+    "event_type": "tool.requested",
+    "timestamp": "2026-10-28T01:42:32.279889Z",
+    "payload": {
+      "call_id": "f3150029-ff36-460f-9d07-51a7f3c40632",
+      "action": "dataset_profile",
+      "dataset_id": "ghana_combined",
+      "hypothesis_id": "task-1",
+      "mode": "meta",
+      "parameters": {},
+      "seed": 2026
+    }
+  },
+  {
+    "event_id": "7a12f310-ce31-4f3f-aef2-6d18f35047fc",
+    "run_id": "6a821a80-efcd-480c-8212-b5cf8fcb1252",
+    "sequence": 14,
+    "event_type": "tool.validated",
+    "timestamp": "2026-10-28T01:42:32.280327Z",
+    "payload": {
+      "call_id": "f3150029-ff36-460f-9d07-51a7f3c40632",
+      "action": "dataset_profile"
+    }
+  },
+  {
+    "event_id": "000c11e2-c563-498b-8be1-a40e449fcbf5",
+    "run_id": "6a821a80-efcd-480c-8212-b5cf8fcb1252",
+    "sequence": 15,
+    "event_type": "tool.completed",
+    "timestamp": "2026-10-28T01:42:32.290625Z",
+    "payload": {
+      "call_id": "f3150029-ff36-460f-9d07-51a7f3c40632",
+      "artifact_id": "6a821a80-efcd-480c-8212-b5cf8fcb1252-1",
+      "sample_size": 864
+    }
+  },
+  {
+    "event_id": "4a4cf711-4074-4b77-8898-644a42025e74",
+    "run_id": "6a821a80-efcd-480c-8212-b5cf8fcb1252",
+    "sequence": 16,
+    "event_type": "evidence.updated",
+    "timestamp": "2026-10-28T01:42:32.290692Z",
+    "payload": {
+      "evidence_id": "6a821a80-efcd-480c-8212-b5cf8fcb1252-1"
+    }
+  },
+  {
+    "event_id": "18b50f04-b05d-46c2-9b73-be0f849af544",
+    "run_id": "6a821a80-efcd-480c-8212-b5cf8fcb1252",
+    "sequence": 17,
+    "event_type": "stage.changed",
+    "timestamp": "2026-10-28T01:42:32.290711Z",
+    "payload": {
+      "stage": "RUNNING",
+      "public_summary": "Evidence recorded; selecting the next bounded analysis",
+      "progress_completed": null,
+      "progress_total": null,
+      "artifact_refs": []
+    }
+  },
+  {
+    "event_id": "afc9036a-edcc-4922-adb3-5b147638dc26",
+    "run_id": "6a821a80-efcd-480c-8212-b5cf8fcb1252",
+    "sequence": 18,
+    "event_type": "decision.failed",
+    "timestamp": "2026-10-28T01:42:32.292618Z",
+    "payload": {
+      "error_type": "TypeError",
+      "message": "HTTPSConnection.__init__() takes from 2 to 3 positional arguments but 5 positional arguments (and 1 keyword-only argument) were given"
+    }
+  },
+  {
+    "event_id": "b5be0427-ca1f-42c7-bd69-1ad5ba33c0b5",
+    "run_id": "6a821a80-efcd-480c-8212-b5cf8fcb1252",
+    "sequence": 19,
+    "event_type": "decision.recorded",
+    "timestamp": "2026-10-28T01:42:32.293009Z",
+    "payload": {
+      "decision_number": 2,
+      "based_on_evidence_id": "6a821a80-efcd-480c-8212-b5cf8fcb1252-1",
+      "selected_action": "inspect_missingness",
+      "decision_summary": "Model decision rejected; execute the next validated pending plan task.",
+      "selection_source": "deterministic_plan_recovery"
+    }
+  },
+  {
+    "event_id": "2cc24163-13a7-4d68-aad9-e5eefafb5053",
+    "run_id": "6a821a80-efcd-480c-8212-b5cf8fcb1252",
+    "sequence": 20,
+    "event_type": "stage.changed",
+    "timestamp": "2026-10-28T01:42:32.293428Z",
+    "payload": {
+      "stage": "ANALYZING",
+      "public_summary": "Running allowlisted inspect_missingness analysis",
+      "progress_completed": null,
+      "progress_total": null,
+      "artifact_refs": []
+    }
+  },
+  {
+    "event_id": "7ac61e47-5839-468f-8ec4-c247b6c028f1",
+    "run_id": "6a821a80-efcd-480c-8212-b5cf8fcb1252",
+    "sequence": 21,
+    "event_type": "tool.requested",
+    "timestamp": "2026-10-28T01:42:32.293845Z",
+    "payload": {
+      "call_id": "0876937c-9d66-4c09-bb1c-047b3c486943",
+      "action": "inspect_missingness",
+      "dataset_id": "ghana_combined",
+      "hypothesis_id": "task-2",
+      "mode": "meta",
+      "parameters": {},
+      "seed": 2026
+    }
+  },
+  {
+    "event_id": "a6bb7a53-92e8-4881-bbb2-08672eba2f54",
+    "run_id": "6a821a80-efcd-480c-8212-b5cf8fcb1252",
+    "sequence": 22,
+    "event_type": "tool.validated",
+    "timestamp": "2026-10-28T01:42:32.294302Z",
+    "payload": {
+      "call_id": "0876937c-9d66-4c09-bb1c-047b3c486943",
+      "action": "inspect_missingness"
+    }
+  },
+  {
+    "event_id": "d4150d1c-f029-40fb-bb4b-9a853d9b1d76",
+    "run_id": "6a821a80-efcd-480c-8212-b5cf8fcb1252",
+    "sequence": 23,
+    "event_type": "tool.completed",
+    "timestamp": "2026-10-28T01:42:32.297042Z",
+    "payload": {
+      "call_id": "0876937c-9d66-4c09-bb1c-047b3c486943",
+      "artifact_id": "6a821a80-efcd-480c-8212-b5cf8fcb1252-2",
+      "sample_size": 864
+    }
+  },
+  {
+    "event_id": "99440841-65d5-44d8-bc4d-a8ca8097e39c",
+    "run_id": "6a821a80-efcd-480c-8212-b5cf8fcb1252",
+    "sequence": 24,
+    "event_type": "evidence.updated",
+    "timestamp": "2026-10-28T01:42:32.297098Z",
+    "payload": {
+      "evidence_id": "6a821a80-efcd-480c-8212-b5cf8fcb1252-2"
+    }
+  },
+  {
+    "event_id": "051a89e4-3557-46ff-8b48-2f0cc9aeb90e",
+    "run_id": "6a821a80-efcd-480c-8212-b5cf8fcb1252",
+    "sequence": 25,
+    "event_type": "stage.changed",
+    "timestamp": "2026-10-28T01:42:32.297115Z",
+    "payload": {
+      "stage": "RUNNING",
+      "public_summary": "Evidence recorded; selecting the next bounded analysis",
+      "progress_completed": null,
+      "progress_total": null,
+      "artifact_refs": []
+    }
+  },
+  {
+    "event_id": "1c4832a7-e89a-4f6b-9bf2-a7139e2d3482",
+    "run_id": "6a821a80-efcd-480c-8212-b5cf8fcb1252",
+    "sequence": 26,
+    "event_type": "report.generated",
+    "timestamp": "2026-10-28T01:42:32.298335Z",
+    "payload": {
+      "public_summary": "Evidence-linked report persisted; scientific conclusions remain subject to its stated scope and limitations.",
+      "completion_status": "partial",
+      "evidence_ids": [
+        "6a821a80-efcd-480c-8212-b5cf8fcb1252-1",
+        "6a821a80-efcd-480c-8212-b5cf8fcb1252-2"
+      ]
+    }
+  },
+  {
+    "event_id": "05d40569-de47-4829-8d2d-aa3da0ea571c",
+    "run_id": "6a821a80-efcd-480c-8212-b5cf8fcb1252",
+    "sequence": 27,
+    "event_type": "stage.changed",
+    "timestamp": "2026-10-28T01:42:32.298403Z",
+    "payload": {
+      "stage": "PARTIAL",
+      "public_summary": "Partial report: requested analyses remain incomplete; review limitations",
+      "progress_completed": null,
+      "progress_total": null,
+      "artifact_refs": []
+    }
+  },
+  {
+    "event_id": "85f0190c-d356-4b24-b4ce-dddfae023aa7",
+    "run_id": "6a821a80-efcd-480c-8212-b5cf8fcb1252",
+    "sequence": 28,
+    "event_type": "run.partial",
+    "timestamp": "2026-10-28T01:42:32.298428Z",
+    "payload": {
+      "completion_status": "partial",
+      "artifact_count": 2,
+      "mode": "meta",
+      "evidence_ids": [
+        "6a821a80-efcd-480c-8212-b5cf8fcb1252-1",
+        "6a821a80-efcd-480c-8212-b5cf8fcb1252-2"
+      ]
+    }
+  }
+]
