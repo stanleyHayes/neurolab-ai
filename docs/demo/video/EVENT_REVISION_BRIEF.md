@@ -1,5 +1,11 @@
 # Event-specific video revision required
 
+## Revised local delivery on 28 October
+
+The event revision is now rendered locally as `output/demo-video/NeuroLab-Event-Demo.mp4`: **179.20 seconds, 1920×1080, 30 fps, H.264/AAC**, with generated narration, burned-in captions and a separate SRT. It adds the verified October 26 start, actual source excerpt and specific later contributions, reused-data/library disclosure, and the separate real Baseten six-tool evidence with its exact model identity and unresolved event-alias caveat. Actual experiment/follow-up footage remains at 1x. The original video is preserved unchanged.
+
+Full decode passed with no errors. Final layout/runtime/contrast checks passed; sampled decoded frames were visually reviewed. Final audio measures -13.0 LUFS / -1.8 dBFS true peak. Human listening remains pending. The editable project and ZIP are local; no public video URL or submission was created. Neither rendering nor this notice certifies organizer eligibility or -1026 access. [Delivery evidence](../../../verification/demo-event-revision-2026-10-28.json).
+
 The current 165.53-second walkthrough is a verified local technical demo, not a certified submission video. Keep the original MP4, footage, captions and edit history unchanged as evidence.
 
 The newly supplied guide requires a three-minute demo highlighting specific event-built features, code and functionality, with clear original-contribution identification. The current cut needs the verified October 26 start date and a clear distinction between the source-import comparison baseline and later changes. The baseline is not evidence of an older project predating October 26. It also predates the event-specific Baseten alias requirement. Do not claim its generic-model integration proves `meta-models/muse-spark-open-1026` access.

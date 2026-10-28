@@ -20,7 +20,7 @@
 
 **Meta evidence:** archived real direct-Meta investigation and 180-trial comparison; generic hosted Baseten run with six model choices. The required Baseten `meta-models/muse-spark-open-1026` currently returns 404 on the supplied key and is not verified. Preserve this distinction; do not list the generic run as verification of the event alias.
 
-**Video:** local 165.53-second actual walkthrough exists. Revised new-work/code disclosure, final model/provenance presentation, listening review, public URL and fresh private-browser playback check remain outstanding. Do not submit the existing cut as fully event-reviewed.
+**Video:** revised local 179.20-second MP4 rendered with start-date/new-work/code disclosure, actual deterministic research footage and separate labelled Baseten evidence. Full decode/layout checks and sampled decoded-frame review passed. Human listening, public URL and fresh signed-out playback remain outstanding; organizer eligibility/model-alias acceptance is not certified by the edit.
 
 **Impact claim:** a credible workflow for researchers and breeders investigating observed drought-related trial patterns. No measured adoption, time-saved benchmark, field yield increase or policy advantage is claimed. Human semantic review of the recorded comparison is deferred.
 

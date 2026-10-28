@@ -42,7 +42,7 @@ https://github.com/stanleyHayes/neurolab-ai
 
 REQUIRED BEFORE SUBMISSION — insert the publicly accessible URL of the final reviewed demo video.
 
-The existing local walkthrough is approximately 2 minutes 46 seconds. Before publishing, revise it to identify work built during the event and distinguish earlier prototype components and reused assets. Check narration, captions, model labels and playback while signed out. A local file path is not a submission URL.
+The revised local video is 2 minutes 59.20 seconds and includes verified start-date/code-contribution disclosure, actual research footage, exact model labels and generated narration/subtitles. Listen through it before publishing, then check signed-out playback. A local file path is not a submission URL.
 
 ## Describe your use of Meta products to build the submitted project
 

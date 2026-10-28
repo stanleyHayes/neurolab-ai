@@ -1,5 +1,11 @@
 # NeuroLab research demo video
 
+## Revised local delivery on 28 October
+
+The event revision is now rendered locally as `output/demo-video/NeuroLab-Event-Demo.mp4`: **179.20 seconds, 1920×1080, 30 fps, H.264/AAC**, with generated narration, burned-in captions and a separate SRT. It adds the verified October 26 start, actual source excerpt and specific later contributions, reused-data/library disclosure, and the separate real Baseten six-tool evidence with its exact model identity and unresolved event-alias caveat. Actual experiment/follow-up footage remains at 1x. The original video is preserved unchanged.
+
+Full decode passed with no errors. Final layout/runtime/contrast checks passed; sampled decoded frames were visually reviewed. Final audio measures -13.0 LUFS / -1.8 dBFS true peak. Human listening remains pending. The editable project and ZIP are local; no public video URL or submission was created. Neither rendering nor this notice certifies organizer eligibility or -1026 access. [Delivery evidence](../../../verification/demo-event-revision-2026-10-28.json).
+
 workflow: product-launch-video
 flow: autonomous
 status: technical MP4 delivered locally; event-specific contribution/code-disclosure revision and human listening required

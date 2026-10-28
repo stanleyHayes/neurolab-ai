@@ -1,0 +1,94 @@
+{
+  "scope": "Actual revised event-oriented local video export; no public upload or submission; no organizer eligibility certification",
+  "render_job_id": "6f92d187-b3d5-4dcd-a679-12ec55dedba4",
+  "render_tool": "HyperFrames 0.8.210, delivery quality, hardware GPU drawElement capture",
+  "duration_seconds": 179.2,
+  "dimensions": [
+    1920,
+    1080
+  ],
+  "fps": 30,
+  "frames": 5376,
+  "codecs": [
+    "h264",
+    "aac"
+  ],
+  "full_decode_errors": 0,
+  "hyperframes_check": {
+    "lint": {
+      "ok": true,
+      "errorCount": 0,
+      "warningCount": 0
+    },
+    "runtime": {
+      "ok": true,
+      "errorCount": 0,
+      "warningCount": 0
+    },
+    "layout": {
+      "ok": true,
+      "errorCount": 0,
+      "warningCount": 0
+    },
+    "contrast": {
+      "ok": true,
+      "errorCount": 0,
+      "warningCount": 0
+    }
+  },
+  "decoded_frames_visually_reviewed_seconds": [
+    0,
+    10,
+    23,
+    70,
+    100,
+    140,
+    173,
+    179
+  ],
+  "caption_cues": 32,
+  "caption_timing": "25 retained body cues follow original sentence clips; 7 new intro/closing cues timed proportionally per sentence, not word-level alignment",
+  "final_audio": {
+    "integrated_lufs": -13.0,
+    "true_peak_dbfs": -1.8,
+    "loudness_range_lu": 2.3,
+    "human_listening_reviewed": false
+  },
+  "new_inference_calls": 0,
+  "reused_deterministic_runs": [
+    "2993f361-bbeb-4c23-a943-2d3a1ec263e3",
+    "8bb26625-d153-4576-a073-d4ebb8f9460a"
+  ],
+  "separate_recorded_baseten_run": "c8591707-1b97-41b9-badf-b94ca1df7ff8",
+  "source_disclosure": {
+    "start_date": "2026-10-26",
+    "some_work_predates_kickoff": true,
+    "guide_building_start_differs": true,
+    "organizer_eligibility_confirmed": false,
+    "actual_source_excerpt_commit": "9666c16934ff9f6e63942b137fd7df3f9ece6416",
+    "guide_model_alias_verified": false
+  },
+  "original_video_unchanged_sha256": "60a828af349b34da2b99c5a29812c9dc14be28ba2550ee6e0ca56b98dbd5a885",
+  "outputs": {
+    "NeuroLab-Event-Demo.mp4": {
+      "bytes": 22307422,
+      "sha256": "110cfad2371b741bd37253421ec2fcd03b866e664bc5bd662b34b8bddec2e2d2"
+    },
+    "NeuroLab-Event-Demo.srt": {
+      "bytes": 3662,
+      "sha256": "8fbf831ef05c79ef5f4fe6782635b677ea981174de31be2954fc0d8d704445af"
+    },
+    "NeuroLab-Event-Editable.zip": {
+      "bytes": 54043903,
+      "sha256": "ed9cb1dd3f4afebe37eeacaa6a318115ff3b5696bbc6f6131c8bf0d59f495e31"
+    }
+  },
+  "check_log_sha256": "46f7cc552e984a9b805554fa594126e06fe6a575ddb7fa0105aa902b65025331",
+  "render_log_sha256": "4bdba67c98d55a95af7fd885ac8f992e9466946b51a889e2df16fc0d4efde8d5",
+  "limitations": [
+    "Human listening and final owner approval pending",
+    "Desktop app detail is less legible on phones",
+    "Public video host URL not created",
+    "Event eligibility and exact -1026 alias acceptance remain external"
+  ]
+}
