@@ -152,6 +152,7 @@ class RecordedAdapter(OpenAICompatibleAdapter):
         try:
             response = super()._send_structured(endpoint, body, timeout)
         except BaseException as error:
+            self._record_response_metadata()
             _append(
                 self.transcript,
                 {
@@ -162,12 +163,20 @@ class RecordedAdapter(OpenAICompatibleAdapter):
                 },
             )
             raise
+        self._record_response_metadata()
+        return response
+
+    def _record_response_metadata(self):
+        metadata = self._last_response_metadata
+        if metadata is None:
+            return
         _append(
             self.transcript,
-            {"kind": "provider.response", "run_id": self.evaluation_run_id, "body": response},
+            {"kind": "provider.response", "run_id": self.evaluation_run_id, **metadata},
         )
-        self.reported_usage = [*getattr(self, "reported_usage", []), response.get("usage")]
-        return response
+        body = metadata.get("body")
+        usage = body.get("usage") if isinstance(body, dict) else None
+        self.reported_usage = [*getattr(self, "reported_usage", []), usage]
 
 
 def execute_live_trial(trial, dataset, store, owner, transcript):

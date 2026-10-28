@@ -1,0 +1,35 @@
+{
+  "verified_at_utc": "2026-10-28T01:29:31.856456+00:00",
+  "full_quality": {
+    "backend_tests": 219,
+    "proxy_tests": 11,
+    "ui_tests": 92,
+    "total": 322,
+    "lint_format_types": true,
+    "source_audit_compile": true,
+    "production_build": true,
+    "inference_enabled_in_tests": false
+  },
+  "post_quality_change": "Extracted the metadata-header helper to resolve complexity; final27 focused provider/agent/collector/adversarial tests passed afterward. No scientific calculation changed.",
+  "sonar": {
+    "gate": "PASSED",
+    "issues": 0,
+    "hotspots": 0
+  },
+  "source_sha256": {
+    "neurolab/agent.py": "f2a56bddadd4dcb8899c2e4e2a656facefb018b6b6030d26cd85416e03c37128",
+    "neurolab/providers.py": "bce62628427ad76d3817e5e7e496405368b145cadc22cdf8045195c62606e572",
+    "neurolab/live_evaluation.py": "abf8c45d99bb138dedfe70922241da6c0797cb5c2846d5d13acd7412f390a052",
+    "app/workspace/ResearchTimeline.tsx": "b2fd0451d68f2ac4811c8f641bebd8373391ed14876069138a96ddaabf6dde7b",
+    "app/workspace/cinematic-model.ts": "ab6f2a8fb17dac8ea1af901256d2bd5946ffdb72fa5ca622126e78d9778ea833"
+  },
+  "log_sha256": {
+    "full_quality": "5bfa6e92dc9adc359ce15c42d065ef1c3f46495b0006347459ef41d68573c7d5",
+    "sonar": "1c585be34fced2ddd66db9f28a9f698d99f1f0d3a39803bf407cdad6705078ce"
+  },
+  "live_diagnostics": "model-rationale-live-2026-10-28/summary.json",
+  "fresh_install_commit": "5ea24ad3821eeb2b6b68d547b868e6865247c4dc",
+  "browser_acceptance": false,
+  "hosted_correction_deployed": false,
+  "hosted_meta_inference_verified": false
+}

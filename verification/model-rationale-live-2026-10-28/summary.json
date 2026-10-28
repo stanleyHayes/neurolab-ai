@@ -1,0 +1,31 @@
+{
+  "scope": "Two separate bounded one-action real Meta diagnostics; not original-objective reruns or the comparison matrix",
+  "run_ids": [
+    "57cbeb98-773a-4041-b33b-206d3c1fa880",
+    "a6ce577b-9f08-4540-af84-787669d9323f"
+  ],
+  "both_complete": true,
+  "each_artifact_count": 1,
+  "rationale_in_events_not_scientific_report": true,
+  "second_http_status": 200,
+  "second_reported_tokens": 646,
+  "first_usage": "Unknown; parsed-action capture only",
+  "diagnostic_token_caps_each": 20000,
+  "reservations_retained": true,
+  "no_automatic_retries": true,
+  "existing_shared_spend_policy_changed": false,
+  "public_files_secret_scan_matches": 0,
+  "file_sha256": {
+    "smoke-1-proof.json": "d25ebde6889fd64a0fa0272a8abb2b5d4e1f93d63e978e572c63f42312948ac7",
+    "smoke-1-structured-response.json": "e0fa57c697c1821727ee23263beeb612f7e375d4217f87177a87c20abc010539",
+    "smoke-2-proof.json": "dee3de5ca8cd0f85f787a9c1f4517675c8963db7a476e0a227da8725bceb0299",
+    "smoke-2-provider.jsonl": "233f1b2d2d23ede54295e759b12700ef48486f74e2dbe1187d10f83fa602c29e",
+    "smoke-2-bundle.json": "d4826c5d2bb7e1f61a7a76629907b660d296337b3b6bbd4b1f0735ec759b30dd"
+  },
+  "provider_source_reconstruction": {
+    "path": "provider-execution-source.py",
+    "sha256": "0bbbcef1b181e63783e3f9f950d2830ec4c3227ca48588f308cd55c5b944d343",
+    "matches_recorded_execution_hash": true,
+    "method": "Reversed the subsequent metadata-helper extraction; verified exact SHA256 before preserving. No response/result reconstruction."
+  }
+}

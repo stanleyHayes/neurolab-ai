@@ -9,7 +9,7 @@ from __future__ import annotations
 import http.client
 import json
 import os
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Any, Protocol
 from urllib.parse import urlsplit
 
@@ -20,6 +20,15 @@ from .research_context import (
 )
 
 HTTPS_REQUIRED = "Configured model endpoint must use HTTPS"
+
+
+def _response_metadata(response):
+    identifiers = {}
+    for name in ("x-request-id", "request-id", "x-fb-trace-id"):
+        value = response.getheader(name)
+        if isinstance(value, str):
+            identifiers[name] = value
+    return {"http_status": response.status, "request_identifiers": identifiers}
 
 
 class ModelProviderError(RuntimeError):
@@ -67,7 +76,7 @@ class OpenAICompatibleAdapter:
     """Minimal stdlib adapter; API keys remain server-side and are never logged."""
 
     endpoint: str
-    api_key: str
+    api_key: str = field(repr=False)
     model_id: str
     provider: str = "configured_openai_compatible_provider"
     max_output_tokens: int = 600
@@ -76,6 +85,7 @@ class OpenAICompatibleAdapter:
     tokens_reserved: int = 0
     _last_input_token_upper_bound: int = 0
     spend_guard: ModelSpendGuard | None = None
+    _last_response_metadata: dict[str, Any] | None = field(default=None, repr=False)
 
     def _request_structured(
         self,
@@ -160,6 +170,7 @@ class OpenAICompatibleAdapter:
         return self
 
     def _send_structured(self, endpoint, body, timeout):
+        self._last_response_metadata = None
         connection = None
         try:
             connection = http.client.HTTPSConnection(
@@ -176,6 +187,7 @@ class OpenAICompatibleAdapter:
                 },
             )
             response = connection.getresponse()
+            self._last_response_metadata = _response_metadata(response)
             if response.status < 200 or response.status >= 300:
                 raise ModelProviderError(
                     f"Model provider returned HTTP {response.status}", http_status=response.status
@@ -184,6 +196,7 @@ class OpenAICompatibleAdapter:
             if len(raw) > 1_048_576:
                 raise ModelProviderError("Model provider response exceeds the size limit")
             payload = json.loads(raw.decode("utf-8"))
+            self._last_response_metadata["body"] = payload
         except ModelProviderError:
             raise
         except (OSError, http.client.HTTPException) as exc:

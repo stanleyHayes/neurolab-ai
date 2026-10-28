@@ -1,4 +1,6 @@
-# Current completion gates — 2026-10-27
+# Completion-gate history — 27–28 October2026
+
+**Current requirement-by-requirement summary:** [PROJECT_ACCEPTANCE_AUDIT_2026-10-28.md](PROJECT_ACCEPTANCE_AUDIT_2026-10-28.md). The table and notes below are dated history; later evidence supersedes earlier exhausted-credit, paused-provider, local-only deployment and test-count statements. The goal is not complete.
 
 This dated ledger supersedes current-state statements in the 2026-10-26 read-only audits. Those documents remain historical evidence, including the failed live Meta run; their old percentages are not a current completion score. The full project goal remains active.
 
@@ -90,3 +92,7 @@ The known-set180-trial/72-Meta collection path now exists with fixed enumeration
 ### Seed-aware scoring increment, 28 October
 
 The live scorer now validates exact policy/task/seed cells and evidence-bound reviews, reports all12 accuracy and first10 utility questions, preserves per-seed rating basis, and groups seeds within questions. Reportless attempts are zero for direct/usefulness; support/scope remain explicitly output-conditional. Missing records and successful unreviewed outputs remain null. Exact integer-weighted question-bootstrap percentiles replace finite Monte Carlo draws; related fixed questions and subjective review prohibit population/winner claims. Actual calls/reservations and unknown operational metadata stay distinct from invoices.219 backend tests and Sonar gate passed; tests use synthetic ratings only. V3 is a new unapproved frozen snapshot; earlier drafts remain untouched. No matrix or human review has run (`live-scoring-contract-2026-10-28.json`).
+
+### Current acceptance audit and concrete logging corrections, 28 October
+
+The new `PROJECT_ACCEPTANCE_AUDIT_2026-10-28.md` is the current requirement-by-requirement summary. A fresh public checkout at5ea24ad passed isolated installs/320tests/build/source audit/normalization without copied credentials or inference. Later rationale/envelope corrections passed322 full tests plus27 post-extraction focused checks and Sonar. Two bounded one-action real Meta diagnostics completed; the second captured HTTP200/stop and646 reported tokens. They are not original-objective repeats or the180-trial comparison. Real source hashes and both captures are preserved; no missing usage was invented. Model rationale is labelled event metadata only, excluded from scientific reports; the adversarial report-containment check remains unchanged. The collector now retains the raw bounded response envelope/usage/status/request IDs rather than labelling parsed actions as raw responses. Frozen evaluation drafts predate these source changes and remain unapproved. Hosted rollout/browser acceptance remain separate.

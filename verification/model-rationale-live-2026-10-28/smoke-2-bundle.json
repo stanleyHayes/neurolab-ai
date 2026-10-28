@@ -1,0 +1,768 @@
+{
+  "bundle_version": "neurolab-evidence-v1",
+  "report": {
+    "run_id": "a6ce577b-9f08-4540-af84-787669d9323f",
+    "scientific_report": null,
+    "reproducibility": {
+      "snapshot": "API/module startup, not a claim about later filesystem edits",
+      "code_commit": "5ea24ad3821eeb2b6b68d547b868e6865247c4dc",
+      "worktree_dirty_at_startup": null,
+      "dirty_status_note": "Not asserted by the application; exact relevant source-byte hashes are recorded.",
+      "python_version": "3.12.3",
+      "module_sha256": {
+        "neurolab/__init__.py": "a2087837f9c2ec58efe0de91ab4c7829d0ccb72c2e5933e755972d2ce7394c2b",
+        "neurolab/action_selection.py": "025d9ee3fc715f6e564e20d6e770aaf195196cc2305c149ca8ccb0750c0fa6a2",
+        "neurolab/adversarial_evaluation.py": "c0cc8a87d968b596313d5ef68157751305d5ef5715223e87137e21284c98699a",
+        "neurolab/agent.py": "f2a56bddadd4dcb8899c2e4e2a656facefb018b6b6030d26cd85416e03c37128",
+        "neurolab/answer_evaluation.py": "cf640379d516132434cdde26d0cfca6552a1348531e6904926ad57cefaa0521c",
+        "neurolab/api.py": "9a991e6ebdc0a7fa37c139e69cb321127ba1df94710dd42fb52c75d7eb580a7a",
+        "neurolab/auth.py": "d441f895330d0b0ac58024569ee184a368ab68ba2373ad87f1ea563fe89e89db",
+        "neurolab/deployment_api.py": "a97305d2e188336674745d2aaf69fb106fe40679de0ce51efa3d6da9cf3b1cc6",
+        "neurolab/deployment_runtime.py": "1a24a2a50a16d342a496f94ba4046203c23225e6e967f9a3d5cf5464839e04e5",
+        "neurolab/deployment_worker.py": "511647ba970e98dd27d0142872da4b6349289a2e9993183c0df317dac6a288b5",
+        "neurolab/descriptive.py": "74af11e1d7b698c8490437234e796d50720a52dce24821b46ba7d3dab63145fb",
+        "neurolab/evaluation.py": "e92bc23c7f95045dd0217fef86223a434dcd671b93c0866f1a738b5e00e9c31f",
+        "neurolab/execution.py": "b07d31f62191130b413c1741f43b5942443ddbd40701840fc6c3b99acb3de09d",
+        "neurolab/focused_planning.py": "481e9f656d2a9ef1c9f648e5fbcca1e3dc98420038f8a9cbea550679ccdf0e66",
+        "neurolab/ghana.py": "0ddebfab3351500a7753c14613b5949bfe9218a0f3e72f311c78e4ae085586a1",
+        "neurolab/hypothesis_contracts.py": "fad8fcf45b6883f223632407239dc2e77de9634309922de6635e66773d59b591",
+        "neurolab/investigation_profile.py": "920b84aa2b3e9fecb8c2ba93c4c9874e90a2983cb70598ed297b34550e36da80",
+        "neurolab/jobs.py": "b483e853c619ad4034cde5ef76656ef64ba51bdcba518e4c527aba56443079e7",
+        "neurolab/live_evaluation.py": "abf8c45d99bb138dedfe70922241da6c0797cb5c2846d5d13acd7412f390a052",
+        "neurolab/live_scoring.py": "093243390d02fd5a35eba46f962f34672fb761a73ebd9aea7ab934bb59751d2b",
+        "neurolab/model_evidence.py": "1d64ed52def41fb0ae5dbe04ad049dc214f95f1659c71eb82bc9d4a4ed45fed3",
+        "neurolab/model_spend.py": "2f987a5c0f47ccbf471e6b4b05c70dc97f8c0a407cc42cdaa63e221bb77bc3cd",
+        "neurolab/planner.py": "40b5bbb2f8015223a29ae2beed912299b130786914987744ec5d69425dc71931",
+        "neurolab/provenance.py": "218bd840b1dca442039ece6663d8eb048c956b9ae84b6a494312b9375d11dbf9",
+        "neurolab/providers.py": "0bbbcef1b181e63783e3f9f950d2830ec4c3227ca48588f308cd55c5b944d343",
+        "neurolab/rate_limits.py": "5813ee5fc792c209790485856c4b1fcfc52b4f1a49d7472f19591cb14c07bc36",
+        "neurolab/research_context.py": "68439c1ea3dddd8e6c9a687679d02497335a36f8bb53c04e01bbc4b885acfad6",
+        "neurolab/review_packets.py": "64117fae1d3b4258537c6ba26ad6ea007d4f439eeee089bbfece922e0416b6e8",
+        "neurolab/science.py": "10d2afa61653af20023aa10f193942e9e7e7bc860b8b52c12852bf7bd5acd81a",
+        "neurolab/scientific_report.py": "2458397a5c70d0a3dc24b4090be163be3290be371efa94b9fb41cdb670652ac4",
+        "neurolab/source_inventory.py": "10a1317c4c887b614fb6818bddce8fb1efc5f1fc839861f15c0e785dbc1c6bfc",
+        "neurolab/store.py": "0ee9e3988a6e7faa084200783694e57cfb138e776a893f0c9667f6cbab4be47f",
+        "neurolab/tools.py": "abe37bffc1de4d1409ffc31764e4cfe73092723f1ec5c864686468ccad6dfa8b",
+        "neurolab/worker.py": "22c8a2f56f71a2836ca3505b9378dd7877845e77f9fbf279d681c7114b1a0859",
+        "schemas/agent_tool_call.schema.json": "743fa3e3ffbd796ad9676d0bcc2f7bdcac067a41240f2ed958dbddbbdc90f282"
+      }
+    },
+    "dataset_id": "ghana_combined",
+    "source_sha256": "2e37c07f30e00efb33b59954dd6d02a04f3d67349790d782b70dbedfdaff05bc",
+    "mode": "meta",
+    "replay_label": "Meta mode requested; inspect the recorded trace for provider activity",
+    "model_provider": "meta",
+    "model_id": "muse-spark-1.3",
+    "objective": "Inspect Ghana maize dataset provenance and record counts.",
+    "refined_objective": "Inspect Ghana maize dataset provenance and record counts.",
+    "research_configuration": {
+      "title": "",
+      "research_questions": [],
+      "hypotheses": [],
+      "dataset_id": "ghana_combined",
+      "constraints": {
+        "max_steps": 1,
+        "max_tool_calls": 1,
+        "max_seconds": 30
+      },
+      "preferred_methods": [
+        "dataset_profile"
+      ],
+      "desired_outputs": [],
+      "autonomy_preferences": {
+        "auto_plan_with_meta": true,
+        "execute_supported_tasks": true,
+        "stop_if_unsupported": false
+      }
+    },
+    "research_plan": {
+      "objective_sha256": "a6cca5e38f7fe2f9cce77dae64f6a76aea62dd2952323cb9d282677a6c133534",
+      "planning_mode": "deterministic",
+      "title": "",
+      "important_constraints": [],
+      "refined_objective": "Inspect Ghana maize dataset provenance and record counts.",
+      "ambiguities": [],
+      "research_questions": [],
+      "hypotheses": [],
+      "hypothesis_tests": [],
+      "dataset_suggestions": [
+        {
+          "dataset_id": "ghana_combined",
+          "rationale": "Only Ghana combined is currently enabled for run execution; other datasets are suggestions only.",
+          "enabled_for_analysis": true
+        }
+      ],
+      "analysis_approaches": [
+        {
+          "method_id": "dataset_profile",
+          "rationale": "Profile the enabled Ghana combined dataset and its provenance."
+        }
+      ],
+      "desired_outputs": [],
+      "tasks": [
+        {
+          "task_id": "task-1",
+          "title": "Dataset Profile",
+          "description": "Profile the enabled Ghana combined dataset and its provenance.",
+          "tool_name": "dataset_profile",
+          "status": "completed",
+          "evidence_ids": [
+            "a6ce577b-9f08-4540-af84-787669d9323f-1"
+          ]
+        }
+      ],
+      "unsupported_requirements": []
+    },
+    "seed": 2026,
+    "tool_calls": 1,
+    "completion_status": "complete",
+    "tool_failures": [],
+    "decisions": [
+      {
+        "decision_number": 1,
+        "based_on_evidence_id": null,
+        "selected_action": "dataset_profile",
+        "decision_summary": "Selected a pending allowlisted task; no result evidence exists yet.",
+        "selection_source": "model"
+      }
+    ],
+    "evidence_ids": [
+      "a6ce577b-9f08-4540-af84-787669d9323f-1"
+    ],
+    "grounded_claims": [
+      {
+        "claim": "The Ghana combined source contains 864 plot records, 72 genotypes, and environment indices DROUGHT_Y1, DROUGHT_Y2, DROUGHT_Y3, WELL_WATERED_Y1, WELL_WATERED_Y2, WELL_WATERED_Y3. Observed plots by regime: DROUGHT: 432; WELL_WATERED: 432.",
+        "evidence_ids": [
+          "a6ce577b-9f08-4540-af84-787669d9323f-1"
+        ],
+        "claim_scope": "descriptive"
+      }
+    ],
+    "conclusion": "The Ghana combined source contains 864 plot records, 72 genotypes, and environment indices DROUGHT_Y1, DROUGHT_Y2, DROUGHT_Y3, WELL_WATERED_Y1, WELL_WATERED_Y2, WELL_WATERED_Y3. Observed plots by regime: DROUGHT: 432; WELL_WATERED: 432.",
+    "limitations": [
+      "Meta mode was requested; configured provider identity does not prove a completed model call. Provider attempts may be blocked or fail; server tools compute numerical results.",
+      "Ghana water regime is confounded with trial environment.",
+      "Only three ENVT indices are present; do not reinterpret them as calendar years.",
+      "Completion status describes the accepted method tasks, not semantic coverage of every sentence in the objective.",
+      "Dataset profile is descriptive; ENVT codes are not interpreted as calendar years."
+    ],
+    "elapsed_seconds": 2.8568
+  },
+  "events": [
+    {
+      "event_id": "fe63067a-d3c5-4a2e-8937-9630f146e6ca",
+      "run_id": "a6ce577b-9f08-4540-af84-787669d9323f",
+      "sequence": 1,
+      "event_type": "run.created",
+      "timestamp": "2026-10-28T01:24:06.043771Z",
+      "payload": {
+        "dataset_id": "ghana_combined",
+        "source_sha256": "2e37c07f30e00efb33b59954dd6d02a04f3d67349790d782b70dbedfdaff05bc"
+      }
+    },
+    {
+      "event_id": "d78081e7-c2a4-4176-a586-0f59ccf614df",
+      "run_id": "a6ce577b-9f08-4540-af84-787669d9323f",
+      "sequence": 2,
+      "event_type": "research.workflow_proposed",
+      "timestamp": "2026-10-28T01:24:06.044389Z",
+      "payload": {
+        "summary": "Preparing validated tasks for the submitted research objective.",
+        "mode": "meta",
+        "source": "server_workflow",
+        "label": "Workflow setup; not a model-generated scientific hypothesis"
+      }
+    },
+    {
+      "event_id": "85864c3a-253e-428c-aa7b-0b4baa9f67fa",
+      "run_id": "a6ce577b-9f08-4540-af84-787669d9323f",
+      "sequence": 3,
+      "event_type": "stage.changed",
+      "timestamp": "2026-10-28T01:24:06.045062Z",
+      "payload": {
+        "stage": "PLANNING",
+        "public_summary": "Preparing bounded Ghana observational analysis",
+        "progress_completed": null,
+        "progress_total": null,
+        "artifact_refs": []
+      }
+    },
+    {
+      "event_id": "26fd1b76-f62e-4976-9add-27ed16221344",
+      "run_id": "a6ce577b-9f08-4540-af84-787669d9323f",
+      "sequence": 4,
+      "event_type": "research.objective_preserved",
+      "timestamp": "2026-10-28T01:24:06.045807Z",
+      "payload": {
+        "objective_sha256": "a6cca5e38f7fe2f9cce77dae64f6a76aea62dd2952323cb9d282677a6c133534",
+        "objective_characters": 57
+      }
+    },
+    {
+      "event_id": "08709d68-3764-4464-bced-ef7cdf43e2cc",
+      "run_id": "a6ce577b-9f08-4540-af84-787669d9323f",
+      "sequence": 5,
+      "event_type": "decision.recorded",
+      "timestamp": "2026-10-28T01:24:08.885658Z",
+      "payload": {
+        "decision_number": 1,
+        "based_on_evidence_id": null,
+        "selected_action": "dataset_profile",
+        "decision_summary": "Selected a pending allowlisted task; no result evidence exists yet.",
+        "selection_source": "model",
+        "model_decision_summary": "No dataset metrics observed yet; profiling addresses uncertainty in provenance and record counts for ghana_combined.",
+        "model_summary_scope": "Unverified model-provided action rationale; not a scientific finding."
+      }
+    },
+    {
+      "event_id": "e1a46b26-5483-470b-839a-df62aa304388",
+      "run_id": "a6ce577b-9f08-4540-af84-787669d9323f",
+      "sequence": 6,
+      "event_type": "stage.changed",
+      "timestamp": "2026-10-28T01:24:08.886118Z",
+      "payload": {
+        "stage": "ANALYZING",
+        "public_summary": "Running allowlisted dataset_profile analysis",
+        "progress_completed": null,
+        "progress_total": null,
+        "artifact_refs": []
+      }
+    },
+    {
+      "event_id": "8d0a2002-5e2d-41d5-8c32-a906055c5ccb",
+      "run_id": "a6ce577b-9f08-4540-af84-787669d9323f",
+      "sequence": 7,
+      "event_type": "tool.requested",
+      "timestamp": "2026-10-28T01:24:08.886611Z",
+      "payload": {
+        "call_id": "137cfef2-c700-4998-944f-6c03b36b0ab0",
+        "action": "dataset_profile",
+        "dataset_id": "ghana_combined",
+        "hypothesis_id": "task-1",
+        "mode": "meta",
+        "parameters": {},
+        "seed": 2026
+      }
+    },
+    {
+      "event_id": "b1b07271-376e-4e2b-a78c-ca0977a75631",
+      "run_id": "a6ce577b-9f08-4540-af84-787669d9323f",
+      "sequence": 8,
+      "event_type": "tool.validated",
+      "timestamp": "2026-10-28T01:24:08.887291Z",
+      "payload": {
+        "call_id": "137cfef2-c700-4998-944f-6c03b36b0ab0",
+        "action": "dataset_profile"
+      }
+    },
+    {
+      "event_id": "2dfc4b63-e027-4d7e-85c6-41ae6339348f",
+      "run_id": "a6ce577b-9f08-4540-af84-787669d9323f",
+      "sequence": 9,
+      "event_type": "tool.completed",
+      "timestamp": "2026-10-28T01:24:08.900172Z",
+      "payload": {
+        "call_id": "137cfef2-c700-4998-944f-6c03b36b0ab0",
+        "artifact_id": "a6ce577b-9f08-4540-af84-787669d9323f-1",
+        "sample_size": 864
+      }
+    },
+    {
+      "event_id": "ed0ec448-b0fc-497c-830b-43f73a4e3594",
+      "run_id": "a6ce577b-9f08-4540-af84-787669d9323f",
+      "sequence": 10,
+      "event_type": "evidence.updated",
+      "timestamp": "2026-10-28T01:24:08.900236Z",
+      "payload": {
+        "evidence_id": "a6ce577b-9f08-4540-af84-787669d9323f-1"
+      }
+    },
+    {
+      "event_id": "2f96c6c6-3d89-4b76-8e75-d8cf177a9577",
+      "run_id": "a6ce577b-9f08-4540-af84-787669d9323f",
+      "sequence": 11,
+      "event_type": "stage.changed",
+      "timestamp": "2026-10-28T01:24:08.900265Z",
+      "payload": {
+        "stage": "RUNNING",
+        "public_summary": "Evidence recorded; selecting the next bounded analysis",
+        "progress_completed": null,
+        "progress_total": null,
+        "artifact_refs": []
+      }
+    },
+    {
+      "event_id": "c9150f6c-40e1-426f-a830-606c93ba892e",
+      "run_id": "a6ce577b-9f08-4540-af84-787669d9323f",
+      "sequence": 12,
+      "event_type": "report.generated",
+      "timestamp": "2026-10-28T01:24:08.901591Z",
+      "payload": {
+        "public_summary": "Evidence-linked report persisted; scientific conclusions remain subject to its stated scope and limitations.",
+        "completion_status": "complete",
+        "evidence_ids": [
+          "a6ce577b-9f08-4540-af84-787669d9323f-1"
+        ]
+      }
+    },
+    {
+      "event_id": "5462f132-c73c-4860-8dc3-ea48af1ff78a",
+      "run_id": "a6ce577b-9f08-4540-af84-787669d9323f",
+      "sequence": 13,
+      "event_type": "stage.changed",
+      "timestamp": "2026-10-28T01:24:08.901646Z",
+      "payload": {
+        "stage": "COMPLETE",
+        "public_summary": "Evidence-linked research report is complete",
+        "progress_completed": null,
+        "progress_total": null,
+        "artifact_refs": []
+      }
+    },
+    {
+      "event_id": "021a79a0-b09d-4a0a-9a80-422e8de15b0a",
+      "run_id": "a6ce577b-9f08-4540-af84-787669d9323f",
+      "sequence": 14,
+      "event_type": "run.completed",
+      "timestamp": "2026-10-28T01:24:08.901681Z",
+      "payload": {
+        "completion_status": "complete",
+        "artifact_count": 1,
+        "mode": "meta",
+        "evidence_ids": [
+          "a6ce577b-9f08-4540-af84-787669d9323f-1"
+        ]
+      }
+    }
+  ],
+  "artifacts": [
+    {
+      "analysis_version": "ghana-exploratory-v1",
+      "artifact_id": "a6ce577b-9f08-4540-af84-787669d9323f-1",
+      "claim_scope": "descriptive",
+      "results": {
+        "available_source_inventory": [
+          {
+            "analysis_enabled": false,
+            "count_provenance": "Audited manifest counts, verified against current source-byte hash at tool execution",
+            "eligibility_reason": "Source metadata, not independent plot observations.",
+            "fully_empty_rows": 0,
+            "original_columns": [
+              "column",
+              "description",
+              "unit_or_type"
+            ],
+            "physical_rows": 21,
+            "source_file": "data/raw/ghana/data_dictionary.csv",
+            "source_sha256": "0c9e14e7cb37bf5444032e7a0f9e8ef56d5d9eb28363b8d14871a1e2de3599f8",
+            "substantive_rows": 21
+          },
+          {
+            "analysis_enabled": false,
+            "count_provenance": "Audited manifest counts, verified against current source-byte hash at tool execution",
+            "eligibility_reason": "Source metadata, not independent plot observations.",
+            "fully_empty_rows": 0,
+            "original_columns": [
+              "column",
+              "description",
+              "unit_or_type"
+            ],
+            "physical_rows": 21,
+            "source_file": "data/raw/ghana/data_dictionary_uploaded.csv",
+            "source_sha256": "0c9e14e7cb37bf5444032e7a0f9e8ef56d5d9eb28363b8d14871a1e2de3599f8",
+            "substantive_rows": 21
+          },
+          {
+            "analysis_enabled": true,
+            "count_provenance": "Audited manifest counts, verified against current source-byte hash at tool execution",
+            "eligibility_reason": "Canonical combined analysis source.",
+            "fully_empty_rows": 0,
+            "original_columns": [
+              "CONDITION",
+              "ENV",
+              "GENOTYPE",
+              "ENVT",
+              "REP",
+              "BLK",
+              "POLLEN",
+              "SILK",
+              "ASI",
+              "PLHT",
+              "EHT",
+              "STYG",
+              "PASP",
+              "HUSKC",
+              "RLPERC",
+              "SLPERC",
+              "EPP",
+              "EASP",
+              "EROT",
+              "YIELD"
+            ],
+            "physical_rows": 864,
+            "source_file": "data/raw/ghana/maize_combined_phenotypes.csv",
+            "source_sha256": "2e37c07f30e00efb33b59954dd6d02a04f3d67349790d782b70dbedfdaff05bc",
+            "substantive_rows": 864
+          },
+          {
+            "analysis_enabled": false,
+            "count_provenance": "Audited manifest counts, verified against current source-byte hash at tool execution",
+            "eligibility_reason": "Regime component overlaps the combined source; never add as independent observations.",
+            "fully_empty_rows": 0,
+            "original_columns": [
+              "GENOTYPE",
+              "GENO",
+              "ENVT",
+              "REP",
+              "BLK",
+              "POLLEN",
+              "SILK",
+              "ASI",
+              "PLHT",
+              "EHT",
+              "STYG",
+              "PASP",
+              "HUSKC",
+              "RLPERC",
+              "SLPERC",
+              "EPP",
+              "EASP",
+              "EROT",
+              "YIELD"
+            ],
+            "physical_rows": 432,
+            "source_file": "data/raw/ghana/maize_drought_phenotypes.csv",
+            "source_sha256": "6b0d6136f179f7774152ad028132f31d31cc31fd29907dcd7e8c0a33c2c354b0",
+            "substantive_rows": 432
+          },
+          {
+            "analysis_enabled": false,
+            "count_provenance": "Audited manifest counts, verified against current source-byte hash at tool execution",
+            "eligibility_reason": "Regime component overlaps the combined source; never add as independent observations.",
+            "fully_empty_rows": 0,
+            "original_columns": [
+              "GENOTYPE",
+              "REP",
+              "BLK",
+              "ENVT",
+              "POLLEN",
+              "SILK",
+              "ASI",
+              "PLHT",
+              "EHT",
+              "PASP",
+              "HUSKC",
+              "RLPERC",
+              "SLPERC",
+              "EPP",
+              "EASP",
+              "EROT",
+              "YIELD"
+            ],
+            "physical_rows": 432,
+            "source_file": "data/raw/ghana/maize_wellwatered_phenotypes.csv",
+            "source_sha256": "a40bb2ca65e3390c3f10e3a38cbe6fae6364bae1c88dca8ea4f58b87583efed5",
+            "substantive_rows": 432
+          },
+          {
+            "analysis_enabled": false,
+            "count_provenance": "Audited manifest counts, verified against current source-byte hash at tool execution",
+            "eligibility_reason": "Audited reference only; matched year/replicate/environment semantics and cross-source genotype identity are not proven. No pooling or row-order joining.",
+            "fully_empty_rows": 0,
+            "original_columns": [
+              "YEAR",
+              "REP",
+              "BLK",
+              "PLOT",
+              "ENTRY",
+              "YIELD (kg/ha)",
+              "Antheis Day",
+              "Silking date",
+              "ASI",
+              "Plant height",
+              "Eear height",
+              "Ears per plant",
+              "Husk cover",
+              "Leaf senescence",
+              "Ear aspect",
+              "Plant aspect"
+            ],
+            "physical_rows": 960,
+            "source_file": "data/raw/iita/m28drought_stress-data.csv",
+            "source_sha256": "49b84ec403b83c3c94cccde1c3708629841b06fea41ead2691af6cfd1ab28676",
+            "substantive_rows": 960
+          },
+          {
+            "analysis_enabled": false,
+            "count_provenance": "Audited manifest counts, verified against current source-byte hash at tool execution",
+            "eligibility_reason": "Audited reference only; matched year/replicate/environment semantics and cross-source genotype identity are not proven. No pooling or row-order joining.",
+            "fully_empty_rows": 336953,
+            "original_columns": [
+              "YEAR",
+              "REP",
+              "",
+              "PLOT",
+              "ENTRY",
+              "YIELD (kg/ha)",
+              "Antheis Day",
+              "ASI",
+              "Plant height",
+              "Eear height",
+              "Ears per plant",
+              "Husk cover",
+              "Ear aspect",
+              "Plant aspect",
+              "Silking date"
+            ],
+            "physical_rows": 337913,
+            "source_file": "data/raw/iita/m28fulli_irrigation-data.csv",
+            "source_sha256": "311efbee3fd8294930e364e98934bc388645dbc243c000c3de27a847805b6e40",
+            "substantive_rows": 960
+          },
+          {
+            "analysis_enabled": false,
+            "count_provenance": "Audited manifest counts, verified against current source-byte hash at tool execution",
+            "eligibility_reason": "Audited reference only; matched year/replicate/environment semantics and cross-source genotype identity are not proven. No pooling or row-order joining.",
+            "fully_empty_rows": 0,
+            "original_columns": [
+              "YEAR",
+              "LOC",
+              "ENV",
+              "REP",
+              "BLK",
+              "PLOT",
+              "ENTRY",
+              "NAME",
+              "YIELD",
+              "AD",
+              "ASI",
+              "PH",
+              "EH",
+              "RL",
+              "SL",
+              "EPP",
+              "HC",
+              "PS",
+              "SENES1",
+              "MOI",
+              "NP",
+              "MSV",
+              "EA",
+              "PA",
+              "HM",
+              "PL",
+              "SD",
+              "CUR",
+              "SENES2",
+              "ER"
+            ],
+            "physical_rows": 176,
+            "source_file": "data/raw/iita/m28multiloc-data-ii.csv",
+            "source_sha256": "4f05cbfc9d1e6b3035a2d13c1eea29290e07f81344e1628eea929ff8eca38922",
+            "substantive_rows": 176
+          },
+          {
+            "analysis_enabled": false,
+            "count_provenance": "Audited manifest counts, verified against current source-byte hash at tool execution",
+            "eligibility_reason": "Audited reference only; matched year/replicate/environment semantics and cross-source genotype identity are not proven. No pooling or row-order joining.",
+            "fully_empty_rows": 0,
+            "original_columns": [
+              "YEAR",
+              "LOC",
+              "ENV",
+              "REP",
+              "BLK",
+              "PLOT",
+              "ENTRY",
+              "YIELD (kg/ha)",
+              "Antheis Day",
+              "Silking date",
+              "ASI",
+              "Plant height",
+              "Eear height",
+              "Ears per plant",
+              "Husk cover",
+              "Ear aspect",
+              "Plant aspect",
+              "MSV",
+              "Curvularia leaf spot",
+              ""
+            ],
+            "physical_rows": 23616,
+            "source_file": "data/raw/iita/m28multiloc-data.csv",
+            "source_sha256": "764314cb4429b5eb90eee91093bee6d029a750e5e95fbcfa88cf381df4f863ab",
+            "substantive_rows": 23616
+          },
+          {
+            "analysis_enabled": false,
+            "count_provenance": "Audited manifest counts, verified against current source-byte hash at tool execution",
+            "eligibility_reason": "Audited reference only; matched year/replicate/environment semantics and cross-source genotype identity are not proven. No pooling or row-order joining.",
+            "fully_empty_rows": 0,
+            "original_columns": [
+              "YEAR",
+              "LOC",
+              "ENV",
+              "REP",
+              "PLOT",
+              "ENTRY",
+              "Yield infested",
+              "Yield non-infested",
+              "Silking days infested",
+              "Silking days non-infested",
+              "Anthesis days infested",
+              "Anthesis days non-infested",
+              "Plant height infested",
+              "Plant height non-infested",
+              "Ear height non-infested",
+              "Striga rating 8 WAP",
+              "Striga rating 10 WAP",
+              "Striga count 8 WAP",
+              "Striga counet 10 WAP",
+              "Plant aspect non-infested",
+              "Husk cover non-infested",
+              "Eear aspect infested",
+              "Eear aspect non-infested",
+              "ASI-Infested",
+              "Ears per plant infested"
+            ],
+            "physical_rows": 1636,
+            "source_file": "data/raw/iita/m28striga-data.csv",
+            "source_sha256": "358fea710ea823fc05f921421e3d025c53ebbc77ea09a69bb9b2d3b3cb13e735",
+            "substantive_rows": 1636
+          }
+        ],
+        "dataset_id": "ghana_combined",
+        "environment_codes": [
+          "DROUGHT_Y1",
+          "DROUGHT_Y2",
+          "DROUGHT_Y3",
+          "WELL_WATERED_Y1",
+          "WELL_WATERED_Y2",
+          "WELL_WATERED_Y3"
+        ],
+        "genotype_count": 72,
+        "inventory_manifest_sha256": "c23281e4f3321645d3018cbda40d020d376b5dbca0b0c1b963a39055a681fa04",
+        "missingness": {
+          "anthesis_days": {
+            "missing": 0,
+            "total": 864
+          },
+          "asi_days": {
+            "missing": 0,
+            "total": 864
+          },
+          "block": {
+            "missing": 0,
+            "total": 864
+          },
+          "ear_height_unit": {
+            "missing": 0,
+            "total": 864
+          },
+          "ear_height_value": {
+            "missing": 1,
+            "total": 864
+          },
+          "ears_per_plant": {
+            "missing": 0,
+            "total": 864
+          },
+          "environment_code": {
+            "missing": 0,
+            "total": 864
+          },
+          "genotype_id": {
+            "missing": 0,
+            "total": 864
+          },
+          "grain_yield_unit": {
+            "missing": 0,
+            "total": 864
+          },
+          "grain_yield_value": {
+            "missing": 0,
+            "total": 864
+          },
+          "location_code": {
+            "missing": 864,
+            "total": 864
+          },
+          "plant_height_unit": {
+            "missing": 0,
+            "total": 864
+          },
+          "plant_height_value": {
+            "missing": 1,
+            "total": 864
+          },
+          "plot": {
+            "missing": 864,
+            "total": 864
+          },
+          "replication": {
+            "missing": 0,
+            "total": 864
+          },
+          "silking_days": {
+            "missing": 0,
+            "total": 864
+          },
+          "source_dataset": {
+            "missing": 0,
+            "total": 864
+          },
+          "source_file": {
+            "missing": 0,
+            "total": 864
+          },
+          "source_row_number": {
+            "missing": 0,
+            "total": 864
+          },
+          "source_sha256": {
+            "missing": 0,
+            "total": 864
+          },
+          "stay_green_score": {
+            "missing": 432,
+            "total": 864
+          },
+          "trial_family": {
+            "missing": 0,
+            "total": 864
+          },
+          "water_regime": {
+            "missing": 0,
+            "total": 864
+          },
+          "year_code": {
+            "missing": 0,
+            "total": 864
+          }
+        },
+        "row_count": 864,
+        "source_file": "data/raw/ghana/maize_combined_phenotypes.csv",
+        "source_sha256": "2e37c07f30e00efb33b59954dd6d02a04f3d67349790d782b70dbedfdaff05bc",
+        "warnings": [],
+        "water_regimes": {
+          "DROUGHT": 432,
+          "WELL_WATERED": 432
+        },
+        "year_codes": [
+          "1",
+          "2",
+          "3"
+        ],
+        "yield_unit": "kg/ha"
+      },
+      "sample_size": 864,
+      "source_file": "data/raw/ghana/maize_combined_phenotypes.csv",
+      "source_sha256": "2e37c07f30e00efb33b59954dd6d02a04f3d67349790d782b70dbedfdaff05bc",
+      "tool_name": "dataset_profile",
+      "uncertainty": null,
+      "warnings": [
+        "Dataset profile is descriptive; ENVT codes are not interpreted as calendar years."
+      ]
+    }
+  ]
+}

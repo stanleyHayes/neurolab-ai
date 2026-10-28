@@ -206,11 +206,16 @@ class LiveCollectorTests(unittest.TestCase):
             self.assertNotIn("fixture-private-key", path.read_text())
         requests = [row["body"] for row in transcript if row["kind"] == "provider.request"]
         self.assertEqual(len(requests), 4)
+        raw_responses = [row for row in transcript if row["kind"] == "provider.response"]
+        self.assertEqual(len(raw_responses), 4)
+        self.assertTrue(all(row["http_status"] == 200 for row in raw_responses))
+        self.assertTrue(all(row["body"]["usage"]["total_tokens"] == 10 for row in raw_responses))
         self.assertEqual(requests[0], requests[2])
         self.assertTrue(json.loads(requests[1]["messages"][1]["content"])["evidence"])
         self.assertEqual(json.loads(requests[3]["messages"][1]["content"])["evidence"], [])
         for result in outcomes:
             self.assertEqual(result["model_calls"], 2)
+            self.assertEqual(result["provider_reported_usage"], [{"total_tokens": 10}] * 2)
             self.assertEqual(len(result["spend_reservations"]), 2)
             self.assertEqual(len(result["artifacts"]), 2)
             self.assertEqual(self.store.get_run(result["run_id"])["owner_user_id"], self.owner)

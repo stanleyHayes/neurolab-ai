@@ -174,6 +174,7 @@ class RunOrchestrationTests(unittest.TestCase):
         self.assertEqual(report["tool_failures"][0]["provider_http_status"], 404)
         self.assertTrue(report["tool_failures"][0]["provider_requests_stopped"])
         self.assertTrue(any("HTTP 404" in item for item in report["limitations"]))
+        self.assertTrue(all("model_decision_summary" not in d for d in report["decisions"]))
         self.assertTrue(
             all(
                 decision["selection_source"] == "deterministic_plan_recovery"
@@ -221,6 +222,24 @@ class RunOrchestrationTests(unittest.TestCase):
         for decision in report["decisions"][1:]:
             self.assertIn(decision["based_on_evidence_id"], report["evidence_ids"])
         self.assertEqual(report["decisions"][0]["selection_source"], "model")
+        recorded = [
+            e["payload"] for e in result["events"] if e["event_type"] == "decision.recorded"
+        ]
+        model_decisions = [d for d in recorded if d["selection_source"] == "model"]
+        self.assertEqual(len(model_decisions), 2)
+        for decision in model_decisions:
+            self.assertEqual(
+                decision["model_decision_summary"],
+                "Choose a bounded analysis relevant to the objective.",
+            )
+            self.assertIn("not a scientific finding", decision["model_summary_scope"])
+        self.assertNotIn("model_decision_summary", recorded[-1])
+        self.assertTrue(all("model_decision_summary" not in d for d in report["decisions"]))
+        self.assertEqual(
+            [d["selected_action"] for d in recorded],
+            [d["selected_action"] for d in report["decisions"]],
+        )
+        self.assertNotIn("Choose a bounded analysis", report["conclusion"])
         self.assertTrue(
             all(
                 item["source_sha256"] == self.dataset.source_sha256

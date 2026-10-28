@@ -3,6 +3,7 @@
 import Link from "next/link";
 import type { Dispatch, SetStateAction } from "react";
 import { EmptyState } from "./EmptyState";
+import { modelRationale } from "./cinematic-model";
 import { LoadingDots } from "./LoadingDots";
 import { Skeleton } from "./Skeleton";
 import { EVENT_LABELS } from "./workspace-config";
@@ -43,7 +44,7 @@ function eventSummary(event: ResearchEvent): string {
   if (event.event_type === "tool.requested")
     return `Allowlisted tool · ${displayText(payload.action)}`;
   if (event.event_type === "decision.recorded")
-    return `${displayText(payload.selected_action)} · ${displayText(payload.decision_summary)}`;
+    return `${displayText(payload.selected_action)} · ${modelRationale(event) ?? displayText(payload.decision_summary)}`;
   if (
     ["tool.failed", "run.failed", "run.timed_out"].includes(event.event_type)
   ) {
@@ -329,7 +330,7 @@ export function ResearchTimeline(props: Readonly<ResearchTimelineProps>) {
             {EVENT_LABELS[currentEvent.event_type] ?? currentEvent.event_type}
           </strong>
           <p>
-            {displayText(
+            {modelRationale(currentEvent) ?? displayText(
               currentEvent.payload.public_summary,
               displayText(
                 currentEvent.payload.decision_summary,

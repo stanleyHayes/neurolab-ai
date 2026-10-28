@@ -4,13 +4,14 @@ import { expect, it, vi } from "vitest";
 import fixture from "../fixtures/ghana-ui.json";
 import { ResearchTimeline } from "../../app/workspace/ResearchTimeline";
 import { WorkspaceErrorItem } from "../../app/workspace/WorkspaceErrorItem";
+import type { ResearchEvent } from "../../app/workspace/workspace-types";
 
-function TimelineHarness() {
+function TimelineHarness({ events = fixture.events }: Readonly<{ events?: ResearchEvent[] }>) {
   const [index, setIndex] = useState(0);
   const [presenting, setPresenting] = useState(false);
   return (
     <ResearchTimeline
-      events={fixture.events}
+      events={events}
       runRetrieving={false}
       runId={fixture.report.run_id}
       runStatus="COMPLETE"
@@ -84,4 +85,17 @@ it("routes accessible recovery to the failed resource context", () => {
   fireEvent.click(screen.getByRole("button", { name: "Reload history" }));
   expect(onRetry).toHaveBeenCalledWith("history", retry);
   expect(retry).toHaveBeenCalledOnce();
+});
+
+it("labels saved model rationale as unverified and renders it as escaped text", () => {
+  const rationale = '<img src=x onerror=alert(1)> Choose a diagnostic audit.';
+  const event: ResearchEvent = {
+    ...fixture.events[0], event_type: "decision.recorded",
+    payload: { selected_action: "inspect_missingness", selection_source: "model",
+      decision_summary: "A supported task was selected.", model_decision_summary: rationale },
+  };
+  const { container } = render(<TimelineHarness events={[event]} />);
+  expect(screen.getAllByText(/Model-provided rationale \(unverified\)/).length).toBeGreaterThan(0);
+  expect(container.textContent).toContain(rationale);
+  expect(container.querySelector('img[src="x"]')).toBeNull();
 });

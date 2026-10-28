@@ -1,5 +1,7 @@
 # Codex execution plan — prioritized, autonomous
 
+Current requirement-by-requirement status: [28 October acceptance audit](verification/PROJECT_ACCEPTANCE_AUDIT_2026-10-28.md). Earlier dated notes remain historical. Local real Meta is verified; hosted Meta returns404. The full goal remains open.
+
 ## Phase 0 (immediately)
 - [x] Audit and hash data; execute `scripts/audit_datasets.py`; inspect anomaly report.
 - [x] Add a repeatable local quality gate: Ruff lint/format, ESLint plus JavaScript syntax, tests, Python compilation and dataset integrity audit. Configure SonarQube analysis; server-side analysis remains conditional on a provisioned server and token.
@@ -19,12 +21,12 @@
 - [x] Implement bounded Meta-compatible structured adapter and model-selected allowlisted tool loop; model selection follows computed evidence, tool schemas and budgets are validated server-side. Fixture tests are not proof of a live Meta call.
 - [x] Demonstrate sequential evidence-grounded replay decisions; this is not a live agent demo.
 - [x] Store event trace/artifacts and expose concise decision summaries, not hidden chain-of-thought.
-- [ ] Score groundedness, adversarial-injection and invalid-action answer quality. The runtime now emits evidence-ID-linked, tool-derived report claims and fake-adapter safety tests; the 12-task catalog checks action coverage only, not generated-answer quality. No live Meta comparison has run.
+- [ ] Complete actual live answer-quality/feedback/adversarial evaluation and independent review. Evidence-bound offline reviews, policy-masked packets, a guarded180-trial collector and exact question-cluster scorer now exist; their contract fixtures are not Meta performance. No live matrix has run.
 
 ## Phase 3: Benchmarks and demo (P0)
 - [x] Compare replay tool selections with fixed/random workflow baseline using same budgets/tasks. Not a human-rated utility benchmark.
 - [x] Build interactive evidence workspace with persisted timeline, source citation, actual measured-result plots, report/artifact exports, saved run replay, provenance and error recovery.
-- [x] Implement persisted stage transitions, SSE cursor replay, asynchronous Meta-mode background execution, and safe-boundary cancellation. Replay baseline remains synchronous for deterministic existing fixtures.
+- [x] Implement persisted stage transitions, SSE cursor replay, asynchronous Meta-mode background execution, and safe-boundary cancellation. New HTTP submissions use the durable queue in both modes; isolated test replay runs synchronously.
 - [ ] Complete automated browser/accessibility testing, visual QA at mobile/tablet/1080p, plus test the live provider and prove cancellation under actual async execution. Current evidence report claims are generated from computed artifacts with linked evidence IDs.
 - [x] Add a lightweight, explicitly illustrative React Three Fiber maize/soil scene to the overview with orbit/zoom/reset, low-power render settings, WebGL/error fallback, and reduced-motion static mode. The scene does not encode measured crop morphology or simulated measurements.
 - [x] Task-scoped browser smoke: desktop WebGL scene and camera buttons, reduced-motion static illustration, and 390px mobile static fallback/no horizontal overflow. WebGL-disabled runtime fallback and full keyboard/screen-reader accessibility acceptance remain pending.

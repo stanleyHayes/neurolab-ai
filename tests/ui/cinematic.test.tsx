@@ -261,3 +261,17 @@ it("records worker timeout/failure as terminal without revealing uncompleted evi
   ).toEqual([]);
   expect(eventTitle(terminal)).toBe("Run timed out");
 });
+
+it("uses only stored model rationale and keeps recovery outside model attribution", () => {
+  const event: ResearchEvent = {
+    ...fixture.events[0], event_type: "decision.recorded",
+    payload: { selection_source: "model_without_result_feedback",
+      model_decision_summary: "Fixture model proposes a coverage audit.",
+      decision_summary: "Prior result feedback withheld." },
+  };
+  expect(eventDescription(event)).toBe(
+    "Model-provided rationale (unverified): Fixture model proposes a coverage audit.",
+  );
+  expect(eventDescription({ ...event, payload: { ...event.payload,
+    selection_source: "deterministic_plan_recovery", decision_summary: "Recorded recovery." } })).toBe("Recorded recovery.");
+});

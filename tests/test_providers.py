@@ -62,6 +62,10 @@ class ProviderContractTests(unittest.TestCase):
     def test_success_is_json_with_server_only_credentials_and_reserved_budget(self):
         model = self.model()
         response = Mock(status=200)
+        response.getheader.side_effect = lambda name: {
+            "x-request-id": "fixture-request-id",
+            "authorization": "fixture-only-private-value",
+        }.get(name)
         response.read.return_value = json.dumps(
             {"choices": [{"message": {"content": '{"action":"dataset_profile"}'}}]}
         ).encode()
@@ -80,6 +84,13 @@ class ProviderContractTests(unittest.TestCase):
         self.assertTrue(sent["response_format"]["json_schema"]["strict"])
         self.assertEqual(sent["reasoning_effort"], "minimal")
         connection.close.assert_called_once()
+        self.assertNotIn("fixture-only-private-value", repr(model))
+        self.assertEqual(model._last_response_metadata["http_status"], 200)
+        self.assertIn("choices", model._last_response_metadata["body"])
+        self.assertEqual(
+            model._last_response_metadata["request_identifiers"],
+            {"x-request-id": "fixture-request-id"},
+        )
 
     def test_short_action_budget_and_planning_headroom_are_reserved_separately(self):
         model = self.model()

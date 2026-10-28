@@ -26,9 +26,24 @@ function displayValue(value: unknown, fallback: string): string {
     : fallback;
 }
 
+export function modelRationale(event: ResearchEvent): string | null {
+  if (
+    event.event_type === "decision.recorded" &&
+    ["model", "model_without_result_feedback"].includes(
+      String(event.payload.selection_source),
+    ) &&
+    typeof event.payload.model_decision_summary === "string" &&
+    event.payload.model_decision_summary.trim()
+  )
+    return `Model-provided rationale (unverified): ${event.payload.model_decision_summary}`;
+  return null;
+}
+
 export function eventDescription(event?: ResearchEvent): string {
   if (!event)
     return "Choose a saved run below to replay its actual processing history.";
+  const rationale = modelRationale(event);
+  if (rationale) return rationale;
   for (const key of [
     "public_summary",
     "decision_summary",

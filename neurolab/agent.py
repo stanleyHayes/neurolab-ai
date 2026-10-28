@@ -406,7 +406,7 @@ class ResearchAgent:
             "events": self.store.list_events(run_id),
         }
 
-    def _record_decision(self, run_id, decisions, task, evidence, source):
+    def _record_decision(self, run_id, decisions, task, evidence, source, model_summary=None):
         latest = evidence[-1] if evidence and self.model_feedback else None
         summary = "Selected a pending allowlisted task; no result evidence exists yet."
         if latest:
@@ -426,7 +426,13 @@ class ResearchAgent:
             "selection_source": source,
         }
         decisions.append(decision)
-        self.store.add_event(run_id, DECISION_RECORDED, decision)
+        event_payload = dict(decision)
+        if source in {"model", "model_without_result_feedback"} and model_summary is not None:
+            event_payload["model_decision_summary"] = model_summary
+            event_payload["model_summary_scope"] = (
+                "Unverified model-provided action rationale; not a scientific finding."
+            )
+        self.store.add_event(run_id, DECISION_RECORDED, event_payload)
 
     def _choose_task(self, run_id, objective, pending, evidence, decisions, failures, start):
         if self.mode != "meta":
@@ -437,6 +443,7 @@ class ResearchAgent:
             self._record_decision(run_id, decisions, task, evidence, "deterministic_plan_recovery")
             return task, {}
         source = "model" if self.model_feedback else "model_without_result_feedback"
+        model_summary = None
         try:
             choice = self._select_action(
                 objective,
@@ -448,6 +455,7 @@ class ResearchAgent:
             if task is None:
                 raise ValueError("Model selected no remaining supported plan task")
             parameters = choice["parameters"]
+            model_summary = choice["summary"]
         except (ExecutionCancelled, ExecutionLeaseLost):
             raise
         except Exception as exc:
@@ -461,7 +469,7 @@ class ResearchAgent:
             )
             task, parameters = pending[0], {}
             source = "deterministic_plan_recovery"
-        self._record_decision(run_id, decisions, task, evidence, source)
+        self._record_decision(run_id, decisions, task, evidence, source, model_summary)
         return task, parameters
 
     def _complete_task(self, run_id, task, result):

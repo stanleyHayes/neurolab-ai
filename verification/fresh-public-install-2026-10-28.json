@@ -1,0 +1,62 @@
+{
+  "started_at_utc": "2026-10-28T01:17:19.596771+00:00",
+  "completed_at_utc": "2026-10-28T01:19:10.799239+00:00",
+  "cloned_commit": "5ea24ad3821eeb2b6b68d547b868e6865247c4dc",
+  "unauthenticated_public_metadata_http": 200,
+  "visibility": "public",
+  "model_inference_enabled": false,
+  "credentials_copied": false,
+  "normalization": {
+    "command": "python scripts/normalize_ghana.py",
+    "exit_code": 0,
+    "rows": 864,
+    "source_sha256": "2e37c07f30e00efb33b59954dd6d02a04f3d67349790d782b70dbedfdaff05bc",
+    "source_unchanged": true,
+    "tracked_tree_clean": true,
+    "stdout": "Normalized 864 source records; sha256=2e37c07f30e00efb33b59954dd6d02a04f3d67349790d782b70dbedfdaff05bc; unit=kg/ha; quarantined=0"
+  },
+  "scope": "Fresh public HTTPS checkout at the recorded commit; no browser or paid provider acceptance",
+  "tests": {
+    "backend": 219,
+    "proxy": 11,
+    "ui": 90,
+    "total": 320
+  },
+  "steps": [
+    {
+      "name": "clone",
+      "exit_code": 0,
+      "elapsed_seconds": 2.799,
+      "log_sha256": "51ab6c852a71eb357448e7f0232907c1b70b28bed43864bc49fe7b3e701aec78"
+    },
+    {
+      "name": "venv",
+      "exit_code": 0,
+      "elapsed_seconds": 1.667,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "python-install",
+      "exit_code": 0,
+      "elapsed_seconds": 8.973,
+      "log_sha256": "6c3e865dbc91f8af884ea0ac624e05e55fc08b95f736e6b356ef2baf17bf3838"
+    },
+    {
+      "name": "npm-install",
+      "exit_code": 0,
+      "elapsed_seconds": 5.262,
+      "log_sha256": "7ff00afd68767a2345881b7d1027183e740799c7edf5677bf465a6c8fe17c757"
+    },
+    {
+      "name": "quality",
+      "exit_code": 0,
+      "elapsed_seconds": 91.705,
+      "log_sha256": "e67b02563a1eff7a2ba64791786410dd7744e721e24daff7e029b431359d2b34"
+    }
+  ],
+  "isolated_venv": true,
+  "npm_ci": true,
+  "tracked_tree_clean": true,
+  "credential_helpers_disabled": true,
+  "later_worktree_changes": "Model-rationale/event and response-envelope fixes are validated separately; not represented by this clone"
+}
