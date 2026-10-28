@@ -1,4 +1,10 @@
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import {
+  act,
+  fireEvent,
+  render,
+  screen,
+  waitFor,
+} from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import fixture from "../fixtures/ghana-ui.json";
 import { navigation } from "./navigation";
@@ -138,6 +144,59 @@ describe("authenticated real-data replay workspace", () => {
     expect(
       screen.queryByRole("button", { name: "Request cancellation" }),
     ).toBeNull();
+  });
+
+  it("keeps a new admission busy when an older restored run finishes late", async () => {
+    seedSavedRun("experiment-studio");
+    const original = fetch;
+    let resolveOld!: (response: Response) => void;
+    const oldResponse = new Promise<Response>((resolve) => {
+      resolveOld = resolve;
+    });
+    const admission = new Promise<Response>(() => {});
+    vi.stubGlobal(
+      "fetch",
+      vi.fn((input, init) => {
+        if (String(input) === `/api/research-runs/${runId}`) return oldResponse;
+        if (String(input) === "/api/research-runs" && init?.method === "POST")
+          return admission;
+        return original(input, init);
+      }),
+    );
+    render(<ResearchWorkspace section="experiment-studio" />);
+    await screen.findByRole("link", {
+      name: /Account settings for Fixture Researcher/,
+    });
+    await waitFor(() =>
+      expect(fetch).toHaveBeenCalledWith(
+        `/api/research-runs/${runId}`,
+        expect.anything(),
+      ),
+    );
+    fireEvent.change(screen.getByLabelText("Research question"), {
+      target: {
+        value: "A new focused Ghana environment sensitivity investigation.",
+      },
+    });
+    const launch = screen.getByRole("button", {
+      name: /Generate experiment plan/,
+    });
+    fireEvent.click(launch);
+    await act(async () => {
+      resolveOld(reply({ status: "COMPLETE", report: fixture.report }));
+    });
+    await waitFor(() => expect(launch.hasAttribute("disabled")).toBe(true));
+    expect(
+      document.querySelector(".setup-card .status")?.textContent,
+    ).not.toContain("Run complete");
+    await waitFor(() =>
+      expect(
+        JSON.parse(
+          sessionStorage.getItem("neurolab-research-state:fixture-user") ??
+            "{}",
+        ).runId,
+      ).toBe(""),
+    );
   });
 
   it("restores an owned completed experiment on a fresh results page", async () => {

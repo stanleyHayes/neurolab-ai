@@ -262,6 +262,7 @@ export function ResearchWorkspace({
   const accountId = account?.user_id;
   const restoredFor = useRef("");
   const explicitRunLoad = useRef("");
+  const runReadGeneration = useRef(0);
   const sidebarRef = useRef<HTMLElement>(null);
   const mobileNavTriggerRef = useRef<HTMLButtonElement>(null);
   const mobileNavCloseRef = useRef<HTMLButtonElement>(null);
@@ -459,6 +460,8 @@ export function ResearchWorkspace({
       return;
     }
     let active = true;
+    const generation = runReadGeneration.current;
+    const isCurrent = () => active && generation === runReadGeneration.current;
     const controller = new AbortController();
     setErrors((current) => {
       const next = { ...current };
@@ -479,7 +482,7 @@ export function ResearchWorkspace({
             { signal: controller.signal },
           ),
         ]);
-        if (!active) return;
+        if (!isCurrent()) return;
         setRunStatus(run.status);
         setReport(run.report);
         setArtifacts(nextArtifacts);
@@ -491,6 +494,7 @@ export function ResearchWorkspace({
           { cache: "no-store", signal: controller.signal },
         );
         await consumeEventStream(eventResponse, (event) => {
+          if (!isCurrent()) return;
           if (["run.failed", "run.timed_out"].includes(event.event_type)) {
             setErrors((current) => ({
               ...current,
@@ -500,7 +504,7 @@ export function ResearchWorkspace({
               ),
             }));
           }
-          if (active) setEvents((previous) => mergeEvent(previous, event));
+          if (isCurrent()) setEvents((previous) => mergeEvent(previous, event));
         });
         const [finalRun, finalArtifacts] = await Promise.all([
           apiJson<{ status: string; report: ResearchReport | null }>(
@@ -512,19 +516,19 @@ export function ResearchWorkspace({
             { signal: controller.signal },
           ),
         ]);
-        if (active) {
+        if (isCurrent()) {
           setRunStatus(finalRun.status);
           setReport(finalRun.report);
           setArtifacts(finalArtifacts);
           setBusy(false);
         }
       } catch (cause) {
-        if (active) {
+        if (isCurrent()) {
           if (cause instanceof Error && cause.name !== "AbortError")
             setErrors((current) => ({ ...current, run: cause.message }));
         }
       } finally {
-        if (active) setRunRetrieving(false);
+        if (isCurrent()) setRunRetrieving(false);
       }
     };
     void restoreRun();
@@ -602,6 +606,8 @@ export function ResearchWorkspace({
     section === "research-results" || section === "genotype-explorer";
 
   async function loadRun(id: string): Promise<boolean> {
+    const generation = ++runReadGeneration.current;
+    const isCurrent = () => generation === runReadGeneration.current;
     setRunRetrieving(true);
     setErrors((current) => {
       const next = { ...current };
@@ -616,9 +622,11 @@ export function ResearchWorkspace({
         status: string;
         report: ResearchReport | null;
       }>(`/api/research-runs/${encodeURIComponent(id)}`);
+      if (!isCurrent()) return false;
       setRunStatus(initial.status);
       const seen = new Set<number>();
       await consumeRunEvents(id, (event) => {
+        if (!isCurrent()) return;
         if (seen.has(event.sequence)) return;
         seen.add(event.sequence);
         if (["run.failed", "run.timed_out"].includes(event.event_type)) {
@@ -644,6 +652,7 @@ export function ResearchWorkspace({
           `/api/research-runs/${encodeURIComponent(id)}/artifacts`,
         ),
       ]);
+      if (!isCurrent()) return false;
       setArtifacts(nextArtifacts);
       setReport(finalRun.report);
       setRunStatus(finalRun.status);
@@ -654,9 +663,13 @@ export function ResearchWorkspace({
           finalRun.status,
         );
       setBusy(!terminal);
-      if (!terminal) window.setTimeout(() => void loadRun(id), 900);
+      if (!terminal)
+        window.setTimeout(() => {
+          if (isCurrent()) void loadRun(id);
+        }, 900);
       return true;
     } catch (cause) {
+      if (!isCurrent()) return false;
       setBusy(false);
       setErrors((current) => ({
         ...current,
@@ -665,7 +678,7 @@ export function ResearchWorkspace({
       }));
       return false;
     } finally {
-      setRunRetrieving(false);
+      if (isCurrent()) setRunRetrieving(false);
     }
   }
 
@@ -673,6 +686,10 @@ export function ResearchWorkspace({
     configuration?: ResearchConfiguration,
     plan?: ResearchPlan | null,
   ): Promise<void> {
+    runReadGeneration.current += 1;
+    explicitRunLoad.current = "";
+    setRunId("");
+    setRunRetrieving(false);
     setBusy(true);
     setErrors((current) => {
       const next = { ...current };

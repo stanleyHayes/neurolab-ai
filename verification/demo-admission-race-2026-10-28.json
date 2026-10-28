@@ -1,0 +1,502 @@
+{
+  "verified_at_utc": "2026-10-28T02:46:06.176375+00:00",
+  "scope": "Actual deterministic hosted browser captures; second take rejected for wrong followup identity; not final video or Meta performance",
+  "takes": [
+    {
+      "directory": "output/demo-video/walkthrough-take1-20261028",
+      "video_sha256": "38b15a464881704feec7603818c6668268dc38dc57b5e6a3c5acc6810f6c9251",
+      "main_run_id": "fe616a72-8989-47a8-9e60-1cb3f5689f0d",
+      "followup_admitted_run_id": "4a7aa089-b463-42bb-8e8d-8c107e7c185c",
+      "followup_exported_run_id": "4a7aa089-b463-42bb-8e8d-8c107e7c185c",
+      "followup_identity_matches": true,
+      "main_artifacts_compared_to": "6f8f922a-dfdd-46b3-bb65-035e6983f25e",
+      "matching_scientific_artifacts": [
+        {
+          "tool_name": "dataset_profile",
+          "all_scientific_fields_identical": true,
+          "canonical_fields_sha256": "191a2f20f78a09c8f6f8481afcee3fc2069c4b4d56eef0254e791323e56bd91b"
+        },
+        {
+          "tool_name": "inspect_missingness",
+          "all_scientific_fields_identical": true,
+          "canonical_fields_sha256": "4b4e79ba241b85b49b6618f263ff3b0cc87d51c466ff7c50acc5f73069fac919"
+        },
+        {
+          "tool_name": "compare_regimes",
+          "all_scientific_fields_identical": true,
+          "canonical_fields_sha256": "c82aba0bc712036d820047f6fe7979c2471663054556f3bd37ed46e6f7d9c26d"
+        },
+        {
+          "tool_name": "rank_genotypes",
+          "all_scientific_fields_identical": true,
+          "canonical_fields_sha256": "350b9c97518dc2e47ba3476c77416e9c8a6b6ba3542654231858bdc26d86b38b"
+        },
+        {
+          "tool_name": "summarize_environment_stability",
+          "all_scientific_fields_identical": true,
+          "canonical_fields_sha256": "6ad1dbac15111c72323d4e73d31f4af0903d8426fe06361fd8757fcc3da992ad"
+        },
+        {
+          "tool_name": "analyze_trait_associations",
+          "all_scientific_fields_identical": true,
+          "canonical_fields_sha256": "21476ab15c103cf371d82f6b1ac95f82559788a2a6b5c00f46ca3004698618ae"
+        }
+      ],
+      "capture_metadata": {
+        "scope": "Actual browser recording; uncut take, not final narrated edit",
+        "marks": [
+          {
+            "kind": "scene.start",
+            "seconds": 5.496,
+            "scene": "introduction"
+          },
+          {
+            "kind": "scene.end",
+            "seconds": 22.525,
+            "scene": "introduction"
+          },
+          {
+            "kind": "scene.start",
+            "seconds": 22.526,
+            "scene": "source"
+          },
+          {
+            "kind": "scene.end",
+            "seconds": 47.02,
+            "scene": "source"
+          },
+          {
+            "kind": "scene.start",
+            "seconds": 47.02,
+            "scene": "setup"
+          },
+          {
+            "kind": "full_run.started",
+            "seconds": 49.168
+          },
+          {
+            "kind": "run.accepted",
+            "seconds": 49.669,
+            "run_id": "fe616a72-8989-47a8-9e60-1cb3f5689f0d",
+            "status": "QUEUED",
+            "mode": "replay"
+          },
+          {
+            "kind": "run.terminal",
+            "seconds": 54.336,
+            "status": "Run complete \u00b7 6 tool calls"
+          },
+          {
+            "kind": "scene.end",
+            "seconds": 70.942,
+            "scene": "setup"
+          },
+          {
+            "kind": "scene.start",
+            "seconds": 70.943,
+            "scene": "processing"
+          },
+          {
+            "kind": "scene.end",
+            "seconds": 87.61,
+            "scene": "processing"
+          },
+          {
+            "kind": "scene.start",
+            "seconds": 87.611,
+            "scene": "results"
+          },
+          {
+            "kind": "scene.end",
+            "seconds": 118.334,
+            "scene": "results"
+          },
+          {
+            "kind": "scene.start",
+            "seconds": 118.334,
+            "scene": "follow_up"
+          },
+          {
+            "kind": "followup.started",
+            "seconds": 119.451
+          },
+          {
+            "kind": "run.accepted",
+            "seconds": 119.906,
+            "run_id": "4a7aa089-b463-42bb-8e8d-8c107e7c185c",
+            "status": "QUEUED",
+            "mode": "replay"
+          },
+          {
+            "kind": "run.terminal",
+            "seconds": 121.509,
+            "status": "Run complete \u00b7 2 tool calls"
+          },
+          {
+            "kind": "scene.end",
+            "seconds": 141.852,
+            "scene": "follow_up"
+          },
+          {
+            "kind": "scene.start",
+            "seconds": 141.852,
+            "scene": "report"
+          },
+          {
+            "kind": "scene.end",
+            "seconds": 171.037,
+            "scene": "report"
+          },
+          {
+            "kind": "scene.start",
+            "seconds": 171.037,
+            "scene": "end"
+          },
+          {
+            "kind": "capture.complete",
+            "seconds": 171.037
+          }
+        ],
+        "runs": [
+          {
+            "run_id": "fe616a72-8989-47a8-9e60-1cb3f5689f0d",
+            "status": "QUEUED"
+          },
+          {
+            "run_id": "4a7aa089-b463-42bb-8e8d-8c107e7c185c",
+            "status": "QUEUED"
+          }
+        ],
+        "requests": [
+          {
+            "mode": "replay",
+            "objective": "Using the Ghana combined maize trial dataset, identify exploratory candidates for follow-up drought research. Audit provenance and missingness, compare observed regime yields, summarize drought candidates and descriptive retention, examine trait associations and observed environment sensitivity. Report uncertainty and counter-evidence; do not infer a causal irrigation effect or validated future performance.",
+            "configuration": {
+              "title": "Recorded Ghana investigation",
+              "research_questions": [],
+              "hypotheses": [],
+              "dataset_id": "ghana_combined",
+              "constraints": {
+                "max_steps": 6,
+                "max_tool_calls": 6,
+                "max_seconds": 180
+              },
+              "preferred_methods": [
+                "dataset_profile",
+                "missingness_audit",
+                "block_bootstrap_contrast",
+                "genotype_ranking",
+                "trait_associations",
+                "environment_stability"
+              ],
+              "desired_outputs": [
+                "research_report",
+                "regime_contrast",
+                "genotype_summaries",
+                "missingness_summary",
+                "provenance_export",
+                "trait_associations",
+                "environment_summaries",
+                "ghana_drought_investigation"
+              ],
+              "autonomy_preferences": {
+                "auto_plan_with_meta": false,
+                "execute_supported_tasks": true,
+                "stop_if_unsupported": false
+              }
+            }
+          },
+          {
+            "mode": "replay",
+            "objective": "Assess observed drought-yield variation and leave-one-environment-out rank sensitivity in the Ghana combined dataset. Compare leading descriptive genotype means with their environment profiles and rank changes. Explain sensitivity without claiming validated future stability or prediction.",
+            "configuration": {
+              "title": "Recorded environment sensitivity follow-up",
+              "research_questions": [],
+              "hypotheses": [],
+              "dataset_id": "ghana_combined",
+              "constraints": {
+                "max_steps": 2,
+                "max_tool_calls": 2,
+                "max_seconds": 60
+              },
+              "preferred_methods": [
+                "environment_stability",
+                "genotype_ranking"
+              ],
+              "desired_outputs": [
+                "research_report",
+                "genotype_summaries",
+                "environment_summaries"
+              ],
+              "autonomy_preferences": {
+                "auto_plan_with_meta": true,
+                "execute_supported_tasks": true,
+                "stop_if_unsupported": false
+              }
+            }
+          }
+        ],
+        "video": "page@5b5a544915f4979386c27c7ce5252347.webm",
+        "no_login_recorded": true
+      },
+      "export_sha256": {
+        "main-run.json": "7994f3506d7f70ceeb36f4139727ec7e24aa96bb454a5758c3a02e16c20af2ed",
+        "followup-run.json": "b461e77a073de231ccd894b71738555e6d5944de5aa585d2be661850370196d2"
+      }
+    },
+    {
+      "directory": "output/demo-video/walkthrough-take2-20261028",
+      "video_sha256": "238a4598f3904f7b33edb75ed0e9adddbab92073478917f6b810ddb345ca0e31",
+      "main_run_id": "e5c1099c-84ce-4a24-a3ea-8bf694c06844",
+      "followup_admitted_run_id": "b69f83c6-b570-4487-ba29-e867d6ff6968",
+      "followup_exported_run_id": "e5c1099c-84ce-4a24-a3ea-8bf694c06844",
+      "followup_identity_matches": false,
+      "main_artifacts_compared_to": "6f8f922a-dfdd-46b3-bb65-035e6983f25e",
+      "matching_scientific_artifacts": [
+        {
+          "tool_name": "dataset_profile",
+          "all_scientific_fields_identical": true,
+          "canonical_fields_sha256": "191a2f20f78a09c8f6f8481afcee3fc2069c4b4d56eef0254e791323e56bd91b"
+        },
+        {
+          "tool_name": "inspect_missingness",
+          "all_scientific_fields_identical": true,
+          "canonical_fields_sha256": "4b4e79ba241b85b49b6618f263ff3b0cc87d51c466ff7c50acc5f73069fac919"
+        },
+        {
+          "tool_name": "compare_regimes",
+          "all_scientific_fields_identical": true,
+          "canonical_fields_sha256": "c82aba0bc712036d820047f6fe7979c2471663054556f3bd37ed46e6f7d9c26d"
+        },
+        {
+          "tool_name": "rank_genotypes",
+          "all_scientific_fields_identical": true,
+          "canonical_fields_sha256": "350b9c97518dc2e47ba3476c77416e9c8a6b6ba3542654231858bdc26d86b38b"
+        },
+        {
+          "tool_name": "summarize_environment_stability",
+          "all_scientific_fields_identical": true,
+          "canonical_fields_sha256": "6ad1dbac15111c72323d4e73d31f4af0903d8426fe06361fd8757fcc3da992ad"
+        },
+        {
+          "tool_name": "analyze_trait_associations",
+          "all_scientific_fields_identical": true,
+          "canonical_fields_sha256": "21476ab15c103cf371d82f6b1ac95f82559788a2a6b5c00f46ca3004698618ae"
+        }
+      ],
+      "capture_metadata": {
+        "scope": "Actual browser recording; uncut take, not final narrated edit",
+        "marks": [
+          {
+            "kind": "scene.start",
+            "seconds": 4.386,
+            "scene": "introduction"
+          },
+          {
+            "kind": "scene.end",
+            "seconds": 21.41,
+            "scene": "introduction"
+          },
+          {
+            "kind": "scene.start",
+            "seconds": 22.172,
+            "scene": "source"
+          },
+          {
+            "kind": "scene.end",
+            "seconds": 46.666,
+            "scene": "source"
+          },
+          {
+            "kind": "scene.start",
+            "seconds": 47.414,
+            "scene": "setup"
+          },
+          {
+            "kind": "full_run.started",
+            "seconds": 62.553
+          },
+          {
+            "kind": "run.accepted",
+            "seconds": 63.165,
+            "run_id": "e5c1099c-84ce-4a24-a3ea-8bf694c06844",
+            "status": "QUEUED",
+            "mode": "replay"
+          },
+          {
+            "kind": "run.terminal",
+            "seconds": 68.791,
+            "status": "Run complete \u00b7 6 tool calls"
+          },
+          {
+            "kind": "scene.end",
+            "seconds": 71.332,
+            "scene": "setup"
+          },
+          {
+            "kind": "scene.start",
+            "seconds": 72.077,
+            "scene": "processing"
+          },
+          {
+            "kind": "scene.end",
+            "seconds": 88.741,
+            "scene": "processing"
+          },
+          {
+            "kind": "scene.start",
+            "seconds": 89.471,
+            "scene": "results"
+          },
+          {
+            "kind": "scene.end",
+            "seconds": 120.194,
+            "scene": "results"
+          },
+          {
+            "kind": "scene.start",
+            "seconds": 120.934,
+            "scene": "follow_up"
+          },
+          {
+            "kind": "followup.started",
+            "seconds": 121.977
+          },
+          {
+            "kind": "run.terminal",
+            "seconds": 122.424,
+            "status": "Run complete \u00b7 6 tool calls"
+          },
+          {
+            "kind": "run.accepted",
+            "seconds": 122.749,
+            "run_id": "b69f83c6-b570-4487-ba29-e867d6ff6968",
+            "status": "QUEUED",
+            "mode": "replay"
+          },
+          {
+            "kind": "scene.end",
+            "seconds": 144.447,
+            "scene": "follow_up"
+          },
+          {
+            "kind": "scene.start",
+            "seconds": 145.199,
+            "scene": "report"
+          },
+          {
+            "kind": "scene.end",
+            "seconds": 174.388,
+            "scene": "report"
+          },
+          {
+            "kind": "capture.complete",
+            "seconds": 174.388
+          }
+        ],
+        "runs": [
+          {
+            "run_id": "e5c1099c-84ce-4a24-a3ea-8bf694c06844",
+            "status": "QUEUED"
+          },
+          {
+            "run_id": "b69f83c6-b570-4487-ba29-e867d6ff6968",
+            "status": "QUEUED"
+          }
+        ],
+        "requests": [
+          {
+            "mode": "replay",
+            "objective": "Using the Ghana combined maize trial dataset, identify exploratory candidates for follow-up drought research. Audit provenance and missingness, compare observed regime yields, summarize drought candidates and descriptive retention, examine trait associations and observed environment sensitivity. Report uncertainty and counter-evidence; do not infer a causal irrigation effect or validated future performance.",
+            "configuration": {
+              "title": "Recorded Ghana investigation",
+              "research_questions": [],
+              "hypotheses": [],
+              "dataset_id": "ghana_combined",
+              "constraints": {
+                "max_steps": 6,
+                "max_tool_calls": 6,
+                "max_seconds": 180
+              },
+              "preferred_methods": [
+                "dataset_profile",
+                "missingness_audit",
+                "block_bootstrap_contrast",
+                "genotype_ranking",
+                "trait_associations",
+                "environment_stability"
+              ],
+              "desired_outputs": [
+                "research_report",
+                "regime_contrast",
+                "genotype_summaries",
+                "missingness_summary",
+                "provenance_export",
+                "trait_associations",
+                "environment_summaries",
+                "ghana_drought_investigation"
+              ],
+              "autonomy_preferences": {
+                "auto_plan_with_meta": false,
+                "execute_supported_tasks": true,
+                "stop_if_unsupported": false
+              }
+            }
+          },
+          {
+            "mode": "replay",
+            "objective": "Assess observed drought-yield variation and leave-one-environment-out rank sensitivity in the Ghana combined dataset. Compare leading descriptive genotype means with their environment profiles and rank changes. Explain sensitivity without claiming validated future stability or prediction.",
+            "configuration": {
+              "title": "Recorded environment sensitivity follow-up",
+              "research_questions": [],
+              "hypotheses": [],
+              "dataset_id": "ghana_combined",
+              "constraints": {
+                "max_steps": 2,
+                "max_tool_calls": 2,
+                "max_seconds": 60
+              },
+              "preferred_methods": [
+                "environment_stability",
+                "genotype_ranking"
+              ],
+              "desired_outputs": [
+                "research_report",
+                "genotype_summaries",
+                "environment_summaries"
+              ],
+              "autonomy_preferences": {
+                "auto_plan_with_meta": true,
+                "execute_supported_tasks": true,
+                "stop_if_unsupported": false
+              }
+            }
+          }
+        ],
+        "video": "page@31af45437c83411277b7ca6a1512c908.webm",
+        "no_login_recorded": true
+      },
+      "export_sha256": {
+        "main-run.json": "0e28c50279face7098c974f3977ca500b69723abf2c906eb5c87ef671ce11747",
+        "followup-run.json": "0e28c50279face7098c974f3977ca500b69723abf2c906eb5c87ef671ce11747"
+      }
+    }
+  ],
+  "root_cause": "Old restored-run response could replace pending admission state, restore old completion and re-enable launch before new request returned. Navigation then retained preceding selected run.",
+  "regression_before": "New delayed-restore/pending-admission test failed on existing source",
+  "regression_after": "16workspace tests,93UI tests passed; lint/types/build passed",
+  "sonar": {
+    "quality_gate": "PASSED",
+    "issues": 0,
+    "hotspots": 0
+  },
+  "changed_source_sha256": {
+    "app/research-workspace.tsx": "01080736aed300a93da4068b720e3a02e2799952e2543c8fd88ffd67675307ad",
+    "tests/ui/workspace.test.tsx": "6652b261bf9051d3b8b68385170e0d9c0b6ed995b395930de233dfee47b42802"
+  },
+  "fix_scope": "Invalidate old async read generations and clear old selected run before new admission; stale status/report/artifacts/events/errors/poll callbacks cannot overwrite new admission. No backend/science/auth/budget changes.",
+  "live_fix_acceptance": "Pending release and run-ID-bound recapture",
+  "raw_footage_retained": true,
+  "final_video": false,
+  "model_inference_requested": false
+}
