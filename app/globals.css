@@ -7545,6 +7545,7 @@ output {
 .account-in-workspace .account-content {
   max-width: 1160px;
   margin: 0;
+  container: account-settings / inline-size;
 }
 .account-in-workspace .account-identity {
   top: 168px;
@@ -7554,6 +7555,27 @@ output {
 }
 .account-panel .auth-input-wrap {
   min-width: 0;
+}
+@container account-settings (max-width: 740px) {
+  .account-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+  .account-in-workspace .account-identity {
+    position: static;
+  }
+  .account-section-nav {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .account-section-nav a > span {
+    display: none;
+  }
+}
+@container account-settings (max-width: 560px) {
+  .account-password-form {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 .account-panel .auth-input-wrap > input {
   min-height: 46px;
