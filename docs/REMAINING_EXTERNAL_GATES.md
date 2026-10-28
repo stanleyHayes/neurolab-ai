@@ -1,5 +1,7 @@
 # Remaining external gates — 28 October 2026
 
+> **Event alignment update (28 October):** The owner confirmed **Solo Indie Developer**. The supplied guide requires Baseten `meta-models/muse-spark-open-1026`; one real request returned HTTP 404. Earlier generic-model successes remain valid operational evidence but do not verify that alias. The tested local adapter now pins the required alias with verification disabled; production has not been changed by this documentation update and still serves the earlier generic configuration. See [event audit](EVENT_ALIGNMENT_2026_10_28.md) for judging weights, deadline, contribution disclosure and remaining video/access requirements. No submission or eligibility certification has been made.
+
 The application is a working, invite-gated research prototype. This handoff does not certify production agronomy, independent scientific validity or a submitted hackathon entry. The [current acceptance audit](../verification/PROJECT_ACCEPTANCE_AUDIT_2026-10-28.md) remains the detailed ledger.
 
 ## 1. Hosted inference resolved through Baseten; direct Meta remains historical

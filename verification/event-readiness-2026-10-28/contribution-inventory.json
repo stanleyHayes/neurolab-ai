@@ -1,0 +1,1374 @@
+{
+  "source_guide_sha256": "301c2244e1869ea9a36129373caa3009ce37ab3a436f2e305e41d1e0b4395bad",
+  "scope": "Conservative Git contribution inventory; not proof of actual creation time or organizer eligibility",
+  "baseline_commit": "8fde5341ccdac3bb6218c8caa0a879f072399974",
+  "baseline_note": "First source import contains historical Oct26/27 logs and code without earlier source Git history. Do not claim this whole snapshot was newly authored during the building period.",
+  "head_audited": "aaacaf2626393fa9217b80b9910f78aa449e2f54",
+  "baseline_file_count": 137,
+  "post_baseline_commits": [
+    {
+      "commit": "c7e42fd2a70892a80d62ee9674df72853998534b",
+      "author_time": "2026-10-26T16:09:17Z",
+      "subject": "Add professional project README"
+    },
+    {
+      "commit": "4c67ae2c622d647c97d2daf0d3461b85f5a18741",
+      "author_time": "2026-10-26T16:11:01Z",
+      "subject": "Polish project README architecture diagram"
+    },
+    {
+      "commit": "3edbacafd4f4630c8a416c48f206b0cf586dd4fb",
+      "author_time": "2026-10-26T16:11:36Z",
+      "subject": "Polish README links for source-only documentation"
+    },
+    {
+      "commit": "8825c002817fbffa7d7a718000019362cb93b887",
+      "author_time": "2026-10-27T16:19:03Z",
+      "subject": "Resolve Sonar findings and verify research UI and provider contracts"
+    },
+    {
+      "commit": "1fac9f90e1f7511ecf8f7f11eea44c7f4a30328d",
+      "author_time": "2026-10-27T16:51:57Z",
+      "subject": "Complete account-scoped research editor and verify full input persistence"
+    },
+    {
+      "commit": "a202e79a8de24d0b48e45fb33737e8d53e0a1d9b",
+      "author_time": "2026-10-27T17:08:54Z",
+      "subject": "Redesign measured results with clear evidence hierarchy and iconography"
+    },
+    {
+      "commit": "0ef29450e812bdfc7c7fc21db318d5f06f9b3a80",
+      "author_time": "2026-10-27T17:40:41Z",
+      "subject": "Add truthful cinematic replay and redesign research setup and provenance"
+    },
+    {
+      "commit": "9666c16934ff9f6e63942b137fd7df3f9ece6416",
+      "author_time": "2026-10-27T17:54:44Z",
+      "subject": "Add reproducible Ghana trait associations and environment sensitivity tools"
+    },
+    {
+      "commit": "3d99d713c52496840d42bcaaf033397f3e5732b9",
+      "author_time": "2026-10-27T17:57:15Z",
+      "subject": "Record authenticated deterministic scientific-method runtime evidence"
+    },
+    {
+      "commit": "62ff7462621ccec648f592cc9aba445bce7af49b",
+      "author_time": "2026-10-27T18:42:03Z",
+      "subject": "Add evidence-linked deterministic Ghana investigation report"
+    },
+    {
+      "commit": "591ad598d6325d89e01878a580dda8aa3d25cb86",
+      "author_time": "2026-10-27T18:42:38Z",
+      "subject": "Record authenticated full investigation runtime acceptance"
+    },
+    {
+      "commit": "5caffa6c300c5393843e561b3395763a97240ea5",
+      "author_time": "2026-10-27T18:47:35Z",
+      "subject": "Export persisted investigations as portable reports and scientific figures"
+    },
+    {
+      "commit": "546d4467bc1271a935bf00c7eb8969314986e5f1",
+      "author_time": "2026-10-27T18:48:08Z",
+      "subject": "Record evidence export runtime verification"
+    },
+    {
+      "commit": "ef0e5fce2241f70312087715d3d1a26e10bc88d8",
+      "author_time": "2026-10-27T18:56:36Z",
+      "subject": "Evaluate recorded answers separately from action coverage"
+    },
+    {
+      "commit": "1ce2761cdd70964e65b494ec6a752f3e39b0918f",
+      "author_time": "2026-10-27T19:03:29Z",
+      "subject": "Route focused replay to relevant methods and clarify report limits"
+    },
+    {
+      "commit": "16455f4a7eea40e133185029f1b3a9b9b5224707",
+      "author_time": "2026-10-27T19:08:10Z",
+      "subject": "Record focused runtime regression and align evaluation tool eligibility"
+    },
+    {
+      "commit": "eb9262747483e7d582cf708a48a8407f4e7f3b85",
+      "author_time": "2026-10-27T19:09:54Z",
+      "subject": "Preserve corrected six-tool evaluation and runtime gate evidence"
+    },
+    {
+      "commit": "ef8b7bd61c8c6c6c04139dbff74f2467a0a0650c",
+      "author_time": "2026-10-27T19:36:04Z",
+      "subject": "Persist research jobs with leased workers and fenced evidence publication"
+    },
+    {
+      "commit": "4e224e903068bec9024274ae2942a4221942b50b",
+      "author_time": "2026-10-27T19:44:36Z",
+      "subject": "Verify durable restart and worker interruption without automatic retries"
+    },
+    {
+      "commit": "ad87e476d2007d68c2e648f37da9c73bd9a82c06",
+      "author_time": "2026-10-27T19:47:57Z",
+      "subject": "Record local worker rollout and legacy quarantine verification"
+    },
+    {
+      "commit": "d5a5496f537778c9b4b32285ac38fd31c5be0c57",
+      "author_time": "2026-10-27T20:03:45Z",
+      "subject": "Refine source provenance into a compact dataset overview"
+    },
+    {
+      "commit": "70dbbcf5b482e4a24e90604e7a8331872af5120a",
+      "author_time": "2026-10-27T20:06:05Z",
+      "subject": "Prepare deterministic research demo recording guide and script"
+    },
+    {
+      "commit": "68d20e35d1ed777b15b058382a0f6ecf14d58926",
+      "author_time": "2026-10-27T20:08:20Z",
+      "subject": "Share request budgets across SQL replicas and verify proxy identities"
+    },
+    {
+      "commit": "5da15f7974a4d1f8bb2b22d857c4b62b588cd1bc",
+      "author_time": "2026-10-27T20:09:25Z",
+      "subject": "Record shared rate-limit restart outage and local BFF acceptance"
+    },
+    {
+      "commit": "54b6eb28a232c3f9e9b439c4e847b9148ea28a1d",
+      "author_time": "2026-10-27T20:12:14Z",
+      "subject": "Enforce refresh family reuse revocation through the HTTP path"
+    },
+    {
+      "commit": "ed6d82839296f14132a07088040b5397438d4d7c",
+      "author_time": "2026-10-27T20:12:46Z",
+      "subject": "Record cross-process refresh replay and local rollout evidence"
+    },
+    {
+      "commit": "6b0d00cb95e25993c7687c884965c0bfd38ae98d",
+      "author_time": "2026-10-27T20:25:56Z",
+      "subject": "Reserve model spending across SQL workers before provider transport"
+    },
+    {
+      "commit": "d35cac4e0a8efca5d7410950fccd78dd8b27432b",
+      "author_time": "2026-10-27T20:28:06Z",
+      "subject": "Record shared spending and zero-cost full replay acceptance"
+    },
+    {
+      "commit": "f43c7e767ddf83732c92e21e611bd23f166fde26",
+      "author_time": "2026-10-27T20:38:01Z",
+      "subject": "Support staged Ed25519 verification overlap and key retirement"
+    },
+    {
+      "commit": "f14f3b4ddc0d5938467a90af67d44fffa994d6d8",
+      "author_time": "2026-10-27T20:38:48Z",
+      "subject": "Record staged signing-key acceptance and reconcile remaining gates"
+    },
+    {
+      "commit": "f5d4409dfd1e2204ecac14f40c1f2ff90da89716",
+      "author_time": "2026-10-27T21:00:10Z",
+      "subject": "Exercise synthetic CSV injection containment and feedback withholding"
+    },
+    {
+      "commit": "f00caa7ff38521aad95d977c9f041f8b206686b4",
+      "author_time": "2026-10-27T21:01:27Z",
+      "subject": "Preserve synthetic contract evidence and prepare narrated demo preview"
+    },
+    {
+      "commit": "d199da1c1ad21cff9ecf9e022ecd6df27d02080e",
+      "author_time": "2026-10-27T21:14:47Z",
+      "subject": "Prepare full demo narration and verified recording cues"
+    },
+    {
+      "commit": "6a68d063bc9d92b24b1191f58184e8cedf145054",
+      "author_time": "2026-10-27T21:16:23Z",
+      "subject": "Record non-blind semantic review of corrected six-tool answers"
+    },
+    {
+      "commit": "ac538a4dbb664c0b3292d8e210daf988db4be2c4",
+      "author_time": "2026-10-27T21:17:51Z",
+      "subject": "Freeze future live evaluation protocol without enabling inference"
+    },
+    {
+      "commit": "26f5fbd2ca6398f11ea9638bbec87f76def9ea96",
+      "author_time": "2026-10-27T21:19:06Z",
+      "subject": "Fix fresh checkout lint and default setup to replay"
+    },
+    {
+      "commit": "a0e1e73b79cfc44447d5ec2a2597e80dd3dd6caf",
+      "author_time": "2026-10-27T21:20:55Z",
+      "subject": "Record passing isolated fresh clone quality verification"
+    },
+    {
+      "commit": "c4e11abc13bfa72c4802662e40f4e239e2c439ad",
+      "author_time": "2026-10-27T21:24:46Z",
+      "subject": "Require production invite configuration before API startup"
+    },
+    {
+      "commit": "3ba1a86b922a9dcaf7fc77ca012dda512a54fde7",
+      "author_time": "2026-10-27T21:24:58Z",
+      "subject": "Record interrupted Sonar observation and recovery boundary"
+    },
+    {
+      "commit": "161b5d1c49a407ba47129c91e0436f694c4f1a2e",
+      "author_time": "2026-10-27T21:27:25Z",
+      "subject": "Record Sonar infrastructure failure and uncovered light theme requirement"
+    },
+    {
+      "commit": "c80a95264b0f18e8a6c9cf6c431bebcd27845d2f",
+      "author_time": "2026-10-27T21:30:43Z",
+      "subject": "Add persistent accessible light appearance across research workspace"
+    },
+    {
+      "commit": "1d0116035244ae880d13afe6c14e94b885d76b01",
+      "author_time": "2026-10-27T21:34:28Z",
+      "subject": "Apply owner-selected MIT application code license"
+    },
+    {
+      "commit": "3409dff5013269deae5efdf1e050552b5da248ad",
+      "author_time": "2026-10-27T21:37:53Z",
+      "subject": "Merge public README history into complete application main"
+    },
+    {
+      "commit": "7f9ac256df88351b9f4fb83a07987e7da3f98ad4",
+      "author_time": "2026-10-27T21:43:03Z",
+      "subject": "Prepare Vercel web private Python API and replay worker deployment"
+    },
+    {
+      "commit": "adc6d47b9d7f10cc273ced37303b3666aff10c4f",
+      "author_time": "2026-10-27T21:43:46Z",
+      "subject": "Record public main publication and unauthenticated clone verification"
+    },
+    {
+      "commit": "4e069833fe73f6438d87613a541dc86c1355f729",
+      "author_time": "2026-10-27T21:49:36Z",
+      "subject": "Prepare Render Docker backend blueprint with Vercel frontend"
+    },
+    {
+      "commit": "6cbc4a3e9123a55ee69b024609e7bee3113c2dd9",
+      "author_time": "2026-10-27T22:01:45Z",
+      "subject": "Admit exact Render service hostname for production rollout"
+    },
+    {
+      "commit": "06c0a2594bc07bae00679480d6db87c0330c38bc",
+      "author_time": "2026-10-27T22:07:46Z",
+      "subject": "Forward SSE resume cursor through production API proxy"
+    },
+    {
+      "commit": "458466c8e054fbc9ab7023d138a1e828fce1ae15",
+      "author_time": "2026-10-27T22:10:45Z",
+      "subject": "Record live Render Vercel deployment and authenticated replay acceptance"
+    },
+    {
+      "commit": "d38ae00ff095b06468e5a1d107f12ece0d727979",
+      "author_time": "2026-10-27T22:19:05Z",
+      "subject": "Redesign hypothesis contracts and surface cinematic replay navigation"
+    },
+    {
+      "commit": "28b96498f2246d217bbe4145f112808f5f83a93f",
+      "author_time": "2026-10-27T22:20:45Z",
+      "subject": "Record deployed hypothesis redesign verification"
+    },
+    {
+      "commit": "4f5d8bcbc1b1201be4a5e70d9e8566475ab05e2f",
+      "author_time": "2026-10-27T22:26:28Z",
+      "subject": "Restore saved experiment context and refine workspace navigation"
+    },
+    {
+      "commit": "f92dbfd01c02d98db1bf39424d8fca7d3817e409",
+      "author_time": "2026-10-27T22:27:27Z",
+      "subject": "Record navigation deployment verification"
+    },
+    {
+      "commit": "f965f9153c2c338f99f143a919135ca24f279c87",
+      "author_time": "2026-10-27T22:29:54Z",
+      "subject": "Redesign account settings and prevent navbar circle distortion"
+    },
+    {
+      "commit": "4d21b4719ba26d985709798c55c7684e95b35982",
+      "author_time": "2026-10-27T22:32:27Z",
+      "subject": "Integrate account settings into the workspace shell and polish fields"
+    },
+    {
+      "commit": "26bd2fcff82b4be0bb1fa1b119fdf0c1dd0d67b1",
+      "author_time": "2026-10-27T22:33:27Z",
+      "subject": "Record hosted account shell verification"
+    },
+    {
+      "commit": "bbf4eece8adf2b807a0829a63f5007cd97791baa",
+      "author_time": "2026-10-27T22:39:09Z",
+      "subject": "Add evidence-driven visual comparisons alongside numeric results"
+    },
+    {
+      "commit": "a68192b74fe77a08520e893a735d36e6e6d3dd0d",
+      "author_time": "2026-10-27T22:40:07Z",
+      "subject": "Record hosted numeric visualization verification"
+    },
+    {
+      "commit": "a2ffbc8abaa4967370416fad0f937a18e888dc3e",
+      "author_time": "2026-10-27T22:53:30Z",
+      "subject": "Resolve current Sonar findings and isolate paused-mode fixture tests"
+    },
+    {
+      "commit": "8da4f54afa3de1c98a633683e269a20f7b9d87d5",
+      "author_time": "2026-10-27T22:54:11Z",
+      "subject": "Remove redundant avatar flex declaration reported by Sonar"
+    },
+    {
+      "commit": "8a6f470457fe230413fc06c4442ac5306dd61b3b",
+      "author_time": "2026-10-27T22:57:19Z",
+      "subject": "Record passing Sonar and fresh public installation acceptance"
+    },
+    {
+      "commit": "f7298ee0e372fa7d87f0b34be0da51927874478a",
+      "author_time": "2026-10-27T23:08:00Z",
+      "subject": "Verify hosted Postgres snapshot recovery in an isolated local cluster"
+    },
+    {
+      "commit": "15ea0f24e76b55ce6b15da456f2bc921a30a4f38",
+      "author_time": "2026-10-27T23:09:11Z",
+      "subject": "Make restore-verifier exception assertions unambiguous"
+    },
+    {
+      "commit": "3ce4e95c45ecb483a9707e89d935580935dbe3b8",
+      "author_time": "2026-10-27T23:10:45Z",
+      "subject": "Record verified snapshot recovery and defer offsite backup automation"
+    },
+    {
+      "commit": "fee67880d94913d95d63eba19b6832236e188474",
+      "author_time": "2026-10-27T23:14:50Z",
+      "subject": "Stage private R2 configuration fields for owner completion"
+    },
+    {
+      "commit": "45f3106c222eba8771b45c6570bbadbe37367a10",
+      "author_time": "2026-10-27T23:15:20Z",
+      "subject": "Clarify S3-only credentials for the pending R2 setup"
+    },
+    {
+      "commit": "d44a8a3f50dc2cfbdb3dc0d09696cfd81b615f07",
+      "author_time": "2026-10-27T23:31:32Z",
+      "subject": "Record native Chrome R2 validation and protected Render staging"
+    },
+    {
+      "commit": "f736923759cf9de06b5269b19cba3d336ec4a384",
+      "author_time": "2026-10-27T23:39:59Z",
+      "subject": "Preserve full scope of the original maize research objective"
+    },
+    {
+      "commit": "995e0d5b04df5d28db6f6cc4de47416edeabcbb4",
+      "author_time": "2026-10-27T23:46:15Z",
+      "subject": "Audit real Meta rerun and retain objectives across stateless decisions"
+    },
+    {
+      "commit": "094acd42c89b088009d8c635b285dbf454e39ac0",
+      "author_time": "2026-10-27T23:51:18Z",
+      "subject": "Constrain model actions and verify bounded live evidence context"
+    },
+    {
+      "commit": "37bbe71c886ec955b1869690294ba07811c1a80b",
+      "author_time": "2026-10-28T00:27:35Z",
+      "subject": "Complete evidence-backed Meta investigation and verified live opt-in"
+    },
+    {
+      "commit": "fb6244405a4231a2e41917c5b6f89249ee94bd8f",
+      "author_time": "2026-10-28T00:50:59Z",
+      "subject": "Document hosted Meta provider availability blocker"
+    },
+    {
+      "commit": "72b2639ac15c37d632fcc82eda958942a9228d7a",
+      "author_time": "2026-10-28T00:53:15Z",
+      "subject": "Stop repeated permanent Meta failures and preserve report diagnostics"
+    },
+    {
+      "commit": "38b941960ca3dbf97a2d4b2217b566ad76d07517",
+      "author_time": "2026-10-28T00:55:14Z",
+      "subject": "Record deployed permanent-provider-failure acceptance"
+    },
+    {
+      "commit": "cc9e76d2c040b4152eee4f9ee3fc06d85123ce17",
+      "author_time": "2026-10-28T00:57:44Z",
+      "subject": "Verify required JWT claims and exact clock-skew boundaries"
+    },
+    {
+      "commit": "34d7f0ccd5a71d05bb1b8c8acd47437c92ff24b8",
+      "author_time": "2026-10-28T00:58:57Z",
+      "subject": "Verify hosted worker cancellation and retained evidence isolation"
+    },
+    {
+      "commit": "08ee3d274c8b0a8313a096fd4320976f7f060903",
+      "author_time": "2026-10-28T01:02:38Z",
+      "subject": "Prepare policy-masked review packets with verified evidence rebinding"
+    },
+    {
+      "commit": "c1057905055eea6dff4fd7fe17e954ed4a923c9d",
+      "author_time": "2026-10-28T01:08:30Z",
+      "subject": "Add guarded live evaluation collector and preserve all trial outcomes"
+    },
+    {
+      "commit": "5ea24ad3821eeb2b6b68d547b868e6865247c4dc",
+      "author_time": "2026-10-28T01:16:03Z",
+      "subject": "Add exact question-cluster scoring with honest failure and missingness denominators"
+    },
+    {
+      "commit": "ebf1111ba5f13c1fb874203cf2b93dc88946e569",
+      "author_time": "2026-10-28T01:30:12Z",
+      "subject": "Preserve labelled model rationale and actual provider audit envelopes"
+    },
+    {
+      "commit": "efc7c7d0310c4aca7e07412989d3e22575a35a73",
+      "author_time": "2026-10-28T01:40:41Z",
+      "subject": "Record current public source and deployed logging acceptance"
+    },
+    {
+      "commit": "88b24449f7ac8a4d5373fd77ca5382f4f29cd8d9",
+      "author_time": "2026-10-28T01:48:33Z",
+      "subject": "Verify real in-flight Meta cancellation and retain failed observer evidence"
+    },
+    {
+      "commit": "56dccd435793f56490e1cf141b676f0af74ea768",
+      "author_time": "2026-10-28T01:57:33Z",
+      "subject": "Publish consolidated investigation report with current engineering evidence"
+    },
+    {
+      "commit": "67eb8a5b7c00e610ae4ad1c2df1258e247df2844",
+      "author_time": "2026-10-28T02:12:52Z",
+      "subject": "Document real provider timeout and spending control boundaries"
+    },
+    {
+      "commit": "863a03401ee7d3411d4aa8e9ae2c50951bcfc55a",
+      "author_time": "2026-10-28T02:15:08Z",
+      "subject": "Stop live evaluation batch after permanent provider failure"
+    },
+    {
+      "commit": "07262a2ddfad3101b60fc420098839b9398de65e",
+      "author_time": "2026-10-28T02:16:17Z",
+      "subject": "Prepare current live matrix protocol and bounded spending review"
+    },
+    {
+      "commit": "5cb6eaad40bc17ea411790e191ed5bda82507944",
+      "author_time": "2026-10-28T02:20:08Z",
+      "subject": "Record actual hosted account theme and cinematic browser checks"
+    },
+    {
+      "commit": "3189539d74dce629d492d11ffadb5689b2c739cf",
+      "author_time": "2026-10-28T02:21:31Z",
+      "subject": "Stack account panels using available workspace width"
+    },
+    {
+      "commit": "10aefbed8f5a3e699f97ba600d4750569d9e96ec",
+      "author_time": "2026-10-28T02:22:49Z",
+      "subject": "Verify responsive account fix on live Vercel deployment"
+    },
+    {
+      "commit": "e41a0c042457e7a8c821e082d56cc099a0506fe0",
+      "author_time": "2026-10-28T02:25:37Z",
+      "subject": "Verify cinematic WebGL fallback reduced motion and keyboard controls"
+    },
+    {
+      "commit": "02c528ef5963567ac63dd5386a2e1d44602124c5",
+      "author_time": "2026-10-28T02:35:37Z",
+      "subject": "Capture real browser video pilot and revise stale narration"
+    },
+    {
+      "commit": "344dc7f38ee84bee0c630ae091e9dec50f919e15",
+      "author_time": "2026-10-28T02:46:06Z",
+      "subject": "Fence stale run loads while admitting a new investigation"
+    },
+    {
+      "commit": "9811c71f95854a0de24c0676bc56d8437b022bbb",
+      "author_time": "2026-10-28T03:19:04Z",
+      "subject": "Document verified narrated browser demo delivery"
+    },
+    {
+      "commit": "eda7753419f50c22e5ca91fbdde7e8767bf1f58f",
+      "author_time": "2026-10-28T03:23:55Z",
+      "subject": "Verify loaded responsive results and offline scientific report"
+    },
+    {
+      "commit": "b74ecf29ffab32b11f1aca03d87cfcc0a664255a",
+      "author_time": "2026-10-28T03:27:55Z",
+      "subject": "Show unavailable evidence after failed saved-run reads"
+    },
+    {
+      "commit": "f8f68fdcbaa0e37aabc1658d85fdb7535e2dbc55",
+      "author_time": "2026-10-28T03:31:10Z",
+      "subject": "Record approved matrix preflight and deployed read recovery"
+    },
+    {
+      "commit": "f2fa4e2ccd5aa04f955b38793cdf89930ec81efd",
+      "author_time": "2026-10-28T03:42:40Z",
+      "subject": "Record actual 180-trial Meta comparison and pending human review"
+    },
+    {
+      "commit": "c31a850cb08d7072dd6530fd96577f14c1a4d592",
+      "author_time": "2026-10-28T03:45:26Z",
+      "subject": "Document concrete external completion gates and closure evidence"
+    },
+    {
+      "commit": "0680675676a78ce864394527caf7ea74ab7cc07c",
+      "author_time": "2026-10-28T03:46:22Z",
+      "subject": "Record external-dependency blocked audit"
+    },
+    {
+      "commit": "97fce766db210ca9d4c233758f755888527e73b8",
+      "author_time": "2026-10-28T07:46:39Z",
+      "subject": "Add guarded Baseten Muse Spark Open inference"
+    },
+    {
+      "commit": "aaacaf2626393fa9217b80b9910f78aa449e2f54",
+      "author_time": "2026-10-28T08:05:55Z",
+      "subject": "Verify hosted Baseten original-objective execution"
+    }
+  ],
+  "changed_source_files": [
+    {
+      "path": "Dockerfile",
+      "added_lines": 15,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "fa29a52e6aabd9fd0f8e695ac263ba3e943ff20b1dfc253586b981324920a40e"
+    },
+    {
+      "path": "app/api/[...path]/route.ts",
+      "added_lines": 13,
+      "deleted_lines": 0,
+      "present_at_baseline": true,
+      "head_blob_sha256": "87202f642d8c87df037f0504a50b48a361aa31980ff9409244382f9859d2f2b1"
+    },
+    {
+      "path": "app/auth-form.tsx",
+      "added_lines": 4,
+      "deleted_lines": 0,
+      "present_at_baseline": true,
+      "head_blob_sha256": "d397caf642795a2f01dca9e1b456e7feccd7f6a80984cbd76eb537b7d5e9e0f9"
+    },
+    {
+      "path": "app/auth/AuthField.tsx",
+      "added_lines": 2,
+      "deleted_lines": 1,
+      "present_at_baseline": true,
+      "head_blob_sha256": "07fb12304c4719e14dcc9d29d64ff23dbcdbe63186c2dbe4799a1e9681c3aea0"
+    },
+    {
+      "path": "app/globals.css",
+      "added_lines": 4382,
+      "deleted_lines": 178,
+      "present_at_baseline": true,
+      "head_blob_sha256": "29763503447299599447da880b381561cf7ea1d22f1c5560f1d7ce88a602a843"
+    },
+    {
+      "path": "app/layout.tsx",
+      "added_lines": 5,
+      "deleted_lines": 1,
+      "present_at_baseline": true,
+      "head_blob_sha256": "34884b22181cc21e385379d8eb8da9ea09b9ab23c0a894503ab3ef016d0476da"
+    },
+    {
+      "path": "app/research-workspace.tsx",
+      "added_lines": 438,
+      "deleted_lines": 312,
+      "present_at_baseline": true,
+      "head_blob_sha256": "3aa656df8ad6672901a3762e06ea618db1f4151c11f907537ff6b1be431d63fa"
+    },
+    {
+      "path": "app/settings/account/page.tsx",
+      "added_lines": 303,
+      "deleted_lines": 113,
+      "present_at_baseline": true,
+      "head_blob_sha256": "bfb0b9f597af9aef4abc305cd094ccb75a9c09ed5357813c98747e20e2baf40a"
+    },
+    {
+      "path": "app/theme-control.tsx",
+      "added_lines": 120,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "4fe8b60d34d376d78ad8dd863ab18f6ab619e53743d6349121fb8e911b9ca618"
+    },
+    {
+      "path": "app/workspace/CinematicEvidence.tsx",
+      "added_lines": 116,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "c77207e48ab825722f6a8546c9b21b807de7d796511cc377a0a10a73f7000efe"
+    },
+    {
+      "path": "app/workspace/CinematicPlayer.tsx",
+      "added_lines": 458,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "9ffeebfced5261b6cbac9ab7de888d43d3d69973c66a843cf5401adebe07c4bb"
+    },
+    {
+      "path": "app/workspace/EvidenceBundleButton.tsx",
+      "added_lines": 51,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "3e772b71a607c8959688bec253ac21cdf9b0df9205c48464489f7131be54b099"
+    },
+    {
+      "path": "app/workspace/EvidenceResults.tsx",
+      "added_lines": 489,
+      "deleted_lines": 243,
+      "present_at_baseline": true,
+      "head_blob_sha256": "e702497310a8296bffb62cf19145ea21e17b739afddde99258e5063b2ef042b2"
+    },
+    {
+      "path": "app/workspace/EvidenceVisualizations.tsx",
+      "added_lines": 347,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "3d816a05011680ed209e3073a0465e9efb3cae285af470f34540558febcbb0ae"
+    },
+    {
+      "path": "app/workspace/ExperimentSetup.tsx",
+      "added_lines": 120,
+      "deleted_lines": 41,
+      "present_at_baseline": true,
+      "head_blob_sha256": "01eb99ce83c2839dbc30078d43dabc87954bb302a7566e32d91bada545ae7460"
+    },
+    {
+      "path": "app/workspace/ExtendedEvidence.tsx",
+      "added_lines": 290,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "77058226b45f7bb5753ea060110409dbb4dffdbebb2c05b8dfe5ae50e544d48a"
+    },
+    {
+      "path": "app/workspace/ResearchConfigurationPanel.tsx",
+      "added_lines": 206,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "49183539c04a14e9f87ee0384403d517c66b72dc65e2b74a5bcfedc5238fa8b7"
+    },
+    {
+      "path": "app/workspace/ResearchHypotheses.tsx",
+      "added_lines": 112,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "be4853772d1fdd6409923b0fb255c7f1515bbf0a6610bfe8ca09d7622f5bfebf"
+    },
+    {
+      "path": "app/workspace/ResearchLinesInput.tsx",
+      "added_lines": 46,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "6717336d1f716abc74bfb51965cfe305a6467bd0765890e341c0a699726f6613"
+    },
+    {
+      "path": "app/workspace/ResearchObjectiveEditor.tsx",
+      "added_lines": 196,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "f3d9f63ee35a99b2f8ab34325f8e5818129bc7b607b411c514870c97449b04ef"
+    },
+    {
+      "path": "app/workspace/ResearchPlanReview.tsx",
+      "added_lines": 147,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "3e22eb241593e75b597f1821b6682bfd6c65b8f54e8c951699985dba789abd64"
+    },
+    {
+      "path": "app/workspace/ResearchRunPlan.tsx",
+      "added_lines": 90,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "bd0fef962c7528d0b7ca28d9a2e913d01a7b40f323d86b1fe5669ed616ff8330"
+    },
+    {
+      "path": "app/workspace/ResearchTimeline.tsx",
+      "added_lines": 35,
+      "deleted_lines": 26,
+      "present_at_baseline": true,
+      "head_blob_sha256": "b2fd0451d68f2ac4811c8f641bebd8373391ed14876069138a96ddaabf6dde7b"
+    },
+    {
+      "path": "app/workspace/ResultIcon.tsx",
+      "added_lines": 45,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "6786992a0b9c93c9d62e0e489ee9ae7b3d54afda3edc64b0384cdc331c23878d"
+    },
+    {
+      "path": "app/workspace/ResultInterval.tsx",
+      "added_lines": 101,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "24ec3b2229131e074c86e459f3dfef9a104e4285e2120c1087f63978acb14231"
+    },
+    {
+      "path": "app/workspace/ResultsSummary.tsx",
+      "added_lines": 164,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "745eac947a5cb8263080c906ddccbe7b64622e72488d1c95ff3c61dce6df51ce"
+    },
+    {
+      "path": "app/workspace/ScientificReportView.tsx",
+      "added_lines": 593,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "60bac35e57de33cc313e9d65ecf31e788968af9ae96d7bc3fe5592312fb58f38"
+    },
+    {
+      "path": "app/workspace/SourceProvenance.tsx",
+      "added_lines": 173,
+      "deleted_lines": 52,
+      "present_at_baseline": true,
+      "head_blob_sha256": "e3548119c0176e583bb3a9e79732b5c59184d3dc2b32d9beaf2c8fed3b8c71fc"
+    },
+    {
+      "path": "app/workspace/WorkspaceHeader.tsx",
+      "added_lines": 130,
+      "deleted_lines": 49,
+      "present_at_baseline": true,
+      "head_blob_sha256": "6e7abd1cb21b74fe1e624dde2203921094d997bacf023670bf3b818b72fcf763"
+    },
+    {
+      "path": "app/workspace/WorkspaceSidebar.tsx",
+      "added_lines": 22,
+      "deleted_lines": 2,
+      "present_at_baseline": true,
+      "head_blob_sha256": "2b7ce59492bc5df7b03e7a58a982699f57fb2607f1eb2861906b73b1033a6f45"
+    },
+    {
+      "path": "app/workspace/cinematic-model.ts",
+      "added_lines": 139,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "ab6f2a8fb17dac8ea1af901256d2bd5946ffdb72fa5ca622126e78d9778ea833"
+    },
+    {
+      "path": "app/workspace/research-editor-types.ts",
+      "added_lines": 186,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "e1008d40e0aa9357c1347c1f769321afd68a2d4f9b359680a34078de0aa082e0"
+    },
+    {
+      "path": "app/workspace/use-inference-availability.ts",
+      "added_lines": 47,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "10c53848ddabb48b48320637aec773f5c1fa93f9d5b96aeba7c4159038101be3"
+    },
+    {
+      "path": "app/workspace/use-research-editor.ts",
+      "added_lines": 297,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "8de7b90e336a7145dd75020fbfca6f0f9b2ef3103b77b283262225ddcae9f557"
+    },
+    {
+      "path": "app/workspace/workspace-config.ts",
+      "added_lines": 6,
+      "deleted_lines": 0,
+      "present_at_baseline": true,
+      "head_blob_sha256": "b1c69643e69c76daa86cf4854a3c78f11066931e621291f1ab0638089f29f4dc"
+    },
+    {
+      "path": "app/workspace/workspace-types.ts",
+      "added_lines": 135,
+      "deleted_lines": 0,
+      "present_at_baseline": true,
+      "head_blob_sha256": "001977c753f56a61a15ffa9541165b70999b358a0f1baf5d9ce1649998bd33bc"
+    },
+    {
+      "path": "neurolab/action_selection.py",
+      "added_lines": 43,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "025d9ee3fc715f6e564e20d6e770aaf195196cc2305c149ca8ccb0750c0fa6a2"
+    },
+    {
+      "path": "neurolab/adversarial_evaluation.py",
+      "added_lines": 235,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "c0cc8a87d968b596313d5ef68157751305d5ef5715223e87137e21284c98699a"
+    },
+    {
+      "path": "neurolab/agent.py",
+      "added_lines": 287,
+      "deleted_lines": 108,
+      "present_at_baseline": true,
+      "head_blob_sha256": "f2a56bddadd4dcb8899c2e4e2a656facefb018b6b6030d26cd85416e03c37128"
+    },
+    {
+      "path": "neurolab/answer_evaluation.py",
+      "added_lines": 307,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "cf640379d516132434cdde26d0cfca6552a1348531e6904926ad57cefaa0521c"
+    },
+    {
+      "path": "neurolab/api.py",
+      "added_lines": 201,
+      "deleted_lines": 199,
+      "present_at_baseline": true,
+      "head_blob_sha256": "9a991e6ebdc0a7fa37c139e69cb321127ba1df94710dd42fb52c75d7eb580a7a"
+    },
+    {
+      "path": "neurolab/auth.py",
+      "added_lines": 67,
+      "deleted_lines": 4,
+      "present_at_baseline": true,
+      "head_blob_sha256": "d441f895330d0b0ac58024569ee184a368ab68ba2373ad87f1ea563fe89e89db"
+    },
+    {
+      "path": "neurolab/deployment_api.py",
+      "added_lines": 8,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "a97305d2e188336674745d2aaf69fb106fe40679de0ce51efa3d6da9cf3b1cc6"
+    },
+    {
+      "path": "neurolab/deployment_runtime.py",
+      "added_lines": 59,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "ee7d1872a86df1c6808c4b7172873d3c00d6cc99c0e0ad6d9ea7eda0ad774a1c"
+    },
+    {
+      "path": "neurolab/deployment_worker.py",
+      "added_lines": 14,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "511647ba970e98dd27d0142872da4b6349289a2e9993183c0df317dac6a288b5"
+    },
+    {
+      "path": "neurolab/descriptive.py",
+      "added_lines": 410,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "74af11e1d7b698c8490437234e796d50720a52dce24821b46ba7d3dab63145fb"
+    },
+    {
+      "path": "neurolab/execution.py",
+      "added_lines": 114,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "b07d31f62191130b413c1741f43b5942443ddbd40701840fc6c3b99acb3de09d"
+    },
+    {
+      "path": "neurolab/focused_planning.py",
+      "added_lines": 84,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "481e9f656d2a9ef1c9f648e5fbcca1e3dc98420038f8a9cbea550679ccdf0e66"
+    },
+    {
+      "path": "neurolab/hypothesis_contracts.py",
+      "added_lines": 141,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "fad8fcf45b6883f223632407239dc2e77de9634309922de6635e66773d59b591"
+    },
+    {
+      "path": "neurolab/investigation_profile.py",
+      "added_lines": 96,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "920b84aa2b3e9fecb8c2ba93c4c9874e90a2983cb70598ed297b34550e36da80"
+    },
+    {
+      "path": "neurolab/jobs.py",
+      "added_lines": 312,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "b483e853c619ad4034cde5ef76656ef64ba51bdcba518e4c527aba56443079e7"
+    },
+    {
+      "path": "neurolab/live_evaluation.py",
+      "added_lines": 341,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "656d1078977cffff6227ff0569577b890fc98a2306bb350582cea18014ba2898"
+    },
+    {
+      "path": "neurolab/live_scoring.py",
+      "added_lines": 246,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "093243390d02fd5a35eba46f962f34672fb761a73ebd9aea7ab934bb59751d2b"
+    },
+    {
+      "path": "neurolab/model_configuration.py",
+      "added_lines": 53,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "5f56ca92d8729e29fee7929bff4ee36c8d5c46455e4397902d7fbc75d6a9f230"
+    },
+    {
+      "path": "neurolab/model_evidence.py",
+      "added_lines": 56,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "1d64ed52def41fb0ae5dbe04ad049dc214f95f1659c71eb82bc9d4a4ed45fed3"
+    },
+    {
+      "path": "neurolab/model_spend.py",
+      "added_lines": 274,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "07cc2ce08fce01771ad9fe3195e5d0911de122ab61a7a55cb8336a53edda788f"
+    },
+    {
+      "path": "neurolab/planner.py",
+      "added_lines": 137,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "40b5bbb2f8015223a29ae2beed912299b130786914987744ec5d69425dc71931"
+    },
+    {
+      "path": "neurolab/provenance.py",
+      "added_lines": 76,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "218bd840b1dca442039ece6663d8eb048c956b9ae84b6a494312b9375d11dbf9"
+    },
+    {
+      "path": "neurolab/providers.py",
+      "added_lines": 178,
+      "deleted_lines": 39,
+      "present_at_baseline": true,
+      "head_blob_sha256": "b0f9cae0b8d2d99b9ad61e82879420f01885dd9644f996c177399f7401b03716"
+    },
+    {
+      "path": "neurolab/rate_limits.py",
+      "added_lines": 94,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "5813ee5fc792c209790485856c4b1fcfc52b4f1a49d7472f19591cb14c07bc36"
+    },
+    {
+      "path": "neurolab/research_context.py",
+      "added_lines": 99,
+      "deleted_lines": 19,
+      "present_at_baseline": true,
+      "head_blob_sha256": "68439c1ea3dddd8e6c9a687679d02497335a36f8bb53c04e01bbc4b885acfad6"
+    },
+    {
+      "path": "neurolab/review_packets.py",
+      "added_lines": 143,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "64117fae1d3b4258537c6ba26ad6ea007d4f439eeee089bbfece922e0416b6e8"
+    },
+    {
+      "path": "neurolab/scientific_report.py",
+      "added_lines": 439,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "2458397a5c70d0a3dc24b4090be163be3290be371efa94b9fb41cdb670652ac4"
+    },
+    {
+      "path": "neurolab/source_inventory.py",
+      "added_lines": 47,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "10a1317c4c887b614fb6818bddce8fb1efc5f1fc839861f15c0e785dbc1c6bfc"
+    },
+    {
+      "path": "neurolab/store.py",
+      "added_lines": 178,
+      "deleted_lines": 10,
+      "present_at_baseline": true,
+      "head_blob_sha256": "0ee9e3988a6e7faa084200783694e57cfb138e776a893f0c9667f6cbab4be47f"
+    },
+    {
+      "path": "neurolab/tools.py",
+      "added_lines": 18,
+      "deleted_lines": 1,
+      "present_at_baseline": true,
+      "head_blob_sha256": "abe37bffc1de4d1409ffc31764e4cfe73092723f1ec5c864686468ccad6dfa8b"
+    },
+    {
+      "path": "neurolab/worker.py",
+      "added_lines": 130,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "22c8a2f56f71a2836ca3505b9378dd7877845e77f9fbf279d681c7114b1a0859"
+    },
+    {
+      "path": "render.yaml",
+      "added_lines": 80,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "0ca9829a2c81324247c15c08317bd6a4bb4d1fe8aa31aa1d9ce35fb6bbc333af"
+    },
+    {
+      "path": "scripts/collect_live_evaluation.py",
+      "added_lines": 38,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "94180245d24ec50641ceda8cc07f29d956de702bf41ad371c6508a71fb0ac238"
+    },
+    {
+      "path": "scripts/configure_model_budget.py",
+      "added_lines": 35,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "30c4c5f729521febc388d57ca2cb32417a7128fbee3ea8dc2eb198d00520244b"
+    },
+    {
+      "path": "scripts/evaluate_adversarial_contracts.py",
+      "added_lines": 32,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "3e6201f9553bafc64b7292a5a4c82f0fc0a5ac292d7a0a7a9ba49d9df988d5fb"
+    },
+    {
+      "path": "scripts/evaluate_answers.py",
+      "added_lines": 57,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "8b1fef738a9d919d1ae08476ddec8f830a509e679355e7d3df666093d51e6cf8"
+    },
+    {
+      "path": "scripts/export_investigation.py",
+      "added_lines": 378,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "2e7829f57bf1a30f45b9baf47419d4fc7397fdde5482f5d564ca12715261881d"
+    },
+    {
+      "path": "scripts/generate_science_fixtures.py",
+      "added_lines": 65,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "e64dfc02138f7dacd9e932a21dc6de4c66db6843aae35e34885e3513668fdb9c"
+    },
+    {
+      "path": "scripts/score_live_evaluation.py",
+      "added_lines": 31,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "ec8842e20978b02e95b7bc5131768cf139fc4e864162f4f4ca87aa3fa76e3226"
+    },
+    {
+      "path": "scripts/smoke_meta_provider.py",
+      "added_lines": 44,
+      "deleted_lines": 4,
+      "present_at_baseline": true,
+      "head_blob_sha256": "be5360cc74d717e8d2f17e392d2eac3d357d73a342b962f049686ff3889de0e7"
+    },
+    {
+      "path": "scripts/verify_postgres_restore.py",
+      "added_lines": 189,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "b26bdd83e47b6dc8f1debb0718732c7e46cf3da0e9dfe7de6f734db6e19002ca"
+    },
+    {
+      "path": "tests/fixtures/ghana-descriptive-ui.json",
+      "added_lines": 25165,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "421d0afbcd968ee309746f83c0dfec903934f04f74d7cdf721203a30e775df24"
+    },
+    {
+      "path": "tests/fixtures/ghana-investigation-ui.json",
+      "added_lines": 2047,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "8eab1aa206feb8452849344fb56d7abf649b5c6a90fd2fd288daff757ddb91f7"
+    },
+    {
+      "path": "tests/fixtures/ghana-research-objective.txt",
+      "added_lines": 152,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "8e9c3b5334a4d54ea5616b6bef2cdf5b36b1b1f9ed87e3d2ef275e17a5ff314c"
+    },
+    {
+      "path": "tests/fixtures/ghana-ui.json",
+      "added_lines": 1152,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "5b0dfbe51b3063aa3d304a6b9f2448ccdfceb6f8ddfb0db6a0fd248c32d3eb95"
+    },
+    {
+      "path": "tests/isolated_database.py",
+      "added_lines": 33,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "929165dbd5679b67c17e4e763ff3afa5e25e40434d5e455f2fab5f23b124b624"
+    },
+    {
+      "path": "tests/proxy.test.mjs",
+      "added_lines": 184,
+      "deleted_lines": 18,
+      "present_at_baseline": true,
+      "head_blob_sha256": "7282e45dcebcb1ba523e0b4eaee233a70d49748d32a093c6214c19475274d799"
+    },
+    {
+      "path": "tests/test_action_selection.py",
+      "added_lines": 152,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "2ef01b93f43cb906255b2003279d52731c750cfdf51adb1929f43f018f65deca"
+    },
+    {
+      "path": "tests/test_adversarial_evaluation.py",
+      "added_lines": 65,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "5053b86ca95c583d1f45197db80c4cd04cb7ce4f8e31b16742efda4a62394b96"
+    },
+    {
+      "path": "tests/test_agent_tools_api.py",
+      "added_lines": 650,
+      "deleted_lines": 16,
+      "present_at_baseline": true,
+      "head_blob_sha256": "8a9d3458c72b39ecb9e9bae8f7208857adfa05d9dc34e9f94eb7788b14d19bd4"
+    },
+    {
+      "path": "tests/test_answer_evaluation.py",
+      "added_lines": 164,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "cc5cc94d73b2f8504722d06e87e0b59e1f63c02754c73043b50070deb3cf3d91"
+    },
+    {
+      "path": "tests/test_auth_key_rotation.py",
+      "added_lines": 222,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "53efe5a7f523bbd09489e0cd639967f567b4b2fc5cc51c2e0b3b7b26d3883e39"
+    },
+    {
+      "path": "tests/test_baseten_provider.py",
+      "added_lines": 207,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "b4aa708bfc4db7261f87238042693314e61ce87d0ad7377b5f439f193806c796"
+    },
+    {
+      "path": "tests/test_deployment_runtime.py",
+      "added_lines": 177,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "38e5ce0ed023ef6e61fd4e6e385897e577d2733081a2199e82101364ab34a51b"
+    },
+    {
+      "path": "tests/test_descriptive_science.py",
+      "added_lines": 261,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "71db48177cf79cc4725308a4d969c487959e31682b06a5a6bf1443679841d0b3"
+    },
+    {
+      "path": "tests/test_durable_jobs.py",
+      "added_lines": 437,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "0bbe47994bf1c643ccd18102d89adc99708dc8d4b8f10b8ac29572ce9fb3517f"
+    },
+    {
+      "path": "tests/test_focused_planning.py",
+      "added_lines": 167,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "395cea2357de66fcd0616bc0170e17e33973cc9f186bb51808650849f9800e7b"
+    },
+    {
+      "path": "tests/test_hypothesis_contracts.py",
+      "added_lines": 193,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "167120cab6b99ffe93988a4d9b5c148c67725018c80d566e3458216f4dec7c46"
+    },
+    {
+      "path": "tests/test_investigation_export.py",
+      "added_lines": 106,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "c9847cecfa1ba3d14fe22be7dbd58486a630dc15e7a2652e30fa94a80425d168"
+    },
+    {
+      "path": "tests/test_investigation_report.py",
+      "added_lines": 313,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "e1a3190cfd811d5c05a6a95d35cae9defb50602bfd2c11f97cace273f3fba1c6"
+    },
+    {
+      "path": "tests/test_live_evaluation.py",
+      "added_lines": 283,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "5a776593a8845c1eac02253be4a6533dff273acf6f9903a75425eb68840a1f5f"
+    },
+    {
+      "path": "tests/test_live_scoring.py",
+      "added_lines": 228,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "2410fb397832fd3f6de9dbee4e7e081a38fe742fd914b993853f3d841ed5b2c9"
+    },
+    {
+      "path": "tests/test_model_spend.py",
+      "added_lines": 327,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "c5b8444ffb1dfaa348778e2dcde6766d19e902c34553926238bb6f6cfe1b1ce9"
+    },
+    {
+      "path": "tests/test_planner.py",
+      "added_lines": 96,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "cfc920d3e56ca6662c3b58b5cebc1637baeb81019e7f9962558f8d854d5af074"
+    },
+    {
+      "path": "tests/test_postgres_restore.py",
+      "added_lines": 203,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "94aa9d3c80085a7a6c50ecb4f9d0bd23ff17f675b522642b0fe557018349354f"
+    },
+    {
+      "path": "tests/test_providers.py",
+      "added_lines": 208,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "2800702fc4fa78cd01a38226b66e104e0c6b3ee94281b7c290f791490d091b2a"
+    },
+    {
+      "path": "tests/test_research_contracts.py",
+      "added_lines": 30,
+      "deleted_lines": 2,
+      "present_at_baseline": true,
+      "head_blob_sha256": "c0dc3698ed3327865501549669903e00c1b3276cf9bebd937209ad696b8374d4"
+    },
+    {
+      "path": "tests/test_review_packets.py",
+      "added_lines": 106,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "9c05c18f731329a03766ee92db9ed16e4c847ca5e9ccfbedadbbb7249509e930"
+    },
+    {
+      "path": "tests/test_shared_rate_limits.py",
+      "added_lines": 301,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "78b7a60f83b10c22e7e907c87e5a1bad4d7737a7d14634d0e9a83e691da01df1"
+    },
+    {
+      "path": "tests/ui/auth.test.tsx",
+      "added_lines": 287,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "c8162c6fbf2f7a64046ee95d27465ecefb41d7a2b3688cb54ef49deca143d774"
+    },
+    {
+      "path": "tests/ui/cinematic.test.tsx",
+      "added_lines": 277,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "02906969f25162ac93a8a971b17511373815ccb96807f0373919a92cd2c4bcd3"
+    },
+    {
+      "path": "tests/ui/descriptive.test.tsx",
+      "added_lines": 72,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "703fbea79c037b5a312c8c104ec1ab2bf486f46df216864490c554031847d8ef"
+    },
+    {
+      "path": "tests/ui/editor.test.tsx",
+      "added_lines": 514,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "d05bbb3778fa3511e22e1e38d43e89cedc16962418cf985c21119be1f0ba9c6f"
+    },
+    {
+      "path": "tests/ui/evidence-bundle.test.tsx",
+      "added_lines": 37,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "f1ef9a78b4993fde05096b3184888c0a0d0c69b08643adb89832a89ccd729734"
+    },
+    {
+      "path": "tests/ui/evidence-visualizations.test.tsx",
+      "added_lines": 137,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "4df5c210f620e077447ad698e64bcbb12056dea6cc252b8d926e73fab38a73e0"
+    },
+    {
+      "path": "tests/ui/navigation.ts",
+      "added_lines": 5,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "d2a3c7475b7f12ddfdcb2c293ed7104ab03543cf0bc3060bc03080f9cc77495f"
+    },
+    {
+      "path": "tests/ui/provenance.test.tsx",
+      "added_lines": 90,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "51737347014f052a0fa4e9db2da09159c714933c2ff4004b5724e472e7668938"
+    },
+    {
+      "path": "tests/ui/results.test.tsx",
+      "added_lines": 178,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "64a11432cda86b98ad6a3924813a5cc608bb4e18260486cfd522e7057139ec75"
+    },
+    {
+      "path": "tests/ui/run-plan.test.tsx",
+      "added_lines": 92,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "59eaf0d911a15884a027944e07fa76cd8a44c8e3a02288aef7f779a1fdb75c68"
+    },
+    {
+      "path": "tests/ui/scene.test.tsx",
+      "added_lines": 93,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "38c65c8a606b05e174783b54cf2a123253e114d2430ae8e6db0938c004e899e4"
+    },
+    {
+      "path": "tests/ui/scientific-report.test.tsx",
+      "added_lines": 140,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "03f798a08e40f8480f4a48ede59fdbbd2062dc25197d65facfd6f5383d14b9c2"
+    },
+    {
+      "path": "tests/ui/setup.tsx",
+      "added_lines": 62,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "7a6e96ca26e4f9c62454266fcbcd4e577de902579e3fbee0aebb2d229efaffd4"
+    },
+    {
+      "path": "tests/ui/theme.test.tsx",
+      "added_lines": 165,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "f7961a47d09fd30d2ed82d6c6a1c4bfe2abd05b219689a071853cc170f1e1f0b"
+    },
+    {
+      "path": "tests/ui/timeline.test.tsx",
+      "added_lines": 101,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "124c9f05fc6c799854ad80a7174bffac7631e550ae2950016278debef0d87860"
+    },
+    {
+      "path": "tests/ui/workspace-header.test.tsx",
+      "added_lines": 60,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "9685ba8d9f045cd6f80c53cbea77af4df4af7660c6ae8618d27a439ae8c2ab07"
+    },
+    {
+      "path": "tests/ui/workspace.test.tsx",
+      "added_lines": 304,
+      "deleted_lines": 0,
+      "present_at_baseline": false,
+      "head_blob_sha256": "6652b261bf9051d3b8b68385170e0d9c0b6ed995b395930de233dfee47b42802"
+    }
+  ],
+  "eligible_work_certified": false,
+  "data_and_third_party_assets_are_not_new_authorship": true,
+  "current_uncommitted_1026_fix_excluded_from_this_history_inventory": true
+}

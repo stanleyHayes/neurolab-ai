@@ -83,6 +83,7 @@ class BasetenProviderTests(unittest.TestCase):
     def test_only_approved_meta_open_model_and_baseten_endpoint_are_accepted(self):
         for change in [
             {"BASETEN_MODEL_ID": "another-model"},
+            {"BASETEN_MODEL_ID": "meta-models/muse-spark-open"},
             {"BASETEN_MODEL_API_BASE_URL": "https://foreign.invalid/chat"},
             {"BASETEN_MODEL_API_BASE_URL": BASETEN_ENDPOINT + "?token=secret"},
         ]:

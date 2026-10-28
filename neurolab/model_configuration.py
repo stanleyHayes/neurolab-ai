@@ -4,7 +4,7 @@ import os
 from dataclasses import dataclass, field
 
 BASETEN_ENDPOINT = "https://inference.baseten.co/v1/chat/completions"
-BASETEN_MODEL = "meta-models/muse-spark-open"
+BASETEN_MODEL = "meta-models/muse-spark-open-1026"
 PROVIDER_ENV = {
     "meta": (
         "META_MODEL_API_BASE_URL",

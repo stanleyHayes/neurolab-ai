@@ -1,0 +1,45 @@
+{
+  "authority": "Owner-supplied Meta Global AI Developer Hackathon Participant Guide, received2026-10-28; verbatim source retained privately",
+  "source_sha256": "301c2244e1869ea9a36129373caa3009ce37ab3a436f2e305e41d1e0b4395bad",
+  "source_url": "Not supplied in pasted text; no independently verified event-page URL claimed",
+  "selected_entrant_setup": "Solo Indie Developer",
+  "recommended_problem_statement": "Push the Frontier",
+  "problem_statement_confirmation": "Draft recommendation, not a submitted choice",
+  "building_period_as_stated": [
+    "2026-10-27",
+    "2026-11-04"
+  ],
+  "kickoff_as_stated": "2026-10-26T12:00:00 America/New_York",
+  "building_window_ambiguity": "KickoffOct26 vs statedbuildingOct27; conservative baseline disclosure, organizer clarification needed for earlier work",
+  "submission_deadline_et": "2026-11-04T21:00:00-05:00",
+  "submission_deadline_accra": "2026-11-05T02:00:00+00:00",
+  "judging_weights_percent": {
+    "Impact": 30,
+    "Use of Meta AI Tooling": 25,
+    "Technical Depth & Execution": 20,
+    "Demo": 25
+  },
+  "maximum_team_size": 4,
+  "public_repository_required": true,
+  "video_minutes": 3,
+  "new_work_only_demo": true,
+  "prior_product_allowed_if_new_work_identified": true,
+  "baseten_required_model": "meta-models/muse-spark-open-1026",
+  "generic_baseten_model_not_accepted_as_required_alias_proof": true,
+  "partner_credit_amount_usd": 100,
+  "partner_credit_tpm": 2000000,
+  "partner_credit_participants_up_to": 2000,
+  "partner_credit_guaranteed": false,
+  "partner_credit_basis": "Individual, selected by use case; notification by email",
+  "meta_credit_amount_usd": 150,
+  "meta_credit_claim_individual_only": true,
+  "meta_spend_alert_is_not_a_hard_cap": true,
+  "current_required_model_probe": {
+    "requests": 1,
+    "http_status": 404,
+    "verified": false,
+    "no_generic_fallback": true
+  },
+  "submission_sent": false,
+  "organizer_eligibility_certified": false
+}

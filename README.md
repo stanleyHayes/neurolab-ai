@@ -1,5 +1,7 @@
 # NeuroLab AI
 
+> **Event alignment update (28 October):** The owner confirmed **Solo Indie Developer**. The supplied guide requires Baseten `meta-models/muse-spark-open-1026`; one real request returned HTTP 404. Earlier generic-model successes remain valid operational evidence but do not verify that alias. The tested local adapter now pins the required alias with verification disabled; production has not been changed by this documentation update and still serves the earlier generic configuration. See [event audit](docs/EVENT_ALIGNMENT_2026_10_28.md) for judging weights, deadline, contribution disclosure and remaining video/access requirements. No submission or eligibility certification has been made.
+
 **Reproducible, evidence-linked analysis of African maize field trials.** NeuroLab AI is a research prototype that brings real trial data, deterministic scientific tools, and bounded AI-assisted workflows into one research workspace.
 
 > **Status:** Working research prototype; not a production agronomy service. The current analysis MVP uses the Ghana maize dataset. A real Meta-guided run now completes the original exploratory computational investigation, with all failed attempts preserved and a detailed engineering appendix. Results are exploratory and must not be used as field recommendations.

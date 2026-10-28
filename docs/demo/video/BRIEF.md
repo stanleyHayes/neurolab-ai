@@ -2,7 +2,7 @@
 
 workflow: product-launch-video
 flow: autonomous
-status: actual narrated MP4, separate subtitles and editable project delivered locally; human listening unverified
+status: technical MP4 delivered locally; event-specific contribution/code-disclosure revision and human listening required
 
 ## Intent
 
@@ -51,3 +51,7 @@ The editable local preview is http://localhost:3017/#project/final-cut-v1. The H
 `output/demo-video/NeuroLab-Research-Demo.mp4`:165.533333seconds,1920x1080,H264/AAC,30fps,4966frames,22,775,112bytes. Full FFmpeg decode passed without errors. Exported frames at0/70/85/124/138/165.3seconds were visually inspected. Audio signal is present through165.418seconds; integrated−13.5LUFS,true peak−1.8dB,detected clipping0. This is measured audio, not a subjective listening approval.
 
 Matching28cue subtitles: `output/demo-video/NeuroLab-Research-Demo.srt`. Editable source/media with local font license: `output/demo-video/NeuroLab-Editable-Video.zip`. Files remain ignored/local, not publicly uploaded or submitted. Exact hashes, run/source checks and commands are in `verification/demo-full-walkthrough-2026-10-28.json`. Earlier failures and raw takes remain retained.
+
+## Event-specific guide review, 28 October
+
+The owner-supplied guide requires explicit new-work/code identification. The current technical cut is not yet accepted as a submission video; follow [the event revision brief](EVENT_REVISION_BRIEF.md) and conservative source-contribution inventory. Do not present generic Baseten success as the required1026alias, which returned404. Earlier recorded modes/results remain labelled and unchanged.

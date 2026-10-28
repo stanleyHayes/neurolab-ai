@@ -1,7 +1,9 @@
+> Current event authority: [owner-supplied guide alignment](EVENT_ALIGNMENT_2026_10_28.md). Exact Baseten -1026 access is unverified/404; generic-model success does not certify this requirement.
+
 # 13 — Prize strategy without scope dilution
 
 ## Main tracks
-Indie Developer $150K/$100K/$75K/$50K/$25K; Startups $250K/$150K/$75K/$50K/$25K. Select track per organizer eligibility; no assumption a startup automatically qualifies for Indie. Stage 1 pass/fail on theme and meaningful Meta use; Stage 2 four equally weighted categories (Impact, Meta AI Tooling, Technical Depth, Demo), 0–10 each; top five per track reach final judging.
+Indie Developer $150K/$100K/$75K/$50K/$25K; Startups $250K/$150K/$75K/$50K/$25K. Owner selected Solo Indie Developer; personal eligibility remains unverified. no assumption a startup automatically qualifies for Indie. Stage 1 pass/fail on theme and meaningful Meta use; Stage 2 weighted categories: Impact 30%, Meta AI Tooling 25%, Technical Depth & Execution 20%, Demo 25%, each scored 0–10; top five per track reach final judging.
 
 ## Bonus prize design
 **Best Agentic Use-Case ($5K, P0):** Real bounded scientific agent chooses follow-up analysis based on previous evidence. Demonstrate trace, failure recovery, and measurable advantage over fixed/random selection.

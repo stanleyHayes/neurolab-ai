@@ -1,5 +1,7 @@
 # Baseten inference for Meta Muse Spark Open
 
+> **Event alignment update (28 October):** The owner confirmed **Solo Indie Developer**. The supplied guide requires Baseten `meta-models/muse-spark-open-1026`; one real request returned HTTP 404. Earlier generic-model successes remain valid operational evidence but do not verify that alias. The tested local adapter now pins the required alias with verification disabled; production has not been changed by this documentation update and still serves the earlier generic configuration. See [event audit](EVENT_ALIGNMENT_2026_10_28.md) for judging weights, deadline, contribution disclosure and remaining video/access requirements. No submission or eligibility certification has been made.
+
 The frontend stays on Vercel; the scientific API, standalone worker and PostgreSQL stay on Render. Baseten supplies Meta Muse Spark Open inference. It is a separate model release from the already-recorded direct Meta `muse-spark-1.3` comparison. Earlier results and their model identity remain unchanged.
 
 ## Configuration and trust boundary

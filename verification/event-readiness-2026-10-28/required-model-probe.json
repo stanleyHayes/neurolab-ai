@@ -1,0 +1,31 @@
+{
+  "scope": "One bounded real request for exact owner-supplied hackathon alias; no generic fallback or duplicate inference",
+  "guide_sha256": "301c2244e1869ea9a36129373caa3009ce37ab3a436f2e305e41d1e0b4395bad",
+  "started_at_utc": "2026-10-28T08:10:14.427344+00:00",
+  "model_id": "meta-models/muse-spark-open-1026",
+  "endpoint": "https://inference.baseten.co/v1/chat/completions",
+  "old_policy": "687711c5bb380e723af19e0a12c413b34f059204858da14eb8ab614182156c4b",
+  "new_policy": "7fd4fb2293b2a23180cb2d8e5a88089cc968b76fb1de8bf03a6e4b1182024897",
+  "prior_reservations_retained": {
+    "n": 180,
+    "micro_usd": 2334366
+  },
+  "run_cap_micro_usd": 1000000,
+  "day_cap_micro_usd": 15000000,
+  "max_run_tokens": 100000,
+  "generic_model_earlier_success_is_not_event_alias_verification": true,
+  "passed": false,
+  "error_type": "ModelProviderError",
+  "http_status": 404,
+  "permanent": true,
+  "requests_attempted": 1,
+  "reservations": [
+    {
+      "input_tokens": 1745,
+      "output_tokens": 2000,
+      "reserved_micro_usd": 10682,
+      "outcome": "unknown"
+    }
+  ],
+  "finished_at_utc": "2026-10-28T08:10:16.139958+00:00"
+}
