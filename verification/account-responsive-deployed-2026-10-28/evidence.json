@@ -1,0 +1,133 @@
+{
+  "browser": "149.0.7827.55",
+  "scope": "Actual hosted Chromium rendering; read-only existing demo account; no scientific computation or inference",
+  "checks": [
+    {
+      "page": "account",
+      "viewport": "desktop",
+      "overflow": false,
+      "nav": true,
+      "content_width": 1122,
+      "layout_columns": "280px 810px",
+      "password_columns": "366px 366px",
+      "circles": [
+        {
+          "class": "mode-dot",
+          "width": 7,
+          "height": 7,
+          "radius": "50%"
+        },
+        {
+          "class": "theme-switch-thumb",
+          "width": 28,
+          "height": 28,
+          "radius": "50%"
+        },
+        {
+          "class": "avatar",
+          "width": 36,
+          "height": 36,
+          "radius": "50%"
+        }
+      ]
+    },
+    {
+      "page": "account",
+      "viewport": "tablet",
+      "overflow": false,
+      "nav": true,
+      "content_width": 518,
+      "layout_columns": "518px",
+      "password_columns": "472px",
+      "circles": [
+        {
+          "class": "mode-dot",
+          "width": 0,
+          "height": 0,
+          "radius": "50%"
+        },
+        {
+          "class": "theme-switch-thumb",
+          "width": 28,
+          "height": 28,
+          "radius": "50%"
+        },
+        {
+          "class": "avatar",
+          "width": 36,
+          "height": 36,
+          "radius": "50%"
+        }
+      ]
+    },
+    {
+      "page": "account",
+      "viewport": "mobile",
+      "overflow": false,
+      "nav": true,
+      "content_width": 358,
+      "layout_columns": "358px",
+      "password_columns": "316px",
+      "circles": [
+        {
+          "class": "mode-dot",
+          "width": 0,
+          "height": 0,
+          "radius": "50%"
+        },
+        {
+          "class": "theme-switch-thumb",
+          "width": 28,
+          "height": 28,
+          "radius": "50%"
+        },
+        {
+          "class": "avatar",
+          "width": 36,
+          "height": 36,
+          "radius": "50%"
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "verified_at_utc": "2026-10-28T02:22:49.483766+00:00",
+  "source_commit": "3189539d74dce629d492d11ffadb5689b2c739cf",
+  "stylesheet_sha256": "29763503447299599447da880b381561cf7ea1d22f1c5560f1d7ce88a602a843",
+  "stylesheet_injected": false,
+  "deployment": {
+    "id": "dpl_3HVmRCAMsQAsH7kAQdsCyXbSdf3K",
+    "url": "neurolab-biw2qiwbr-hayfordstanleys-projects.vercel.app",
+    "readyState": "READY",
+    "aliases": [
+      "neurolab-ai.vercel.app",
+      "neurolab-ai-hayfordstanleys-projects.vercel.app",
+      "neurolab-ai-git-main-hayfordstanleys-projects.vercel.app"
+    ]
+  },
+  "public_css": [
+    {
+      "path": "/_next/static/immutable/chunks/0ko40jdc1tjiu.css",
+      "sha256": "a19d6d242c4be6193be1111429b51d9ffa096d7d61d0570059924ad68bbbcfd2",
+      "account_container_present": true
+    }
+  ],
+  "screenshot_redactions": "Inputs/email masked during browser capture",
+  "tablet_visually_reviewed": true,
+  "quality": {
+    "ui_tests": 92,
+    "lint": "passed",
+    "typecheck": "passed",
+    "prettier": "passed",
+    "production_build": "passed",
+    "sonar_gate": "PASSED",
+    "sonar_issues": 0,
+    "sonar_hotspots": 0
+  },
+  "image_sha256": {
+    "account-desktop.png": "342b1fcac80836600baf4653482e0c4da5cf1b8ac2b2313d48e344cfe64c3ce2",
+    "account-mobile.png": "a40bd4fb5658837e63450d4c6773727ac777f9e57ff64c952bf272c5a0110b7f",
+    "account-tablet.png": "a346fb61b6f1edb785220b5de795256efcd2dae52b6a76d27fac1701a7b8afe6"
+  },
+  "limitations": "Scoped account responsive check, not exhaustive accessibility/GPU/browser coverage. No password/profile mutation, new science or inference."
+}
