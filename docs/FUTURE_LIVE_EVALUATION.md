@@ -41,3 +41,7 @@ The frozen plan closes a planning gap only. Actual execution, reviewed live runn
 ## 28 October authorization and protocol boundary
 
 The owner subsequently authorized bounded real inference for the original-objective investigation and requested persistent Meta enablement. Seven retained attempts culminated in one complete exploratory run; local Meta is now enabled and hosted opt-in rollout is tracked separately. This does not execute the 180-trial comparison above or supply blind/held-out review. Its frozen module/schema hashes predate current hypothesis/action contracts; amend/version the protocol and collector before any matrix execution. Historical pause statements above describe the earlier state, not a present assertion that the key is exhausted or unavailable.
+
+## 28 October collector increment
+
+[Live collector contract](LIVE_EVALUATION_COLLECTOR.md) now defines the implemented collection path and tests. The historical v1 stays untouched and is rejected by its stale/unapproved status. A v2 draft snapshots current code but does not enable execution. Actual matrix collection remains blocked on reviewed protocol/budget/provider-control evidence; seed-aware comparative scoring is still required. The offline scorer now rejects live policy names to prevent omission or false zero-cost/model-call reporting. No fixture transport is presented as a real Meta trial.

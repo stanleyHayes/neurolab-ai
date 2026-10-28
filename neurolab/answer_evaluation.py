@@ -246,6 +246,10 @@ def _trace_totals(rows):
 
 
 def summarize_answers(records, reviews=()):
+    if any(record["policy"] not in POLICIES for record in records):
+        raise ValueError(
+            "Live matrix requires seed-aware scoring; offline scorer cannot score these policies"
+        )
     accepted = _validated_reviews(records, reviews)
     summary = {
         "version": "recorded-answers-v1",

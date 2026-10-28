@@ -1,0 +1,25 @@
+{
+  "verified_at_utc": "2026-10-28T01:08:30.731189+00:00",
+  "scope": "Collector boundary tests with programmed transport, real SQL and actual Ghana tools; not live model quality",
+  "planned_trials": 180,
+  "planned_meta_trials": 72,
+  "actual_live_matrix_executed": false,
+  "real_meta_calls_in_validation": 0,
+  "full_backend_tests": 210,
+  "final_focused_tests": 14,
+  "draft_cli_refuses_before_network": true,
+  "draft_frozen_inputs_match": true,
+  "sonar": {
+    "gate": "PASSED",
+    "issues": 0,
+    "hotspots": 0
+  },
+  "remaining": [
+    "Reviewed protocol and aggregate budget/provider controls",
+    "Actual complete matrix collection",
+    "Seed-aware comparative scorer",
+    "Independent human review",
+    "Provider cancellation/billing acceptance"
+  ],
+  "new_module_sha256": "e053ca788c370abbbfc3603b8db7f322782d2a60661e8e975b7350fbb8867b99"
+}
