@@ -1,0 +1,29 @@
+{
+  "claim": "Retained project records support work on 26 October 2026; not proof that every component was first authored that day or organizer eligibility.",
+  "timezone": "UTC and Africa/Accra are the same offset on these dates",
+  "earliest_timed_build_entry": "2026-10-26T08:07:47Z",
+  "logged_normalization_work": "2026-10-26T08:11:00Z",
+  "retained_observed_run_created_at": "2026-10-26T11:55:55.770630Z",
+  "earliest_git_commit": {
+    "sha": "c7e42fd2a70892a80d62ee9674df72853998534b",
+    "author_and_committer_date": "2026-10-26T16:09:17Z",
+    "scope": "README only"
+  },
+  "source_import": {
+    "sha": "8fde5341ccdac3bb6218c8caa0a879f072399974",
+    "date": "2026-10-27T16:07:20Z",
+    "scope": "Contains dated October 26 build records; source import date is not source authorship date"
+  },
+  "history_roots": [
+    "8fde5341ccdac3bb6218c8caa0a879f072399974",
+    "c7e42fd2a70892a80d62ee9674df72853998534b"
+  ],
+  "history_limitation": "Two roots are reachable. Do not imply continuous source commits from the first README commit. Git dates and retained logs are local recorded evidence, not independent timestamps.",
+  "guide_kickoff_utc": "2026-10-26T16:00:00Z",
+  "guide_building_period_start": "2026-10-27",
+  "eligibility_boundary": "Some logged work predates kickoff; guide start dates differ. Organizer interpretation not certified.",
+  "input_sha256_before_this_audit_append": {
+    "BUILD_LOG.md": "d08e2fcb18a07c634ce3c4056a9543f48bd62a18cebf851183062fca92b82868",
+    "verification/nonterminal-run-observation.json": "70f8c4fe8b1c6f606bfd8622bcfd60c96ea4bb297cd4bc7b4cfebc0c63967fd5"
+  }
+}

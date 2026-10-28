@@ -2,7 +2,7 @@
 
 The current 165.53-second walkthrough is a verified local technical demo, not a certified submission video. Keep the original MP4, footage, captions and edit history unchanged as evidence.
 
-The newly supplied guide requires a three-minute demo highlighting specific event-built features, code and functionality, with clear original-contribution identification. The current cut does not sufficiently distinguish the earlier prototype/source import from later changes. It also predates the event-specific Baseten alias requirement. Do not claim its generic-model integration proves `meta-models/muse-spark-open-1026` access.
+The newly supplied guide requires a three-minute demo highlighting specific event-built features, code and functionality, with clear original-contribution identification. The current cut needs the verified October 26 start date and a clear distinction between the source-import comparison baseline and later changes. The baseline is not evidence of an older project predating October 26. It also predates the event-specific Baseten alias requirement. Do not claim its generic-model integration proves `meta-models/muse-spark-open-1026` access.
 
 ## Revision sequence
 

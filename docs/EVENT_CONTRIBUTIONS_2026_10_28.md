@@ -2,9 +2,13 @@
 
 The supplied guide requires judges to clearly identify new work. This document identifies reviewable source changes; it does not certify organizer eligibility or prove creation time from commit timestamps.
 
-## Baseline and ambiguity
+## Verified project start and disclosure baseline
 
-Use source snapshot `8fde534` as the conservative disclosure baseline. Its first source import contains earlier Oct 26/27 implementation logs and no earlier source Git history. Some work may have been written after kickoff, but the guide separately states an Oct 27 building-period start. Do not claim that every file first committed on Oct 27 was authored on that date. Do not call this whole snapshot pre-event with certainty either. Until clarified, disclose it as the earlier prototype/baseline and highlight demonstrable subsequent changes.
+The owner states that this project began on **26 October 2026**. The retained records support work on that date: BUILD_LOG records source audit at 08:07:47 UTC and normalization implementation at 08:11 UTC; a later retained observation records a run created at 11:55:55 UTC. The earliest Git commit, `c7e42fd`, has author and committer dates of 16:09:17 UTC on 26 October and contains the README. Accra uses UTC for these times. See [start-date audit](../verification/project-start-2026-10-26.json).
+
+The source snapshot `8fde534` was committed on 27 October at 16:07:20 UTC and includes those October 26 implementation records. It is an audit comparison baseline, not evidence of a mature product from before October 26. Two Git roots are reachable; there is no continuous source-file commit history establishing each component's creation time from the first README commit. Recorded dates support the start-date account, but do not independently prove authorship of every line or absence of reused components.
+
+The guide lists kickoff on October 26 at noon Eastern, which is 16:00 UTC, and separately lists a building period beginning October 27. Some logged implementation predates kickoff. Disclose that timing plainly and obtain organizer clarification for eligibility; do not move dates or claim all work occurred after kickoff. Existing datasets, requirements and third-party dependencies remain reused materials regardless of when application development began.
 
 The [machine-readable inventory](../verification/event-readiness-2026-10-28/contribution-inventory.json) compares that baseline with `aaacaf2`. It lists 101 subsequent commits and 122 changed source/test/config files with exact blob hashes. Added lines and file creation are not effort, novelty, impact or eligibility scores. Refactors can reuse existing code.
 
@@ -34,6 +38,8 @@ Inspect the actual diffs before showing snippets. The current source includes la
 
 ## Video disclosure wording
 
-“I started from an earlier NeuroLab prototype and existing published maize data. During this event I added the long-form objective workflow, trait and environment analyses, evidence-linked reports and exports, durable execution safeguards, and the recorded model comparison. I’ll demonstrate those additions; the dataset, prior prototype and third-party assets are reused context.”
+“I began NeuroLab AI on October 26. The build log records work that morning, and the first Git commit is dated that afternoon. I developed the scientific workflow, evidence interface and execution safeguards across the following days. This demo identifies the recorded additions and uses published maize data and third-party libraries with attribution.”
+
+For any eligibility statement accompanying the video, disclose that some October 26 work predates the listed kickoff and that the guide separately states an October 27 building-period start. This narration establishes the project timeline, not organizer approval.
 
 Use only the clauses supported by the final selected feature diffs and actual demo. Do not say “built everything from scratch” or claim an unresolved `-1026` run. Show a short actual source-diff/commit view so the new code is identifiable. Keep baseline screens as necessary context rather than presenting them as new deliverables. Organizer clarification is still needed for any earlier work the entrant wishes to claim.
