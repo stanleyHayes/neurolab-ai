@@ -255,3 +255,5 @@ A real browser demo with generated narration and subtitles has been rendered loc
 The approved known-set comparison recorded **180 trials across five policies and three seeds**, including **72 Meta trials and 144 real HTTP 200 responses**. All 36 initial Meta pairs had identical request bodies; the second request supplied tool-result evidence only in the feedback condition. No decision failures or deterministic Meta recoveries were recorded. Under the declared two-call/six-method setup, all 72 Meta workflows remain PARTIAL; workflow status is not an answer-quality score. Independent ratings are 0/180, so semantic means/intervals and winner remain unset.
 
 The matrix reserved $1.594429 in the existing application ledger; provider invoice cost is unknown. Exact execution records, limitations, review-packet status and spending scope: [actual comparison report](docs/LIVE_COMPARISON_2026_10_28.md). Hosted Meta availability remains a separate unresolved gate.
+
+Remaining provider, human-review, submission and production-only boundaries are collected in the [external-gate handoff](docs/REMAINING_EXTERNAL_GATES.md), with the exact evidence needed to close each one.
