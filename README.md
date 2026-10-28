@@ -2,7 +2,7 @@
 
 > **Operational resolution (28 October):** The adapter accepts the documented, successfully exercised `meta-models/muse-spark-open` and the explicit event alias `meta-models/muse-spark-open-1026`. The generic model is the example configuration; the unavailable alias is optional pending access confirmation. Neither an accepted identifier nor another model's successful response establishes verification for a selected model. Existing SQL policy matching still binds the exact provider/endpoint/model, retains reservations and prevents silent switching. The earlier exclusive -1026 pin was a configuration regression and is superseded. Production's previously verified generic route was not changed by this correction. Event alias eligibility remains unresolved.
 
-> **Event alignment update (28 October):** The owner confirmed **Solo Indie Developer**. The supplied guide requires Baseten `meta-models/muse-spark-open-1026`; one real request returned HTTP 404. Earlier generic-model successes remain valid operational evidence but do not verify that alias. The tested local adapter now pins the required alias with verification disabled; production has not been changed by this documentation update and still serves the earlier generic configuration. See [event audit](docs/EVENT_ALIGNMENT_2026_10_28.md) for judging weights, deadline, contribution disclosure and remaining video/access requirements. No submission or eligibility certification has been made.
+> **Event alignment:** The owner confirmed Solo Indie Developer. The guide-specific `-1026` identifier remains unavailable; successful generic-model runs do not verify that separate alias. See [event audit](docs/EVENT_ALIGNMENT_2026_10_28.md) for contribution timing and eligibility caveats. No submission or eligibility certification has been made.
 
 **Reproducible, evidence-linked analysis of African maize field trials.** NeuroLab AI is a research prototype that brings real trial data, deterministic scientific tools, and bounded AI-assisted workflows into one research workspace.
 
@@ -13,6 +13,28 @@
 **Hosted inference update (2026-10-28):** Real Meta inference now works from Render through **Baseten Muse Spark Open**. Owned run `c8591707-1b97-41b9-badf-b94ca1df7ff8` completed the unchanged original objective and archived accepted plan with six real model selections, six computed artifacts and no failures or deterministic recovery. API and worker serve source `97fce76`; database/auth settings and hosted $1 run/day limits are retained. This is a separate model release from the direct Meta comparison. Direct Meta API's earlier HTTP404 remains an unresolved historical path, not the current serving route. See [Baseten integration](docs/BASETEN_INFERENCE.md) and [hosted proof](verification/baseten-activation-2026-10-28/original-proof.json).
 
 ---
+
+## Judge access and a new real Meta analysis
+
+A dedicated non-admin judge account has been prepared. **The entrant must put its credentials in the submission portal's private access notes or send them privately to the organizers.** Credentials are intentionally absent from this public repository and video. Judges should use the prepared account rather than register without an invite. Contact the entrant if the private access notes are missing. There is no email password-reset service.
+
+**Verified on 28 October 2026:** invite-gated registration returned HTTP 201; fresh browser sign-in succeeded; a new browser-created Meta run `30953f73-73fc-4a44-a6f0-a3cb97cda6ef` completed with six real model selections, six tool calls and six artifacts, with no failures or deterministic recovery. The same judge account then opened its results and report in a fresh browser session. See [sanitized judge-access evidence](verification/judge-access-2026-10-28/proof.json). This is a dated check, not a guarantee of future provider availability.
+
+1. Open [the sign-in page](https://neurolab-ai.vercel.app/sign-in) and use the credentials supplied privately. Use a private browser window if another account is already signed in.
+2. Open **Experiment Studio** and click **Full Ghana investigation**. This sets the six-method profile and **initially selects deterministic mode**.
+3. Enter your research objective. For example:
+
+   > Investigate drought-related patterns in the Ghana combined maize data. Compare observed yields, identify promising genotypes, examine environment sensitivity and trait associations, and report uncertainty and limitations. Do not infer causal water effects or field recommendations.
+
+4. **After applying the preset, select Meta-assisted research.** Check that it is available and selected, then click **Start investigation**. This is the path that makes new model calls. Deterministic analysis and cinematic replay do not make model calls.
+5. Wait for the existing run to finish rather than submitting repeatedly. Open **Research Results** and **Reports**, confirming the selected experiment ID. Reloading or signing in again should allow you to select your saved experiment.
+6. Inspect evidence, uncertainty and limitations before choosing a follow-up question. Stop when the available observed data cannot answer it; do not interpret a completed computation as field validation.
+
+The serving model is **Meta Muse Spark Open through Baseten**, `meta-models/muse-spark-open`. Numeric Python tools compute the scientific results. This is analysis of published measurements, not a calibrated crop simulation. The participant guide's separate `-1026` alias is unverified; do not select it as a workaround or claim event approval for it.
+
+**Access and reliability recommendations:** keep signup invite-gated; provide separate owner-scoped judge accounts privately if independent simultaneous sessions are required. Do not publish an invite, password, service token or provider key. Test the judge login and inference availability shortly before judging, verify provider funds, and rotate or disable demo access afterward. Existing users' runs are private; judges should use their own prepared account and its saved runs. Do not put credentials into research objectives or recordings.
+
+**Budget and failure behavior:** the last verified hosted policy reserves up to $1/run, $1/account/UTC day and $1/global/UTC day, with a 100,000-token run ceiling. Multiple judges share the global allowance; it can block additional calls. Reservations are conservative application limits, not invoices or a provider-wide account cap. Review remaining allowance before the session; increase limits only through an explicit operator-approved policy update that retains prior reservations. If inference is paused, fails or reaches a budget limit, report the actual error and contact the entrant. The saved completed judge run and separately labelled deterministic mode remain available for inspection; neither should be presented as a new successful model call.
 
 ## What it does
 

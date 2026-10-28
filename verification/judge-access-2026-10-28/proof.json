@@ -1,0 +1,42 @@
+{
+  "http_status": 202,
+  "run_id": "30953f73-73fc-4a44-a6f0-a3cb97cda6ef",
+  "admitted_via_actual_browser": true,
+  "selected_mode": "meta",
+  "new_dedicated_judge_account": true,
+  "checked_at_utc": "2026-10-28T09:35:09.033291+00:00",
+  "registration_http_status": 201,
+  "login_http_status": 200,
+  "status": "COMPLETE",
+  "owner_scope_verified": true,
+  "model_provider": "baseten",
+  "model_id": "meta-models/muse-spark-open",
+  "tool_calls": 6,
+  "artifact_count": 6,
+  "selection_sources": [
+    "model",
+    "model",
+    "model",
+    "model",
+    "model",
+    "model"
+  ],
+  "failures": [],
+  "worker_commit": "97fce766db210ca9d4c233758f755888527e73b8",
+  "signup_invite_gated": true,
+  "credentials_public": false,
+  "passed": true,
+  "browser_review": {
+    "fresh_login_http_status": 200,
+    "results_loaded": true,
+    "report_loaded": true,
+    "selected_run_matches": true,
+    "overflow": false,
+    "javascript_errors": [],
+    "read_only_followup_admissions": 0
+  },
+  "bundle_sha256": "787b5811cf8e1566b2290c879183bbf90e88fb37370e5d7e3972dc960f03f100",
+  "private_handoff_prepared": true,
+  "credentials_sent_to_judges": false,
+  "provider_future_uptime_guaranteed": false
+}
