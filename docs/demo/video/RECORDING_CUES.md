@@ -27,3 +27,7 @@ Browser control currently fails with `CUA_REPL_ENABLED_SURFACES is required`. HT
 ## 28 October revision
 
 The historical table above describes original audio. Working browser recording is now available through isolated Chromium. Use narration-v2.json and output/demo-video/full-narration-v2/metadata.json for revised actual sentence times (165.504seconds). The stale Meta-paused sentence is removed; inference remains enabled independently, while the demo selects deterministic analysis. The23.08second pilot verifies recording only and does not satisfy this table's complete workflow. Its first selected partial Meta-mode run must not be used as the final deterministic opening. Full recording, listening, caption/cut review and MP4 remain pending.
+
+## Delivered cut, 28 October
+
+The actual edited walkthrough is now `output/demo-video/NeuroLab-Research-Demo.mp4` (165.533333seconds,1920x1080/30fps,H264/AAC), with matchingSRT and editableZIP alongside it. See `BRIEF.md` and `verification/demo-full-walkthrough-2026-10-28.json` for run identities, reproducibility, source framing and final decode/audio/frame evidence. Narration-v2 and sentence boundaries are used; original script/audio/takes remain preserved. This is explicitly deterministic/replay, not a hosted Meta success. Subjective listening remains for human review.

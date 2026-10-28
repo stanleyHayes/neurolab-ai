@@ -1,0 +1,132 @@
+{
+  "scope": "Actual hosted deterministic browser recording, not live Meta acceptance or independent scientific replication",
+  "date": "2026-10-28",
+  "frontend_commit": "344dc7f38ee84bee0c630ae091e9dec50f919e15",
+  "cases": [
+    {
+      "run_id": "2993f361-bbeb-4c23-a943-2d3a1ec263e3",
+      "completion_status": "complete",
+      "mode": "deterministic_replay",
+      "tool_calls": 6,
+      "artifacts": 6,
+      "events": 59,
+      "tools": [
+        "dataset_profile",
+        "inspect_missingness",
+        "compare_regimes",
+        "rank_genotypes",
+        "summarize_environment_stability",
+        "analyze_trait_associations"
+      ],
+      "export_sha256": "d5c617d04345e94df59d4d2d732933900c2edccee2bec77560dfbc51900c2e41"
+    },
+    {
+      "run_id": "8bb26625-d153-4576-a073-d4ebb8f9460a",
+      "completion_status": "complete",
+      "mode": "deterministic_replay",
+      "tool_calls": 2,
+      "artifacts": 2,
+      "events": 10,
+      "tools": [
+        "summarize_environment_stability",
+        "rank_genotypes"
+      ],
+      "export_sha256": "df329a82a49278c207c5df265d8294376f2861d0d209fea359c8d601905844af"
+    }
+  ],
+  "edl_duration": 165.504,
+  "media_cut_count": 11,
+  "all_source_ranges_valid": true,
+  "paid_model_calls_in_recording": 0,
+  "synthetic_narrator": "Kokoro bm_george speed 0.96",
+  "subjective_audio_listening": "unverified",
+  "public_upload": false,
+  "delivery_render": {
+    "status": "complete and decoded",
+    "job_id": "880aef57-f8ec-4794-a7c2-3bb4b2f28c3a",
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "frames": 4966,
+    "seconds": 165.533333,
+    "video_codec": "h264",
+    "audio_codec": "aac",
+    "full_decode_exit": 0,
+    "decoded_frames_visually_inspected": [
+      0,
+      70,
+      85,
+      124,
+      138,
+      165.3
+    ],
+    "caption_cues": 28,
+    "loudness": {
+      "lufsIntegrated": -13.5,
+      "lufsShortTermMax": -12.6,
+      "samplePeakDb": -1.9,
+      "truePeakDb": -1.8,
+      "clipping": {
+        "count": 0,
+        "firstAt": null
+      }
+    },
+    "audio_tail_seconds": 165.418,
+    "subjective_listening": "unverified",
+    "superseded_render": "872e11cb explicitly canceled after black-frame review; not accepted"
+  },
+  "known_data_reproducibility": {
+    "prior_run": "6f8f922a-dfdd-46b3-bb65-035e6983f25e",
+    "all_six_artifacts_exactly_match_fields": [
+      "analysis_version",
+      "claim_scope",
+      "results",
+      "sample_size",
+      "source_file",
+      "source_sha256",
+      "uncertainty",
+      "warnings",
+      "tool_name"
+    ],
+    "independent_replication": false
+  },
+  "pre_render_check": {
+    "ok": true,
+    "video_elements": 11,
+    "audio_elements": 1,
+    "lint_runtime_layout_contrast_craft_findings": 0,
+    "visually_reviewed_seconds": [
+      42,
+      58,
+      85,
+      109,
+      138,
+      156
+    ]
+  },
+  "delivery_files": {
+    "NeuroLab-Research-Demo.mp4": {
+      "local_path": "output/demo-video/NeuroLab-Research-Demo.mp4",
+      "bytes": 22775112,
+      "sha256": "60a828af349b34da2b99c5a29812c9dc14be28ba2550ee6e0ca56b98dbd5a885"
+    },
+    "NeuroLab-Research-Demo.srt": {
+      "local_path": "output/demo-video/NeuroLab-Research-Demo.srt",
+      "bytes": 3264,
+      "sha256": "e9543733aa7bf803959b7bc92330e434607cb904c9abf5d02e27e62f813e655e"
+    },
+    "NeuroLab-Editable-Video.zip": {
+      "local_path": "output/demo-video/NeuroLab-Editable-Video.zip",
+      "bytes": 53454398,
+      "sha256": "f34fad208e543c6918d77fe60c20f6c27ba38e27019991da2849d48fd409990a"
+    }
+  },
+  "verification_commands": [
+    "npx hyperframes check --json",
+    "npx hyperframes snapshot --at 42,58,85,109,138,156 --json",
+    "npx hyperframes render --quality delivery --output ../NeuroLab-Research-Demo.mp4",
+    "ffprobe -v error -show_streams -show_format -of json output/demo-video/NeuroLab-Research-Demo.mp4",
+    "ffmpeg -v error -i output/demo-video/NeuroLab-Research-Demo.mp4 -f null -",
+    "npx hyperframes audio ../NeuroLab-Research-Demo.mp4 --json"
+  ]
+}

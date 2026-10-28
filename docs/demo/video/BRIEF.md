@@ -2,7 +2,7 @@
 
 workflow: product-launch-video
 flow: autonomous
-status: real browser pilot captured; full walkthrough and final edit pending
+status: actual narrated MP4, separate subtitles and editable project delivered locally; human listening unverified
 
 ## Intent
 
@@ -20,7 +20,7 @@ The full local narration is now available at `output/demo-video/full-narration/n
 
 ## Scientific boundaries
 
-Meta remains paused after exhausted credits. A saved timeline must say replay of a previously completed deterministic run. Numeric results must match the selected run and source hash. The maize illustration is illustrative, not observed geometry or a calibrated crop simulator. Candidate genotypes remain exploratory leads; confounding, uncertainty and stopping criteria remain audible/visible.
+Local real Meta execution is enabled and verified separately; the hosted Meta request remains blocked by HTTP404 model_not_found. This recording deliberately selects deterministic analysis. A saved timeline must say replay of a previously completed deterministic run. Numeric results must match the selected run and source hash. The maize illustration is illustrative, not observed geometry or a calibrated crop simulator. Candidate genotypes remain exploratory leads; confounding, uncertainty and stopping criteria remain audible/visible.
 
 ## Editing requirements
 
@@ -37,3 +37,17 @@ Isolated Playwright/Chromium now records real browser footage. A23.08second1920x
 Local Meta is enabled and verified separately; hosted Meta still returns404. Do not narrate the old paused-credit assertion as current fact or disable the owner's inference setting for a recording. Select deterministic mode explicitly for the chosen demo workflow. Revised narration-v2.json removes the stale pause sentence. New local audio under output/demo-video/full-narration-v2 runs165.504seconds of sentence clips (MP3 container includes padding); original audio/script retained.27unchanged WAV clips are reused and one line is regenerated with HyperFrames0.8.210/Kokoro. Captions are sentence-timed, at most2lines, not final cut-aligned or word-transcribed.
 
 Next: capture real preparation/start/results/focused follow-up/export, ensure the correct selected run/mode from the usable opening, align the revised audio/captions, perform listening/visual review, render finalMP4 and retain originals. No final or public video is claimed.
+
+## Current full walkthrough and edit
+
+The deployed admission-race correction is now exercised by a third real recording. Main run `2993f361-bbeb-4c23-a943-2d3a1ec263e3` completed six scientific tool calls; focused follow-up `8bb26625-d153-4576-a073-d4ebb8f9460a` completed two. Both exported UUIDs match their actual POST admissions. Earlier rejected takes remain retained. These are deterministic calculations on the same dataset, not independent evidence or Meta benchmark trials.
+
+Seven narrative chapters use eleven real media cuts at normal speed. Navigation gaps are omitted and labelled. Loaded results/report views and native-scroll framing were recaptured read-only for the same main run; the preparation reshoot preserves the identical objective/preset and admits no run. Actual start/computation comes from the validated full take. No scientific result was fabricated or modified.
+
+The editable local preview is http://localhost:3017/#project/final-cut-v1. The HyperFrames desktop app can continue editing via Edit with Framey. Target duration is165.504seconds with synthetic narration, burned-in sentence captions and separateSRT. Full-screen desktop viewing preserves dense scientific context. Visual pre-render review passed for objective, actual admission, loaded means, candidate table, four criteria and proposed independent trial. Exported-file decoding/review and subjective human listening remain separate checks; no public upload is authorized.
+
+## Final local delivery verification
+
+`output/demo-video/NeuroLab-Research-Demo.mp4`:165.533333seconds,1920x1080,H264/AAC,30fps,4966frames,22,775,112bytes. Full FFmpeg decode passed without errors. Exported frames at0/70/85/124/138/165.3seconds were visually inspected. Audio signal is present through165.418seconds; integrated−13.5LUFS,true peak−1.8dB,detected clipping0. This is measured audio, not a subjective listening approval.
+
+Matching28cue subtitles: `output/demo-video/NeuroLab-Research-Demo.srt`. Editable source/media with local font license: `output/demo-video/NeuroLab-Editable-Video.zip`. Files remain ignored/local, not publicly uploaded or submitted. Exact hashes, run/source checks and commands are in `verification/demo-full-walkthrough-2026-10-28.json`. Earlier failures and raw takes remain retained.

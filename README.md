@@ -25,9 +25,9 @@ NeuroLab studies existing computational trial records. It does not run a real-wo
 
 ## Full deterministic Ghana investigation
 
-The **Full Ghana investigation** preset preserves the supplied objective and selects all six numeric tools without a Meta call. It declares four retrospective evaluation criteria before execution, records evidence-dependent follow-up decisions, and presents hypothesis assessments, candidate trade-offs, the seven-trait screen, source inventory and reproducibility in Reports. Unsupported requests and proposed future field work remain explicit. This does not supersede the unsuccessful historical live-agent acceptance above.
+The **Full Ghana investigation** preset preserves the supplied objective and selects all six numeric tools without a Meta call. It declares four retrospective evaluation criteria before execution, records evidence-dependent follow-up decisions, and presents hypothesis assessments, candidate trade-offs, the seven-trait screen, source inventory and reproducibility in Reports. Unsupported requests and proposed future field work remain explicit. This deterministic profile is separate from the real Meta-guided investigation and does not turn replay into model execution.
 
-Methods, scope and acceptance boundaries: [deterministic investigation profile](docs/DETERMINISTIC_INVESTIGATION_PROFILE.md). Source provenance now includes dataset metrics, original-study attribution, observed regime counts, hash copying and selected-run source matching. Meta inference remains paused following the owner's exhausted credits.
+Methods, scope and acceptance boundaries: [deterministic investigation profile](docs/DETERMINISTIC_INVESTIGATION_PROFILE.md). Source provenance now includes dataset metrics, original-study attribution, observed regime counts, hash copying and selected-run source matching. Local Meta inference is enabled; hosted Meta availability remains blocked as described above.
 
 Portable offline HTML reports and actual-data PNG/SVG figure exports are available from saved evidence bundles. See [scientific report export](docs/SCIENTIFIC_REPORT_EXPORT.md).
 
@@ -245,3 +245,7 @@ Set `MODEL_INFERENCE_ENABLED=false` in the API environment and restart the API t
 Open **Live Experiment**, choose an existing saved run, then select **Open cinematic view**. The player offers restart, pause, next event, seek and presentation pacing. **Research Results → Cinematic replay** opens the same saved-run workspace. Evidence appears only after its recorded completion event; original timestamps, source identity, uncertainty and limitations remain available. Optional 3D rendering is an illustrative maize model. Reduced motion keeps the 2D/manual workflow. This presentation does not run a crop simulation, create new measurements, or call Meta.
 
 The setup/cinematic increment passes automated tests; fresh browser visual acceptance remains pending because browser control was unavailable during that increment. See `verification/CINEMATIC_REPLAY_ACCEPTANCE.md` for the scope and evidence.
+
+## Recorded research walkthrough
+
+A real browser demo with generated narration and subtitles has been rendered locally: `output/demo-video/NeuroLab-Research-Demo.mp4` (2m45.5s,1080p). MatchingSRT and an editable video projectZIP are alongside it; these ignored media files are not publicly uploaded. The recording shows deterministic analysis, saved cinematic replay, results, uncertainty, a two-tool follow-up and report export. It does not claim hosted Meta success. Full decode, run/source checks, representative visual frames and audio measurements passed; subjective listening remains unverified. See [delivery brief](docs/demo/video/BRIEF.md) and [verification evidence](verification/demo-full-walkthrough-2026-10-28.json).
