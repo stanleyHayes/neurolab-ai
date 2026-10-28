@@ -1,0 +1,165 @@
+{
+  "browser": "149.0.7827.55",
+  "scope": "Actual hosted Chromium rendering; read-only existing demo account; no scientific computation or inference",
+  "checks": [
+    {
+      "page": "account",
+      "viewport": "desktop",
+      "overflow": false,
+      "nav": true,
+      "circles": [
+        {
+          "class": "mode-dot",
+          "width": 7,
+          "height": 7,
+          "radius": "50%"
+        },
+        {
+          "class": "theme-switch-thumb",
+          "width": 28,
+          "height": 28,
+          "radius": "50%"
+        },
+        {
+          "class": "avatar",
+          "width": 36,
+          "height": 36,
+          "radius": "50%"
+        }
+      ]
+    },
+    {
+      "page": "account",
+      "viewport": "tablet",
+      "overflow": false,
+      "nav": true,
+      "circles": [
+        {
+          "class": "mode-dot",
+          "width": 0,
+          "height": 0,
+          "radius": "50%"
+        },
+        {
+          "class": "theme-switch-thumb",
+          "width": 28,
+          "height": 28,
+          "radius": "50%"
+        },
+        {
+          "class": "avatar",
+          "width": 36,
+          "height": 36,
+          "radius": "50%"
+        }
+      ]
+    },
+    {
+      "page": "account",
+      "viewport": "mobile",
+      "overflow": false,
+      "nav": true,
+      "circles": [
+        {
+          "class": "mode-dot",
+          "width": 0,
+          "height": 0,
+          "radius": "50%"
+        },
+        {
+          "class": "theme-switch-thumb",
+          "width": 28,
+          "height": 28,
+          "radius": "50%"
+        },
+        {
+          "class": "avatar",
+          "width": 36,
+          "height": 36,
+          "radius": "50%"
+        }
+      ]
+    },
+    {
+      "page": "account",
+      "theme_before": "dark",
+      "theme_after": "light",
+      "observed_animations": [
+        {
+          "frames": {
+            "clipPath": [
+              "circle(0px at 1205.5px 50px)",
+              "circle(1534.8388351875906px at 1205.5px 50px)"
+            ]
+          },
+          "options": {
+            "duration": 420,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
+            "pseudoElement": "::view-transition-new(root)"
+          }
+        }
+      ]
+    },
+    {
+      "page": "cinematic",
+      "dialog_visible": true,
+      "has_canvas": 0,
+      "button_labels": [
+        "Close cinematic view",
+        " Export recorded evidence",
+        "Standard 2D",
+        "01Run created1:35:58 AM",
+        "02request.accepted1:35:58 AM",
+        "03Request durably queued1:35:58 AM",
+        "04QUEUED1:35:58 AM",
+        "05Worker execution lease acquired1:35:59 AM",
+        "06PLANNING1:35:59 AM",
+        "07Research workflow prepared1:35:59 AM",
+        "08PLANNING1:35:59 AM",
+        "09research.objective_preserved1:35:59 AM",
+        "10Model decision unavailable1:35:59 AM",
+        "11Next analysis selected1:35:59 AM",
+        "12ANALYZING1:35:59 AM",
+        "13Research tool requested1:35:59 AM",
+        "14Tool request validated1:35:59 AM",
+        "15Computation completed1:35:59 AM",
+        "16Evidence recorded1:35:59 AM",
+        "17RUNNING1:35:59 AM",
+        "18Evidence-linked report saved1:36:00 AM",
+        "19PARTIAL1:36:00 AM",
+        "20Partial report \u2014 analysis incomplete1:36:00 AM",
+        "Restart",
+        "Play replay",
+        "Next event",
+        "1\u00d7",
+        "2\u00d7",
+        "4\u00d7"
+      ]
+    },
+    {
+      "page": "cinematic",
+      "escape_closed": true,
+      "focus_returned": true
+    }
+  ],
+  "errors": [],
+  "verified_at_utc": "2026-10-28T02:20:08.354881+00:00",
+  "screenshots_visually_inspected": true,
+  "redactions": "Input fields and account email masked during capture; no screenshot editing or fabricated UI",
+  "limitations": [
+    "Headless Chromium, not desktop CUA control",
+    "Standard2D only, no GPU acceptance",
+    "Tablet layout cramped at820px despite no overflow; responsive improvement still needed",
+    "No screenreader, reduced-motion or exhaustive keyboard acceptance",
+    "Saved partial run e4a93800; no new Meta calls or analysis",
+    "Local demo credential rejected once; successful auth used existing hosted account",
+    "No video footage created"
+  ],
+  "file_sha256": {
+    "account-desktop.png": "3374b48b6c350a1d6cc22c0b48f0fa6463b9f7b1b8e8119f9e3aa5bb0d17a35f",
+    "account-mobile.png": "a13eea02968cd4a11c312b73e4ac93d5ae6dbedf9b08c2a92d9a6ae94f4c5f74",
+    "cinematic.png": "9d3cafd7945f971432229a4695874cd7df3e977f50994f23870ca4e641368167",
+    "account-tablet.png": "7c985974ed21eb0caf66c76550ef8558b337fa89e38815924029c321b987914f",
+    "account-light.png": "c18773e3eda1470de94d6b47f96c579141eb2c301e4d9fc576205c8bacc28fc1"
+  }
+}
