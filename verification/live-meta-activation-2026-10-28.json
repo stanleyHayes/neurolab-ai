@@ -38,7 +38,21 @@
     "database_or_signing_credentials_changed": false,
     "backups_changed": false
   },
-  "hosted_runtime_activation": "Not claimed until updated pinned images and authenticated capability checks pass",
+  "hosted_runtime_activation": {
+    "source_commit": "37bbe71c886ec955b1869690294ba07811c1a80b",
+    "api_and_worker_deployments": "live",
+    "configuration_enabled": true,
+    "real_meta_inference_verified": false,
+    "authenticated_run_id": "5909d460-cfec-4171-99a5-52771988c38b",
+    "run_status": "PARTIAL",
+    "model_choices": 0,
+    "labelled_recovery_choices": 6,
+    "provider_http_status": 404,
+    "provider_error_code": "model_not_found",
+    "diagnostic_policy_restored_to": "muse-spark-1.3",
+    "reservation_history_preserved": true,
+    "root_cause": "Provider model availability differs from local execution; underlying provider cause not established."
+  },
   "env_file_git_ignored": true,
   "env_permissions": "0600",
   "pricing_source": "https://dev.meta.ai/docs/pricing-rate-limits",
