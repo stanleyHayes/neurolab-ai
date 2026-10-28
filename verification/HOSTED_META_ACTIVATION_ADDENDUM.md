@@ -15,3 +15,7 @@ The adapter now retains sanitized HTTP status without exposing provider bodies o
 Temporary diagnostic spend policies were restored to configured `muse-spark-1.3`; all reservations were retained. No proxy, region circumvention or new paid hosting was introduced. Local real inference remains verified; hosted inference remains an external blocker. A future successful real hosted response and unchanged-objective rerun are required before claiming this deployment issue is resolved.
 
 This addendum documents an unresolved challenge honestly rather than presenting it as another successful scientific result. Regression fixtures prove error handling only, not real provider availability.
+
+## Deployed correction acceptance
+
+Render API and worker are live on `72b2639`. Authenticated repeat `0956d7ab-f96c-4d7e-a2db-a76f9003d5d0` retained the exact objective/source and produced six actual numerical artifacts. Its report records one HTTP404 provider failure, the request-stop flag and six deterministic recovery selections, with PARTIAL status. Owner scope and worker commit match. API and frontend proxy health returned HTTP200. See `hosted-provider-failure-handling-2026-10-28.json`. This verifies deployed failure handling, not hosted Meta availability. Browser discovery still timed out; visual acceptance remains open.

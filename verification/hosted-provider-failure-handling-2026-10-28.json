@@ -1,0 +1,69 @@
+{
+  "release": {
+    "requested_at_utc": "2026-10-28T00:53:27.805754+00:00",
+    "target_commit": "72b2639ac15c37d632fcc82eda958942a9228d7a",
+    "services": {
+      "worker": {
+        "service_id": "srv-dbghummk1f9s738r96ug",
+        "deploy_id": "dep-dbgkf2cipgvc73dr06m0",
+        "requested_commit": "72b2639ac15c37d632fcc82eda958942a9228d7a",
+        "started_at_utc": "2026-10-28T00:53:29.197711+00:00",
+        "status": "live",
+        "reported_commit": "72b2639ac15c37d632fcc82eda958942a9228d7a"
+      },
+      "api": {
+        "service_id": "srv-dbghulhsrm7s73f4kq5g",
+        "deploy_id": "dep-dbgkfcafngtc73ftugmg",
+        "requested_commit": "72b2639ac15c37d632fcc82eda958942a9228d7a",
+        "started_at_utc": "2026-10-28T00:54:09.978406+00:00",
+        "status": "live",
+        "reported_commit": "72b2639ac15c37d632fcc82eda958942a9228d7a"
+      }
+    }
+  },
+  "hosted_check": {
+    "verified_at_utc": "2026-10-28T00:54:57.534645+00:00",
+    "run_id": "0956d7ab-f96c-4d7e-a2db-a76f9003d5d0",
+    "frontend": "https://neurolab-ai.vercel.app",
+    "capabilities_http": 200,
+    "model_inference_enabled": true,
+    "status": "PARTIAL",
+    "report_completion": "partial",
+    "mode": "meta",
+    "model": "muse-spark-1.3",
+    "tool_count": 6,
+    "artifact_count": 6,
+    "selection_sources": [
+      "deterministic_plan_recovery",
+      "deterministic_plan_recovery",
+      "deterministic_plan_recovery",
+      "deterministic_plan_recovery",
+      "deterministic_plan_recovery",
+      "deterministic_plan_recovery"
+    ],
+    "failures": [
+      {
+        "action": "model_decision",
+        "error_type": "ModelProviderError",
+        "provider_http_status": 404,
+        "provider_requests_stopped": true,
+        "recovered": true
+      }
+    ],
+    "worker_source_commit": "72b2639ac15c37d632fcc82eda958942a9228d7a",
+    "expected_commit": "72b2639ac15c37d632fcc82eda958942a9228d7a",
+    "owner_scope_verified": true,
+    "scientific_scope": "exploratory_not_field_validated",
+    "source_sha256": "2e37c07f30e00efb33b59954dd6d02a04f3d67349790d782b70dbedfdaff05bc",
+    "objective_preserved": true,
+    "provider_token_usage": "Not exposed by production adapter; no measured invoice claim",
+    "raw_provider_payloads": "Not exposed by production adapter; separate isolated source-linked collection retains those"
+  },
+  "health": {
+    "api_http": 200,
+    "frontend_proxy_http": 200
+  },
+  "browser_acceptance": "Not verified: CUA discovery timed out",
+  "scope": "Actual deployed provider failure handling; not successful hosted Meta inference",
+  "secrets_included": false
+}

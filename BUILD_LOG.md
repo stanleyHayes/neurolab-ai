@@ -631,3 +631,9 @@ Replaced the API's SQLite default with PostgreSQL (`DATABASE_URL=postgresql:///n
 - Added regression coverage for one404 request across three real-data numerical tasks, explicit PARTIAL status, retained failure/status and recovery labels; transport tests assert401/404 permanent while429/500 remain transient. These programmed failures are boundary tests, not live-provider acceptance.
 - Added hosted activation engineering report addendum and corrected current completion ledger. External Meta model_not_found remains unresolved; this source fix is not yet deployed on Render and does not claim to repair provider availability.
 - Validation: 16 focused tests plus final report regression passed; full backend194 tests passed, Ruff lint/format and git diff --check passed. Fresh Sonar scan quality gate PASSED with zero unresolved issues. UI source unchanged; prior UI/build evidence is not presented as a new run.
+
+## 2026-10-28 — Deploy and verify permanent-error handling
+
+- Deployed existing Render worker dep-dbgkf2cipgvc73dr06m0 and API dep-dbgkfcafngtc73ftugmg at72b2639; polled the same handles through LIVE. No duplicate resources, credentials or database changes.
+- Actual owner-authenticated exact-objective repeat0956d7ab-f96c-4d7e-a2db-a76f9003d5d0 is PARTIAL with six real numerical artifacts, one retained provider404 failure, request-stop flag and six labelled deterministic recoveries. Owner binding and worker commit match. This verifies deployed correction, not real hosted Meta success. Preserved prior failed runs and reservations.
+- Render API and Vercel BFF health both HTTP200. CUA getState timed out; no browser acceptance claimed. Added redacted release/check evidence and report addendum. Prior194 backend tests and Sonar pass apply to unchanged application source; JSON parsing and git diff --check passed for this evidence-only update. External provider availability and browser/video/independent evaluation gates remain open.

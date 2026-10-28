@@ -6,7 +6,7 @@
 
 **Repository:** [github.com/stanleyHayes/neurolab-ai](https://github.com/stanleyHayes/neurolab-ai), delivery branch `main`. Complete application source is published on `main`; an unauthenticated HTTPS clone was verified on 2026-10-27. Live frontend: [neurolab-ai.vercel.app](https://neurolab-ai.vercel.app). Backend: [neurolab-api.onrender.com](https://neurolab-api.onrender.com/health), hosted with its worker and PostgreSQL on Render. HTTP/API acceptance is recorded; full browser and production operations gates remain open.
 
-**Hosted Meta caveat (2026-10-28):** Local real Meta execution is verified and MODEL_INFERENCE_ENABLED=true. Render API and worker are deployed with the flag enabled, but actual hosted inference returns Meta HTTP404 model_not_found. Hosted repeat 5909d460-cfec-4171-99a5-52771988c38b is PARTIAL: zero successful Meta choices and six labelled deterministic recoveries. Configuration and health checks alone do not prove provider readiness. Hosted model availability remains unresolved.
+**Hosted Meta caveat (2026-10-28):** Local real Meta execution is verified and MODEL_INFERENCE_ENABLED=true. Render API and worker are deployed with the flag enabled, but actual hosted inference returns Meta HTTP404 model_not_found. Hosted repeat 5909d460-cfec-4171-99a5-52771988c38b is PARTIAL: zero successful Meta choices and six labelled deterministic recoveries. Configuration and health checks alone do not prove provider readiness. Hosted model availability remains unresolved. The deployed permanent-error handling is verified separately in the [engineering addendum](verification/HOSTED_META_ACTIVATION_ADDENDUM.md).
 
 ---
 
