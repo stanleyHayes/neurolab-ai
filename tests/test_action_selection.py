@@ -43,7 +43,7 @@ class ActionSelectionTests(unittest.TestCase):
     def test_real_source_projections_preserve_values_and_full_artifacts(self):
         dataset = load_ghana()
         artifacts = []
-        for action in ("dataset_profile", "rank_genotypes"):
+        for action in ("dataset_profile", "rank_genotypes", "summarize_environment_stability"):
             artifact = execute_tool(
                 {
                     "trace_id": "context-test",
@@ -68,6 +68,18 @@ class ActionSelectionTests(unittest.TestCase):
         self.assertEqual(projection["genotype_count"], 72)
         self.assertEqual(projection["leading_genotypes"], ranking["results"]["genotypes"][:5])
         self.assertEqual(projection["trailing_genotypes"], ranking["results"]["genotypes"][-5:])
+        stability, projection = artifacts[2]
+        self.assertLess(
+            len(json.dumps(projection)),
+            len(json.dumps(stability["results"]["model_summary"])) * 0.7,
+        )
+        source = stability["results"]["model_summary"]["DROUGHT"]["leading_observed_means"][0]
+        projected = projection["DROUGHT"]["leading_observed_means"][0]
+        self.assertEqual(
+            projected["leave_one_environment_out_ranks"], source["leave_one_environment_out_ranks"]
+        )
+        self.assertNotIn("source_row_numbers", json.dumps(projection))
+        self.assertEqual(len(projection["leading_drought_retention"]), 3)
 
     def test_full_original_objective_context_fits_reviewed_bounded_requests(self):
         from neurolab.agent import ResearchAgent

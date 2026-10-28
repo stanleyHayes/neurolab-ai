@@ -126,6 +126,7 @@ export type ScientificReport = {
   objective?: string;
   evidence_coverage: string;
   conclusion_status?: string;
+  observational_answer?: { summary: string };
   additional_hypotheses_not_assessed?: string[];
   inventory_manifest_sha256?: string | null;
   missing_tools?: string[];

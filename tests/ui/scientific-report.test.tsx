@@ -127,3 +127,14 @@ it("keeps candidate yield numbers while comparing bars on one shared zero-based 
   );
   expect(screen.getByText(/Yield bars share a zero-based scale/)).toBeTruthy();
 });
+
+it("shows the backend observational answer as text alongside the preserved numeric candidate table", () => {
+  const current = structuredClone(report);
+  current.scientific_report!.observational_answer = {
+    summary: "<script data-observational-answer>unsafe()</script> Backend answer fixture; not field validation.",
+  };
+  render(<ScientificReportView report={current} downloadFile={vi.fn()} />);
+  expect(screen.getByText(current.scientific_report!.observational_answer.summary)).toBeTruthy();
+  expect(document.querySelector("script[data-observational-answer]")).toBeNull();
+  expect(screen.getByRole("table", { name: /Observed grain yield in kg\/ha/ })).toBeTruthy();
+});

@@ -1,0 +1,364 @@
+{
+  "title": "How NeuroLab reached a complete, traceable computational investigation",
+  "compiled_at_utc": "2026-10-28T00:22:15.719444+00:00",
+  "authorship_and_scope": "Compiled by the Codex assistant from retained code, tool traces and provider exchanges. Non-blind engineering/semantic adjudication, not model-authored scientific evidence, independent human review or agronomy certification.",
+  "original_objective": "Investigate which maize genotypes demonstrate the strongest drought tolerance while maintaining relatively stable grain yield across the available experimental environments. Form hypotheses, select appropriate statistical analyses, execute the analyses, evaluate the evidence, and recommend the next experiment.",
+  "original_run_id": "a150a5bb-15db-44f9-bc28-36a7fb1d770c",
+  "successful_run_id": "ad9bb399-7e4d-4b42-83fc-450c914eadc5",
+  "same_objective_sha256": "5b9080e63db452f1a18839beaa3f246a0faf19d00ffc94246102dc91117e4158",
+  "what_finally_worked": "A complete objective stayed visible to stateless calls; action-specific schemas prevented incompatible parameters; explicit projections and task-specific reasoning stayed inside budgets; Meta proposed executable hypotheses; numeric tools computed every finding; the report compiled exact criteria and saved evidence. The final run completed without recovery.",
+  "development_history": [
+    {
+      "challenge": "Original audited run did not answer the question",
+      "observed_failure": "a150a5bb-15db-44f9-bc28-36a7fb1d770c profiled Ghana, inspected missingness, rejected an invalid action and repeated the profile. No genotype stability analysis or justified next experiment followed. The original SQLite :memory: database is unavailable; its retained audit narrative is the source, not reconstructed raw responses.",
+      "resolution": "Keep the historical failed/partial audit unchanged. Freeze its exact objective and canonical source, then compare new real executions against explicit outputs.",
+      "evidence": "verification/AGENT_EXECUTION_TRACE.md"
+    },
+    {
+      "challenge": "Current keyword routing also narrowed the objective",
+      "observed_failure": "An exact-objective diagnostic selected only environment stability and marked that narrowed task complete.",
+      "resolution": "Recognize the full multi-stage maize investigation, retain all six numeric methods, and keep an undersized three-step run PARTIAL. The six-stage verification budget is a declared amendment, not a same-budget benchmark win.",
+      "evidence": "verification/original-objective-diagnostic-2026-10-27.json; original-objective-routing-fix-2026-10-27.json"
+    },
+    {
+      "challenge": "Action schema allowed incompatible parameters",
+      "observed_failure": "Meta supplied bootstrap_samples=1000 for rank_genotypes, repeating the original action/parameter failure.",
+      "resolution": "Generate nested action-specific schema branches. Nonresampling actions require null bootstrap_samples; validate returned JSON against the pending-task schema before dispatch. Never reinterpret invalid model output as a successful choice.",
+      "evidence": "neurolab/action_selection.py; retained attempts 3 and 4"
+    },
+    {
+      "challenge": "Stateless model requests omitted the objective",
+      "observed_failure": "Later action requests, and initial requests with a Meta-generated plan, carried null instead of the original objective. HTTP calls cannot rely on remembering a previous request.",
+      "resolution": "Include the exact complete objective with every action request. Preserve important constraints, pending work, evidence and source identity; reject over-budget contexts rather than silently truncating.",
+      "evidence": "neurolab/agent.py; captured request bodies in attempts 3\u20137"
+    },
+    {
+      "challenge": "Large contexts consumed conservative admission budgets",
+      "observed_failure": "Repeated file inventories, complete rankings and per-plot detail exhausted the 100000-token reservation ceiling before all model choices. Attempt 5 still required deterministic recovery on the final choice.",
+      "resolution": "Provide explicitly labelled projections: counts/hashes and missingness, actual leading/trailing ranking entries, observed variability and omitted-environment ranks, matched retention and numeric uncertainty. Keep full artifacts unchanged. The reviewed overhead allowance changed by audited compare-and-swap from 8192 to 1024 atop complete UTF-8 byte bounds; earlier reservations were retained.",
+      "evidence": "neurolab/model_evidence.py; attempts 4\u20137; SQL policy transition records"
+    },
+    {
+      "challenge": "Credits and TLS configuration obscured access",
+      "observed_failure": "Inference had been paused after the owner believed credits were exhausted. The owner later supplied a free-credit screenshot; the first new attempt then failed TLS because this Mac lacked its default CA file.",
+      "resolution": "Verify actual provider access rather than infer it from a dashboard label. Use the installed trusted CA bundle with certificate validation still enabled. No key was published, no payment method was added and no TLS verification was disabled.",
+      "evidence": "attempts 1\u20133; subsequent actual HTTP200 Muse Spark responses"
+    },
+    {
+      "challenge": "Reasoning exhausted output headroom",
+      "observed_failure": "A 2000-token planning response finished with length and no visible structured content. A later 1000-token action also ended mid-JSON under low reasoning.",
+      "resolution": "Reserve 4000 output tokens for full planning with low reasoning. Short schema-constrained action choices use minimal reasoning and at most 1000 output tokens. Detect length termination explicitly. Retain every failed response and unknown reservation; no hidden retries or refunds.",
+      "evidence": "neurolab/providers.py; attempts 2, 6 and 7"
+    },
+    {
+      "challenge": "Free-text hypotheses requested unsupported estimands",
+      "observed_failure": "Earlier H1/H3 asked for genotype-specific bootstrap comparisons and contrast heterogeneity that pooled contrast/ranking tools do not compute. One criterion incorrectly called an interval overlapping zero falsification.",
+      "resolution": "Retain those hypotheses as unassessed in their failed trials. For a new plan of the exact original objective, Meta proposes executable predicate kinds and parameters before tools run. Backend-rendered propositions and artifact-based verdicts use those exact parameters; no fixed-template verdict is mapped onto unrelated prose. Zero-crossing association intervals are inconclusive.",
+      "evidence": "neurolab/hypothesis_contracts.py; attempt-5 planning response, unchanged in attempt 7"
+    },
+    {
+      "challenge": "Report synthesis was treated as an unsupported numeric task",
+      "observed_failure": "The old plan contained a null synthesis task, so even completed numeric tools could not fulfill its report requirements.",
+      "resolution": "Declare supported report outputs separately from numeric tasks. The backend compiles evaluated hypotheses, candidate mean/variability/retention trade-offs, contradictions, a direct observational answer and a proposed randomized multi-environment water-regime trial from persisted evidence.",
+      "evidence": "neurolab/planner.py; neurolab/scientific_report.py; successful-run-bundle.json"
+    },
+    {
+      "challenge": "A completion badge alone could conceal failure",
+      "observed_failure": "The original partial report emitted COMPLETE events; newer attempts with recovery also could not count as successful live autonomy.",
+      "resolution": "Require complete source-consistent numeric coverage, retain extra unassessed user hypotheses as partial, and keep recovered model failures visible. Attempt 7 has six actual HTTP200/stop responses, six model selections, six distinct tool executions, no failures/recovery and matching complete report/terminal event.",
+      "evidence": "run ad9bb399-7e4d-4b42-83fc-450c914eadc5; attempts 1\u20137 all preserved"
+    },
+    {
+      "challenge": "Borderline association interpretation changed with resampling settings",
+      "observed_failure": "The ASI point association is negative, but the conditional interval crosses zero at 1000 draws and excludes zero at 2000 and 10000 draws.",
+      "resolution": "Preserve the formal 2000-draw verdict and publish the same-source sensitivity audit rather than select only a favorable interval. Treat the association as exploratory and parameter-sensitive, not causal or a replicated discovery. These are repeated computations, not independent new observations.",
+      "evidence": "resampling-sensitivity.json; successful run trait-association artifact"
+    },
+    {
+      "challenge": "Engineering quality and application activation required separate checks",
+      "observed_failure": "Sonar found complexity and exception-test warnings; the hosted entrypoints also forcibly stripped provider keys and paused inference regardless of the flag.",
+      "resolution": "Refactor validation/completion helpers without changing scientific outputs, fix the warnings without suppressions, and test the report appendix for HTML escaping. The owner subsequently requested persistent real Meta: local .env and API/frontend proxy now report enabled; production gets an explicit verified provider/spend-policy opt-in while worker signing credentials remain stripped. Hosted rollout is tracked separately from isolated scientific verification.",
+      "evidence": "quality logs and BUILD_LOG.md; deployment runtime tests; local HTTP200 capability health checks"
+    }
+  ],
+  "retained_attempts": [
+    {
+      "attempt": 1,
+      "status": null,
+      "failure_type": "SSLCertVerificationError",
+      "exchanges": 1
+    },
+    {
+      "attempt": 2,
+      "status": null,
+      "failure_type": "ModelProviderError",
+      "exchanges": 1
+    },
+    {
+      "attempt": 3,
+      "status": "PARTIAL",
+      "failure_type": null,
+      "exchanges": 4
+    },
+    {
+      "attempt": 4,
+      "status": "PARTIAL",
+      "failure_type": null,
+      "exchanges": 5,
+      "scope": "Reuse unchanged actual Meta plan/hypotheses; action/context correction verification, not full objective success"
+    },
+    {
+      "attempt": 5,
+      "status": "PARTIAL",
+      "failure_type": null,
+      "exchanges": 6,
+      "scope": "Fresh actual Meta plan; all declared structured criteria evaluated on six actual artifacts. Last selection denied by 100000-token lifetime reservation cap, labelled deterministic recovery. Not live acceptance success."
+    },
+    {
+      "attempt": 6,
+      "status": "PARTIAL",
+      "failure_type": null,
+      "exchanges": 6,
+      "scope": "Exact attempt-5 plan/thresholds reused. Six real provider responses, one output-length termination caused labelled deterministic recovery. All scientific criteria assessed, but not live acceptance success."
+    },
+    {
+      "attempt": 7,
+      "status": "COMPLETE",
+      "failure_type": null,
+      "exchanges": 6,
+      "scope": "Unchanged exact attempt-5 Meta plan/thresholds and original objective/source/seed; all six fresh Meta choices and six actual numeric tools; no recovery or failed selection. Planning uses low effort; short action choices minimal effort."
+    }
+  ],
+  "original_objective_acceptance": [
+    {
+      "requirement": "Exact original research objective and data",
+      "assessment": "pass",
+      "evidence": "Exact UTF-8 objective equals the 26 October audit; source SHA-256 2e37c07f30e00efb33b59954dd6d02a04f3d67349790d782b70dbedfdaff05bc; seed 2026. Budget amended transparently from three stages/five calls/120 seconds to six numeric stages/six calls/180 seconds, with separate recorded hypothesis planning."
+    },
+    {
+      "requirement": "Provider-origin falsifiable hypotheses before numeric execution",
+      "assessment": "pass within structured contract",
+      "evidence": "Attempt 5 raw Muse Spark plan selected consistent_high_yield fraction 0.22, leading_rank_sensitivity fraction 0.2/count 3, and negative ASI association. Exact plan and thresholds reused in attempt 7; prepared/hypothesis events precede the first numeric tool."
+    },
+    {
+      "requirement": "Real complete numeric execution without fallback",
+      "assessment": "pass",
+      "evidence": "Six distinct tools, six real Meta responses with model muse-spark-1.3 and stop termination, all selection_source=model, zero tool/decision failures. 84891 reserved tokens, under 100000."
+    },
+    {
+      "requirement": "Two useful result-conditioned decisions",
+      "assessment": "pass in non-blind single-case assistant adjudication, with limits",
+      "evidence": "Decision 3 uses the observed 864-row/72-genotype/six-environment panel to request the unknown genotype ranking. Decision 4 then explicitly cites TZm-1179 at 2370.29 kg/ha and selects environment/omitted-environment sensitivity to quantify the missing variability. The returned tool reveals the check genotype rank range 1\u201326, versus 3\u20135 for TZm-1179. These are new calculations addressing objective uncertainty, not repeated profiles.",
+      "limits": "This is a limited qualitative reading of captured replies, not a blind human score or proof that feedback caused the choices. Decision 2 largely repeats profile missingness. Decision 5 adds pooled contrast uncertainty and must not be mistaken for genotype-specific uncertainty."
+    },
+    {
+      "requirement": "Interpretation and justified next experiment",
+      "assessment": "pass for exploratory computational scope",
+      "evidence": "Artifact-linked consistency/rank-sensitivity/ASI verdicts, direct candidate answer and actual measured trade-offs are present. Proposed trial includes independently randomized water-regime whole plots, genotype subplots, a common check, design-aware analysis, missingness/measurement covariates and a prospective precision/power study. No unsupported numeric sample size is invented."
+    },
+    {
+      "requirement": "Reproducibility and honest limitations",
+      "assessment": "pass for this saved case",
+      "evidence": "Exact prompts/responses, requested parameters, source/module hashes, raw artifacts, events, seed and portable figures retained. A ZIP preserves all 32 source/schema files matching the actual successful execution hashes before later readability-only refactors. Export reconstructs the scientific report from artifacts and declared predicates. No field validation, causal tolerance or independent statistical review is claimed."
+    }
+  ],
+  "observed_results": {
+    "answer": {
+      "summary": "TZm-1179 has the largest observed equal-environment drought mean among the 3 genotypes meeting the declared consistency criterion (2370.3 kg/ha). This identifies an exploratory follow-up candidate, not proven biological drought tolerance or validated stability.",
+      "primary_follow_up_candidate": {
+        "genotype_id": "TZm-1179",
+        "drought_mean_kg_ha": 2370.290522875817,
+        "environment_centered_sd_kg_ha": 267.51714569273264,
+        "omitted_environment_rank_range": [
+          3.0,
+          5.0
+        ]
+      },
+      "consistent_candidate_ids": [
+        "TZm-1179",
+        "TZm-480",
+        "TZm-1352"
+      ],
+      "criterion_id": "H1",
+      "criterion_rank_threshold": 16,
+      "basis_evidence_ids": [
+        "ad9bb399-7e4d-4b42-83fc-450c914eadc5-4"
+      ],
+      "selection_rule": "Largest observed complete-coverage drought mean among genotypes satisfying the declared across-environment rank criterion; no composite or validated tolerance/stability score."
+    },
+    "hypothesis_evaluations": [
+      {
+        "id": "H1",
+        "proposal": "At least one complete-coverage genotype ranks in the top 22% of observed mean drought yields in every observed drought environment.",
+        "criterion": "Require at least three observed drought environments and a within-environment rank no greater than ceil(complete panel size * 0.22) in each.",
+        "rationale": "Genotypes in top fraction retain relatively high observed mean yield across environments; evaluated descriptively from ranking artifacts.",
+        "verdict": "criterion_met",
+        "findings": "3 of 72 complete genotype profiles met the observed rank threshold of 16 in every drought environment.",
+        "evidence_ids": [
+          "ad9bb399-7e4d-4b42-83fc-450c914eadc5-4"
+        ],
+        "contradictions": [],
+        "scope": "Retrospective descriptive criterion, not a confirmatory hypothesis test or field validation.",
+        "matching_genotype_ids": [
+          "TZm-1179",
+          "TZm-480",
+          "TZm-1352"
+        ],
+        "rank_threshold": 16
+      },
+      {
+        "id": "H2",
+        "proposal": "At least one of the 3 largest complete-coverage observed drought means changes rank by at least 20% of the panel when an environment is omitted.",
+        "criterion": "Require at least three observed environments; omitted-environment rank range width must be at least ceil(complete panel size * 0.2) among the leading 3 candidates. This is sensitivity, not a significance test.",
+        "rationale": "Leading genotypes show limited leave-one-environment-out rank change; evaluated as observed sensitivity, not validated stability.",
+        "verdict": "criterion_met",
+        "findings": "1 of 3 leading observed means changed by at least 15 rank positions when an environment was omitted.",
+        "evidence_ids": [
+          "ad9bb399-7e4d-4b42-83fc-450c914eadc5-4"
+        ],
+        "contradictions": [],
+        "scope": "Retrospective descriptive criterion, not a confirmatory hypothesis test or field validation.",
+        "rank_ranges": [
+          {
+            "genotype_id": "TZm-1179",
+            "minimum_rank": 3.0,
+            "maximum_rank": 5.0,
+            "range_width": 2.0
+          },
+          {
+            "genotype_id": "TZEE-W HDT C3 STR C5 (CHECK)",
+            "minimum_rank": 1.0,
+            "maximum_rank": 26.0,
+            "range_width": 25.0
+          },
+          {
+            "genotype_id": "TZm-480",
+            "minimum_rank": 2.0,
+            "maximum_rank": 8.0,
+            "range_width": 6.0
+          }
+        ],
+        "range_width_threshold": 15
+      },
+      {
+        "id": "H3",
+        "proposal": "Observed drought genotype-mean asi_days values are negatively associated with observed drought yield.",
+        "criterion": "Require negative Spearman rho, a conditional genotype-profile resampling interval entirely below zero, and negative correlations in all of at least three observed environments. Zero-crossing intervals or mixed directions are inconclusive, not falsification.",
+        "rationale": "Shorter anthesis-silking interval associates with higher observed genotype-mean yield; evaluated as exploratory association only.",
+        "verdict": "criterion_met",
+        "findings": "72 genotype means: rho=-0.250; conditional percentile interval -0.464 to -0.002.",
+        "evidence_ids": [
+          "ad9bb399-7e4d-4b42-83fc-450c914eadc5-6"
+        ],
+        "contradictions": [],
+        "scope": "Retrospective descriptive criterion, not a confirmatory hypothesis test or field validation.",
+        "statistics": {
+          "genotype_count": 72,
+          "spearman_rho": -0.25035601520992046,
+          "conditional_interval": [
+            -0.46432061313908934,
+            -0.0020140833845390337
+          ],
+          "per_environment": [
+            {
+              "environment_code": "DROUGHT_Y1",
+              "genotype_count": 72,
+              "spearman_rho": -0.19758252520909897
+            },
+            {
+              "environment_code": "DROUGHT_Y2",
+              "genotype_count": 72,
+              "spearman_rho": -0.11426258199911914
+            },
+            {
+              "environment_code": "DROUGHT_Y3",
+              "genotype_count": 72,
+              "spearman_rho": -0.42961435602356385
+            }
+          ]
+        }
+      }
+    ],
+    "proposed_trial": {
+      "status": "proposal_only_not_executed",
+      "title": "A replicated, randomized multi-environment water-regime trial",
+      "candidate_ids": [
+        "TZm-1179",
+        "TZEE-W HDT C3 STR C5 (CHECK)",
+        "TZm-480"
+      ],
+      "candidate_selection_basis": "Largest observed complete-coverage drought mean among genotypes satisfying the declared across-environment rank criterion; no composite or validated tolerance/stability score. Include high-mean comparators and a common check; this is a proposed trial, not a field recommendation.",
+      "basis_evidence_ids": [
+        "ad9bb399-7e4d-4b42-83fc-450c914eadc5-1",
+        "ad9bb399-7e4d-4b42-83fc-450c914eadc5-2",
+        "ad9bb399-7e4d-4b42-83fc-450c914eadc5-3",
+        "ad9bb399-7e4d-4b42-83fc-450c914eadc5-4",
+        "ad9bb399-7e4d-4b42-83fc-450c914eadc5-5",
+        "ad9bb399-7e4d-4b42-83fc-450c914eadc5-6"
+      ],
+      "design": "Where irrigation is a hard-to-change factor, randomize independently replicated water-regime whole plots within each site-season/block, and randomize candidate genotypes plus a common check to subplots within each whole plot. Avoid treating multiple plants/subplots as independent irrigation replicates.",
+      "additional_data": [
+        "Verified site-season identities and trial dates, rather than inferred calendar years from ENVT codes.",
+        "Water delivery, soil moisture and soil/site covariates with units; treatment randomization and independent whole-plot replicate/block identities.",
+        "Consistent genotype/barcode identities and seed lots; validated stay-green scale direction and measurement reliability.",
+        "Plot-level yield and flowering observations, missing-data reasons, protocol deviations and blinded score records where feasible."
+      ],
+      "analysis_plan": "Predeclare the primary genotype-by-water-regime contrast, the whole-plot and subplot error structure, multiplicity control, and the independent validation environments. Fit a design-aware mixed model with replication/block nesting, examine residuals and convergence, and report uncertainty and missingness sensitivity.",
+      "sample_size": "Not calculated. Choose numbers of independent environments and whole-plot replicates through a design-aware power/precision study using justified pilot variance components; the current descriptive summaries do not justify a numeric powered sample size.",
+      "reference": {
+        "title": "Penn State STAT 503 \u2014 Nested and Split Plot Designs",
+        "url": "https://online.stat.psu.edu/stat503/Lesson14.html"
+      }
+    },
+    "asi_rho": -0.25035601520992046,
+    "asi_resampling_sensitivity": [
+      {
+        "draws": 1000,
+        "interval": [
+          -0.4672793032125348,
+          0.013117178338713916
+        ]
+      },
+      {
+        "draws": 2000,
+        "interval": [
+          -0.46432061313908934,
+          -0.0020140833845390337
+        ]
+      },
+      {
+        "draws": 10000,
+        "interval": [
+          -0.4670251989216675,
+          -0.009016327576358493
+        ]
+      }
+    ],
+    "interpretation": "TZm-1179 is a follow-up candidate under the declared observed-environment criterion; TZm-480 and TZm-1352 also meet it. H2 shows that one leading mean is rank-sensitive. ASI evidence is negative but fragile across finite resampling settings. None establishes biological drought tolerance, future field stability or causality."
+  },
+  "proposal_quality_caveat": "Formal predicates govern the computed verdicts. Free-text rationale remains unverified proposal metadata: H2 rationale mentions limited rank changes while its formal predicate tests whether a leading candidate has a large shift. This imprecision is preserved and remains a model-quality/independent-review limitation.",
+  "accounting": {
+    "provider_responses_with_usage": 28,
+    "reported_tokens_seven_new_attempts": 89781,
+    "standard_rate_estimate_usd": "0.17444025",
+    "scope": "New retained attempts only, not whole-project spend, remaining credit balance or an invoice. Cached discounts not deducted. Earlier original-run usage is not invented."
+  },
+  "scientific_limits": [
+    "Only 864 plots, 72 genotypes and three observed drought environment indices; indices are not calendar years.",
+    "Regime and trial environment are confounded. Current estimates do not adjust alpha-lattice effects, estimate genotype rank probabilities or justify causal irrigation effects.",
+    "Conditional genotype-profile resampling and multiple-trait exploration are not independent field replication. Stay-green score direction is unverified.",
+    "Hypotheses are retrospective operational definitions, not a preregistered/held-out confirmatory study. Earlier unsupported free-text hypotheses remain unassessed, not retrospectively passed.",
+    "Proposed trial has not been executed; seed availability, ethics/local permissions, independent variance components, field validation and agronomist review remain external work."
+  ],
+  "operational_state_at_compilation": {
+    "local_real_meta_enabled": true,
+    "api_health_url": "http://127.0.0.1:8000/health",
+    "frontend_health_url": "http://127.0.0.1:3000/api/health",
+    "hosted_model_settings_staged": true,
+    "hosted_new_image_rollout": "pending release verification",
+    "api_keys_published": false,
+    "provider_keys_on_vercel": false,
+    "backups": "R2 access staged; scheduled backup consumer remains disabled"
+  },
+  "remaining_project_gates": "Independent scientific review; held-out/blind/live-comparison evaluation; broader browser/accessibility and deployed operational acceptance; backup automation; final demo video/submission. A single completed research case does not close the entire project."
+}

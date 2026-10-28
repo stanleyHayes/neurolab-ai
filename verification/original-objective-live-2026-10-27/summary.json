@@ -25,16 +25,38 @@
       "failure_type": null,
       "exchanges": 5,
       "scope": "Reuse unchanged actual Meta plan/hypotheses; action/context correction verification, not full objective success"
+    },
+    {
+      "attempt": 5,
+      "status": "PARTIAL",
+      "failure_type": null,
+      "exchanges": 6,
+      "scope": "Fresh actual Meta plan; all declared structured criteria evaluated on six actual artifacts. Last selection denied by 100000-token lifetime reservation cap, labelled deterministic recovery. Not live acceptance success."
+    },
+    {
+      "attempt": 6,
+      "status": "PARTIAL",
+      "failure_type": null,
+      "exchanges": 6,
+      "scope": "Exact attempt-5 plan/thresholds reused. Six real provider responses, one output-length termination caused labelled deterministic recovery. All scientific criteria assessed, but not live acceptance success."
+    },
+    {
+      "attempt": 7,
+      "status": "COMPLETE",
+      "failure_type": null,
+      "exchanges": 6,
+      "scope": "Unchanged exact attempt-5 Meta plan/thresholds and original objective/source/seed; all six fresh Meta choices and six actual numeric tools; no recovery or failed selection. Planning uses low effort; short action choices minimal effort."
     }
   ],
-  "reported_total_tokens": 32316,
-  "list_price_usage_estimate_usd": "0.06981900",
+  "reported_total_tokens": 89781,
+  "list_price_usage_estimate_usd": "0.17444025",
   "cost_scope": "Token usage times published standard input/output rates; no cache discount applied. Not a provider invoice or balance reconciliation. TLS attempt has no reported provider usage.",
-  "live_acceptance_satisfied": false,
+  "live_acceptance_satisfied": true,
   "production_inference_enabled": false,
   "remaining_failures": [
-    "Model plan explicitly leaves final synthesis unsupported; custom hypotheses not automatically assessed",
-    "Useful result-dependent scientific decision quality still requires semantic review; valid generation and evidence availability alone are insufficient"
+    "Historical failed trials remain failed and older unsupported hypotheses remain unassessed",
+    "ASI interpretation is resampling-sensitive; no causal or field claim",
+    "Independent review and broader project release/evaluation/video/operations gates remain open"
   ],
   "original_historical_trace": "verification/AGENT_EXECUTION_TRACE.md",
   "operator_runner_source_scope": "Final runner used for attempt 3; attempt 1 created the ledger/owner and lacked the trusted CA environment, attempt 2 used 2000 output tokens and default reasoning. Exact HTTP bodies/responses for every attempted exchange are retained separately.",
@@ -48,5 +70,34 @@
     "operator_policy_transition_recorded": true,
     "old_reservations_retained": true,
     "final_status": "PARTIAL"
-  }
+  },
+  "structured_hypothesis_attempt": {
+    "run_id": "5a5c0439-ebdf-4520-9263-8a6f9f545b59",
+    "status": "PARTIAL",
+    "model_proposed_criteria_count": 3,
+    "numeric_tools_executed": 6,
+    "hypothesis_verdicts": [
+      "criterion_met",
+      "criterion_met",
+      "inconclusive"
+    ],
+    "last_decision_source": "deterministic_plan_recovery",
+    "original_objective_unchanged": true
+  },
+  "complete_live_workflow": {
+    "run_id": "ad9bb399-7e4d-4b42-83fc-450c914eadc5",
+    "status": "COMPLETE",
+    "provider": "meta",
+    "response_model_ids": [
+      "muse-spark-1.3"
+    ],
+    "actual_numeric_tool_count": 6,
+    "actual_model_selections": 6,
+    "failures": 0,
+    "reserved_tokens": 84891,
+    "hypotheses_source": "Exact real Meta-generated structured plan from attempt 5, unchanged before repeat execution",
+    "old_failed_trials_preserved": true,
+    "scope": "Exploratory computational investigation, not agronomic validation or proof of general autonomous research quality"
+  },
+  "acceptance_scope": "Single exact original exploratory computational objective; non-blind assistant adjudication in the engineering appendix. Not independent scientific validation, held-out accuracy or production launch readiness."
 }

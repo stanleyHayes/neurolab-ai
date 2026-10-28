@@ -47,6 +47,10 @@ class InvestigationExportTests(unittest.TestCase):
             # Untrusted objectives must remain inert in the exported HTML.
             bundle["report"]["objective"] = '<script>alert("untrusted")</script>'
             bundle["report"]["scientific_report"]["objective"] = bundle["report"]["objective"]
+            bundle["development_audit"] = {
+                "scope": "Engineering fixture, not scientific evidence",
+                "note": "<script data-audit-fixture>unsafe()</script>",
+            }
             source = root / "bundle.json"
             source.write_text(json.dumps(bundle))
             output = root / "export"
@@ -57,6 +61,9 @@ class InvestigationExportTests(unittest.TestCase):
             self.assertIn("&lt;script&gt;", document)
             self.assertEqual(document.count('src="data:image/png;base64,'), 4)
             self.assertIn("10. Reproducibility", document)
+            self.assertIn("11. Development and verification history", document)
+            self.assertIn("Engineering fixture, not scientific evidence", document)
+            self.assertNotIn("<script data-audit-fixture>", document)
             self.assertIn("proposal, not executed", document)
             self.assertIn(bundle["report"]["source_sha256"], document)
             self.assertEqual((output / "evidence.json").read_bytes(), source.read_bytes())

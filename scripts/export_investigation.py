@@ -19,6 +19,7 @@ from pathlib import Path
 
 from jsonschema import validate
 
+from neurolab.hypothesis_contracts import HypothesisTest
 from neurolab.scientific_report import REQUIRED_TOOLS, build_scientific_report
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -59,6 +60,10 @@ def validate_bundle(bundle):
         report["decisions"],
         report["reproducibility"],
         report["research_plan"]["hypotheses"],
+        [
+            HypothesisTest.model_validate(test)
+            for test in report["research_plan"].get("hypothesis_tests", [])
+        ],
     )
     if science != report["scientific_report"] or science["evidence_coverage"] != "complete":
         raise ValueError("Scientific report does not match its artifacts")
@@ -244,7 +249,7 @@ def _section(title, value):
     return f"<section><h2>{html.escape(title)}</h2>{_render_value(value)}</section>"
 
 
-def _write_html(folder, report, figures, export_metadata):
+def _write_html(folder, report, figures, export_metadata, development_audit=None):
     science = report["scientific_report"]
     sections = [
         ("1. Research objective", report["objective"]),
@@ -263,7 +268,13 @@ def _write_html(folder, report, figures, export_metadata):
         content += f'<figure><img alt="{html.escape(caption, quote=True)}" src="data:image/png;base64,{encoded}"><figcaption>{html.escape(caption)}</figcaption></figure>'
     content += "</section>"
     for title, value in [
-        ("7. Exploratory candidates", science["candidate_summaries"]),
+        (
+            "7. Exploratory candidates",
+            {
+                "observational_answer": science.get("observational_answer"),
+                "candidate_summaries": science["candidate_summaries"],
+            },
+        ),
         ("8. Scientific limitations", report["limitations"] + science["unresolved_scope"]),
         (
             "9. Next experiments — proposal, not executed",
@@ -286,6 +297,11 @@ def _write_html(folder, report, figures, export_metadata):
         ),
     ]:
         content += _section(title, value)
+    if development_audit:
+        content += _section(
+            "11. Development and verification history — engineering appendix",
+            development_audit,
+        )
     document = f"""<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src data:; style-src 'unsafe-inline'"><title>NeuroLab — exploratory maize investigation</title><style>body{{font:16px/1.55 system-ui,sans-serif;color:#182d35;background:#f5f5f0;max-width:1100px;margin:40px auto;padding:24px}}h1,h2{{line-height:1.25}}h1{{font-size:36px}}h2{{margin-top:48px}}dl{{display:grid;grid-template-columns:minmax(120px,22%) 1fr;gap:10px 20px;border-top:1px solid #ccd4d1;padding-top:14px}}dt{{font-size:13px;font-weight:650;color:#42616a;text-transform:capitalize;overflow-wrap:anywhere}}dd{{margin:0;min-width:0;overflow-wrap:anywhere}}dd dl{{grid-template-columns:minmax(100px,28%) 1fr;font-size:14px}}li{{margin:8px 0}}@media(max-width:650px){{dl,dd dl{{display:block}}dt{{margin-top:14px}}}}pre{{white-space:pre-wrap;overflow-wrap:anywhere;font:13px/1.65 ui-monospace,monospace;background:white;padding:20px;border:1px solid #ccd4d1;border-radius:8px}}img{{width:100%;height:auto}}figure{{margin:24px 0}}figcaption,footer{{font-size:13px;color:#465c63}}aside{{border-left:4px solid #ad781f;padding:12px 20px;background:#f1ead7}}@media print{{body{{background:white;margin:0;max-width:none}}figure{{break-inside:avoid}}h2{{break-after:avoid}}}}</style><h1>Observed maize trials: evidence and limits</h1><p>NeuroLab AI · run {html.escape(report["run_id"])} · {html.escape(report["mode"])}</p><aside>{html.escape(science["scope"])}<br>Export presents persisted numeric evidence. No model was called by the exporter. Bundle consistency checks do not authenticate third-party edits or establish scientific validity.</aside>{content}<footer>Actual field-study data credited above. Figures are observed summaries, not simulated crops or field recommendations. Full unrounded plotting data and saved evidence accompany this report.</footer></html>"""
     (folder / "report.html").write_text(document, encoding="utf-8")
 
@@ -341,7 +357,7 @@ def export_bundle(bundle_path: Path, output: Path):
         (folder / "figure-data.json").write_text(json.dumps(data, indent=2, allow_nan=False) + "\n")
         (folder / "evidence.json").write_bytes(raw)
         (folder / "export-metadata.json").write_text(json.dumps(export_metadata, indent=2) + "\n")
-        _write_html(folder, report, figures, export_metadata)
+        _write_html(folder, report, figures, export_metadata, bundle.get("development_audit"))
         folder.rename(output)
     return {
         "run_id": report["run_id"],

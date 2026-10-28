@@ -1,0 +1,8 @@
+{
+  "bundle_sha256": "3389509b08fee4a55ef56918a7977c4db474ed1569e61d742f3453b662c871c8",
+  "exporter_sha256": "fb4b4e1bcd1a926c5f06b679338d0a54763a2cc8a9270051468ff02b87c8f1c6",
+  "python_version": "3.12.3",
+  "matplotlib_version": "3.10.1",
+  "numpy_version": "2.2.3",
+  "presentation_only": true
+}

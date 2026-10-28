@@ -1,4 +1,4 @@
-"""Replay-only deployment admission for hosted API and worker processes."""
+"""Default replay admission with explicit verified-provider opt-in for deployments."""
 
 import os
 import re
@@ -34,3 +34,24 @@ def configure_replay(*, worker=False):
             "API_BEARER_TOKEN",
         ):
             os.environ.pop(name, None)
+
+
+def configure_deployment(*, worker=False):
+    """Enable Meta only on an explicit flag and a complete reviewed spend policy.
+
+    No provider request is made at startup. Real calls still require SQL owner,
+    run, money/token admission and worker lease checks at execution time.
+    """
+    if os.getenv("MODEL_INFERENCE_ENABLED", "false").lower() != "true":
+        configure_replay(worker=worker)
+        return
+    from .providers import OpenAICompatibleAdapter, adapter_status
+
+    if not adapter_status()["enabled_for_runs"]:
+        raise RuntimeError(
+            "Meta deployment requires verified provider access and configured spending limits"
+        )
+    adapter = OpenAICompatibleAdapter.from_environment()
+    configure_replay(worker=worker)
+    os.environ["META_MODEL_API_KEY"] = adapter.api_key
+    os.environ["MODEL_INFERENCE_ENABLED"] = "true"

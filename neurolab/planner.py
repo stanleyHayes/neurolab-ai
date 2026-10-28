@@ -6,6 +6,8 @@ import json
 
 from jsonschema import Draft202012Validator
 
+from .focused_planning import requests_maize_investigation
+from .hypothesis_contracts import criterion, hypothesis_text, validate_hypothesis_plan
 from .investigation_profile import PROFILE_OUTPUT, profile_plan_check
 from .providers import StructuredModelAdapter
 from .research_context import (
@@ -21,7 +23,9 @@ from .research_context import (
 
 def validate_execution_plan(plan: ResearchPlan, objective: str) -> None:
     validate_plan_objective(plan, objective)
-    if PROFILE_OUTPUT in plan.desired_outputs:
+    if plan.hypothesis_tests:
+        validate_hypothesis_plan(plan)
+    elif PROFILE_OUTPUT in plan.desired_outputs:
         profile_plan_check(plan)
     task_ids = [task.task_id for task in plan.tasks]
     if len(task_ids) != len(set(task_ids)):
@@ -52,7 +56,21 @@ def refine_plan(
                 "hypotheses and task descriptions. Identify every requested operation that the listed tools cannot "
                 "perform in unsupported_requirements; do not substitute a different scientific conclusion. "
                 "For complex investigations propose at least three falsifiable hypotheses with rationale and "
-                "evaluation criteria in their text. Use only supported tool names. Set tool_name to null for "
+                "evaluation criteria in their text. For full Ghana maize investigations prefer hypothesis_tests: "
+                "propose at least three distinct executable structured criteria and their parameters from the schema: "
+                "include consistent_high_yield, leading_rank_sensitivity and negative_trait_association. "
+                "These are your proposed criteria, not backend template hypotheses or findings. When using them, "
+                "return hypotheses=[]; the backend renders exact propositions from the structured predicates. "
+                "Include all six supported methods and desired output ghana_drought_investigation. "
+                "The scientific report renderer evaluates these criteria, shows candidate yield/variability/retention "
+                "trade-offs and proposes a randomized follow-up field trial from actual artifacts. This report is an "
+                "output, not an unsupported numeric task; do not add a null synthesis task when using that output. "
+                "Do not propose genotype-specific bootstrap intervals, adjusted models or causal tests that the "
+                "listed methods do not compute. Never call a zero-crossing interval falsification. "
+                "For a focused plan use hypothesis_tests=[] and preserve any free-text hypotheses. "
+                "List unsupported requirements only when actually requested, never unrelated disabled datasets. "
+                "Use observational qualifications rather than claiming validated biological tolerance or broad adaptation. "
+                "Use only supported tool names. Set tool_name to null for "
                 "unsupported tasks. Do not invent data values, causal effects, stability analyses, correlations, "
                 "calendar years, observations, datasets or model calls. IITA is reference-only; never merge trials "
                 "or identifiers without proven design semantics. Original text remains immutable and separately stored."
@@ -83,6 +101,31 @@ def refine_plan(
     plan = ResearchPlan.model_validate(
         {**proposed, "objective_sha256": objective_digest(objective), "planning_mode": "meta"}
     )
+    if (
+        requests_maize_investigation(objective)
+        and not configuration.preferred_methods
+        and not plan.hypothesis_tests
+    ):
+        raise ValueError(
+            "The multi-stage maize objective requires executable hypothesis criteria before execution"
+        )
+    if plan.hypothesis_tests:
+        if plan.hypotheses:
+            raise ValueError(
+                "Structured hypotheses must be rendered from their predicates, not unchecked prose"
+            )
+        plan.hypotheses = [hypothesis_text(test) for test in plan.hypothesis_tests]
+        plan.hypotheses.extend(
+            text for text in configuration.hypotheses if text not in plan.hypotheses
+        )
+        plan.important_constraints.extend(
+            f"{test.id} executable criterion: {criterion(test)['criterion']}"
+            for test in plan.hypothesis_tests
+        )
+        if len(plan.hypotheses) > 20 or len(plan.important_constraints) > 40:
+            raise ValueError(
+                "Full declared criteria exceed plan limits; no hypothesis or constraint was truncated"
+            )
     for suggestion in plan.dataset_suggestions:
         suggestion.enabled_for_analysis = suggestion.dataset_id == "ghana_combined"
     for task in plan.tasks:

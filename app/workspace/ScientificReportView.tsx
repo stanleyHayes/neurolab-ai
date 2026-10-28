@@ -85,6 +85,9 @@ function CandidateTable({ science }: Readonly<{ science: ScientificReport }>) {
         <ResultIcon name="genotype" /> CANDIDATE TRADE-OFFS
       </span>
       <h3>Large observed means do not tell the whole story.</h3>
+      {science.observational_answer && (
+        <p>{science.observational_answer.summary}</p>
+      )}
       <p>
         These are the five largest complete-coverage drought means. Retention
         compares separately summarized regimes; it is not a causal tolerance

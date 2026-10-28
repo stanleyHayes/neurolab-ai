@@ -9,6 +9,7 @@ from typing import Any, Literal
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 from .focused_planning import focused_methods, requests_maize_investigation
+from .hypothesis_contracts import HypothesisTest, generation_schema
 from .investigation_profile import (
     PROFILE_HYPOTHESES,
     PROFILE_METHODS,
@@ -128,6 +129,7 @@ class ResearchPlan(BaseModel):
     ambiguities: list[str] = Field(default_factory=list, max_length=12)
     research_questions: list[str] = Field(default_factory=list, max_length=20)
     hypotheses: list[str] = Field(default_factory=list, max_length=20)
+    hypothesis_tests: list[HypothesisTest] = Field(default_factory=list, max_length=4)
     dataset_suggestions: list[DatasetSuggestion] = Field(default_factory=list, max_length=5)
     analysis_approaches: list[AnalysisApproach] = Field(default_factory=list, max_length=6)
     desired_outputs: list[DesiredOutput] = Field(default_factory=list, max_length=8)
@@ -375,6 +377,7 @@ def build_refinement_schema() -> dict[str, Any]:
         "provenance_export",
         "trait_associations",
         "environment_summaries",
+        "ghana_drought_investigation",
     ]
     return {
         "type": "object",
@@ -386,6 +389,7 @@ def build_refinement_schema() -> dict[str, Any]:
             "ambiguities",
             "research_questions",
             "hypotheses",
+            "hypothesis_tests",
             "dataset_suggestions",
             "analysis_approaches",
             "desired_outputs",
@@ -403,6 +407,7 @@ def build_refinement_schema() -> dict[str, Any]:
             "ambiguities": {"type": "array", "maxItems": 12, "items": text_item},
             "research_questions": {"type": "array", "maxItems": 20, "items": text_item},
             "hypotheses": {"type": "array", "maxItems": 20, "items": text_item},
+            "hypothesis_tests": generation_schema(),
             "dataset_suggestions": {
                 "type": "array",
                 "maxItems": 5,

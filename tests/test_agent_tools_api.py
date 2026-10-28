@@ -776,6 +776,35 @@ class ApiTests(unittest.TestCase):
         self.assertEqual(self.client.get(f"/research-runs/{rid}").json()["status"], "CANCELLED")
         self.assertEqual(self.client.get(f"/research-runs/{rid}/job").json()["state"], "CANCELLED")
 
+    def test_structured_criteria_work_in_the_owned_full_investigation_api(self):
+        from neurolab.planner import refine_plan
+        from neurolab.research_context import ResearchConfiguration
+        from tests.test_hypothesis_contracts import OBJECTIVE, PlanningFixture
+
+        self.register(f"structured-{uuid.uuid4()}@example.test")
+        config = ResearchConfiguration(
+            desired_outputs=["ghana_drought_investigation"],
+            constraints={"max_steps": 6, "max_tool_calls": 6, "max_seconds": 180},
+        )
+        plan = refine_plan(OBJECTIVE, config, PlanningFixture(), timeout=5)
+        with patch.dict(os.environ, {"MODEL_INFERENCE_ENABLED": "false"}):
+            created = self.client.post(
+                "/research-runs",
+                json={
+                    "objective": OBJECTIVE,
+                    "mode": "replay",
+                    "configuration": config.model_dump(mode="json"),
+                    "plan": plan.model_dump(mode="json"),
+                },
+            )
+        self.assertEqual(created.status_code, 202)
+        saved = self.client.get(f"/research-runs/{created.json()['run_id']}").json()
+        self.assertEqual(saved["status"], "COMPLETE")
+        science = saved["report"]["scientific_report"]
+        self.assertEqual([h["id"] for h in science["hypothesis_evaluations"]], ["H7", "H8", "H9"])
+        self.assertEqual(science["hypothesis_tests"][0]["rank_fraction"], 0.1)
+        self.assertIn("declared consistency criterion", science["observational_answer"]["summary"])
+
     def test_actual_adapter_spending_is_owner_bound_for_worker_and_refinement(self):
         from unittest.mock import Mock
 

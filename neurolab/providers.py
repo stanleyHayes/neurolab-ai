@@ -76,6 +76,7 @@ class OpenAICompatibleAdapter:
         *,
         timeout: int,
         max_tokens: int,
+        reasoning_effort: str = "low",
     ) -> dict[str, Any]:
         require_inference_enabled()
         serialized_messages = json.dumps(
@@ -117,7 +118,7 @@ class OpenAICompatibleAdapter:
             "model": self.model_id,
             "messages": messages,
             "temperature": 0,
-            "reasoning_effort": "low",
+            "reasoning_effort": reasoning_effort,
             "max_tokens": max_tokens,
             "response_format": {
                 "type": "json_schema",
@@ -250,7 +251,11 @@ class OpenAICompatibleAdapter:
         self, messages: list[dict[str, str]], schema: dict[str, Any], *, timeout: int
     ) -> dict[str, Any]:
         return self._request_structured(
-            messages, schema, timeout=timeout, max_tokens=self.max_output_tokens
+            messages,
+            schema,
+            timeout=timeout,
+            max_tokens=min(self.max_output_tokens, 1000),
+            reasoning_effort="minimal",
         )
 
     def generate_refinement(

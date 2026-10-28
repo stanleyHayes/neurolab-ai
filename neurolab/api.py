@@ -857,6 +857,18 @@ def _execute_run(request: ResearchRunRequest, run_id: str) -> None:
     )
 
 
+def _requested_research_plan(request, configuration):
+    if request.plan is None:
+        return build_deterministic_plan(request.objective, configuration)
+    try:
+        validate_execution_plan(request.plan, request.objective)
+        if PROFILE_OUTPUT in configuration.desired_outputs and not request.plan.hypothesis_tests:
+            profile_plan_check(request.plan)
+    except ValueError as exc:
+        raise HTTPException(status_code=409, detail=str(exc)) from exc
+    return request.plan
+
+
 @app.post(
     "/research-runs",
     status_code=202,
@@ -878,16 +890,7 @@ def create_research_run(
         raise HTTPException(
             status_code=422, detail="Only Ghana combined is enabled for actual analysis execution."
         )
-    if request.plan is not None:
-        try:
-            validate_execution_plan(request.plan, request.objective)
-            if PROFILE_OUTPUT in configuration.desired_outputs:
-                profile_plan_check(request.plan)
-        except ValueError as exc:
-            raise HTTPException(status_code=409, detail=str(exc)) from exc
-        plan = request.plan
-    else:
-        plan = build_deterministic_plan(request.objective, configuration)
+    plan = _requested_research_plan(request, configuration)
     if request.mode == "meta" and not adapter_status()["enabled_for_runs"]:
         raise HTTPException(
             status_code=503,

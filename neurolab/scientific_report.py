@@ -9,6 +9,8 @@ import math
 from typing import Any
 
 from .descriptive import descriptive_claim
+from .hypothesis_contracts import NOTICE as STRUCTURED_NOTICE
+from .hypothesis_contracts import criterion, hypothesis_text
 from .investigation_profile import PROFILE_HYPOTHESES, PROFILE_NOTICE
 
 REQUIRED_TOOLS = {
@@ -37,8 +39,8 @@ def _complete_drought(artifact):
     return data, [entry for entry in data["genotypes"] if entry["complete_environment_coverage"]]
 
 
-def _consistent_candidate_hypothesis(artifact):
-    hypothesis = PROFILE_HYPOTHESES[0]
+def _consistent_candidate_hypothesis(artifact, hypothesis=None, rank_fraction=0.25):
+    hypothesis = hypothesis or PROFILE_HYPOTHESES[0]
     if artifact is None:
         return _evaluation(
             hypothesis, "not_assessed", "Environment-summary evidence is unavailable.", []
@@ -52,7 +54,7 @@ def _consistent_candidate_hypothesis(artifact):
             "At least three observed environments and complete genotype profiles are required.",
             ids,
         )
-    threshold = math.ceil(len(entries) / 4)
+    threshold = math.ceil(len(entries) * rank_fraction)
     matching = [
         entry["genotype_id"]
         for entry in entries
@@ -130,8 +132,8 @@ def _negative_association_hypothesis(artifact, field, hypothesis):
     return result
 
 
-def _rank_sensitivity_hypothesis(artifact):
-    hypothesis = PROFILE_HYPOTHESES[3]
+def _rank_sensitivity_hypothesis(artifact, hypothesis=None, rank_fraction=0.25, leading_count=3):
+    hypothesis = hypothesis or PROFILE_HYPOTHESES[3]
     if artifact is None:
         return _evaluation(
             hypothesis, "not_assessed", "Omitted-environment evidence is unavailable.", []
@@ -145,9 +147,9 @@ def _rank_sensitivity_hypothesis(artifact):
             "Too few environments or complete candidates for the declared sensitivity criterion.",
             ids,
         )
-    threshold = math.ceil(len(entries) / 4)
+    threshold = math.ceil(len(entries) * rank_fraction)
     ranges = []
-    for entry in entries[:3]:
+    for entry in entries[:leading_count]:
         values = list(entry["leave_one_environment_out_ranks"].values())
         if len(values) == len(data["environment_codes"]):
             ranges.append(
@@ -158,7 +160,7 @@ def _rank_sensitivity_hypothesis(artifact):
                     "range_width": max(values) - min(values),
                 }
             )
-    if len(ranges) != min(3, len(entries)):
+    if len(ranges) != min(leading_count, len(entries)):
         return _evaluation(
             hypothesis, "inconclusive", "Omitted-environment ranks were incomplete.", ids
         )
@@ -225,11 +227,53 @@ def _follow_up(stability, decisions):
     }
 
 
-def _next_experiment(candidates, evidence_ids):
+def _observational_answer(stability, evaluations):
+    consistency = next((item for item in evaluations if "rank_threshold" in item), None)
+    matching = consistency.get("matching_genotype_ids", []) if consistency else []
+    entries = _complete_drought(stability)[1] if stability else []
+    selected = next((entry for entry in entries if entry["genotype_id"] in matching), None)
+    primary = None
+    if selected:
+        ranks = list(selected["leave_one_environment_out_ranks"].values())
+        primary = {
+            "genotype_id": selected["genotype_id"],
+            "drought_mean_kg_ha": selected["mean_yield_kg_ha"],
+            "environment_centered_sd_kg_ha": selected["environment_centered_sd_kg_ha"],
+            "omitted_environment_rank_range": [min(ranks), max(ranks)] if ranks else None,
+        }
+        summary = (
+            f"{selected['genotype_id']} has the largest observed equal-environment drought mean "
+            f"among the {len(matching)} genotypes meeting the declared consistency criterion "
+            f"({selected['mean_yield_kg_ha']:.1f} kg/ha). This identifies an exploratory "
+            "follow-up candidate, not proven biological drought tolerance or validated stability."
+        )
+    else:
+        summary = (
+            "No genotype is identified as meeting the declared consistency criterion from the "
+            "available evidence. Observed high-mean candidates remain exploratory comparators; "
+            "a stable drought-tolerance winner is not established."
+        )
+    return {
+        "summary": summary,
+        "primary_follow_up_candidate": primary,
+        "consistent_candidate_ids": matching,
+        "criterion_id": consistency["id"] if consistency else None,
+        "criterion_rank_threshold": consistency["rank_threshold"] if consistency else None,
+        "basis_evidence_ids": [stability["artifact_id"]] if stability else [],
+        "selection_rule": "Largest observed complete-coverage drought mean among genotypes satisfying the declared across-environment rank criterion; no composite or validated tolerance/stability score.",
+    }
+
+
+def _next_experiment(candidates, evidence_ids, answer):
+    primary = answer["primary_follow_up_candidate"]
+    preferred = [primary["genotype_id"]] if primary else []
+    ids = list(dict.fromkeys(preferred + [entry["genotype_id"] for entry in candidates]))[:3]
     return {
         "status": "proposal_only_not_executed",
         "title": "A replicated, randomized multi-environment water-regime trial",
-        "candidate_ids": [entry["genotype_id"] for entry in candidates[:3]],
+        "candidate_ids": ids,
+        "candidate_selection_basis": answer["selection_rule"]
+        + " Include high-mean comparators and a common check; this is a proposed trial, not a field recommendation.",
         "basis_evidence_ids": evidence_ids,
         "design": "Where irrigation is a hard-to-change factor, randomize independently replicated water-regime whole plots within each site-season/block, and randomize candidate genotypes plus a common check to subplots within each whole plot. Avoid treating multiple plants/subplots as independent irrigation replicates.",
         "additional_data": [
@@ -248,13 +292,23 @@ def _next_experiment(candidates, evidence_ids):
 
 
 def build_scientific_report(
-    objective: str, evidence: list[dict[str, Any]], decisions, provenance, declared_hypotheses=()
+    objective: str,
+    evidence: list[dict[str, Any]],
+    decisions,
+    provenance,
+    declared_hypotheses=(),
+    hypothesis_tests=(),
 ):
+    declared = (
+        [criterion(test) for test in hypothesis_tests] if hypothesis_tests else PROFILE_HYPOTHESES
+    )
+    scope = STRUCTURED_NOTICE if hypothesis_tests else PROFILE_NOTICE
+    version = "ghana-investigation-structured-v1" if hypothesis_tests else "ghana-investigation-v1"
     hashes = {item["source_sha256"] for item in evidence}
     if len(hashes) > 1:
         return {
-            "version": "ghana-investigation-v1",
-            "scope": PROFILE_NOTICE,
+            "version": version,
+            "scope": scope,
             "evidence_coverage": "source_mismatch",
             "hypothesis_evaluations": [
                 _evaluation(
@@ -263,7 +317,7 @@ def build_scientific_report(
                     "Source hashes disagree; no combined interpretation is permitted.",
                     [],
                 )
-                for h in PROFILE_HYPOTHESES
+                for h in declared
             ],
         }
     index = {item["tool_name"]: item for item in evidence}
@@ -273,29 +327,38 @@ def build_scientific_report(
     stability = index.get("summarize_environment_stability")
     candidates = _candidates(stability)
     ids = [item["artifact_id"] for item in evidence]
-    evaluations = [
-        _consistent_candidate_hypothesis(stability),
-        _negative_association_hypothesis(traits, "asi_days", PROFILE_HYPOTHESES[1]),
-        _negative_association_hypothesis(traits, "stay_green_score", PROFILE_HYPOTHESES[2]),
-        _rank_sensitivity_hypothesis(stability),
-    ]
-    matching = evaluations[0].get("matching_genotype_ids")
+    evaluations = (
+        [_structured_evaluation(test, stability, traits) for test in hypothesis_tests]
+        if hypothesis_tests
+        else [
+            _consistent_candidate_hypothesis(stability),
+            _negative_association_hypothesis(traits, "asi_days", PROFILE_HYPOTHESES[1]),
+            _negative_association_hypothesis(traits, "stay_green_score", PROFILE_HYPOTHESES[2]),
+            _rank_sensitivity_hypothesis(stability),
+        ]
+    )
+    matching = _consistent_candidate_hypothesis(stability).get("matching_genotype_ids")
+    expected_hypotheses = (
+        {hypothesis_text(test) for test in hypothesis_tests}
+        if hypothesis_tests
+        else {f"{item['id']}: {item['proposal']}" for item in PROFILE_HYPOTHESES}
+    )
+    answer = _observational_answer(stability, evaluations)
     for candidate in candidates:
         candidate["meets_observed_top_quartile_each_environment"] = (
             candidate["genotype_id"] in matching if matching is not None else None
         )
     return {
-        "version": "ghana-investigation-v1",
+        "version": version,
+        "hypothesis_tests": [test.model_dump(mode="json") for test in hypothesis_tests],
         "additional_hypotheses_not_assessed": [
-            text
-            for text in declared_hypotheses
-            if text not in {f"{item['id']}: {item['proposal']}" for item in PROFILE_HYPOTHESES}
+            text for text in declared_hypotheses if text not in expected_hypotheses
         ],
         "inventory_manifest_sha256": profile["results"].get("inventory_manifest_sha256")
         if profile
         else None,
         "objective": objective,
-        "scope": PROFILE_NOTICE,
+        "scope": scope,
         "conclusion_status": "exploratory_not_field_validated",
         "evidence_coverage": "complete" if REQUIRED_TOOLS.issubset(index) else "partial",
         "missing_tools": sorted(REQUIRED_TOOLS - index.keys()),
@@ -354,11 +417,23 @@ def build_scientific_report(
         },
         "candidate_summaries": candidates,
         "follow_up_analysis": _follow_up(stability, decisions),
-        "next_experiment": _next_experiment(candidates, ids),
+        "observational_answer": answer,
+        "next_experiment": _next_experiment(candidates, ids, answer),
         "reproducibility": provenance,
         "unresolved_scope": [
             "No cross-source genotype merge or matched IITA inference is justified by the supplied identifiers alone.",
             "No causal irrigation effect, calibrated crop simulation, field recommendation or validated broad adaptation is established.",
-            "Template criteria are retrospective operational definitions, not preregistered tests; resampling intervals are conditional and unadjusted for multiple traits/relatedness.",
+            "Declared criteria are retrospective operational definitions, not preregistered tests; resampling intervals are conditional and unadjusted for multiple traits/relatedness.",
         ],
     }
+
+
+def _structured_evaluation(test, stability, traits):
+    hypothesis = criterion(test)
+    if test.kind == "consistent_high_yield":
+        return _consistent_candidate_hypothesis(stability, hypothesis, test.rank_fraction)
+    if test.kind == "leading_rank_sensitivity":
+        return _rank_sensitivity_hypothesis(
+            stability, hypothesis, test.rank_fraction, test.leading_count
+        )
+    return _negative_association_hypothesis(traits, test.trait, hypothesis)

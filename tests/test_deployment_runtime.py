@@ -9,12 +9,40 @@ import unittest
 from pathlib import Path
 from unittest.mock import Mock, patch
 
-from neurolab.deployment_runtime import configure_replay
+from neurolab.deployment_runtime import configure_deployment, configure_replay
 from neurolab.provenance import git_revision
 from neurolab.worker import poll_queue
 
 
 class DeploymentRuntimeTests(unittest.TestCase):
+    def test_meta_opt_in_requires_verified_pricing_and_preserves_worker_isolation(self):
+        from tests.test_providers import SPEND_ENV
+
+        settings = {
+            **SPEND_ENV,
+            "DATABASE_URL": "postgresql://example.invalid/research",
+            "MODEL_INFERENCE_ENABLED": "true",
+            "META_MODEL_API_KEY": "synthetic-test-secret",
+            "META_MODEL_VERIFIED": "true",
+            "AUTH_ED25519_PRIVATE_KEY": "synthetic-signing-key",
+            "API_BEARER_TOKEN": "synthetic-service-secret",
+        }
+        with patch.dict(os.environ, settings, clear=True):
+            configure_deployment(worker=True)
+            self.assertEqual(os.environ["MODEL_INFERENCE_ENABLED"], "true")
+            self.assertEqual(os.environ["META_MODEL_API_KEY"], "synthetic-test-secret")
+            self.assertNotIn("AUTH_ED25519_PRIVATE_KEY", os.environ)
+            self.assertNotIn("API_BEARER_TOKEN", os.environ)
+            self.assertEqual(os.environ["RESEARCH_INLINE_WORKER"], "false")
+        with (
+            patch.dict(os.environ, {**settings, "META_MODEL_VERIFIED": "false"}, clear=True),
+            self.assertRaisesRegex(RuntimeError, "verified provider"),
+        ):
+            configure_deployment()
+        with patch.dict(os.environ, {"DATABASE_URL": settings["DATABASE_URL"]}, clear=True):
+            configure_deployment()
+            self.assertEqual(os.environ["MODEL_INFERENCE_ENABLED"], "false")
+
     def test_profile_rejects_ephemeral_database_before_modifying_environment(self):
         for database in ("", "sqlite:///:memory:", "local-app.db"):
             with (

@@ -1,0 +1,71 @@
+import os,re,json,uuid,time,hashlib,http.client,sys
+from pathlib import Path
+from datetime import datetime,UTC
+sys.path.insert(0,str(Path.cwd()))
+from neurolab.agent import ResearchAgent
+from neurolab.ghana import load_ghana
+from neurolab.store import RunStore
+from neurolab.providers import OpenAICompatibleAdapter,ModelProviderError
+from neurolab.planner import refine_plan
+from neurolab.model_spend import SpendPolicy,apply_policy
+from neurolab.research_context import ResearchPlan
+from neurolab.research_context import ResearchConfiguration,ResearchConstraints
+from neurolab.auth import hash_password
+root=Path('/Users/shayford/.codex/private/neurolab-render')
+trial=root/('original-objective-live-'+datetime.now(UTC).strftime('%Y%m%dT%H%M%SZ'))
+trial.mkdir(mode=0o700)
+os.umask(0o077)
+for line in Path('.env').read_text().splitlines():
+ m=re.match(r'^([A-Z][A-Z0-9_]*)[ \t]*=[ \t]*(.*)$',line)
+ if m: os.environ[m[1]]=m[2].strip().strip('\"\'')
+os.environ.update(MODEL_INFERENCE_ENABLED='true',MODEL_INPUT_USD_PER_MILLION_TOKENS='1.25',MODEL_OUTPUT_USD_PER_MILLION_TOKENS='4.25',MODEL_INPUT_OVERHEAD_TOKENS='1024',MODEL_MAX_COST_USD='1',MODEL_OWNER_DAILY_COST_USD='1',MODEL_GLOBAL_DAILY_COST_USD='1',MODEL_MAX_RUN_TOKENS='100000',MODEL_MAX_OUTPUT_TOKENS='1000')
+class RecordingAdapter(OpenAICompatibleAdapter):
+ def _send_structured(self,endpoint,body,timeout):
+  index=len(list(trial.glob('exchange-*.json')))+1
+  entry={'started_at':datetime.now(UTC).isoformat(),'request':body,'transport':'real http.client.HTTPSConnection, no retries','endpoint_host':endpoint.hostname,'endpoint_path':endpoint.path}
+  connection=http.client.HTTPSConnection(endpoint.hostname,endpoint.port or 443,timeout=timeout)
+  start=time.monotonic()
+  try:
+   connection.request('POST',endpoint.path or '/',body=json.dumps(body),headers={'Authorization':'Bearer '+self.api_key,'Content-Type':'application/json','Accept':'application/json'})
+   response=connection.getresponse(); entry['http_status']=response.status
+   entry['request_identifiers']={k:v for k,v in response.getheaders() if k.lower() in {'x-request-id','request-id','x-fb-trace-id'}}
+   raw=response.read(1048577)
+   if len(raw)>1048576: raise ModelProviderError('Response size exceeded')
+   payload=json.loads(raw);entry['response']=payload
+   if not 200<=response.status<300: raise ModelProviderError('Model provider returned HTTP '+str(response.status))
+   content=payload['choices'][0]['message']['content']; result=json.loads(content) if isinstance(content,str) else content
+   if not isinstance(result,dict):raise ModelProviderError('Structured response is not an object')
+   return result
+  except Exception as exc:
+   entry['exception_type']=type(exc).__name__;raise
+  finally:
+   entry['elapsed_seconds']=time.monotonic()-start
+   (trial/f'exchange-{index:02}.json').write_text(json.dumps(entry,indent=2));connection.close()
+store=RunStore(str(root/'original-objective-live-20261027T234129Z'/'execution.sqlite3'))
+owner=store._execute('SELECT user_id FROM users WHERE is_active=1 LIMIT 1').fetchone()['user_id']
+base=OpenAICompatibleAdapter.from_environment()
+adapter=RecordingAdapter(endpoint=base.endpoint,api_key=base.api_key,model_id=base.model_id,provider=base.provider,max_output_tokens=1000,max_run_tokens=100000).bind_spending(store,owner,'refine:'+str(uuid.uuid4()))
+objective=json.loads(Path('verification/original-objective-diagnostic-2026-10-27.json').read_text())['objective']
+config=ResearchConfiguration(constraints=ResearchConstraints(max_steps=6,max_tool_calls=6,max_seconds=180))
+record={'objective':objective,'historical_run_id':'a150a5bb-15db-44f9-bc28-36a7fb1d770c','amendment':'Six decisions/six tools instead of historical three/five; hypothesis planning is an additional explicit model call. Original objective and seed unchanged.','seed':2026,'source_sha256':load_ghana().source_sha256,'budget_usd':1,'token_ceiling':100000,'pricing_source':'https://dev.meta.ai/docs/pricing-rate-limits','input_price_per_million':1.25,'output_price_per_million':4.25,'operator_authorized':True,'production_inference_changed':False,'source_hashes':{s:hashlib.sha256(Path(s).read_bytes()).hexdigest() for s in ['neurolab/agent.py','neurolab/research_context.py','neurolab/providers.py','neurolab/planner.py','neurolab/action_selection.py','neurolab/model_evidence.py','neurolab/hypothesis_contracts.py','neurolab/scientific_report.py']}}
+try:
+ old_policy=store._execute('SELECT policy_sha256 FROM model_spend_control WHERE control_id=1').fetchone()['policy_sha256']
+ policy=SpendPolicy.from_environment()
+ record['policy_transition']={'previous_digest':old_policy,'new_digest':apply_policy(store,policy,old_policy or 'empty'),'review':'1024 provider overhead allowance on top of complete UTF-8 message/schema byte bounds; prior actual request sizes greatly exceeded reported input tokens. No objective truncation. Counters retained.'}
+ plan=ResearchPlan.model_validate(json.loads((root/'original-objective-live-20261027T235919Z'/'record.json').read_text())['accepted_plan'])
+ record['planning_source']='Exact structured Meta plan from attempt 5 reused without modifying thresholds, hypotheses, tasks or objective. No new planning call. Verifies six fresh Meta decisions and numeric execution after context projection fix; original unsupported historical hypotheses remain unassessed.'
+ rid=store.create_run(config.dataset_id,objective,load_ghana().source_sha256,2026,owner_user_id=owner,research_configuration=config.model_dump(mode='json'),research_plan=plan.model_dump(mode='json'))
+ adapter.bind_spending(store,owner,'run:'+rid)
+ record['accepted_plan']=plan.model_dump(mode='json')
+ result=ResearchAgent(load_ghana(),store,mode='meta',model_adapter=adapter,configuration=config,research_plan=plan,max_steps=6,max_tool_calls=6,max_wall_time=180).run(objective,seed=2026,run_id=rid)
+ record['result']=result;record['artifacts']=store.list_artifacts(result['report']['run_id'])
+except Exception as exc:
+ record['failure_type']=type(exc).__name__
+ record['failure_message']=str(exc) if isinstance(exc,ModelProviderError) else 'See retained exchange and validation failure type; no automatic retry'
+finally:
+ record['reserved_tokens']=adapter.tokens_reserved
+ record['finished_at']=datetime.now(UTC).isoformat()
+ (trial/'record.json').write_text(json.dumps(record,indent=2))
+ reservations=[dict(x) for x in store._execute('SELECT * FROM model_spend_reservations').fetchall()]
+ (trial/'reservations.json').write_text(json.dumps(reservations,indent=2));store.close()
+ print(json.dumps({'trial_directory':str(trial),'exchange_count':len(list(trial.glob('exchange-*.json'))),'status':record.get('result',{}).get('run',{}).get('status'),'failure_type':record.get('failure_type'),'reserved_tokens':record['reserved_tokens']}))

@@ -78,7 +78,18 @@ class ProviderContractTests(unittest.TestCase):
         sent = json.loads(request.kwargs["body"])
         self.assertEqual(sent["messages"], MESSAGES)
         self.assertTrue(sent["response_format"]["json_schema"]["strict"])
+        self.assertEqual(sent["reasoning_effort"], "minimal")
         connection.close.assert_called_once()
+
+    def test_short_action_budget_and_planning_headroom_are_reserved_separately(self):
+        model = self.model()
+        model.max_output_tokens = 4000
+        with patch.object(model, "_request_structured", return_value={}) as request:
+            model.generate_structured(MESSAGES, SCHEMA, timeout=3)
+            self.assertEqual(request.call_args.kwargs["max_tokens"], 1000)
+            self.assertEqual(request.call_args.kwargs["reasoning_effort"], "minimal")
+            model.generate_refinement(MESSAGES, SCHEMA, timeout=3)
+            self.assertEqual(request.call_args.kwargs["max_tokens"], 4000)
 
     def test_http_transport_and_malformed_responses_fail_without_exposing_secrets(self):
         cases = [

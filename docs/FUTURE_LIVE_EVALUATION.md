@@ -37,3 +37,7 @@ IITA contextual comparison is optional and excluded from this matrix because com
 ## Current delivery boundary
 
 The frozen plan closes a planning gap only. Actual execution, reviewed live runner, provider cancellation/billing acceptance, independent review and held-out validation remain unverified. Browser QA, footage capture, target deployment, licensing/public publication and submission are tracked separately in `verification/CURRENT_COMPLETION_GATES.md`.
+
+## 28 October authorization and protocol boundary
+
+The owner subsequently authorized bounded real inference for the original-objective investigation and requested persistent Meta enablement. Seven retained attempts culminated in one complete exploratory run; local Meta is now enabled and hosted opt-in rollout is tracked separately. This does not execute the 180-trial comparison above or supply blind/held-out review. Its frozen module/schema hashes predate current hypothesis/action contracts; amend/version the protocol and collector before any matrix execution. Historical pause statements above describe the earlier state, not a present assertion that the key is exhausted or unavailable.
