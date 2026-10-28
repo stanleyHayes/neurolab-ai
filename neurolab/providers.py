@@ -25,6 +25,14 @@ HTTPS_REQUIRED = "Configured model endpoint must use HTTPS"
 class ModelProviderError(RuntimeError):
     """Sanitized model configuration, transport, or response error."""
 
+    def __init__(self, message: str, *, http_status: int | None = None):
+        super().__init__(message)
+        self.http_status = http_status
+
+    @property
+    def permanent(self) -> bool:
+        return self.http_status in {400, 401, 402, 403, 404, 405, 410, 422}
+
 
 class ModelContextLimitError(ModelProviderError):
     """The serialized request exceeds the safe model-context boundary."""
@@ -169,7 +177,9 @@ class OpenAICompatibleAdapter:
             )
             response = connection.getresponse()
             if response.status < 200 or response.status >= 300:
-                raise ModelProviderError(f"Model provider returned HTTP {response.status}")
+                raise ModelProviderError(
+                    f"Model provider returned HTTP {response.status}", http_status=response.status
+                )
             raw = response.read(1_048_577)
             if len(raw) > 1_048_576:
                 raise ModelProviderError("Model provider response exceeds the size limit")

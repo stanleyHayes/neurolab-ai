@@ -33,3 +33,7 @@ Finite resampling sensitivity remains visible: ASI rho was -0.250356; 1,000 draw
 ## Persistent Meta activation
 
 The owner subsequently requested `MODEL_INFERENCE_ENABLED=true`. Private local configuration now includes verified model settings, pricing, 100,000 tokens and $1 run/owner-day/global-day limits. The local API and Next proxy report real Meta available. The deployment profile defaults to replay, but explicit true now requires verified provider configuration and spending settings; worker signing/service credentials remain removed. Provider secrets belong on the API/worker, never Vercel public variables. Hosted rollout and actual endpoint acceptance are recorded separately; setting a service variable is not proof that a running image uses it.
+
+## Hosted provider failure handling
+
+A permanent provider HTTP configuration/access rejection (400,401,402,403,404,405,410,422) stops additional model requests within that run. The report preserves the status and labels remaining numerical plan execution as deterministic recovery; it stays PARTIAL. Transport errors and transient HTTP429/5xx are not classified as permanent by this rule. No error-body text or credentials are persisted. See the [hosted activation addendum](../verification/HOSTED_META_ACTIVATION_ADDENDUM.md); actual hosted Meta availability remains unresolved.

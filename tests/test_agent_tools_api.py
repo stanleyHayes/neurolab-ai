@@ -5,7 +5,7 @@ import unittest
 import uuid
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
-from unittest.mock import patch
+from unittest.mock import Mock, patch
 
 from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
@@ -153,6 +153,33 @@ class RunOrchestrationTests(unittest.TestCase):
         agent = ResearchAgent(self.dataset, self.store, mode="meta")
         with self.assertRaises(AgentConfigurationError):
             agent.run("test")
+
+    def test_permanent_provider_error_stops_calls_and_keeps_recovery_partial(self):
+        adapter = Mock(provider="fixture", model_id="fixture")
+        adapter.generate_structured.side_effect = ModelProviderError(
+            "Model provider returned HTTP 404", http_status=404
+        )
+        result = ResearchAgent(
+            self.dataset,
+            self.store,
+            max_steps=3,
+            max_tool_calls=3,
+            mode="meta",
+            model_adapter=adapter,
+        ).run("Check observed yield and genotype patterns", seed=8)
+        self.assertEqual(adapter.generate_structured.call_count, 1)
+        report = result["report"]
+        self.assertEqual(report["completion_status"], "partial")
+        self.assertEqual(len(report["evidence_ids"]), 3)
+        self.assertEqual(report["tool_failures"][0]["provider_http_status"], 404)
+        self.assertTrue(report["tool_failures"][0]["provider_requests_stopped"])
+        self.assertTrue(any("HTTP 404" in item for item in report["limitations"]))
+        self.assertTrue(
+            all(
+                decision["selection_source"] == "deterministic_plan_recovery"
+                for decision in report["decisions"]
+            )
+        )
 
     def test_meta_loop_uses_structured_allowlisted_evidence_dependent_decisions(self):
         class FakeAdapter:

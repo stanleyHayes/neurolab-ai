@@ -21,7 +21,7 @@ from .investigation_profile import (
 )
 from .model_evidence import evidence_results
 from .provenance import RUNTIME_PROVENANCE
-from .providers import StructuredModelAdapter
+from .providers import ModelProviderError, StructuredModelAdapter
 from .research_context import (
     ResearchConfiguration,
     ResearchPlan,
@@ -349,9 +349,11 @@ class ResearchAgent:
         recovered: bool = False,
         event_type: str = "tool.failed",
     ) -> None:
-        failures.append(
-            {"action": action, "error_type": type(error).__name__, "recovered": recovered}
-        )
+        failure = {"action": action, "error_type": type(error).__name__, "recovered": recovered}
+        if isinstance(error, ModelProviderError):
+            failure["provider_http_status"] = error.http_status
+            failure["provider_requests_stopped"] = error.permanent
+        failures.append(failure)
         self.store.add_event(
             run_id,
             event_type,
@@ -430,6 +432,10 @@ class ResearchAgent:
         if self.mode != "meta":
             selected = decisions[-1]["selected_action"] if decisions else None
             return next((task for task in pending if task.tool_name == selected), pending[0]), {}
+        if any(failure.get("provider_requests_stopped") for failure in failures):
+            task = pending[0]
+            self._record_decision(run_id, decisions, task, evidence, "deterministic_plan_recovery")
+            return task, {}
         source = "model" if self.model_feedback else "model_without_result_feedback"
         try:
             choice = self._select_action(
@@ -539,6 +545,15 @@ class ResearchAgent:
         if failures:
             limitations.append(
                 "At least one decision or analysis failed; diagnostic recovery does not replace missing analysis."
+            )
+        stopped_statuses = {
+            failure["provider_http_status"]
+            for failure in failures
+            if failure.get("provider_requests_stopped")
+        }
+        for status in sorted(stopped_statuses):
+            limitations.append(
+                f"Meta provider returned HTTP {status}; further model requests were stopped for this run. Remaining plan execution is deterministic recovery, not successful Meta inference."
             )
         if not complete:
             limitations.append(

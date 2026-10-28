@@ -94,6 +94,7 @@ class ProviderContractTests(unittest.TestCase):
     def test_http_transport_and_malformed_responses_fail_without_exposing_secrets(self):
         cases = [
             (401, b"private-provider-body", None),
+            (404, b"private-provider-body", None),
             (429, b"private-provider-body", None),
             (500, b"private-provider-body", None),
             (200, b"not-json", None),
@@ -118,6 +119,9 @@ class ProviderContractTests(unittest.TestCase):
                 ):
                     model.generate_structured(MESSAGES, SCHEMA, timeout=1)
                 self.assertNotIn("private", str(raised.exception))
+                if status != 200:
+                    self.assertEqual(raised.exception.http_status, status)
+                    self.assertEqual(raised.exception.permanent, status in {401, 404})
                 self.assertGreater(model.tokens_reserved, 0)
                 connection.close.assert_called_once()
 
