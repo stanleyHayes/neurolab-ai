@@ -8,7 +8,12 @@ import uuid
 from unittest.mock import Mock, patch
 
 from neurolab.deployment_runtime import configure_deployment, configure_replay
-from neurolab.model_configuration import BASETEN_ENDPOINT, BASETEN_MODEL, model_configuration
+from neurolab.model_configuration import (
+    BASETEN_ENDPOINT,
+    BASETEN_EVENT_MODEL,
+    BASETEN_MODEL,
+    model_configuration,
+)
 from neurolab.model_spend import ModelSpendError, ModelSpendGuard, SpendPolicy, apply_policy
 from neurolab.providers import ModelProviderError, OpenAICompatibleAdapter, adapter_status
 from neurolab.store import RunStore
@@ -48,6 +53,19 @@ class BasetenProviderTests(unittest.TestCase):
         self.addCleanup(self.store.close)
         self.owner = self.store.create_user("baseten@example.test", "fixture", "Test")["user_id"]
 
+    def test_event_alias_is_explicit_and_requires_its_own_verification(self):
+        with patch.dict(
+            os.environ,
+            {
+                "BASETEN_MODEL_ID": BASETEN_EVENT_MODEL,
+                "BASETEN_MODEL_VERIFIED": "false",
+            },
+        ):
+            configuration = model_configuration()
+            self.assertTrue(configuration.configured)
+            self.assertFalse(configuration.verified)
+            self.assertEqual(configuration.model_id, BASETEN_EVENT_MODEL)
+
     def model(self):
         return OpenAICompatibleAdapter.from_environment().bind_spending(
             self.store, self.owner, "smoke:" + str(uuid.uuid4())
@@ -83,7 +101,7 @@ class BasetenProviderTests(unittest.TestCase):
     def test_only_approved_meta_open_model_and_baseten_endpoint_are_accepted(self):
         for change in [
             {"BASETEN_MODEL_ID": "another-model"},
-            {"BASETEN_MODEL_ID": "meta-models/muse-spark-open"},
+            {"BASETEN_MODEL_ID": "meta-models/unapproved"},
             {"BASETEN_MODEL_API_BASE_URL": "https://foreign.invalid/chat"},
             {"BASETEN_MODEL_API_BASE_URL": BASETEN_ENDPOINT + "?token=secret"},
         ]:

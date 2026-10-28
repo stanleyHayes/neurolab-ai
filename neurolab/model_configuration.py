@@ -4,7 +4,9 @@ import os
 from dataclasses import dataclass, field
 
 BASETEN_ENDPOINT = "https://inference.baseten.co/v1/chat/completions"
-BASETEN_MODEL = "meta-models/muse-spark-open-1026"
+BASETEN_MODEL = "meta-models/muse-spark-open"
+BASETEN_EVENT_MODEL = "meta-models/muse-spark-open-1026"
+BASETEN_ALLOWED_MODELS = frozenset({BASETEN_MODEL, BASETEN_EVENT_MODEL})
 PROVIDER_ENV = {
     "meta": (
         "META_MODEL_API_BASE_URL",
@@ -34,7 +36,11 @@ class ModelConfiguration:
     def configured(self):
         present = bool(self.endpoint and self.model_id and self.api_key)
         if self.provider == "baseten":
-            return present and self.endpoint == BASETEN_ENDPOINT and self.model_id == BASETEN_MODEL
+            return (
+                present
+                and self.endpoint == BASETEN_ENDPOINT
+                and self.model_id in BASETEN_ALLOWED_MODELS
+            )
         return present
 
 
