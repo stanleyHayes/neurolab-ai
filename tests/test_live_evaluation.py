@@ -148,6 +148,38 @@ class LiveCollectorTests(unittest.TestCase):
                 )
             self.assertEqual(runner.call_count, 180)
 
+    def test_permanent_provider_failure_stops_entire_matrix_after_retaining_trial(self):
+        response = Mock(status=404)
+        response.read.return_value = b'{"error":"fixture unavailable"}'
+        connection = Mock()
+        connection.getresponse.return_value = response
+        with (
+            tempfile.TemporaryDirectory() as root,
+            patch("neurolab.providers.http.client.HTTPSConnection", return_value=connection),
+        ):
+            destination = Path(root) / "stopped"
+            with self.assertRaisesRegex(ValueError, "Permanent provider failure"):
+                collect_live_matrix(
+                    self.manifest, self.dataset, self.store, self.owner, destination, ROOT
+                )
+            records = [
+                json.loads(row) for row in (destination / "results.jsonl").read_text().splitlines()
+            ]
+            self.assertEqual(len(records), 1)
+            self.assertEqual(records[0]["permanent_provider_failure_status"], 404)
+            self.assertEqual(records[0]["model_calls"], 1)
+            self.assertIsNotNone(records[0]["report"])
+            self.assertEqual(self.store.get_run(records[0]["run_id"])["status"], "PARTIAL")
+            self.assertEqual(connection.request.call_count, 1)
+            attempts = [
+                json.loads(row) for row in (destination / "attempts.jsonl").read_text().splitlines()
+            ]
+            self.assertEqual(
+                [row["kind"] for row in attempts], ["trial.started", "collection.stopped"]
+            )
+            self.assertFalse((destination / "review-template.json").exists())
+            self.assertEqual(len(records[0]["spend_reservations"]), 1)
+
     def test_interruption_flushes_attempt_and_result_without_retry(self):
         with tempfile.TemporaryDirectory() as root:
             destination = Path(root) / "interrupted"

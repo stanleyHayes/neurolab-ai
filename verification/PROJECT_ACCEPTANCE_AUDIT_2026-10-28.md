@@ -30,7 +30,8 @@ This is the current reading of the requirements, not a completion certificate. E
 
 1. The adapter's valid concise model rationale was discarded and replaced with a generic event sentence. It is now preserved in explicitly unverified **event** metadata for timeline/cinematic review and excluded from scientific report claims/decisions: the unchanged adversarial test requires this boundary.
 2. The collector labelled its already-parsed action as a raw provider response, dropping usage metadata. The adapter now retains the bounded raw envelope/status/allowlisted request identifiers privately before action parsing, with safe failure metadata and retained unknown charges. No retrospective usage is invented for earlier captures.
-3. README/current-state statements about exhausted credits, paused inference and old test counts had become stale. Current summaries now use dated, scoped evidence; historical reports remain intact.
+3. The collector previously continued to later trials after a permanent provider failure had stopped only the current agent. It now retains the attempted partial record and stops the entire batch before any subsequent trial; a programmed HTTP404 regression verifies one transport call and no completed-matrix output. This is a contract check, not an actual matrix run.
+4. README/current-state statements about exhausted credits, paused inference and old test counts had become stale. Current summaries now use dated, scoped evidence; historical reports remain intact.
 
 These corrections do not close the remaining external gates. Local bounded real smoke checks are separate from the original-objective acceptance case and the unexecuted comparison matrix.
 

@@ -153,6 +153,8 @@ class RecordedAdapter(OpenAICompatibleAdapter):
             response = super()._send_structured(endpoint, body, timeout)
         except BaseException as error:
             self._record_response_metadata()
+            if isinstance(error, ModelProviderError) and error.permanent:
+                self.permanent_failure_status = error.http_status
             _append(
                 self.transcript,
                 {
@@ -257,6 +259,7 @@ def _trial_snapshot(store, run_id, adapter):
         "tokens_reserved": adapter.tokens_reserved if adapter else 0,
         "model_calls": getattr(adapter, "requests_attempted", 0),
         "provider_reported_usage": getattr(adapter, "reported_usage", []),
+        "permanent_provider_failure_status": getattr(adapter, "permanent_failure_status", None),
         "spend_reservations": reservations,
         "cost_scope": "Conservative reservations, not invoices",
     }
@@ -313,6 +316,20 @@ def collect_live_matrix(
             record["answer_sha256"] = answer_digest(record)
             _append(destination / "results.jsonl", record)
             records.append(record)
+        if record.get("permanent_provider_failure_status") is not None:
+            _append(
+                destination / "attempts.jsonl",
+                {
+                    "kind": "collection.stopped",
+                    "answer_id": identifier,
+                    "reason": "permanent_provider_failure",
+                    "http_status": record["permanent_provider_failure_status"],
+                    "utc": datetime.now(UTC).isoformat(),
+                },
+            )
+            raise ValueError(
+                "Permanent provider failure; partial evidence retained, no automatic resume"
+            )
     (destination / "review-template.json").write_text(
         json.dumps(review_template(records), indent=2) + "\n"
     )

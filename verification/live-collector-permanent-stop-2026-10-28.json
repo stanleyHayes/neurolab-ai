@@ -1,0 +1,29 @@
+{
+  "verified_at_utc": "2026-10-28T02:15:06.447845+00:00",
+  "scope": "Programmed HTTP404, actual agent/SQL/Ghana tools; not live evaluation",
+  "source_sha256": {
+    "neurolab/live_evaluation.py": "656d1078977cffff6227ff0569577b890fc98a2306bb350582cea18014ba2898",
+    "tests/test_live_evaluation.py": "5a776593a8845c1eac02253be4a6533dff273acf6f9903a75425eb68840a1f5f"
+  },
+  "focused_tests_passed": 8,
+  "quality": {
+    "python": 220,
+    "proxy": 11,
+    "ui": 92,
+    "total": 323,
+    "lint_types_source_audit_compile_build": "passed"
+  },
+  "sonarqube": {
+    "gate": "OK",
+    "issues": 0,
+    "hotspots": 0,
+    "scope": "Changed worktree bytes scanned before commit; SCM revision is parent"
+  },
+  "log_sha256": {
+    "neurolab-collector-stop-quality.log": "cc1c316c8550712970875806d44929c3a904420374b2fb9dda120402d677a6cd",
+    "neurolab-collector-stop-sonar.log": "76dd783f01ba99a923ce5686428a23fcab6a3f69e3dd8d609ebfce29395a8a60"
+  },
+  "paid_calls": 0,
+  "matrix_executed": false,
+  "budget_or_approval_changed": false
+}
