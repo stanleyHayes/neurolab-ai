@@ -1,0 +1,124 @@
+{
+  "verified_at_utc": "2026-10-28T02:35:37.432535+00:00",
+  "scope": "First real browser recording pilot and corrected narration assets; not finished video",
+  "capture": {
+    "scope": "Actual1920x1080browser pilot, not final narrated demo",
+    "no_login_recorded": true,
+    "no_new_science_or_inference": true,
+    "actions": [
+      {
+        "kind": "authenticated_overview",
+        "elapsed_seconds": 4.203
+      },
+      {
+        "kind": "source_view",
+        "elapsed_seconds": 10.267,
+        "headings": [
+          "Data Library",
+          "Ghana maize trials",
+          "Original study & attribution",
+          "Source fingerprint"
+        ]
+      },
+      {
+        "kind": "saved_history",
+        "elapsed_seconds": 14.753,
+        "requested_run_prefix": "6f8f922a",
+        "requested_present": true,
+        "options": [
+          "PARTIAL \u00b7 e4a93800",
+          "CANCELLED \u00b7 456b694f",
+          "PARTIAL \u00b7 0956d7ab",
+          "PARTIAL \u00b7 5909d460",
+          "COMPLETE \u00b7 6887054b",
+          "COMPLETE \u00b7 6f8f922a"
+        ]
+      },
+      {
+        "kind": "saved_bundle",
+        "elapsed_seconds": 20.595,
+        "run_id": "6f8f922a-dfdd-46b3-bb65-035e6983f25e",
+        "artifact_count": 6,
+        "event_count": 59,
+        "tool_names": [
+          "dataset_profile",
+          "inspect_missingness",
+          "compare_regimes",
+          "rank_genotypes",
+          "summarize_environment_stability",
+          "analyze_trait_associations"
+        ]
+      }
+    ],
+    "video": "page@54605c7887c2fbfda9444582599b9f8b.webm"
+  },
+  "ffprobe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "vp9",
+        "width": 1920,
+        "height": 1080,
+        "avg_frame_rate": "25/1"
+      }
+    ],
+    "format": {
+      "duration": "23.080000"
+    }
+  },
+  "raw_capture_sha256": "c17bcd093f2c7ce8ecd040bff0f29c536b0e57993ef9098ebaa7e0471761217e",
+  "full_decode": "ffmpeg entire raw capture to null passed",
+  "selected_saved_run": {
+    "run_id": "6f8f922a-dfdd-46b3-bb65-035e6983f25e",
+    "completion_status": "complete",
+    "mode": "deterministic_replay",
+    "artifacts": 6,
+    "events": 59
+  },
+  "revision_voice": {
+    "generator": "Local Kokoro;27unchanged clips HyperFrames0.8.209; revised line3 HyperFrames0.8.210",
+    "voice": "bm_george",
+    "speed": 0.96,
+    "ai_generated": true,
+    "duration_seconds": 165.504,
+    "caption_method": "Sentence boundaries from actual WAV clips, not word transcription",
+    "caption_wrap_columns": 72,
+    "caption_max_lines": 2,
+    "script_sha256": "44f7b10e066eb0d907f710acfcf1f645c98e53a19633585414b007f0cd964bee",
+    "outputs": {
+      "neurolab-narration.srt": "e9543733aa7bf803959b7bc92330e434607cb904c9abf5d02e27e62f813e655e",
+      "neurolab-narration.mp3": "9780e6f04d86dd400075c76626afca1521483206c3110245624df88f7b2a36f3"
+    },
+    "paid_voice_calls": 0,
+    "meta_calls": 0,
+    "final_cut_alignment": "pending",
+    "listening_review": "pending"
+  },
+  "voice_ffprobe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "mp3",
+        "sample_rate": "48000",
+        "channels": 1
+      }
+    ],
+    "format": {
+      "duration": "165.504000"
+    }
+  },
+  "tooling_failures": [
+    "First capture attempt reported Error without details; no footage file created",
+    "Diagnostic retry confirmed missing Playwright FFmpeg1013; installed helper and next recording succeeded"
+  ],
+  "limits": [
+    "Pilot begins on a partial Meta-mode saved run before switching to the complete deterministic run; not acceptable as final deterministic opening",
+    "No setup/start/follow-up/results narration alignment yet",
+    "No finalMP4/burned captions/public video or submission",
+    "Generated narrator listening review pending; synthetic speech, not a human or cloned voice"
+  ],
+  "raw_capture_path": "output/demo-video/footage-pilot-20261028/page@54605c7887c2fbfda9444582599b9f8b.webm",
+  "revised_audio_path": "output/demo-video/full-narration-v2/neurolab-narration.mp3"
+}

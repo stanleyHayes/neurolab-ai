@@ -2,7 +2,7 @@
 
 workflow: product-launch-video
 flow: autonomous
-status: waiting for real browser footage or working browser control
+status: real browser pilot captured; full walkthrough and final edit pending
 
 ## Intent
 
@@ -29,3 +29,11 @@ Keep source, status and important numeric/caveat labels readable. Shortened wait
 ## Next required input
 
 Working browser control and a safe recording path, or an owner-provided screen recording. A final narrated application walkthrough cannot be delivered from the voice preview alone. Do not publish or submit a video automatically.
+
+## 28 October current recording state
+
+Isolated Playwright/Chromium now records real browser footage. A23.08second1920x1080/25fps pilot exists in ignored output/demo-video/footage-pilot-20261028; login was completed in an unrecorded context and cookies transferred only in memory. It verifies capture and an owned complete deterministic run with6artifacts/59events. The opening still shows a different partial Meta-mode run, so it is a pilot, not usable as the final deterministic opening. No new analysis or Meta inference was performed. Earlier CUA errors remain true for desktop control, not a blocker to this recorder.
+
+Local Meta is enabled and verified separately; hosted Meta still returns404. Do not narrate the old paused-credit assertion as current fact or disable the owner's inference setting for a recording. Select deterministic mode explicitly for the chosen demo workflow. Revised narration-v2.json removes the stale pause sentence. New local audio under output/demo-video/full-narration-v2 runs165.504seconds of sentence clips (MP3 container includes padding); original audio/script retained.27unchanged WAV clips are reused and one line is regenerated with HyperFrames0.8.210/Kokoro. Captions are sentence-timed, at most2lines, not final cut-aligned or word-transcribed.
+
+Next: capture real preparation/start/results/focused follow-up/export, ensure the correct selected run/mode from the usable opening, align the revised audio/captions, perform listening/visual review, render finalMP4 and retain originals. No final or public video is claimed.

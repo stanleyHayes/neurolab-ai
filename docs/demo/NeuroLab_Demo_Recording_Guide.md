@@ -272,3 +272,7 @@ Keep the screen recording, voice track, evidence download and final video togeth
 ## Repository references
 
 This guide follows the current UI source and the authoritative methods documents: `README.md`, `Architecture.md`, `docs/DETERMINISTIC_INVESTIGATION_PROFILE.md`, `docs/FOCUSED_REPLAY_ROUTING.md`, `docs/OBSERVATIONAL_SENSITIVITY_METHODS.md`, `docs/SCIENTIFIC_REPORT_EXPORT.md` and the saved evidence in `verification/maize-investigation/`. The original objective is preserved in `tests/fixtures/ghana-research-objective.txt`.
+
+## 28 October current-state correction
+
+The historical exhausted-credit statements above are superseded: local real Meta is enabled and verified; hosted Meta model availability remains unresolved. For this reproducible recording, select deterministic mode explicitly without changing the owner's global inference preference. Isolated Chromium can now capture the actual app; a1920x1080pilot exists. Use video/BRIEF.md and video/narration-v2.json for current recording status. The pilot is not the full demonstration.

@@ -23,3 +23,7 @@ Record actual application interactions, then align the cuts to these times. Leav
 - Final audio listening review, actual screen capture, cut alignment, subtitle visual review and final MP4 remain outstanding. The narration describes the intended capture; revise any sentence whose action is absent from the final footage.
 
 Browser control currently fails with `CUA_REPL_ENABLED_SURFACES is required`. HTTP availability alone does not verify browser behavior. Meta inference remains disabled.
+
+## 28 October revision
+
+The historical table above describes original audio. Working browser recording is now available through isolated Chromium. Use narration-v2.json and output/demo-video/full-narration-v2/metadata.json for revised actual sentence times (165.504seconds). The stale Meta-paused sentence is removed; inference remains enabled independently, while the demo selects deterministic analysis. The23.08second pilot verifies recording only and does not satisfy this table's complete workflow. Its first selected partial Meta-mode run must not be used as the final deterministic opening. Full recording, listening, caption/cut review and MP4 remain pending.
