@@ -1,0 +1,90 @@
+{
+  "scope": "Read-only actual hosted browser; saved complete deterministic run; no inference or analysis admission",
+  "browser": "149.0.7827.55",
+  "checks": [
+    {
+      "viewport": "desktop",
+      "section": "research-results",
+      "title": "Research Results",
+      "run": "2993f361",
+      "overflow": false,
+      "width": 1440,
+      "scrollWidth": 1440,
+      "table_count": 0,
+      "empty_buttons": [],
+      "unlabelled_inputs": [],
+      "outside": []
+    },
+    {
+      "viewport": "desktop",
+      "section": "genotype-explorer",
+      "title": "Genotype Explorer",
+      "run": "2993f361",
+      "overflow": false,
+      "width": 1440,
+      "scrollWidth": 1440,
+      "table_count": 0,
+      "empty_buttons": [],
+      "unlabelled_inputs": [],
+      "outside": []
+    },
+    {
+      "viewport": "desktop",
+      "section": "trait-analytics",
+      "title": "Trait Analytics",
+      "run": "2993f361",
+      "overflow": false,
+      "width": 1440,
+      "scrollWidth": 1440,
+      "table_count": 0,
+      "empty_buttons": [],
+      "unlabelled_inputs": [],
+      "outside": []
+    },
+    {
+      "viewport": "desktop",
+      "section": "environments",
+      "title": "Environments",
+      "run": "2993f361",
+      "overflow": false,
+      "width": 1440,
+      "scrollWidth": 1440,
+      "table_count": 0,
+      "empty_buttons": [],
+      "unlabelled_inputs": [],
+      "outside": []
+    },
+    {
+      "viewport": "desktop",
+      "section": "data-library",
+      "title": "Data Library",
+      "run": "2993f361",
+      "overflow": false,
+      "width": 1440,
+      "scrollWidth": 1440,
+      "table_count": 0,
+      "empty_buttons": [],
+      "unlabelled_inputs": [],
+      "outside": []
+    },
+    {
+      "viewport": "desktop",
+      "section": "ai-insights",
+      "title": "AI Insights",
+      "run": "2993f361",
+      "overflow": false,
+      "width": 1440,
+      "scrollWidth": 1440,
+      "table_count": 3,
+      "empty_buttons": [],
+      "unlabelled_inputs": [],
+      "outside": []
+    }
+  ],
+  "errors": [],
+  "admissions": 0,
+  "failure": {
+    "name": "TimeoutError",
+    "message": "page.waitForFunction: Timeout 30000ms exceeded."
+  }
+}

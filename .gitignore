@@ -36,3 +36,6 @@ nohup.out
 
 # Vercel link state and downloaded environment files.
 .vercel/
+
+# Private responsive-browser captures; publish only reviewed verification slices.
+/output/browser-results-sweep*/

@@ -1,0 +1,109 @@
+{
+  "scope": "Actual local file browser rendering of unchanged consolidated original-objective report, not new scientific execution",
+  "browser": "149.0.7827.55",
+  "checks": [
+    {
+      "label": "desktop",
+      "viewport": 1440,
+      "scrollWidth": 1440,
+      "overflow": false,
+      "headings": [
+        "1. Research objective",
+        "2. Sources and provenance",
+        "3. Hypotheses and counterevidence",
+        "4. Methodology",
+        "5. Statistical findings",
+        "6. Visualizations from saved numeric artifacts",
+        "7. Exploratory candidates",
+        "8. Scientific limitations",
+        "9. Next experiments \u2014 proposal, not executed",
+        "10. Reproducibility",
+        "11. Development and verification history \u2014 engineering appendix"
+      ],
+      "images": [
+        {
+          "loaded": true,
+          "width": 1980,
+          "height": 972
+        },
+        {
+          "loaded": true,
+          "width": 1980,
+          "height": 1116
+        },
+        {
+          "loaded": true,
+          "width": 1980,
+          "height": 1188
+        },
+        {
+          "loaded": true,
+          "width": 1980,
+          "height": 1224
+        }
+      ],
+      "scripts": 0
+    },
+    {
+      "label": "phone",
+      "viewport": 390,
+      "scrollWidth": 390,
+      "overflow": false,
+      "headings": [
+        "1. Research objective",
+        "2. Sources and provenance",
+        "3. Hypotheses and counterevidence",
+        "4. Methodology",
+        "5. Statistical findings",
+        "6. Visualizations from saved numeric artifacts",
+        "7. Exploratory candidates",
+        "8. Scientific limitations",
+        "9. Next experiments \u2014 proposal, not executed",
+        "10. Reproducibility",
+        "11. Development and verification history \u2014 engineering appendix"
+      ],
+      "images": [
+        {
+          "loaded": true,
+          "width": 1980,
+          "height": 972
+        },
+        {
+          "loaded": true,
+          "width": 1980,
+          "height": 1116
+        },
+        {
+          "loaded": true,
+          "width": 1980,
+          "height": 1188
+        },
+        {
+          "loaded": true,
+          "width": 1980,
+          "height": 1224
+        }
+      ],
+      "scripts": 0
+    }
+  ],
+  "errors": [],
+  "external_requests": [],
+  "report_sha256": "9d3ccf8c006b599b32dc62c3cb0b288d59f2cf4c9b60df43c9ba1dbf0a4bfae6",
+  "report_unchanged_since_original_export": true,
+  "screenshots": {
+    "phone-appendix.png": "56ae5ed57b5799e77123980567597dc2ef470a3f452bc3518a31f91e22654871",
+    "phone-opening.png": "0c42a6f2afb912e2cb60b14c2ebac430db3e46574a5abf63daa9c794439c514d",
+    "desktop-opening.png": "cdfa723c2a4e9806acd9ad7e6300d4616593e0f9ad586567571ede6816e717c2",
+    "desktop-appendix.png": "7e0adcbae1d3ee852e79d001a40a5540fb62298c4bf901112d9ab5b658e34a5c"
+  },
+  "visually_inspected": [
+    "desktop-opening.png",
+    "phone-appendix.png"
+  ],
+  "limits": [
+    "No print or physical screen-reader acceptance",
+    "Screenshots inspected for layout; scientific validity follows separate saved evidence",
+    "Original engineering history is historical and unchanged"
+  ]
+}

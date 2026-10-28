@@ -1,0 +1,730 @@
+{
+  "scope": "Read-only actual hosted browser; saved complete deterministic run; no inference or analysis admission",
+  "browser": "149.0.7827.55",
+  "checks": [
+    {
+      "viewport": "desktop",
+      "section": "research-results",
+      "title": "Research Results",
+      "run": "2993f361",
+      "overflow": false,
+      "width": 1440,
+      "scrollWidth": 1440,
+      "table_count": 0,
+      "loaded_artifact_badge": false,
+      "empty_buttons": [],
+      "unlabelled_inputs": [],
+      "outside": []
+    },
+    {
+      "viewport": "tablet",
+      "section": "research-results",
+      "title": "Research Results",
+      "run": "2993f361",
+      "overflow": false,
+      "width": 820,
+      "scrollWidth": 820,
+      "table_count": 0,
+      "loaded_artifact_badge": false,
+      "empty_buttons": [],
+      "unlabelled_inputs": [],
+      "outside": []
+    },
+    {
+      "viewport": "phone",
+      "section": "research-results",
+      "title": "Research Results",
+      "run": "2993f361",
+      "overflow": false,
+      "width": 390,
+      "scrollWidth": 390,
+      "table_count": 0,
+      "loaded_artifact_badge": false,
+      "empty_buttons": [],
+      "unlabelled_inputs": [],
+      "outside": []
+    },
+    {
+      "viewport": "desktop",
+      "section": "genotype-explorer",
+      "title": "Genotype Explorer",
+      "run": "2993f361",
+      "overflow": false,
+      "width": 1440,
+      "scrollWidth": 1440,
+      "table_count": 0,
+      "loaded_artifact_badge": false,
+      "empty_buttons": [],
+      "unlabelled_inputs": [],
+      "outside": []
+    },
+    {
+      "viewport": "tablet",
+      "section": "genotype-explorer",
+      "title": "Genotype Explorer",
+      "run": "2993f361",
+      "overflow": false,
+      "width": 820,
+      "scrollWidth": 820,
+      "table_count": 0,
+      "loaded_artifact_badge": false,
+      "empty_buttons": [],
+      "unlabelled_inputs": [],
+      "outside": []
+    },
+    {
+      "viewport": "phone",
+      "section": "genotype-explorer",
+      "title": "Genotype Explorer",
+      "run": "2993f361",
+      "overflow": false,
+      "width": 390,
+      "scrollWidth": 390,
+      "table_count": 0,
+      "loaded_artifact_badge": false,
+      "empty_buttons": [],
+      "unlabelled_inputs": [],
+      "outside": []
+    },
+    {
+      "viewport": "desktop",
+      "section": "trait-analytics",
+      "title": "Trait Analytics",
+      "run": "2993f361",
+      "overflow": false,
+      "width": 1440,
+      "scrollWidth": 1440,
+      "table_count": 0,
+      "loaded_artifact_badge": false,
+      "empty_buttons": [],
+      "unlabelled_inputs": [],
+      "outside": []
+    },
+    {
+      "viewport": "tablet",
+      "section": "trait-analytics",
+      "title": "Trait Analytics",
+      "run": "2993f361",
+      "overflow": false,
+      "width": 820,
+      "scrollWidth": 820,
+      "table_count": 0,
+      "loaded_artifact_badge": false,
+      "empty_buttons": [],
+      "unlabelled_inputs": [],
+      "outside": []
+    },
+    {
+      "viewport": "phone",
+      "section": "trait-analytics",
+      "title": "Trait Analytics",
+      "run": "2993f361",
+      "overflow": false,
+      "width": 390,
+      "scrollWidth": 390,
+      "table_count": 0,
+      "loaded_artifact_badge": false,
+      "empty_buttons": [],
+      "unlabelled_inputs": [],
+      "outside": []
+    },
+    {
+      "viewport": "desktop",
+      "section": "environments",
+      "title": "Environments",
+      "run": "2993f361",
+      "overflow": false,
+      "width": 1440,
+      "scrollWidth": 1440,
+      "table_count": 0,
+      "loaded_artifact_badge": false,
+      "empty_buttons": [],
+      "unlabelled_inputs": [],
+      "outside": []
+    },
+    {
+      "viewport": "tablet",
+      "section": "environments",
+      "title": "Environments",
+      "run": "2993f361",
+      "overflow": false,
+      "width": 820,
+      "scrollWidth": 820,
+      "table_count": 0,
+      "loaded_artifact_badge": false,
+      "empty_buttons": [],
+      "unlabelled_inputs": [],
+      "outside": []
+    },
+    {
+      "viewport": "phone",
+      "section": "environments",
+      "title": "Environments",
+      "run": "2993f361",
+      "overflow": false,
+      "width": 390,
+      "scrollWidth": 390,
+      "table_count": 0,
+      "loaded_artifact_badge": false,
+      "empty_buttons": [],
+      "unlabelled_inputs": [],
+      "outside": []
+    },
+    {
+      "viewport": "desktop",
+      "section": "data-library",
+      "title": "Data Library",
+      "run": "2993f361",
+      "overflow": false,
+      "width": 1440,
+      "scrollWidth": 1440,
+      "table_count": 0,
+      "loaded_artifact_badge": false,
+      "empty_buttons": [],
+      "unlabelled_inputs": [],
+      "outside": []
+    },
+    {
+      "viewport": "tablet",
+      "section": "data-library",
+      "title": "Data Library",
+      "run": "2993f361",
+      "overflow": false,
+      "width": 820,
+      "scrollWidth": 820,
+      "table_count": 0,
+      "loaded_artifact_badge": false,
+      "empty_buttons": [],
+      "unlabelled_inputs": [],
+      "outside": []
+    },
+    {
+      "viewport": "phone",
+      "section": "data-library",
+      "title": "Data Library",
+      "run": "2993f361",
+      "overflow": false,
+      "width": 390,
+      "scrollWidth": 390,
+      "table_count": 0,
+      "loaded_artifact_badge": false,
+      "empty_buttons": [],
+      "unlabelled_inputs": [],
+      "outside": []
+    },
+    {
+      "viewport": "desktop",
+      "section": "ai-insights",
+      "title": "AI Insights",
+      "run": "2993f361",
+      "overflow": false,
+      "width": 1440,
+      "scrollWidth": 1440,
+      "table_count": 3,
+      "loaded_artifact_badge": false,
+      "empty_buttons": [],
+      "unlabelled_inputs": [],
+      "outside": []
+    },
+    {
+      "viewport": "tablet",
+      "section": "ai-insights",
+      "title": "AI Insights",
+      "run": "2993f361",
+      "overflow": false,
+      "width": 820,
+      "scrollWidth": 820,
+      "table_count": 3,
+      "loaded_artifact_badge": false,
+      "empty_buttons": [],
+      "unlabelled_inputs": [],
+      "outside": [
+        {
+          "tag": "TABLE",
+          "class": "extended-evidence-table"
+        },
+        {
+          "tag": "CAPTION",
+          "class": ""
+        },
+        {
+          "tag": "THEAD",
+          "class": ""
+        },
+        {
+          "tag": "TR",
+          "class": ""
+        },
+        {
+          "tag": "TH",
+          "class": ""
+        },
+        {
+          "tag": "TH",
+          "class": ""
+        },
+        {
+          "tag": "TBODY",
+          "class": ""
+        },
+        {
+          "tag": "TR",
+          "class": ""
+        }
+      ]
+    },
+    {
+      "viewport": "phone",
+      "section": "ai-insights",
+      "title": "AI Insights",
+      "run": "2993f361",
+      "overflow": false,
+      "width": 390,
+      "scrollWidth": 390,
+      "table_count": 3,
+      "loaded_artifact_badge": false,
+      "empty_buttons": [],
+      "unlabelled_inputs": [],
+      "outside": [
+        {
+          "tag": "TABLE",
+          "class": "extended-evidence-table"
+        },
+        {
+          "tag": "CAPTION",
+          "class": ""
+        },
+        {
+          "tag": "THEAD",
+          "class": ""
+        },
+        {
+          "tag": "TR",
+          "class": ""
+        },
+        {
+          "tag": "TH",
+          "class": ""
+        },
+        {
+          "tag": "TH",
+          "class": ""
+        },
+        {
+          "tag": "TH",
+          "class": ""
+        },
+        {
+          "tag": "TH",
+          "class": ""
+        }
+      ]
+    },
+    {
+      "viewport": "desktop",
+      "section": "next-experiments",
+      "title": "Next Experiments",
+      "run": "2993f361",
+      "overflow": false,
+      "width": 1440,
+      "scrollWidth": 1440,
+      "table_count": 0,
+      "loaded_artifact_badge": false,
+      "empty_buttons": [],
+      "unlabelled_inputs": [],
+      "outside": []
+    },
+    {
+      "viewport": "tablet",
+      "section": "next-experiments",
+      "title": "Next Experiments",
+      "run": "2993f361",
+      "overflow": false,
+      "width": 820,
+      "scrollWidth": 820,
+      "table_count": 0,
+      "loaded_artifact_badge": false,
+      "empty_buttons": [],
+      "unlabelled_inputs": [],
+      "outside": []
+    },
+    {
+      "viewport": "phone",
+      "section": "next-experiments",
+      "title": "Next Experiments",
+      "run": "2993f361",
+      "overflow": false,
+      "width": 390,
+      "scrollWidth": 390,
+      "table_count": 0,
+      "loaded_artifact_badge": false,
+      "empty_buttons": [],
+      "unlabelled_inputs": [],
+      "outside": []
+    },
+    {
+      "viewport": "desktop",
+      "section": "reports",
+      "title": "Reports",
+      "run": "2993f361",
+      "overflow": false,
+      "width": 1440,
+      "scrollWidth": 1440,
+      "table_count": 3,
+      "loaded_artifact_badge": false,
+      "empty_buttons": [],
+      "unlabelled_inputs": [],
+      "outside": []
+    },
+    {
+      "viewport": "tablet",
+      "section": "reports",
+      "title": "Reports",
+      "run": "2993f361",
+      "overflow": false,
+      "width": 820,
+      "scrollWidth": 820,
+      "table_count": 3,
+      "loaded_artifact_badge": false,
+      "empty_buttons": [],
+      "unlabelled_inputs": [],
+      "outside": [
+        {
+          "tag": "TABLE",
+          "class": "extended-evidence-table"
+        },
+        {
+          "tag": "CAPTION",
+          "class": ""
+        },
+        {
+          "tag": "THEAD",
+          "class": ""
+        },
+        {
+          "tag": "TR",
+          "class": ""
+        },
+        {
+          "tag": "TH",
+          "class": ""
+        },
+        {
+          "tag": "TH",
+          "class": ""
+        },
+        {
+          "tag": "TBODY",
+          "class": ""
+        },
+        {
+          "tag": "TR",
+          "class": ""
+        }
+      ]
+    },
+    {
+      "viewport": "phone",
+      "section": "reports",
+      "title": "Reports",
+      "run": "2993f361",
+      "overflow": false,
+      "width": 390,
+      "scrollWidth": 390,
+      "table_count": 3,
+      "loaded_artifact_badge": false,
+      "empty_buttons": [],
+      "unlabelled_inputs": [],
+      "outside": [
+        {
+          "tag": "TABLE",
+          "class": "extended-evidence-table"
+        },
+        {
+          "tag": "CAPTION",
+          "class": ""
+        },
+        {
+          "tag": "THEAD",
+          "class": ""
+        },
+        {
+          "tag": "TR",
+          "class": ""
+        },
+        {
+          "tag": "TH",
+          "class": ""
+        },
+        {
+          "tag": "TH",
+          "class": ""
+        },
+        {
+          "tag": "TH",
+          "class": ""
+        },
+        {
+          "tag": "TH",
+          "class": ""
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "http": [
+    {
+      "path": "/api/auth/csrf",
+      "status": 200
+    },
+    {
+      "path": "/api/auth/login",
+      "status": 200
+    },
+    {
+      "path": "/api/datasets/ghana_combined/profile",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs",
+      "status": 200
+    },
+    {
+      "path": "/api/auth/me",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/8bb26625-d153-4576-a073-d4ebb8f9460a/artifacts",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/8bb26625-d153-4576-a073-d4ebb8f9460a",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/8bb26625-d153-4576-a073-d4ebb8f9460a/events",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/8bb26625-d153-4576-a073-d4ebb8f9460a",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/8bb26625-d153-4576-a073-d4ebb8f9460a/artifacts",
+      "status": 200
+    },
+    {
+      "path": "/api/auth/me",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs",
+      "status": 200
+    },
+    {
+      "path": "/api/datasets/ghana_combined/profile",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3/artifacts",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3/events",
+      "status": 200
+    },
+    {
+      "path": "/api/datasets/ghana_combined/profile",
+      "status": 200
+    },
+    {
+      "path": "/api/auth/me",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3/artifacts",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3/events",
+      "status": 200
+    },
+    {
+      "path": "/api/auth/me",
+      "status": 200
+    },
+    {
+      "path": "/api/datasets/ghana_combined/profile",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3/artifacts",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3/events",
+      "status": 200
+    },
+    {
+      "path": "/api/auth/me",
+      "status": 200
+    },
+    {
+      "path": "/api/datasets/ghana_combined/profile",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3/artifacts",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3/events",
+      "status": 200
+    },
+    {
+      "path": "/api/datasets/ghana_combined/profile",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs",
+      "status": 200
+    },
+    {
+      "path": "/api/auth/me",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3/artifacts",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3/events",
+      "status": 200
+    },
+    {
+      "path": "/api/auth/me",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs",
+      "status": 200
+    },
+    {
+      "path": "/api/datasets/ghana_combined/profile",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3/artifacts",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3/events",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3",
+      "status": 200
+    },
+    {
+      "path": "/api/auth/me",
+      "status": 200
+    },
+    {
+      "path": "/api/research-draft",
+      "status": 200
+    },
+    {
+      "path": "/api/research-capabilities",
+      "status": 200
+    },
+    {
+      "path": "/api/datasets/ghana_combined/profile",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3/artifacts",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3/events",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3/artifacts",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs",
+      "status": 200
+    },
+    {
+      "path": "/api/datasets/ghana_combined/profile",
+      "status": 200
+    },
+    {
+      "path": "/api/auth/me",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3/artifacts",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3/events",
+      "status": 200
+    }
+  ],
+  "admissions": 0
+}

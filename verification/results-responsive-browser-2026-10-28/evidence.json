@@ -1,0 +1,1099 @@
+{
+  "scope": "Read-only actual hosted browser; saved complete deterministic run; no inference or analysis admission",
+  "browser": "149.0.7827.55",
+  "checks": [
+    {
+      "viewport": "desktop",
+      "section": "research-results",
+      "title": "Research Results",
+      "run": "2993f361",
+      "overflow": false,
+      "width": 1440,
+      "scrollWidth": 1440,
+      "table_count": 4,
+      "results_loading": false,
+      "measured_summary": "Managed drought\n1,230.3kg/ha\n432 observed plots\n0\n2,616 kg/ha\nWell-watered\n2,616kg/ha\n432 observed plots\n0\n2,616 kg/ha\nDescriptive yield retention\n47%\nDrought mean / well-watered mean\n0\n100% reference\nGenotypes summarized\n72\n432 drought plot records\nRecorded mean yields \u00b7 kg/ha \u00b7 saved order",
+      "loaded_artifact_badge": false,
+      "empty_buttons": [],
+      "unlabelled_inputs": [],
+      "outside": []
+    },
+    {
+      "viewport": "tablet",
+      "section": "research-results",
+      "title": "Research Results",
+      "run": "2993f361",
+      "overflow": false,
+      "width": 820,
+      "scrollWidth": 820,
+      "table_count": 4,
+      "results_loading": false,
+      "measured_summary": "Managed drought\n1,230.3kg/ha\n432 observed plots\n0\n2,616 kg/ha\nWell-watered\n2,616kg/ha\n432 observed plots\n0\n2,616 kg/ha\nDescriptive yield retention\n47%\nDrought mean / well-watered mean\n0\n100% reference\nGenotypes summarized\n72\n432 drought plot records\nRecorded mean yields \u00b7 kg/ha \u00b7 saved order",
+      "loaded_artifact_badge": false,
+      "empty_buttons": [],
+      "unlabelled_inputs": [],
+      "outside": [
+        {
+          "tag": "TABLE",
+          "class": "results-genotype-table"
+        },
+        {
+          "tag": "THEAD",
+          "class": ""
+        },
+        {
+          "tag": "TR",
+          "class": ""
+        },
+        {
+          "tag": "TH",
+          "class": ""
+        },
+        {
+          "tag": "TBODY",
+          "class": ""
+        },
+        {
+          "tag": "TR",
+          "class": "leading-genotype"
+        },
+        {
+          "tag": "TD",
+          "class": ""
+        },
+        {
+          "tag": "TR",
+          "class": ""
+        }
+      ]
+    },
+    {
+      "viewport": "phone",
+      "section": "research-results",
+      "title": "Research Results",
+      "run": "2993f361",
+      "overflow": false,
+      "width": 390,
+      "scrollWidth": 390,
+      "table_count": 4,
+      "results_loading": false,
+      "measured_summary": "Managed drought\n1,230.3kg/ha\n432 observed plots\n0\n2,616 kg/ha\nWell-watered\n2,616kg/ha\n432 observed plots\n0\n2,616 kg/ha\nDescriptive yield retention\n47%\nDrought mean / well-watered mean\n0\n100% reference\nGenotypes summarized\n72\n432 drought plot records\nRecorded mean yields \u00b7 kg/ha \u00b7 saved order",
+      "loaded_artifact_badge": false,
+      "empty_buttons": [],
+      "unlabelled_inputs": [],
+      "outside": [
+        {
+          "tag": "TABLE",
+          "class": "results-genotype-table"
+        },
+        {
+          "tag": "THEAD",
+          "class": ""
+        },
+        {
+          "tag": "TR",
+          "class": ""
+        },
+        {
+          "tag": "TH",
+          "class": ""
+        },
+        {
+          "tag": "SPAN",
+          "class": ""
+        },
+        {
+          "tag": "TH",
+          "class": ""
+        },
+        {
+          "tag": "TH",
+          "class": ""
+        },
+        {
+          "tag": "TBODY",
+          "class": ""
+        }
+      ]
+    },
+    {
+      "viewport": "desktop",
+      "section": "genotype-explorer",
+      "title": "Genotype Explorer",
+      "run": "2993f361",
+      "overflow": false,
+      "width": 1440,
+      "scrollWidth": 1440,
+      "table_count": 1,
+      "results_loading": false,
+      "measured_summary": "Managed drought\n1,230.3kg/ha\n432 observed plots\n0\n2,616 kg/ha\nWell-watered\n2,616kg/ha\n432 observed plots\n0\n2,616 kg/ha\nDescriptive yield retention\n47%\nDrought mean / well-watered mean\n0\n100% reference\nGenotypes summarized\n72\n432 drought plot records\nRecorded mean yields \u00b7 kg/ha \u00b7 saved order",
+      "loaded_artifact_badge": false,
+      "empty_buttons": [],
+      "unlabelled_inputs": [],
+      "outside": []
+    },
+    {
+      "viewport": "tablet",
+      "section": "genotype-explorer",
+      "title": "Genotype Explorer",
+      "run": "2993f361",
+      "overflow": false,
+      "width": 820,
+      "scrollWidth": 820,
+      "table_count": 1,
+      "results_loading": false,
+      "measured_summary": "Managed drought\n1,230.3kg/ha\n432 observed plots\n0\n2,616 kg/ha\nWell-watered\n2,616kg/ha\n432 observed plots\n0\n2,616 kg/ha\nDescriptive yield retention\n47%\nDrought mean / well-watered mean\n0\n100% reference\nGenotypes summarized\n72\n432 drought plot records\nRecorded mean yields \u00b7 kg/ha \u00b7 saved order",
+      "loaded_artifact_badge": false,
+      "empty_buttons": [],
+      "unlabelled_inputs": [],
+      "outside": [
+        {
+          "tag": "TABLE",
+          "class": "results-genotype-table"
+        },
+        {
+          "tag": "THEAD",
+          "class": ""
+        },
+        {
+          "tag": "TR",
+          "class": ""
+        },
+        {
+          "tag": "TH",
+          "class": ""
+        },
+        {
+          "tag": "TBODY",
+          "class": ""
+        },
+        {
+          "tag": "TR",
+          "class": "leading-genotype"
+        },
+        {
+          "tag": "TD",
+          "class": ""
+        },
+        {
+          "tag": "TR",
+          "class": ""
+        }
+      ]
+    },
+    {
+      "viewport": "phone",
+      "section": "genotype-explorer",
+      "title": "Genotype Explorer",
+      "run": "2993f361",
+      "overflow": false,
+      "width": 390,
+      "scrollWidth": 390,
+      "table_count": 1,
+      "results_loading": false,
+      "measured_summary": "Managed drought\n1,230.3kg/ha\n432 observed plots\n0\n2,616 kg/ha\nWell-watered\n2,616kg/ha\n432 observed plots\n0\n2,616 kg/ha\nDescriptive yield retention\n47%\nDrought mean / well-watered mean\n0\n100% reference\nGenotypes summarized\n72\n432 drought plot records\nRecorded mean yields \u00b7 kg/ha \u00b7 saved order",
+      "loaded_artifact_badge": false,
+      "empty_buttons": [],
+      "unlabelled_inputs": [],
+      "outside": [
+        {
+          "tag": "TABLE",
+          "class": "results-genotype-table"
+        },
+        {
+          "tag": "THEAD",
+          "class": ""
+        },
+        {
+          "tag": "TR",
+          "class": ""
+        },
+        {
+          "tag": "TH",
+          "class": ""
+        },
+        {
+          "tag": "SPAN",
+          "class": ""
+        },
+        {
+          "tag": "TH",
+          "class": ""
+        },
+        {
+          "tag": "TH",
+          "class": ""
+        },
+        {
+          "tag": "TBODY",
+          "class": ""
+        }
+      ]
+    },
+    {
+      "viewport": "desktop",
+      "section": "trait-analytics",
+      "title": "Trait Analytics",
+      "run": "2993f361",
+      "overflow": false,
+      "width": 1440,
+      "scrollWidth": 1440,
+      "table_count": 1,
+      "results_loading": false,
+      "measured_summary": "Managed drought\n1,230.3kg/ha\n432 observed plots\n0\n2,616 kg/ha\nWell-watered\n2,616kg/ha\n432 observed plots\n0\n2,616 kg/ha\nDescriptive yield retention\n47%\nDrought mean / well-watered mean\n0\n100% reference\nGenotypes summarized\n72\n432 drought plot records\nRecorded mean yields \u00b7 kg/ha \u00b7 saved order",
+      "loaded_artifact_badge": false,
+      "empty_buttons": [],
+      "unlabelled_inputs": [],
+      "outside": []
+    },
+    {
+      "viewport": "tablet",
+      "section": "trait-analytics",
+      "title": "Trait Analytics",
+      "run": "2993f361",
+      "overflow": false,
+      "width": 820,
+      "scrollWidth": 820,
+      "table_count": 1,
+      "results_loading": false,
+      "measured_summary": "Managed drought\n1,230.3kg/ha\n432 observed plots\n0\n2,616 kg/ha\nWell-watered\n2,616kg/ha\n432 observed plots\n0\n2,616 kg/ha\nDescriptive yield retention\n47%\nDrought mean / well-watered mean\n0\n100% reference\nGenotypes summarized\n72\n432 drought plot records\nRecorded mean yields \u00b7 kg/ha \u00b7 saved order",
+      "loaded_artifact_badge": false,
+      "empty_buttons": [],
+      "unlabelled_inputs": [],
+      "outside": [
+        {
+          "tag": "TABLE",
+          "class": "extended-evidence-table"
+        },
+        {
+          "tag": "CAPTION",
+          "class": ""
+        },
+        {
+          "tag": "THEAD",
+          "class": ""
+        },
+        {
+          "tag": "TR",
+          "class": ""
+        },
+        {
+          "tag": "TH",
+          "class": ""
+        },
+        {
+          "tag": "TH",
+          "class": ""
+        },
+        {
+          "tag": "TH",
+          "class": ""
+        },
+        {
+          "tag": "TBODY",
+          "class": ""
+        }
+      ]
+    },
+    {
+      "viewport": "phone",
+      "section": "trait-analytics",
+      "title": "Trait Analytics",
+      "run": "2993f361",
+      "overflow": false,
+      "width": 390,
+      "scrollWidth": 390,
+      "table_count": 1,
+      "results_loading": false,
+      "measured_summary": "Managed drought\n1,230.3kg/ha\n432 observed plots\n0\n2,616 kg/ha\nWell-watered\n2,616kg/ha\n432 observed plots\n0\n2,616 kg/ha\nDescriptive yield retention\n47%\nDrought mean / well-watered mean\n0\n100% reference\nGenotypes summarized\n72\n432 drought plot records\nRecorded mean yields \u00b7 kg/ha \u00b7 saved order",
+      "loaded_artifact_badge": false,
+      "empty_buttons": [],
+      "unlabelled_inputs": [],
+      "outside": [
+        {
+          "tag": "TABLE",
+          "class": "extended-evidence-table"
+        },
+        {
+          "tag": "CAPTION",
+          "class": ""
+        },
+        {
+          "tag": "THEAD",
+          "class": ""
+        },
+        {
+          "tag": "TR",
+          "class": ""
+        },
+        {
+          "tag": "TH",
+          "class": ""
+        },
+        {
+          "tag": "TH",
+          "class": ""
+        },
+        {
+          "tag": "TH",
+          "class": ""
+        },
+        {
+          "tag": "TH",
+          "class": ""
+        }
+      ]
+    },
+    {
+      "viewport": "desktop",
+      "section": "environments",
+      "title": "Environments",
+      "run": "2993f361",
+      "overflow": false,
+      "width": 1440,
+      "scrollWidth": 1440,
+      "table_count": 2,
+      "results_loading": false,
+      "measured_summary": "Managed drought\n1,230.3kg/ha\n432 observed plots\n0\n2,616 kg/ha\nWell-watered\n2,616kg/ha\n432 observed plots\n0\n2,616 kg/ha\nDescriptive yield retention\n47%\nDrought mean / well-watered mean\n0\n100% reference\nGenotypes summarized\n72\n432 drought plot records\nRecorded mean yields \u00b7 kg/ha \u00b7 saved order",
+      "loaded_artifact_badge": false,
+      "empty_buttons": [],
+      "unlabelled_inputs": [],
+      "outside": []
+    },
+    {
+      "viewport": "tablet",
+      "section": "environments",
+      "title": "Environments",
+      "run": "2993f361",
+      "overflow": false,
+      "width": 820,
+      "scrollWidth": 820,
+      "table_count": 2,
+      "results_loading": false,
+      "measured_summary": "Managed drought\n1,230.3kg/ha\n432 observed plots\n0\n2,616 kg/ha\nWell-watered\n2,616kg/ha\n432 observed plots\n0\n2,616 kg/ha\nDescriptive yield retention\n47%\nDrought mean / well-watered mean\n0\n100% reference\nGenotypes summarized\n72\n432 drought plot records\nRecorded mean yields \u00b7 kg/ha \u00b7 saved order",
+      "loaded_artifact_badge": false,
+      "empty_buttons": [],
+      "unlabelled_inputs": [],
+      "outside": [
+        {
+          "tag": "TABLE",
+          "class": "extended-evidence-table"
+        },
+        {
+          "tag": "CAPTION",
+          "class": ""
+        },
+        {
+          "tag": "THEAD",
+          "class": ""
+        },
+        {
+          "tag": "TR",
+          "class": ""
+        },
+        {
+          "tag": "TH",
+          "class": ""
+        },
+        {
+          "tag": "TH",
+          "class": ""
+        },
+        {
+          "tag": "TH",
+          "class": ""
+        },
+        {
+          "tag": "TBODY",
+          "class": ""
+        }
+      ]
+    },
+    {
+      "viewport": "phone",
+      "section": "environments",
+      "title": "Environments",
+      "run": "2993f361",
+      "overflow": false,
+      "width": 390,
+      "scrollWidth": 390,
+      "table_count": 2,
+      "results_loading": false,
+      "measured_summary": "Managed drought\n1,230.3kg/ha\n432 observed plots\n0\n2,616 kg/ha\nWell-watered\n2,616kg/ha\n432 observed plots\n0\n2,616 kg/ha\nDescriptive yield retention\n47%\nDrought mean / well-watered mean\n0\n100% reference\nGenotypes summarized\n72\n432 drought plot records\nRecorded mean yields \u00b7 kg/ha \u00b7 saved order",
+      "loaded_artifact_badge": false,
+      "empty_buttons": [],
+      "unlabelled_inputs": [],
+      "outside": [
+        {
+          "tag": "TABLE",
+          "class": "extended-evidence-table"
+        },
+        {
+          "tag": "CAPTION",
+          "class": ""
+        },
+        {
+          "tag": "THEAD",
+          "class": ""
+        },
+        {
+          "tag": "TR",
+          "class": ""
+        },
+        {
+          "tag": "TH",
+          "class": ""
+        },
+        {
+          "tag": "TH",
+          "class": ""
+        },
+        {
+          "tag": "TH",
+          "class": ""
+        },
+        {
+          "tag": "TH",
+          "class": ""
+        }
+      ]
+    },
+    {
+      "viewport": "desktop",
+      "section": "data-library",
+      "title": "Data Library",
+      "run": "2993f361",
+      "overflow": false,
+      "width": 1440,
+      "scrollWidth": 1440,
+      "table_count": 0,
+      "results_loading": false,
+      "measured_summary": null,
+      "loaded_artifact_badge": false,
+      "empty_buttons": [],
+      "unlabelled_inputs": [],
+      "outside": []
+    },
+    {
+      "viewport": "tablet",
+      "section": "data-library",
+      "title": "Data Library",
+      "run": "2993f361",
+      "overflow": false,
+      "width": 820,
+      "scrollWidth": 820,
+      "table_count": 0,
+      "results_loading": false,
+      "measured_summary": null,
+      "loaded_artifact_badge": false,
+      "empty_buttons": [],
+      "unlabelled_inputs": [],
+      "outside": []
+    },
+    {
+      "viewport": "phone",
+      "section": "data-library",
+      "title": "Data Library",
+      "run": "2993f361",
+      "overflow": false,
+      "width": 390,
+      "scrollWidth": 390,
+      "table_count": 0,
+      "results_loading": false,
+      "measured_summary": null,
+      "loaded_artifact_badge": false,
+      "empty_buttons": [],
+      "unlabelled_inputs": [],
+      "outside": []
+    },
+    {
+      "viewport": "desktop",
+      "section": "ai-insights",
+      "title": "AI Insights",
+      "run": "2993f361",
+      "overflow": false,
+      "width": 1440,
+      "scrollWidth": 1440,
+      "table_count": 3,
+      "results_loading": false,
+      "measured_summary": null,
+      "loaded_artifact_badge": false,
+      "empty_buttons": [],
+      "unlabelled_inputs": [],
+      "outside": []
+    },
+    {
+      "viewport": "tablet",
+      "section": "ai-insights",
+      "title": "AI Insights",
+      "run": "2993f361",
+      "overflow": false,
+      "width": 820,
+      "scrollWidth": 820,
+      "table_count": 3,
+      "results_loading": false,
+      "measured_summary": null,
+      "loaded_artifact_badge": false,
+      "empty_buttons": [],
+      "unlabelled_inputs": [],
+      "outside": [
+        {
+          "tag": "TABLE",
+          "class": "extended-evidence-table"
+        },
+        {
+          "tag": "CAPTION",
+          "class": ""
+        },
+        {
+          "tag": "THEAD",
+          "class": ""
+        },
+        {
+          "tag": "TR",
+          "class": ""
+        },
+        {
+          "tag": "TH",
+          "class": ""
+        },
+        {
+          "tag": "TH",
+          "class": ""
+        },
+        {
+          "tag": "TBODY",
+          "class": ""
+        },
+        {
+          "tag": "TR",
+          "class": ""
+        }
+      ]
+    },
+    {
+      "viewport": "phone",
+      "section": "ai-insights",
+      "title": "AI Insights",
+      "run": "2993f361",
+      "overflow": false,
+      "width": 390,
+      "scrollWidth": 390,
+      "table_count": 3,
+      "results_loading": false,
+      "measured_summary": null,
+      "loaded_artifact_badge": false,
+      "empty_buttons": [],
+      "unlabelled_inputs": [],
+      "outside": [
+        {
+          "tag": "TABLE",
+          "class": "extended-evidence-table"
+        },
+        {
+          "tag": "CAPTION",
+          "class": ""
+        },
+        {
+          "tag": "THEAD",
+          "class": ""
+        },
+        {
+          "tag": "TR",
+          "class": ""
+        },
+        {
+          "tag": "TH",
+          "class": ""
+        },
+        {
+          "tag": "TH",
+          "class": ""
+        },
+        {
+          "tag": "TH",
+          "class": ""
+        },
+        {
+          "tag": "TH",
+          "class": ""
+        }
+      ]
+    },
+    {
+      "viewport": "desktop",
+      "section": "next-experiments",
+      "title": "Next Experiments",
+      "run": "2993f361",
+      "overflow": false,
+      "width": 1440,
+      "scrollWidth": 1440,
+      "table_count": 0,
+      "results_loading": false,
+      "measured_summary": null,
+      "loaded_artifact_badge": false,
+      "empty_buttons": [],
+      "unlabelled_inputs": [],
+      "outside": []
+    },
+    {
+      "viewport": "tablet",
+      "section": "next-experiments",
+      "title": "Next Experiments",
+      "run": "2993f361",
+      "overflow": false,
+      "width": 820,
+      "scrollWidth": 820,
+      "table_count": 0,
+      "results_loading": false,
+      "measured_summary": null,
+      "loaded_artifact_badge": false,
+      "empty_buttons": [],
+      "unlabelled_inputs": [],
+      "outside": []
+    },
+    {
+      "viewport": "phone",
+      "section": "next-experiments",
+      "title": "Next Experiments",
+      "run": "2993f361",
+      "overflow": false,
+      "width": 390,
+      "scrollWidth": 390,
+      "table_count": 0,
+      "results_loading": false,
+      "measured_summary": null,
+      "loaded_artifact_badge": false,
+      "empty_buttons": [],
+      "unlabelled_inputs": [],
+      "outside": []
+    },
+    {
+      "viewport": "desktop",
+      "section": "reports",
+      "title": "Reports",
+      "run": "2993f361",
+      "overflow": false,
+      "width": 1440,
+      "scrollWidth": 1440,
+      "table_count": 3,
+      "results_loading": false,
+      "measured_summary": null,
+      "loaded_artifact_badge": false,
+      "empty_buttons": [],
+      "unlabelled_inputs": [],
+      "outside": []
+    },
+    {
+      "viewport": "tablet",
+      "section": "reports",
+      "title": "Reports",
+      "run": "2993f361",
+      "overflow": false,
+      "width": 820,
+      "scrollWidth": 820,
+      "table_count": 3,
+      "results_loading": false,
+      "measured_summary": null,
+      "loaded_artifact_badge": false,
+      "empty_buttons": [],
+      "unlabelled_inputs": [],
+      "outside": [
+        {
+          "tag": "TABLE",
+          "class": "extended-evidence-table"
+        },
+        {
+          "tag": "CAPTION",
+          "class": ""
+        },
+        {
+          "tag": "THEAD",
+          "class": ""
+        },
+        {
+          "tag": "TR",
+          "class": ""
+        },
+        {
+          "tag": "TH",
+          "class": ""
+        },
+        {
+          "tag": "TH",
+          "class": ""
+        },
+        {
+          "tag": "TBODY",
+          "class": ""
+        },
+        {
+          "tag": "TR",
+          "class": ""
+        }
+      ]
+    },
+    {
+      "viewport": "phone",
+      "section": "reports",
+      "title": "Reports",
+      "run": "2993f361",
+      "overflow": false,
+      "width": 390,
+      "scrollWidth": 390,
+      "table_count": 3,
+      "results_loading": false,
+      "measured_summary": null,
+      "loaded_artifact_badge": false,
+      "empty_buttons": [],
+      "unlabelled_inputs": [],
+      "outside": [
+        {
+          "tag": "TABLE",
+          "class": "extended-evidence-table"
+        },
+        {
+          "tag": "CAPTION",
+          "class": ""
+        },
+        {
+          "tag": "THEAD",
+          "class": ""
+        },
+        {
+          "tag": "TR",
+          "class": ""
+        },
+        {
+          "tag": "TH",
+          "class": ""
+        },
+        {
+          "tag": "TH",
+          "class": ""
+        },
+        {
+          "tag": "TH",
+          "class": ""
+        },
+        {
+          "tag": "TH",
+          "class": ""
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "http": [
+    {
+      "path": "/api/auth/csrf",
+      "status": 200
+    },
+    {
+      "path": "/api/auth/login",
+      "status": 200
+    },
+    {
+      "path": "/api/auth/me",
+      "status": 200
+    },
+    {
+      "path": "/api/datasets/ghana_combined/profile",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/8bb26625-d153-4576-a073-d4ebb8f9460a",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/8bb26625-d153-4576-a073-d4ebb8f9460a/artifacts",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/8bb26625-d153-4576-a073-d4ebb8f9460a/events",
+      "status": 200
+    },
+    {
+      "path": "/api/auth/me",
+      "status": 200
+    },
+    {
+      "path": "/api/datasets/ghana_combined/profile",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3/artifacts",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3/events",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3/artifacts",
+      "status": 200
+    },
+    {
+      "path": "/api/datasets/ghana_combined/profile",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs",
+      "status": 200
+    },
+    {
+      "path": "/api/auth/me",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3/artifacts",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3/events",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3/artifacts",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs",
+      "status": 200
+    },
+    {
+      "path": "/api/datasets/ghana_combined/profile",
+      "status": 200
+    },
+    {
+      "path": "/api/auth/me",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3/artifacts",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3/events",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3/artifacts",
+      "status": 200
+    },
+    {
+      "path": "/api/auth/me",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs",
+      "status": 200
+    },
+    {
+      "path": "/api/datasets/ghana_combined/profile",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3/artifacts",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3/events",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3/artifacts",
+      "status": 200
+    },
+    {
+      "path": "/api/auth/me",
+      "status": 200
+    },
+    {
+      "path": "/api/datasets/ghana_combined/profile",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3/artifacts",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3/events",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3/artifacts",
+      "status": 200
+    },
+    {
+      "path": "/api/datasets/ghana_combined/profile",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs",
+      "status": 200
+    },
+    {
+      "path": "/api/auth/me",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3/artifacts",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3/events",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3/artifacts",
+      "status": 200
+    },
+    {
+      "path": "/api/auth/me",
+      "status": 200
+    },
+    {
+      "path": "/api/research-capabilities",
+      "status": 200
+    },
+    {
+      "path": "/api/research-draft",
+      "status": 200
+    },
+    {
+      "path": "/api/datasets/ghana_combined/profile",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3/artifacts",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3/events",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3",
+      "status": 200
+    },
+    {
+      "path": "/api/auth/me",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs",
+      "status": 200
+    },
+    {
+      "path": "/api/datasets/ghana_combined/profile",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3/artifacts",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3/events",
+      "status": 200
+    },
+    {
+      "path": "/api/research-runs/2993f361-bbeb-4c23-a943-2d3a1ec263e3",
+      "status": 200
+    }
+  ],
+  "admissions": 0,
+  "limits": [
+    "Visible DOM name/label checks are not a full accessible-name algorithm or physical screen-reader test",
+    "No hardware FPS or full interactive chart/error recovery acceptance",
+    "Data-library and setup pages have separate content; full citation interpretation is not asserted",
+    "loaded_artifact_badge leaf-only observer is false because the badge contains an SVG child; not used for acceptance. Actual locator wait, measured summary and absence of loading verify result readiness."
+  ],
+  "source_run": "2993f361-bbeb-4c23-a943-2d3a1ec263e3",
+  "visually_inspected": [
+    "phone-research-results-opening.png",
+    "phone-genotype-explorer-opening.png",
+    "phone-reports-opening.png"
+  ],
+  "screenshots": {
+    "phone-research-results-opening.png": "4a7b63d63b3b2bb931430c23dd62b2f6cd314af6fc554a30106494d4db725d33",
+    "phone-genotype-explorer-opening.png": "2032a2785309f11a7497e047f6150d0cc03390bf1b9e3ecb530efc8d33d7c0aa",
+    "phone-reports-opening.png": "97a8e70d9b99aa693951df63e7dc8c5fecc7e1623f81c94c6bea547cbf4c2a9f"
+  },
+  "rejected_attempts": {
+    "initial-incomplete-attempt.json": "Stopped on next-experiments wait; earlier checks were not loaded-result acceptance",
+    "header-only-attempt.json": "24pages measured but artifact badge remained visible during loading; screenshot review rejected result-ready criterion"
+  }
+}
