@@ -1,0 +1,24 @@
+{
+  "python_tests": 228,
+  "proxy_tests": 11,
+  "ui_tests": 94,
+  "total_tests": 333,
+  "full_quality": "passed before final parser/operator/UTF8 corrections; final228backend/coverage rerun passed afterward",
+  "lint": "passed",
+  "types": "passed",
+  "production_build": "passed",
+  "sonar": "PASSED",
+  "issues": 0,
+  "hotspots": 0,
+  "source_sha256": {
+    "neurolab/providers.py": "b0f9cae0b8d2d99b9ad61e82879420f01885dd9644f996c177399f7401b03716",
+    "neurolab/model_spend.py": "07cc2ce08fce01771ad9fe3195e5d0911de122ab61a7a55cb8336a53edda788f",
+    "neurolab/model_configuration.py": "5f56ca92d8729e29fee7929bff4ee36c8d5c46455e4397902d7fbc75d6a9f230",
+    "neurolab/deployment_runtime.py": "ee7d1872a86df1c6808c4b7172873d3c00d6cc99c0e0ad6d9ea7eda0ad774a1c",
+    "scripts/smoke_meta_provider.py": "be5360cc74d717e8d2f17e392d2eac3d357d73a342b962f049686ff3889de0e7",
+    "tests/test_baseten_provider.py": "b4aa708bfc4db7261f87238042693314e61ce87d0ad7377b5f439f193806c796",
+    "Dockerfile": "fa29a52e6aabd9fd0f8e695ac263ba3e943ff20b1dfc253586b981324920a40e"
+  },
+  "actual_hosted_inference": "not yet verified",
+  "synthetic_contracts_are_not_live_evidence": true
+}

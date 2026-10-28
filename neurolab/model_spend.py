@@ -10,6 +10,8 @@ import uuid
 from dataclasses import asdict, dataclass
 from decimal import ROUND_CEILING, Decimal, InvalidOperation
 
+from .model_configuration import model_configuration
+
 
 class ModelSpendError(RuntimeError):
     """Sanitized budget configuration, ownership or storage failure."""
@@ -68,14 +70,16 @@ class SpendPolicy:
             ) from None
         if not 1 <= overhead <= 8192 or not 100 <= tokens <= 100_000:
             raise ModelSpendError("Model token overhead or run budget is outside allowed limits")
-        provider = os.getenv("MODEL_PROVIDER", "meta").strip().lower()
-        model = os.getenv("META_MODEL_ID", "").strip()
-        endpoint = os.getenv("META_MODEL_API_BASE_URL", "").strip()
+        try:
+            config = model_configuration()
+        except ValueError as exc:
+            raise ModelSpendError(str(exc)) from None
+        provider, model, endpoint = config.provider, config.model_id, config.endpoint
         if (
-            provider != "meta"
-            or not model
+            not model
             or len(model) > 200
             or not endpoint.startswith("https://")
+            or (provider == "baseten" and not config.configured)
         ):
             raise ModelSpendError(
                 "Model spending requires an explicit approved provider and model endpoint"

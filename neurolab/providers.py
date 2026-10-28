@@ -13,6 +13,9 @@ from dataclasses import dataclass, field
 from typing import Any, Protocol
 from urllib.parse import urlsplit
 
+from jsonschema import Draft202012Validator, ValidationError
+
+from .model_configuration import model_configuration
 from .model_spend import ModelSpendError, ModelSpendGuard, SpendPolicy
 from .research_context import (
     META_CONTEXT_SAFETY_RESERVE_TOKENS,
@@ -24,7 +27,7 @@ HTTPS_REQUIRED = "Configured model endpoint must use HTTPS"
 
 def _response_metadata(response):
     identifiers = {}
-    for name in ("x-request-id", "request-id", "x-fb-trace-id"):
+    for name in ("x-request-id", "request-id", "x-fb-trace-id", "x-baseten-request-id"):
         value = response.getheader(name)
         if isinstance(value, str):
             identifiers[name] = value
@@ -41,6 +44,19 @@ class ModelProviderError(RuntimeError):
     @property
     def permanent(self) -> bool:
         return self.http_status in {400, 401, 402, 403, 404, 405, 410, 422}
+
+
+def _function_arguments(message):
+    calls = message.get("tool_calls") or []
+    if len(calls) != 1 or calls[0].get("type") != "function":
+        raise ModelProviderError("Provider must return exactly one research function call")
+    function = calls[0]["function"]
+    if function.get("name") != "submit_research_action":
+        raise ModelProviderError("Provider returned an unapproved response function")
+    content = function["arguments"]
+    if not isinstance(content, str):
+        raise ModelProviderError("Provider function arguments must be JSON text")
+    return content
 
 
 class ModelContextLimitError(ModelProviderError):
@@ -97,17 +113,8 @@ class OpenAICompatibleAdapter:
         reasoning_effort: str = "low",
     ) -> dict[str, Any]:
         require_inference_enabled()
-        serialized_messages = json.dumps(
-            {
-                "messages": messages,
-                "response_format": {
-                    "type": "json_schema",
-                    "json_schema": {"name": "research_action", "strict": True, "schema": schema},
-                },
-            },
-            ensure_ascii=False,
-            separators=(",", ":"),
-        )
+        body = self._request_body(messages, schema, max_tokens, reasoning_effort)
+        serialized_messages = json.dumps(body, ensure_ascii=False, separators=(",", ":"))
         serialized_bytes = len(serialized_messages.encode("utf-8"))
         # The current integration uses Chat Completions. It has no exact input
         # token-count endpoint here; a UTF-8-byte upper bound avoids relying on
@@ -132,17 +139,6 @@ class OpenAICompatibleAdapter:
         endpoint = urlsplit(self.endpoint)
         if endpoint.scheme != "https" or not endpoint.hostname:
             raise ModelProviderError(HTTPS_REQUIRED)
-        body = {
-            "model": self.model_id,
-            "messages": messages,
-            "temperature": 0,
-            "reasoning_effort": reasoning_effort,
-            "max_tokens": max_tokens,
-            "response_format": {
-                "type": "json_schema",
-                "json_schema": {"name": "research_action", "strict": True, "schema": schema},
-            },
-        }
         if self.spend_guard is None:
             raise ModelProviderError("Model request requires shared owner spending admission")
         try:
@@ -155,6 +151,13 @@ class OpenAICompatibleAdapter:
         completed = False
         try:
             result = self._send_structured(endpoint, body, timeout)
+            if self.provider == "baseten":
+                try:
+                    Draft202012Validator(schema).validate(result)
+                except ValidationError:
+                    raise ModelProviderError(
+                        "Provider function arguments violate the response schema"
+                    ) from None
             completed = True
             return result
         finally:
@@ -162,6 +165,37 @@ class OpenAICompatibleAdapter:
                 self.spend_guard.record_outcome(identifier, completed)
             except ModelSpendError as exc:
                 raise ModelProviderError(str(exc)) from None
+
+    def _request_body(self, messages, schema, max_tokens, reasoning_effort):
+        body = {
+            "model": self.model_id,
+            "messages": messages,
+            "temperature": 0,
+            "reasoning_effort": reasoning_effort,
+            "max_tokens": max_tokens,
+        }
+        if self.provider == "baseten":
+            body["tools"] = [
+                {
+                    "type": "function",
+                    "function": {
+                        "name": "submit_research_action",
+                        "description": "Submit exactly one research response matching the supplied schema. The server validates it before any action.",
+                        "parameters": schema,
+                    },
+                }
+            ]
+            body["tool_choice"] = {
+                "type": "function",
+                "function": {"name": "submit_research_action"},
+            }
+            body["parallel_tool_calls"] = False
+        else:
+            body["response_format"] = {
+                "type": "json_schema",
+                "json_schema": {"name": "research_action", "strict": True, "schema": schema},
+            }
+        return body
 
     def bind_spending(self, store, owner_id, scope_id):
         self.spend_guard = ModelSpendGuard.from_environment(
@@ -179,7 +213,7 @@ class OpenAICompatibleAdapter:
             connection.request(
                 "POST",
                 endpoint.path or "/",
-                body=json.dumps(body),
+                body=json.dumps(body, ensure_ascii=False, separators=(",", ":")).encode("utf-8"),
                 headers={
                     "Authorization": f"Bearer {self.api_key}",
                     "Content-Type": "application/json",
@@ -212,7 +246,10 @@ class OpenAICompatibleAdapter:
                     "Model output-token limit reached before a complete structured response; "
                     "reasoning tokens share this limit."
                 )
-            content = payload["choices"][0]["message"]["content"]
+            message = payload["choices"][0]["message"]
+            content = (
+                _function_arguments(message) if self.provider == "baseten" else message["content"]
+            )
             result = json.loads(content) if isinstance(content, str) else content
         except (KeyError, IndexError, TypeError, json.JSONDecodeError) as exc:
             raise ModelProviderError(
@@ -224,15 +261,14 @@ class OpenAICompatibleAdapter:
 
     @classmethod
     def from_environment(cls) -> OpenAICompatibleAdapter:
-        endpoint = os.getenv("META_MODEL_API_BASE_URL", "").strip()
-        api_key = os.getenv("META_MODEL_API_KEY", "").strip()
-        model_id = os.getenv("META_MODEL_ID", "").strip()
-        provider = os.getenv("MODEL_PROVIDER", "meta").strip().lower()
-        if provider != "meta":
-            raise ModelProviderError("MODEL_PROVIDER must be 'meta' for Meta research runs")
-        if not endpoint or not api_key or not model_id:
+        try:
+            config = model_configuration()
+        except ValueError as exc:
+            raise ModelProviderError(str(exc)) from None
+        endpoint, api_key, model_id = config.endpoint, config.api_key, config.model_id
+        if not config.configured:
             raise ModelProviderError(
-                "Meta model requires META_MODEL_API_BASE_URL, META_MODEL_API_KEY, and META_MODEL_ID"
+                "Selected provider requires its own credential, model and approved endpoint"
             )
         if not endpoint.startswith("https://"):
             raise ModelProviderError(HTTPS_REQUIRED)
@@ -264,7 +300,7 @@ class OpenAICompatibleAdapter:
             endpoint=endpoint,
             api_key=api_key,
             model_id=model_id,
-            provider="meta",
+            provider=config.provider,
             max_output_tokens=max_output_tokens,
             max_run_tokens=max_run_tokens,
             max_context_tokens=max_context_tokens,
@@ -277,8 +313,10 @@ class OpenAICompatibleAdapter:
             messages,
             schema,
             timeout=timeout,
-            max_tokens=min(self.max_output_tokens, 1000),
-            reasoning_effort="minimal",
+            max_tokens=self.max_output_tokens
+            if self.provider == "baseten"
+            else min(self.max_output_tokens, 1000),
+            reasoning_effort="low" if self.provider == "baseten" else "minimal",
         )
 
     def generate_refinement(
@@ -297,12 +335,12 @@ class OpenAICompatibleAdapter:
 
 
 def adapter_status() -> dict[str, Any]:
-    configured = all(
-        os.getenv(name, "").strip()
-        for name in ("META_MODEL_API_BASE_URL", "META_MODEL_API_KEY", "META_MODEL_ID")
-    )
-    configured = configured and os.getenv("MODEL_PROVIDER", "meta").strip().lower() == "meta"
-    verified = os.getenv("META_MODEL_VERIFIED", "").lower() == "true"
+    try:
+        config = model_configuration()
+    except ValueError:
+        config = None
+    configured = bool(config and config.configured)
+    verified = bool(config and config.verified)
     try:
         max_run_tokens = int(os.getenv("MODEL_MAX_RUN_TOKENS", "100000"))
     except ValueError:
@@ -320,7 +358,7 @@ def adapter_status() -> dict[str, Any]:
         spending_configured = False
     return {
         "spending_configured": spending_configured,
-        "provider": "meta" if configured else None,
+        "provider": config.provider if configured else None,
         "configured": configured,
         "smoke_test_verified": verified,
         "enabled_for_runs": configured
@@ -328,9 +366,9 @@ def adapter_status() -> dict[str, Any]:
         and inference_is_enabled()
         and spending_configured,
         "inference_paused": not inference_is_enabled(),
-        "model_id": os.getenv("META_MODEL_ID") if configured else None,
-        "endpoint_configured": bool(os.getenv("META_MODEL_API_BASE_URL", "").strip()),
-        "api_key_present": bool(os.getenv("META_MODEL_API_KEY", "").strip()),
+        "model_id": config.model_id if configured else None,
+        "endpoint_configured": bool(config and config.endpoint),
+        "api_key_present": bool(config and config.api_key),
         "max_run_tokens": max_run_tokens,
         "max_context_tokens": max_context_tokens,
     }

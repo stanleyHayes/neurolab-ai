@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 import os
 import sys
 import uuid
@@ -10,6 +11,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
+from neurolab.model_configuration import PROVIDER_ENV  # noqa: E402
 from neurolab.model_spend import ModelSpendError  # noqa: E402
 from neurolab.providers import (  # noqa: E402
     ModelProviderError,
@@ -58,7 +60,24 @@ def main() -> int:
         print("FAIL: provider returned an unexpected smoke-test response", file=sys.stderr)
         return 1
     print(f"PASS: provider responded with structured JSON for model {adapter.model_id!r}.")
-    print("Set META_MODEL_VERIFIED=true only after reviewing this successful real-provider call.")
+    metadata = adapter._last_response_metadata or {}
+    body = metadata.get("body") or {}
+    print(
+        json.dumps(
+            {
+                "provider": adapter.provider,
+                "model_id": adapter.model_id,
+                "reported_model_id": body.get("model"),
+                "http_status": metadata.get("http_status"),
+                "request_identifiers": metadata.get("request_identifiers", {}),
+                "provider_reported_usage": body.get("usage"),
+                "reserved_tokens": adapter.tokens_reserved,
+                "response_schema_verified": True,
+            }
+        )
+    )
+    flag = PROVIDER_ENV[adapter.provider][3]
+    print(f"Set {flag}=true only after reviewing this successful real-provider call.")
     return 0
 
 

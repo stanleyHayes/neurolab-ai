@@ -1,0 +1,44 @@
+{
+  "source": "Authenticated Baseten /v1/models; no generation",
+  "model": {
+    "id": "meta-models/muse-spark-open",
+    "created": 1792012889,
+    "object": "model",
+    "owned_by": "baseten",
+    "name": "Muse Spark Open",
+    "description": "",
+    "context_length": 1048576,
+    "max_completion_tokens": 1048576,
+    "quantization": "fp4",
+    "pricing": {
+      "prompt": "0.00000125",
+      "completion": "0.00000425",
+      "image": "0",
+      "request": "0",
+      "input_cache_read": "0.00000015"
+    },
+    "supported_sampling_parameters": [
+      "temperature",
+      "top_p",
+      "top_k",
+      "stop",
+      "presence_penalty",
+      "frequency_penalty"
+    ],
+    "supported_features": [
+      "tools",
+      "json_mode",
+      "reasoning"
+    ],
+    "input_modalities": [
+      "text",
+      "image"
+    ],
+    "output_modalities": [
+      "text"
+    ],
+    "hugging_face_id": "meta-models/Muse-Spark-Open-816B-A42B-NVFP4"
+  },
+  "limits": "Catalog presence/features are not actual inference or schema support; use vendor-documented named function calls and server validation",
+  "raw_catalog_sha256": "995bfe4fa7475985814e8fffe3940b7b7215610a7d769db4bdd4c8aed3cd39c8"
+}

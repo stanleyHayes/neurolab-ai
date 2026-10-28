@@ -1,0 +1,48 @@
+{
+  "scope": "One actual Baseten Muse Spark Open acknowledgement; not original-objective or comparative acceptance",
+  "started_at_utc": "2026-10-28T07:39:54.228795+00:00",
+  "provider": "baseten",
+  "model_id": "meta-models/muse-spark-open",
+  "policy_before": "573474fdbbbf29ea3db3d7582964ebde935f13b49cf482b238e98f0cd16a1087",
+  "policy_after": "687711c5bb380e723af19e0a12c413b34f059204858da14eb8ab614182156c4b",
+  "prior_reservations_preserved": {
+    "n": 179,
+    "micro_usd": 2323686
+  },
+  "run_cap_micro_usd": 1000000,
+  "daily_cap_micro_usd": 15000000,
+  "max_run_tokens": 100000,
+  "mock_transport": false,
+  "response": {
+    "ok": true
+  },
+  "passed": true,
+  "http_status": 200,
+  "requests": 1,
+  "usage": [
+    {
+      "prompt_tokens": 685,
+      "completion_tokens": 25,
+      "total_tokens": 710,
+      "prompt_tokens_details": {
+        "audio_tokens": 0,
+        "cached_tokens": 0
+      },
+      "completion_tokens_details": {
+        "accepted_prediction_tokens": 0,
+        "audio_tokens": 0,
+        "reasoning_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    }
+  ],
+  "reservations": [
+    {
+      "input_tokens": 1744,
+      "output_tokens": 2000,
+      "reserved_micro_usd": 10680,
+      "outcome": "completed"
+    }
+  ],
+  "completed_at_utc": "2026-10-28T07:39:55.566895+00:00"
+}

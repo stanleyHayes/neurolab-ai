@@ -23,7 +23,7 @@ def configure_replay(*, worker=False):
     ):
         os.environ["ALLOWED_HOSTS"] = host
     # No paid inference is allowed in this deployment profile.
-    for name in ("META_MODEL_API_KEY", "MODEL_API_KEY"):
+    for name in ("META_MODEL_API_KEY", "BASETEN_API_KEY", "MODEL_API_KEY"):
         os.environ.pop(name, None)
     if worker:
         for name in (
@@ -49,9 +49,11 @@ def configure_deployment(*, worker=False):
 
     if not adapter_status()["enabled_for_runs"]:
         raise RuntimeError(
-            "Meta deployment requires verified provider access and configured spending limits"
+            "Model deployment requires verified provider access and configured spending limits"
         )
     adapter = OpenAICompatibleAdapter.from_environment()
     configure_replay(worker=worker)
-    os.environ["META_MODEL_API_KEY"] = adapter.api_key
+    from .model_configuration import model_configuration
+
+    os.environ[model_configuration().api_key_name] = adapter.api_key
     os.environ["MODEL_INFERENCE_ENABLED"] = "true"

@@ -7,6 +7,8 @@ RUN python -m pip install --no-cache-dir -r requirements.txt \
     && useradd --uid 10001 --create-home research
 COPY neurolab ./neurolab
 COPY schemas ./schemas
+# Operator-only budget review and bounded provider smoke tools.
+COPY scripts/configure_model_budget.py scripts/smoke_meta_provider.py ./scripts/
 COPY data ./data
 USER research
 EXPOSE 10000
