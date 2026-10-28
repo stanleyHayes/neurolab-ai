@@ -43,3 +43,6 @@ nohup.out
 /output/browser-run-error-recovery*/
 
 /output/browser-baseten*/
+
+# Local judge-session acceptance captures
+/output/browser-judge*/
