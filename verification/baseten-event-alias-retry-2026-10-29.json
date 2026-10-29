@@ -1,0 +1,20 @@
+{
+  "checked_at_utc": "2026-10-29T14:41:44.681805+00:00",
+  "scope": "One newly authorized exact event-alias retry after owner reports Baseten credits available; real structured request, no fallback",
+  "model_id": "meta-models/muse-spark-open-1026",
+  "policy_sha256": "7fd4fb2293b2a23180cb2d8e5a88089cc968b76fb1de8bf03a6e4b1182024897",
+  "production_changed": false,
+  "requests_attempted": 1,
+  "passed": false,
+  "error_type": "ModelProviderError",
+  "http_status": 404,
+  "message": "Model provider returned HTTP 404",
+  "reservations": [
+    {
+      "input_tokens": 1738,
+      "output_tokens": 2000,
+      "reserved_micro_usd": 10673,
+      "outcome": "unknown"
+    }
+  ]
+}
