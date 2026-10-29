@@ -1,0 +1,38 @@
+{
+  "frontend": "http://127.0.0.1:3101",
+  "registration_http": 201,
+  "login_http": 200,
+  "model_inference_enabled": false,
+  "mode": "deterministic_replay",
+  "status": "COMPLETE",
+  "run_id": "a88e2313-57f2-4e0b-9464-02478a68e5f6",
+  "artifact_count": 6,
+  "tool_calls": 6,
+  "source_sha256": "2e37c07f30e00efb33b59954dd6d02a04f3d67349790d782b70dbedfdaff05bc",
+  "provider_keys_present": false,
+  "hosted_credentials_used": false,
+  "owner_scope_verified": true,
+  "browser": {
+    "login": true,
+    "results_loaded": true,
+    "mode": "Deterministic replay \u00b7 no model call",
+    "overflow": false,
+    "errors": [],
+    "report_loaded": true
+  },
+  "source_clone": "Unauthenticated HTTPS clone of public repository",
+  "clone_commit": "af202bd7780b27d485ff3140b9bdb2b54efe36dd",
+  "new_helper_tested_as_local_patch": true,
+  "startup_issue": "Concurrent API/worker initial table creation raced in emptyPostgreSQL; walkthrough now initializes schema sequentially first",
+  "sequential_init_then_concurrent_clients_passed": true,
+  "helper_checks": [
+    "mode0600",
+    "exclusive creation refuses overwrite",
+    "remote database rejected",
+    "inference false and provider keys blank"
+  ],
+  "data_audit_passed": true,
+  "helper_sha256": "ba2dd0b52a2ce02df49ab7e5c26914d5b4ae0f835eeec68250ee36117b3e0348",
+  "frontend_production_build_passed": true,
+  "backend_tests_passed": true
+}

@@ -107,6 +107,10 @@ Scheduled encrypted offsite backups were initially deferred; the owner has now [
 
 The [deployment guide](docs/RENDER_VERCEL_DEPLOYMENT.md) covers the Render Docker Blueprint (`render.yaml`) for FastAPI, the SQL worker and PostgreSQL, plus the standard Vercel Next.js frontend. Server-side proxy credentials connect them; the browser keeps its same-origin API/auth flow. The hosted profile defaults to replay; an explicit verified Meta opt-in is now supported. Owner-requested activation is tracked separately from the historical replay deployment. The hosted split is deployed, with authenticated six-tool replay and SSE cursor-resume checks recorded in `verification/hosted-deployment-2026-10-27.json`. Managed Blueprint autosync is not attached; live resources were provisioned through the Render API from these settings. [Review and deploy the backend Blueprint](https://render.com/deploy?repo=https://github.com/stanleyHayes/neurolab-ai).
 
+## Judges can run locally without hosted access
+
+Follow the [complete local judge walkthrough](docs/LOCAL_JUDGE_WALKTHROUGH.md). It creates a dedicated local PostgreSQL database configuration and private local registration invite, with inference disabled and provider keys blank. It uses the real published dataset and numerical tools; no hosted account or paid credentials are needed. Deterministic analysis is clearly labelled and is not evidence of a new model call. A fresh checkout is recommended so no existing `.env` or production settings are loaded.
+
 ## Getting started (full source checkout)
 
 > These instructions require the full source tree, including `data/`, `neurolab/`, `scripts/` and `app/`. Confirm those directories exist after obtaining the source. Public source availability is verified separately from hosted application acceptance.
@@ -178,7 +182,7 @@ Requests and queue claims persist in SQL; started work is not automatically retr
 
 ### Shared model reservations
 
-[SQL-backed spending admission](docs/SHARED_MODEL_SPENDING.md) now bounds run, owner-day and global-day token/money reservations before transport. Missing reviewed prices/overhead/limits block inference. Failures and unknown billing retain reservations. These are conservative admission amounts, not provider invoices; external account spending controls and real pricing/usage verification remain open. Local real Meta is enabled under the configured spending controls. Hosted requests currently fail with `404 model_not_found`; enabled configuration is not proof of provider readiness. Replay remains available without paid credentials.
+[SQL-backed spending admission](docs/SHARED_MODEL_SPENDING.md) now bounds run, owner-day and global-day token/money reservations before transport. Missing reviewed prices/overhead/limits block inference. Failures and unknown billing retain reservations. These are conservative admission amounts, not provider invoices; external account spending controls and real pricing/usage verification remain open. Local real Meta is enabled under the configured spending controls. The exact hackathon model has successful hosted execution evidence recorded above; the earlier direct-Meta404 is historical. Configuration alone is not proof of provider readiness. Replay remains available without paid credentials.
 
 ### Optional Meta provider
 

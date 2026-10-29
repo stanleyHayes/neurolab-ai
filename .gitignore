@@ -48,3 +48,5 @@ nohup.out
 /output/browser-judge*/
 
 /output/browser-hackathon*/
+
+.env.judge
