@@ -1,0 +1,113 @@
+{
+  "read_only": true,
+  "runs": [
+    {
+      "run_id": "e18f7c5d-43f2-4b17-b166-2eace2cfcd32",
+      "reservations": [
+        {
+          "provider": "baseten",
+          "model_id": "meta-models/muse-spark-open-1026",
+          "input_tokens": 8513,
+          "output_tokens": 2000,
+          "reserved_micro_usd": 19142,
+          "outcome": "completed"
+        },
+        {
+          "provider": "baseten",
+          "model_id": "meta-models/muse-spark-open-1026",
+          "input_tokens": 10297,
+          "output_tokens": 2000,
+          "reserved_micro_usd": 21372,
+          "outcome": "completed"
+        },
+        {
+          "provider": "baseten",
+          "model_id": "meta-models/muse-spark-open-1026",
+          "input_tokens": 11318,
+          "output_tokens": 2000,
+          "reserved_micro_usd": 22648,
+          "outcome": "completed"
+        },
+        {
+          "provider": "baseten",
+          "model_id": "meta-models/muse-spark-open-1026",
+          "input_tokens": 11852,
+          "output_tokens": 2000,
+          "reserved_micro_usd": 23315,
+          "outcome": "completed"
+        },
+        {
+          "provider": "baseten",
+          "model_id": "meta-models/muse-spark-open-1026",
+          "input_tokens": 13473,
+          "output_tokens": 2000,
+          "reserved_micro_usd": 25342,
+          "outcome": "unknown"
+        },
+        {
+          "provider": "baseten",
+          "model_id": "meta-models/muse-spark-open-1026",
+          "input_tokens": 18752,
+          "output_tokens": 2000,
+          "reserved_micro_usd": 31940,
+          "outcome": "completed"
+        }
+      ]
+    },
+    {
+      "run_id": "133339f4-bc9c-472e-bd1c-deaa188d9a4a",
+      "reservations": [
+        {
+          "provider": "baseten",
+          "model_id": "meta-models/muse-spark-open-1026",
+          "input_tokens": 8513,
+          "output_tokens": 2000,
+          "reserved_micro_usd": 19142,
+          "outcome": "completed"
+        },
+        {
+          "provider": "baseten",
+          "model_id": "meta-models/muse-spark-open-1026",
+          "input_tokens": 10297,
+          "output_tokens": 2000,
+          "reserved_micro_usd": 21372,
+          "outcome": "completed"
+        },
+        {
+          "provider": "baseten",
+          "model_id": "meta-models/muse-spark-open-1026",
+          "input_tokens": 11318,
+          "output_tokens": 2000,
+          "reserved_micro_usd": 22648,
+          "outcome": "completed"
+        },
+        {
+          "provider": "baseten",
+          "model_id": "meta-models/muse-spark-open-1026",
+          "input_tokens": 11852,
+          "output_tokens": 2000,
+          "reserved_micro_usd": 23315,
+          "outcome": "completed"
+        },
+        {
+          "provider": "baseten",
+          "model_id": "meta-models/muse-spark-open-1026",
+          "input_tokens": 13473,
+          "output_tokens": 2000,
+          "reserved_micro_usd": 25342,
+          "outcome": "completed"
+        },
+        {
+          "provider": "baseten",
+          "model_id": "meta-models/muse-spark-open-1026",
+          "input_tokens": 18752,
+          "output_tokens": 2000,
+          "reserved_micro_usd": 31940,
+          "outcome": "completed"
+        }
+      ]
+    }
+  ],
+  "daily_reserved_micro_usd": 287518,
+  "global_cap_micro_usd": 1000000
+}

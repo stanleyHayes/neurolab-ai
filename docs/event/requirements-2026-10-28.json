@@ -35,11 +35,14 @@
   "meta_credit_claim_individual_only": true,
   "meta_spend_alert_is_not_a_hard_cap": true,
   "current_required_model_probe": {
-    "requests": 1,
-    "http_status": 404,
-    "verified": false,
-    "no_generic_fallback": true
+    "requests_in_latest_smoke": 1,
+    "http_status": 200,
+    "verified": true,
+    "hosted_research_run": "133339f4-bc9c-472e-bd1c-deaa188d9a4a",
+    "first_hosted_attempt_partial": true,
+    "historical_404s_retained": true
   },
   "submission_sent": false,
-  "organizer_eligibility_certified": false
+  "organizer_eligibility_certified": false,
+  "partner_credit_award_confirmed_by_email": true
 }

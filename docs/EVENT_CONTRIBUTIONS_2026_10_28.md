@@ -24,7 +24,7 @@ The [machine-readable inventory](../verification/event-readiness-2026-10-28/cont
 | Portable report and saved-data figure exports | `5caffa6`; [exporter](../scripts/export_investigation.py) | Presentation of actual saved values, not a new scientific run |
 | Durable owned jobs, shared reservations and failure handling | Post-baseline commits in inventory; [jobs](../neurolab/jobs.py), [model spending](../neurolab/model_spend.py) | Distinguish actual hosted receipts from fixture tests and production-only operational gaps |
 | Real Meta investigation and recorded five-policy comparison | [original objective analysis](../verification/ORIGINAL_OBJECTIVE_FAILURE_ANALYSIS.md), [actual comparison](LIVE_COMPARISON_2026_10_28.md) | 180 records/144 requests are collected; human ratings remain unfilled and there is no policy winner |
-| Baseten function-call adapter and isolated vendor configuration | `97fce76`, [provider](../neurolab/providers.py), [configuration](../neurolab/model_configuration.py) | Generic hosted run is real; the event's `-1026` alias returned404 and is not verified. Do not claim partner-approved bonus eligibility |
+| Baseten function-call adapter and isolated vendor configuration | `97fce76`, [provider](../neurolab/providers.py), [configuration](../neurolab/model_configuration.py) | Generic and exact hackathon-model hosted runs are separately verified; first partial exact-model attempt retained. Prize eligibility is not certified. |
 
 Inspect the actual diffs before showing snippets. The current source includes later fixes; a linked current file is not a statement that all of it was created in its cited commit.
 
@@ -42,4 +42,4 @@ Inspect the actual diffs before showing snippets. The current source includes la
 
 For any eligibility statement accompanying the video, disclose that some October 26 work predates the listed kickoff and that the guide separately states an October 27 building-period start. This narration establishes the project timeline, not organizer approval.
 
-Use only the clauses supported by the final selected feature diffs and actual demo. Do not say “built everything from scratch” or claim an unresolved `-1026` run. Show a short actual source-diff/commit view so the new code is identifiable. Keep baseline screens as necessary context rather than presenting them as new deliverables. Organizer clarification is still needed for any earlier work the entrant wishes to claim.
+Use only the clauses supported by the final selected feature diffs and actual demo. Do not say “built everything from scratch” or relabel earlier generic runs as `-1026`. Show a short actual source-diff/commit view so the new code is identifiable. Keep baseline screens as necessary context rather than presenting them as new deliverables. Organizer clarification is still needed for any earlier work the entrant wishes to claim.

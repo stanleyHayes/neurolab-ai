@@ -7,10 +7,10 @@
 - [ ] All showcased code/features implemented during eligible event; disclose any reused assets.
 - [ ] Live product accessible; verify from private browser and fresh session.
 - [ ] Three-minute video publicly accessible, with working features and code created during hackathon.
-- [ ] Confirm real Meta Model API/open-weight calls, not placeholder integration.
+- [x] Real exact-model hosted calls verified29October, with six model decisions/tools/artifacts and preserved priorpartialattempt.
 - [ ] Evidence mapped to Impact 30%, Meta Tooling 25%, Technical Execution 20%, Demo 25%.
 - [ ] No medical, political, war, or prohibited anti-project content.
-- [ ] If pursuing open-weight bonus, actual eligible model/provider validated by partner. Baseten must use event model meta-models/muse-spark-open-1026; current exact-alias probe 404, not verified.
+- [ ] If pursuing open-weight bonus, actual eligible model/provider validated by partner. Baseten must use event model meta-models/muse-spark-open-1026; exact-model hosted execution verified29October; prize eligibility remains organizer-controlled.
 - [ ] If pursuing viral bonus, post genuine demo on X and submit X link; follow organizer timing.
 - [ ] If pursuing community vote, gallery entry and outreach prepared.
 - [ ] Credits claimed by deadline if available; credit card and spending notification checked.

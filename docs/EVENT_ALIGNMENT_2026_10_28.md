@@ -1,6 +1,6 @@
 # Event alignment — owner-supplied participant guide, 28 October 2026
 
-> **Operational resolution (28 October):** The adapter accepts the documented, successfully exercised `meta-models/muse-spark-open` and the explicit event alias `meta-models/muse-spark-open-1026`. The generic model is the example configuration; the unavailable alias is optional pending access confirmation. Neither an accepted identifier nor another model's successful response establishes verification for a selected model. Existing SQL policy matching still binds the exact provider/endpoint/model, retains reservations and prevents silent switching. The earlier exclusive -1026 pin was a configuration regression and is superseded. Production's previously verified generic route was not changed by this correction. Event alias eligibility remains unresolved.
+> **Current hosted status — 29 October:** Render API and worker now serve the verified hackathon model `meta-models/muse-spark-open-1026` using the separately emailed key. Judge run `133339f4` completed six real model decisions, six scientific tools and six artifacts with no recovery. The first exact-model research attempt `e18f7c5d` was PARTIAL after one schema rejection and a labelled deterministic recovery; it is preserved. Existing accounts, data and spending reservations were retained. Limits remain $1/run, $1/account/day, $1/global/day and 100,000 reserved tokens/run. Earlier direct-Meta/generic-model receipts remain historical. No claim of guaranteed model reliability, independent scientific review or event eligibility follows from these executions.
 
 This is the current event-requirement reading. The supplied guide takes precedence over conflicting older preparation notes. Its exact text is retained privately with SHA-256 `301c2244e1869ea9a36129373caa3009ce37ab3a436f2e305e41d1e0b4395bad`; no live organizer-page URL was supplied or verified. [Extracted requirements](event/requirements-2026-10-28.json) retain the source and unresolved decisions.
 
@@ -8,7 +8,7 @@ This is the current event-requirement reading. The supplied guide takes preceden
 
 ## Immediate corrections
 
-1. **Required Baseten model:** `meta-models/muse-spark-open-1026`. Earlier generic-model successes are real integration evidence, but do not establish this specific guide requirement. A single exact-alias request returned HTTP 404 on the current key; it was stopped and retained, not replaced with a generic call. New configuration pins the required alias and resets its verification flag. Live event-model admission must remain unavailable until access and a real response are verified.
+1. **Required Baseten model:** `meta-models/muse-spark-open-1026` is now verified with the separately emailed hackathon key and a complete hosted six-tool run. Earlier 404s used the regular key. One exact-model research attempt was PARTIAL after schema rejection; the next completed cleanly. Both are retained in [hosted evidence](../verification/hackathon-hosted-2026-10-29/research-proof.json).
 2. **Judging is weighted:** Impact 30%, Meta AI Tooling 25%, Technical Execution 20%, Demo 25%. Earlier equal-weight project-judging wording is superseded. These weights do not alter the scientific evaluation rubric or its unfilled human ratings.
 3. **New work must be clear:** the video must highlight work built during the event and distinguish reused code/data/assets. A working video without contribution disclosure is not submission-ready.
 4. **Accra deadline:** Wednesday 4 November at 9 PM Eastern is **Thursday 5 November 2026 at 02:00 in Accra**. The actual platform deadline/countdown still needs a final check. There is no automatic submission or reminder scheduled.
@@ -18,7 +18,7 @@ This is the current event-requirement reading. The supplied guide takes preceden
 | Requirement | Current evidence | Remaining action / boundary |
 |---|---|---|
 | Fit one problem statement | Real-data maize investigation, numerical tools, observed uncertainty, source-linked reports | Draft Push the Frontier; describe computational analysis, not physical experiments performed by the app |
-| Incorporate real Meta tooling | Archived original direct-Meta run and 180-trial comparison; generic Baseten hosted run with six model choices | Preserve actual provider/model labels. Exact Baseten `-1026` access is unverified/404; do not claim the generic run proves it |
+| Incorporate real Meta tooling | Archived original direct-Meta run and 180-trial comparison; generic Baseten hosted run with six model choices | Preserve actual provider/model labels. Exact `-1026` access and hosted run verified separately with emailed key; retain earlier model identities |
 | Public source | Public GitHub `stanleyHayes/neurolab-ai`, MIT and data attribution, clone/build evidence | Final anonymous-access check and final source revision before submission |
 | Solo / maximum four; representative | Owner selected Solo Indie Developer | Owner supplies registered representative details and confirms actual eligibility/acceptance |
 | New work; disclose prior product | Conservative baseline at `8fde534`, followed by source diffs and dated commits | Dates are evidence, not eligibility certification. Do not claim every file imported at baseline was authored during the building period |
@@ -27,7 +27,7 @@ This is the current event-requirement reading. The supplied guide takes preceden
 | No banned/generic projects | Bounded scientific tool execution rather than a basic RAG chatbot or image analyzer | Preserve no-field-recommendation/no-causality boundaries; no unsupported impact or scientific-discovery claims |
 | Individual credits | Baseten application copy prepared; owner holds account/key | Owner claims their own credits. Meta requires payment-method setup per guide. Partner selection/email/award remains external; spend alert is not a hard cap |
 | Final submission | Code/live prototype/local video/evidence exist | One submission by representative, complete contributor list, chosen problem/track, verified public links, organizer details and receipt |
-| Open-weight bonus | Real generic Muse Spark Open integration, truthful provider/model receipts | Optional; exact event alias plus actual partner verification required before claiming this bonus condition is met |
+| Open-weight bonus | Real generic Muse Spark Open integration, truthful provider/model receipts | Exact event alias executes successfully; optional prize eligibility and selection remain organizer decisions |
 | Agentic bonus | Actual validated model actions, result-feedback ablation records and bounded tools | Optional; usefulness reviews remain unfilled. No proven policy advantage or winner claim |
 | Viral/community/creative awards | No X post, gallery entry or Muse Image/Wonder creative path claimed | Optional; no automatic social posting, outreach or artificial engagement |
 
@@ -59,10 +59,6 @@ Conversions use `America/New_York` and `Africa/Accra`, including the November da
 
 The guide states a building period of Oct 27–Nov 4, while kickoff is Oct 26. Until organizer clarification, treat earlier/uncertain implementation as disclosed baseline, not an event-authorship claim. Optional award eligibility, exact live deadline and personal eligibility remain organizer decisions.
 
-## Baseten-channel message for the owner
+## Resolved access investigation
 
-No message has been sent. Suggested text to post in the event's Baseten channel:
-
-> I’m an accepted hackathon participant building NeuroLab AI as a solo Indie Developer. The participant guide instructs us to use `meta-models/muse-spark-open-1026`. One request to that exact model at `https://inference.baseten.co/v1/chat/completions` returned HTTP 404 at 2026-10-28 08:10:14 UTC. The generic `meta-models/muse-spark-open` succeeded previously with the same key, but I am not substituting it as proof of the required alias. Could you confirm the current hackathon model ID/endpoint and whether my workspace needs access enabled or credit approval first?
-
-Only use “accepted participant” if that is true for your account. Do not post the API key, passwords, `.env`, private signing material or browser session tokens. If the team provides a corrected model/endpoint or confirms access, record that new evidence before another bounded real request. Generic fallback and repeated identical 404 probes are not a resolution.
+The earlier support question was resolved by finding the separately emailed hackathon key. Regular account credits and the regular account key did not grant the same model route. On29October the exact model returnedHTTP200 and subsequently completed a hosted investigation. No further identical access-support message is needed. Preserve previous404receipts as history; never publish the emailedkey or one-time retrievallink.

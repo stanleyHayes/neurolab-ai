@@ -1,0 +1,35 @@
+{
+  "scope": "Actual updated American narration video with hosted exact-model evidence; earlier cuts preserved",
+  "render_job_id": "b23d53d3-016b-402c-ae59-829699b4ad42",
+  "duration_seconds": 179.2,
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "full_decode_errors": 0,
+  "final_audio_lufs": -16.6,
+  "true_peak_dbfs": -4.6,
+  "human_full_track_listening": false,
+  "check_passed": true,
+  "changed_closing_decoded_frame_reviewed_seconds": 173,
+  "unchanged_middle_footage": "Same1xrecorded deterministicwalkthrough aspreviousverifiedcut",
+  "closing_actual_run": "133339f4-bc9c-472e-bd1c-deaa188d9a4a",
+  "first_partial_attempt_disclosed": true,
+  "exact_model_id": "meta-models/muse-spark-open-1026",
+  "new_model_calls_during_video_edit": 0,
+  "outputs": {
+    "NeuroLab-Hackathon-Final.mp4": {
+      "bytes": 21572114,
+      "sha256": "2be24defb4d99b01797bddbe790f2d527b8535817b3aec8e35dff6ed79807c92"
+    },
+    "NeuroLab-Hackathon-Final.srt": {
+      "bytes": 3483,
+      "sha256": "f0e5481ff442dbd3c12e00e172b0b159b8b2d3d581cbf2b6e274ca176df6afe5"
+    },
+    "NeuroLab-Hackathon-Editable.zip": {
+      "bytes": 53986224,
+      "sha256": "24a7a6e6a092de88cbd2ec712ce8171694eb695ab3716e269b39e8846212a77c"
+    }
+  },
+  "public_upload": false,
+  "submission_sent": false
+}

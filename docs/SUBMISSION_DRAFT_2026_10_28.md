@@ -18,7 +18,7 @@
 
 **Live product:** https://neurolab-ai.vercel.app — invite-gated prototype; judge access must be checked and supplied privately through the submission process. Do not publish service credentials or a universal invite in the repository.
 
-**Meta evidence:** archived real direct-Meta investigation and 180-trial comparison; generic hosted Baseten run with six model choices. The required Baseten `meta-models/muse-spark-open-1026` currently returns 404 on the supplied key and is not verified. Preserve this distinction; do not list the generic run as verification of the event alias.
+**Meta evidence:** exact hackathon-model judge run133339f4 completed six model decisions/six tools/six artifacts on29October; prior partial attempt retained. Use [fresh form answers](SUBMISSION_FORM_ANSWERS_2026_10_29.md).
 
 **Video:** revised local 179.20-second MP4 rendered with start-date/new-work/code disclosure, actual deterministic research footage and separate labelled Baseten evidence. Full decode/layout checks and sampled decoded-frame review passed. Human listening, public URL and fresh signed-out playback remain outstanding; organizer eligibility/model-alias acceptance is not certified by the edit.
 

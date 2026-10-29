@@ -1,4 +1,4 @@
-> Current event authority: [owner-supplied guide alignment](EVENT_ALIGNMENT_2026_10_28.md). Exact Baseten -1026 access is unverified/404; generic-model success does not certify this requirement.
+> Current event authority: [owner-supplied guide alignment](EVENT_ALIGNMENT_2026_10_28.md). Exact Baseten -1026 access and hosted six-tool run verified29October with emailedhackathonkey; firstpartialattempt retained. This does not certify prize eligibility.
 
 # 13 — Prize strategy without scope dilution
 

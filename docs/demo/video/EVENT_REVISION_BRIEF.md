@@ -1,5 +1,10 @@
 # Event-specific video revision required
 
+## Latest exact-model revision on 29 October
+
+Use NeuroLab-Hackathon-Final.mp4 and matchingSRT. The approvedAmericanvoice isretained. Closing uses actualnewjudge-run133339f4results screenshot andexact1026model, withfirstpartial/secondcomplete disclosure. Earliercutscontainobsoleteunverifiedaliaswordingandarenotthelatestdelivery. Originalmiddlefootage remainsdeterministicanalysis/replay, correctlylabelled; no newcallinference isimplied bytherecording. Publicupload/fullownerlistening remainpending.
+
+
 ## Latest delivery with the approved American narrator
 
 The owner selected sample A after listening. The latest local video is now `output/demo-video/NeuroLab-American-Demo.mp4`, **179.20 seconds, 1080p, 30 fps**, with all 32 sentences regenerated using American Kokoro `af_heart` at the approved 0.98 pace. Shortened wording fits without post-generation acceleration. Subtitles and the editable package match this version. Earlier videos remain preserved.

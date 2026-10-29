@@ -46,3 +46,5 @@ nohup.out
 
 # Local judge-session acceptance captures
 /output/browser-judge*/
+
+/output/browser-hackathon*/
