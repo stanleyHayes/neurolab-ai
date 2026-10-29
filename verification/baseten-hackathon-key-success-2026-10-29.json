@@ -1,0 +1,39 @@
+{
+  "checked_at_utc": "2026-10-29T14:56:15.342689+00:00",
+  "scope": "Actual structured acknowledgement using separately emailed hackathon key; not full scientific execution or Render deployment",
+  "model_id": "meta-models/muse-spark-open-1026",
+  "reported_model_id": "meta-models/muse-spark-open-1026",
+  "http_status": 200,
+  "response_schema_verified": true,
+  "response": {
+    "ok": true
+  },
+  "reported_usage": {
+    "prompt_tokens": 682,
+    "completion_tokens": 25,
+    "total_tokens": 707,
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": 0,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": 0
+    }
+  },
+  "requests_attempted": 1,
+  "reservations": [
+    {
+      "input_tokens": 1738,
+      "output_tokens": 2000,
+      "reserved_micro_usd": 10673,
+      "outcome": "completed"
+    }
+  ],
+  "existing_policy_sha256": "7fd4fb2293b2a23180cb2d8e5a88089cc968b76fb1de8bf03a6e4b1182024897",
+  "production_changed": false,
+  "full_research_run_verified": false,
+  "credential_source": "Owner placed separately emailed hackathon key in ignored local .env; no key published"
+}

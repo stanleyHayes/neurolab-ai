@@ -50,7 +50,7 @@ NeuroLab AI uses Meta models as the decision-making component of a bounded resea
 
 Model proposals are constrained to structured JSON actions and validated on the server against schemas and an allowlist. With Baseten, the adapter requests a single named function call and validates its arguments before dispatch. Python tools compute the numerical findings; the model does not supply observed measurements. Each run preserves provider and model identity, decisions, tool outputs and failures, with iteration, timeout, token and spending controls.
 
-The successful Baseten model identifier is meta-models/muse-spark-open. The separate identifier meta-models/muse-spark-open-1026 in the participant guide returned HTTP 404 during recorded requests, including a retry on October 29 after credits became available, and remains unverified. I do not present the successful generic-model execution as proof of access to that separate identifier.
+The recorded hosted scientific investigation used meta-models/muse-spark-open. On October 29, after configuring the separate hackathon key supplied by email, a real request to the required meta-models/muse-spark-open-1026 returned HTTP 200 and a schema-validated function response. Earlier 404 attempts used the regular account credential. Exact hackathon-model connectivity is now verified; the earlier six-tool investigation is not relabelled as a six-tool run on the hackathon identifier.
 
 ## Why are Meta models important to your solution
 
@@ -68,7 +68,7 @@ Clear provider/model identity, response validation, preserved tool feedback and 
 
 Baseten's OpenAI-compatible API enabled real hosted Meta Muse Spark Open execution from the Render backend. The documented meta-models/muse-spark-open identifier returned successful responses, including a streaming test and a complete six-tool scientific investigation. Named function calling provided the structured action interface needed by the agent, with server-side validation retained.
 
-The main unresolved issue is the participant guide's meta-models/muse-spark-open-1026 identifier, which still returned HTTP 404 on October 29 after credits became available. A clear explanation of whether that identifier requires separate access or has been superseded would help. I have not used Fireworks or Modal in the verified execution described here, and I am not claiming partner credits have been awarded.
+The main integration challenge was distinguishing the regular account key from the separately emailed hackathon key. The guide-specific meta-models/muse-spark-open-1026 identifier returned 404 with the regular key, then succeeded with HTTP 200 and a validated function response after the emailed hackathon key was configured on October 29. Making that credential distinction more prominent in onboarding would help. I have not used Fireworks or Modal in the verified execution described here. Baseten's email confirmed a $100 hackathon credit award and up to 2M tokens per minute.
 
 ## Permission to use and promote submitted materials
 
